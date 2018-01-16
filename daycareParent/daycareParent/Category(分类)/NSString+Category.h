@@ -21,6 +21,14 @@
  */
 +(NSString*)safeString:(NSString*)title;
 
+/**
+ 防止空字符串调用崩溃问题
+
+ @param aKey 字典key
+ @return 返回空字符串
+ */
+-(id)objectItemKey:(id)aKey;
++(id)objectItemKey:(id)aKey;
 
 #pragma mark 验证字符串是否为空
 /**

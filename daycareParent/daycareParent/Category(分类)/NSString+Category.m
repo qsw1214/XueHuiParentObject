@@ -40,6 +40,28 @@
     return [NSString stringWithFormat:@"%@", title];
 }
 
+-(id)objectItemKey:(id)aKey
+{
+    if ([self isKindOfClass:[NSString class]])
+    {
+        return @"";
+    }
+    else
+    {
+        return @"";
+    }
+}
++(id)objectItemKey:(id)aKey
+{
+    if ([self isKindOfClass:[NSString class]])
+    {
+        return @"";
+    }
+    else
+    {
+        return @"";
+    }
+}
 #pragma mark 验证字符串是否为空
 /**
  @param string 验证的字符串

@@ -319,20 +319,20 @@ typedef NS_ENUM(NSInteger,EducationCloudInformationType)
                          break;
                      case 1:  //!< 考试题
                      {
-//                         XHEducationCloudWebViewController *webView = [[XHEducationCloudWebViewController alloc]initHiddenWhenPushHidden];
-//                         NSString *webUrl=[NSString stringWithFormat:@"http://h5.ixuehui.cn/zx/h5/exercise_index.html?user_id=%@",[XHUserInfo sharedUserInfo].ID];
-//                         [webView setWebViewUrl:webUrl];
-//                         [webView setNavtionTitle:@"试题练习"];
-//                         [self.viewController.navigationController pushViewController:webView animated:YES];
-                         HNShopViewController *shop = [[HNShopViewController alloc] initHiddenWhenPushHidden];
-                         shop.initLoad = ^(XCWebView *webView, XCWebViewBridgeViewController *controller) {
-                             
-                             NSString *webUrl=[NSString stringWithFormat:@"http://h5.ixuehui.cn/zx/h5/exercise_index.html?user_id=%@",[XHUserInfo sharedUserInfo].ID];
-                             [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:webUrl] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0f]];
-                             
-                         };
-                         [shop setNavtionTitle:@"试题练习"];
-                         [self.viewController.navigationController pushViewController:shop animated:YES];
+                         XHEducationCloudWebViewController *webView = [[XHEducationCloudWebViewController alloc]initHiddenWhenPushHidden];
+                         NSString *webUrl=[NSString stringWithFormat:@"http://h5.ixuehui.cn/zx/h5/exercise_index.html?user_id=%@",[XHUserInfo sharedUserInfo].ID];
+                         [webView setWebViewUrl:webUrl];
+                         [webView setNavtionTitle:@"试题练习"];
+                         [self.viewController.navigationController pushViewController:webView animated:YES];
+//                         HNShopViewController *shop = [[HNShopViewController alloc] initHiddenWhenPushHidden];
+//                         shop.initLoad = ^(XCWebView *webView, XCWebViewBridgeViewController *controller) {
+//
+//                             NSString *webUrl=[NSString stringWithFormat:@"http://h5.ixuehui.cn/zx/h5/exercise_index.html?user_id=%@",[XHUserInfo sharedUserInfo].ID];
+//                             [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:webUrl] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0f]];
+//
+//                         };
+//                         [shop setNavtionTitle:@"试题练习"];
+//                         [self.viewController.navigationController pushViewController:shop animated:YES];
                      }
                          break;
                  }

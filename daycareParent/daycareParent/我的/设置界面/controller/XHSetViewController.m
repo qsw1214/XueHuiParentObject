@@ -144,7 +144,7 @@
              [XHShowHUD hideHud];
         }];
         [[RCIM sharedRCIM]disconnect];
-        [JPUSHService setTags:nil alias:nil fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias){
+        [JPUSHService setTags:nil alias:@"" fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias){
         }];
         [NSUserDefaults removeObjectItemForKey:AutoLogin];
         XHLoginViewController *login=[XHLoginViewController new];

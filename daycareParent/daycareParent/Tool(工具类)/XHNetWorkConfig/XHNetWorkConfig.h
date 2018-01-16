@@ -20,7 +20,7 @@ typedef NS_ENUM(NSInteger,XHNetWorkOption)
 
 
 
-#define NetWorkType 0  //!< 0 为线下 1为线上
+#define NetWorkType 1  //!< 0 为线下 1为线上
 
 #if  NetWorkType
 

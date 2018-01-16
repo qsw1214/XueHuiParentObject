@@ -1,0 +1,169 @@
+//
+//  PrefixHeader.pch
+//  daycareParent
+//
+//  Created by Git on 2017/11/27.
+//  Copyright © 2017年 XueHui. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#pragma mark  DataRequest Method
+#pragma mark  LifeStyle Method
+#pragma mark  Getter/Setter Method
+#pragma mark  Delegate Method
+#pragma mark  Private Method
+#pragma mark  Response Method
+
+
+#pragma mark 接口地址位置
+
+
+
+#ifdef DEBUG
+
+
+
+# define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+
+
+
+#else
+
+
+# define DLog(...)
+
+#endif
+
+
+
+
+
+
+#import "Header.h"
+
+
+
+#pragma mark - 常使用的宏定义
+#define kWindow [UIApplication sharedApplication].keyWindow
+#define KING_WINDOW [[UIApplication sharedApplication].windows lastObject]
+//主屏幕的大小
+#define WindowScreen [[UIScreen mainScreen] bounds]
+
+//设备屏幕尺寸
+#define SCREEN_HEIGHT   ([UIScreen mainScreen].bounds.size.height) //! 屏幕高度
+#define SCREEN_WIDTH    ([UIScreen mainScreen].bounds.size.width)   //!< 屏幕宽度
+
+
+//GCD
+#define dispatch_queue   dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+#define BACK(block) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block)
+#define DISPATCH_GROUP(block) dispatch_group_async(group, dispatch_queue, block)
+#define MAIN(block) dispatch_async(dispatch_get_main_queue(),block)
+
+#define BACK_SPEAKINGING(block) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), block)
+
+//color
+#define RGB(r, g, b)  [UIColor colorWithRed:((r) / 255.0) green:((g) / 255.0) blue:((b) / 255.0) alpha:1.0]
+#define RGBAlpha(r, g, b, a)  [UIColor colorWithRed:((r) / 255.0) green:((g) / 255.0) blue:((b) / 255.0) alpha:(a)]
+
+#define kAppDelegate ((AppDelegate *)[UIApplication sharedApplication].delegate)
+
+#define kApplication [UIApplication sharedApplication]
+
+//灰色字体颜色
+#define TextGrayColor RGBAlpha(232.0, 232.0, 232.0, 1.0)
+
+
+//分割线背景颜色
+#define LineViewColor RGBAlpha(222.0, 223.0, 224.0, 1.0)
+#define TitleColor RGBAlpha(49.0, 49.0, 49.0, 1.0)
+#define TitleGrayColor RGBAlpha(142.0, 142.0, 142.0, 1.0)
+
+
+
+
+//项目的主题颜色（浅绿色）
+#define MainColor RGBAlpha(91.0, 208.0, 184.0, 1.0)
+
+
+#pragma mark  项目中字体大小
+
+//项目的主题颜色（浅绿色）
+#define FontLevel0 [UIFont systemFontOfSize:22.0]  //!< 22.0
+#define FontLevel1 [UIFont systemFontOfSize:18.0]  //!< 18.0
+#define FontLevel2 [UIFont systemFontOfSize:16.0]  //!< 16.0
+#define FontLevel3 [UIFont systemFontOfSize:14.0]  //!< 14.0
+#define FontLevel4 [UIFont systemFontOfSize:12.0]  //!< 12.0
+#define FontLevel5 [UIFont systemFontOfSize:10.0]  //!< 10.0
+
+
+#pragma mark - 屏蔽NSLog(如果想屏蔽，并且)
+//#define NSLog(...) {};
+
+
+#pragma mark  程序的沙盒目录
+#define HomeDirectoryDocumentFilePath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)/*这是获取沙盒目录*/ objectAtIndex:0]
+
+
+#pragma mark  版本信息
+#define AppVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+#define KeyAppVersion @"AppVersion"
+#define hUMtypeVersion  @"typeVersion"
+#define IOSSystem [[[UIDevice currentDevice] systemVersion] floatValue]
+
+
+
+
+
+
+#pragma mark -  地图
+#pragma mark  Map SDK AppKey
+#define TableID = @"6f834904ae4664f7f7886129b3dd0be7";
+
+
+#pragma mark 友盟
+#define UmengAppkey @"56a5cea367e58e44a9002275"
+#define UmengShareContentText @"友盟分享内容。 http://www.duchebaodian.com"
+
+
+#pragma mark QQ
+#define QQAppID @"1105148756"
+#define QQAppKey @"J8Tg1sKIfEIZleyX"
+
+
+#pragma mark WeChat （微信）
+#define WeChatAppID      @"wx9acfc4b28b9f3755"
+#define WeChatAppSecret  @"31bd3d344969d5be7bbc9d3c0b024897"
+
+
+#pragma mark ShareUrl
+#define ShareUrl @"http://www.duchebaodian.com" //@"http://www.umeng.com/social"
+
+
+
+#define CellIdentifier @"CellIdentifier"
+
+#define USER_HEARD ([UIScreen mainScreen].bounds.size.width-30)/5.0//用户头像大小
+#define DEFAULTCOLOR RGBAlpha(134, 134, 134, 1.0)//浅灰色字体
+#define LOGIN_BEFORE RGBAlpha(220, 220, 220, 1.0)//登录前字体颜色
+#define  LOGINBTN_HEIGHT 50//按钮高度
+#define CORNER_BTN 8//按钮角标
+#define WeakObj(o) autoreleasepool{} __weak typeof(o) o##Weak = o;
+#define StrongObj(o) autoreleasepool{} __strong typeof(o) o = o##Weak;
+#define   KAITONG_VIPCOLOR  RGB(242, 184, 0)
+#define   HUANGJIN_VIPCOLOR  [UIColor orangeColor]
+#define   BAIJIN_VIPCOLOR  RGB(216, 145, 0)
+#define  AutoLogin @"autoLogin"
+
+#define  FAMILY_TIES @[@"爸爸",@"妈妈",@"爷爷",@"奶奶",@"外公",@"外婆",@"其他"]
+#define ALGetFileVedio(name) [NSString stringWithFormat:@"http://vedio.ixuehui.cn/vedio/%@",name]
+#define ALGetFileHeadThumbnail(name) [NSString stringWithFormat:@"http://img.ixuehui.cn/xh/%@@!100-100-ios-head",name]             //头像缩略
+#define ALGetFileImageThumbnail(name) [NSString stringWithFormat:@"http://img.ixuehui.cn/xh/%@@!160-160-ios-list-item",name]            //图片缩略
+#define ALGetFileImageOriginal(name) [NSString stringWithFormat:@"http://img.ixuehui.cn/xh/%@",name]            //原图
+
+#define ALGetkaoqinjiFileImageThumbnail(name) [NSString stringWithFormat:@"http://img.ixuehui.cn/att/%@@!160-160-ios-list-item",name]            //考勤机图片缩略
+#define ALGetkaoqinjiFileImageOriginal(name) [NSString stringWithFormat:@"http://img.ixuehui.cn/att/%@",name]            //考勤机原图
+#define CFBundleShortVersionString    [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+#endif /* PrefixHeader_pch */

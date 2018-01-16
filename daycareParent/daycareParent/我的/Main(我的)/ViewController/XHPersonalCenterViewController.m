@@ -94,7 +94,8 @@
 }
 -(void)refreshHead
 {
-    if ([[NSUserDefaults objectItemForKey:@"appVersion123"] isEqualToString:@"success"])
+    
+    if ([[NSUserDefaults objectItemForKey:@"appVersion123"] isEqualToString:CFBundleShortVersionString])
     {
         [XHUserInfo sharedUserInfo].ifOK=@"1";
         arry=@[@"课程/辅导",@"VIP升级",@"我的优惠券",@"我的收货地址",@"联系客服"];
@@ -461,7 +462,7 @@
                 [self getChildListNet];
                 [self refreshUserInfo];
                 [_tableView refreshReload];
-                [NSUserDefaults setItemObject:@"success" forKey:@"appVersion123"];
+                [NSUserDefaults setItemObject:CFBundleShortVersionString forKey:@"appVersion123"];
             }
         }
         {

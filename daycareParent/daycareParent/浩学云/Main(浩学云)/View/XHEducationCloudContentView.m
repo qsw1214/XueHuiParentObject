@@ -15,8 +15,9 @@ typedef NS_ENUM(NSInteger,EducationCloudInformationType)
 };
 
 
-#define EducationCloudImageName @[@"ico_jiaofu",@"ico_xingqu",@"ico_shiti",@"ico_shipin",@"ico_xuexi",@"ico_shequ"]
-#define EducationCloudTitle @[@"辅教用品",@"兴趣辅导",@"试题练习",@"教学视频",@"在线学习",@"兴趣社区"]
+
+#define EducationCloudImageName @[@"ico_jiaofu",@"ico_xingqu",@"ico_shiti",@"ico_shipin",@"ico_xuexi",@"ico_jiangtang"/*@"ico_shequ"*/]
+#define EducationCloudTitle @[@"辅教用品",@"兴趣辅导",@"试题练习",@"教学视频",@"在线学习",@"推荐直播"/*@"兴趣社区"*/]
 
 #import "XHEducationCloudContentView.h"
 #import "XHEducationCloudMenuView.h"
@@ -25,6 +26,7 @@ typedef NS_ENUM(NSInteger,EducationCloudInformationType)
 #import "XHEducationCloudItemCollectionView.h"
 #import "XHEducationCloudWebViewController.h"
 #import "HNShopViewController.h"
+#import "XHLiveViewController.h"
 
 @interface XHEducationCloudContentView () <BaseMenuControlDeletage,XHEducationCloudMenuViewDeletage,XHEducationCloudItemCollectionViewDeletage>
 
@@ -459,7 +461,9 @@ typedef NS_ENUM(NSInteger,EducationCloudInformationType)
             break;
         case 5:
         {
-            [XHShowHUD showNOHud:@"建设中"];
+            XHLiveViewController *live = [[XHLiveViewController alloc]initHiddenWhenPushHidden];
+            [live setNavtionTitle:@"推荐直播"];
+            [self.viewController.navigationController pushViewController:live animated:YES];
         }
             break;
     }

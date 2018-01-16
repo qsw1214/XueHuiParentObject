@@ -107,6 +107,12 @@
 		4B4A001A1FE2437300B8A8F8 /* XHDynamicsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4A00191FE2437300B8A8F8 /* XHDynamicsCollectionView.m */; };
 		4B4A001D1FE243C900B8A8F8 /* XHDynamicsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4A001C1FE243C900B8A8F8 /* XHDynamicsCollectionViewCell.m */; };
 		4B4A00201FE276A500B8A8F8 /* XHPreviewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4A001F1FE276A500B8A8F8 /* XHPreviewModel.m */; };
+		4B4F921B200DB8F1003BE008 /* XHLiveFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4F920E200DB8F0003BE008 /* XHLiveFrame.m */; };
+		4B4F921C200DB8F1003BE008 /* XHLiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4F9210200DB8F0003BE008 /* XHLiveModel.m */; };
+		4B4F921D200DB8F1003BE008 /* XHLiveCellContentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4F9213200DB8F0003BE008 /* XHLiveCellContentControl.m */; };
+		4B4F921E200DB8F1003BE008 /* XHLiveContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4F9215200DB8F0003BE008 /* XHLiveContentView.m */; };
+		4B4F921F200DB8F1003BE008 /* XHLiveTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4F9217200DB8F0003BE008 /* XHLiveTableViewCell.m */; };
+		4B4F9220200DB8F1003BE008 /* XHLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4F921A200DB8F0003BE008 /* XHLiveViewController.m */; };
 		4B523BC41FD12D43006DD565 /* XHHomeWorkDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B523BC31FD12D43006DD565 /* XHHomeWorkDetailsViewController.m */; };
 		4B523BC71FD14782006DD565 /* XHHomeWorkCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B523BC61FD14782006DD565 /* XHHomeWorkCollectionView.m */; };
 		4B523BCA1FD14A27006DD565 /* XHHomeWorkContentViwCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B523BC91FD14A27006DD565 /* XHHomeWorkContentViwCell.m */; };
@@ -674,6 +680,18 @@
 		4B4A001C1FE243C900B8A8F8 /* XHDynamicsCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHDynamicsCollectionViewCell.m; sourceTree = "<group>"; };
 		4B4A001E1FE276A500B8A8F8 /* XHPreviewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHPreviewModel.h; sourceTree = "<group>"; };
 		4B4A001F1FE276A500B8A8F8 /* XHPreviewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHPreviewModel.m; sourceTree = "<group>"; };
+		4B4F920D200DB8F0003BE008 /* XHLiveFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHLiveFrame.h; sourceTree = "<group>"; };
+		4B4F920E200DB8F0003BE008 /* XHLiveFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHLiveFrame.m; sourceTree = "<group>"; };
+		4B4F920F200DB8F0003BE008 /* XHLiveModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHLiveModel.h; sourceTree = "<group>"; };
+		4B4F9210200DB8F0003BE008 /* XHLiveModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHLiveModel.m; sourceTree = "<group>"; };
+		4B4F9212200DB8F0003BE008 /* XHLiveCellContentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHLiveCellContentControl.h; sourceTree = "<group>"; };
+		4B4F9213200DB8F0003BE008 /* XHLiveCellContentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHLiveCellContentControl.m; sourceTree = "<group>"; };
+		4B4F9214200DB8F0003BE008 /* XHLiveContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHLiveContentView.h; sourceTree = "<group>"; };
+		4B4F9215200DB8F0003BE008 /* XHLiveContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHLiveContentView.m; sourceTree = "<group>"; };
+		4B4F9216200DB8F0003BE008 /* XHLiveTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHLiveTableViewCell.h; sourceTree = "<group>"; };
+		4B4F9217200DB8F0003BE008 /* XHLiveTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHLiveTableViewCell.m; sourceTree = "<group>"; };
+		4B4F9219200DB8F0003BE008 /* XHLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHLiveViewController.h; sourceTree = "<group>"; };
+		4B4F921A200DB8F0003BE008 /* XHLiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHLiveViewController.m; sourceTree = "<group>"; };
 		4B523BC21FD12D43006DD565 /* XHHomeWorkDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHHomeWorkDetailsViewController.h; sourceTree = "<group>"; };
 		4B523BC31FD12D43006DD565 /* XHHomeWorkDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHHomeWorkDetailsViewController.m; sourceTree = "<group>"; };
 		4B523BC51FD14782006DD565 /* XHHomeWorkCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHHomeWorkCollectionView.h; sourceTree = "<group>"; };
@@ -2003,6 +2021,49 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		4B4F920B200DB8F0003BE008 /* 直播 */ = {
+			isa = PBXGroup;
+			children = (
+				4B4F920C200DB8F0003BE008 /* Model */,
+				4B4F9211200DB8F0003BE008 /* View */,
+				4B4F9218200DB8F0003BE008 /* ViewController */,
+			);
+			path = "直播";
+			sourceTree = "<group>";
+		};
+		4B4F920C200DB8F0003BE008 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4B4F920D200DB8F0003BE008 /* XHLiveFrame.h */,
+				4B4F920E200DB8F0003BE008 /* XHLiveFrame.m */,
+				4B4F920F200DB8F0003BE008 /* XHLiveModel.h */,
+				4B4F9210200DB8F0003BE008 /* XHLiveModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4B4F9211200DB8F0003BE008 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4B4F9212200DB8F0003BE008 /* XHLiveCellContentControl.h */,
+				4B4F9213200DB8F0003BE008 /* XHLiveCellContentControl.m */,
+				4B4F9214200DB8F0003BE008 /* XHLiveContentView.h */,
+				4B4F9215200DB8F0003BE008 /* XHLiveContentView.m */,
+				4B4F9216200DB8F0003BE008 /* XHLiveTableViewCell.h */,
+				4B4F9217200DB8F0003BE008 /* XHLiveTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4B4F9218200DB8F0003BE008 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4B4F9219200DB8F0003BE008 /* XHLiveViewController.h */,
+				4B4F921A200DB8F0003BE008 /* XHLiveViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		4B523BD21FD1576C006DD565 /* 请假 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2264,6 +2325,7 @@
 		4B80F1FE1FCBE43E00BC7B52 /* 浩学云 */ = {
 			isa = PBXGroup;
 			children = (
+				4B4F920B200DB8F0003BE008 /* 直播 */,
 				4B11AF2A1FCCE886002738F1 /* Main(浩学云) */,
 			);
 			path = "浩学云";
@@ -3818,6 +3880,7 @@
 				4B577FA01FF5C4F60023ACBC /* XHNoticeContentViwCell.m in Sources */,
 				4B3418761FFDC14C00A5EC56 /* UIView+CustomControlView.m in Sources */,
 				4B577FE31FF63FB30023ACBC /* View+MASAdditions.m in Sources */,
+				4B4F921C200DB8F1003BE008 /* XHLiveModel.m in Sources */,
 				8CB5A2681FD79DEF008E97D8 /* XHMyAddressViewController.m in Sources */,
 				8C8081731FCEABE600C7945A /* XHBaseBtn.m in Sources */,
 				4B577FDB1FF63FB30023ACBC /* MASCompositeConstraint.m in Sources */,
@@ -3852,6 +3915,7 @@
 				4B80F2251FCBEC2B00BC7B52 /* MianTabBarViewController.m in Sources */,
 				4B3418751FFDC14C00A5EC56 /* UITabBarController+ZFPlayerRotation.m in Sources */,
 				4B4338B71FDF9C1C0047AC52 /* XHEducationCloudItemCollectionView.m in Sources */,
+				4B4F9220200DB8F1003BE008 /* XHLiveViewController.m in Sources */,
 				8C377CA12008B7BB001F1FC7 /* WebViewJavascriptBridgeBase.m in Sources */,
 				4B577FAD1FF5EFA30023ACBC /* XHNotifceTableViewCell.m in Sources */,
 				4B80F2D51FCBF04F00BC7B52 /* UIImage+WebP.m in Sources */,
@@ -3864,6 +3928,7 @@
 				8C42CFCE1FF5D86D00CEDBDA /* XHNewUserInfoViewController.m in Sources */,
 				4B4A00171FE2411200B8A8F8 /* XHDynamicsCell.m in Sources */,
 				4B80F31F1FCBFD6F00BC7B52 /* MTLTransformerErrorHandling.m in Sources */,
+				4B4F921E200DB8F1003BE008 /* XHLiveContentView.m in Sources */,
 				4B07CC4A1FD5106800B2DBDA /* RotateRect.m in Sources */,
 				4B80F2801FCBF04800BC7B52 /* MJRefreshAutoNormalFooter.m in Sources */,
 				4B577FA41FF5C4F60023ACBC /* XHNoticeDetailViewController.m in Sources */,
@@ -3881,6 +3946,7 @@
 				4BA8C4C21FCFD09A006CBEBC /* XHLoginViewController.m in Sources */,
 				4BD33DE61FCD5D6900BC52B6 /* XHFunctionMenuModel.m in Sources */,
 				4BBC434B1FD1086000555846 /* XHHomeWorkCellContentView.m in Sources */,
+				4B4F921D200DB8F1003BE008 /* XHLiveCellContentControl.m in Sources */,
 				4B80F2C31FCBF04F00BC7B52 /* NSData+ImageContentType.m in Sources */,
 				4B577FA11FF5C4F60023ACBC /* XHNoticeDetailView.m in Sources */,
 				4B3126491FDA1FE7000CE894 /* XHAddressBookModel.m in Sources */,
@@ -3920,6 +3986,7 @@
 				4BBC43411FD0E43E00555846 /* BaseTableViewCell.m in Sources */,
 				4B80F2831FCBF04800BC7B52 /* MJRefreshBackNormalFooter.m in Sources */,
 				4B80F3251FCBFD6F00BC7B52 /* NSError+MTLModelException.m in Sources */,
+				4B4F921F200DB8F1003BE008 /* XHLiveTableViewCell.m in Sources */,
 				4B577FAA1FF5EF770023ACBC /* XHNoticeViewController.m in Sources */,
 				4B550E4D1FF364AD004CF7ED /* XHSortedArrayComparator.m in Sources */,
 				4B80F31D1FCBFD6F00BC7B52 /* MTLModel.m in Sources */,
@@ -4080,6 +4147,7 @@
 				4B5A3AF71FCEAA0C00504229 /* XHRegisterFrame.m in Sources */,
 				4BA8C4CC1FCFEAA6006CBEBC /* CameraManageViewController.m in Sources */,
 				4B80F2CF1FCBF04F00BC7B52 /* SDWebImagePrefetcher.m in Sources */,
+				4B4F921B200DB8F1003BE008 /* XHLiveFrame.m in Sources */,
 				4B577FE41FF63FB30023ACBC /* ViewController+MASAdditions.m in Sources */,
 				4B80F2401FCBF01B00BC7B52 /* BaseCollectionView.m in Sources */,
 				4B577FDF1FF63FB30023ACBC /* MASViewAttribute.m in Sources */,

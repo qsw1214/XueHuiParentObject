@@ -120,26 +120,15 @@ static MainRootControllerHelper *rootHelper = nil;
         [net postWithUrl:@"zzjt-app-api_login" sucess:^(id object, BOOL verifyObject) {
             if (verifyObject)
             {
-                if (![[object objectItemKey:@"object"] isKindOfClass:[NSDictionary class]]) {
-                    [XHShowHUD showNOHud:@"自动登录失败,请重试!"];
+                [[XHUserInfo sharedUserInfo] setItemObject:[object objectItemKey:@"object"]];
+                if ([[XHUserInfo sharedUserInfo].guardianModel.guardianId isEqualToString:@""]) {
+                    [XHShowHUD showNOHud:@"自动登录失败！"];
                     XHLoginViewController *login=[XHLoginViewController new];
                     UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:login];
                     
                     [window setRootViewController:nav];
                     return ;
                 }
-                if ([[object objectItemKey:@"object"] isKindOfClass:[NSDictionary class]]) {
-                    if ([[object objectForKey:@"object"] allKeys].count<2) {
-                        [XHShowHUD showNOHud:@"自动登录失败,请重试!"];
-                        XHLoginViewController *login=[XHLoginViewController new];
-                        UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:login];
-                        
-                        [window setRootViewController:nav];
-                        
-                        return;
-                    }
-                }
-                [[XHUserInfo sharedUserInfo] setItemObject:[object objectItemKey:@"object"]];
                 XHNetWorkConfig *netWork=[XHNetWorkConfig new];
                 [netWork setObject:[XHUserInfo sharedUserInfo].guardianModel.guardianId forKey:@"guardianId"];
                 [XHShowHUD showTextHud];

@@ -115,19 +115,11 @@
             loginModel.loginName=telePhone.text;
             loginModel.pwd=pwd.text;
             loginModel.type=[@"3" integerValue];
-            
-            if (![[object objectItemKey:@"object"] isKindOfClass:[NSDictionary class]]) {
-
-                [XHShowHUD showNOHud:@"登录失败,请重试!"];
+            [[XHUserInfo sharedUserInfo] setItemObject:[object objectItemKey:@"object"]];
+            if ([[XHUserInfo sharedUserInfo].guardianModel.guardianId isEqualToString:@""]) {
+                [XHShowHUD showNOHud:@"登录失败！"];
                 return ;
             }
-            if ([[object objectItemKey:@"object"] isKindOfClass:[NSDictionary class]]) {
-                if ([[object objectForKey:@"object"] allKeys].count<2) {
-                    [XHShowHUD showNOHud:@"登录失败,请重试!"];
-                    return;
-                }
-            }
-            [[XHUserInfo sharedUserInfo] setItemObject:[object objectItemKey:@"object"]];
             [NSUserDefaults  saveLocalObject:loginModel forKey:AutoLogin];
             XHNetWorkConfig *netWork=[[XHNetWorkConfig alloc] init];
             [netWork setObject:[XHUserInfo sharedUserInfo].guardianModel.guardianId forKey:@"guardianId"];

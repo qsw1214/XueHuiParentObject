@@ -13,6 +13,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+     [self.moneyImageView setContentMode:UIViewContentModeScaleAspectFill];
+    [self.selectImageView setContentMode:UIViewContentModeScaleAspectFill];
+    self.selectImageView.layer.cornerRadius=10;
+    self.selectImageView.layer.masksToBounds=YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

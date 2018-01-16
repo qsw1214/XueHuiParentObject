@@ -24,6 +24,7 @@
 @property (nonatomic,copy) NSString *telphoneNumber;//!< 电话
 @property (nonatomic,copy) NSString *token; //!<token
 @property (nonatomic,copy) NSString *primaryFamilyId; //!<主监护人家庭ID
+@property (nonatomic,copy) NSString *ifOK; 
 @property (nonatomic,strong) XHGuardianInfo *guardianModel; //!<主监护人信息
 @property (nonatomic,strong) NSMutableArray <XHChildListModel*> *childListArry; //!<孩子列表信息
 /**

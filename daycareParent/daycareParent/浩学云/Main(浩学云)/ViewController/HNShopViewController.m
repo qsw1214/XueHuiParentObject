@@ -123,7 +123,6 @@
 //调起ping++支付
 - (void)regiseterPay:(WVJBResponseCallback)responseCallback
 {
-    //HNShopViewController * __weak weakSelf = self;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:_charge options:NSJSONWritingPrettyPrinted error:nil];
     NSString* data = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     NSData *getJsonData=[data dataUsingEncoding:NSUTF8StringEncoding];

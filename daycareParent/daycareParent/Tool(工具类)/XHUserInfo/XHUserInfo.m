@@ -43,6 +43,7 @@ static XHUserInfo *userInfo = nil;
     _telphoneNumber=[object objectItemKey:@"telphoneNumber"];
     _token=[object objectItemKey:@"token"];
     _sex=[object objectItemKey:@"sex"];
+    _ifOK=@"0";
     _primaryFamilyId=[[object objectItemKey:@"propValue"] objectItemKey:@"primaryFamilyId"];
     _guardianModel=[[XHGuardianInfo alloc] initWithDic:[[object objectItemKey:@"propValue"] objectItemKey:@"guardian"]];
     switch ([self.sex integerValue])

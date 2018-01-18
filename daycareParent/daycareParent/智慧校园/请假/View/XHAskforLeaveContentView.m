@@ -22,7 +22,7 @@
 @interface XHAskforLeaveContentView () <BaseTextViewDeletage,XHDatePickerControlDeletage,XHAskforLeavePreviewControlDeletage,CameraManageDeletage>
 
 @property (nonatomic,strong) UIAlertController *alertController; //!< 弹出框视图控制器
-@property (nonatomic,strong) BaseViewController *viewController;
+@property (nonatomic,weak) BaseViewController *viewController;
 @property (nonatomic,strong) UILabel *limitLabel; //!< 输入内容限制
 @property (nonatomic,strong) BaseView *topAccessoryView;   //!< 顶部附件视图
 @property (nonatomic,strong) BaseView *bottomAccessoryView;   //!< 底部附件视图
@@ -164,14 +164,14 @@
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         [alertController addAction:[UIAlertAction actionWithTitle:@"选择相机" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action)
         {
-            CameraManageViewController *manager=[[CameraManageViewController alloc] initWithCameraManageWithType:SourceTypeCamera setDeletate:self];
-            [self.viewController.navigationController presentViewController:manager animated:YES completion:^{}];
+            CameraManageViewController *manager=[[CameraManageViewController alloc] initWithCameraManageWithType:SourceTypeCamera setDeletate:self.viewController];
+            [self.viewController presentViewController:manager animated:YES completion:^{}];
             
         }]];
         [alertController addAction:[UIAlertAction actionWithTitle:@"选择相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
         {
-            CameraManageViewController *manager=[[CameraManageViewController alloc] initWithCameraManageWithType:SourceTypeSavedPhotosAlbum setDeletate:self];
-            [self.viewController.navigationController presentViewController:manager animated:YES completion:^{}];
+            CameraManageViewController *manager=[[CameraManageViewController alloc] initWithCameraManageWithType:SourceTypeSavedPhotosAlbum setDeletate:self.viewController];
+            [self.viewController presentViewController:manager animated:YES completion:^{}];
         }]];
         [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){}]];
         [self.viewController presentViewController:alertController animated:YES completion:^{}];

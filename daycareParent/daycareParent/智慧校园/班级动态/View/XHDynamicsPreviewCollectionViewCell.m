@@ -7,6 +7,7 @@
 //
 
 #import "XHDynamicsPreviewCollectionViewCell.h"
+#import <Photos/Photos.h>
 
 @interface XHDynamicsPreviewCollectionViewCell ()
 
@@ -39,6 +40,7 @@
 #pragma mark - Action Method
 -(void)saveImageControlAction:(BaseButtonControl*)sender
 {
+    [self isSourceTypePhotosAlbumAllow:self];
     [XHShowHUD showTextHud];
      UIImageWriteToSavedPhotosAlbum(self.previewImageView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), (__bridge void *)self);
 }
@@ -56,6 +58,24 @@
     }
 }
 
+#pragma mark --- 相册授权
+-(BOOL)isSourceTypePhotosAlbumAllow:(id)object
+{
+    PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
+    if (status == PHAuthorizationStatusRestricted ||
+        status == PHAuthorizationStatusDenied)
+    {
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"请去-> [设置 - 隐私 - 相册 - 学汇家长] 打开访问开关" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil, nil];
+        [alertView show];
+        return NO;
+    }
+    else
+    {
+        return YES;
+    }
+    
+    
+}
 
 
 

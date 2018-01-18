@@ -8,7 +8,9 @@
 
 #import "CameraManageViewController.h"
 #import <AliyunOSSiOS/OSSService.h>
-
+#import <AVFoundation/AVFoundation.h>
+#import <AssetsLibrary/AssetsLibrary.h>
+#import <Photos/Photos.h>
 @interface CameraManageViewController () <UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 @end
@@ -33,9 +35,11 @@
         {
             case SourceTypeCamera:
             {
+                
+                [self isSourceTypeCameraAllow:imageDeletage];
                 if ([self isSourceTypeCamera])  //判断是否有相机
                 {
-                   
+                    
                     //相机类型
                     self.modalPresentationStyle= UIModalPresentationOverFullScreen;
                     [self setSourceType:UIImagePickerControllerSourceTypeCamera];
@@ -57,6 +61,7 @@
                 break;
             case SourceTypeHeadPortraitCamera:
             {
+                [self isSourceTypeCameraAllow:imageDeletage];
                 if ([self isSourceTypeCamera])  //判断是否有相机
                 {
                     
@@ -66,6 +71,7 @@
                     [self setMediaTypes:@[(NSString *)kUTTypeImage,(NSString *)kUTTypeMovie]];
                     [self setAllowsEditing:YES];
                 }
+                
                 else
                 {
                     
@@ -82,13 +88,15 @@
                 break;
             case SourceTypeSavedPhotosAlbum:
             {
-                //相机类型
+                [self isSourceTypePhotosAlbumAllow:imageDeletage];
+                //相册类型
                 [self setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
             }
                 break;
             case SourceTypeHeadPortraitSavedPhotosAlbum:
             {
-                //相机类型
+                [self isSourceTypePhotosAlbumAllow:imageDeletage];
+                //相册类型
                 [self setSourceType:UIImagePickerControllerSourceTypeSavedPhotosAlbum];
                 [self setAllowsEditing:YES];
             }
@@ -152,8 +160,49 @@
 {
     return [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
 }
-
-
+#pragma mark --- 相机授权
+-(void)isSourceTypeCameraAllow:(id)object
+{
+    AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if (status == AVAuthorizationStatusRestricted || status == AVAuthorizationStatusDenied) {
+        
+        UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"请去-> [设置 - 隐私 - 相机 - 学汇家长] 打开访问开关" preferredStyle:(UIAlertControllerStyleAlert)];
+        UIAlertAction *alertA = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        
+        [alertC addAction:alertA];
+        [object presentViewController:alertC animated:YES completion:nil];
+    }
+    
+    
+}
+#pragma mark --- 相册授权
+-(void)isSourceTypePhotosAlbumAllow:(id)object
+{
+    PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
+    switch (status)
+    {
+        case PHAuthorizationStatusAuthorized:
+        case PHAuthorizationStatusNotDetermined:
+        {
+            
+        }
+            break;
+        case PHAuthorizationStatusRestricted:
+        case PHAuthorizationStatusDenied:
+        {
+            UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"请去-> [设置 - 隐私 - 相册 - 学汇家长] 打开访问开关" preferredStyle:(UIAlertControllerStyleAlert)];
+            UIAlertAction *alertA = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+            
+            [alertC addAction:alertA];
+            [object presentViewController:alertC animated:YES completion:nil];
+        }
+            break;
+    }
+}
 #pragma mark 保存图片信息
 -(void)imageWriteToSavedPhotosAlbum:(nonnull UIImage*)image
 {

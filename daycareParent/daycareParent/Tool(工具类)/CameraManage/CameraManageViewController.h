@@ -33,7 +33,7 @@ typedef NS_ENUM(NSInteger,CameraType)
 @interface CameraManageViewController : UIImagePickerController
 
 
-@property (nonnull,nonatomic,strong) id <CameraManageDeletage> cameraDelegate;
+@property (nullable,nonatomic,weak) id <CameraManageDeletage> cameraDelegate;
 
 /**
  WithType:

@@ -229,6 +229,7 @@
 }
 -(void)tableView:(BaseTableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section==2&&indexPath.row==0) {//http://h5.mall.ixuehui.cn?tel=13500000012#/order
 //         NSString *webUrl = [NSString stringWithFormat:@"%@?tel=%@#/order",OrderBaseUrl,[XHUserInfo sharedUserInfo].loginName];
 //        XHEducationCloudWebViewController *webView = [[XHEducationCloudWebViewController alloc]initHiddenWhenPushHidden];

@@ -67,20 +67,19 @@
     if (indexPath.row==0) {
         if ([_noticeModel.sum integerValue] <100) {
             if ([_noticeModel.sum integerValue]==0) {
-               cell.smallLab.text=nil;
             }
             else
             {
                 cell.smallLab.text=_noticeModel.sum;
             }
-            
+
         }
         else
         {
             cell.smallLab.text=@"99+";
         }
-        CGSize Size=[cell.smallLab.text contentSizeWithTitle:cell.smallLab.text withFontOfSize:[UIFont systemFontOfSize:14.0] withWidth:20];
-        cell.smallLab.frame=CGRectMake(45, 6, Size.height, 16);
+        cell.smallLab.frame=CGRectMake(45, 6, [self getCustomWidth:cell.smallLab.text], [self getCustomWidth:cell.smallLab.text]);
+        cell.smallLab.layer.cornerRadius=([self getCustomWidth:cell.smallLab.text])/2.0;
         cell.detailLab.text=[NSString dateStr:_noticeModel.createTime];
         cell.ContentLab.text=_noticeModel.content;
     
@@ -166,6 +165,20 @@
     } error:^(NSError *error) {
         [_tableView refreshReload];
     }];
+}
+-(CGFloat)getCustomWidth:(NSString *)str
+{
+    NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:14.0]};
+    
+    CGSize textSize = [str boundingRectWithSize:CGSizeMake(22, 22) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;;
+    if ([str integerValue]==0) {
+        return 0;
+    }
+    else
+    {
+        return textSize.width+5;
+    }
+    
 }
 -(void)dealloc
 {

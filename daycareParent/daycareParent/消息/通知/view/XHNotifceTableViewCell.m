@@ -21,9 +21,6 @@
         _smallLab.textAlignment=NSTextAlignmentCenter;
         _smallLab.font=[UIFont systemFontOfSize:14.0f];
         _smallLab.textColor=[UIColor whiteColor];
-        CGSize Size=[_smallLab.text contentSizeWithTitle:_smallLab.text withFontOfSize:[UIFont systemFontOfSize:14.0] withWidth:20];
-        _smallLab.frame=CGRectMake(45, 6, Size.height, 16);
-        _smallLab.layer.cornerRadius=8;
         _smallLab.layer.masksToBounds=YES;
         _smallLab.backgroundColor=[UIColor redColor];
         [self.contentView addSubview:_smallLab];

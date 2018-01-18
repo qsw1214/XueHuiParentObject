@@ -31,6 +31,7 @@
         [self setShowsHorizontalScrollIndicator:NO];
         [self addSubview:self.tipView];
         [self.tipView setFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+        [self.tipView setHidden:YES];
     }
     return self;
 }
@@ -40,6 +41,7 @@
 {
     [self setFrame:frame];
     [self.tipView setFrame:CGRectMake(0, 0, frame.size.width,frame.size.height)];
+    [self.tipView setHidden:YES];
     
     
 }

@@ -44,6 +44,7 @@
     if (!_contentControl)
     {
         _contentControl = [[XHLiveCellContentControl alloc]init];
+        [_contentControl setUserInteractionEnabled:NO];
     }
     return _contentControl;
 }

@@ -7,8 +7,21 @@
 //
 
 #import "BaseControl.h"
+#import "XHLiveTableViewCell.h"
+
+
+@protocol XHLiveContentViewDeletage <NSObject>
+
+
+-(void)didSelectRowAtIndexPath:(XHLiveFrame*)object;
+
+@end
 
 @interface XHLiveContentView : BaseControl <UITableViewDelegate,UITableViewDataSource>
+
+
+@property (nonatomic,weak) id <XHLiveContentViewDeletage> deletage;
+
 
 
 

@@ -7,7 +7,7 @@
 //
 
 #import "XHLiveContentView.h"
-#import "XHLiveTableViewCell.h"
+
 
 @implementation XHLiveContentView
 
@@ -88,6 +88,7 @@
 -(void)resetFrame:(CGRect)frame
 {
     [self setFrame:frame];
+    
     [self.tableView resetFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
 
 }
@@ -103,8 +104,9 @@
 
 
 #pragma mark - Deletage Method
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+-(NSInteger)tableView:(BaseTableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    [tableView tableTipViewWithArray:self.dataArray];
     return [self.dataArray count];
 }
 
@@ -122,6 +124,29 @@
     }
     [cell setItemFrame:[self.dataArray objectAtIndex:indexPath.row]];
     return cell;
+}
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    XHLiveFrame *liveFrame = [self.dataArray objectAtIndex:indexPath.row];
+    switch (liveFrame.model.contentType)
+    {
+        case XHLiveAdvertType:
+            break;
+        case XHLiveItemType:
+        {
+            if ([self.deletage respondsToSelector:@selector(didSelectRowAtIndexPath:)])
+            {
+                [self.deletage didSelectRowAtIndexPath:[self.dataArray objectAtIndex:indexPath.row]];
+            }
+        }
+            break;
+    }
+   
+    
+    
 }
 
 

@@ -78,8 +78,8 @@
         {
             cell.smallLab.text=@"99+";
         }
-        cell.smallLab.frame=CGRectMake(45, 6, [self getCustomWidth:cell.smallLab.text], [self getCustomWidth:cell.smallLab.text]);
-        cell.smallLab.layer.cornerRadius=([self getCustomWidth:cell.smallLab.text])/2.0;
+        cell.smallLab.frame=CGRectMake(45, 6, [self getCustomWidth:cell.smallLab.text], 15);
+        cell.smallLab.layer.cornerRadius=7.5;
         cell.detailLab.text=[NSString dateStr:_noticeModel.createTime];
         cell.ContentLab.text=_noticeModel.content;
     
@@ -171,12 +171,15 @@
     NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:14.0]};
     
     CGSize textSize = [str boundingRectWithSize:CGSizeMake(22, 22) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;;
-    if ([str integerValue]==0) {
+    if (str.length==0) {
         return 0;
+    }
+    if (str.length==1) {
+        return 15;
     }
     else
     {
-        return textSize.width+5;
+        return textSize.width+8;
     }
     
 }

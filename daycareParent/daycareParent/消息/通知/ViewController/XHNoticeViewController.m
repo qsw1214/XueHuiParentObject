@@ -78,7 +78,7 @@
         {
             cell.smallLab.text=@"99+";
         }
-        cell.smallLab.frame=CGRectMake(45, 6, [self getCustomWidth:cell.smallLab.text], 15);
+        cell.smallLab.frame=CGRectMake(50, 7, [self getCustomWidth:cell.smallLab.text], 15);
         cell.smallLab.layer.cornerRadius=7.5;
         cell.detailLab.text=[NSString dateStr:_noticeModel.createTime];
         cell.ContentLab.text=_noticeModel.content;

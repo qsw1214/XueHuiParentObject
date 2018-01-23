@@ -65,11 +65,17 @@
 #pragma mark XHLiveContentViewDeletage
 -(void)didSelectRowAtIndexPath:(XHLiveFrame *)object
 {
-    XHLiveChatRoomViewController *chatRoomVC = [[XHLiveChatRoomViewController alloc]init];
-    chatRoomVC.conversationType = ConversationType_CHATROOM;
-    chatRoomVC.targetId = @"ChatRoom01";
-    chatRoomVC.contentURL = @"rtmp://v68ee57af.live.126.net/live/56bc05e5495b40779a31753f63598d16";
-    [self.navigationController pushViewController:chatRoomVC animated:YES];
+    NSLog(@"=============%@---------%@",object.model.pull_stream_add,object.model.chatroom_id);
+    if (object.model.liveType==XHLiveingType) {
+        XHLiveChatRoomViewController *chatRoomVC = [[XHLiveChatRoomViewController alloc]init];
+        chatRoomVC.conversationType = ConversationType_CHATROOM;
+        chatRoomVC.targetId=object.model.chatroom_id;
+        // chatRoomVC.targetId = @"ChatRoom01";
+        chatRoomVC.contentURL=object.model.pull_stream_add;
+        //chatRoomVC.contentURL = @"rtmp://v68ee57af.live.126.net/live/56bc05e5495b40779a31753f63598d16";
+        [self.navigationController pushViewController:chatRoomVC animated:YES];
+    }
+    
 }
 
 

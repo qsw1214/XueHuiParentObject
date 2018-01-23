@@ -14,9 +14,9 @@ typedef NS_ENUM(NSInteger,XHLiveContentType)
 
 typedef NS_ENUM(NSInteger,XHLiveStatusType)
 {
-    XHLiveNormalType = 1, //!< 没有状态
-    XHLiveingType = 2, //!< 正在播放
-    XHLiveEndType = 3, //!< 已经结束
+    XHLiveNormalType = 0, //!< 没有状态
+    XHLiveingType = 1, //!< 正在播放
+    XHLiveEndType = 2, //!< 已经结束
 };
 
 
@@ -35,6 +35,8 @@ typedef NS_ENUM(NSInteger,XHLiveStatusType)
 @property (nonatomic,copy) NSString *date; //!< 日期
 @property (nonatomic,copy) NSString *liveMark; //!< 播放状态
 @property (nonatomic,copy) NSString *lectureTeacher; //!< 主讲老师
+@property (nonatomic,copy) NSString *pull_stream_add; //!< 拉流地址
+@property (nonatomic,copy) NSString *chatroom_id; //!< 聊天室id
 @property (nonatomic,assign) XHLiveStatusType liveType; //!< 播放状态
 @property (nonatomic,assign) XHLiveContentType contentType;
 

@@ -58,7 +58,6 @@
         {
             [self.imageView setFrame:frame.itemFrame];
             [self.imageView setLayerCornerRadius:0];
-            
             [self.imageView setImage:[UIImage imageNamed:frame.model.imageUrl]];
             
         }
@@ -82,7 +81,8 @@
             
             
             //!< 赋值
-            [self.imageView setImage:[UIImage imageNamed:frame.model.imageUrl]];
+             [self.imageView sd_setImageWithURL:[NSURL URLWithString:frame.model.imageUrl] placeholderImage:[UIImage imageNamed:@"addman"]];
+           // [self.imageView setImage:[UIImage imageNamed:frame.model.imageUrl]];
             [self.titleLabel setText:frame.model.title];
             [self.dateLabel setText:frame.model.date];
             [self.lectureTeacherLabel setText:[NSString stringWithFormat:@"主讲：%@",frame.model.lectureTeacher]];
@@ -90,7 +90,8 @@
             {
                 case XHLiveNormalType:
                 {
-                    [self.liveMarkLabel setHidden:YES];
+                   // [self.liveMarkLabel setHidden:YES];
+                    [self.liveMarkLabel setText:@"未开始"];
                 }
                     break;
                 case XHLiveingType:

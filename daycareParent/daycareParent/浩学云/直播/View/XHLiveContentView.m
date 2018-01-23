@@ -36,7 +36,7 @@
     if (subview)
     {
         [self.dataArray removeAllObjects];
-        
+        [self getModel];
         for (int i = 0; i< 1; i++)
         {
             XHLiveFrame *frame = [[XHLiveFrame alloc] init];
@@ -46,43 +46,43 @@
             [frame setModel:model];
             [self.dataArray addObject:frame];
         }
+//
+//
         
-        
-        
-        for (int i = 1; i<= 3; i++)
-        {
-            XHLiveFrame *frame = [[XHLiveFrame alloc] init];
-            XHLiveModel *model = [[XHLiveModel alloc]init];
-            [model setContentType:XHLiveItemType];
-            switch (i)
-            {
-                case 1:
-                {
-                    [model setImageUrl:@"one"];
-                }
-                    break;
-                case 2:
-                {
-                    [model setImageUrl:@"two"];
-                }
-                    break;
-                case 3:
-                {
-                    [model setImageUrl:@"three"];
-                }
-                    break;
-            }
-            
-            [model setTitle:@"帮您解密互联网+共享教育的秘密"];
-            [model setDate:@"2018/1/25"];
-            [model setLiveMark:@"2"];
-            [model setLectureTeacher:@"田泽相"];
-            [frame setModel:model];
-            [self.dataArray addObject:frame];
-        }
+//        for (int i = 1; i<= 3; i++)
+//        {
+//            XHLiveFrame *frame = [[XHLiveFrame alloc] init];
+//            XHLiveModel *model = [[XHLiveModel alloc]init];
+//            [model setContentType:XHLiveItemType];
+//            switch (i)
+//            {
+//                case 1:
+//                {
+//                    [model setImageUrl:@"one"];
+//                }
+//                    break;
+//                case 2:
+//                {
+//                    [model setImageUrl:@"two"];
+//                }
+//                    break;
+//                case 3:
+//                {
+//                    [model setImageUrl:@"three"];
+//                }
+//                    break;
+//            }
+//
+//            [model setTitle:@"帮您解密互联网+共享教育的秘密"];
+//            [model setDate:@"2018/1/25"];
+//            [model setLiveMark:@"2"];
+//            [model setLectureTeacher:@"田泽相"];
+//            [frame setModel:model];
+//            [self.dataArray addObject:frame];
+//        }
     }
     
-    [self.tableView refreshReloadData];
+    //[self.tableView refreshReloadData];
 }
 
 -(void)resetFrame:(CGRect)frame
@@ -148,7 +148,44 @@
     
     
 }
-
-
-
+-(void)getModel
+{
+    [self.netWorkConfig postWithUrl:@"zzjt-app-api_listLecture" sucess:^(id object, BOOL verifyObject) {
+        if (verifyObject) {
+            NSArray *arr=[object objectItemKey:@"object"];
+            for (NSDictionary *dic in arr) {
+                XHLiveFrame *frame = [[XHLiveFrame alloc] init];
+                XHLiveModel *model = [[XHLiveModel alloc]init];
+                [model setContentType:XHLiveItemType];
+               
+                [model setImageUrl:[dic objectItemKey:@"head_image"]];
+                [model setTitle:[dic objectItemKey:@"title"]];
+                [model setDate:[self dateStr:[dic objectItemKey:@"start_time"]]];
+                [model setLiveMark:[dic objectItemKey:@"live_state"]];
+                [model setLectureTeacher:[dic objectItemKey:@"presenter"]];
+                [model setPull_stream_add:[dic objectItemKey:@"pull_stream_add"]];
+                [model setChatroom_id:[dic objectItemKey:@"chatroom_id"]];
+                [frame setModel:model];
+                [self.dataArray addObject:frame];
+            }
+              [self.tableView refreshReloadData];
+        }
+        {
+              [self.tableView refreshReloadData];
+        }
+    } error:^(NSError *error) {
+          [self.tableView refreshReloadData];
+    }];
+}
+-(NSString *)dateStr:(NSString *)dateStr
+{
+    NSDateFormatter *setDateFormatter = [[NSDateFormatter alloc] init];
+    [setDateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *date= [setDateFormatter dateFromString:dateStr];
+    NSDateFormatter *myDateFormatter = [[NSDateFormatter alloc] init];
+    //设置日期格式
+    [myDateFormatter setDateFormat:@"yyyy/MM/dd"];
+    NSString *String=[myDateFormatter stringFromDate:date];
+    return String;
+}
 @end

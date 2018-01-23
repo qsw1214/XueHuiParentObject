@@ -31,7 +31,7 @@ typedef NS_ENUM(NSInteger,XHNetWorkOption)
 #define VideoBaseUrl @"http://h5.ixuehui.cn/zx/h5/index.html"
 #define OrderBaseUrl @"http://h5.mall.ixuehui.cn"
 
-#define RONGCLOUD_IM_APPKEY @"82hegw5u820xx" //8w7jv4qb8wt3y
+#define RONGCLOUD_IM_APPKEY_ @"82hegw5u820xx" //8w7jv4qb8wt3y
 
 
 #else
@@ -43,7 +43,7 @@ typedef NS_ENUM(NSInteger,XHNetWorkOption)
 #define VideoBaseUrl @"http://192.168.1.155:8888/video/index.html"
 #define OrderBaseUrl @"http://192.168.1.155:8888/haoxuemall-h5-app/index.html"
 
-#define RONGCLOUD_IM_APPKEY @"8w7jv4qb8wt3y" //8w7jv4qb8wt3y
+#define RONGCLOUD_IM_APPKEY_ @"8w7jv4qb8wt3y" //8w7jv4qb8wt3y
 
 
 #endif

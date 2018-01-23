@@ -230,8 +230,8 @@ static NSString *const RCDLiveGiftMessageCellIndentifier = @"RCDLiveGiftMessageC
                  
                  [self initializedLiveSubViews];
                  RCInformationNotificationMessage *joinChatroomMessage = [[RCInformationNotificationMessage alloc]init];
-                 joinChatroomMessage.message = [NSString stringWithFormat: @"%@加入了聊天室",[RCDLive sharedRCDLive].currentUserInfo.name];
-                 [self sendMessage:joinChatroomMessage pushContent:nil];
+                 joinChatroomMessage.message = [NSString stringWithFormat: @"%@来啦",[RCDLive sharedRCDLive].currentUserInfo.name];
+                [self sendMessage:joinChatroomMessage pushContent:nil];
              });
          }
          error:^(RCErrorCode status) {
@@ -910,7 +910,8 @@ static NSString *const RCDLiveGiftMessageCellIndentifier = @"RCDLiveGiftMessageC
     if([messageContent isMemberOfClass:[RCInformationNotificationMessage class]]){
         RCInformationNotificationMessage *msg = (RCInformationNotificationMessage *)messageContent;
         //        [self sendDanmaku:msg.message];
-        [self sendCenterDanmaku:msg.message];
+         [self sendCenterDanmaku:msg.message];
+        //[self sendCenterDanmaku:[NSString stringWithFormat:@"%@%@",[RCDLive sharedRCDLive].currentUserInfo.name,msg.message]];/////////
     }else if ([messageContent isMemberOfClass:[RCTextMessage class]]){
         RCTextMessage *msg = (RCTextMessage *)messageContent;
         [self sendDanmaku:msg.content];
@@ -1285,7 +1286,8 @@ static NSString *const RCDLiveGiftMessageCellIndentifier = @"RCDLiveGiftMessageC
     [NELivePlayerController setLogLevel:NELP_LOG_VERBOSE];
 
     NSError *error = nil;
-    self.player = [[NELivePlayerController alloc] initWithContentURL:[NSURL URLWithString:@"rtmp://v68ee57af.live.126.net/live/56bc05e5495b40779a31753f63598d16"] error:&error];
+//    self.player = [[NELivePlayerController alloc] initWithContentURL:[NSURL URLWithString:@"rtmp://v68ee57af.live.126.net/live/56bc05e5495b40779a31753f63598d16"] error:&error];
+    self.player = [[NELivePlayerController alloc] initWithContentURL:[NSURL URLWithString:self.contentURL] error:&error];
     [self.player.view setBackgroundColor:[UIColor whiteColor]];
     if (self.player == nil)
     {

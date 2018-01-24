@@ -42,12 +42,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "daycareParent/&#x6d69;&#x5b66;&#x4e91;/&#x76f4;&#x64ad;/ViewController/XHLiveChatRoomViewController.m"
-            timestampString = "537960087.2451479"
+            timestampString = "538450861.1941839"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
-            landmarkName = "-viewWillDisappear:"
+            startingLineNumber = "902"
+            endingLineNumber = "902"
+            landmarkName = "-appendAndDisplayMessage:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "daycareParent/&#x6d69;&#x5b66;&#x4e91;/&#x76f4;&#x64ad;/View/Cell/RCDLiveTipMessageCell.m"
+            timestampString = "538450861.1947089"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "-setDataModel:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "daycareParent/&#x6d69;&#x5b66;&#x4e91;/&#x76f4;&#x64ad;/ViewController/XHLiveChatRoomViewController.m"
+            timestampString = "538450861.194782"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1113"
+            endingLineNumber = "1113"
+            landmarkName = "-didReceiveMessageNotification:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

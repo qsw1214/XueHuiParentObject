@@ -14,7 +14,7 @@ typedef NS_ENUM(NSInteger,XHLiveContentType)
 
 typedef NS_ENUM(NSInteger,XHLiveStatusType)
 {
-    XHLiveNormalType = 0, //!< 没有状态
+    XHLiveNormalType = 0, //!< 没有状态（未开始）
     XHLiveingType = 1, //!< 正在播放
     XHLiveEndType = 2, //!< 已经结束
 };

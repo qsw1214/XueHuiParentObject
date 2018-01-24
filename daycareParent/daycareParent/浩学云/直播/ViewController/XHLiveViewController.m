@@ -62,20 +62,31 @@
 
 
 #pragma mark - Deletage Method
-#pragma mark XHLiveContentViewDeletage
+#pragma mark XHLiveContentViewDeletage （点击直播cell的代理方）
 -(void)didSelectRowAtIndexPath:(XHLiveFrame *)object
 {
-    NSLog(@"=============%@---------%@",object.model.pull_stream_add,object.model.chatroom_id);
-    if (object.model.liveType==XHLiveingType) {
-        XHLiveChatRoomViewController *chatRoomVC = [[XHLiveChatRoomViewController alloc]init];
-        chatRoomVC.conversationType = ConversationType_CHATROOM;
-        chatRoomVC.targetId=object.model.chatroom_id;
-         //chatRoomVC.targetId = @"ChatRoom01";
-        chatRoomVC.contentURL=object.model.pull_stream_add;
-        //chatRoomVC.contentURL = @"rtmp://v68ee57af.live.126.net/live/56bc05e5495b40779a31753f63598d16";
-        [self.navigationController pushViewController:chatRoomVC animated:YES];
+    switch (object.model.liveType)
+    {
+        case XHLiveingType:
+        {
+            XHLiveChatRoomViewController *chatRoomVC = [[XHLiveChatRoomViewController alloc]init];
+            chatRoomVC.conversationType = ConversationType_CHATROOM;
+            [chatRoomVC setTargetId:object.model.chatroom_id];
+            [chatRoomVC setContentURL:object.model.pull_stream_add];
+            [self.navigationController pushViewController:chatRoomVC animated:YES];
+        }
+            break;
+        case XHLiveEndType:
+        {
+            [XHShowHUD showNOHud:@"已结束"];
+        }
+            break;
+        case XHLiveNormalType:
+        {
+            [XHShowHUD showNOHud:@"未开始"];
+        }
+            break;
     }
-    
 }
 
 

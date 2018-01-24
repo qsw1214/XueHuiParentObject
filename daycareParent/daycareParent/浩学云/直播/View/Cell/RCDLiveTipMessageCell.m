@@ -11,6 +11,8 @@
 #import "RCDLiveKitUtility.h"
 #import "RCDLiveKitCommonDefine.h"
 #import "RCDLiveGiftMessage.h"
+#import "NSString+Category.h"
+
 @interface RCDLiveTipMessageCell ()<RCDLiveAttributedLabelDelegate>
 @end
 
@@ -30,38 +32,55 @@
     return self;
 }
 
-- (void)setDataModel:(RCDLiveMessageModel *)model {
+- (void)setDataModel:(RCDLiveMessageModel *)model
+{
     [super setDataModel:model];
 
     RCMessageContent *content = model.content;
-    if ([content isMemberOfClass:[RCInformationNotificationMessage class]]) {
+    if ([content isMemberOfClass:[RCInformationNotificationMessage class]])
+    {
         RCInformationNotificationMessage *notification = (RCInformationNotificationMessage *)content;
         NSString *localizedMessage = [RCDLiveKitUtility formatMessage:notification];
-        self.tipMessageLabel.text = localizedMessage;
+        self.tipMessageLabel.text = [NSString stringWithFormat:@"%@%@",[NSString safeString:content.senderUserInfo.name],localizedMessage];
         self.tipMessageLabel.textColor = RCDLive_HEXCOLOR(0xffb83c);
-    }else if ([content isMemberOfClass:[RCTextMessage class]]){
+    }
+    else if ([content isMemberOfClass:[RCTextMessage class]])
+    {
         RCTextMessage *notification = (RCTextMessage *)content;
         NSString *localizedMessage = [RCDLiveKitUtility formatMessage:notification];
         NSString *name=@"";
-        if (content.senderUserInfo) {
+        if (content.senderUserInfo)
+        {
             name = [NSString stringWithFormat:@"%@:",content.senderUserInfo.name];
         }
         NSString *str =[NSString stringWithFormat:@"%@ %@",name,localizedMessage];
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:str];
         
         [attributedString addAttribute:NSForegroundColorAttributeName value:(RCDLive_HEXCOLOR(0x3ceff)) range:[str rangeOfString:name]];
-        [attributedString addAttribute:NSForegroundColorAttributeName value:([UIColor whiteColor]) range:[str rangeOfString:localizedMessage]];
+        [attributedString addAttribute:NSForegroundColorAttributeName value:RCDLive_HEXCOLOR(0x3ceff) range:[str rangeOfString:localizedMessage]];
         self.tipMessageLabel.attributedText = attributedString.copy;
-    }else if ([content isMemberOfClass:[RCDLiveGiftMessage class]]){
-        RCDLiveGiftMessage *notification = (RCDLiveGiftMessage *)content;
+    }
+    else if ([content isMemberOfClass:[RCDLiveGiftMessage class]])
+    {
+        RCDLiveGiftMessage *giftMessage = (RCDLiveGiftMessage *)content;
         NSString *name=@"";
-        if (content.senderUserInfo) {
+        
+        if (content.senderUserInfo)
+        {
             name = content.senderUserInfo.name;
         }
-        NSString *localizedMessage = @"送了一个钻戒";
-        if(notification && [notification.type isEqualToString:@"1"]){
+        
+        NSString *localizedMessage = @"送了一个钻戒";;
+        
+        if (giftMessage && [giftMessage.type isEqualToString:@"0"])
+        {
+            localizedMessage = @"送了一个钻戒";
+        }
+        else if(giftMessage && [giftMessage.type isEqualToString:@"1"])
+        {
           localizedMessage = @"为主播点了赞";
         }
+        
         
         NSString *str =[NSString stringWithFormat:@"%@ %@",name,localizedMessage];
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:str];
@@ -74,12 +93,15 @@
     NSString *__text = self.tipMessageLabel.text;
     CGSize __labelSize = [RCDLiveTipMessageCell getTipMessageCellSize:__text];
 
-    if (_isFullScreenMode) {
+    if (_isFullScreenMode)
+    {
         self.tipMessageLabel.frame = CGRectMake(6,0, __labelSize.width, __labelSize.height);
 //        self.tipMessageLabel.backgroundColor = RCDLive_HEXCOLOR(0x000000);
 //        self.tipMessageLabel.alpha = 0.5;
 
-    }else{
+    }
+    else
+    {
         self.tipMessageLabel.frame = CGRectMake((self.baseContentView.bounds.size.width - __labelSize.width) / 2.0f,0, __labelSize.width, __labelSize.height);
 //        self.tipMessageLabel.backgroundColor = RCDLive_HEXCOLOR(0xBBBBBB);
 //        self.tipMessageLabel.alpha = 1;

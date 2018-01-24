@@ -229,12 +229,14 @@ static NSString *const RCDLiveGiftMessageCellIndentifier = @"RCDLiveGiftMessageC
              dispatch_async(dispatch_get_main_queue(), ^{
                  
                  [self initializedLiveSubViews];
+                 
                  RCInformationNotificationMessage *joinChatroomMessage = [[RCInformationNotificationMessage alloc]init];
-                 joinChatroomMessage.message = [NSString stringWithFormat: @"%@来啦",[RCDLive sharedRCDLive].currentUserInfo.name];
+                 joinChatroomMessage.message = [NSString stringWithFormat: @"来啦"];
                 [self sendMessage:joinChatroomMessage pushContent:nil];
              });
          }
-         error:^(RCErrorCode status) {
+         error:^(RCErrorCode status)
+        {
              dispatch_async(dispatch_get_main_queue(), ^{
                  if (status == KICKED_FROM_CHATROOM) {
                      [weakSelf loadErrorAlert:NSLocalizedStringFromTable(@"JoinChatRoomRejected", @"RongCloudKit", nil)];
@@ -476,12 +478,13 @@ static NSString *const RCDLiveGiftMessageCellIndentifier = @"RCDLiveGiftMessageC
     [self.view addSubview:_clapBtn];
 }
 
--(void)showInputBar:(id)sender{
+-(void)showInputBar:(id)sender
+{
     self.inputBar.hidden = NO;
     [self.inputBar setInputBarStatus:RCDLiveBottomBarKeyboardStatus];
 }
 
-#pragma mark 发送鲜花
+#pragma mark 发送钻石
 /**
  *  发送鲜花
  *
@@ -489,17 +492,24 @@ static NSString *const RCDLiveGiftMessageCellIndentifier = @"RCDLiveGiftMessageC
  */
 -(void)flowerButtonPressed:(id)sender
 {
-    RCDLiveGiftMessage *giftMessage = [[RCDLiveGiftMessage alloc]init];
-    giftMessage.type = @"0";
-    [self sendMessage:giftMessage pushContent:@""];
-    NSString *text = [NSString stringWithFormat:@"%@ 送了一个钻戒",giftMessage.senderUserInfo.name];
-    [self sendDanmaku:text];
-    [self praiseGift];
+    
+    [XHShowHUD showNOHud:@"余额不足"];
+
+    //!< 产品要求暂停此功能
+    /**
+     RCDLiveGiftMessage *giftMessage = [[RCDLiveGiftMessage alloc]init];
+     giftMessage.type = @"0";
+     [self sendMessage:giftMessage pushContent:@""];
+     NSString *text = [NSString stringWithFormat:@"%@ 送了一个钻戒",giftMessage.senderUserInfo.name];
+     [self sendDanmaku:text];
+     [self praiseGift];
+     */
+    
 }
 
-#pragma mark 发送掌声
+#pragma mark 发送点赞
 /**
- *  发送掌声
+ *  发送点赞
  *
  *  @param sender 传递的id值
  */
@@ -776,7 +786,8 @@ static NSString *const RCDLiveGiftMessageCellIndentifier = @"RCDLiveGiftMessageC
     [self.conversationDataRepository objectAtIndex:indexPath.row];
     RCMessageContent *messageContent = model.content;
     RCDLiveMessageBaseCell *cell = nil;
-    if ([messageContent isMemberOfClass:[RCInformationNotificationMessage class]] || [messageContent isMemberOfClass:[RCTextMessage class]] || [messageContent isMemberOfClass:[RCDLiveGiftMessage class]]){
+    if ([messageContent isMemberOfClass:[RCInformationNotificationMessage class]] || [messageContent isMemberOfClass:[RCTextMessage class]] || [messageContent isMemberOfClass:[RCDLiveGiftMessage class]])
+    {
         RCDLiveTipMessageCell *__cell = [collectionView dequeueReusableCellWithReuseIdentifier:RCDLiveTipMessageCellIndentifier forIndexPath:indexPath];
         __cell.isFullScreenMode = YES;
         [__cell setDataModel:model];
@@ -823,21 +834,27 @@ static NSString *const RCDLiveGiftMessageCellIndentifier = @"RCDLiveGiftMessageC
     RCMessageContent *messageContent = model.content;
     CGFloat __height = 0.0f;
     NSString *localizedMessage;
-    if ([messageContent isMemberOfClass:[RCInformationNotificationMessage class]]) {
+    if ([messageContent isMemberOfClass:[RCInformationNotificationMessage class]])
+    {
         RCInformationNotificationMessage *notification = (RCInformationNotificationMessage *)messageContent;
         localizedMessage = [RCDLiveKitUtility formatMessage:notification];
-    }else if ([messageContent isMemberOfClass:[RCTextMessage class]]){
+    }
+    else if ([messageContent isMemberOfClass:[RCTextMessage class]])
+    {
         RCTextMessage *notification = (RCTextMessage *)messageContent;
         localizedMessage = [RCDLiveKitUtility formatMessage:notification];
         NSString *name;
-        if (messageContent.senderUserInfo) {
+        if (messageContent.senderUserInfo)
+        {
             name = messageContent.senderUserInfo.name;
         }
         localizedMessage = [NSString stringWithFormat:@"%@ %@",name,localizedMessage];
-    }else if ([messageContent isMemberOfClass:[RCDLiveGiftMessage class]]){
+    }else if ([messageContent isMemberOfClass:[RCDLiveGiftMessage class]])
+    {
         RCDLiveGiftMessage *notification = (RCDLiveGiftMessage *)messageContent;
         localizedMessage = @"送了一个钻戒";
-        if(notification && [notification.type isEqualToString:@"1"]){
+        if(notification && [notification.type isEqualToString:@"1"])
+        {
             localizedMessage = @"为主播点了赞";
         }
         
@@ -886,10 +903,13 @@ static NSString *const RCDLiveGiftMessageCellIndentifier = @"RCDLiveGiftMessageC
         return;
     }
     RCDLiveMessageModel *model = [[RCDLiveMessageModel alloc] initWithMessage:rcMessage];
-    if([rcMessage.content isMemberOfClass:[RCDLiveGiftMessage class]]){
+    if([rcMessage.content isMemberOfClass:[RCDLiveGiftMessage class]])
+    {
         model.messageId = -1;
     }
-    if ([self appendMessageModel:model]) {
+    
+    if ([self appendMessageModel:model])
+    {
         NSIndexPath *indexPath =
         [NSIndexPath indexPathForItem:self.conversationDataRepository.count - 1
                             inSection:0];
@@ -899,23 +919,30 @@ static NSString *const RCDLiveGiftMessageCellIndentifier = @"RCDLiveGiftMessageC
         }
         [self.conversationMessageCollectionView
          insertItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
-        if ([self isAtTheBottomOfTableView] || self.isNeedScrollToButtom) {
+        if ([self isAtTheBottomOfTableView] || self.isNeedScrollToButtom)
+        {
             [self scrollToBottomAnimated:YES];
             self.isNeedScrollToButtom=NO;
         }
     }
 }
 
-- (void)sendReceivedDanmaku:(RCMessageContent *)messageContent {
-    if([messageContent isMemberOfClass:[RCInformationNotificationMessage class]]){
+- (void)sendReceivedDanmaku:(RCMessageContent *)messageContent
+{
+    if([messageContent isMemberOfClass:[RCInformationNotificationMessage class]])
+    {
         RCInformationNotificationMessage *msg = (RCInformationNotificationMessage *)messageContent;
-        //        [self sendDanmaku:msg.message];
+//        [self sendDanmaku:msg.message];
          [self sendCenterDanmaku:msg.message];
         //[self sendCenterDanmaku:[NSString stringWithFormat:@"%@%@",[RCDLive sharedRCDLive].currentUserInfo.name,msg.message]];/////////
-    }else if ([messageContent isMemberOfClass:[RCTextMessage class]]){
+    }
+    else if ([messageContent isMemberOfClass:[RCTextMessage class]])
+    {
         RCTextMessage *msg = (RCTextMessage *)messageContent;
         [self sendDanmaku:msg.content];
-    }else if([messageContent isMemberOfClass:[RCDLiveGiftMessage class]]){
+    }
+    else if([messageContent isMemberOfClass:[RCDLiveGiftMessage class]])
+    {
         RCDLiveGiftMessage *msg = (RCDLiveGiftMessage *)messageContent;
         NSString *tip = [msg.type isEqualToString:@"0"]?@"送了一个钻戒":@"为主播点了赞";
         NSString *text = [NSString stringWithFormat:@"%@ %@",msg.senderUserInfo.name,tip];
@@ -927,28 +954,34 @@ static NSString *const RCDLiveGiftMessageCellIndentifier = @"RCDLiveGiftMessageC
  *  如果当前会话没有这个消息id，把消息加入本地数组
  *
  */
-- (BOOL)appendMessageModel:(RCDLiveMessageModel *)model {
+- (BOOL)appendMessageModel:(RCDLiveMessageModel *)model
+{
     long newId = model.messageId;
-    for (RCDLiveMessageModel *__item in self.conversationDataRepository) {
+    for (RCDLiveMessageModel *__item in self.conversationDataRepository)
+    {
         /*
          * 当id为－1时，不检查是否重复，直接插入
          * 该场景用于插入临时提示。
          */
-        if (newId == -1) {
+        if (newId == -1)
+        {
             break;
         }
-        if (newId == __item.messageId) {
+        if (newId == __item.messageId)
+        {
             return NO;
         }
     }
-    if (!model.content) {
+    if (!model.content)
+    {
         return NO;
     }
     //这里可以根据消息类型来决定是否显示，如果不希望显示直接return NO
     
     //数量不可能无限制的大，这里限制收到消息过多时，就对显示消息数量进行限制。
     //用户可以手动下拉更多消息，查看更多历史消息。
-    if (self.conversationDataRepository.count>100) {
+    if (self.conversationDataRepository.count>100)
+    {
         //                NSRange range = NSMakeRange(0, 1);
         RCDLiveMessageModel *message = self.conversationDataRepository[0];
         [[RCIMClient sharedRCIMClient]deleteMessages:@[@(message.messageId)]];
@@ -999,9 +1032,11 @@ static NSString *const RCDLiveGiftMessageCellIndentifier = @"RCDLiveGiftMessageC
 /**
  *  打开大图。开发者可以重写，自己下载并且展示图片。默认使用内置controller
  *
- *  @param imageMessageContent 图片消息内容
+ *  @param model 图片消息内容
  */
-- (void)presentImagePreviewController:(RCDLiveMessageModel *)model {
+- (void)presentImagePreviewController:(RCDLiveMessageModel *)model
+{
+    
 }
 
 /**
@@ -1048,9 +1083,11 @@ static NSString *const RCDLiveGiftMessageCellIndentifier = @"RCDLiveGiftMessageC
                                  content:messageContent
                              pushContent:pushContent
                                 pushData:nil
-                                 success:^(long messageId) {
+                                 success:^(long messageId)
+    {
                                      __weak typeof(&*self) __weakself = self;
                                      dispatch_async(dispatch_get_main_queue(), ^{
+                                         
                                          RCMessage *message = [[RCMessage alloc] initWithType:__weakself.conversationType
                                                                                      targetId:__weakself.targetId
                                                                                     direction:MessageDirection_SEND

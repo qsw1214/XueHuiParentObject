@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "daycareParent/&#x6d69;&#x5b66;&#x4e91;/&#x76f4;&#x64ad;/ViewController/XHLiveChatRoomViewController.m"
-            timestampString = "538450861.1941839"
+            timestampString = "538454850.3250721"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "902"
-            endingLineNumber = "902"
+            startingLineNumber = "910"
+            endingLineNumber = "910"
             landmarkName = "-appendAndDisplayMessage:"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "daycareParent/&#x6d69;&#x5b66;&#x4e91;/&#x76f4;&#x64ad;/View/Cell/RCDLiveTipMessageCell.m"
-            timestampString = "538450861.1947089"
+            timestampString = "538454850.327335"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "37"
@@ -74,12 +74,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "daycareParent/&#x6d69;&#x5b66;&#x4e91;/&#x76f4;&#x64ad;/ViewController/XHLiveChatRoomViewController.m"
-            timestampString = "538450861.194782"
+            timestampString = "538454850.3274601"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1113"
-            endingLineNumber = "1113"
+            startingLineNumber = "1121"
+            endingLineNumber = "1121"
             landmarkName = "-didReceiveMessageNotification:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "daycareParent/&#x6d69;&#x5b66;&#x4e91;/&#x76f4;&#x64ad;/View/Cell/RCDLiveTipMessageCell.m"
+            timestampString = "538454850.3282239"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "-setDataModel:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "daycareParent/&#x6d69;&#x5b66;&#x4e91;/&#x76f4;&#x64ad;/ViewController/XHLiveChatRoomViewController.m"
+            timestampString = "538454850.328292"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "528"
+            endingLineNumber = "528"
+            landmarkName = "-clapButtonPressed:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

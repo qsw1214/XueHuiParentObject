@@ -51,8 +51,17 @@
         NSString *name=@"";
         if (content.senderUserInfo)
         {
-            name = [NSString stringWithFormat:@"%@:",content.senderUserInfo.name];
+            if ([notification.extra isEqualToString:@"点赞"] || [notification.extra isEqualToString:@"礼物"])
+            {
+                name = [NSString stringWithFormat:@"%@",content.senderUserInfo.name];
+            }
+            else
+            {
+                name = [NSString stringWithFormat:@"%@:",content.senderUserInfo.name];
+            }
+            
         }
+       
         NSString *str =[NSString stringWithFormat:@"%@ %@",name,localizedMessage];
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:str];
         
@@ -78,7 +87,7 @@
         }
         else if(giftMessage && [giftMessage.type isEqualToString:@"1"])
         {
-          localizedMessage = @"为主播点了赞";
+          localizedMessage = @"为您点赞";
         }
         
         

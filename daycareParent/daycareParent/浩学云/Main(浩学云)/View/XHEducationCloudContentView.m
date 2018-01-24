@@ -462,7 +462,7 @@ typedef NS_ENUM(NSInteger,EducationCloudInformationType)
         case 5:
         {
             XHLiveViewController *live = [[XHLiveViewController alloc]initHiddenWhenPushHidden];
-            [live setNavtionTitle:@"推荐直播"];
+            [live setNavtionTitle:@"商学讲堂"];
             [self.viewController.navigationController pushViewController:live animated:YES];
         }
             break;

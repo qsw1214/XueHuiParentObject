@@ -21,4 +21,6 @@
  * 类型 0 小花，1，鼓掌
  */
 @property(nonatomic, strong) NSString *type;
+@property(nonatomic, strong) NSString *content; //!< 内容
+
 @end

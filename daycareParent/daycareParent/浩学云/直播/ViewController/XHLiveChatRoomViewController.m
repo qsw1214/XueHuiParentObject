@@ -231,7 +231,7 @@ static NSString *const RCDLiveGiftMessageCellIndentifier = @"RCDLiveGiftMessageC
                  [self initializedLiveSubViews];
                  
                  RCInformationNotificationMessage *joinChatroomMessage = [[RCInformationNotificationMessage alloc]init];
-                 joinChatroomMessage.message = [NSString stringWithFormat: @"来啦"];
+                 joinChatroomMessage.message = [NSString stringWithFormat: @" 来啦"];
                 [self sendMessage:joinChatroomMessage pushContent:nil];
              });
          }
@@ -493,7 +493,7 @@ static NSString *const RCDLiveGiftMessageCellIndentifier = @"RCDLiveGiftMessageC
 -(void)flowerButtonPressed:(id)sender
 {
     
-    [XHShowHUD showNOHud:@"余额不足"];
+    [XHShowHUD showNOHud:@"账户余额不足"];
 
     //!< 产品要求暂停此功能
     /**
@@ -515,10 +515,18 @@ static NSString *const RCDLiveGiftMessageCellIndentifier = @"RCDLiveGiftMessageC
  */
 -(void)clapButtonPressed:(id)sender
 {
-    RCDLiveGiftMessage *giftMessage = [[RCDLiveGiftMessage alloc]init];
-    giftMessage.type = @"1";
-    [self sendMessage:giftMessage pushContent:@"为主播点了赞"];
-    NSString *text = [NSString stringWithFormat:@"%@ 为主播点了赞",giftMessage.senderUserInfo.name];
+    /**
+     因为Andr和IOS中“RCDLiveGiftMessage”对象属性不一致，导致IOS发送点赞消息，
+     Android不能正确解析，Android中”RCDLiveGiftMessage“有“content”属性，而IOS中没有该属性
+     RCDLiveGiftMessage *giftMessage = [[RCDLiveGiftMessage alloc]init];
+     [giftMessage setType:@"1"];
+     [giftMessage setContent:@"为您点赞"];
+     */
+
+    RCTextMessage *rcTextMessage = [RCTextMessage messageWithContent:@"为您点赞"];
+    [rcTextMessage setExtra:@"点赞"];
+    [self sendMessage:rcTextMessage pushContent:@"为您点赞"];
+    NSString *text = [NSString stringWithFormat:@"%@ 为您点赞",rcTextMessage.senderUserInfo.name];
     [self sendDanmaku:text];
     [self praiseHeart];
 }
@@ -855,14 +863,14 @@ static NSString *const RCDLiveGiftMessageCellIndentifier = @"RCDLiveGiftMessageC
         localizedMessage = @"送了一个钻戒";
         if(notification && [notification.type isEqualToString:@"1"])
         {
-            localizedMessage = @"为主播点了赞";
+            localizedMessage = @"为您点赞";
         }
         
         NSString *name;
         if (messageContent.senderUserInfo) {
             name = messageContent.senderUserInfo.name;
         }
-        localizedMessage = [NSString stringWithFormat:@"%@ %@",name,localizedMessage];
+        localizedMessage = [NSString stringWithFormat:@"%@  %@",name,localizedMessage];
     }
     CGSize __labelSize = [RCDLiveTipMessageCell getTipMessageCellSize:localizedMessage];
     __height = __height + __labelSize.height;
@@ -944,7 +952,7 @@ static NSString *const RCDLiveGiftMessageCellIndentifier = @"RCDLiveGiftMessageC
     else if([messageContent isMemberOfClass:[RCDLiveGiftMessage class]])
     {
         RCDLiveGiftMessage *msg = (RCDLiveGiftMessage *)messageContent;
-        NSString *tip = [msg.type isEqualToString:@"0"]?@"送了一个钻戒":@"为主播点了赞";
+        NSString *tip = [msg.type isEqualToString:@"0"]?@"送了一个钻戒":@"为您点赞";
         NSString *text = [NSString stringWithFormat:@"%@ %@",msg.senderUserInfo.name,tip];
         [self sendDanmaku:text];
     }

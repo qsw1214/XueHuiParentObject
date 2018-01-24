@@ -153,7 +153,8 @@
     [self.netWorkConfig postWithUrl:@"zzjt-app-api_listLecture" sucess:^(id object, BOOL verifyObject) {
         if (verifyObject) {
             NSArray *arr=[object objectItemKey:@"object"];
-            for (NSDictionary *dic in arr) {
+            for (NSDictionary *dic in arr)
+            {
                 XHLiveFrame *frame = [[XHLiveFrame alloc] init];
                 XHLiveModel *model = [[XHLiveModel alloc]init];
                 [model setContentType:XHLiveItemType];
@@ -161,7 +162,7 @@
                 [model setImageUrl:[dic objectItemKey:@"head_image"]];
                 [model setTitle:[dic objectItemKey:@"title"]];
                 [model setDate:[self dateStr:[dic objectItemKey:@"start_time"]]];
-                [model setLiveMark:[dic objectItemKey:@"live_state"]];
+                [model setLiveMark:@"1"]; //[dic objectItemKey:@"live_state"]
                 [model setLectureTeacher:[dic objectItemKey:@"presenter"]];
                 [model setPull_stream_add:[dic objectItemKey:@"pull_stream_add"]];
                 [model setChatroom_id:[dic objectItemKey:@"chatroom_id"]];

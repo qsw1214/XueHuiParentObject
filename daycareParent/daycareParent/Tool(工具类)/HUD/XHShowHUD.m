@@ -76,10 +76,12 @@ static MBProgressHUD *HUD;
 }
 + (void)showOKHud:(NSString *)text
 {
+    [self hideHud];
     [self showOKHud:text delay:hudDEFAULT_HIDE_DELAY];
 }
 + (void)showNOHud:(NSString *)text
 {
+    [self hideHud];
     [self showNOHud:text delay:hudDEFAULT_HIDE_DELAY];
 }
 

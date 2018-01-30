@@ -337,6 +337,7 @@
 		4BD33DDD1FCD56B900BC52B6 /* XHAdvertisementControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD33DDC1FCD56B900BC52B6 /* XHAdvertisementControl.m */; };
 		4BD33DE01FCD57DA00BC52B6 /* XHFunctionMenuControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD33DDF1FCD57DA00BC52B6 /* XHFunctionMenuControl.m */; };
 		4BD33DE61FCD5D6900BC52B6 /* XHFunctionMenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD33DE51FCD5D6900BC52B6 /* XHFunctionMenuModel.m */; };
+		4BD8D4072020705A00A98CEE /* XHStoreHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8D4062020705900A98CEE /* XHStoreHelper.m */; };
 		4BEBC8D420045EDA00FD6915 /* XHDynamicsHeaderControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BEBC8D320045EDA00FD6915 /* XHDynamicsHeaderControl.m */; };
 		4BFB975D1FCCF8CD003EEC8C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BFB975C1FCCF8CD003EEC8C /* Images.xcassets */; };
 		8C019F661FF4C365005EBC2C /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C019F5C1FF4C365005EBC2C /* FMDatabase.m */; };
@@ -781,7 +782,6 @@
 		4B523BDD1FD1584A006DD565 /* XHLeaveRecordContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHLeaveRecordContentView.m; sourceTree = "<group>"; };
 		4B523BDF1FD15873006DD565 /* XHLeaveRecordTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHLeaveRecordTableViewCell.h; sourceTree = "<group>"; };
 		4B523BE01FD15873006DD565 /* XHLeaveRecordTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHLeaveRecordTableViewCell.m; sourceTree = "<group>"; };
-		4B550E4A1FF327FF004CF7ED /* 123456789.doc */ = {isa = PBXFileReference; lastKnownFileType = file; path = 123456789.doc; sourceTree = "<group>"; };
 		4B550E4B1FF364AC004CF7ED /* XHSortedArrayComparator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHSortedArrayComparator.h; sourceTree = "<group>"; };
 		4B550E4C1FF364AC004CF7ED /* XHSortedArrayComparator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHSortedArrayComparator.m; sourceTree = "<group>"; };
 		4B577F851FF5C4F50023ACBC /* XHNoticeCellContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHNoticeCellContentView.h; sourceTree = "<group>"; };
@@ -1171,6 +1171,8 @@
 		4BD33DDF1FCD57DA00BC52B6 /* XHFunctionMenuControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHFunctionMenuControl.m; sourceTree = "<group>"; };
 		4BD33DE41FCD5D6900BC52B6 /* XHFunctionMenuModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHFunctionMenuModel.h; sourceTree = "<group>"; };
 		4BD33DE51FCD5D6900BC52B6 /* XHFunctionMenuModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHFunctionMenuModel.m; sourceTree = "<group>"; };
+		4BD8D4052020705900A98CEE /* XHStoreHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XHStoreHelper.h; path = ../../../../../AppleBuy/AppleBuy/XHStoreHelper/XHStoreHelper.h; sourceTree = "<group>"; };
+		4BD8D4062020705900A98CEE /* XHStoreHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XHStoreHelper.m; path = ../../../../../AppleBuy/AppleBuy/XHStoreHelper/XHStoreHelper.m; sourceTree = "<group>"; };
 		4BEBC8D220045EDA00FD6915 /* XHDynamicsHeaderControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHDynamicsHeaderControl.h; sourceTree = "<group>"; };
 		4BEBC8D320045EDA00FD6915 /* XHDynamicsHeaderControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHDynamicsHeaderControl.m; sourceTree = "<group>"; };
 		4BFB975C1FCCF8CD003EEC8C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -2529,7 +2531,7 @@
 		4B80F2001FCBE43E00BC7B52 /* Tool(工具类) */ = {
 			isa = PBXGroup;
 			children = (
-				4B550E4A1FF327FF004CF7ED /* 123456789.doc */,
+				4BD8D3EE2020691500A98CEE /* XHStoreHelper */,
 				8C7AE70C1FE795ED00BE7A02 /* ping++ */,
 				8CDC90601FE4B1DB00040D19 /* AliyunOSSiOS.framework */,
 				4B4338B11FDF5C7A0047AC52 /* XHUserInfo */,
@@ -3193,6 +3195,15 @@
 				4BBC43441FD0F01D00555846 /* XHCGRect.m */,
 			);
 			path = XHCGRect;
+			sourceTree = "<group>";
+		};
+		4BD8D3EE2020691500A98CEE /* XHStoreHelper */ = {
+			isa = PBXGroup;
+			children = (
+				4BD8D4052020705900A98CEE /* XHStoreHelper.h */,
+				4BD8D4062020705900A98CEE /* XHStoreHelper.m */,
+			);
+			path = XHStoreHelper;
 			sourceTree = "<group>";
 		};
 		4BFB973F1FCCF469003EEC8C /* ViewController */ = {
@@ -4329,6 +4340,7 @@
 				4B80F2CE1FCBF04F00BC7B52 /* SDWebImageManager.m in Sources */,
 				8C7E980E1FECDB510096288E /* XHLocationModel.m in Sources */,
 				8C01A2362006E94800E4D768 /* NJKWebViewProgressView.m in Sources */,
+				4BD8D4072020705A00A98CEE /* XHStoreHelper.m in Sources */,
 				4BA8C4E51FD0002D006CBEBC /* XHHomeWorkTableViewCell.m in Sources */,
 				4B3418F61FFF14F100A5EC56 /* XHVideoControl.m in Sources */,
 				4B9110781FD7B9E600841505 /* XHSyllabusCell.m in Sources */,

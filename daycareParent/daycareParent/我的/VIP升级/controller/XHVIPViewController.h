@@ -10,5 +10,7 @@
 
 #pragma mark===========vip升级界面========
 
+typedef void(^getOrderIdBlock) (BOOL ok, NSString * orderID);
+
 @interface XHVIPViewController : BaseViewController
 @end

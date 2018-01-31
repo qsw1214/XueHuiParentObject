@@ -14,14 +14,17 @@
 #import "XHvipInfo.h"
 #import "Pingpp.h"
 #import "XHStoreHelper.h"
-@interface XHVIPViewController ()<UITableViewDelegate,UITableViewDataSource,XHCustomPayViewDelegate>
+#define YEAR_ID @[@"GoldYear1",@"PlatinaYear1"]
+#define MOUTH_ID @[@"GoldMonth1",@"PlatinaMonth1"]
+@interface XHVIPViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     NSArray *_titleArry;
     NSArray *_mouthArry;
     NSArray *_yearArry;
+    NSTimer *_timer;
 }
 @property (strong, nonatomic) IBOutlet BaseTableView *tableView;
-@property(strong,nonatomic)XHCustomPayView *payView;
+//@property(strong,nonatomic)XHCustomPayView *payView;
 @end
 
 @implementation XHVIPViewController
@@ -57,8 +60,6 @@
         }
     } error:^(NSError *error) {
     }];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(callBackResult:) name:@"callBack" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(callBackResult:) name:@"VIPUp" object:nil];
 }
 -(NSInteger)numberOfSectionsInTableView:(BaseTableView *)tableView
 {
@@ -153,14 +154,85 @@
 #pragma mark------------开通年会员=======
 -(void)mouthBtnClick:(UIButton *)btn
 {
-    [self.view addSubview:self.payView];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"money" object:self.dataArray[(btn.tag-10086-1)*2]];
+//    [self.view addSubview:self.payView];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"money" object:self.dataArray[(btn.tag-10086-1)*2]];
+    
+    
+    
+    XHvipInfo *model=self.dataArray[(btn.tag-10086-1)*2];
+    if ([model.isBuy integerValue]==0)
+    {
+        [XHShowHUD showNOHud:@"低于会员等级，不可够买！"];
+        return;
+    }
+    [self getOrderIhfo:model withOrderInfo:^(BOOL ok, NSString *orderID) {
+        if (ok)
+        {
+            [[XHStoreHelper sharedHelper] requestProductID:YEAR_ID[btn.tag-10086-1] withSucceedBlock:^(BOOL succeed){
+                if (succeed)
+                {
+                    _timer= [NSTimer scheduledTimerWithTimeInterval:20.0 target:self selector:@selector(kaitong:) userInfo:orderID repeats:YES];
+                    
+                    [self.netWorkConfig setObject:orderID forKey:@"orderId"];
+                    [self.netWorkConfig postWithUrl:@"zzjt-app-api_vipInfo006" sucess:^(id object, BOOL verifyObject) {
+                        if (verifyObject)
+                        {
+                            [_timer invalidate];
+                            [XHShowHUD showNOHud:@"开通成功"];
+                            self.isRefresh(YES);
+                            [self.navigationController popViewControllerAnimated:YES];
+                        }
+                        else
+                        {
+                            [XHShowHUD showTextHud:@"请求超时，正在重试"];
+                        }
+                    } error:^(NSError *error) {
+                    }];
+                }
+            }];
+        }
+    }];
 }
 #pragma mark------------开通月会员=======
 -(void)yearBtnClick:(UIButton *)btn
 {
-    [[XHStoreHelper sharedHelper] requestProductID:@"PlatinaMonth1" withSucceedBlock:^(BOOL succeed) {
-        
+    XHvipInfo *model=self.dataArray[(btn.tag-1008611)*2-1];
+    if ([model.isBuy integerValue]==0)
+    {
+        [XHShowHUD showNOHud:@"低于会员等级，不可够买！"];
+        return;
+    }
+    
+    [self getOrderIhfo:model withOrderInfo:^(BOOL ok, NSString *orderID) {
+        if (ok)
+        {
+            [[XHStoreHelper sharedHelper] requestProductID:MOUTH_ID[btn.tag-1008611-1] withSucceedBlock:^(BOOL succeed){
+                if (succeed)
+                {
+                    
+                    _timer= [NSTimer scheduledTimerWithTimeInterval:20.0 target:self selector:@selector(kaitong:) userInfo:orderID repeats:YES];
+                    
+                    [self.netWorkConfig setObject:orderID forKey:@"orderId"];
+                    [self.netWorkConfig postWithUrl:@"zzjt-app-api_vipInfo006" sucess:^(id object, BOOL verifyObject) {
+                        if (verifyObject)
+                        {
+                            [_timer invalidate];
+                            [XHShowHUD showNOHud:@"开通成功"];
+                            self.isRefresh(YES);
+                            [self.navigationController popViewControllerAnimated:YES];
+                            
+                        }
+                        else
+                        {
+                            [XHShowHUD showTextHud:@"请求超时，正在重试"];
+                        }
+                       
+                    } error:^(NSError *error) {
+                        
+                    }];
+                }
+            }];
+        }
     }];
     
     
@@ -170,77 +242,134 @@
 //    [self.view addSubview:self.payView];
 //        [[NSNotificationCenter defaultCenter] postNotificationName:@"money" object:self.dataArray[(btn.tag-1008611)*2-1]];
 }
-#pragma mark----------支付代理方法返回付款方式和金额
--(void)getPayment:(NSString *)payStr money:(NSString *)ID
+#pragma mark---------- 获取自己服务器订单信息
+-(void)getOrderIhfo:(XHvipInfo *)vipInfo withOrderInfo:(getOrderIdBlock)orderIdBlock
 {
-    [self.netWorkConfig setObject:ID forKey:@"vipInfoId"];
+    [self.netWorkConfig setObject:vipInfo.ID forKey:@"vipInfoId"];
     [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].ID forKey:@"userId"];
-    [self.netWorkConfig setObject:payStr forKey:@"paymentMethod"];
-    [XHShowHUD showTextHud];
-    [self.netWorkConfig postWithUrl:@"zzjt-app-api_vipInfo002" sucess:^(id object, BOOL verifyObject) {
-        if (verifyObject) {
-            NSData *ddd = [object objectItemKey:@"object"];
-            dispatch_async(dispatch_get_main_queue(), ^{
-               [self payOrderWithData:ddd];
-            });
+    [self.netWorkConfig setObject:@"iospay" forKey:@"paymentMethod"];
+    [XHShowHUD showTextHud:@"获取订单信息"];
+    [self.netWorkConfig postWithUrl:@"zzjt-app-api_vipInfo005" sucess:^(id object, BOOL verifyObject) {
+        if (verifyObject)
+        {
+            NSDictionary  *objectDic = [object objectItemKey:@"object"];
+            NSString *order_id=[objectDic objectItemKey:@"order_id"];
+            if (![order_id isEqualToString:@""])
+            {
+                 orderIdBlock(YES ,order_id);
+            }
+            else
+            {
+                [XHShowHUD showNOHud:@"获取订单信息失败"];
+                orderIdBlock(NO ,@"");
+            }
+           
+        }
+        else
+        {
+            [XHShowHUD showNOHud:@"获取订单信息失败"];
+            orderIdBlock(NO ,@"");
         }
     } error:^(NSError *error) {
-        
+        [XHShowHUD showNOHud:@"获取订单信息失败"];
+         orderIdBlock(NO ,@"");
     }];
-
-}
--(XHCustomPayView *)payView
-{
-    if (_payView==nil) {
-        _payView=[[XHCustomPayView alloc] initWithFrame:WindowScreen];
-        _payView.delegate=self;
-    }
     
-     [self.view addSubview:_payView];
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.5];
-    _payView.view.frame=CGRectMake(0, SCREEN_HEIGHT-280, SCREEN_WIDTH, 280);
-    [UIView commitAnimations];
-    return _payView;
 }
-- (void)payOrderWithData:(NSData *)data
+-(void)kaitong:(NSTimer *)timer
 {
-    XHVIPViewController * __weak weakSelf = self;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:data options:NSJSONWritingPrettyPrinted error:nil];
-    NSString* dataStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    [Pingpp createPayment:dataStr
-           viewController:weakSelf
-             appURLScheme:@"wxedbbf780e30b9bb5"
-           withCompletion:^(NSString *result, PingppError *error)
-     {
-         if (error == nil) {
-             NSLog(@"PingppError is nil");
-         } else {
-             NSLog(@"PingppError: code=%lu msg=%@", (unsigned  long)error.code, [error getMsg]);
-         }
-         NSLog(@"%@",result);
-     }];
-}
--(void)callBackResult:(NSNotification *)payResult
-{
-    NSString *result=payResult.object;
-  
-    if ([result isEqualToString:@"success"]) {
-        [XHShowHUD showOKHud:@"支付成功!"];
-        self.isRefresh(YES);
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-   else if ([result isEqualToString:@"cancel"]) {
-        [XHShowHUD showNOHud:@"支付取消!"];
-    }
-   else{
-        [XHShowHUD showNOHud:@"支付失败!"];
-   }
+    NSString *orderID=timer.userInfo;
+    [self.netWorkConfig setObject:orderID forKey:@"orderId"];
+    [self.netWorkConfig postWithUrl:@"zzjt-app-api_vipInfo006" sucess:^(id object, BOOL verifyObject) {
+        if (verifyObject)
+        {
+            [_timer invalidate];
+            [XHShowHUD showNOHud:@"开通成功"];
+            self.isRefresh(YES);
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        else
+        {
+            [XHShowHUD showTextHud:@"请求超时，正在重试"];
+        }
+    } error:^(NSError *error) {
+    }];
 }
 -(void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [_timer invalidate];
 }
+//#pragma mark----------支付代理方法返回付款方式和金额
+//-(void)getPayment:(NSString *)payStr money:(NSString *)ID
+//{
+//    [self.netWorkConfig setObject:ID forKey:@"vipInfoId"];
+//    [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].ID forKey:@"userId"];
+//    [self.netWorkConfig setObject:payStr forKey:@"paymentMethod"];
+//    [XHShowHUD showTextHud];
+//    [self.netWorkConfig postWithUrl:@"zzjt-app-api_vipInfo002" sucess:^(id object, BOOL verifyObject) {
+//        if (verifyObject) {
+//            NSData *ddd = [object objectItemKey:@"object"];
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//               [self payOrderWithData:ddd];
+//            });
+//        }
+//    } error:^(NSError *error) {
+//
+//    }];
+//
+//}
+//-(XHCustomPayView *)payView
+//{
+//    if (_payView==nil) {
+//        _payView=[[XHCustomPayView alloc] initWithFrame:WindowScreen];
+//        _payView.delegate=self;
+//    }
+//
+//     [self.view addSubview:_payView];
+//    [UIView beginAnimations:nil context:nil];
+//    [UIView setAnimationDuration:0.5];
+//    _payView.view.frame=CGRectMake(0, SCREEN_HEIGHT-280, SCREEN_WIDTH, 280);
+//    [UIView commitAnimations];
+//    return _payView;
+//}
+//- (void)payOrderWithData:(NSData *)data
+//{
+//    XHVIPViewController * __weak weakSelf = self;
+//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:data options:NSJSONWritingPrettyPrinted error:nil];
+//    NSString* dataStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+//    [Pingpp createPayment:dataStr
+//           viewController:weakSelf
+//             appURLScheme:@"wxedbbf780e30b9bb5"
+//           withCompletion:^(NSString *result, PingppError *error)
+//     {
+//         if (error == nil) {
+//             NSLog(@"PingppError is nil");
+//         } else {
+//             NSLog(@"PingppError: code=%lu msg=%@", (unsigned  long)error.code, [error getMsg]);
+//         }
+//         NSLog(@"%@",result);
+//     }];
+//}
+//-(void)callBackResult:(NSNotification *)payResult
+//{
+//    NSString *result=payResult.object;
+//
+//    if ([result isEqualToString:@"success"]) {
+//        [XHShowHUD showOKHud:@"支付成功!"];
+//        self.isRefresh(YES);
+//        [self.navigationController popViewControllerAnimated:YES];
+//    }
+//   else if ([result isEqualToString:@"cancel"]) {
+//        [XHShowHUD showNOHud:@"支付取消!"];
+//    }
+//   else{
+//        [XHShowHUD showNOHud:@"支付失败!"];
+//   }
+//}
+//-(void)dealloc
+//{
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

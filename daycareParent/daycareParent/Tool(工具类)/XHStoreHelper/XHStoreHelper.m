@@ -10,6 +10,13 @@
 #import "XHShowHUD.h"
 
 
+typedef NS_ENUM(NSInteger,VerifyReceiptType)
+{
+    SandBoxType = 1,
+    ItunsType = 2,
+};
+
+
 static XHStoreHelper *helper = nil;
 
 
@@ -126,7 +133,11 @@ static XHStoreHelper *helper = nil;
                 [XHShowHUD showTextHud:@"验证购买凭据"];
                 // 更新界面或者数据，把用户购买得商品交给用户
                 //返回购买的商品信息
-                [self verifyPruchase];
+                [helper verifyPruchase:ItunsType withSuccess:^(BOOL succeed)
+                {
+                    helper.paySuceedBlock(YES);
+                }];
+                
                 //商品购买成功可调用本地接口
             }
                 break;
@@ -152,29 +163,9 @@ static XHStoreHelper *helper = nil;
             }
                 break;
         }
-        // 如果小票状态是购买完成
-        if (SKPaymentTransactionStatePurchased == tran.transactionState)
-        {
-            
-        } else if (SKPaymentTransactionStateRestored == tran.transactionState)
-        {
-            // 将交易从交易队列中删除
-            [[SKPaymentQueue defaultQueue] finishTransaction:tran];
-        }
-        else if (SKPaymentTransactionStateFailed == tran.transactionState)
-        {
-            
-        }
-        else if (SKPaymentTransactionStateDeferred == tran.transactionState)
-        {
-            NSLog(@"等待确认，儿童模式需要询问家长同意");
-        }
-        else if (SKPaymentTransactionStatePurchasing == tran.transactionState)
-        {
-            
-        }
     }
 }
+
 
 //交易结束
 - (void)completeTransaction:(SKPaymentTransaction *)transaction
@@ -182,17 +173,33 @@ static XHStoreHelper *helper = nil;
     NSLog(@"交易结束");
     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
 }
-#pragma mark 验证购买凭据
 
-- (void)verifyPruchase
+
+#pragma mark 验证购买凭据
+- (void)verifyPruchase:(VerifyReceiptType)type withSuccess:(StorePaySucceedBlock)successBlok
 {
+    NSURL *url = [NSURL URLWithString:@"https://buy.itunes.apple.com/verifyReceipt"];
+    switch (type)
+    {
+#pragma mark 测试验证地址
+        case SandBoxType:
+        {
+            url = [NSURL URLWithString:@"https://sandbox.itunes.apple.com/verifyReceipt"];
+        }
+            break;
+#pragma mark 正式验证地址
+        case ItunsType:
+        {
+            url = [NSURL URLWithString:@"https://buy.itunes.apple.com/verifyReceipt"];
+        }
+            break;
+    }
     // 验证凭据，获取到苹果返回的交易凭据
     // appStoreReceiptURL iOS7.0增加的，购买交易完成后，会将凭据存放在该地址
     NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
     // 从沙盒中获取到购买凭据
     NSData *receiptData = [NSData dataWithContentsOfURL:receiptURL];
     // 发送网络POST请求，对购买凭据进行验证
-    NSURL *url = [NSURL URLWithString:APPLYPAY_VERIFYRECEIPT];
     NSMutableURLRequest *urlRequest =
     [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0f];
     urlRequest.HTTPMethod = @"POST";
@@ -206,15 +213,14 @@ static XHStoreHelper *helper = nil;
     if (result == nil) 
     {
         NSLog(@"验证失败");
-        helper.paySuceedBlock(NO);
+        successBlok(NO);
     }
     else
     {
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingAllowFragments error:nil];
         if (dict == nil)
         {
-            
-            helper.paySuceedBlock(NO);
+           successBlok(NO);
         }
         else if ([[dict objectForKey:@"status"] integerValue] == 0)
         {
@@ -225,16 +231,23 @@ static XHStoreHelper *helper = nil;
                 // 比对字典中以下信息基本上可以保证数据安全
                 // bundle_id , application_version , product_id , transaction_id
                 [XHShowHUD showOKHud:@"购买成功!"];
-                helper.paySuceedBlock(YES);
+                successBlok(YES);
             }
             else
             {
                 [XHShowHUD showOKHud:@"验证失败!"];
-                helper.paySuceedBlock(NO);
+                successBlok(NO);
             }
         }
+        if ([[dict objectForKey:@"status"] integerValue] == 21007)
+        {
+            [helper verifyPruchase:SandBoxType withSuccess:^(BOOL succeed)
+            {
+                helper.paySuceedBlock(succeed);
+            }];
+        }
+            
     }
-    
 }
 
 @end

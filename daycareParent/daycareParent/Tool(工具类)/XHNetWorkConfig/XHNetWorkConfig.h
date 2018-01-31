@@ -32,10 +32,6 @@ typedef NS_ENUM(NSInteger,XHNetWorkOption)
 
 #define RONGCLOUD_IM_APPKEY_ @"82hegw5u820xx" //8w7jv4qb8wt3y
 
-//正式验证地址
-#define APPLYPAY_VERIFYRECEIPT @"https://buy.itunes.apple.com/verifyReceipt"
-
-
 #else
 
 #define ServiceBaseUrl @"http://192.168.1.155:7777/service?ky="
@@ -46,10 +42,6 @@ typedef NS_ENUM(NSInteger,XHNetWorkOption)
 #define OrderBaseUrl @"http://192.168.1.155:8888/haoxuemall-h5-app/index.html"
 
 #define RONGCLOUD_IM_APPKEY_ @"8w7jv4qb8wt3y" //8w7jv4qb8wt3y
-
-
-//测试验证地址:
-#define APPLYPAY_VERIFYRECEIPT @"https://sandbox.itunes.apple.com/verifyReceipt"
 
 
 #endif

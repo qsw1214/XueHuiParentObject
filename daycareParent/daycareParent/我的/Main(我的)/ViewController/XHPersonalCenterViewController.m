@@ -95,7 +95,7 @@
 -(void)refreshHead
 {
     
-    if ([[NSUserDefaults objectItemForKey:@"appVersion123"] isEqualToString:CFBundleShortVersionString])
+    if (YES)
     {
         [XHUserInfo sharedUserInfo].ifOK=@"1";
         arry=@[@"课程/辅导",@"VIP升级",@"我的优惠券",@"我的收货地址",@"联系客服"];

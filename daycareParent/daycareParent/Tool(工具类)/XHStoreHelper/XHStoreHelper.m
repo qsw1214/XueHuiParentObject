@@ -226,7 +226,7 @@ static XHStoreHelper *helper = nil;
                 // 比对字典中以下信息基本上可以保证数据安全
                 // bundle_id , application_version , product_id , transaction_id
                 [XHShowHUD showOKHud:@"购买成功!"];
-                helper.paySuceedBlock(NO);
+                helper.paySuceedBlock(YES);
             }
             else
             {

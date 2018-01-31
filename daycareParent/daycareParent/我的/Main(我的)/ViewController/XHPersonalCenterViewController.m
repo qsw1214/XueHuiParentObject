@@ -95,8 +95,8 @@
 -(void)refreshHead
 {
     
-    if ([[NSUserDefaults objectItemForKey:@"appVersion123"] isEqualToString:CFBundleShortVersionString])
-    {
+//    if ([[NSUserDefaults objectItemForKey:@"appVersion123"] isEqualToString:CFBundleShortVersionString])
+//    {
         [XHUserInfo sharedUserInfo].ifOK=@"1";
         arry=@[@"课程/辅导",@"VIP升级",@"我的优惠券",@"我的收货地址",@"联系客服"];
     contentArry=@[@"ico_order",@"ico_vip",@"ico_coupon",@"ico_location",@"ico_service"];
@@ -105,12 +105,12 @@
         [self getChildListNet];
         [self refreshUserInfo];
         [_tableView refreshReload];
-    }
-    else
-    {
-       [self getIfSuccess];
-    }
-    
+//    }
+//    else
+//    {
+//       [self getIfSuccess];
+//    }
+//    
 }
 #pragma mark----tableviewDelegate------
 - (NSInteger)numberOfSectionsInTableView:(BaseTableView *)tableView

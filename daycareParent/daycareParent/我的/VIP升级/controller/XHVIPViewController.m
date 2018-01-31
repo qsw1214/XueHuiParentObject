@@ -13,6 +13,7 @@
 #import "BaseTableView.h"
 #import "XHvipInfo.h"
 #import "Pingpp.h"
+#import "XHStoreHelper.h"
 @interface XHVIPViewController ()<UITableViewDelegate,UITableViewDataSource,XHCustomPayViewDelegate>
 {
     NSArray *_titleArry;
@@ -158,8 +159,16 @@
 #pragma mark------------开通月会员=======
 -(void)yearBtnClick:(UIButton *)btn
 {
-    [self.view addSubview:self.payView];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"money" object:self.dataArray[(btn.tag-1008611)*2-1]];
+    [[XHStoreHelper sharedHelper] requestProductID:@"PlatinaMonth1" withSucceedBlock:^(BOOL succeed) {
+        
+    }];
+    
+    
+    
+    
+    
+//    [self.view addSubview:self.payView];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"money" object:self.dataArray[(btn.tag-1008611)*2-1]];
 }
 #pragma mark----------支付代理方法返回付款方式和金额
 -(void)getPayment:(NSString *)payStr money:(NSString *)ID

@@ -81,6 +81,7 @@ static XHStoreHelper *helper = nil;
     NSArray *product = response.products;
     if ([product count])
     {
+        [XHShowHUD showTextHud:@"生成订单信息"];
         // SKProduct对象包含了在App Store上注册的商品的本地化信息。
         SKProduct *storeProduct = nil;
         for (SKProduct *pro in product)
@@ -122,6 +123,7 @@ static XHStoreHelper *helper = nil;
             case SKPaymentTransactionStatePurchased:
             {
                 [[SKPaymentQueue defaultQueue] finishTransaction:tran];
+                [XHShowHUD showTextHud:@"验证购买凭据"];
                 // 更新界面或者数据，把用户购买得商品交给用户
                 //返回购买的商品信息
                 [self verifyPruchase];
@@ -190,9 +192,7 @@ static XHStoreHelper *helper = nil;
     // 从沙盒中获取到购买凭据
     NSData *receiptData = [NSData dataWithContentsOfURL:receiptURL];
     // 发送网络POST请求，对购买凭据进行验证
-    //测试验证地址:https://sandbox.itunes.apple.com/verifyReceipt
-    //正式验证地址:https://buy.itunes.apple.com/verifyReceipt
-    NSURL *url = [NSURL URLWithString:@"https://sandbox.itunes.apple.com/verifyReceipt"];
+    NSURL *url = [NSURL URLWithString:APPLYPAY_VERIFYRECEIPT];
     NSMutableURLRequest *urlRequest =
     [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0f];
     urlRequest.HTTPMethod = @"POST";
@@ -218,15 +218,14 @@ static XHStoreHelper *helper = nil;
         }
         else if ([[dict objectForKey:@"status"] integerValue] == 0)
         {
-            
             NSDictionary *receipt  = [dict objectForKey:@"receipt"];
             NSString *bundle_id = [receipt objectForKey:@"bundle_id"];
-            if ([@"12" isEqualToString:@"12"])
+            if ([bundle_id isEqualToString:BundleIdentifier])
             {
                 // 比对字典中以下信息基本上可以保证数据安全
                 // bundle_id , application_version , product_id , transaction_id
                 [XHShowHUD showOKHud:@"购买成功!"];
-                helper.paySuceedBlock(NO);
+                helper.paySuceedBlock(YES);
             }
             else
             {

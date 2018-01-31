@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "MBProgressHUD.h"
 
+#define TIMEOUT 15.0
 #define hudDEFAULT_HIDE_DELAY 2.0
 #define hudLOAD_DEFAULT_TITLE @"请稍后..."
 #define hudLOAD_NOTWEB @"请检查您的网络!"

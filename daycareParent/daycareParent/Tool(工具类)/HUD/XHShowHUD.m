@@ -21,11 +21,20 @@ static MBProgressHUD *HUD;
         HUD = nil;
     }
 }
+
+
 + (void)showTextHud
 {
     [self showTextHud:hudLOAD_DEFAULT_TITLE];
 }
+
+
 + (void)showTextHud:(NSString *)text
+{
+    [self showTextHud:text delay:TIMEOUT];
+}
+
++ (void)showTextHud:(NSString *)text delay:(NSTimeInterval)dalay
 {
     [self removeTopHUD];
     
@@ -39,7 +48,11 @@ static MBProgressHUD *HUD;
     [window addSubview:HUD];
     
     [HUD show:YES];
+    [HUD hide:YES afterDelay:dalay];
 }
+
+
+
 + (void)showOKHud:(NSString *)text delay:(NSTimeInterval)dalay
 {
     [self removeTopHUD];
@@ -54,8 +67,9 @@ static MBProgressHUD *HUD;
     [window addSubview:HUD];
     
     [HUD show:YES];
-    [HUD hide:YES afterDelay:dalay == 0?hudDEFAULT_HIDE_DELAY:dalay];
+    [HUD hide:YES afterDelay:dalay == 0 ? hudDEFAULT_HIDE_DELAY : dalay];
 }
+
 
 + (void)showNOHud:(NSString *)text delay:(NSTimeInterval)dalay
 {
@@ -76,12 +90,12 @@ static MBProgressHUD *HUD;
 }
 + (void)showOKHud:(NSString *)text
 {
-    [self hideHud];
+    [self removeTopHUD];
     [self showOKHud:text delay:hudDEFAULT_HIDE_DELAY];
 }
 + (void)showNOHud:(NSString *)text
 {
-    [self hideHud];
+    [self removeTopHUD];
     [self showNOHud:text delay:hudDEFAULT_HIDE_DELAY];
 }
 

@@ -19,8 +19,7 @@ typedef NS_ENUM(NSInteger,XHNetWorkOption)
 
 
 
-
-#define NetWorkType 1  //!< 0 为线下 1为线上
+#define NetWorkType 0  //!< 0 为线下 1为线上
 
 #if  NetWorkType
 
@@ -33,6 +32,9 @@ typedef NS_ENUM(NSInteger,XHNetWorkOption)
 
 #define RONGCLOUD_IM_APPKEY_ @"82hegw5u820xx" //8w7jv4qb8wt3y
 
+//正式验证地址
+#define APPLYPAY_VERIFYRECEIPT @"https://buy.itunes.apple.com/verifyReceipt"
+
 
 #else
 
@@ -44,6 +46,10 @@ typedef NS_ENUM(NSInteger,XHNetWorkOption)
 #define OrderBaseUrl @"http://192.168.1.155:8888/haoxuemall-h5-app/index.html"
 
 #define RONGCLOUD_IM_APPKEY_ @"8w7jv4qb8wt3y" //8w7jv4qb8wt3y
+
+
+//测试验证地址:
+#define APPLYPAY_VERIFYRECEIPT @"https://sandbox.itunes.apple.com/verifyReceipt"
 
 
 #endif

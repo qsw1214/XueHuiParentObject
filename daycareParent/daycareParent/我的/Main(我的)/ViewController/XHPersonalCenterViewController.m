@@ -51,15 +51,8 @@
     [super viewDidLoad];
 
     [self navtionHidden:YES];
-    if ([[XHUserInfo sharedUserInfo].ifOK integerValue]==0) {
-        arry=@[@"课程/辅导",@"我的收货地址",@"联系客服"];
-        contentArry=@[@"ico_order",@"ico_location",@"ico_service"];
-    }
-    else
-    {
-        arry=@[@"课程/辅导",@"VIP升级",@"我的优惠券",@"我的收货地址",@"联系客服"];
-        contentArry=@[@"ico_order",@"ico_vip",@"ico_coupon",@"ico_location",@"ico_service"];
-    }
+    arry=@[@"课程/辅导",@"VIP升级",@"我的优惠券",@"我的收货地址",@"联系客服"];
+    contentArry=@[@"ico_order",@"ico_vip",@"ico_coupon",@"ico_location",@"ico_service"];
     _ChildArry=[NSMutableArray arrayWithArray:[XHUserInfo sharedUserInfo].childListArry];
     [_ChildArry addObject:@""];
     _tableView=[[BaseTableView alloc] initWithFrame:CGRectMake(0, USER_HEARD+70, SCREEN_WIDTH, SCREEN_HEIGHT-49-USER_HEARD-70) style:UITableViewStylePlain];
@@ -94,23 +87,11 @@
 }
 -(void)refreshHead
 {
-    
-    if (YES)
-    {
-        [XHUserInfo sharedUserInfo].ifOK=@"1";
-        arry=@[@"课程/辅导",@"VIP升级",@"我的优惠券",@"我的收货地址",@"联系客服"];
-    contentArry=@[@"ico_order",@"ico_vip",@"ico_coupon",@"ico_location",@"ico_service"];
-         [self getVIPNet];
-        [self refreshHeadView];
-        [self getChildListNet];
-        [self refreshUserInfo];
-        [_tableView refreshReload];
-    }
-    else
-    {
-       [self getIfSuccess];
-    }
-    
+    [self getVIPNet];
+    [self refreshHeadView];
+    [self getChildListNet];
+    [self refreshUserInfo];
+    [_tableView refreshReload];
 }
 #pragma mark----tableviewDelegate------
 - (NSInteger)numberOfSectionsInTableView:(BaseTableView *)tableView
@@ -124,14 +105,7 @@
     }
     else
     {
-        if ([[XHUserInfo sharedUserInfo].ifOK integerValue]==0) {
-            return 3;
-        }
-        else
-        {
-          return 5;
-        }
-        
+        return 5;
     }
 }
 - (UITableViewCell *)tableView:(BaseTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -246,46 +220,33 @@
         [shop setNavtionTitle:@"我的订单"];
         [self.navigationController pushViewController:shop animated:YES];
     }
-    if ([[XHUserInfo sharedUserInfo].ifOK integerValue]==1) {
-        if (indexPath.section==2&&indexPath.row==1) {
-            XHVIPViewController *vip=[[XHVIPViewController alloc] initHiddenWhenPushHidden];
-            vip.isRefresh = ^(BOOL ok) {
-                if (ok) {
-                    [self getVIPNet];
-                    [self refreshHeadView];
-                }
-            };
-            [self.navigationController pushViewController:vip animated:YES];
-        }
-        if (indexPath.section==2&&indexPath.row==2) {
-            XHDiscuntViewController *discunt=[[XHDiscuntViewController alloc] initHiddenWhenPushHidden];
-            [self.navigationController pushViewController:discunt animated:YES];
-            
-        }
-        if (indexPath.section==2&&indexPath.row==3) {
-            XHMyAddressViewController *address=[[XHMyAddressViewController alloc] initHiddenWhenPushHidden];
-            [self.navigationController pushViewController:address animated:YES];
-        }
-        
-        if (indexPath.section==2&&indexPath.row==4) {
-            
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://400-6778-599"]];
-            
-        }
+    if (indexPath.section==2&&indexPath.row==1) {
+        XHVIPViewController *vip=[[XHVIPViewController alloc] initHiddenWhenPushHidden];
+        vip.isRefresh = ^(BOOL ok) {
+            if (ok) {
+                [self getVIPNet];
+                [self refreshHeadView];
+            }
+        };
+        [self.navigationController pushViewController:vip animated:YES];
     }
-    if ([[XHUserInfo sharedUserInfo].ifOK integerValue]==0)
-    {
-        if (indexPath.section==2&&indexPath.row==1) {
-            XHMyAddressViewController *address=[[XHMyAddressViewController alloc] initHiddenWhenPushHidden];
-            [self.navigationController pushViewController:address animated:YES];
-        }
+    if (indexPath.section==2&&indexPath.row==2) {
+        XHDiscuntViewController *discunt=[[XHDiscuntViewController alloc] initHiddenWhenPushHidden];
+        [self.navigationController pushViewController:discunt animated:YES];
         
-        if (indexPath.section==2&&indexPath.row==2) {
-            
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://400-6778-599"]];
-            
-        }
     }
+    if (indexPath.section==2&&indexPath.row==3) {
+        XHMyAddressViewController *address=[[XHMyAddressViewController alloc] initHiddenWhenPushHidden];
+        [self.navigationController pushViewController:address animated:YES];
+    }
+    
+    if (indexPath.section==2&&indexPath.row==4) {
+        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://400-6778-599"]];
+        
+    }
+    
+   
 }
 #pragma mark----导航栏视图
 -(UIView *)h_view
@@ -400,17 +361,6 @@
 -(void)refreshHeadView
 {
     XHUserInfo *userInfo=[XHUserInfo sharedUserInfo];
-    if ([[XHUserInfo sharedUserInfo].ifOK integerValue]==0) {
-        _vipbImageView.hidden=YES;
-        _conditionLabel.hidden=YES;
-        _vipBtn.hidden=YES;
-    }
-    else
-    {
-        _vipbImageView.hidden=NO;
-        _conditionLabel.hidden=NO;
-        _vipBtn.hidden=NO;
-    }
     [_h_btn sd_setImageWithURL:[NSURL URLWithString:ALGetFileHeadThumbnail(userInfo.headPic)]forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"addman"]];
     if (![userInfo.nickName isEqualToString:@""]) {
         _nameLabel.text=userInfo.nickName;
@@ -443,36 +393,36 @@
     [attrStr addAttribute:NSForegroundColorAttributeName value:fontColor range:NSMakeRange(0,5)];
     return attrStr;
 }
--(void)getIfSuccess
-{
-    XHNetWorkConfig *net=[XHNetWorkConfig new];
-    [net setObject:CFBundleShortVersionString forKey:@"version"];
-    [net postWithUrl:@"zzjt-app-api_appVersion002" sucess:^(id object, BOOL verifyObject) {
-        if (verifyObject) {
-            NSDictionary *dic=[object objectItemKey:@"object"];
-            [XHUserInfo sharedUserInfo].ifOK=[dic objectItemKey:@"isSuccess"];
-            if ([[XHUserInfo sharedUserInfo].ifOK integerValue]==0) {
-                [_tableView refreshReload];
-            }
-            else
-            {
-                arry=@[@"课程/辅导",@"VIP升级",@"我的优惠券",@"我的收货地址",@"联系客服"];
-            contentArry=@[@"ico_order",@"ico_vip",@"ico_coupon",@"ico_location",@"ico_service"];
-                [self getVIPNet];
-                [self refreshHeadView];
-                [self getChildListNet];
-                [self refreshUserInfo];
-                [_tableView refreshReload];
-                [NSUserDefaults setItemObject:CFBundleShortVersionString forKey:@"appVersion123"];
-            }
-        }
-        {
-            [_tableView refreshReload];
-        }
-    } error:^(NSError *error) {
-        [_tableView refreshReload];
-    }];
-}
+//-(void)getIfSuccess
+//{
+//    XHNetWorkConfig *net=[XHNetWorkConfig new];
+//    [net setObject:CFBundleShortVersionString forKey:@"version"];
+//    [net postWithUrl:@"zzjt-app-api_appVersion002" sucess:^(id object, BOOL verifyObject) {
+//        if (verifyObject) {
+//            NSDictionary *dic=[object objectItemKey:@"object"];
+//            [XHUserInfo sharedUserInfo].ifOK=[dic objectItemKey:@"isSuccess"];
+//            if ([[XHUserInfo sharedUserInfo].ifOK integerValue]==0) {
+//                [_tableView refreshReload];
+//            }
+//            else
+//            {
+//                arry=@[@"课程/辅导",@"VIP升级",@"我的优惠券",@"我的收货地址",@"联系客服"];
+//            contentArry=@[@"ico_order",@"ico_vip",@"ico_coupon",@"ico_location",@"ico_service"];
+//                [self getVIPNet];
+//                [self refreshHeadView];
+//                [self getChildListNet];
+//                [self refreshUserInfo];
+//                [_tableView refreshReload];
+//                [NSUserDefaults setItemObject:CFBundleShortVersionString forKey:@"appVersion123"];
+//            }
+//        }
+//        {
+//            [_tableView refreshReload];
+//        }
+//    } error:^(NSError *error) {
+//        [_tableView refreshReload];
+//    }];
+//}
 -(XHNetWorkConfig *)getVIPNet
 {
     

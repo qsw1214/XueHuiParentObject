@@ -502,7 +502,6 @@
     [net setObject:model.loginName forKey:@"loginName"];
     [net setObject:model.pwd forKey:@"pwd"];
     [net setObject:@"3" forKey:@"type"];
-    [XHShowHUD showTextHud];
     [net postWithUrl:@"zzjt-app-api_login" sucess:^(id object, BOOL verifyObject) {
         if (verifyObject)
         {

@@ -112,7 +112,7 @@
 #define KeyAppVersion @"AppVersion"
 #define hUMtypeVersion  @"typeVersion"
 #define IOSSystem [[[UIDevice currentDevice] systemVersion] floatValue]
-
+#define BundleIdentifier [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"]
 
 
 

@@ -88,7 +88,7 @@ static XHStoreHelper *helper = nil;
     NSArray *product = response.products;
     if ([product count])
     {
-        [XHShowHUD showTextHud:@"生成订单信息"];
+        [XHShowHUD showTextHud:@"创建订单信息"];
         // SKProduct对象包含了在App Store上注册的商品的本地化信息。
         SKProduct *storeProduct = nil;
         for (SKProduct *pro in product)
@@ -137,8 +137,17 @@ static XHStoreHelper *helper = nil;
                 //返回购买的商品信息
                 [helper verifyPruchase:ItunsType withSuccess:^(BOOL succeed)
                 {
-                    [XHShowHUD showOKHud:@"购买成功!"];
-                    helper.paySuceedBlock(YES);
+                    if (succeed)
+                    {
+                        helper.paySuceedBlock(YES);
+                    }
+                    else
+                    {
+                        helper.paySuceedBlock(NO);
+                        [XHShowHUD showOKHud:@"购买失败，请重试!"];
+                    }
+                    
+                    
                 }];
                 
                 //商品购买成功可调用本地接口
@@ -163,7 +172,7 @@ static XHStoreHelper *helper = nil;
 #pragma mark case SKPaymentTransactionStateDeferred 等待确认，儿童模式需要询问家长同意
             case SKPaymentTransactionStateDeferred:
             {
-                
+                [XHShowHUD showTexShortHud:@"待确认"];
             }
                 break;
         }
@@ -219,7 +228,6 @@ static XHStoreHelper *helper = nil;
         // 官方验证结果为空
         if (result == nil)
         {
-            NSLog(@"验证失败");
             MAIN(^{
                 
                 successBlok(NO);
@@ -245,7 +253,9 @@ static XHStoreHelper *helper = nil;
                     // bundle_id , application_version , product_id , transaction_id
                     
                     MAIN(^{
+                        
                         successBlok(YES);
+                        
                     });
                 }
                 else

@@ -172,7 +172,7 @@
                 if (succeed)
                 {
                     _timer= [NSTimer scheduledTimerWithTimeInterval:20.0 target:self selector:@selector(kaitong:) userInfo:orderID repeats:YES];
-                    
+                    [XHShowHUD showTextHud:@"正在开通"];
                     [self.netWorkConfig setObject:orderID forKey:@"orderId"];
                     [self.netWorkConfig postWithUrl:@"zzjt-app-api_vipInfo006" sucess:^(id object, BOOL verifyObject) {
                         if (verifyObject)
@@ -211,7 +211,7 @@
                 {
                     
                     _timer= [NSTimer scheduledTimerWithTimeInterval:20.0 target:self selector:@selector(kaitong:) userInfo:orderID repeats:YES];
-                    
+                    [XHShowHUD showTextHud:@"正在开通"];
                     [self.netWorkConfig setObject:orderID forKey:@"orderId"];
                     [self.netWorkConfig postWithUrl:@"zzjt-app-api_vipInfo006" sucess:^(id object, BOOL verifyObject) {
                         if (verifyObject)
@@ -279,6 +279,7 @@
 -(void)kaitong:(NSTimer *)timer
 {
     NSString *orderID=timer.userInfo;
+    [XHShowHUD showTextHud:@"正在开通"];
     [self.netWorkConfig setObject:orderID forKey:@"orderId"];
     [self.netWorkConfig postWithUrl:@"zzjt-app-api_vipInfo006" sucess:^(id object, BOOL verifyObject) {
         if (verifyObject)
@@ -297,6 +298,7 @@
 }
 -(void)dealloc
 {
+    NSLog(@"22222222delloc");
     [_timer invalidate];
 }
 //#pragma mark----------支付代理方法返回付款方式和金额

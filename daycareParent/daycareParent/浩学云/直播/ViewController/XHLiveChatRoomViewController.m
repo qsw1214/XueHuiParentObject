@@ -464,6 +464,7 @@ static NSString *const RCDLiveGiftMessageCellIndentifier = @"RCDLiveGiftMessageC
     [_flowerBtn addTarget:self
                    action:@selector(flowerButtonPressed:)
          forControlEvents:UIControlEventTouchUpInside];
+    [_flowerBtn setHidden:YES];
     [self.view addSubview:_flowerBtn];
     
     _clapBtn = [UIButton buttonWithType:UIButtonTypeCustom];

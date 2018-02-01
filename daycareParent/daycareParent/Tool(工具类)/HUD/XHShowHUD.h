@@ -19,6 +19,7 @@
 
 
 + (void)showTextHud;
++ (void)showTexShortHud:(NSString *)text;
 + (void)showTextHud:(NSString *)text;
 + (void)showOKHud:(NSString *)text delay:(NSTimeInterval)dalay;
 + (void)showNOHud:(NSString *)text delay:(NSTimeInterval)dalay;

@@ -162,7 +162,7 @@
                 [model setImageUrl:[dic objectItemKey:@"head_image"]];
                 [model setTitle:[dic objectItemKey:@"title"]];
                 [model setDate:[self dateStr:[dic objectItemKey:@"start_time"]]];
-                [model setLiveMark:@"1"]; //[dic objectItemKey:@"live_state"]
+                [model setLiveMark:[dic objectItemKey:@"live_state"]];
                 [model setLectureTeacher:[dic objectItemKey:@"presenter"]];
                 [model setPull_stream_add:[dic objectItemKey:@"pull_stream_add"]];
                 [model setChatroom_id:[dic objectItemKey:@"chatroom_id"]];

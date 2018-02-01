@@ -178,7 +178,7 @@
                         if (verifyObject)
                         {
                             [_timer invalidate];
-                            [XHShowHUD showNOHud:@"开通成功"];
+                            [XHShowHUD showOKHud:@"开通成功"];
                             self.isRefresh(YES);
                             [self.navigationController popViewControllerAnimated:YES];
                         }
@@ -217,7 +217,7 @@
                         if (verifyObject)
                         {
                             [_timer invalidate];
-                            [XHShowHUD showNOHud:@"开通成功"];
+                            [XHShowHUD showOKHud:@"开通成功"];
                             self.isRefresh(YES);
                             [self.navigationController popViewControllerAnimated:YES];
                             
@@ -285,7 +285,7 @@
         if (verifyObject)
         {
             [_timer invalidate];
-            [XHShowHUD showNOHud:@"开通成功"];
+            [XHShowHUD showOKHud:@"开通成功"];
             self.isRefresh(YES);
             [self.navigationController popViewControllerAnimated:YES];
         }

@@ -29,9 +29,26 @@ static MBProgressHUD *HUD;
 }
 
 
-+ (void)showTextHud:(NSString *)text
++ (void)showTexShortHud:(NSString *)text
 {
     [self showTextHud:text delay:TIMEOUT];
+}
+
+
++ (void)showTextHud:(NSString *)text
+{
+    [self removeTopHUD];
+    
+    UIWindow *window = [[UIApplication sharedApplication].delegate window];
+    
+    HUD = [[MBProgressHUD alloc] initWithWindow:window];
+    HUD.mode = MBProgressHUDModeIndeterminate;
+    HUD.animationType = MBProgressHUDAnimationZoom;
+    HUD.labelText = text;
+    
+    [window addSubview:HUD];
+    
+    [HUD show:YES];
 }
 
 + (void)showTextHud:(NSString *)text delay:(NSTimeInterval)dalay

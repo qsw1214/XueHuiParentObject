@@ -130,11 +130,14 @@ static XHStoreHelper *helper = nil;
             case SKPaymentTransactionStatePurchased:
             {
                 [[SKPaymentQueue defaultQueue] finishTransaction:tran];
+                
                 [XHShowHUD showTextHud:@"验证购买凭据"];
+                
                 // 更新界面或者数据，把用户购买得商品交给用户
                 //返回购买的商品信息
                 [helper verifyPruchase:ItunsType withSuccess:^(BOOL succeed)
                 {
+                    [XHShowHUD showOKHud:@"购买成功!"];
                     helper.paySuceedBlock(YES);
                 }];
                 
@@ -146,11 +149,12 @@ static XHStoreHelper *helper = nil;
 #pragma mark case SKPaymentTransactionStateFailed 购买失败
             case SKPaymentTransactionStateFailed:
             {
+                 [XHShowHUD showNOHud:@"购买失败"];
                 // 将交易从交易队列中删除
                 [[SKPaymentQueue defaultQueue] finishTransaction:tran];
             }
                 break;
-#pragma mark case SKPaymentTransactionStatePurchasing 购买成功
+#pragma mark case SKPaymentTransactionStatePurchasing 已经添加到请求队列里了
             case SKPaymentTransactionStatePurchasing:
             {
                 NSLog(@"已经添加到请求队列里了");
@@ -194,60 +198,85 @@ static XHStoreHelper *helper = nil;
         }
             break;
     }
-    // 验证凭据，获取到苹果返回的交易凭据
-    // appStoreReceiptURL iOS7.0增加的，购买交易完成后，会将凭据存放在该地址
-    NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
-    // 从沙盒中获取到购买凭据
-    NSData *receiptData = [NSData dataWithContentsOfURL:receiptURL];
-    // 发送网络POST请求，对购买凭据进行验证
-    NSMutableURLRequest *urlRequest =
-    [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0f];
-    urlRequest.HTTPMethod = @"POST";
-    NSString *encodeStr = [receiptData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
-    NSString *payload = [NSString stringWithFormat:@"{\"receipt-data\" : \"%@\"}", encodeStr];
-    NSData *payloadData = [payload dataUsingEncoding:NSUTF8StringEncoding];
-    urlRequest.HTTPBody = payloadData;
-    // 提交验证请求，并获得官方的验证JSON结果 iOS9后更改了另外的一个方法
-    NSData *result = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:nil error:nil];
-    // 官方验证结果为空
-    if (result == nil) 
-    {
-        NSLog(@"验证失败");
-        successBlok(NO);
-    }
-    else
-    {
-        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingAllowFragments error:nil];
-        if (dict == nil)
+    
+    BACK((^{
+        
+        // 验证凭据，获取到苹果返回的交易凭据
+        // appStoreReceiptURL iOS7.0增加的，购买交易完成后，会将凭据存放在该地址
+        NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
+        // 从沙盒中获取到购买凭据
+        NSData *receiptData = [NSData dataWithContentsOfURL:receiptURL];
+        // 发送网络POST请求，对购买凭据进行验证
+        NSMutableURLRequest *urlRequest =
+        [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0f];
+        urlRequest.HTTPMethod = @"POST";
+        NSString *encodeStr = [receiptData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+        NSString *payload = [NSString stringWithFormat:@"{\"receipt-data\" : \"%@\"}", encodeStr];
+        NSData *payloadData = [payload dataUsingEncoding:NSUTF8StringEncoding];
+        urlRequest.HTTPBody = payloadData;
+        // 提交验证请求，并获得官方的验证JSON结果 iOS9后更改了另外的一个方法
+        NSData *result = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:nil error:nil];
+        // 官方验证结果为空
+        if (result == nil)
         {
-           successBlok(NO);
-        }
-        else if ([[dict objectForKey:@"status"] integerValue] == 0)
-        {
-            NSDictionary *receipt  = [dict objectForKey:@"receipt"];
-            NSString *bundle_id = [receipt objectForKey:@"bundle_id"];
-            if ([bundle_id isEqualToString:BundleIdentifier])
-            {
-                // 比对字典中以下信息基本上可以保证数据安全
-                // bundle_id , application_version , product_id , transaction_id
-                [XHShowHUD showOKHud:@"购买成功!"];
-                successBlok(YES);
-            }
-            else
-            {
-                [XHShowHUD showOKHud:@"验证失败!"];
+            NSLog(@"验证失败");
+            MAIN(^{
+                
                 successBlok(NO);
-            }
-        }
-        if ([[dict objectForKey:@"status"] integerValue] == 21007)
-        {
-            [helper verifyPruchase:SandBoxType withSuccess:^(BOOL succeed)
-            {
-                helper.paySuceedBlock(succeed);
-            }];
-        }
+            });
             
-    }
+        }
+        else
+        {
+            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingAllowFragments error:nil];
+            if (dict == nil)
+            {
+                MAIN(^{
+                    successBlok(NO);
+                });
+            }
+            else if ([[dict objectForKey:@"status"] integerValue] == 0)
+            {
+                NSDictionary *receipt  = [dict objectForKey:@"receipt"];
+                NSString *bundle_id = [receipt objectForKey:@"bundle_id"];
+                if ([bundle_id isEqualToString:BundleIdentifier])
+                {
+                    // 比对字典中以下信息基本上可以保证数据安全
+                    // bundle_id , application_version , product_id , transaction_id
+                    
+                    MAIN(^{
+                        successBlok(YES);
+                    });
+                }
+                else
+                {
+                    MAIN(^{
+                        [XHShowHUD showNOHud:@"验证失败!"];
+                        successBlok(NO);
+                    });
+                }
+            }
+            if ([[dict objectForKey:@"status"] integerValue] == 21007)
+            {
+                [helper verifyPruchase:SandBoxType withSuccess:^(BOOL succeed)
+                 {
+                     MAIN(^{
+                         
+                         helper.paySuceedBlock(succeed);
+                     });
+                     
+                 }];
+            }
+            
+        }
+        
+        
+    }));
+         
+    
+        
+    
+    
 }
 
 @end

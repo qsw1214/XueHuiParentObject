@@ -114,7 +114,11 @@
 #define IOSSystem [[[UIDevice currentDevice] systemVersion] floatValue]
 #define BundleIdentifier [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"]
 
-
+//GCD
+#define dispatch_queue   dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+#define BACK(block) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block)
+#define DISPATCH_GROUP(block) dispatch_group_async(group, dispatch_queue, block)
+#define MAIN(block) dispatch_async(dispatch_get_main_queue(),block)
 
 
 

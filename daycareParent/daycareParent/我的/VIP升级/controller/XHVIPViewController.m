@@ -301,6 +301,12 @@
     NSLog(@"22222222delloc");
     [_timer invalidate];
 }
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [_timer invalidate];
+    NSLog(@"11111111delloc");
+}
 //#pragma mark----------支付代理方法返回付款方式和金额
 //-(void)getPayment:(NSString *)payStr money:(NSString *)ID
 //{

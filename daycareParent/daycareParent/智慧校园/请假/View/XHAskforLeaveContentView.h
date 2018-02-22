@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XHAskforLeaveAddPhotoControl.h" //!< 添加图片
 
 @interface XHAskforLeaveContentView : UIScrollView
 
 
+@property (nonatomic,strong) XHAskforLeaveAddPhotoControl *addPhotoControl;   //!< 添加照片选项
 @property (nonatomic,strong) XHNetWorkConfig *netWorkConfig; //!< 网络请求
 
 -(instancetype)initWithObject:(BaseViewController*)object;

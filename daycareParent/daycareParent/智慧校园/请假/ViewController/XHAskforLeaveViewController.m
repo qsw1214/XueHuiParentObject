@@ -80,4 +80,12 @@
 }
 
 
+
+#pragma mark CameraManageDeletage
+-(void)imagePickerControllerdidFinishPickingMediaWithImage:(nonnull UIImage*)image
+{
+    [self.contentView.addPhotoControl setImage:image];
+}
+
+
 @end

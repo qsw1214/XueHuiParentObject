@@ -8,7 +8,6 @@
 
 #import "XHAskforLeaveContentView.h"
 #import "XHAskforLeaveArrowCell.h" //选择开始时间、结束时间、选择请假孩子等视图
-#import "XHAskforLeaveAddPhotoControl.h" //!< 添加图片
 #import "XHAskforLeaveChargeTeacherControl.h" //!< 班主任按钮
 #import "XHAskforLeaveSubmitControl.h" //!< 提交按钮
 #import "XHDatePickerControl.h" //!< 日期选择器
@@ -28,7 +27,6 @@
 @property (nonatomic,strong) BaseView *bottomAccessoryView;   //!< 底部附件视图
 @property (nonatomic,strong) XHAskforLeaveArrowCell *childOptionsControl;   //!< 孩子选项
 @property (nonatomic,strong) BaseTextView *reasonTextView;  //!< 原因输入文本域
-@property (nonatomic,strong) XHAskforLeaveAddPhotoControl *addPhotoControl;   //!< 添加照片选项
 @property (nonatomic,strong) XHAskforLeaveArrowCell *startTimeControl;   //!< 开始时间选项
 @property (nonatomic,strong) XHAskforLeaveArrowCell *endTimeControl;   //!< 开始时间选项
 @property (nonatomic,strong) XHAskforLeaveChargeTeacherControl *chargeTeacherControl;   //!< 班主任
@@ -271,11 +269,6 @@
 }
 
 
-#pragma mark CameraManageDeletage
--(void)imagePickerControllerdidFinishPickingMediaWithImage:(nonnull UIImage*)image
-{
-    [self.addPhotoControl setImage:image];
-}
 
 
 

@@ -13,6 +13,7 @@
 @property(nonatomic,copy)NSString *familyId;//!< 家庭ID
 @property(nonatomic,copy)NSString *guardianId;//!< 家长ID
 @property(nonatomic,copy)NSString *guardianName;//!< 家长姓名
+@property(nonatomic,copy)NSString *headPic;//!< 家长头像
 @property(nonatomic,copy)NSString *ID;//!< 监护人id
 @property(nonatomic,copy)NSString *isMajor;//!< 是否为主要监护人,0不是,1是
 @property(nonatomic,copy)NSString *isNeedMsg;//!< 是否接受通知推送

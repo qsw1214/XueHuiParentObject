@@ -226,7 +226,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     XHUserInfo *user = [XHUserInfo sharedUserInfo];
     RCUserInfo *userInfo = [[RCUserInfo alloc] init];
     userInfo.userId = user.guardianModel.guardianId;
-    userInfo.portraitUri = ALGetFileHeadThumbnail(user.headPic);
+    userInfo.portraitUri = ALGetFileHeadThumbnail(user.guardianModel.headPic);
     userInfo.name = user.guardianModel.guardianName;
     [RCIM sharedRCIM].enableMessageAttachUserInfo = YES;
     [RCIM sharedRCIM].currentUserInfo = userInfo;

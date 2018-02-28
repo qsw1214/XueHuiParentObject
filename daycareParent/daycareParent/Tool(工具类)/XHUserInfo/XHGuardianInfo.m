@@ -22,6 +22,7 @@
         _sex=[object objectItemKey:@"sex"];
         _telphoneNumber=[object objectItemKey:@"telphoneNumber"];
         _guardianName=[object objectItemKey:@"guardianName"];
+        _headPic=[object objectItemKey:@"headPic"];
         _type=[object objectItemKey:@"type"];
         if ([_type integerValue]) {
             _typeName=FAMILY_TIES[[_type integerValue]-1];

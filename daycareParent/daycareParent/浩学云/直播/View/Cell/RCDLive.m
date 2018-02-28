@@ -15,7 +15,7 @@
 #import <RongIMLib/RongIMLib.h>
 
 //如果您的APP中只使用融云的底层通讯库 IMLib ，请把IsUseRongCloudIMKit 设置成 0，如果使用 IMKit 请设置成 1
-#define IsUseRongCloudIMKit 0
+#define IsUseRongCloudIMKit 1
 
 NSString *const RCDLiveKitDispatchMessageNotification = @"RCDLiveKitDispatchMessageNotification";
 NSString *const RCDLiveKitDispatchTypingMessageNotification = @"RCDLiveKitDispatchTypingMessageNotification";
@@ -75,7 +75,7 @@ static RCDLive *__rongUIKit = nil;
   [[RCIMClient sharedRCIMClient] setRCConnectionStatusChangeDelegate:self];
 # else
   [[RCIM sharedRCIM] initWithAppKey:appKey];
-  [[RCIM sharedRCIM] setConnectionStatusDelegate:self];
+//  [[RCIM sharedRCIM] setConnectionStatusDelegate:self];
   [[RCIM sharedRCIM] setReceiveMessageDelegate:self];
 #endif
 }

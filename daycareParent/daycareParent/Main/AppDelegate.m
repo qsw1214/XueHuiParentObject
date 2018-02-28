@@ -185,7 +185,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 -(void)loginRongCloud:(NSString *)token
 {
     //初始化融云SDK
-    [[RCIM sharedRCIM] initWithAppKey:RONGCLOUD_IM_APPKEY_];
+    [[RCDLive sharedRCDLive] initRongCloud:RONGCLOUD_IM_APPKEY_];
     [[RCIM sharedRCIM] setConnectionStatusDelegate:self];
     [[RCIM sharedRCIM] setUserInfoDataSource:self];
     //登录融云服务器,开始阶段可以先从融云API调试网站获取，之后token需要通过服务器到融云服务器取。
@@ -208,7 +208,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     } tokenIncorrect:^{
         NSLog(@"token 无效 ，请确保生成token 使用的appkey 和初始化时的appkey 一致");
     }];
-    [[RCDLive sharedRCDLive] initRongCloud:RONGCLOUD_IM_APPKEY_];
     //注册自定义消息
     [[RCDLive sharedRCDLive] registerRongCloudMessageType:[RCDLiveGiftMessage class]];
 }

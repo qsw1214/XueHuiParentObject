@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "daycareParent/&#x6d69;&#x5b66;&#x4e91;/&#x76f4;&#x64ad;/ViewController/XHLiveChatRoomViewController.m"
-            timestampString = "539165398.073576"
+            timestampString = "541493776.130109"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "911"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "daycareParent/&#x6d69;&#x5b66;&#x4e91;/&#x76f4;&#x64ad;/ViewController/XHLiveChatRoomViewController.m"
-            timestampString = "539165398.073688"
+            timestampString = "541493776.130223"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1122"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "daycareParent/&#x6d69;&#x5b66;&#x4e91;/&#x76f4;&#x64ad;/ViewController/XHLiveChatRoomViewController.m"
-            timestampString = "539165398.073779"
+            timestampString = "541493776.130319"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "529"
@@ -240,22 +240,6 @@
             startingLineNumber = "161"
             endingLineNumber = "161"
             landmarkName = "-paymentQueue:updatedTransactions:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "daycareParent/&#x6d69;&#x5b66;&#x4e91;/&#x76f4;&#x64ad;/View/Cell/RCDLive.m"
-            timestampString = "541489467.243149"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "-initRongCloud:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

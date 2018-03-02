@@ -91,20 +91,28 @@
 - (void)didLongPressCellPortrait:(RCConversationModel *)model
 {
     if (model.isTop) {
-        //[self showAlertSheet:@"取消置顶" targetID:model.targetId type:1];
-          [[RCIMClient sharedRCIMClient] setConversationToTop:ConversationType_PRIVATE targetId:model.targetId isTop:NO];
+        [self showAlertSheet:@"取消置顶" targetID:model.targetId type:1];
     }else{
-       // [self showAlertSheet:@"置顶" targetID:model.targetId type:0];
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [[RCIMClient sharedRCIMClient] setConversationToTop:ConversationType_PRIVATE targetId:model.targetId isTop:YES];
-        }]];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            
-        }]];
-        [self presentViewController:alertController animated:YES completion:nil];
+        [self showAlertSheet:@"置顶" targetID:model.targetId type:0];
     }
     
+}
+- (void)showAlertSheet:(NSString *)title targetID:(NSString *)targetID type:(NSInteger)type
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"是否置顶？" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:title style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if (type == 0) {
+            [[RCIMClient sharedRCIMClient] setConversationToTop:ConversationType_PRIVATE targetId:targetID isTop:YES];
+        }else{
+            [[RCIMClient sharedRCIMClient] setConversationToTop:ConversationType_PRIVATE targetId:targetID isTop:NO];
+        }
+        [XHShowHUD showOKHud:title];
+        [self refreshConversationTableViewIfNeeded];
+    }]];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 -(UIView *)navigationView
 {

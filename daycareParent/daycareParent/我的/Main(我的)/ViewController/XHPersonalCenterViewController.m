@@ -18,6 +18,7 @@
 #import "XHStudyRecordViewController.h"
 #import "XHChildListModel.h"
 #import "XHEducationCloudWebViewController.h"
+#import "XHMyAddressViewController.h"
 #import "BaseTableView.h"
 #define TITLE_LIST @[@"学习记录",@"收藏资源",@"下载记录",@"我的课程"]
 
@@ -41,8 +42,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self navtionHidden:YES];
-     arry=@[@"联系客服"];
-    contentArry=@[@"ico_service"];
+     arry=@[@"我的收获地址",@"联系客服"];
+    contentArry=@[@"ico_location",@"ico_service"];
     _ChildArry=[NSMutableArray arrayWithArray:[XHUserInfo sharedUserInfo].childListArry];
     [_ChildArry addObject:@""];
     _tableView=[[BaseTableView alloc] initWithFrame:CGRectMake(0, USER_HEARD+53, SCREEN_WIDTH, SCREEN_HEIGHT-49-USER_HEARD-53) style:UITableViewStyleGrouped];
@@ -88,7 +89,15 @@
 }
 - (NSInteger)tableView:(BaseTableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    if (section==2)
+    {
+          return 2;
+    }
+    else
+    {
+        return 1;
+    }
+  
 }
 - (UITableViewCell *)tableView:(BaseTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
     {
@@ -140,7 +149,7 @@
             XHSetTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
             cell.setImageView.image=[UIImage imageNamed:contentArry[indexPath.row]];
             cell.setLabel.text=arry[indexPath.row];
-            cell.setContentLabel.text=@"400-6778-599";
+            cell.setContentLabel.text=indexPath.row==0?@"我的收获地址":@"400-6778-599";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             return cell;
         }
@@ -167,8 +176,19 @@
 }
 -(void)tableView:(BaseTableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://400-6778-599"]];
+     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section==2)
+    {
+        if (indexPath.row==0) {
+            XHMyAddressViewController *add=[[XHMyAddressViewController alloc] initHiddenWhenPushHidden];
+            [self.navigationController pushViewController:add animated:YES];
+        }
+        if (indexPath.row==1) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://400-6778-599"]];
+        }
+    }
+   
+   
 }
 #pragma mark----导航栏视图
 -(UIView *)h_view

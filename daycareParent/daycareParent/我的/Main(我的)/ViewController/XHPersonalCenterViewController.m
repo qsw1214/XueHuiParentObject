@@ -18,7 +18,7 @@
 #import "XHStudyRecordViewController.h"
 #import "XHChildListModel.h"
 #import "XHEducationCloudWebViewController.h"
-#import "XHMyAddressViewController.h"
+
 #import "BaseTableView.h"
 #define TITLE_LIST @[@"学习记录",@"收藏资源",@"下载记录",@"我的课程"]
 

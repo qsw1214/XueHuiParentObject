@@ -438,25 +438,6 @@
 		8C91E01E1FEA39A00040A205 /* XHCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C91E01D1FEA39A00040A205 /* XHCustomView.m */; };
 		8C922BD91FDE65EB00BA0EAB /* XHForgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C922BD81FDE65EB00BA0EAB /* XHForgetViewController.m */; };
 		8CB8AA2A1FE8A2920043B4EA /* UIImage+Resizing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CB8AA291FE8A2920043B4EA /* UIImage+Resizing.m */; };
-		8CCB50E2204D3FC500D5EBA4 /* XHAddAdressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB50C2204D3FC500D5EBA4 /* XHAddAdressViewController.m */; };
-		8CCB50E3204D3FC500D5EBA4 /* XHAddAdressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CCB50C3204D3FC500D5EBA4 /* XHAddAdressViewController.xib */; };
-		8CCB50E4204D3FC500D5EBA4 /* XHComplieAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB50C5204D3FC500D5EBA4 /* XHComplieAddressViewController.m */; };
-		8CCB50E5204D3FC500D5EBA4 /* XHComplieAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CCB50C6204D3FC500D5EBA4 /* XHComplieAddressViewController.xib */; };
-		8CCB50E6204D3FC500D5EBA4 /* XHMyAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB50C8204D3FC500D5EBA4 /* XHMyAddressViewController.m */; };
-		8CCB50E7204D3FC500D5EBA4 /* area.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8CCB50CA204D3FC500D5EBA4 /* area.plist */; };
-		8CCB50E8204D3FC500D5EBA4 /* AreaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB50CC204D3FC500D5EBA4 /* AreaModel.m */; };
-		8CCB50E9204D3FC500D5EBA4 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8CCB50CD204D3FC500D5EBA4 /* city.plist */; };
-		8CCB50EA204D3FC500D5EBA4 /* CityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB50CF204D3FC500D5EBA4 /* CityModel.m */; };
-		8CCB50EB204D3FC500D5EBA4 /* ProvinceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB50D1204D3FC500D5EBA4 /* ProvinceModel.m */; };
-		8CCB50EC204D3FC500D5EBA4 /* XHAddressPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB50D4204D3FC500D5EBA4 /* XHAddressPickerView.m */; };
-		8CCB50ED204D3FC500D5EBA4 /* XHAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB50D6204D3FC500D5EBA4 /* XHAddressTableViewCell.m */; };
-		8CCB50EE204D3FC500D5EBA4 /* XHAddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CCB50D7204D3FC500D5EBA4 /* XHAddressTableViewCell.xib */; };
-		8CCB50EF204D3FC500D5EBA4 /* XHAddTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB50D9204D3FC500D5EBA4 /* XHAddTableViewCell.m */; };
-		8CCB50F0204D3FC500D5EBA4 /* XHAddTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CCB50DA204D3FC500D5EBA4 /* XHAddTableViewCell.xib */; };
-		8CCB50F1204D3FC500D5EBA4 /* XHNameTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB50DC204D3FC500D5EBA4 /* XHNameTableViewCell.m */; };
-		8CCB50F2204D3FC500D5EBA4 /* XHNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CCB50DD204D3FC500D5EBA4 /* XHNameTableViewCell.xib */; };
-		8CCB50F3204D3FC500D5EBA4 /* XHAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB50DF204D3FC500D5EBA4 /* XHAddressModel.m */; };
-		8CCB50F4204D3FC500D5EBA4 /* XHCustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB50E1204D3FC500D5EBA4 /* XHCustomTextField.m */; };
 		8CCD7E1F1FD0EE0D00F7F54E /* XHChagePhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCD7E1D1FD0EE0D00F7F54E /* XHChagePhoneViewController.m */; };
 		8CCD7E201FD0EE0D00F7F54E /* XHChagePhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CCD7E1E1FD0EE0D00F7F54E /* XHChagePhoneViewController.xib */; };
 		8CCD7E271FD0F3B000F7F54E /* XHChagePhoneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCD7E251FD0F3B000F7F54E /* XHChagePhoneTableViewCell.m */; };
@@ -1325,37 +1306,6 @@
 		8C922BD81FDE65EB00BA0EAB /* XHForgetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHForgetViewController.m; sourceTree = "<group>"; };
 		8CB8AA281FE8A2910043B4EA /* UIImage+Resizing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIImage+Resizing.h"; path = "../../daycareParent.xcodeproj/UIImage+Resizing.h"; sourceTree = "<group>"; };
 		8CB8AA291FE8A2920043B4EA /* UIImage+Resizing.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Resizing.m"; path = "../../daycareParent.xcodeproj/UIImage+Resizing.m"; sourceTree = "<group>"; };
-		8CCB50C1204D3FC500D5EBA4 /* XHAddAdressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHAddAdressViewController.h; sourceTree = "<group>"; };
-		8CCB50C2204D3FC500D5EBA4 /* XHAddAdressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHAddAdressViewController.m; sourceTree = "<group>"; };
-		8CCB50C3204D3FC500D5EBA4 /* XHAddAdressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHAddAdressViewController.xib; sourceTree = "<group>"; };
-		8CCB50C4204D3FC500D5EBA4 /* XHComplieAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHComplieAddressViewController.h; sourceTree = "<group>"; };
-		8CCB50C5204D3FC500D5EBA4 /* XHComplieAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHComplieAddressViewController.m; sourceTree = "<group>"; };
-		8CCB50C6204D3FC500D5EBA4 /* XHComplieAddressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHComplieAddressViewController.xib; sourceTree = "<group>"; };
-		8CCB50C7204D3FC500D5EBA4 /* XHMyAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHMyAddressViewController.h; sourceTree = "<group>"; };
-		8CCB50C8204D3FC500D5EBA4 /* XHMyAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHMyAddressViewController.m; sourceTree = "<group>"; };
-		8CCB50CA204D3FC500D5EBA4 /* area.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = area.plist; sourceTree = "<group>"; };
-		8CCB50CB204D3FC500D5EBA4 /* AreaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaModel.h; sourceTree = "<group>"; };
-		8CCB50CC204D3FC500D5EBA4 /* AreaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaModel.m; sourceTree = "<group>"; };
-		8CCB50CD204D3FC500D5EBA4 /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
-		8CCB50CE204D3FC500D5EBA4 /* CityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityModel.h; sourceTree = "<group>"; };
-		8CCB50CF204D3FC500D5EBA4 /* CityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityModel.m; sourceTree = "<group>"; };
-		8CCB50D0204D3FC500D5EBA4 /* ProvinceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProvinceModel.h; sourceTree = "<group>"; };
-		8CCB50D1204D3FC500D5EBA4 /* ProvinceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProvinceModel.m; sourceTree = "<group>"; };
-		8CCB50D3204D3FC500D5EBA4 /* XHAddressPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHAddressPickerView.h; sourceTree = "<group>"; };
-		8CCB50D4204D3FC500D5EBA4 /* XHAddressPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHAddressPickerView.m; sourceTree = "<group>"; };
-		8CCB50D5204D3FC500D5EBA4 /* XHAddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHAddressTableViewCell.h; sourceTree = "<group>"; };
-		8CCB50D6204D3FC500D5EBA4 /* XHAddressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHAddressTableViewCell.m; sourceTree = "<group>"; };
-		8CCB50D7204D3FC500D5EBA4 /* XHAddressTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHAddressTableViewCell.xib; sourceTree = "<group>"; };
-		8CCB50D8204D3FC500D5EBA4 /* XHAddTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHAddTableViewCell.h; sourceTree = "<group>"; };
-		8CCB50D9204D3FC500D5EBA4 /* XHAddTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHAddTableViewCell.m; sourceTree = "<group>"; };
-		8CCB50DA204D3FC500D5EBA4 /* XHAddTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHAddTableViewCell.xib; sourceTree = "<group>"; };
-		8CCB50DB204D3FC500D5EBA4 /* XHNameTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHNameTableViewCell.h; sourceTree = "<group>"; };
-		8CCB50DC204D3FC500D5EBA4 /* XHNameTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHNameTableViewCell.m; sourceTree = "<group>"; };
-		8CCB50DD204D3FC500D5EBA4 /* XHNameTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHNameTableViewCell.xib; sourceTree = "<group>"; };
-		8CCB50DE204D3FC500D5EBA4 /* XHAddressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHAddressModel.h; sourceTree = "<group>"; };
-		8CCB50DF204D3FC500D5EBA4 /* XHAddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHAddressModel.m; sourceTree = "<group>"; };
-		8CCB50E0204D3FC500D5EBA4 /* XHCustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHCustomTextField.h; sourceTree = "<group>"; };
-		8CCB50E1204D3FC500D5EBA4 /* XHCustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHCustomTextField.m; sourceTree = "<group>"; };
 		8CCD7E1C1FD0EE0D00F7F54E /* XHChagePhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHChagePhoneViewController.h; sourceTree = "<group>"; };
 		8CCD7E1D1FD0EE0D00F7F54E /* XHChagePhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHChagePhoneViewController.m; sourceTree = "<group>"; };
 		8CCD7E1E1FD0EE0D00F7F54E /* XHChagePhoneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XHChagePhoneViewController.xib; sourceTree = "<group>"; };
@@ -2380,7 +2330,7 @@
 		4B80F1FC1FCBE43E00BC7B52 /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
-				8CCB50BF204D3FC500D5EBA4 /* 我的收获地址 */,
+				8CCB50F5204D440300D5EBA4 /* 我的收获地址 */,
 				8C3E55BB1FD5494B0013002A /* 学习记录 */,
 				04291A7B1FD2DB77002D3B5B /* 学生信息 */,
 				8CCD7E631FD1565F00F7F54E /* 绑定学生 */,
@@ -3603,65 +3553,34 @@
 			path = view;
 			sourceTree = "<group>";
 		};
-		8CCB50BF204D3FC500D5EBA4 /* 我的收获地址 */ = {
+		8CCB50F5204D440300D5EBA4 /* 我的收获地址 */ = {
 			isa = PBXGroup;
 			children = (
-				8CCB50C0204D3FC500D5EBA4 /* controller */,
-				8CCB50C9204D3FC500D5EBA4 /* model */,
-				8CCB50D2204D3FC500D5EBA4 /* view */,
-				8CCB50DE204D3FC500D5EBA4 /* XHAddressModel.h */,
-				8CCB50DF204D3FC500D5EBA4 /* XHAddressModel.m */,
-				8CCB50E0204D3FC500D5EBA4 /* XHCustomTextField.h */,
-				8CCB50E1204D3FC500D5EBA4 /* XHCustomTextField.m */,
+				8CCB50F6204D440300D5EBA4 /* controller */,
+				8CCB50F7204D440300D5EBA4 /* model */,
+				8CCB50F8204D440300D5EBA4 /* view */,
 			);
 			name = "我的收获地址";
 			path = "../../../../Desktop/未命名文件夹/我的收获地址";
 			sourceTree = "<group>";
 		};
-		8CCB50C0204D3FC500D5EBA4 /* controller */ = {
+		8CCB50F6204D440300D5EBA4 /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				8CCB50C1204D3FC500D5EBA4 /* XHAddAdressViewController.h */,
-				8CCB50C2204D3FC500D5EBA4 /* XHAddAdressViewController.m */,
-				8CCB50C3204D3FC500D5EBA4 /* XHAddAdressViewController.xib */,
-				8CCB50C4204D3FC500D5EBA4 /* XHComplieAddressViewController.h */,
-				8CCB50C5204D3FC500D5EBA4 /* XHComplieAddressViewController.m */,
-				8CCB50C6204D3FC500D5EBA4 /* XHComplieAddressViewController.xib */,
-				8CCB50C7204D3FC500D5EBA4 /* XHMyAddressViewController.h */,
-				8CCB50C8204D3FC500D5EBA4 /* XHMyAddressViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
 		};
-		8CCB50C9204D3FC500D5EBA4 /* model */ = {
+		8CCB50F7204D440300D5EBA4 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				8CCB50CA204D3FC500D5EBA4 /* area.plist */,
-				8CCB50CB204D3FC500D5EBA4 /* AreaModel.h */,
-				8CCB50CC204D3FC500D5EBA4 /* AreaModel.m */,
-				8CCB50CD204D3FC500D5EBA4 /* city.plist */,
-				8CCB50CE204D3FC500D5EBA4 /* CityModel.h */,
-				8CCB50CF204D3FC500D5EBA4 /* CityModel.m */,
-				8CCB50D0204D3FC500D5EBA4 /* ProvinceModel.h */,
-				8CCB50D1204D3FC500D5EBA4 /* ProvinceModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
 		};
-		8CCB50D2204D3FC500D5EBA4 /* view */ = {
+		8CCB50F8204D440300D5EBA4 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				8CCB50D3204D3FC500D5EBA4 /* XHAddressPickerView.h */,
-				8CCB50D4204D3FC500D5EBA4 /* XHAddressPickerView.m */,
-				8CCB50D5204D3FC500D5EBA4 /* XHAddressTableViewCell.h */,
-				8CCB50D6204D3FC500D5EBA4 /* XHAddressTableViewCell.m */,
-				8CCB50D7204D3FC500D5EBA4 /* XHAddressTableViewCell.xib */,
-				8CCB50D8204D3FC500D5EBA4 /* XHAddTableViewCell.h */,
-				8CCB50D9204D3FC500D5EBA4 /* XHAddTableViewCell.m */,
-				8CCB50DA204D3FC500D5EBA4 /* XHAddTableViewCell.xib */,
-				8CCB50DB204D3FC500D5EBA4 /* XHNameTableViewCell.h */,
-				8CCB50DC204D3FC500D5EBA4 /* XHNameTableViewCell.m */,
-				8CCB50DD204D3FC500D5EBA4 /* XHNameTableViewCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -3854,16 +3773,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B80F28A1FCBF04800BC7B52 /* MJRefresh.bundle in Resources */,
-				8CCB50E3204D3FC500D5EBA4 /* XHAddAdressViewController.xib in Resources */,
 				8C67F8301FD666BA007DFD53 /* XHSelectTableViewCell.xib in Resources */,
 				4BFB975D1FCCF8CD003EEC8C /* Images.xcassets in Resources */,
 				8CCD7E581FD12C2600F7F54E /* XHScuessViewController.xib in Resources */,
-				8CCB50E7204D3FC500D5EBA4 /* area.plist in Resources */,
 				8C8336EB1FDCD6A000F48A25 /* RongCloud.bundle in Resources */,
 				8CCD7E2D1FD11ECA00F7F54E /* XHTelephoneTableViewCell.xib in Resources */,
 				8C7EF53C1FE0BBFD00C029F2 /* 37x-Checkmark@2x.png in Resources */,
 				8C67F8351FD68570007DFD53 /* XHSelectFileTableViewCell.xib in Resources */,
-				8CCB50EE204D3FC500D5EBA4 /* XHAddressTableViewCell.xib in Resources */,
 				8C7E98101FECE8C80096288E /* AMap.bundle in Resources */,
 				8C7AE72F1FE795ED00BE7A02 /* AlipaySDK.bundle in Resources */,
 				8C7EF53A1FE0BBFD00C029F2 /* 37x-Wrong@2x.png in Resources */,
@@ -3878,11 +3794,9 @@
 				4B3800F6200754D5004E74AC /* pageControlDot@3x.png in Resources */,
 				8C7EF53B1FE0BBFD00C029F2 /* 37x-Checkmark.png in Resources */,
 				8C8336E91FDCD6A000F48A25 /* Emoji.plist in Resources */,
-				8CCB50E5204D3FC500D5EBA4 /* XHComplieAddressViewController.xib in Resources */,
 				8CCD7E621FD145E200F7F54E /* XHVideoTableViewCell.xib in Resources */,
 				4B3800F5200754D5004E74AC /* pageControlCurrentDot@2x.png in Resources */,
 				8CCD7E6B1FD156BB00F7F54E /* XHBindViewController.xib in Resources */,
-				8CCB50F0204D3FC500D5EBA4 /* XHAddTableViewCell.xib in Resources */,
 				4B80F31A1FCBFD6F00BC7B52 /* Info.plist in Resources */,
 				8C8336F01FDCD6A000F48A25 /* release_notes_ios.txt in Resources */,
 				4B3800F4200754D5004E74AC /* pageControlDot@2x.png in Resources */,
@@ -3891,9 +3805,7 @@
 				8C8336EA1FDCD6A000F48A25 /* RongCloudKit.strings in Resources */,
 				8C5EB0C41FCFF22C002ED0D7 /* XHPassWordTableViewCell.xib in Resources */,
 				4B34187B1FFDC14C00A5EC56 /* ZFPlayer.bundle in Resources */,
-				8CCB50F2204D3FC500D5EBA4 /* XHNameTableViewCell.xib in Resources */,
 				4B577FE51FF63FB30023ACBC /* README.md in Resources */,
-				8CCB50E9204D3FC500D5EBA4 /* city.plist in Resources */,
 				8C5EB0BF1FCFEF6C002ED0D7 /* XHPasswordViewController.xib in Resources */,
 				8CCD7E201FD0EE0D00F7F54E /* XHChagePhoneViewController.xib in Resources */,
 			);
@@ -3930,7 +3842,6 @@
 				4B3126191FD90AAA000CE894 /* XHDatePickerControl.m in Sources */,
 				4B31265C1FDA8F9C000CE894 /* XHAddressBookLecturesControl.m in Sources */,
 				4B80F3191FCBFD6F00BC7B52 /* EXTScope.m in Sources */,
-				8CCB50EA204D3FC500D5EBA4 /* CityModel.m in Sources */,
 				8C019F701FF4C373005EBC2C /* JKDBHelper.m in Sources */,
 				8CCD7E611FD145E200F7F54E /* XHVideoTableViewCell.m in Sources */,
 				4B3418711FFDC14C00A5EC56 /* ASValueTrackingSlider.m in Sources */,
@@ -4024,13 +3935,11 @@
 				4BB792AE1FD7752B00E0ED72 /* XHAskforLeaveArrowCell.m in Sources */,
 				4B577FDC1FF63FB30023ACBC /* MASConstraint.m in Sources */,
 				4BBC43411FD0E43E00555846 /* BaseTableViewCell.m in Sources */,
-				8CCB50EC204D3FC500D5EBA4 /* XHAddressPickerView.m in Sources */,
 				4B80F2831FCBF04800BC7B52 /* MJRefreshBackNormalFooter.m in Sources */,
 				4B80F3251FCBFD6F00BC7B52 /* NSError+MTLModelException.m in Sources */,
 				4B4F921F200DB8F1003BE008 /* XHLiveTableViewCell.m in Sources */,
 				4B577FAA1FF5EF770023ACBC /* XHNoticeViewController.m in Sources */,
 				4B550E4D1FF364AD004CF7ED /* XHSortedArrayComparator.m in Sources */,
-				8CCB50EB204D3FC500D5EBA4 /* ProvinceModel.m in Sources */,
 				4B80F31D1FCBFD6F00BC7B52 /* MTLModel.m in Sources */,
 				4B80F2471FCBF01B00BC7B52 /* BaseTipView.m in Sources */,
 				8C7974021FE76F7A00AF6F6A /* UIImage+DevKit.m in Sources */,
@@ -4045,7 +3954,6 @@
 				4B577F9D1FF5C4F60023ACBC /* XHNoticeCellContentView.m in Sources */,
 				4B80F3221FCBFD6F00BC7B52 /* NSDictionary+MTLJSONKeyPath.m in Sources */,
 				4B80F2C21FCBF04F00BC7B52 /* MKAnnotationView+WebCache.m in Sources */,
-				8CCB50E8204D3FC500D5EBA4 /* AreaModel.m in Sources */,
 				4B278AC420103F8200293F30 /* RCDLiveAttributedLabel.m in Sources */,
 				8C5EB0BE1FCFEF6C002ED0D7 /* XHPasswordViewController.m in Sources */,
 				4B80F31C1FCBFD6F00BC7B52 /* MTLModel+NSCoding.m in Sources */,
@@ -4094,7 +4002,6 @@
 				4BB9BEA31FDE4C54004F5622 /* XHEducationCloudSwitchMenuView.m in Sources */,
 				4B3043D51FEE566C004017C7 /* BaseScrollView.m in Sources */,
 				4BB792E31FD79F4F00E0ED72 /* XHSyllabusContentView.m in Sources */,
-				8CCB50E6204D3FC500D5EBA4 /* XHMyAddressViewController.m in Sources */,
 				4B3418721FFDC14C00A5EC56 /* UIAlertController+ZFPlayerRotation.m in Sources */,
 				4B80F20F1FCBE7DB00BC7B52 /* NSString+Category.m in Sources */,
 				4B80F2D71FCBF04F00BC7B52 /* UIImageView+WebCache.m in Sources */,
@@ -4116,7 +4023,6 @@
 				8CDDA8B61FDA5CEE000B3BAB /* XHChatViewController.m in Sources */,
 				4B8E66181FD641600006D641 /* XHCookDateContentView.m in Sources */,
 				4B34187A1FFDC14C00A5EC56 /* ZFBrightnessView.m in Sources */,
-				8CCB50F4204D3FC500D5EBA4 /* XHCustomTextField.m in Sources */,
 				8C019F671FF4C365005EBC2C /* FMDatabaseAdditions.m in Sources */,
 				4B91107B1FD7BA3300841505 /* XHSyllabusCellContentView.m in Sources */,
 				4B07CC311FD4EF7500B2DBDA /* XHParentsMeetingCellContentView.m in Sources */,
@@ -4129,7 +4035,6 @@
 				4B80F28B1FCBF04800BC7B52 /* MJRefreshConst.m in Sources */,
 				4B80F2D11FCBF04F00BC7B52 /* UIButton+WebCache.m in Sources */,
 				8C62409F1FD8E3BF00E6C031 /* XHAboutUsViewController.m in Sources */,
-				8CCB50E2204D3FC500D5EBA4 /* XHAddAdressViewController.m in Sources */,
 				8C7EF5421FE109B200C029F2 /* XHProtocolViewController.m in Sources */,
 				4B577FA71FF5C4F60023ACBC /* XHNoticeModel.m in Sources */,
 				4B632AAF1FE0DB2A00B90B94 /* XHTeacherAddressBookCell.m in Sources */,
@@ -4142,7 +4047,6 @@
 				4B278ABE20103EE400293F30 /* RCDLiveGiftMessage.m in Sources */,
 				8C80815F1FCE722000C7945A /* XHChildTableViewCell.m in Sources */,
 				8CDC90691FE4CB3700040D19 /* XHFamilyListViewController.m in Sources */,
-				8CCB50E4204D3FC500D5EBA4 /* XHComplieAddressViewController.m in Sources */,
 				4B80F32C1FCC108800BC7B52 /* MarqueeLabel.m in Sources */,
 				4B5A3AEE1FCE785600504229 /* XHScrollPreviewControl.m in Sources */,
 				8CEDB9721FE3932E003E791F /* XHFamilyModel.m in Sources */,
@@ -4191,7 +4095,6 @@
 				8CCD7E571FD12C2600F7F54E /* XHScuessViewController.m in Sources */,
 				4B632AB51FE0F46200B90B94 /* XHTeacherAddressBookModel.m in Sources */,
 				4B5A3AF71FCEAA0C00504229 /* XHRegisterFrame.m in Sources */,
-				8CCB50F1204D3FC500D5EBA4 /* XHNameTableViewCell.m in Sources */,
 				4BA8C4CC1FCFEAA6006CBEBC /* CameraManageViewController.m in Sources */,
 				4B80F2CF1FCBF04F00BC7B52 /* SDWebImagePrefetcher.m in Sources */,
 				4B4F921B200DB8F1003BE008 /* XHLiveFrame.m in Sources */,
@@ -4226,9 +4129,7 @@
 				4B4A001D1FE243C900B8A8F8 /* XHDynamicsCollectionViewCell.m in Sources */,
 				8C80816D1FCE991B00C7945A /* XHUserTableViewCell.m in Sources */,
 				4B523BC71FD14782006DD565 /* XHHomeWorkCollectionView.m in Sources */,
-				8CCB50EF204D3FC500D5EBA4 /* XHAddTableViewCell.m in Sources */,
 				4B07CC501FD5360D00B2DBDA /* XHParentsMeetingFrame.m in Sources */,
-				8CCB50F3204D3FC500D5EBA4 /* XHAddressModel.m in Sources */,
 				4BA8C4DC1FCFF35B006CBEBC /* XHHomeWorkModel.m in Sources */,
 				8C377CA62008B7BB001F1FC7 /* XCWebViewJavascriptBridge.m in Sources */,
 				8C7E98321FECF1660096288E /* SGQRCodeGenerateManager.m in Sources */,
@@ -4250,7 +4151,6 @@
 				04291A7A1FD2AD68002D3B5B /* XHListCollectionViewCell.m in Sources */,
 				8C91E01E1FEA39A00040A205 /* XHCustomView.m in Sources */,
 				4B577F9F1FF5C4F60023ACBC /* XHNoticeContentView.m in Sources */,
-				8CCB50ED204D3FC500D5EBA4 /* XHAddressTableViewCell.m in Sources */,
 				4BB96B9A1FF238FB00F0A73C /* XHEducationCloudWebViewController.m in Sources */,
 				4B11AF411FCCEAF2002738F1 /* XHIMNoticeViewController.m in Sources */,
 				4B3126521FDA2123000CE894 /* XHAddressBookToolBarItemControl.m in Sources */,

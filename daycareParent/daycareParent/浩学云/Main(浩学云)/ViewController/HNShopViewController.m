@@ -41,24 +41,6 @@
         [self regiseterPay:responseCallback];
     }];
     
-//    //注册ping++，升级会员调起支付
-//    [self.plugs.bridge registerHandler:@"memberUpgrade" handler:^(id data, WVJBResponseCallback responseCallback) {
-//        NSDictionary *dataDic = data;
-//        
-//        [UIAlertView bk_showAlertViewWithTitle:@"提示" message:dataDic[@"msg"] cancelButtonTitle:@"取消" otherButtonTitles:@[@"去升级"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
-//            if (buttonIndex == 0) {
-//                
-//            }else{
-//                HNUpVIPLevelViewController *up = [[HNUpVIPLevelViewController alloc] init];
-//                up.pushType = isModel;
-//                UINavigationController *nav = [[XCNavSettings sharedXCNavSettings] createDefNav:up];
-//                [self presentViewController:nav animated:YES completion:nil];
-//            }
-//        }];
-//        
-//    }];
-    
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(callBackResult:) name:@"callBack" object:nil];
 }
 - (void)viewDidAppear:(BOOL)animated

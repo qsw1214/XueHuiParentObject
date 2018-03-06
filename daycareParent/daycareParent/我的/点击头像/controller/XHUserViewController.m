@@ -12,7 +12,6 @@
 #import "CameraManageViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-
 @interface XHUserViewController ()<UITableViewDelegate,UITableViewDataSource,CameraManageDeletage>
 {
     UITableView *_tableView;
@@ -218,22 +217,6 @@
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     [alertController addAction:[UIAlertAction actionWithTitle:@"选择相机" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action)
     {
-        
-//        AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-//        if (status == AVAuthorizationStatusRestricted || status == AVAuthorizationStatusDenied) {
-//
-//            UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"请去-> [设置 - 隐私 - 相机 - 学汇家长] 打开访问开关" preferredStyle:(UIAlertControllerStyleAlert)];
-//            UIAlertAction *alertA = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
-//
-//            }];
-//
-//            [alertC addAction:alertA];
-//            [self presentViewController:alertC animated:YES completion:nil];
-//        }
-        
-        
-        
-        
         CameraManageViewController *manager=[[CameraManageViewController alloc] initWithCameraManageWithType:SourceTypeCamera setDeletate:self];
         [self.navigationController presentViewController:manager animated:YES completion:nil];
         
@@ -241,6 +224,7 @@
     [alertController addAction:[UIAlertAction actionWithTitle:@"选择相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         CameraManageViewController *manager=[[CameraManageViewController alloc] initWithCameraManageWithType:SourceTypeHeadPortraitSavedPhotosAlbum setDeletate:self];
         [self.navigationController presentViewController:manager animated:YES completion:nil];
+       
     }]];
     [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         

@@ -36,6 +36,7 @@
     self = [super init];
     if (self)
     {
+        [self setBackgroundColor:RGB(244.0, 244.0, 244.0)];
         [self setItemColor:NO];
         [self.layer setMasksToBounds:YES];
         [self showRefresHeaderWithTarget:self withSelector:@selector(refreshHeaderAction)];
@@ -88,11 +89,11 @@
     [self setFrame:frame];
     
     [self.advertisementControl resetFrame:CGRectMake(0,0, frame.size.width, 190.0)];
-    [self.functionMenuControl resetFrame:CGRectMake(0, self.advertisementControl.bottom-10.0, frame.size.width, frame.size.width)];
+    [self.functionMenuControl resetFrame:CGRectMake(0, (self.advertisementControl.bottom+10.0), frame.size.width, 480.0)];
     [self setContentSize:CGSizeMake(frame.size.width, self.functionMenuControl.bottom)];
     
     //根据产品经理的要求，把底部九宫格首先显示出来，所以首先滚动底部
-    [self setContentOffset:CGPointMake(0, self.functionMenuControl.bottom-(SCREEN_HEIGHT-64-50))];
+    [self setContentOffset:CGPointMake(0, (self.functionMenuControl.bottom+10.0)-(SCREEN_HEIGHT-64-50))];
 }
 
 
@@ -127,17 +128,18 @@
 {
     if (_itemArray == nil)
     {
-        NSArray *array = @[@"平安记录",@"实时定位",@"家庭作业",@"食谱",@"课程表",@"成绩",@"请假",@"班级通讯录",@"班级动态"];
+        NSArray *itemArray = @[@{@"title":@"考勤记录",@"describe":@"Attendance Record"},@{@"title":@"安全定位",@"describe":@"Safety Positioning"},@{@"title":@"成绩",@"describe":@"Ache"},@{@"title":@"课程表",@"describe":@"Class Schedule Card"},@{@"title":@"食谱",@"describe":@"Recipes"},@{@"title":@"请假",@"describe":@"Leave"},@{@"title":@"安全定位",@"describe":@"Safety Positioning"},@{@"title":@"成绩",@"describe":@"Ache"},@{@"title":@"食谱",@"describe":@"Recipes"}];
         _itemArray = [NSMutableArray array];
-        [array enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop)
+        [itemArray enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop)
          {
-             NSString *iconName = [array objectAtIndex:idx];
+             NSString *title = [obj objectItemKey:@"title"];
+             NSString *describe = [obj objectItemKey:@"describe"];
              XHFunctionMenuFrame *frame = [[XHFunctionMenuFrame alloc]init];
              XHFunctionMenuModel *model = [[XHFunctionMenuModel alloc]init];
-             [model setTitle:obj];
+             [model setTitle:title];
+             [model setDescribe:describe];
              [model setTage:idx];
-             [model setIconName:[NSString safeString:iconName]];
-             [model setModelType:FunctionMenuType];
+             [model setIconName:[NSString safeString:title]];
              [frame setModel:model];
              [_itemArray addObject:frame];
          }];

@@ -49,8 +49,6 @@
     [self.cycleScrollView setPageControlStyle:SDCycleScrollViewPageContolStyleAnimated];
     [self.cycleScrollView setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     [self addSubview:self.cycleScrollView];
-    [self addSubview:self.bannerView];
-    [self.bannerView setFrame:CGRectMake(0, (frame.size.height-20.0),frame.size.width, 20.0)];
     [self setItemArray:self.dataArray];
 }
 
@@ -62,16 +60,8 @@
 
 
 
--(UIImageView *)bannerView
-{
-    if (_bannerView == nil)
-    {
-        _bannerView = [[UIImageView alloc]init];
-        [_bannerView setImage:[UIImage imageNamed:@"bannerhu"]];
-    }
-    return _bannerView;
-    
-}
+
+
 
 
 

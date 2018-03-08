@@ -14,19 +14,7 @@
 {
     _model = model;
     
-    switch (model.modelType)
-    {
-        case AdvertisementType:
-        {
-             [self setItemSize:CGSizeMake(SCREEN_WIDTH, 150.0)];
-        }
-            break;
-        case FunctionMenuType:
-        {
-             [self setItemSize:CGSizeMake((SCREEN_WIDTH/3.0), (SCREEN_WIDTH/3.0))];
-        }
-            break;
-    }
+    [self setItemSize:CGSizeMake(((SCREEN_WIDTH-30.0)/3.0), 150.0)];
     
    
     

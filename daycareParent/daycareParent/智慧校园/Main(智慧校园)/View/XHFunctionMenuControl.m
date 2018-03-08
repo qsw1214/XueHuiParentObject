@@ -35,7 +35,7 @@
     if (self)
     {
         [self registerClass:[XHFunctionMenuCell class] forCellWithReuseIdentifier:CellIdentifier];
-        [self setBackgroundColor:RGB(247, 247, 247)];
+        [self setBackgroundColor:RGB(244.0, 244.0, 244.0)];
         [self setDelegate:self];
         [self setDataSource:self];
     }
@@ -99,18 +99,18 @@
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
-    return 0;
+    return 10.0;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {
-    return 0;
+    return 5;
 }
 
 
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return UIEdgeInsetsMake(0, 0, 0, 0);
+    return UIEdgeInsetsMake(5, 5, 5, 5);
 }
 
 

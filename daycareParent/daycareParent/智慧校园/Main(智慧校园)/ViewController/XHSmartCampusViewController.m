@@ -25,10 +25,6 @@
 
 @interface XHSmartCampusViewController () <XHFunctionMenuControlDeletage>
 
-@property (nonatomic,strong) NSMutableArray *itemArray;
-@property (nonatomic,strong) XHFunctionMenuControl *functionMenuControl;
-@property (nonatomic,strong) SDCycleScrollView *cycleScrollView; //!< 滚动视图
-
 
 @property (nonatomic,strong) XHSmartCampusContentView *contentView;
 
@@ -38,7 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavtionTitle:@"智慧校园"];
+    [self setNavtionTitle:@"校园"];
     [self navtionItemHidden:NavigationItemLeftType];
     [self setItemContentType:NavigationIconype withItemType:NavigationItemRightype withIconName:@"ico_sao" withTitle:nil];
 }
@@ -53,21 +49,6 @@
     {
         
         [self.view addSubview:self.contentView];
-        
-        
-//        //添加轮播图
-//        NSArray *imagesURLStrings = @[@"placeholderImage",@"placeholderImage",@"placeholderImage"];
-//        self.cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200.0) shouldInfiniteLoop:YES imageNamesGroup:imagesURLStrings withCurrentPageDotImage:@"pageControlCurrentDot" withPageControlDot:@"pageControlDot"];
-//        [self.cycleScrollView setDelegate:self];
-//        [self.cycleScrollView setPageControlStyle:SDCycleScrollViewPageContolStyleAnimated];
-//        [self.cycleScrollView setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-//        [self.view addSubview:self.cycleScrollView];
-//
-//
-//        //!< 添加六宫格菜单
-//        [self.functionMenuControl resetFrame:CGRectMake(0, (self.cycleScrollView.bottom+20.0), SCREEN_WIDTH, (SCREEN_HEIGHT-(self.cycleScrollView.bottom+20.0)))];
-//        [self.view addSubview:self.functionMenuControl];
-//        [self.functionMenuControl setItemArray:self.itemArray];
     }
 }
 
@@ -162,26 +143,6 @@
     return _contentView;
 }
 
--(NSMutableArray *)itemArray
-{
-    if (_itemArray == nil)
-    {
-        NSArray *array = @[@"考勤记录",@"安全定位",@"成绩",@"食谱",@"课程表",@"请假",@"安全定位",@"成绩",@"食谱"];
-        _itemArray = [NSMutableArray array];
-        [array enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop)
-         {
-             NSString *iconName = [array objectAtIndex:idx];
-             XHFunctionMenuFrame *frame = [[XHFunctionMenuFrame alloc]init];
-             XHFunctionMenuModel *model = [[XHFunctionMenuModel alloc]init];
-             [model setTitle:obj];
-             [model setTage:idx];
-             [model setIconName:[NSString safeString:iconName]];
-             [frame setModel:model];
-             [_itemArray addObject:frame];
-         }];
-    }
-    return _itemArray;
-}
 -(BOOL)refreshChild
 {
     if (![XHUserInfo sharedUserInfo].childListArry.count)
@@ -194,19 +155,5 @@
         return YES;
     }
 }
-
-
-#pragma mark 九宫格功能视图
--(XHFunctionMenuControl *)functionMenuControl
-{
-    if (_functionMenuControl == nil)
-    {
-        _functionMenuControl = [[XHFunctionMenuControl alloc]init];
-    }
-    return _functionMenuControl;
-}
-
-
-
 
 @end

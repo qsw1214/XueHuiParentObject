@@ -32,6 +32,14 @@
         [self addSubview:self.tipView];
         [self.tipView setFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
         [self.tipView setHidden:YES];
+        //去掉留白方法
+        if (@available(iOS 11.0, *)) {
+            self.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+            self.estimatedRowHeight = 0;
+            self.estimatedSectionHeaderHeight = 0;
+            self.estimatedSectionFooterHeight = 0;
+        }
+        
     }
     return self;
 }

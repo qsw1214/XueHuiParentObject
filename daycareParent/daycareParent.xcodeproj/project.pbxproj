@@ -492,6 +492,9 @@
 		8CCD7E621FD145E200F7F54E /* XHVideoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CCD7E601FD145E200F7F54E /* XHVideoTableViewCell.xib */; };
 		8CCD7E6A1FD156BB00F7F54E /* XHBindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCD7E681FD156BB00F7F54E /* XHBindViewController.m */; };
 		8CCD7E6B1FD156BB00F7F54E /* XHBindViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CCD7E691FD156BB00F7F54E /* XHBindViewController.xib */; };
+		8CD3241C2052250600E7AD03 /* TabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD3241B2052250600E7AD03 /* TabBarView.m */; };
+		8CD3241F20524B9C00E7AD03 /* XHChildCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD3241E20524B9C00E7AD03 /* XHChildCollectionView.m */; };
+		8CD324222052688A00E7AD03 /* XHRCTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD324212052688A00E7AD03 /* XHRCTableViewCell.m */; };
 		8CDC90611FE4B1DB00040D19 /* AliyunOSSiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDC90601FE4B1DB00040D19 /* AliyunOSSiOS.framework */; };
 		8CDC90651FE4B86A00040D19 /* XHStudentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDC90631FE4B86A00040D19 /* XHStudentDetailViewController.m */; };
 		8CDC90661FE4B86A00040D19 /* XHStudentDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CDC90641FE4B86A00040D19 /* XHStudentDetailViewController.xib */; };
@@ -1436,6 +1439,12 @@
 		8CCD7E671FD156BB00F7F54E /* XHBindViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHBindViewController.h; sourceTree = "<group>"; };
 		8CCD7E681FD156BB00F7F54E /* XHBindViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHBindViewController.m; sourceTree = "<group>"; };
 		8CCD7E691FD156BB00F7F54E /* XHBindViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XHBindViewController.xib; sourceTree = "<group>"; };
+		8CD3241A2052250600E7AD03 /* TabBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarView.h; sourceTree = "<group>"; };
+		8CD3241B2052250600E7AD03 /* TabBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarView.m; sourceTree = "<group>"; };
+		8CD3241D20524B9C00E7AD03 /* XHChildCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHChildCollectionView.h; sourceTree = "<group>"; };
+		8CD3241E20524B9C00E7AD03 /* XHChildCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHChildCollectionView.m; sourceTree = "<group>"; };
+		8CD324202052688A00E7AD03 /* XHRCTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XHRCTableViewCell.h; path = "daycareParent/消息/通知/view/XHRCTableViewCell.h"; sourceTree = SOURCE_ROOT; };
+		8CD324212052688A00E7AD03 /* XHRCTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = XHRCTableViewCell.m; path = "daycareParent/消息/通知/view/XHRCTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		8CDC90601FE4B1DB00040D19 /* AliyunOSSiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AliyunOSSiOS.framework; sourceTree = "<group>"; };
 		8CDC90621FE4B86A00040D19 /* XHStudentDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHStudentDetailViewController.h; sourceTree = "<group>"; };
 		8CDC90631FE4B86A00040D19 /* XHStudentDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHStudentDetailViewController.m; sourceTree = "<group>"; };
@@ -1817,6 +1826,8 @@
 			children = (
 				8C8081581FCE722000C7945A /* XHChildCollectionViewCell.h */,
 				8C80815A1FCE722000C7945A /* XHChildCollectionViewCell.m */,
+				8CD3241D20524B9C00E7AD03 /* XHChildCollectionView.h */,
+				8CD3241E20524B9C00E7AD03 /* XHChildCollectionView.m */,
 				8C8081591FCE722000C7945A /* XHChildTableViewCell.h */,
 				8C8081571FCE721F00C7945A /* XHChildTableViewCell.m */,
 				8C80815C1FCE722000C7945A /* XHListTableViewCell.h */,
@@ -2371,6 +2382,8 @@
 				4B577F8E1FF5C4F50023ACBC /* XHNoticeDetailView.m */,
 				4B577F8F1FF5C4F50023ACBC /* XHNoticeTableViewCell.h */,
 				4B577F901FF5C4F50023ACBC /* XHNoticeTableViewCell.m */,
+				8CD324202052688A00E7AD03 /* XHRCTableViewCell.h */,
+				8CD324212052688A00E7AD03 /* XHRCTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2514,7 +2527,6 @@
 		4B80F1FC1FCBE43E00BC7B52 /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
-				8C6240911FD8DD0B00E6C031 /* 课程:辅导(我的订单) */,
 				8C3E55BB1FD5494B0013002A /* 学习记录 */,
 				04291A7B1FD2DB77002D3B5B /* 学生信息 */,
 				8CCD7E631FD1565F00F7F54E /* 绑定学生 */,
@@ -2666,6 +2678,8 @@
 				4B80F21B1FCBEC2A00BC7B52 /* MainRootControllerHelper.m */,
 				4B80F21C1FCBEC2A00BC7B52 /* MianTabBarViewController.h */,
 				4B80F21D1FCBEC2A00BC7B52 /* MianTabBarViewController.m */,
+				8CD3241A2052250600E7AD03 /* TabBarView.h */,
+				8CD3241B2052250600E7AD03 /* TabBarView.m */,
 				4BC0BAB61FF20F6300875093 /* MainPreviewViewController.h */,
 				4BC0BAB71FF20F6300875093 /* MainPreviewViewController.m */,
 				4B80F21F1FCBEC2A00BC7B52 /* TabBarItem.h */,
@@ -3502,37 +3516,6 @@
 			path = controller;
 			sourceTree = "<group>";
 		};
-		8C6240911FD8DD0B00E6C031 /* 课程:辅导(我的订单) */ = {
-			isa = PBXGroup;
-			children = (
-				8C6240921FD8DD0B00E6C031 /* controller */,
-				8C6240931FD8DD0B00E6C031 /* model */,
-				8C6240941FD8DD0B00E6C031 /* view */,
-			);
-			path = "课程:辅导(我的订单)";
-			sourceTree = "<group>";
-		};
-		8C6240921FD8DD0B00E6C031 /* controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = controller;
-			sourceTree = "<group>";
-		};
-		8C6240931FD8DD0B00E6C031 /* model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		8C6240941FD8DD0B00E6C031 /* view */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
 		8C6282B91FE3BD700023BB67 /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -4162,6 +4145,7 @@
 				4B80F2251FCBEC2B00BC7B52 /* MianTabBarViewController.m in Sources */,
 				4B3418751FFDC14C00A5EC56 /* UITabBarController+ZFPlayerRotation.m in Sources */,
 				4B4338B71FDF9C1C0047AC52 /* XHEducationCloudItemCollectionView.m in Sources */,
+				8CD3241C2052250600E7AD03 /* TabBarView.m in Sources */,
 				4B4F9220200DB8F1003BE008 /* XHLiveViewController.m in Sources */,
 				8C377CA12008B7BB001F1FC7 /* WebViewJavascriptBridgeBase.m in Sources */,
 				4B278ADB2010417B00293F30 /* RCDLiveEmojiBoardView.m in Sources */,
@@ -4221,6 +4205,7 @@
 				4B80F2241FCBEC2B00BC7B52 /* MainRootControllerHelper.m in Sources */,
 				4B278AE92010422C00293F30 /* RCDDanmakuManager.m in Sources */,
 				4B80F2C71FCBF04F00BC7B52 /* SDWebImageCoder.m in Sources */,
+				8CD3241F20524B9C00E7AD03 /* XHChildCollectionView.m in Sources */,
 				4B8E660E1FD63A460006D641 /* BaseWebView.m in Sources */,
 				4B07CC461FD5106800B2DBDA /* Indicator.m in Sources */,
 				4B31261C1FD91B20000CE894 /* XHAskforLeavePreviewControl.m in Sources */,
@@ -4517,6 +4502,7 @@
 				8CCD7E271FD0F3B000F7F54E /* XHChagePhoneTableViewCell.m in Sources */,
 				4B11C9FE1FCE3A7900FD0D8F /* XHFunctionMenuFrame.m in Sources */,
 				4B80F27D1FCBF04800BC7B52 /* MJRefreshFooter.m in Sources */,
+				8CD324222052688A00E7AD03 /* XHRCTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

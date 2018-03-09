@@ -74,6 +74,11 @@
     return [self.dataArray count];
 }
 
+- (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return nil;
+}
+
 
 
 

@@ -38,7 +38,7 @@
         [self.contentView addSubview:self.describeLabel];
         
     
-        [self.layer setCornerRadius:5.0];
+        [self.layer setCornerRadius:10.0];
         [self.layer  setShadowColor:[RGB(200, 200, 200) CGColor]]; //阴影颜色
         [self.layer setShadowOffset:CGSizeMake(2, 2)];//偏移距离
         [self.layer setShadowOpacity:0.6]; //不透明度

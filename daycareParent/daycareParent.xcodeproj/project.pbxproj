@@ -482,6 +482,7 @@
 		8CCD7E621FD145E200F7F54E /* XHVideoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CCD7E601FD145E200F7F54E /* XHVideoTableViewCell.xib */; };
 		8CCD7E6A1FD156BB00F7F54E /* XHBindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCD7E681FD156BB00F7F54E /* XHBindViewController.m */; };
 		8CCD7E6B1FD156BB00F7F54E /* XHBindViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CCD7E691FD156BB00F7F54E /* XHBindViewController.xib */; };
+		8CD3241C2052250600E7AD03 /* TabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD3241B2052250600E7AD03 /* TabBarView.m */; };
 		8CDC90611FE4B1DB00040D19 /* AliyunOSSiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDC90601FE4B1DB00040D19 /* AliyunOSSiOS.framework */; };
 		8CDC90651FE4B86A00040D19 /* XHStudentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDC90631FE4B86A00040D19 /* XHStudentDetailViewController.m */; };
 		8CDC90661FE4B86A00040D19 /* XHStudentDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CDC90641FE4B86A00040D19 /* XHStudentDetailViewController.xib */; };
@@ -1408,6 +1409,8 @@
 		8CCD7E671FD156BB00F7F54E /* XHBindViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHBindViewController.h; sourceTree = "<group>"; };
 		8CCD7E681FD156BB00F7F54E /* XHBindViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHBindViewController.m; sourceTree = "<group>"; };
 		8CCD7E691FD156BB00F7F54E /* XHBindViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XHBindViewController.xib; sourceTree = "<group>"; };
+		8CD3241A2052250600E7AD03 /* TabBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarView.h; sourceTree = "<group>"; };
+		8CD3241B2052250600E7AD03 /* TabBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarView.m; sourceTree = "<group>"; };
 		8CDC90601FE4B1DB00040D19 /* AliyunOSSiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AliyunOSSiOS.framework; sourceTree = "<group>"; };
 		8CDC90621FE4B86A00040D19 /* XHStudentDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHStudentDetailViewController.h; sourceTree = "<group>"; };
 		8CDC90631FE4B86A00040D19 /* XHStudentDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHStudentDetailViewController.m; sourceTree = "<group>"; };
@@ -2612,6 +2615,8 @@
 				4B80F21B1FCBEC2A00BC7B52 /* MainRootControllerHelper.m */,
 				4B80F21C1FCBEC2A00BC7B52 /* MianTabBarViewController.h */,
 				4B80F21D1FCBEC2A00BC7B52 /* MianTabBarViewController.m */,
+				8CD3241A2052250600E7AD03 /* TabBarView.h */,
+				8CD3241B2052250600E7AD03 /* TabBarView.m */,
 				4BC0BAB61FF20F6300875093 /* MainPreviewViewController.h */,
 				4BC0BAB71FF20F6300875093 /* MainPreviewViewController.m */,
 				4B80F21F1FCBEC2A00BC7B52 /* TabBarItem.h */,
@@ -4106,6 +4111,7 @@
 				4B80F2251FCBEC2B00BC7B52 /* MianTabBarViewController.m in Sources */,
 				4B3418751FFDC14C00A5EC56 /* UITabBarController+ZFPlayerRotation.m in Sources */,
 				4B4338B71FDF9C1C0047AC52 /* XHEducationCloudItemCollectionView.m in Sources */,
+				8CD3241C2052250600E7AD03 /* TabBarView.m in Sources */,
 				4B4F9220200DB8F1003BE008 /* XHLiveViewController.m in Sources */,
 				8C377CA12008B7BB001F1FC7 /* WebViewJavascriptBridgeBase.m in Sources */,
 				4B278ADB2010417B00293F30 /* RCDLiveEmojiBoardView.m in Sources */,

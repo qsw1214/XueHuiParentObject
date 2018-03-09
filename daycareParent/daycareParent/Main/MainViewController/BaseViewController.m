@@ -24,7 +24,6 @@
     if (self)
     {
         [self setHidesBottomBarWhenPushed:YES];
-       // self.tabBarController.hidesBottomBarWhenPushed=YES;
     }
    return self;
 }
@@ -38,12 +37,16 @@
     [self.navigationController.navigationBar setHidden:YES];
     [self.view addSubview:self.navigationView];
     [self.navigationView setNavtionTitleColor:RGB(44.0, 44.0, 44.0)];
-    [self setNavtionColor:MainColor];
+    [self setNavtionColor:[UIColor whiteColor]];
     self.view.backgroundColor=[UIColor whiteColor];
     [self setItemContentItemHiddenWithType:NavigationRightType withHidden:YES];
     [self setItemContentType:NavigationIconAndTitle withItemType:NavigationItemLeftType withIconName:@"ico_return" withTitle:@"返回"];
     [self addSubViews:YES];
-
+    //去掉留白方法
+    if (@available(iOS 11.0, *)){}
+    else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning

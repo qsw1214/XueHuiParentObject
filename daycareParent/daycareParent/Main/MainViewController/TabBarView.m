@@ -74,14 +74,11 @@
             [button setTitleColor:[UIColor colorWithRed:142/255.0 green:142/255.0 blue:142/255.0 alpha:1] forState:UIControlStateSelected];
             [button.titleLabel setFont:[UIFont systemFontOfSize:12.0]];
             button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
-            
             [self initButton:button];
             if (i == 2) {
-                [button setFrame:CGRectMake(([[UIScreen mainScreen] bounds].size.width/5)*i, -10, ([[UIScreen mainScreen] bounds].size.width/5), 60)];
-            }
-            if(i == 2)
-            {
-                [button setSelected:YES];
+                button.adjustsImageWhenHighlighted = NO;
+                [button setFrame:CGRectMake(([[UIScreen mainScreen] bounds].size.width/5)*i, -8, ([[UIScreen mainScreen] bounds].size.width/5), 60)];
+                 [button setSelected:YES];
             }
             [button addTarget:self action:@selector(tabBarButtonClick:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:button];

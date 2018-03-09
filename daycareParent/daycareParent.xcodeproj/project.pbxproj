@@ -45,7 +45,6 @@
 		4B11AF3B1FCCEA89002738F1 /* XHPersonalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B11AF3A1FCCEA89002738F1 /* XHPersonalCenterViewController.m */; };
 		4B11AF411FCCEAF2002738F1 /* XHIMNoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B11AF401FCCEAF2002738F1 /* XHIMNoticeViewController.m */; };
 		4B11C9FE1FCE3A7900FD0D8F /* XHFunctionMenuFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B11C9FD1FCE3A7900FD0D8F /* XHFunctionMenuFrame.m */; };
-		4B11CA011FCE591100FD0D8F /* XHTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B11CA001FCE591100FD0D8F /* XHTestView.m */; };
 		4B278AA420103E8A00293F30 /* XHLiveChatRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B278AA220103E8900293F30 /* XHLiveChatRoomViewController.m */; };
 		4B278AB120103EB900293F30 /* RCDLiveTipMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B278AA820103EB700293F30 /* RCDLiveTipMessageCell.m */; };
 		4B278AB220103EB900293F30 /* RCDLiveMessageBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B278AAB20103EB800293F30 /* RCDLiveMessageBaseCell.m */; };
@@ -586,8 +585,6 @@
 		4B11AF401FCCEAF2002738F1 /* XHIMNoticeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHIMNoticeViewController.m; sourceTree = "<group>"; };
 		4B11C9FC1FCE3A7900FD0D8F /* XHFunctionMenuFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHFunctionMenuFrame.h; sourceTree = "<group>"; };
 		4B11C9FD1FCE3A7900FD0D8F /* XHFunctionMenuFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHFunctionMenuFrame.m; sourceTree = "<group>"; };
-		4B11C9FF1FCE591100FD0D8F /* XHTestView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHTestView.h; sourceTree = "<group>"; };
-		4B11CA001FCE591100FD0D8F /* XHTestView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHTestView.m; sourceTree = "<group>"; };
 		4B278AA220103E8900293F30 /* XHLiveChatRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHLiveChatRoomViewController.m; sourceTree = "<group>"; };
 		4B278AA320103E8900293F30 /* XHLiveChatRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHLiveChatRoomViewController.h; sourceTree = "<group>"; };
 		4B278AA720103EB700293F30 /* RCDLiveTipMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDLiveTipMessageCell.h; sourceTree = "<group>"; };
@@ -1741,8 +1738,6 @@
 				4B5A3AED1FCE785600504229 /* XHScrollPreviewControl.m */,
 				4BD33DDE1FCD57DA00BC52B6 /* XHFunctionMenuControl.h */,
 				4BD33DDF1FCD57DA00BC52B6 /* XHFunctionMenuControl.m */,
-				4B11C9FF1FCE591100FD0D8F /* XHTestView.h */,
-				4B11CA001FCE591100FD0D8F /* XHTestView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4273,7 +4268,6 @@
 				4B07CC191FD4DAB800B2DBDA /* XHLeaveRecordModel.m in Sources */,
 				8C4DB5D91FEBB55D00B14073 /* XHHomeWorkDetailView.m in Sources */,
 				4B11AF321FCCE958002738F1 /* XHSmartCampusViewController.m in Sources */,
-				4B11CA011FCE591100FD0D8F /* XHTestView.m in Sources */,
 				4B3418741FFDC14C00A5EC56 /* UINavigationController+ZFPlayerRotation.m in Sources */,
 				4B80F3281FCBFD6F00BC7B52 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m in Sources */,
 				8C6240881FD8D2B800E6C031 /* XHComplieAddressViewController.m in Sources */,
@@ -4655,7 +4649,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jt.xhp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -4731,7 +4725,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jt.xhp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

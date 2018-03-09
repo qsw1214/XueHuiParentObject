@@ -39,7 +39,6 @@
     [self.view addSubview:self.navigationView];
     [self.navigationView setNavtionTitleColor:RGB(44.0, 44.0, 44.0)];
     [self setNavtionColor:MainColor];
-    self.view.backgroundColor=[UIColor whiteColor];
     [self setItemContentItemHiddenWithType:NavigationRightType withHidden:YES];
     [self setItemContentType:NavigationIconAndTitle withItemType:NavigationItemLeftType withIconName:@"ico_return" withTitle:@"返回"];
     [self addSubViews:YES];
@@ -73,14 +72,9 @@
 
 
 
--(NSMutableArray *)dataArray
-{
-    if (_dataArray == nil)
-    {
-        _dataArray = [NSMutableArray array];
-    }
-    return _dataArray;
-}
+
+
+
 
 #pragma mark 设置按钮的样式
 -(void)setItemContentType:(BaseNavigationControlItemContentType)contentType withItemType:(BaseNavigationControlItemType)itemType withIconName:(NSString*)iconName withTitle:(NSString*)title
@@ -224,33 +218,25 @@
     
 }
 
-/**
- 获取孩子列表弹出视图
 
- @return 获取孩子列表弹出视图
- */
--(XHCustomView *)childListView
+
+
+#pragma mark - Getter /  Setter
+-(NSMutableArray *)dataArray
 {
-    if (_childListView==nil) {
-        _childListView=[[XHCustomView alloc] init];
-        NSArray *arry=[XHUserInfo sharedUserInfo].childListArry;
-        if (arry.count<5) {
-            _childListView.frame=CGRectMake(SCREEN_WIDTH-90, 64, 80, 30*arry.count);
-        }
-        else
-        {
-            _childListView.frame=CGRectMake(SCREEN_WIDTH-90, 64, 80, 30*5);
-        }
+    if (_dataArray == nil)
+    {
+        _dataArray = [NSMutableArray array];
     }
-    return _childListView;
+    return _dataArray;
 }
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    [self.view endEditing:YES];
-    if (_childListView.isExist==YES) {
-        _childListView.isExist=NO;
-        [_childListView removeFromSuperview];
-    }
-}
+
+
+
+
+
+
+
+
 
 @end

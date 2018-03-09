@@ -37,6 +37,22 @@
     return self;
 }
 
+-(instancetype)initWithType:(UICollectionViewScrollDirection)type
+{
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
+    [layout setScrollDirection:type];
+    self = [super initWithFrame:CGRectZero collectionViewLayout:layout];
+    {
+        [self setBackgroundColor:RGB(238.0, 238.0, 238.0)];
+        [self setShowsVerticalScrollIndicator:NO];
+        [self setShowsHorizontalScrollIndicator:NO];
+        [self addSubview:self.tipView];
+    }
+    return self;
+}
+
+
+
 
 -(void)resetFrame:(CGRect)frame
 {

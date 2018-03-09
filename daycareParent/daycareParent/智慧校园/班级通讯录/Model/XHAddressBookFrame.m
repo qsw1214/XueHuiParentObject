@@ -15,25 +15,7 @@
 -(void)setModel:(XHAddressBookModel *)model
 {
     _model = model;
-    switch (_model.modelType)
-    {
-        case XHAddressBookSelectType:
-        {
-            [self setItemFrame:CGRectMake(10.0, 0, SCREEN_WIDTH-20.0, 55.0/*单元格自己的高度*/+45.0/*工具条的高度*/)];
-            
-            
-            
-        }
-            break;
-        case XHAddressBookModelNormalType:
-        {
-            
-            [self setItemFrame:CGRectMake(10.0, 0, SCREEN_WIDTH-20.0, 60.0)];
-            
-        }
-            break;
-    }
-    
+    [self setItemFrame:CGRectMake(0, 0, SCREEN_WIDTH, 78.0)];
     [self setCellHeight:self.itemFrame.size.height];
 }
 

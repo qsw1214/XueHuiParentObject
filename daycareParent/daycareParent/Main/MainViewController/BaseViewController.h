@@ -10,7 +10,8 @@
 #import "BaseNavigationView.h"
 #import "XHChildListModel.h"
 #import "XHNetWorkConfig.h"
-#import "XHCustomView.h"//!< 孩子列表自定义视图
+#import "BaseTableView.h"
+#import "XHCustomView.h"   //!< 孩子列表自定义视图
 
 
 
@@ -24,7 +25,7 @@
 @property (nonatomic,strong) BaseNavigationView  *navigationView;
 @property (nonatomic,strong) NSMutableArray *dataArray; //!< 数组
 @property (nonatomic,strong) XHNetWorkConfig *netWorkConfig;
-@property(nonatomic,strong)XHCustomView *childListView;
+@property(nonatomic,strong) XHCustomView *childListView;
 @property(nonatomic,copy)void(^isRefresh)(BOOL);
 #pragma mark 初始化Tabbar自动隐藏
 -(instancetype)initHiddenWhenPushHidden;

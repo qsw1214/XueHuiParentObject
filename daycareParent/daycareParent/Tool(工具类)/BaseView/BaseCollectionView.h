@@ -21,6 +21,9 @@
 @property (nonatomic,strong) MJRefreshAutoNormalFooter *animateFooter; //!< 脚部
 
 -(instancetype)init;
+-(instancetype)initWithType:(UICollectionViewScrollDirection)type;
+
+
 
 
 -(void)resetFrame:(CGRect)frame;

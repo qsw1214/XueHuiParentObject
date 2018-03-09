@@ -36,4 +36,28 @@
     return self;
 }
 
+
+
+-(void)setMarkType:(ChildListMarkType)markType
+{
+    _markType = markType;
+    switch (markType)
+    {
+        case ChildListSelectType:
+        {
+            [self setItemSize:CGSizeMake(100.0, 60.0)];
+        }
+            break;
+        case ChildListNormalType:
+        {
+            [self setItemSize:CGSizeMake(60.0, 60.0)];
+        }
+            break;
+    }
+}
+
+
+
+
+
 @end

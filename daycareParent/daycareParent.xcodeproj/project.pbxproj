@@ -484,6 +484,7 @@
 		8CCD7E6B1FD156BB00F7F54E /* XHBindViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CCD7E691FD156BB00F7F54E /* XHBindViewController.xib */; };
 		8CD3241C2052250600E7AD03 /* TabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD3241B2052250600E7AD03 /* TabBarView.m */; };
 		8CD3241F20524B9C00E7AD03 /* XHChildCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD3241E20524B9C00E7AD03 /* XHChildCollectionView.m */; };
+		8CD324222052688A00E7AD03 /* XHRCTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD324212052688A00E7AD03 /* XHRCTableViewCell.m */; };
 		8CDC90611FE4B1DB00040D19 /* AliyunOSSiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDC90601FE4B1DB00040D19 /* AliyunOSSiOS.framework */; };
 		8CDC90651FE4B86A00040D19 /* XHStudentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDC90631FE4B86A00040D19 /* XHStudentDetailViewController.m */; };
 		8CDC90661FE4B86A00040D19 /* XHStudentDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CDC90641FE4B86A00040D19 /* XHStudentDetailViewController.xib */; };
@@ -1414,6 +1415,8 @@
 		8CD3241B2052250600E7AD03 /* TabBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarView.m; sourceTree = "<group>"; };
 		8CD3241D20524B9C00E7AD03 /* XHChildCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHChildCollectionView.h; sourceTree = "<group>"; };
 		8CD3241E20524B9C00E7AD03 /* XHChildCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHChildCollectionView.m; sourceTree = "<group>"; };
+		8CD324202052688A00E7AD03 /* XHRCTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XHRCTableViewCell.h; path = "daycareParent/消息/通知/view/XHRCTableViewCell.h"; sourceTree = SOURCE_ROOT; };
+		8CD324212052688A00E7AD03 /* XHRCTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = XHRCTableViewCell.m; path = "daycareParent/消息/通知/view/XHRCTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		8CDC90601FE4B1DB00040D19 /* AliyunOSSiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AliyunOSSiOS.framework; sourceTree = "<group>"; };
 		8CDC90621FE4B86A00040D19 /* XHStudentDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHStudentDetailViewController.h; sourceTree = "<group>"; };
 		8CDC90631FE4B86A00040D19 /* XHStudentDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHStudentDetailViewController.m; sourceTree = "<group>"; };
@@ -2326,6 +2329,8 @@
 				4B577F8E1FF5C4F50023ACBC /* XHNoticeDetailView.m */,
 				4B577F8F1FF5C4F50023ACBC /* XHNoticeTableViewCell.h */,
 				4B577F901FF5C4F50023ACBC /* XHNoticeTableViewCell.m */,
+				8CD324202052688A00E7AD03 /* XHRCTableViewCell.h */,
+				8CD324212052688A00E7AD03 /* XHRCTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4433,6 +4438,7 @@
 				8CCD7E271FD0F3B000F7F54E /* XHChagePhoneTableViewCell.m in Sources */,
 				4B11C9FE1FCE3A7900FD0D8F /* XHFunctionMenuFrame.m in Sources */,
 				4B80F27D1FCBF04800BC7B52 /* MJRefreshFooter.m in Sources */,
+				8CD324222052688A00E7AD03 /* XHRCTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

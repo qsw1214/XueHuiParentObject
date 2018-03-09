@@ -9,6 +9,7 @@
 #import "MianTabBarViewController.h"
 #import "XHSmartCampusViewController.h"
 #import "XHIMNoticeViewController.h"
+#import "XHChatViewController.h"
 #import "XHEducationCloudViewController.h"
 #import "XHEducationCloudViewController.h"
 #import "XHPersonalCenterViewController.h"
@@ -42,7 +43,7 @@
 
 -(void)addsubView
 {
-    XHIMNoticeViewController *Notice = [[XHIMNoticeViewController alloc] init];
+    XHChatViewController *Notice = [[XHChatViewController alloc] init];
     [self addChildViewController:Notice];
     
     XHIMNoticeViewController *imNotice = [[XHIMNoticeViewController alloc] init];

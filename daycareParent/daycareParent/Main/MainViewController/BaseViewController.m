@@ -24,6 +24,7 @@
     if (self)
     {
         [self setHidesBottomBarWhenPushed:YES];
+       // self.tabBarController.hidesBottomBarWhenPushed=YES;
     }
    return self;
 }
@@ -55,8 +56,8 @@
     [super viewWillAppear:animated];
     
     [self.navigationController.navigationBar setHidden:YES];
+   
 }
-
 
 -(BaseNavigationView *)navigationView
 {

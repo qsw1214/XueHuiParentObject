@@ -80,7 +80,8 @@ static MainRootControllerHelper *rootHelper = nil;
         case RootHelperMianTabBarType:
         {
             MianTabBarViewController *main = [[MianTabBarViewController alloc]init];
-            [kWindow setRootViewController:main];
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:main];
+            [kWindow setRootViewController:navigationController];
         }
             break;
         case RootHelperLoginType:
@@ -91,7 +92,8 @@ static MainRootControllerHelper *rootHelper = nil;
         case RootHelperLogoutMianTabBarType:
         {
             MianTabBarViewController *main = [[MianTabBarViewController alloc]init];
-            [kWindow setRootViewController:main];
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:main];
+            [kWindow setRootViewController:navigationController];
         }
             break;
         case RootHelperPresentLoginType:
@@ -154,7 +156,8 @@ static MainRootControllerHelper *rootHelper = nil;
                         {
                             
                             MianTabBarViewController *mianViewController = [[MianTabBarViewController alloc]init];
-                            [window setRootViewController:mianViewController];
+                            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mianViewController];
+                            [window setRootViewController:navigationController];
                         }
                         
                     }

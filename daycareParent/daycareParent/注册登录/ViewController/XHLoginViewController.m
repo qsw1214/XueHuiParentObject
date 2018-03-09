@@ -146,7 +146,8 @@
                         else
                         {
                             MianTabBarViewController *main=[MianTabBarViewController new];
-                            [kWindow setRootViewController:main];
+                            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:main];
+                            [kWindow setRootViewController:navigationController];
                         }
                        
                     });

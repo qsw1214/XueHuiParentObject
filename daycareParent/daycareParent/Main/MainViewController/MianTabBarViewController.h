@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MianTabBarViewController : UITabBarController
-
+-(void)hidTabbarView:(BOOL)hidden;
 @end

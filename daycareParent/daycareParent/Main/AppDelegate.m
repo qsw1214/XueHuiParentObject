@@ -126,7 +126,7 @@
     
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     
-    [MainRootControllerHelper isFirstStartWithWindow:self.window];
+    [MainRootControllerHelper  isFirstStartWithWindow:self.window];
     
     
     [self.window makeKeyAndVisible];

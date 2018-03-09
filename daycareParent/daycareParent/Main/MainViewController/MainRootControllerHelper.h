@@ -20,6 +20,7 @@ typedef NS_ENUM(NSInteger,RootHelperType)
 
 @interface MainRootControllerHelper : NSObject<UIAlertViewDelegate>
 
+@property(nonatomic,strong)MianTabBarViewController *mainTabBarViewController;
 /**
  单例初始化方法
  

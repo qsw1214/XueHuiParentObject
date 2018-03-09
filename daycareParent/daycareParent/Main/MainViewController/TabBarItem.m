@@ -24,6 +24,7 @@
     {
         [self setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor grayColor],NSForegroundColorAttributeName,[UIFont systemFontOfSize:10.0f],NSFontAttributeName, nil] forState:UIControlStateSelected];
         [self setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:10.0f],NSFontAttributeName, nil] forState:UIControlStateNormal];
+        
     }
     return self;
 }

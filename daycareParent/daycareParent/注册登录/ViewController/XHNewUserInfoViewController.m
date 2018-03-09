@@ -177,8 +177,9 @@
 }
 -(void)sureBtnClick
 {
-    MianTabBarViewController *mianViewController = [[MianTabBarViewController alloc]init];
-    [kWindow setRootViewController:mianViewController];
+    MianTabBarViewController *main = [[MianTabBarViewController alloc]init];
+     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:main];
+    [kWindow setRootViewController:navigationController];
 }
 -(void)openImagePiker
 {

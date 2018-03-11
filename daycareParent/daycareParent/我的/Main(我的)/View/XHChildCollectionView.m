@@ -49,7 +49,7 @@
     if (indexPath.item==_childListArry.count-1) {
         cell.childClassLabel.hidden=YES;
         cell.childNameLabel.text=@"绑定学生";
-        cell.childImageView.image=[UIImage imageNamed:@"but_bindstudents"];
+        cell.childImageView.image=[UIImage imageNamed:@"bindstudents"];
     }
     else
     {

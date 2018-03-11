@@ -35,7 +35,9 @@
         [self.contentView addSubview:_detailLab];
         _ContentLab=[[XHBackLabel alloc] init];
         [self.contentView addSubview:_ContentLab];
-        
+        _bgLabel=[[UILabel alloc] init];
+        _bgLabel.backgroundColor=RGB(239, 239, 239);
+        [self.contentView addSubview:_bgLabel];
     }
     return self;
 }
@@ -45,6 +47,8 @@
     _headImageView.frame=CGRectMake(15, 20, 30, 30);
     _headImageView.layer.cornerRadius=0;
     _headImageView.image=[UIImage imageNamed:model.senderUserName];
+    //_ContentLab.frame=CGRectMake(80, 35, SCREEN_WIDTH-95, 30);
+    _bgLabel.frame=CGRectMake(0, self.contentView.bottom-15, SCREEN_WIDTH, 15);
 
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

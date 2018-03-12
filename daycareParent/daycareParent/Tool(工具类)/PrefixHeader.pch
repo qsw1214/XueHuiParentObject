@@ -148,7 +148,7 @@
 
 #define CellIdentifier @"CellIdentifier"
 
-#define USER_HEARD ([UIScreen mainScreen].bounds.size.width-45)/5.0//用户头像大小
+#define USER_HEARD ([UIScreen mainScreen].bounds.size.width-60)/4.0//用户头像大小
 #define DEFAULTCOLOR RGBAlpha(134, 134, 134, 1.0)//浅灰色字体
 #define LOGIN_BEFORE RGBAlpha(220, 220, 220, 1.0)//登录前字体颜色
 #define  LOGINBTN_HEIGHT 50//按钮高度

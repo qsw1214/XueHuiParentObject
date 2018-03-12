@@ -14,6 +14,7 @@
 @property(nonatomic,strong)XHBackLabel *ContentLab;
 @property(nonatomic,strong)XHBackLabel *detailLab;
 @property(nonatomic,strong)UILabel *smallLab;
+@property(nonatomic,strong)UILabel *bgLabel;
 @property(nonatomic,strong)UIImageView *smalImage;
 -(void)setItemObject:(RCConversationModel *)model;
 @end

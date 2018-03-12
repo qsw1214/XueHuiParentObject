@@ -358,6 +358,7 @@
 		8C019F741FF4C3DB005EBC2C /* XHMessageUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C019F731FF4C3DB005EBC2C /* XHMessageUserInfo.m */; };
 		8C01A2352006E94800E4D768 /* NJKWebViewProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C01A2322006E94800E4D768 /* NJKWebViewProgress.m */; };
 		8C01A2362006E94800E4D768 /* NJKWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C01A2342006E94800E4D768 /* NJKWebViewProgressView.m */; };
+		8C1642232056184E001DCA01 /* XHRCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1642222056184E001DCA01 /* XHRCModel.m */; };
 		8C2246B01FF2262200B7A07F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2246AF1FF2262200B7A07F /* WebKit.framework */; };
 		8C2311641FE216A00013F476 /* XHChildListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2311631FE216A00013F476 /* XHChildListModel.m */; };
 		8C2311671FE22C330013F476 /* XHVIPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2311661FE22C330013F476 /* XHVIPModel.m */; };
@@ -1222,6 +1223,8 @@
 		8C01A2322006E94800E4D768 /* NJKWebViewProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgress.m; sourceTree = "<group>"; };
 		8C01A2332006E94800E4D768 /* NJKWebViewProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgressView.h; sourceTree = "<group>"; };
 		8C01A2342006E94800E4D768 /* NJKWebViewProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgressView.m; sourceTree = "<group>"; };
+		8C1642212056184E001DCA01 /* XHRCModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHRCModel.h; sourceTree = "<group>"; };
+		8C1642222056184E001DCA01 /* XHRCModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHRCModel.m; sourceTree = "<group>"; };
 		8C2246AF1FF2262200B7A07F /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		8C2311621FE216A00013F476 /* XHChildListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHChildListModel.h; sourceTree = "<group>"; };
 		8C2311631FE216A00013F476 /* XHChildListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHChildListModel.m; sourceTree = "<group>"; };
@@ -3890,6 +3893,8 @@
 				8CDDA8B51FDA5CEE000B3BAB /* XHChatViewController.m */,
 				8C8336F11FDCE3B100F48A25 /* XHRCConversationViewController.h */,
 				8C8336F21FDCE3B100F48A25 /* XHRCConversationViewController.m */,
+				8C1642212056184E001DCA01 /* XHRCModel.h */,
+				8C1642222056184E001DCA01 /* XHRCModel.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -4362,6 +4367,7 @@
 				8C377CA72008B7BB001F1FC7 /* XCWebViewProgressView.m in Sources */,
 				4B80F2851FCBF04800BC7B52 /* MJRefreshGifHeader.m in Sources */,
 				8C37D3401FE8A8EF00F157D1 /* XHIMNoticeModel.m in Sources */,
+				8C1642232056184E001DCA01 /* XHRCModel.m in Sources */,
 				4B80F2811FCBF04800BC7B52 /* MJRefreshAutoStateFooter.m in Sources */,
 				4B8E66241FD6463C0006D641 /* XHCookBookFrame.m in Sources */,
 				4B31264C1FDA1FF5000CE894 /* XHAddressBookFrame.m in Sources */,

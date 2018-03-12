@@ -8,6 +8,7 @@
 
 #import "XHRCTableViewCell.h"
 #import "XHMessageUserInfo.h"
+#import "XHRCModel.h"
 @implementation XHRCTableViewCell
 
 - (void)awakeFromNib {
@@ -35,16 +36,21 @@
         [self.contentView addSubview:_detailLab];
         _ContentLab=[[XHBackLabel alloc] init];
         [self.contentView addSubview:_ContentLab];
-        
+        _bgLabel=[[UILabel alloc] init];
+        _bgLabel.backgroundColor=RGB(239, 239, 239);
+        [self.contentView addSubview:_bgLabel];
     }
     return self;
 }
--(void)setItemObject:(RCConversationModel *)model
+-(void)setItemObject:(XHRCModel *)model
 {
-    _titleLab.text=model.conversationTitle;
+    _titleLab.text=model.RCtitle;
     _headImageView.frame=CGRectMake(15, 20, 30, 30);
     _headImageView.layer.cornerRadius=0;
-    _headImageView.image=[UIImage imageNamed:model.senderUserName];
+    _headImageView.image=[UIImage imageNamed:model.RCtitlePic];
+    _ContentLab.frame=CGRectMake(80, 35, SCREEN_WIDTH-95, 30);
+    _ContentLab.text=model.RCContent;
+    _bgLabel.frame=CGRectMake(0, self.contentView.bottom-15, SCREEN_WIDTH, 15);
 
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

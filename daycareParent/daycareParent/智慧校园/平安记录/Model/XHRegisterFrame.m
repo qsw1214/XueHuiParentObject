@@ -14,7 +14,7 @@
 -(void)setModel:(XHRegisterModel *)model
 {
     _model = model;
-    [self setItemFrame:CGRectMake(0, 0, SCREEN_WIDTH, 120.0)];
+    [self setItemFrame:CGRectMake(0, 0, SCREEN_WIDTH, 75.0)];
     [self setCellHeight:self.itemFrame.size.height];
 }
 

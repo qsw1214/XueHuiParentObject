@@ -15,8 +15,8 @@
 @interface XHddressBookSwitchMenuView ()
 
 @property (nonatomic,strong) XHAddressBookToolBar *toolBar;
-@property (nonatomic,strong) XHddressBookMaskView *maskView;
-
+@property (nonatomic,strong) XHddressBookMaskView *bookMaskView;
+@property (nonatomic,strong) UIView *lineView;
 
 
 
@@ -30,8 +30,9 @@
     self = [super init];
     if (self)
     {
-        [self addSubview:self.maskView];
+        [self addSubview:self.bookMaskView];
         [self addSubview:self.toolBar];
+        [self addSubview:self.lineView];
         [self setShowsVerticalScrollIndicator:NO];
         [self setShowsHorizontalScrollIndicator:NO];
         [self setPagingEnabled:YES];
@@ -46,9 +47,10 @@
 -(void)resetFrame:(CGRect)frame
 {
     [self setFrame:frame];
-    [self.maskView resetFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
-    [self.toolBar resetFrame:CGRectMake(self.maskView.right, self.maskView.top, self.maskView.width, self.maskView.height)];
-    [self setContentSize:CGSizeMake(self.maskView.right+200.0, frame.size.height)];
+    [self.bookMaskView resetFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+    [self.toolBar resetFrame:CGRectMake(self.bookMaskView.right, self.bookMaskView.top, (self.bookMaskView.width - 80.0), self.bookMaskView.height)];
+    [self.lineView setFrame:CGRectMake(0, frame.size.height-0.5, self.toolBar.right, 0.5)];
+    [self setContentSize:CGSizeMake(self.lineView.width, frame.size.height)];
 }
 
 
@@ -63,15 +65,25 @@
 }
 
 
--(XHddressBookMaskView *)maskView
+-(XHddressBookMaskView *)bookMaskView
 {
-    if (!_maskView)
+    if (!_bookMaskView)
     {
-        _maskView = [[XHddressBookMaskView alloc]init];
+        _bookMaskView = [[XHddressBookMaskView alloc]init];
     }
-    return _maskView;
+    return _bookMaskView;
 }
 
+
+-(UIView *)lineView
+{
+    if (!_lineView)
+    {
+        _lineView = [[UIView alloc]init];
+        [_lineView setBackgroundColor:LineViewColor];
+    }
+    return _lineView;
+}
 
 
 @end

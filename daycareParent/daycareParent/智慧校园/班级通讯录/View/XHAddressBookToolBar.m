@@ -29,6 +29,7 @@
     self = [super init];
     if (self)
     {
+        [self setBackgroundColor:RGB(244.0, 244.0, 244.0)];
         [self addSubview:self.phoneControl];
         [self addSubview:self.messageControl];
         [self addSubview:self.imControl];

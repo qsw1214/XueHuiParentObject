@@ -78,7 +78,7 @@
             CATransition *anima = [CATransition animation];
             anima.type = @"cube";//设置动画的类型
             anima.subtype = kCATransitionFromTop; //设置动画的方向
-            anima.duration = 1.0f;
+            anima.duration = 0.35f;
             
             [self.layer addAnimation:anima forKey:@"revealAnimation"];
             [sender setTag:2];
@@ -89,7 +89,7 @@
             CATransition *anima = [CATransition animation];
             anima.type = @"cube";//设置动画的类型
             anima.subtype = kCATransitionFromBottom; //设置动画的方向
-            anima.duration = 1.0f;
+            anima.duration = 0.35f;
             
             [self.layer addAnimation:anima forKey:@"revealAnimation"];
             [sender setTag:1];
@@ -164,6 +164,7 @@
         [_collectionView setDelegate:self];
         [_collectionView setDataSource:self];
         [_collectionView registerClass:[XHAddressBookHeaderItemCell class] forCellWithReuseIdentifier:CellIdentifier];
+        [_collectionView setBackgroundColor:[UIColor whiteColor]];
     }
     return _collectionView;
 }

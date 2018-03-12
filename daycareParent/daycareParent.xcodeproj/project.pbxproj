@@ -150,7 +150,6 @@
 		4B523BC41FD12D43006DD565 /* XHHomeWorkDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B523BC31FD12D43006DD565 /* XHHomeWorkDetailsViewController.m */; };
 		4B523BC71FD14782006DD565 /* XHHomeWorkCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B523BC61FD14782006DD565 /* XHHomeWorkCollectionView.m */; };
 		4B523BCA1FD14A27006DD565 /* XHHomeWorkContentViwCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B523BC91FD14A27006DD565 /* XHHomeWorkContentViwCell.m */; };
-		4B523BD11FD15068006DD565 /* XHRegisterContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B523BD01FD15068006DD565 /* XHRegisterContentView.m */; };
 		4B523BD81FD1579B006DD565 /* XHAskforLeaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B523BD71FD1579B006DD565 /* XHAskforLeaveViewController.m */; };
 		4B523BDB1FD157F8006DD565 /* XHLeaveRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B523BDA1FD157F8006DD565 /* XHLeaveRecordViewController.m */; };
 		4B523BE11FD15873006DD565 /* XHLeaveRecordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B523BE01FD15873006DD565 /* XHLeaveRecordTableViewCell.m */; };
@@ -802,7 +801,6 @@
 		4B523BC61FD14782006DD565 /* XHHomeWorkCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHHomeWorkCollectionView.m; sourceTree = "<group>"; };
 		4B523BC81FD14A27006DD565 /* XHHomeWorkContentViwCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHHomeWorkContentViwCell.h; sourceTree = "<group>"; };
 		4B523BC91FD14A27006DD565 /* XHHomeWorkContentViwCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHHomeWorkContentViwCell.m; sourceTree = "<group>"; };
-		4B523BD01FD15068006DD565 /* XHRegisterContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHRegisterContentView.m; sourceTree = "<group>"; };
 		4B523BD61FD1579B006DD565 /* XHAskforLeaveViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHAskforLeaveViewController.h; sourceTree = "<group>"; };
 		4B523BD71FD1579B006DD565 /* XHAskforLeaveViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHAskforLeaveViewController.m; sourceTree = "<group>"; };
 		4B523BD91FD157F8006DD565 /* XHLeaveRecordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHLeaveRecordViewController.h; sourceTree = "<group>"; };
@@ -872,7 +870,6 @@
 		4B5A3AF31FCEAA0300504229 /* XHRegisterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHRegisterModel.m; sourceTree = "<group>"; };
 		4B5A3AF51FCEAA0C00504229 /* XHRegisterFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHRegisterFrame.h; sourceTree = "<group>"; };
 		4B5A3AF61FCEAA0C00504229 /* XHRegisterFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHRegisterFrame.m; sourceTree = "<group>"; };
-		4B5A3AF81FCEAE8800504229 /* XHRegisterContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHRegisterContentView.h; sourceTree = "<group>"; };
 		4B5A3AFB1FCEAECA00504229 /* BaseControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseControl.h; sourceTree = "<group>"; };
 		4B5A3AFC1FCEAECA00504229 /* BaseControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseControl.m; sourceTree = "<group>"; };
 		4B5A3AFE1FCEB0A000504229 /* XHRegisterTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHRegisterTableViewCell.h; sourceTree = "<group>"; };
@@ -3295,8 +3292,6 @@
 		4BFB97411FCCF469003EEC8C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4B5A3AF81FCEAE8800504229 /* XHRegisterContentView.h */,
-				4B523BD01FD15068006DD565 /* XHRegisterContentView.m */,
 				4B5A3AFE1FCEB0A000504229 /* XHRegisterTableViewCell.h */,
 				4B5A3AFF1FCEB0A000504229 /* XHRegisterTableViewCell.m */,
 				4BA8C4CD1FCFEFB4006CBEBC /* XHRegisterItemControl.h */,
@@ -4231,7 +4226,6 @@
 				4B80F31D1FCBFD6F00BC7B52 /* MTLModel.m in Sources */,
 				4B80F2471FCBF01B00BC7B52 /* BaseTipView.m in Sources */,
 				8C7974021FE76F7A00AF6F6A /* UIImage+DevKit.m in Sources */,
-				4B523BD11FD15068006DD565 /* XHRegisterContentView.m in Sources */,
 				4B31261F1FD91EB0000CE894 /* XHAskforLeavePreviewToolBar.m in Sources */,
 				8CB5A2891FD7E029008E97D8 /* XHAddressPickerView.m in Sources */,
 				4BA8C4C81FCFD430006CBEBC /* XHGuideViewController.m in Sources */,

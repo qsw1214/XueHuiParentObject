@@ -30,6 +30,8 @@
     {
         [self addSubview:self.imageView];
         [self addSubview:self.titleLabel];
+        
+        [self setItemColor:NO];
     }
     return self;
 }
@@ -39,8 +41,8 @@
 {
     [super resetFrame:frame];
     
-    [self.imageView setFrame:CGRectMake(((frame.size.width-(frame.size.height-20.0))/2.0),0, (frame.size.height-20.0), (frame.size.height-20.0))];
-    [self.titleLabel setFrame:CGRectMake(0, frame.size.height-20.0, frame.size.width, 20.0)];
+    [self.imageView setFrame:CGRectMake(((frame.size.width-30.0)/2.0),15.0, 30.0, 30.0)];
+    [self.titleLabel setFrame:CGRectMake(0, self.imageView.bottom, frame.size.width, (frame.size.height-45.0))];
 }
 
 #pragma mark 设置图片
@@ -95,4 +97,17 @@
     }
     return _titleLabel;
 }
+
+
+
+-(void)setItemColor:(BOOL)color
+{
+    if (color)
+    {
+        [self.titleLabel setBackgroundColor:[UIColor orangeColor]];
+        [self.imageView setBackgroundColor:[UIColor purpleColor]];
+    }
+}
+
+
 @end

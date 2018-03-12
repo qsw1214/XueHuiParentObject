@@ -39,6 +39,9 @@
 -(void)setDescribe:(NSString*)describe;
 
 
+
+-(void)setDescribeLabelFrame:(CGRect)frame;
+
 /**
  获取描述标题
 

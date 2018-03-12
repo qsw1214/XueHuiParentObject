@@ -33,11 +33,11 @@
 {
     [super viewDidLoad];
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
-    [self.view setBackgroundColor:RGB(235.0, 235.0, 235.0)];
+    //[self.view setBackgroundColor:RGB(235.0, 235.0, 235.0)];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
     [self.navigationController.navigationBar setHidden:YES];
     [self.view addSubview:self.navigationView];
     [self.navigationView setNavtionTitleColor:RGB(44.0, 44.0, 44.0)];
-    [self setNavtionColor:MainColor];
     [self setNavtionColor:[UIColor whiteColor]];
     [self setItemContentItemHiddenWithType:NavigationRightType withHidden:YES];
     [self setItemContentType:NavigationIconAndTitle withItemType:NavigationItemLeftType withIconName:@"ico_return" withTitle:@"返回"];

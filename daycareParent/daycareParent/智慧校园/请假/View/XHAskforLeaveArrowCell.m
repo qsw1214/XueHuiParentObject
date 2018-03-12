@@ -78,7 +78,11 @@
 {
     [self.describeLabel setText:describe];
 }
-
+-(void)setDescribeLabelFrame:(CGRect)frame
+{
+    [self.describeLabel setFrame:frame];
+    self.describeLabel.textAlignment=NSTextAlignmentRight;
+}
 /**
  获取描述标题
  

@@ -10,9 +10,7 @@
 #import "AppDelegate.h"
 #import "XHRCConversationViewController.h"
 #import "XHRCTableViewCell.h"
-#import "XHNoticeTableViewCell.h"
 #import "XHRCModel.h"
-#import "MJRefresh.h"
 #define kTitleList @[@"哈哈",@"给老师留言",@"家庭作业",@"通知公告"]
 #define kTitlePic @[@"im_notice",@"im_message",@"im_book",@"im_notice"]
 @interface XHChatViewController ()
@@ -108,10 +106,15 @@
     if (indexPath.row==0||indexPath.row==3)
     {
         cell.bgLabel.hidden=NO;
+        if (indexPath.row==0) {
+            cell.backgroundColor=MainColor;
+        }
     }
+    
     else
     {
         cell.bgLabel.hidden=YES;
+        cell.backgroundColor=[UIColor whiteColor];
     }
     return cell;
 }
@@ -212,7 +215,12 @@
     if (_navigationView == nil)
     {
         _navigationView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 64.0)];
-        self.navigationView.backgroundColor=MainColor;
+        self.navigationView.backgroundColor=[UIColor whiteColor];
+        UILabel *titleLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 20, SCREEN_WIDTH, 44)];
+        titleLabel.textAlignment=NSTextAlignmentCenter;
+        [titleLabel setFont:[UIFont boldSystemFontOfSize:18.0]];
+        titleLabel.text=@"消息";
+        [_navigationView addSubview:titleLabel];
     }
     return _navigationView;
 }

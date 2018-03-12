@@ -3377,6 +3377,15 @@
 			path = NJKWebViewProgress;
 			sourceTree = "<group>";
 		};
+		8C164224205651D9001DCA01 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				8C1642212056184E001DCA01 /* XHRCModel.h */,
+				8C1642222056184E001DCA01 /* XHRCModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		8C377C8C2008B7BB001F1FC7 /* BridgeLib */ = {
 			isa = PBXGroup;
 			children = (
@@ -3884,9 +3893,8 @@
 		8CDDA8AC1FDA5CCE000B3BAB /* 聊天 */ = {
 			isa = PBXGroup;
 			children = (
+				8C164224205651D9001DCA01 /* model */,
 				8CDDA8AD1FDA5CCE000B3BAB /* controller */,
-				8CDDA8AE1FDA5CCE000B3BAB /* model */,
-				8CDDA8AF1FDA5CCE000B3BAB /* view */,
 			);
 			path = "聊天";
 			sourceTree = "<group>";
@@ -3898,24 +3906,8 @@
 				8CDDA8B51FDA5CEE000B3BAB /* XHChatViewController.m */,
 				8C8336F11FDCE3B100F48A25 /* XHRCConversationViewController.h */,
 				8C8336F21FDCE3B100F48A25 /* XHRCConversationViewController.m */,
-				8C1642212056184E001DCA01 /* XHRCModel.h */,
-				8C1642222056184E001DCA01 /* XHRCModel.m */,
 			);
 			path = controller;
-			sourceTree = "<group>";
-		};
-		8CDDA8AE1FDA5CCE000B3BAB /* model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		8CDDA8AF1FDA5CCE000B3BAB /* view */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = view;
 			sourceTree = "<group>";
 		};
 		8CDDA8B01FDA5CD3000B3BAB /* 通知 */ = {

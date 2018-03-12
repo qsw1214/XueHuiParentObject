@@ -20,6 +20,7 @@
 #import "XHSafeLocationViewController.h" //!< 定位
 #import "XHLoginViewController.h"
 #import "SDCycleScrollView.h"
+#import "XHTeacherAddressBookViewController.h"
 
 
 
@@ -114,7 +115,7 @@
         {
             if ([self refreshChild])
             {
-                XHAskforLeaveViewController *leave = [[XHAskforLeaveViewController alloc]initHiddenWhenPushHidden];
+                XHTeacherAddressBookViewController *leave = [[XHTeacherAddressBookViewController alloc]initHiddenWhenPushHidden];
                 [self.navigationController pushViewController:leave animated:YES];
             }
             

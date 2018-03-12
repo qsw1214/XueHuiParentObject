@@ -13,18 +13,10 @@
 /*因为每个学校的时间段不一致，就暂切定义为四个时间段
  *
  */
-@property (nonatomic,copy) NSString *oneTimeSolt; //!< 第一个时间段
-@property (nonatomic,copy) NSString *twoTimeSolt; //!< 第一个时间段
-@property (nonatomic,copy) NSString *threeTimeSolt; //!< 第一个时间段
-@property (nonatomic,copy) NSString *fourTimeSolt; //!< 第一个时间段
-@property (nonatomic,assign) NSInteger oneTimeSoltTyp; //!< 第一个时间段
-@property (nonatomic,assign) NSInteger twoTimeSoltType; //!< 第一个时间段
-@property (nonatomic,assign) NSInteger threeTimeSoltType; //!< 第一个时间段
-@property (nonatomic,assign) NSInteger fourTimeSoltType; //!< 第一个时间段
-
-
-@property (nonatomic,copy) NSString *userName; //!< 学生名字
-@property (nonatomic,copy) NSString *registerDate; //!< 签到时间
+@property (nonatomic,copy) NSString *title; //!< 周几
+@property (nonatomic,copy) NSString *date; //!< 日期
+@property (nonatomic,copy) NSString *time; //!< 具体时间
+@property (nonatomic,copy) NSString *markIcon; //!< 显示的图片
 
 
 

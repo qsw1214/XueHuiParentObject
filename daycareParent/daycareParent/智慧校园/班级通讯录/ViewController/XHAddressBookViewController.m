@@ -67,7 +67,7 @@
        
         [self.view addSubview:self.addressBookHeader];
         [self.addressBookHeader resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, 60.0)];
-        [self.tableView resetFrame:CGRectMake(0.0, (self.addressBookHeader.bottom+10.0), SCREEN_WIDTH, SCREEN_HEIGHT-(self.addressBookHeader.bottom+10.0+50.0))];
+        [self.tableView resetFrame:CGRectMake(0.0, (self.addressBookHeader.bottom+10.0), SCREEN_WIDTH, SCREEN_HEIGHT-(self.addressBookHeader.bottom+10.0))];
         [self.view addSubview:self.tableView];
         
         [self.addressBookHeader setItemArray:self.dataArray];

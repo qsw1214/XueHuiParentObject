@@ -64,7 +64,6 @@
             if ([self refreshChild])
             {
                 XHSafeRegisterViewController *regis = [[XHSafeRegisterViewController alloc]initHiddenWhenPushHidden];
-//                [regis setHidesBottomBarWhenPushed:YES];
                 [self.navigationController pushViewController:regis animated:YES];
             }
           

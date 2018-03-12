@@ -38,4 +38,9 @@
     
 }
 
+-(void)setItemColor:(BOOL)color
+{
+    
+}
+
 @end

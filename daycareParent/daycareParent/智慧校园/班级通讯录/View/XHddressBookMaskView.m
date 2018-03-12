@@ -30,11 +30,14 @@
     self = [super init];
     if (self)
     {
+        [self setBackgroundColor:[UIColor whiteColor]];
         [self addSubview:self.headerImageView];
         [self addSubview:self.titleLabel];
         [self addSubview:self.describeLabel];
         [self addSubview:self.subjecLabel];
         [self addSubview:self.markImageView];
+        
+        [self setItemColor:NO];
     }
     return self;
 }
@@ -48,8 +51,8 @@
     [self.headerImageView setFrame:CGRectMake(10.0, (frame.size.height-48.0)/2.0, 48.0, 48.0)];
     [self.subjecLabel setFrame:CGRectMake((self.headerImageView.right+10.0), self.headerImageView.top, 50.0, 24.0)];
     [self.titleLabel setFrame:CGRectMake((self.subjecLabel.right+5.0), self.subjecLabel.top, frame.size.width-(self.subjecLabel.right+5.0+40.0), self.subjecLabel.height)];
-    [self.describeLabel setFrame:CGRectMake(self.subjecLabel.left, self.titleLabel.bottom, (self.subjecLabel.left+40.0), self.titleLabel.height)];
-    [self.markImageView setFrame:CGRectMake(frame.size.width-30.0, frame.size.height-20.0, 20.0, 20.0)];
+    [self.describeLabel setFrame:CGRectMake(self.subjecLabel.left, self.titleLabel.bottom, (frame.size.width-(self.subjecLabel.left+40.0)), self.titleLabel.height)];
+    [self.markImageView setFrame:CGRectMake(frame.size.width-30.0, (frame.size.height-20.0)/2.0, 20.0, 20.0)];
 }
 
 
@@ -73,6 +76,7 @@
     {
         _markImageView = [[UIImageView alloc]init];
         [_markImageView setImage:[UIImage imageNamed:@"addressBookMore"]];
+        [_markImageView setContentMode:UIViewContentModeScaleAspectFit];
     }
     return _markImageView;
 }
@@ -106,10 +110,24 @@
         _subjecLabel = [[UILabel alloc]init];
         [_subjecLabel setText:@"数学"];
         [_subjecLabel setTextAlignment:NSTextAlignmentCenter];
+        [_subjecLabel setBackgroundColor:[UIColor orangeColor]];
     }
     return _subjecLabel;
 }
 
+
+
+-(void)setItemColor:(BOOL)color
+{
+    if (color)
+    {
+        [self.headerImageView setBackgroundColor:[UIColor redColor]];
+        [self.titleLabel setBackgroundColor:[UIColor orangeColor]];
+        [self.describeLabel setBackgroundColor:[UIColor purpleColor]];
+        [self.subjecLabel setBackgroundColor:[UIColor darkGrayColor]];
+        [self.markImageView setBackgroundColor:[UIColor yellowColor]];
+    }
+}
 
 
 

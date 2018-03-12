@@ -44,6 +44,32 @@
 
 
 
+-(void)a:(NSInteger)type
+{
+    switch (type)
+    {
+        case 1:
+        {
+            [UIView animateWithDuration:0.5 animations:^{
+                
+                [self.markImageView setTransform:CGAffineTransformMakeRotation(0)];
+                
+            }];
+        }
+            break;
+        case 2:
+        {
+            [UIView animateWithDuration:0.5 animations:^{
+                
+                [self.markImageView setTransform:CGAffineTransformMakeRotation(M_PI_2)];
+                
+            }];
+        }
+            break;
+    }
+}
+
+
 
 #pragma mark - Getter /  Setter
 -(UIImageView *)markImageView

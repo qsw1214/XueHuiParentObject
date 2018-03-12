@@ -13,11 +13,19 @@
 
 
 #define TIMESOLT  12.0
+
 @interface XHRegisterTableViewCell ()
 
 
-@property (nonatomic,strong) XHRegisterItemControl *titleControl;  //!< 标题 “王小虎  10-11”
-@property (nonatomic,strong) XHRegisterItemControl *contentControl;  //!< 标题 “王小虎  10-11”
+@property (nonatomic,strong) UIImageView *markImageView; //!< 图片视图
+@property (nonatomic,strong) UIView *markLineView; //!< 日期分割线
+@property (nonatomic,strong) UIView *lineView; //!< 分割线
+@property (nonatomic,strong) UILabel *titleLabel; //!< 主标题标签
+@property (nonatomic,strong) UILabel *describeLabel; //!< 描述标签
+
+
+
+
 @end
 
 
@@ -26,13 +34,21 @@
 
 
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (instancetype)init
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    self = [super init];
     if (self)
     {
-        [self.contentView addSubview:self.titleControl];
-        [self.contentView addSubview:self.contentControl];
+        [self.contentView setBackgroundColor:[UIColor whiteColor]];
+        
+        [self.contentView addSubview:self.markLineView];
+        [self.contentView addSubview:self.markImageView];
+        [self.contentView addSubview:self.describeLabel];
+        [self.contentView addSubview:self.titleLabel];
+        [self.contentView addSubview:self.lineView];
+        
+        [self setItemColor:NO];
+        
     }
     return self;
 }
@@ -43,81 +59,94 @@
 {
     _itemFrame = itemFrame;
     
-    
-    //设置每个空间的Frame
-    [self.titleControl resetFrame:CGRectMake(10, 0, (itemFrame.itemFrame.size.width-20.0), 40.0)];
-    [self.contentControl resetFrame:CGRectMake(self.titleControl.left, self.titleControl.bottom, self.titleControl.width, (itemFrame.itemFrame.size.height-self.titleControl.height))];
-    //设置“titleControl”的每个空间中子控件的位置Frame
-    [self.titleControl setTitleEdgeFrame:CGRectMake(0, 0, self.titleControl.width/2.0, self.titleControl.height) withNumberType:0 withAllType:NO];
-    [self.titleControl setTitleEdgeFrame:CGRectMake(self.titleControl.width/2.0, 0, self.titleControl.width/2.0, self.titleControl.height) withNumberType:1 withAllType:NO];
-    //设置“contentControl”的每个空间中子控件的位置Frame
-    //签到时间
-    [self.contentControl setTitleEdgeFrame:CGRectMake((self.contentControl.width/4.0)*0, (self.contentControl.height/2.0), (self.contentControl.width/4.0), (self.contentControl.height/2.0)) withNumberType:0 withAllType:NO];
-    [self.contentControl setTitleEdgeFrame:CGRectMake((self.contentControl.width/4.0)*1, 0, (self.contentControl.width/4.0), (self.contentControl.height/2.0)) withNumberType:1 withAllType:NO];
-    [self.contentControl setTitleEdgeFrame:CGRectMake((self.contentControl.width/4.0)*2, (self.contentControl.height/2.0), (self.contentControl.width/4.0), (self.contentControl.height/2.0)) withNumberType:2 withAllType:NO];
-    [self.contentControl setTitleEdgeFrame:CGRectMake((self.contentControl.width/4.0)*3, 0, (self.contentControl.width/4.0), (self.contentControl.height/2.0)) withNumberType:3 withAllType:NO];
-    //签到原点
-    [self.contentControl setImageEdgeFrame:CGRectMake(((self.contentControl.width-TIMESOLT)/8.0)*1, ((self.contentControl.height-TIMESOLT)/2.0), TIMESOLT, TIMESOLT) withNumberType:0 withAllType:NO];
-    [self.contentControl setImageEdgeFrame:CGRectMake(((self.contentControl.width-TIMESOLT)/8.0)*3, ((self.contentControl.height-TIMESOLT)/2.0), TIMESOLT, TIMESOLT) withNumberType:1 withAllType:NO];
-    [self.contentControl setImageEdgeFrame:CGRectMake(((self.contentControl.width-TIMESOLT)/8.0)*5, ((self.contentControl.height-TIMESOLT)/2.0), TIMESOLT, TIMESOLT) withNumberType:2 withAllType:NO];
-    [self.contentControl setImageEdgeFrame:CGRectMake(((self.contentControl.width-TIMESOLT)/8.0)*7, ((self.contentControl.height-TIMESOLT)/2.0), TIMESOLT, TIMESOLT) withNumberType:3 withAllType:NO];
-    [self.contentControl setImageLayerCornerRadius:(TIMESOLT/2.0) withNumberType:0 withAllType:YES];
-    //签到中间分割线
-    [self.contentControl resetLineViewFrame:CGRectMake(0,(self.contentControl.height-1.0)/2.0 , self.contentControl.width, 1.0) withNumberType:0 withAllType:NO];
+    //!< 首先赋值Frame
+    [self.markLineView setFrame:CGRectMake(45.0,0.0 , 0.5, itemFrame.itemFrame.size.height)];
+    [self.markImageView setFrame:CGRectMake(30.0, 14.0, 27.0, 27.0)];
+    [self.markImageView setLayerCornerRadius:(self.markImageView.height/2.0)];
+    [self.titleLabel setFrame:CGRectMake(self.markImageView.right+20.0, 16.0, (itemFrame.itemFrame.size.width-(self.markImageView.right+30.0)), 20.0)];
+    [self.describeLabel setFrame:CGRectMake(self.titleLabel.left, self.titleLabel.bottom, self.titleLabel.width, self.titleLabel.height)];
+    [self.lineView setFrame:CGRectMake(self.markLineView.left, itemFrame.itemFrame.size.height-0.5, (itemFrame.itemFrame.size.width-self.markLineView.left), 0.5)];
     
     
-    //赋值
-    [self.titleControl setText:itemFrame.model.userName withNumberType:0 withAllType:NO];
-    [self.titleControl setText:itemFrame.model.registerDate withNumberType:1 withAllType:NO];
-    //签到时间赋值
-    [self.contentControl setTimeSoltImageWithType:itemFrame.model.oneTimeSoltTyp withTitle:itemFrame.model.oneTimeSolt withNumber:0];
-    [self.contentControl setTimeSoltImageWithType:itemFrame.model.twoTimeSoltType withTitle:itemFrame.model.twoTimeSolt withNumber:1];
-    [self.contentControl setTimeSoltImageWithType:itemFrame.model.threeTimeSoltType withTitle:itemFrame.model.threeTimeSolt withNumber:2];
-    [self.contentControl setTimeSoltImageWithType:itemFrame.model.fourTimeSoltType withTitle:itemFrame.model.fourTimeSolt withNumber:3];
-
+    
+    //!< 赋值
+    [self.titleLabel setText:itemFrame.model.title];
+    [self.describeLabel setText:[NSString stringWithFormat:@"%@ %@",itemFrame.model.date,itemFrame.model.time]];
+    [self.markImageView setImage:[UIImage imageNamed:itemFrame.model.markIcon]];
+    
+    
 }
 
 
 #pragma mark - Getter / Setter
--(XHRegisterItemControl *)titleControl
+-(UIView *)markLineView
 {
-    if (_titleControl == nil)
+    if (!_markLineView)
     {
-        _titleControl = [[XHRegisterItemControl alloc]init];
-        [_titleControl setNumberLabel:2];
-        [_titleControl setTextAlignment:NSTextAlignmentLeft withNumberType:0 withAllType:NO];
-        [_titleControl setTextAlignment:NSTextAlignmentRight withNumberType:1 withAllType:NO];
-        [_titleControl setFont:[UIFont systemFontOfSize:16.0] withNumberType:0 withAllType:YES];
-        [_titleControl setTextColor:[UIColor grayColor] withTpe:0 withAllType:YES];
-        [_titleControl setBackgroundColor:[UIColor clearColor]];
+        _markLineView = [[UIView alloc]init];
+        [_markLineView setBackgroundColor:LineViewColor];
     }
-    return _titleControl;
+    return _markLineView;
 }
 
-
--(XHRegisterItemControl *)contentControl
+-(UIImageView *)markImageView
 {
-    if (_contentControl == nil)
+    if (!_markImageView)
     {
-        _contentControl = [[XHRegisterItemControl alloc]init];
-        [_contentControl setNumberLineView:1];
-        [_contentControl setNumberLabel:4];
-        [_contentControl setNumberImageView:4];
-        [_contentControl setTextAlignment:NSTextAlignmentCenter withNumberType:0 withAllType:YES];
-        [_contentControl setIconImageViewBackGroundColor:[UIColor redColor] withNumberType:0 withAllType:YES];
-        [_contentControl setBackgroundColor:[UIColor whiteColor]];
-        [_contentControl.layer setBorderColor:[[UIColor grayColor] CGColor]];
-        [_contentControl.layer setMasksToBounds:YES];
-        [_contentControl.layer setCornerRadius:5.0];
-        [_contentControl.layer setBorderWidth:0.5];
+        _markImageView = [[UIImageView alloc]init];
+        [_markImageView setContentMode:UIViewContentModeScaleAspectFit];
+        [_markImageView setImage:[UIImage imageNamed:@"ico_night"]];
     }
-    return _contentControl;
+    return _markImageView;
 }
 
 
 
+-(UILabel *)titleLabel
+{
+    if (!_titleLabel)
+    {
+        _titleLabel = [[UILabel alloc]init];
+        [_titleLabel setFont:FontLevel2];
+        [_titleLabel setTextColor:RGB(51.0, 51.0, 51.0)];
+    }
+    return _titleLabel;
+}
+
+-(UILabel *)describeLabel
+{
+    if (!_describeLabel)
+    {
+        _describeLabel = [[UILabel alloc]init];
+        [_describeLabel setFont:FontLevel3];
+        [_describeLabel setTextColor:RGB(104.0, 111.0, 121.0)];
+    }
+    return _describeLabel;
+}
 
 
+-(UIView *)lineView
+{
+    if (!_lineView)
+    {
+        _lineView = [[UILabel alloc]init];
+        [_lineView setBackgroundColor:LineViewColor];
+    }
+    return _lineView;
+}
+
+
+
+
+-(void)setItemColor:(BOOL)color
+{
+    if (color)
+    {
+        [self.markImageView setBackgroundColor:[UIColor greenColor]];
+        [self.describeLabel setBackgroundColor:[UIColor orangeColor]];
+        [self.titleLabel setBackgroundColor:[UIColor purpleColor]];
+    }
+}
 
 
 @end

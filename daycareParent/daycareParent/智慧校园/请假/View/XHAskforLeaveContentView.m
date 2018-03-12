@@ -16,15 +16,18 @@
 #import "XHTeacherAddressBookViewController.h"
 #import "BaseView.h"
 #import "XHLeaveRecordViewController.h"//!< 请假列表
-
-
+#import "XHLoseSubjectView.h"//!<  缺失课程显示
+#import "XHSubjectModel.h"
+#import "XHSubmitView.h"//!<  提交按钮视图
 @interface XHAskforLeaveContentView () <BaseTextViewDeletage,XHDatePickerControlDeletage,XHAskforLeavePreviewControlDeletage,CameraManageDeletage>
 
 @property (nonatomic,strong) UIAlertController *alertController; //!< 弹出框视图控制器
 @property (nonatomic,weak) BaseViewController *viewController;
 @property (nonatomic,strong) UILabel *limitLabel; //!< 输入内容限制
 @property (nonatomic,strong) BaseView *topAccessoryView;   //!< 顶部附件视图
+@property (nonatomic,strong) BaseView *middleAccessoryView;   //!< 中部附件视图
 @property (nonatomic,strong) BaseView *bottomAccessoryView;   //!< 底部附件视图
+
 @property (nonatomic,strong) XHAskforLeaveArrowCell *childOptionsControl;   //!< 请假学生
 @property (nonatomic,strong) XHAskforLeaveArrowCell *askforLeaveTypeControl;   //!<请假类型
 @property (nonatomic,strong) UILabel *reasonTitleLabel;   //!<请假标题
@@ -33,12 +36,13 @@
 @property (nonatomic,strong) XHAskforLeaveArrowCell *endTimeControl;   //!< 开始时间选项
 @property (nonatomic,strong) XHAskforLeaveArrowCell *timeControl;   //!< 输入时长选项
 @property (nonatomic,strong) UILabel *timeLabel;   //!<时长说明
+@property (nonatomic,strong) XHLoseSubjectView *loseSubjectView;   //!<缺失课程显示
 @property (nonatomic,strong) XHAskforLeaveChargeTeacherControl *chargeTeacherControl;   //!< 班主任
 @property (nonatomic,strong) XHAskforLeaveChargeTeacherControl *otherControl;   //!< 相关人员
 @property (nonatomic,strong) XHAskforLeaveSubmitControl *submitControl;   //!< 提交
-
+@property (nonatomic,strong) XHSubmitView *submitView;   //!< 提交视图
 @property (nonatomic,assign) NSInteger selectTimeControl; //!< 记录选择的是哪个时间选择器
-
+@property(nonatomic,strong)NSMutableArray *subjectArry;//!<或缺课程数组
 
 @end
 
@@ -62,11 +66,13 @@
         [self addSubview:self.endTimeControl];
         [self addSubview:self.timeControl];
         [self addSubview:self.timeLabel];
+        [self addSubview:self.middleAccessoryView];
+        [self addSubview:self.loseSubjectView];
         [self addSubview:self.bottomAccessoryView];
-        [self addSubview:self.chargeTeacherControl];
-        [self addSubview:self.otherControl];
-        [self addSubview:self.submitControl];
-        
+        //[self addSubview:self.chargeTeacherControl];
+        //[self addSubview:self.otherControl];
+        //[self addSubview:self.submitControl];
+        [self addSubview:self.submitView];
         [self setShowsVerticalScrollIndicator:NO];
         [self setShowsHorizontalScrollIndicator:NO];
         [self addSubViews:YES];
@@ -90,11 +96,16 @@
      [self.timeControl resetFrame:CGRectMake(self.endTimeControl.left, self.endTimeControl.bottom, self.endTimeControl.width, self.endTimeControl.height)];
      [_timeControl setDescribeLabelFrame:CGRectMake(130.0, 0, (_timeControl.width-140), _timeControl.height)];
     [self.timeLabel setFrame:CGRectMake(10,self.timeControl.bottom,self.topAccessoryView.width-20, 40)];
-    [self.bottomAccessoryView resetFrame:CGRectMake(self.topAccessoryView.left,self.timeLabel.bottom,self.topAccessoryView.width, self.topAccessoryView.height)];
-    [self.chargeTeacherControl resetFrame:CGRectMake(self.bottomAccessoryView.left, self.bottomAccessoryView.bottom, 80.0, 105)];
-    [self.otherControl resetFrame:CGRectMake(self.chargeTeacherControl.right, self.chargeTeacherControl.top, self.chargeTeacherControl.width, self.chargeTeacherControl.height)];
-    [self.submitControl resetFrame:CGRectMake(10, self.chargeTeacherControl.bottom+20.0, (frame.size.width-20.0), 40.0)];
-    [self setContentSize:CGSizeMake(frame.size.width, self.submitControl.bottom+20.0)];
+    [self.middleAccessoryView resetFrame:CGRectMake(self.topAccessoryView.left,self.timeLabel.bottom,self.topAccessoryView.width, self.topAccessoryView.height)];
+    [self.loseSubjectView resetFrame:CGRectMake(0, self.middleAccessoryView.bottom, self.middleAccessoryView.width, 90)];
+    
+    [self.bottomAccessoryView resetFrame:CGRectMake(self.topAccessoryView.left,self.loseSubjectView.bottom,self.topAccessoryView.width, self.topAccessoryView.height)];
+    
+   // [self.chargeTeacherControl resetFrame:CGRectMake(self.bottomAccessoryView.left, self.bottomAccessoryView.bottom, 80.0, 105)];
+    //[self.otherControl resetFrame:CGRectMake(self.chargeTeacherControl.right, self.chargeTeacherControl.top, self.chargeTeacherControl.width, self.chargeTeacherControl.height)];
+    //[self.submitControl resetFrame:CGRectMake(10, self.chargeTeacherControl.bottom+20.0, (frame.size.width-20.0), 40.0)];
+     [self.submitView resetFrame:CGRectMake(10, self.bottomAccessoryView.bottom, (frame.size.width-20.0), 170.0)];
+    [self setContentSize:CGSizeMake(frame.size.width, self.submitView.bottom+20.0)];
     
     
   
@@ -519,7 +530,7 @@
         [_timeControl setTitle:@"请假时长（天）"];
         [_timeControl setDescribe:@"请输入时长"];
         [_timeControl addTarget:self action:@selector(controlAction:) forControlEvents:UIControlEventTouchUpInside];
-        //[_endTimeControl setTag:5];
+        [_timeControl setTag:5];
     }
     return _timeControl;
 }
@@ -534,6 +545,31 @@
         _timeLabel.text=@"请假时长以天为单位，最小为0.5";
     }
     return _timeLabel;
+}
+#pragma mark 时长说明
+-(XHLoseSubjectView *)loseSubjectView
+{
+    if (_loseSubjectView==nil) {
+        _loseSubjectView=[[XHLoseSubjectView alloc] init];
+        [_loseSubjectView setTitle:@"或缺课科目"];
+        for (int i=0; i<5; i++) {
+            XHSubjectModel *model=[[XHSubjectModel alloc] init];
+            model.sub=@"数学";
+            [self.subjectArry addObject:model];
+        }
+        for (int i=0; i<5; i++) {
+            XHSubjectModel *model=[[XHSubjectModel alloc] init];
+            model.sub=@"信息技术";
+            [self.subjectArry addObject:model];
+        }
+        for (int i=0; i<5; i++) {
+            XHSubjectModel *model=[[XHSubjectModel alloc] init];
+            model.sub=@"我的课程";
+            [self.subjectArry addObject:model];
+        }
+        [_loseSubjectView setItemArry:self.subjectArry];
+    }
+    return _loseSubjectView;
 }
 #pragma mark 班主任
 -(XHAskforLeaveChargeTeacherControl *)chargeTeacherControl
@@ -580,7 +616,16 @@
     return _submitControl;
 }
 
-
+#pragma mark 提交视图
+-(XHSubmitView *)submitView
+{
+    if (_submitView == nil)
+    {
+        _submitView = [[XHSubmitView alloc]init];
+        _submitView.backgroundColor=[UIColor orangeColor];
+    }
+    return _submitView;
+}
 -(BaseView *)topAccessoryView
 {
     if (_topAccessoryView == nil)
@@ -590,7 +635,16 @@
     }
     return _topAccessoryView;
 }
-
+-(BaseView *)middleAccessoryView
+{
+    if (_middleAccessoryView == nil)
+    {
+        _middleAccessoryView = [[BaseView alloc]init];
+        [_middleAccessoryView setBackgroundColor:RGB(243, 243, 243)];
+      
+    }
+    return _middleAccessoryView;
+}
 -(BaseView *)bottomAccessoryView
 {
     if (_bottomAccessoryView == nil)
@@ -614,7 +668,13 @@
     }
     return _alertController;
 }
-
+-(NSMutableArray *)subjectArry
+{
+    if (_subjectArry==nil) {
+        _subjectArry=[[NSMutableArray alloc] init];
+    }
+    return _subjectArry;
+}
 
 -(XHNetWorkConfig *)netWorkConfig
 {

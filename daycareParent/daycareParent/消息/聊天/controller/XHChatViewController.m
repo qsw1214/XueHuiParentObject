@@ -11,11 +11,14 @@
 #import "XHRCConversationViewController.h"
 #import "XHRCTableViewCell.h"
 #import "XHNoticeTableViewCell.h"
+#import "XHRCModel.h"
+#import "MJRefresh.h"
 #define kTitleList @[@"哈哈",@"给老师留言",@"家庭作业",@"通知公告"]
-#define kTitlePic @[@"im-notice",@"im-mesasage",@"im-book",@"im-notice"]
+#define kTitlePic @[@"im_notice",@"im_message",@"im_book",@"im_notice"]
 @interface XHChatViewController ()
 
 @property(nonatomic,strong)UIView *navigationView;
+@property(nonatomic,strong)NSMutableArray *mouArry;
 @end
 
 @implementation XHChatViewController
@@ -41,8 +44,30 @@
     [self.view addSubview:self.navigationView];
     self.conversationListTableView.frame=CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64-54);
     [self.conversationListTableView registerClass:[XHRCTableViewCell class] forCellReuseIdentifier:@"RongYunListCell"];
+    
+    self.conversationListTableView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshModel)];
+    
+    //进入刷新状态
+    [self.conversationListTableView.header beginRefreshing];
+    
 }
-
+-(void)refreshModel
+{
+    for (int i = 0; i<4; i++)
+    {
+        XHRCModel *model = [[XHRCModel alloc] init];
+        model.conversationModelType = RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION;
+        model.RCtitle=kTitleList[i];
+        model.RCtitlePic=kTitlePic[i];
+        model.RCContent=@"123456";
+        [self.conversationListDataSource replaceObjectAtIndex:i withObject:model];
+        [self.mouArry addObject:model];
+    }
+    [self.conversationListTableView reloadData];
+   
+    [self.conversationListTableView.header endRefreshing];
+    //[self refreshConversationTableViewIfNeeded];
+}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.conversationListDataSource.count;
@@ -65,7 +90,7 @@
    
 }
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
-    RCConversationModel *model = [self.conversationListDataSource objectAtIndex:indexPath.row];
+    XHRCModel *model = [self.conversationListDataSource objectAtIndex:indexPath.row];
     if(model.conversationModelType == RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION){
         return UITableViewCellEditingStyleNone;
     }else{
@@ -77,7 +102,8 @@
     [self.conversationListTableView deselectRowAtIndexPath:indexPath animated:YES];
     XHRCTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RongYunListCell" forIndexPath:indexPath];
     self.conversationListTableView.separatorColor =LineViewColor;
-    RCConversationModel *model = self.conversationListDataSource[indexPath.row];
+    XHRCModel *model = self.conversationListDataSource[indexPath.row];
+    
     [cell setItemObject:model];
     if (indexPath.row==0||indexPath.row==3)
     {
@@ -136,22 +162,25 @@
     });
     
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 - (NSMutableArray *)willReloadTableData:(NSMutableArray *)dataSource
 {
-     [self.conversationListDataSource setArray:dataSource];
-    for (int i = 0; i<kTitleList.count; i++) {
-        RCConversationModel *model = [[RCConversationModel alloc]init];
-        model.conversationModelType = RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION;
-        model.conversationTitle = kTitleList[i];
-        model.senderUserName=kTitlePic[i];
-        [self.conversationListDataSource insertObject:model atIndex:i];
-    }
+        [self.conversationListDataSource setArray:dataSource];
+        for (int i = 0; i<kTitleList.count; i++) {
+            XHRCModel *model = [[XHRCModel alloc]init];
+            model.conversationModelType = RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION;
+            model.RCtitle=kTitleList[i];
+            model.RCtitlePic=kTitlePic[i];
+            [self.conversationListDataSource insertObject:model atIndex:i];
+        }
+    [self refreshModel];
     return self.conversationListDataSource;
 }
+
 - (void)didLongPressCellPortrait:(RCConversationModel *)model
 {
     if (model.isTop) {
@@ -188,7 +217,13 @@
     return _navigationView;
 }
 
-
+-(NSMutableArray *)mouArry
+{
+    if (_mouArry==nil) {
+        _mouArry=[[NSMutableArray alloc] init];
+    }
+    return _mouArry;
+}
 /*
 #pragma mark - Navigation
 

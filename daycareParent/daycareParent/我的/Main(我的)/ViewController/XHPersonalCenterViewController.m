@@ -53,7 +53,7 @@
 
     [self navtionHidden:YES];
     arry=@[@"联系客服",@"问题反馈",@"好友推荐",@"系统通知",@"设置"];
-contentArry=@[@"ico_contact",@"ico_myquestion",@"ico_myshare",@"ico_mynotice",@"ico_myset"];
+contentArry=@[@"ico_mycontact",@"ico_myquestion",@"ico_myshare",@"ico_mynotice",@"ico_myset"];
     _ChildArry=[NSMutableArray arrayWithArray:[XHUserInfo sharedUserInfo].childListArry];
     [_ChildArry addObject:@""];
     _tableView=[[BaseTableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-49) style:UITableViewStyleGrouped];
@@ -108,7 +108,7 @@ contentArry=@[@"ico_contact",@"ico_myquestion",@"ico_myshare",@"ico_mynotice",@"
 
 -(CGFloat)tableView:(BaseTableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return USER_HEARD;
+    return 70;
 }
 -(void)tableView:(BaseTableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -265,6 +265,7 @@ contentArry=@[@"ico_contact",@"ico_myquestion",@"ico_myshare",@"ico_mynotice",@"
     };
     [self.navigationController pushViewController:userVC animated:YES];
 }
+/*
 #pragma mark------vipbtnClick----
 -(void)vipbtnClick
 {
@@ -308,6 +309,7 @@ contentArry=@[@"ico_contact",@"ico_myquestion",@"ico_myshare",@"ico_mynotice",@"
     }]];
     [self presentViewController:alertController animated:YES completion:nil];
 }
+ */
 #pragma mark---------刷新导航栏视图vip等级
 -(void)refreshHeadView
 {
@@ -332,18 +334,18 @@ contentArry=@[@"ico_contact",@"ico_myquestion",@"ico_myshare",@"ico_mynotice",@"
 //        _sigerLabel.text=@"无签名，不个性";
 //    }
 }
--(NSMutableAttributedString *)chageTextColor:(NSString *)text fontColor:(UIColor *)fontColor
-{
-    NSString *labelStr = text; //初始化string为传入label.text的值
-    NSCharacterSet *nonDigits = [[NSCharacterSet decimalDigitCharacterSet]invertedSet];//创建一个字符串过滤参数,decimalDigitCharacterSet为过滤小数,过滤某个关键词,只需改变 decimalDigitCharacterSet类型  在将此方法增加一个 NSString参数即可
-    NSInteger remainSeconde = [[labelStr stringByTrimmingCharactersInSet:nonDigits]intValue];//获取过滤出来的数值
-    NSString *stringRange = [NSString stringWithFormat:@"%ld",(long)remainSeconde];//将过滤出来的Integer的值转换成String
-    NSRange range = [labelStr rangeOfString:stringRange];//获取过滤出来的数值的位置
-    NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc]initWithString:text];//创建一个带属性的string
-    [attrStr addAttribute:NSForegroundColorAttributeName value:fontColor range:range];//给带属性的string添加属性,attrubute:添加的属性类型（颜色\文字大小\字体等等）,value:改变成的属性参数,range:更改的位置
-    [attrStr addAttribute:NSForegroundColorAttributeName value:fontColor range:NSMakeRange(0,5)];
-    return attrStr;
-}
+//-(NSMutableAttributedString *)chageTextColor:(NSString *)text fontColor:(UIColor *)fontColor
+//{
+//    NSString *labelStr = text; //初始化string为传入label.text的值
+//    NSCharacterSet *nonDigits = [[NSCharacterSet decimalDigitCharacterSet]invertedSet];//创建一个字符串过滤参数,decimalDigitCharacterSet为过滤小数,过滤某个关键词,只需改变 decimalDigitCharacterSet类型  在将此方法增加一个 NSString参数即可
+//    NSInteger remainSeconde = [[labelStr stringByTrimmingCharactersInSet:nonDigits]intValue];//获取过滤出来的数值
+//    NSString *stringRange = [NSString stringWithFormat:@"%ld",(long)remainSeconde];//将过滤出来的Integer的值转换成String
+//    NSRange range = [labelStr rangeOfString:stringRange];//获取过滤出来的数值的位置
+//    NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc]initWithString:text];//创建一个带属性的string
+//    [attrStr addAttribute:NSForegroundColorAttributeName value:fontColor range:range];//给带属性的string添加属性,attrubute:添加的属性类型（颜色\文字大小\字体等等）,value:改变成的属性参数,range:更改的位置
+//    [attrStr addAttribute:NSForegroundColorAttributeName value:fontColor range:NSMakeRange(0,5)];
+//    return attrStr;
+//}
 //-(void)getIfSuccess
 //{
 //    XHNetWorkConfig *net=[XHNetWorkConfig new];

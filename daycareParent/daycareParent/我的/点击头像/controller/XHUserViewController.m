@@ -142,7 +142,7 @@
     }
     else
     {
-        return USER_HEARD-10;
+        return USER_HEARD-20;
     }
 }
 #pragma mark-------修改头像

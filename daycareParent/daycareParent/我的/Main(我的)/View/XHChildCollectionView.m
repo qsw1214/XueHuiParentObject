@@ -24,8 +24,8 @@
         UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
         layout.itemSize = CGSizeMake(USER_HEARD, USER_HEARD*2+20);
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        layout.minimumLineSpacing = 5;
-        layout.sectionInset = UIEdgeInsetsMake(15, 5, 15, 5);
+        layout.minimumLineSpacing = 8;
+        layout.sectionInset = UIEdgeInsetsMake(15, 8, 15, 8);
         _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH,USER_HEARD*2+20) collectionViewLayout:layout];
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.scrollsToTop = NO;
@@ -49,7 +49,7 @@
     if (indexPath.item==_childListArry.count-1) {
         cell.childClassLabel.hidden=YES;
         cell.childNameLabel.text=@"绑定学生";
-        cell.childImageView.image=[UIImage imageNamed:@"bindstudents"];
+        cell.childImageView.image=[UIImage imageNamed:@"ico_bindstudents"];
     }
     else
     {

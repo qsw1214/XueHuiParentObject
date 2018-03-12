@@ -8,6 +8,7 @@
 
 #import "XHRCTableViewCell.h"
 #import "XHMessageUserInfo.h"
+#import "XHRCModel.h"
 @implementation XHRCTableViewCell
 
 - (void)awakeFromNib {
@@ -41,13 +42,14 @@
     }
     return self;
 }
--(void)setItemObject:(RCConversationModel *)model
+-(void)setItemObject:(XHRCModel *)model
 {
-    _titleLab.text=model.conversationTitle;
+    _titleLab.text=model.RCtitle;
     _headImageView.frame=CGRectMake(15, 20, 30, 30);
     _headImageView.layer.cornerRadius=0;
-    _headImageView.image=[UIImage imageNamed:model.senderUserName];
-    //_ContentLab.frame=CGRectMake(80, 35, SCREEN_WIDTH-95, 30);
+    _headImageView.image=[UIImage imageNamed:model.RCtitlePic];
+    _ContentLab.frame=CGRectMake(80, 35, SCREEN_WIDTH-95, 30);
+    _ContentLab.text=model.RCContent;
     _bgLabel.frame=CGRectMake(0, self.contentView.bottom-15, SCREEN_WIDTH, 15);
 
 }

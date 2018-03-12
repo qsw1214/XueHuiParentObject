@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04052DB92056722800D1637F /* XHCookBookHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052DB82056722800D1637F /* XHCookBookHeader.m */; };
+		04052DBC205674A200D1637F /* XHCookBookHeaderItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052DBB205674A200D1637F /* XHCookBookHeaderItemCell.m */; };
+		04052DBE205689C200D1637F /* 预览.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04052DBD205689C200D1637F /* 预览.jpg */; };
 		041649DF20524E7700D2CF4C /* XHDropDownMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 041649D920524E7700D2CF4C /* XHDropDownMenuCell.m */; };
 		041649E020524E7700D2CF4C /* XHDropDownMenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 041649DD20524E7700D2CF4C /* XHDropDownMenuModel.m */; };
 		041649E120524E7700D2CF4C /* XHDropDownMenuControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 041649DE20524E7700D2CF4C /* XHDropDownMenuControl.m */; };
@@ -197,7 +200,6 @@
 		4B632AC81FE11CB800B90B94 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B632AC41FE11CB700B90B94 /* MAMapKit.framework */; };
 		4B632ACA1FE11DFD00B90B94 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B632AC91FE11DFD00B90B94 /* JavaScriptCore.framework */; };
 		4B632ACC1FE11E3A00B90B94 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B632ACB1FE11E3A00B90B94 /* libstdc++.6.0.9.tbd */; };
-		4B71A1BA20060B9D00818046 /* XHCookBookImageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B71A1B920060B9D00818046 /* XHCookBookImageControl.m */; };
 		4B80F1E01FCBE3F700BC7B52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B80F1DF1FCBE3F700BC7B52 /* Assets.xcassets */; };
 		4B80F1E61FCBE3F700BC7B52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B80F1E51FCBE3F700BC7B52 /* main.m */; };
 		4B80F2081FCBE4E400BC7B52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B80F2041FCBE4E400BC7B52 /* AppDelegate.m */; };
@@ -294,8 +296,6 @@
 		4B80F33A1FCC130C00BC7B52 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B80F3391FCC130C00BC7B52 /* MBProgressHUD.m */; };
 		4B8E660E1FD63A460006D641 /* BaseWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8E660D1FD63A460006D641 /* BaseWebView.m */; };
 		4B8E66151FD63FDD0006D641 /* XHCookBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8E66141FD63FDD0006D641 /* XHCookBookViewController.m */; };
-		4B8E66181FD641600006D641 /* XHCookDateContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8E66171FD641600006D641 /* XHCookDateContentView.m */; };
-		4B8E661B1FD641AE0006D641 /* XHCookDetailsContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8E661A1FD641AE0006D641 /* XHCookDetailsContentView.m */; };
 		4B8E661E1FD643400006D641 /* XHCookBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8E661D1FD643400006D641 /* XHCookBookCell.m */; };
 		4B8E66211FD646310006D641 /* XHCookBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8E66201FD646310006D641 /* XHCookBookModel.m */; };
 		4B8E66241FD6463C0006D641 /* XHCookBookFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8E66231FD6463C0006D641 /* XHCookBookFrame.m */; };
@@ -532,6 +532,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04052DB72056722800D1637F /* XHCookBookHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHCookBookHeader.h; sourceTree = "<group>"; };
+		04052DB82056722800D1637F /* XHCookBookHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHCookBookHeader.m; sourceTree = "<group>"; };
+		04052DBA205674A200D1637F /* XHCookBookHeaderItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHCookBookHeaderItemCell.h; sourceTree = "<group>"; };
+		04052DBB205674A200D1637F /* XHCookBookHeaderItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHCookBookHeaderItemCell.m; sourceTree = "<group>"; };
+		04052DBD205689C200D1637F /* 预览.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "预览.jpg"; sourceTree = "<group>"; };
 		041649D920524E7700D2CF4C /* XHDropDownMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDropDownMenuCell.m; sourceTree = "<group>"; };
 		041649DA20524E7700D2CF4C /* XHDropDownMenuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDropDownMenuModel.h; sourceTree = "<group>"; };
 		041649DB20524E7700D2CF4C /* XHDropDownMenuControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDropDownMenuControl.h; sourceTree = "<group>"; };
@@ -897,8 +902,6 @@
 		4B632AC41FE11CB700B90B94 /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
 		4B632AC91FE11DFD00B90B94 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		4B632ACB1FE11E3A00B90B94 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
-		4B71A1B820060B9D00818046 /* XHCookBookImageControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHCookBookImageControl.h; sourceTree = "<group>"; };
-		4B71A1B920060B9D00818046 /* XHCookBookImageControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHCookBookImageControl.m; sourceTree = "<group>"; };
 		4B80F1D31FCBE3F700BC7B52 /* daycareParent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = daycareParent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B80F1DF1FCBE3F700BC7B52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B80F1E41FCBE3F700BC7B52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1098,10 +1101,6 @@
 		4B8E660D1FD63A460006D641 /* BaseWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseWebView.m; sourceTree = "<group>"; };
 		4B8E66131FD63FDD0006D641 /* XHCookBookViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHCookBookViewController.h; sourceTree = "<group>"; };
 		4B8E66141FD63FDD0006D641 /* XHCookBookViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHCookBookViewController.m; sourceTree = "<group>"; };
-		4B8E66161FD641600006D641 /* XHCookDateContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHCookDateContentView.h; sourceTree = "<group>"; };
-		4B8E66171FD641600006D641 /* XHCookDateContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHCookDateContentView.m; sourceTree = "<group>"; };
-		4B8E66191FD641AE0006D641 /* XHCookDetailsContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHCookDetailsContentView.h; sourceTree = "<group>"; };
-		4B8E661A1FD641AE0006D641 /* XHCookDetailsContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHCookDetailsContentView.m; sourceTree = "<group>"; };
 		4B8E661C1FD643400006D641 /* XHCookBookCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHCookBookCell.h; sourceTree = "<group>"; };
 		4B8E661D1FD643400006D641 /* XHCookBookCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHCookBookCell.m; sourceTree = "<group>"; };
 		4B8E661F1FD646310006D641 /* XHCookBookModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHCookBookModel.h; sourceTree = "<group>"; };
@@ -3024,6 +3023,7 @@
 		4B8E66101FD63FC50006D641 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				04052DBD205689C200D1637F /* 预览.jpg */,
 				4B8E661F1FD646310006D641 /* XHCookBookModel.h */,
 				4B8E66201FD646310006D641 /* XHCookBookModel.m */,
 				4B8E66221FD6463C0006D641 /* XHCookBookFrame.h */,
@@ -3035,14 +3035,12 @@
 		4B8E66111FD63FC50006D641 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4B8E66161FD641600006D641 /* XHCookDateContentView.h */,
-				4B8E66171FD641600006D641 /* XHCookDateContentView.m */,
-				4B8E66191FD641AE0006D641 /* XHCookDetailsContentView.h */,
-				4B8E661A1FD641AE0006D641 /* XHCookDetailsContentView.m */,
 				4B8E661C1FD643400006D641 /* XHCookBookCell.h */,
 				4B8E661D1FD643400006D641 /* XHCookBookCell.m */,
-				4B71A1B820060B9D00818046 /* XHCookBookImageControl.h */,
-				4B71A1B920060B9D00818046 /* XHCookBookImageControl.m */,
+				04052DBA205674A200D1637F /* XHCookBookHeaderItemCell.h */,
+				04052DBB205674A200D1637F /* XHCookBookHeaderItemCell.m */,
+				04052DB72056722800D1637F /* XHCookBookHeader.h */,
+				04052DB82056722800D1637F /* XHCookBookHeader.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4088,6 +4086,7 @@
 				04E5D14E1FD39F3F0021B842 /* XHPriviTableViewCell.xib in Resources */,
 				4B3800F4200754D5004E74AC /* pageControlDot@2x.png in Resources */,
 				8C3E55B21FD5215F0013002A /* XHTPayTitleableViewCell.xib in Resources */,
+				04052DBE205689C200D1637F /* 预览.jpg in Resources */,
 				8C7E98301FECF1660096288E /* SGQRCode.bundle in Resources */,
 				04E5D1441FD399800021B842 /* XHVIPViewController.xib in Resources */,
 				4B577FDA1FF63FB30023ACBC /* LICENSE in Resources */,
@@ -4263,7 +4262,6 @@
 				4B80F3231FCBFD6F00BC7B52 /* NSDictionary+MTLManipulationAdditions.m in Sources */,
 				04291A721FD2A101002D3B5B /* XHBackLabel.m in Sources */,
 				4B278ADC2010417B00293F30 /* RCDLiveEmojiPageControl.m in Sources */,
-				4B8E661B1FD641AE0006D641 /* XHCookDetailsContentView.m in Sources */,
 				4B80F27C1FCBF04800BC7B52 /* MJRefreshComponent.m in Sources */,
 				4B31265F1FDA8FFB000CE894 /* XHAddressBookLecturesContentView.m in Sources */,
 				8C79740E1FE7795800AF6F6A /* VTGTMBase64.m in Sources */,
@@ -4324,7 +4322,6 @@
 				8C6240881FD8D2B800E6C031 /* XHComplieAddressViewController.m in Sources */,
 				4B3126351FD93CC6000CE894 /* SDCycleScrollView.m in Sources */,
 				8CDDA8B61FDA5CEE000B3BAB /* XHChatViewController.m in Sources */,
-				4B8E66181FD641600006D641 /* XHCookDateContentView.m in Sources */,
 				4B34187A1FFDC14C00A5EC56 /* ZFBrightnessView.m in Sources */,
 				8C019F671FF4C365005EBC2C /* FMDatabaseAdditions.m in Sources */,
 				4B91107B1FD7BA3300841505 /* XHSyllabusCellContentView.m in Sources */,
@@ -4335,6 +4332,7 @@
 				041649E4205251A400D2CF4C /* XHAddressBookHeader.m in Sources */,
 				8C16422D20568892001DCA01 /* XHSubmitView.m in Sources */,
 				4B5A3AF11FCEA9D000504229 /* XHSafeRegisterViewController.m in Sources */,
+				04052DBC205674A200D1637F /* XHCookBookHeaderItemCell.m in Sources */,
 				4BB792B91FD780C300E0ED72 /* XHAskforLeaveSubmitControl.m in Sources */,
 				4BEBC8D420045EDA00FD6915 /* XHDynamicsHeaderControl.m in Sources */,
 				4B80F28B1FCBF04800BC7B52 /* MJRefreshConst.m in Sources */,
@@ -4342,6 +4340,7 @@
 				4B80F2D11FCBF04F00BC7B52 /* UIButton+WebCache.m in Sources */,
 				8C62409F1FD8E3BF00E6C031 /* XHAboutUsViewController.m in Sources */,
 				8C7EF5421FE109B200C029F2 /* XHProtocolViewController.m in Sources */,
+				04052DB92056722800D1637F /* XHCookBookHeader.m in Sources */,
 				4B577FA71FF5C4F60023ACBC /* XHNoticeModel.m in Sources */,
 				4B632AAF1FE0DB2A00B90B94 /* XHTeacherAddressBookCell.m in Sources */,
 				4B3126301FD93CC6000CE894 /* TAAbstractDotView.m in Sources */,
@@ -4397,7 +4396,6 @@
 				4B80F2211FCBEC2B00BC7B52 /* BaseNavigationControlItem.m in Sources */,
 				4B07CC2E1FD4ED7500B2DBDA /* XHParentsMeetingCell.m in Sources */,
 				04B7400D1FD81D89008627CF /* XHAddTableViewCell.m in Sources */,
-				4B71A1BA20060B9D00818046 /* XHCookBookImageControl.m in Sources */,
 				8C7E98311FECF1660096288E /* SGQRCodeAlbumManager.m in Sources */,
 				8C922BD91FDE65EB00BA0EAB /* XHForgetViewController.m in Sources */,
 				4BB792D61FD7939500E0ED72 /* XHAchievementFrame.m in Sources */,

@@ -14,6 +14,9 @@
 
 @property (nonatomic,strong) XHTeacherAddressBookContentView *contentView; //!< 内容视图
 
+@property (nonatomic,strong) BaseTableView *tableView;
+
+
 
 @end
 
@@ -36,8 +39,24 @@
 {
     if (subview)
     {
-        [self.view addSubview:self.contentView];
-        [self.contentView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.height)];
+        [self.view addSubview:self.tableView];
+        [self.tableView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.height)];
+        
+        
+        
+        for (int i = 0; i< 10;i++)
+        {
+            XHTeacherAddressBookFrame *frame = [[XHTeacherAddressBookFrame alloc]init];
+            XHTeacherAddressBookModel *model = [[XHTeacherAddressBookModel alloc]init];
+            [model setTeacherName:@"姚立志"];
+            [model setPhone:@"15515667760"];
+            [model setHeaderUrl:@""];
+            [frame setModel:model];
+            [self.dataArray addObject:frame];
+        }
+        
+        
+        [self.tableView reloadData];
     }
 }
 
@@ -49,6 +68,30 @@
 
 
 #pragma mark - Deletage Method
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.dataArray count];
+}
+
+
+- (XHTeacherAddressBookCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    XHTeacherAddressBookCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil)
+    {
+        cell = [[XHTeacherAddressBookCell alloc]init];
+    }
+    [cell setItemFrame:[self.dataArray objectAtIndex:indexPath.row]];
+    return cell;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [[self.dataArray objectAtIndex:indexPath.row] cellHeight];
+}
+
 #pragma mark XHTeacherAddressBookContentViewDeletage
 -(void)didSelectRowAtIndexItemObject:(XHTeacherAddressBookFrame *)object
 {
@@ -69,15 +112,17 @@
 }
 
 #pragma mark - Getter / Setter
--(XHTeacherAddressBookContentView *)contentView
+-(BaseTableView *)tableView
 {
-    if (!_contentView)
+    if (!_tableView)
     {
-        _contentView = [[XHTeacherAddressBookContentView alloc]init];
-        [_contentView setDeletage:self];
+        _tableView = [[BaseTableView alloc]init];
+        [_tableView setDelegate:self];
+        [_tableView setDataSource:self];
     }
-    return _contentView;
+    return _tableView;
 }
+
 
 
 

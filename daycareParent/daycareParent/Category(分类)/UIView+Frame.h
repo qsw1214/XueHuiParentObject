@@ -33,12 +33,22 @@
  */
 -(void)setLayerCornerRadius:(CGFloat)radius;
 
+
+
 #pragma mark 设置layer的弧度
 /**
  设置layer的宽度
  @param width layer宽度
  */
 -(void)setLayerBorderWidth:(CGFloat)width;
+
+
+#pragma mark 设置layer的颜色
+/**
+ 设置边框的颜色
+
+ @param color 边框要设置的颜色
+ */
 -(void)setBorderColor:(UIColor*)color;
 
 

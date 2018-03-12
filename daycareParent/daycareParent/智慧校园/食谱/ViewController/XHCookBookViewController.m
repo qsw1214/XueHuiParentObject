@@ -7,13 +7,18 @@
 //
 
 #import "XHCookBookViewController.h"
-#import "XHCookDateContentView.h"
-#import "XHCookDetailsContentView.h"
+#import "XHCookBookHeader.h"
+#import "XHCookBookCell.h"
 
-@interface XHCookBookViewController () <XHCookDateContentViewDeletage,XHCustomViewDelegate>
 
-@property (nonatomic,strong) XHCookDateContentView *dateContentView; //!< 日期内容视图
-@property (nonatomic,strong) XHCookDetailsContentView *detailsContentView; //!< 详情内容视图
+
+@interface XHCookBookViewController () <UITableViewDelegate,UITableViewDataSource>
+
+
+
+@property (nonatomic,strong) XHCookBookHeader *cookBookHeader;  //!< 头部星期选择视图
+@property (nonatomic,strong) NSMutableArray *cookBookItemArray; //!< 食谱内容数组
+@property (nonatomic,strong) BaseTableView *tableView; //!< 表视图
 
 @end
 
@@ -32,11 +37,6 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    if ([[XHUserInfo sharedUserInfo].childListArry count])
-    {
-        XHChildListModel *childModel = [[XHUserInfo sharedUserInfo].childListArry firstObject];
-        [self getCookBookWithSchoolId:childModel.schoolId];
-    }
     
 }
 
@@ -46,29 +46,88 @@
 {
     if (subview)
     {
-        [self.view addSubview:self.dateContentView];
-        [self.view addSubview:self.detailsContentView];
-        [self.dateContentView resetFrame:CGRectMake(0, self.navigationView.bottom, 90.0, SCREEN_HEIGHT-self.navigationView.height)];
-        [self.detailsContentView resetFrame:CGRectMake(self.dateContentView.right, self.dateContentView.top, SCREEN_WIDTH-self.dateContentView.width, self.dateContentView.height)];
-        [self setChildListArry:[XHUserInfo sharedUserInfo].childListArry];
+        [self.view addSubview:self.cookBookHeader];
+        [self.cookBookHeader resetFrame:CGRectMake(15.0, self.navigationView.bottom, (SCREEN_WIDTH-30.0), 80.0)];
+        [self.view addSubview:self.tableView];
+        [self.tableView resetFrame:CGRectMake(0, self.cookBookHeader.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.cookBookHeader.bottom)];
+        
+        
+        
+        
+        for (int i = 0; i< 1; i++)
+        {
+            XHCookBookFrame *frame = [[XHCookBookFrame alloc]init];
+            XHCookBookModel *model = [[XHCookBookModel alloc]init];
+            [model setTitle:[NSString stringWithFormat:@"周%d",i]];
+            [model setModeType:CookBookWeekType];
+            [model setSelectType:CookBookSelectType];
+            [frame setModel:model];
+            [self.dataArray addObject:frame];
+        }
+        
+        for (int i = 0; i< 4; i++)
+        {
+            XHCookBookFrame *frame = [[XHCookBookFrame alloc]init];
+            XHCookBookModel *model = [[XHCookBookModel alloc]init];
+            [model setTitle:[NSString stringWithFormat:@"周%d",i]];
+            [model setModeType:CookBookWeekType];
+            [model setSelectType:CookBookNormalType];
+            [frame setModel:model];
+            [self.dataArray addObject:frame];
+        }
+        
+        [self.cookBookHeader setItemArray:self.dataArray];
+        
+        
+        
+        
+        
+        for (int i = 0; i< 5; i++)
+        {
+            XHCookBookFrame *frame = [[XHCookBookFrame alloc]init];
+            XHCookBookModel *model = [[XHCookBookModel alloc]init];
+            [model setTitle:@"早餐"];
+            [model setContent:@"肉末菜粥、豆沙包、芹菜豆干"];
+            [model setPreviewUrl:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1520858413773&di=73ddf5c3cc4b1ea6af56b308aa2a7c56&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fbf096b63f6246b60553a62a0e1f81a4c510fa22a.jpg"];
+            [model setModeType:CookBookDetailsType];
+            [model setSelectType:CookBookNormalType];
+            [frame setModel:model];
+            [self.cookBookItemArray addObject:frame];
+        }
+        
+        [self.tableView reloadData];
+        
     }
+    
 }
 
 #pragma mark - Deletage Method
-#pragma mark XHCookDateContentViewDeletage
--(void)didSelectItemObject:(XHCookBookFrame *)frame
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    [self.detailsContentView setItemObject:frame];
+    return [self.cookBookItemArray count];
+}
+
+- (XHCookBookCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    XHCookBookCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil)
+    {
+        cell = [[XHCookBookCell alloc]init];
+    }
+    [cell setItemFrame:[self.cookBookItemArray objectAtIndex:indexPath.row]];
+    return cell;
+}
+
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [[self.cookBookItemArray objectAtIndex:indexPath.row] cellHeight];
 }
 
 
 
-#pragma mark XHCustomViewDelegate (选择孩子列表)
--(void)getChildModel:(XHChildListModel *)childModel
-{
-    [self setRightItemTitle:[childModel studentName]];
-    [self getCookBookWithSchoolId:childModel.schoolId];
-}
+
+
 
 
 
@@ -87,7 +146,7 @@
                   XHCookBookFrame *frame = [[XHCookBookFrame alloc]init];
                   XHCookBookModel *model = [[XHCookBookModel alloc]init];
                   [model setDate:[obj objectItemKey:@"date"]];
-                  [model setModeType:CookBookDateType];
+                  [model setModeType:CookBookWeekType];
                   NSArray <NSDictionary*> *itemArray = [obj objectItemKey:@"recipe"];
                   [itemArray enumerateObjectsUsingBlock:^(NSDictionary *itemObj, NSUInteger idx, BOOL *stop)
                    {
@@ -103,49 +162,54 @@
                   [self.dataArray addObject:frame];
               }];
              
-             [self.dateContentView setItemArray:self.dataArray];
+//             [self setItemArray:self.dataArray];
          }
      } error:^(NSError *error)
      {
-         [self.dateContentView setItemArray:self.dataArray];
+//         [self setItemArray:self.dataArray];
      }];
 }
 
-#pragma mark - Getter / Setter
--(XHCookDateContentView *)dateContentView
-{
-    if (_dateContentView == nil)
-    {
-        _dateContentView = [[XHCookDateContentView alloc]initWithDeletage:self];
-    }
-    return _dateContentView;
-}
-
--(XHCookDetailsContentView *)detailsContentView
-{
-    if (_detailsContentView == nil)
-    {
-        _detailsContentView = [[XHCookDetailsContentView alloc]initWithDeletage:self];
-    }
-    return _detailsContentView;
-}
 
 
 #pragma mark 右侧按钮相应的方法
 -(void)rightItemAction:(BaseNavigationControlItem*)sender
 {
-    if (self.childListView.isExist==NO) {
-        self.childListView.delegate=self;
-        [self.view addSubview:self.childListView];
-        self.childListView.isExist=YES;
-    }
-    else
-    {
-        [self.childListView removeFromSuperview];
-        self.childListView.isExist=NO;
-    }
+    
 }
 
 
+
+#pragma mark - Getter /  Setter
+-(XHCookBookHeader *)cookBookHeader
+{
+    if (!_cookBookHeader)
+    {
+        _cookBookHeader = [[XHCookBookHeader alloc]init];
+    }
+    return _cookBookHeader;
+}
+
+
+-(NSMutableArray *)cookBookItemArray
+{
+    if (!_cookBookItemArray)
+    {
+        _cookBookItemArray = [NSMutableArray array];
+    }
+    return _cookBookItemArray;
+}
+
+
+-(BaseTableView *)tableView
+{
+    if (!_tableView)
+    {
+        _tableView = [[BaseTableView alloc]init];
+        [_tableView setDelegate:self];
+        [_tableView setDataSource:self];
+    }
+    return _tableView;
+}
 
 @end

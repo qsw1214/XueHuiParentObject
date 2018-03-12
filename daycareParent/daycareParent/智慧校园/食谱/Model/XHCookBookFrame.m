@@ -16,20 +16,19 @@
     _model = model;
     switch (model.modeType)
     {
-        case CookBookDateType:
+        case CookBookWeekType:
         {
             [self setItemFrame:CGRectMake(0, 0, 90.0, 70.0)];
+            [self setItemSize:CGSizeMake(50.0, 50.0)];
         }
             break;
         case CookBookDetailsType:
         {
-            CGSize contentSize = [NSObject contentSizeWithTitle:model.content withFontOfSize:FontLevel4 withWidth:(SCREEN_WIDTH-210.0)];
-            [self setContentFrame:CGRectMake(0, 0, contentSize.width, (contentSize.height > 50 ? contentSize.height : 50.0))];
-            [self setItemFrame:CGRectMake(0, 0,(SCREEN_WIDTH-90.0) , 40.0+self.contentFrame.size.height)];
+            [self setItemFrame:CGRectMake(0, 0, 90.0, 350.0)];
+            [self setItemSize:CGSizeMake(SCREEN_WIDTH, 350.0)];
         }
             break;
     }
-    
     
     [self setCellHeight:self.itemFrame.size.height];
 

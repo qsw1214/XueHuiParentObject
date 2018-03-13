@@ -94,6 +94,7 @@
 #define FontLevel0 [UIFont systemFontOfSize:22.0]  //!< 22.0
 #define FontLevel1 [UIFont systemFontOfSize:18.0]  //!< 18.0
 #define FontLevel2 [UIFont systemFontOfSize:16.0]  //!< 16.0
+#define FontLevel2A [UIFont systemFontOfSize:15.0]  //!< 15.0
 #define FontLevel3 [UIFont systemFontOfSize:14.0]  //!< 14.0
 #define FontLevel4 [UIFont systemFontOfSize:12.0]  //!< 12.0
 #define FontLevel5 [UIFont systemFontOfSize:10.0]  //!< 10.0

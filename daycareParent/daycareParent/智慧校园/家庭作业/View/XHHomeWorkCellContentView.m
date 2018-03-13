@@ -76,7 +76,7 @@
             //设置用户名
             [self.userNameLael setFrame:CGRectMake((self.headerImageView.right+10.0), self.headerImageView.top, (itemFrame.itemFrame.size.width-((self.headerImageView.right+10.0)+55.0)), 20.0)];
             //设置日期
-            [self.dateLabel setFrame:CGRectMake(self.userNameLael.left, self.userNameLael.bottom, self.userNameLael.width, self.userNameLael.height)];
+            [self.dateLabel setFrame:CGRectMake(self.userNameLael.left, (self.userNameLael.bottom+5.0), self.userNameLael.width, (self.userNameLael.height-5.0))];
             [self.subjectLabel setFrame:CGRectMake((itemFrame.itemFrame.size.width-45.0), (self.headerImageView.top+2.5), 35.0, 35.0)];
             //设置内容视图
             [self.contentLabel setFrame:CGRectMake(self.headerImageView.left, (self.headerImageView.bottom+10.0), (itemFrame.contentSize.width), (itemFrame.contentSize.height))];
@@ -203,7 +203,7 @@
     {
         _dateLabel = [[UILabel alloc]init];
         [_dateLabel setTextColor:RGB(104,111,121)];
-        [_dateLabel setFont:FontLevel3];
+        [_dateLabel setFont:FontLevel2A];
     }
     return _dateLabel;
 }
@@ -213,7 +213,7 @@
     if (_contentLabel == nil)
     {
         _contentLabel = [[UILabel alloc]init];
-        [_contentLabel setFont:FontLevel2];
+        [_contentLabel setFont:FontLevel2A];
         [_contentLabel setNumberOfLines:0];
         [_contentLabel setTextColor:RGB(51,51,51)];
     }

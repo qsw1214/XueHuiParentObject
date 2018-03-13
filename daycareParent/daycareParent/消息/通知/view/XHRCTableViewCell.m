@@ -45,13 +45,33 @@
 -(void)setItemObject:(XHRCModel *)model
 {
     _titleLab.text=model.RCtitle;
-    _headImageView.frame=CGRectMake(15, 20, 30, 30);
+    _headImageView.frame=CGRectMake(15, 15, 40, 40);
     _headImageView.layer.cornerRadius=0;
     _headImageView.image=[UIImage imageNamed:model.RCtitlePic];
     _ContentLab.frame=CGRectMake(80, 35, SCREEN_WIDTH-95, 30);
     _ContentLab.text=model.RCContent;
     _bgLabel.frame=CGRectMake(0, self.contentView.bottom-15, SCREEN_WIDTH, 15);
+    _smallLab.text=@"10";
+    _smallLab.frame=CGRectMake(50, 7, [self getCustomWidth:_smallLab.text], 15);
+    _smallLab.layer.cornerRadius=7.5;
 
+}
+-(CGFloat)getCustomWidth:(NSString *)str
+{
+    NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:14.0]};
+    
+    CGSize textSize = [str boundingRectWithSize:CGSizeMake(22, 22) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;;
+    if (str.length==0) {
+        return 0;
+    }
+    if (str.length==1) {
+        return 15;
+    }
+    else
+    {
+        return textSize.width+8;
+    }
+    
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

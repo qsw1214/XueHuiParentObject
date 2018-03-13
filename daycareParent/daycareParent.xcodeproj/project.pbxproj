@@ -358,6 +358,9 @@
 		8C01A2352006E94800E4D768 /* NJKWebViewProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C01A2322006E94800E4D768 /* NJKWebViewProgress.m */; };
 		8C01A2362006E94800E4D768 /* NJKWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C01A2342006E94800E4D768 /* NJKWebViewProgressView.m */; };
 		8C1642232056184E001DCA01 /* XHRCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1642222056184E001DCA01 /* XHRCModel.m */; };
+		8C1642272056741D001DCA01 /* XHLoseSubjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1642262056741D001DCA01 /* XHLoseSubjectView.m */; };
+		8C16422A20567887001DCA01 /* XHSubjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C16422920567887001DCA01 /* XHSubjectModel.m */; };
+		8C16422D20568892001DCA01 /* XHSubmitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C16422C20568892001DCA01 /* XHSubmitView.m */; };
 		8C2246B01FF2262200B7A07F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2246AF1FF2262200B7A07F /* WebKit.framework */; };
 		8C2311641FE216A00013F476 /* XHChildListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2311631FE216A00013F476 /* XHChildListModel.m */; };
 		8C2311671FE22C330013F476 /* XHVIPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2311661FE22C330013F476 /* XHVIPModel.m */; };
@@ -1220,6 +1223,12 @@
 		8C01A2342006E94800E4D768 /* NJKWebViewProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgressView.m; sourceTree = "<group>"; };
 		8C1642212056184E001DCA01 /* XHRCModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHRCModel.h; sourceTree = "<group>"; };
 		8C1642222056184E001DCA01 /* XHRCModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHRCModel.m; sourceTree = "<group>"; };
+		8C1642252056741D001DCA01 /* XHLoseSubjectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHLoseSubjectView.h; sourceTree = "<group>"; };
+		8C1642262056741D001DCA01 /* XHLoseSubjectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHLoseSubjectView.m; sourceTree = "<group>"; };
+		8C16422820567887001DCA01 /* XHSubjectModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHSubjectModel.h; sourceTree = "<group>"; };
+		8C16422920567887001DCA01 /* XHSubjectModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHSubjectModel.m; sourceTree = "<group>"; };
+		8C16422B20568892001DCA01 /* XHSubmitView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHSubmitView.h; sourceTree = "<group>"; };
+		8C16422C20568892001DCA01 /* XHSubmitView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHSubmitView.m; sourceTree = "<group>"; };
 		8C2246AF1FF2262200B7A07F /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		8C2311621FE216A00013F476 /* XHChildListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHChildListModel.h; sourceTree = "<group>"; };
 		8C2311631FE216A00013F476 /* XHChildListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHChildListModel.m; sourceTree = "<group>"; };
@@ -2318,6 +2327,8 @@
 				4B07CC181FD4DAB800B2DBDA /* XHLeaveRecordModel.m */,
 				4B07CC1A1FD4DAC800B2DBDA /* XHLeaveRecordFrame.h */,
 				4B07CC1B1FD4DAC800B2DBDA /* XHLeaveRecordFrame.m */,
+				8C16422820567887001DCA01 /* XHSubjectModel.h */,
+				8C16422920567887001DCA01 /* XHSubjectModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2343,6 +2354,10 @@
 				4BB792B81FD780C300E0ED72 /* XHAskforLeaveSubmitControl.m */,
 				4BB792AC1FD7752B00E0ED72 /* XHAskforLeaveArrowCell.h */,
 				4BB792AD1FD7752B00E0ED72 /* XHAskforLeaveArrowCell.m */,
+				8C1642252056741D001DCA01 /* XHLoseSubjectView.h */,
+				8C1642262056741D001DCA01 /* XHLoseSubjectView.m */,
+				8C16422B20568892001DCA01 /* XHSubmitView.h */,
+				8C16422C20568892001DCA01 /* XHSubmitView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4282,6 +4297,7 @@
 				4B80F2D71FCBF04F00BC7B52 /* UIImageView+WebCache.m in Sources */,
 				4B5A3AF41FCEAA0300504229 /* XHRegisterModel.m in Sources */,
 				4B278ADF201041C700293F30 /* RCDLiveCollectionViewHeader.m in Sources */,
+				8C16422A20567887001DCA01 /* XHSubjectModel.m in Sources */,
 				4B80F32F1FCC113500BC7B52 /* UIView+Frame.m in Sources */,
 				8C67F8341FD68570007DFD53 /* XHSelectFileTableViewCell.m in Sources */,
 				4B80F1E61FCBE3F700BC7B52 /* main.m in Sources */,
@@ -4303,6 +4319,7 @@
 				4BBC43481FD0F68200555846 /* BaseFrame.m in Sources */,
 				4B49763A1FECFCB400338D37 /* XHDynamicsPreviewControl.m in Sources */,
 				041649E4205251A400D2CF4C /* XHAddressBookHeader.m in Sources */,
+				8C16422D20568892001DCA01 /* XHSubmitView.m in Sources */,
 				4B5A3AF11FCEA9D000504229 /* XHSafeRegisterViewController.m in Sources */,
 				04052DBC205674A200D1637F /* XHCookBookHeaderItemCell.m in Sources */,
 				4BB792B91FD780C300E0ED72 /* XHAskforLeaveSubmitControl.m in Sources */,
@@ -4395,6 +4412,7 @@
 				4BBC43451FD0F01D00555846 /* XHCGRect.m in Sources */,
 				4B80F2F01FCBF09900BC7B52 /* AFNetworkingHelper.m in Sources */,
 				8C3E55A81FD4F5B00013002A /* XHCustomPickerView.m in Sources */,
+				8C1642272056741D001DCA01 /* XHLoseSubjectView.m in Sources */,
 				4B4A00201FE276A500B8A8F8 /* XHPreviewModel.m in Sources */,
 				4B80F2EC1FCBF08800BC7B52 /* AFURLResponseSerialization.m in Sources */,
 				4B278AA420103E8A00293F30 /* XHLiveChatRoomViewController.m in Sources */,

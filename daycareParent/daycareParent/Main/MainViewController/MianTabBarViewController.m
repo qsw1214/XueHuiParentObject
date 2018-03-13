@@ -84,7 +84,7 @@
 -(void)reloadIMBadge
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSInteger aaa=(NSInteger)[RCIMClient sharedRCIMClient].getTotalUnreadCount;
+        NSInteger aaa=(NSInteger)[RCIMClient sharedRCIMClient].getTotalUnreadCount+[XHUserInfo sharedUserInfo].sum;
         UILabel *smallLabel = [self.customTabBarView viewWithTag:1008611];
         UIButton *button = [self.customTabBarView viewWithTag: 1];
         smallLabel.hidden=NO;

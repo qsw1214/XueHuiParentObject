@@ -61,14 +61,15 @@
     
     [self.conversationListTableView registerClass:[XHRCTableViewCell class] forCellReuseIdentifier:@"RongYunListCell"];
     
-    self.conversationListTableView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshModel)];
+    self.conversationListTableView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshHead)];
     
     //进入刷新状态
     [self.conversationListTableView.header beginRefreshing];
     
 }
--(void)refreshModel
+-(void)refreshHead
 {
+    [XHUserInfo sharedUserInfo].sum=0;
     for (int i = 0; i<3; i++)
     {
         XHRCModel *model = [[XHRCModel alloc] init];
@@ -76,13 +77,17 @@
         model.RCtitle=kTitleList[i];
         model.RCtitlePic=kTitlePic[i];
         model.RCContent=@"123456";
+        model.sum=@"10";
+        [XHUserInfo sharedUserInfo].sum=[XHUserInfo sharedUserInfo].sum+[model.sum integerValue];
         [self.conversationListDataSource replaceObjectAtIndex:i withObject:model];
         [self.mouArry addObject:model];
     }
     [self.conversationListTableView reloadData];
    
     [self.conversationListTableView.header endRefreshing];
-    //[self refreshConversationTableViewIfNeeded];
+    [XHUserInfo sharedUserInfo].sum= [XHUserInfo sharedUserInfo].sum-10;
+    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [app reloadIMBadge];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -104,38 +109,14 @@
     }
    
 }
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
-    XHRCModel *model = [self.conversationListDataSource objectAtIndex:indexPath.row];
-    if(model.conversationModelType == RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION){
-        return UITableViewCellEditingStyleNone;
-    }else{
-        return UITableViewCellEditingStyleDelete;
-    }
-}
+
 - (RCConversationBaseCell *)rcConversationListTableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     
     XHRCTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RongYunListCell" forIndexPath:indexPath];
     [cell setItemObject:self.conversationListDataSource[indexPath.row] atIndex:indexPath.row];
      self.conversationListTableView.separatorColor =LineViewColor;
-   [self.conversationListTableView deselectRowAtIndexPath:indexPath animated:YES];
+   
     return cell;
-}
-
--(UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH ,15)];
-    view.backgroundColor = LineViewColor;
-    return view;
-    
-}
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBar.hidden=YES;
-    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [app reloadIMBadge];
 }
 
 /**
@@ -147,6 +128,8 @@
  */
 -(void)onSelectedTableRow:(RCConversationModelType)conversationModelType conversationModel:(RCConversationModel *)model atIndexPath:(NSIndexPath *)indexPath
 {
+    [self.conversationListTableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     if (indexPath.row>2)
     {
         AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -173,6 +156,14 @@
     }
     
 }
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    XHRCModel *model = [self.conversationListDataSource objectAtIndex:indexPath.row];
+    if(model.conversationModelType == RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION){
+        return UITableViewCellEditingStyleNone;
+    }else{
+        return UITableViewCellEditingStyleDelete;
+    }
+}
 - (void)notifyUpdateUnreadMessageCount
 {
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -192,11 +183,11 @@
         for (int i = 0; i<kTitleList.count; i++) {
             XHRCModel *model = [[XHRCModel alloc]init];
             model.conversationModelType = RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION;
-            model.RCtitle=kTitleList[i];
-            model.RCtitlePic=kTitlePic[i];
+//            model.RCtitle=kTitleList[i];
+//            model.RCtitlePic=kTitlePic[i];
             [self.conversationListDataSource insertObject:model atIndex:i];
         }
-    [self refreshModel];
+    [self refreshHead];
     return self.conversationListDataSource;
 }
 
@@ -255,6 +246,13 @@
         _mouArry=[[NSMutableArray alloc] init];
     }
     return _mouArry;
+}
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden=YES;
+//    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//    [app reloadIMBadge];
 }
 /*
 #pragma mark - Navigation

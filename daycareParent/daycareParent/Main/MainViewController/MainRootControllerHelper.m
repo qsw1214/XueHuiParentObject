@@ -18,9 +18,6 @@ static MainRootControllerHelper *rootHelper = nil;
 
 + (instancetype)sharedRootHelperHelper
 {
-    
-    
-    
     static dispatch_once_t onceToken;
     
     dispatch_once(&onceToken, ^{

@@ -18,9 +18,7 @@
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        _headImageView=[[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 60, 60)];
-        _headImageView.layer.cornerRadius=30;
-        _headImageView.layer.masksToBounds=YES;
+        _headImageView=[[UIImageView alloc] initWithFrame:CGRectMake(15, 15, 40, 40)];
         [self.contentView addSubview:_headImageView];
         _smallLab=[[UILabel alloc] init];
         _smallLab.textAlignment=NSTextAlignmentCenter;
@@ -28,6 +26,7 @@
         _smallLab.textColor=[UIColor whiteColor];
         _smallLab.layer.masksToBounds=YES;
         _smallLab.backgroundColor=[UIColor redColor];
+        _smallLab.layer.cornerRadius=7.5;
         [self.contentView addSubview:_smallLab];
         _titleLab=[[XHBaseLabel alloc] initWithFrame:CGRectMake(80, 0, 90, 30)];
         [self.contentView addSubview:_titleLab];
@@ -35,6 +34,7 @@
         _detailLab.textAlignment=NSTextAlignmentRight;
         [self.contentView addSubview:_detailLab];
         _ContentLab=[[XHBackLabel alloc] init];
+        _ContentLab.frame=CGRectMake(80, 35, SCREEN_WIDTH-95, 30);
         [self.contentView addSubview:_ContentLab];
         _bgLabel=[[UILabel alloc] init];
         _bgLabel.backgroundColor=RGB(239, 239, 239);
@@ -44,16 +44,17 @@
 }
 -(void)setItemObject:(XHRCModel *)model atIndex:(NSInteger)Index
 {
+    [self resetFrame:model atIndex:Index];
     _titleLab.text=model.RCtitle;
-    _headImageView.frame=CGRectMake(15, 15, 40, 40);
-    _headImageView.layer.cornerRadius=0;
     _headImageView.image=[UIImage imageNamed:model.RCtitlePic];
-    _ContentLab.frame=CGRectMake(80, 35, SCREEN_WIDTH-95, 30);
     _ContentLab.text=model.RCContent;
-    _bgLabel.frame=CGRectMake(0, self.contentView.bottom-15, SCREEN_WIDTH, 15);
-    _smallLab.text=@"10";
+    
+}
+-(void)resetFrame:(XHRCModel *)model atIndex:(NSInteger)Index
+{
+    _smallLab.text=model.sum;
     _smallLab.frame=CGRectMake(50, 7, [self getCustomWidth:_smallLab.text], 15);
-    _smallLab.layer.cornerRadius=7.5;
+    _bgLabel.frame=CGRectMake(0, self.contentView.bottom-15, SCREEN_WIDTH, 15);
     if (Index==2)
     {
         self.bgLabel.hidden=NO;
@@ -61,19 +62,27 @@
     
     else
     {
+        if (Index==0)
+        {
+            self.smallLab.hidden=YES;
+        }
+        else
+        {
+            self.smallLab.hidden=NO;
+        }
         self.bgLabel.hidden=YES;
-        self.backgroundColor=[UIColor whiteColor];
     }
 }
 -(CGFloat)getCustomWidth:(NSString *)str
 {
     NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:14.0]};
-    
     CGSize textSize = [str boundingRectWithSize:CGSizeMake(22, 22) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;;
-    if (str.length==0) {
+    if (str.length==0)
+    {
         return 0;
     }
-    if (str.length==1) {
+    if (str.length==1)
+    {
         return 15;
     }
     else

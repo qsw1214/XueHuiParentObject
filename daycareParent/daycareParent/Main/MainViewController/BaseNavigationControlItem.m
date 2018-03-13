@@ -193,7 +193,7 @@
         _titleLabel = [[UILabel alloc]init];
         [_titleLabel setAdjustsFontSizeToFitWidth:YES];
         [_titleLabel setFont:[UIFont systemFontOfSize:14.0]];
-        [_titleLabel setTextColor:[UIColor whiteColor]];
+        [_titleLabel setTextColor:[UIColor blackColor]];
     }
     return _titleLabel;
 }

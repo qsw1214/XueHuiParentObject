@@ -21,7 +21,7 @@
     [self.view setBackgroundColor:RGB(235.0, 235.0, 235.0)];
     [self.navigationController.navigationBar setHidden:YES];
     [self.view addSubview:self.navigationView];
-    self.navigationView.backgroundColor=MainColor;
+    self.navigationView.backgroundColor=[UIColor whiteColor];
     self.view.backgroundColor=[UIColor whiteColor];
     self.view.frame=CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64);
     self.conversationMessageCollectionView.frame=self.view.frame;
@@ -38,12 +38,12 @@
     if (_navigationView == nil)
     {
         _navigationView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 64.0)];
-        UIImageView *iconImageView=[[UIImageView alloc] initWithFrame:CGRectMake(10, 32, 20, 20)];
+        ParentImageView *iconImageView=[[ParentImageView alloc] initWithFrame:CGRectMake(10, 37, 10, 10)];
         iconImageView.image=[UIImage imageNamed:@"arr_back"];
         [_navigationView addSubview:iconImageView];
         UILabel *Label=[[UILabel alloc] initWithFrame:CGRectMake(20, 30, 50, 24)];
         Label.text=@"返回";
-        Label.textColor=[UIColor whiteColor];
+        Label.textColor=[UIColor blackColor];
         Label.font=FontLevel3;
         Label.textAlignment=NSTextAlignmentCenter;
         [_navigationView addSubview:Label];
@@ -61,7 +61,7 @@
 {
     if (_titleLabel==nil) {
         _titleLabel=[[UILabel alloc] initWithFrame:CGRectMake(35, 30, SCREEN_WIDTH-70, 24)];
-        _titleLabel.textColor=[UIColor whiteColor];
+        _titleLabel.textColor=[UIColor blackColor];
         _titleLabel.font=FontLevel1;
         _titleLabel.textAlignment=NSTextAlignmentCenter;
         [self.navigationView addSubview:_titleLabel];

@@ -12,14 +12,12 @@
 #import "XHRCTableViewCell.h"
 #import "XHRCModel.h"
 #import "XHTeacherAddressBookViewController.h"
-#import "XHAddressBookHeader.h"
 #define kTitleList @[@"给老师留言",@"家庭作业",@"通知公告"]
 #define kTitlePic @[@"im_notice",@"im_message",@"im_book",@"im_notice"]
 @interface XHChatViewController ()
 
 @property(nonatomic,strong)UIView *navigationView;
 @property(nonatomic,strong)NSMutableArray *mouArry;
-@property(nonatomic,strong)XHAddressBookHeader *addressBookHeader;//!<  头滚动
 
 @end
 
@@ -45,19 +43,7 @@
     [self setConversationAvatarStyle:RC_USER_AVATAR_CYCLE];//显示为圆形
     [self setConversationPortraitSize:CGSizeMake(60, 60)];
     [self.view addSubview:self.navigationView];
-    NSMutableArray *arr=[[NSMutableArray alloc] init];
-     for (int i = 0; i<10; i++)
-     {
-     XHChildListModel *model = [[XHChildListModel alloc]init];
-     [model setStudentName:@"姚立志"];
-     [model setClazzName:@"三年级二班"];
-     [model setMarkType:ChildListNormalType];
-     [arr addObject:model];
-     }
-     [self.view addSubview:self.addressBookHeader];
-     [self.addressBookHeader setItemArray:arr];
-    
-    self.conversationListTableView.frame=CGRectMake(0, self.addressBookHeader.bottom+15, SCREEN_WIDTH, SCREEN_HEIGHT-self.addressBookHeader.bottom-70);
+    self.conversationListTableView.frame=CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64);
     
     [self.conversationListTableView registerClass:[XHRCTableViewCell class] forCellReuseIdentifier:@"RongYunListCell"];
     
@@ -216,14 +202,6 @@
         
     }]];
     [self presentViewController:alertController animated:YES completion:nil];
-}
--(XHAddressBookHeader *)addressBookHeader
-{
-    if (_addressBookHeader==nil) {
-        _addressBookHeader=[[XHAddressBookHeader alloc] init];
-        [_addressBookHeader resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, 60)];
-    }
-    return _addressBookHeader;
 }
 -(UIView *)navigationView
 {

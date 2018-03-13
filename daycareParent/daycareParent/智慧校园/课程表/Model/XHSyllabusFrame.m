@@ -14,8 +14,22 @@
 -(void)setModel:(XHSyllabusModel *)model
 {
     _model = model;
-    [self setItemFrame:CGRectMake(0, 0, SCREEN_WIDTH, 70.0)];
-    [self setCellHeight:self.itemFrame.size.height];
+    switch (model.modelType)
+    {
+        case SyllabusWeekType:
+        {
+            [self setItemFrame:CGRectMake(0, 0, SCREEN_WIDTH, 49.0)];
+            [self setCellHeight:self.itemFrame.size.height];
+        }
+            break;
+        case SyllabusContentType:
+        {
+            [self setItemFrame:CGRectMake(0, 0, SCREEN_WIDTH, 57.0)];
+            [self setCellHeight:self.itemFrame.size.height];
+        }
+            break;
+    }
+    
 }
 
 @end

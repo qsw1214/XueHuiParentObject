@@ -11,8 +11,12 @@
 
 @interface XHSyllabusCellContentView ()
 
-@property (nonatomic,strong) UILabel *timeLabel; //!< 时间标签
-@property (nonatomic,strong) UILabel *subjectLabel; //!< 科目标签
+@property (nonatomic,strong) UILabel *monthLabel; //!< 时间标签
+@property (nonatomic,strong) UILabel *mondayLabel; //!< 周一标签
+@property (nonatomic,strong) UILabel *tuesdayLabel; //!< 周二标签
+@property (nonatomic,strong) UILabel *wednesdayLabel; //!< 周三标签
+@property (nonatomic,strong) UILabel *thursdayLabel; //!< 周四标签
+@property (nonatomic,strong) UILabel *fridayLabel; //!< 周五标签
 
 
 @end
@@ -27,8 +31,12 @@
     self = [super init];
     if (self)
     {
-        [self addSubview:self.timeLabel];
-        [self addSubview:self.subjectLabel];
+        [self addSubview:self.monthLabel];
+        [self addSubview:self.mondayLabel];
+        [self addSubview:self.tuesdayLabel];
+        [self addSubview:self.wednesdayLabel];
+        [self addSubview:self.thursdayLabel];
+        [self addSubview:self.fridayLabel];
     }
     return self;
 }
@@ -39,40 +47,41 @@
     [self resetFrame:itemFrame.itemFrame];
     
     //赋值
-    [self.timeLabel setText:itemFrame.model.time];
-    [self.subjectLabel setText:itemFrame.model.subject];
+    [self addSubview:self.monthLabel];
+    [self addSubview:self.mondayLabel];
+    [self addSubview:self.tuesdayLabel];
+    [self addSubview:self.wednesdayLabel];
+    [self addSubview:self.thursdayLabel];
+    [self addSubview:self.fridayLabel];
 
 }
 
 
 -(void)setTextColor:(UIColor*)color
 {
-    [self.timeLabel setTextColor:color];
-    [self.subjectLabel setTextColor:color];
+    
 }
 
 -(void)setFont:(UIFont*)font
 {
-    [self.timeLabel setFont:font];
-    [self.subjectLabel setFont:font];
+    
 }
 
 -(void)setTime:(NSString*)time
 {
-    [self.timeLabel setText:time];
+    
 }
 
 -(void)setSubject:(NSString*)subject
 {
-    [self.subjectLabel setText:subject];
+    
 }
 
 
 -(void)resetFrame:(CGRect)frame
 {
     [self setFrame:frame];
-    [self.timeLabel setFrame:CGRectMake(0, 0, frame.size.width/2.0, frame.size.height)];
-    [self.subjectLabel setFrame:CGRectMake(self.timeLabel.right, self.timeLabel.top, self.timeLabel.width, self.timeLabel.height)];
+    
     
 }
 
@@ -81,28 +90,69 @@
 
 
 #pragma mark - Getter / Setter
--(UILabel *)timeLabel
+-(UILabel *)monthLabel
 {
-    if (_timeLabel == nil)
+    if (_monthLabel == nil)
     {
-        _timeLabel = [[UILabel alloc]init];
-        [_timeLabel setLayerBorderWidth:0.5];
-        [_timeLabel setBorderColor:LineViewColor];
-        [_timeLabel setTextAlignment:NSTextAlignmentCenter];
+        _monthLabel = [[UILabel alloc]init];
+        [_monthLabel setLayerBorderWidth:0.5];
+        [_monthLabel setBorderColor:LineViewColor];
+        [_monthLabel setTextAlignment:NSTextAlignmentCenter];
     }
-    return _timeLabel;
+    return _monthLabel;
 }
 
--(UILabel *)subjectLabel
+-(UILabel *)tuesdayLabel
 {
-    if (_subjectLabel == nil)
+    if (_tuesdayLabel == nil)
     {
-        _subjectLabel = [[UILabel alloc]init];
-        [_subjectLabel setLayerBorderWidth:0.5];
-        [_subjectLabel setBorderColor:LineViewColor];
-        [_subjectLabel setTextAlignment:NSTextAlignmentCenter];
+        _tuesdayLabel = [[UILabel alloc]init];
+        [_tuesdayLabel setLayerBorderWidth:0.5];
+        [_tuesdayLabel setBorderColor:LineViewColor];
+        [_tuesdayLabel setTextAlignment:NSTextAlignmentCenter];
     }
-    return _subjectLabel;
+    return _tuesdayLabel;
 }
+
+
+-(UILabel *)wednesdayLabel
+{
+    if (_wednesdayLabel == nil)
+    {
+        _wednesdayLabel = [[UILabel alloc]init];
+        [_wednesdayLabel setLayerBorderWidth:0.5];
+        [_wednesdayLabel setBorderColor:LineViewColor];
+        [_wednesdayLabel setTextAlignment:NSTextAlignmentCenter];
+    }
+    return _wednesdayLabel;
+}
+
+
+-(UILabel *)thursdayLabel
+{
+    if (_thursdayLabel == nil)
+    {
+        _thursdayLabel = [[UILabel alloc]init];
+        [_thursdayLabel setLayerBorderWidth:0.5];
+        [_thursdayLabel setBorderColor:LineViewColor];
+        [_thursdayLabel setTextAlignment:NSTextAlignmentCenter];
+    }
+    return _monthLabel;
+}
+
+
+-(UILabel *)fridayLabel
+{
+    if (_fridayLabel == nil)
+    {
+        _fridayLabel = [[UILabel alloc]init];
+        [_fridayLabel setLayerBorderWidth:0.5];
+        [_fridayLabel setBorderColor:LineViewColor];
+        [_fridayLabel setTextAlignment:NSTextAlignmentCenter];
+    }
+    return _fridayLabel;
+}
+
+
 
 @end

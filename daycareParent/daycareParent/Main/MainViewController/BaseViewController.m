@@ -40,7 +40,7 @@
     [self.navigationView setNavtionTitleColor:RGB(44.0, 44.0, 44.0)];
     [self setNavtionColor:[UIColor whiteColor]];
     [self setItemContentItemHiddenWithType:NavigationRightType withHidden:YES];
-    [self setItemContentType:NavigationIconAndTitle withItemType:NavigationItemLeftType withIconName:@"ico_return" withTitle:@"返回"];
+    [self setItemContentType:NavigationIconAndTitle withItemType:NavigationItemLeftType withIconName:@"arr_back" withTitle:@"返回"];
     [self addSubViews:YES];
     //去掉留白方法
     if (@available(iOS 11.0, *)){}

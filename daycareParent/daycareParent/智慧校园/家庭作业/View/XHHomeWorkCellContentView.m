@@ -20,7 +20,6 @@
 @property (nonatomic,strong) UILabel *subjectLabel;  //!< 学科标签
 @property (nonatomic,strong) UILabel *dateLabel; //!< 日期标签
 @property (nonatomic,strong) UILabel *contentLabel; //!< 作业标签
-@property (nonatomic,strong) UIView *lineView; //!< 分割线
 
 @end
 
@@ -43,8 +42,7 @@
         [self addSubview:self.subjectLabel];
         [self addSubview:self.dateLabel];
         [self addSubview:self.contentLabel];
-        [self addSubview:self.lineView];
-//        [self addSubview:self.collectionView];
+        [self addSubview:self.collectionView];
         
         
         [self setItemColor:NO];
@@ -75,16 +73,35 @@
             [self.headerImageView setLayerCornerRadius:(self.headerImageView.height/2.0)];
             //设置用户名
             [self.userNameLael setFrame:CGRectMake((self.headerImageView.right+10.0), self.headerImageView.top, (itemFrame.itemFrame.size.width-((self.headerImageView.right+10.0)+55.0)), 20.0)];
+            [self.userNameLael setTextAlignment:NSTextAlignmentLeft];
             //设置日期
             [self.dateLabel setFrame:CGRectMake(self.userNameLael.left, (self.userNameLael.bottom+5.0), self.userNameLael.width, (self.userNameLael.height-5.0))];
+            [self.dateLabel setTextAlignment:NSTextAlignmentLeft];
+            //设置属性
             [self.subjectLabel setFrame:CGRectMake((itemFrame.itemFrame.size.width-45.0), (self.headerImageView.top+2.5), 35.0, 35.0)];
+            [self.subjectLabel setLayerCornerRadius:5.0];
             //设置内容视图
             [self.contentLabel setFrame:CGRectMake(self.headerImageView.left, (self.headerImageView.bottom+10.0), (itemFrame.contentSize.width), (itemFrame.contentSize.height))];
-            [self.lineView setFrame:CGRectMake(0, itemFrame.itemFrame.size.height-0.5, itemFrame.itemFrame.size.width, 0.5)];
+        
+            //设置
+            switch (itemFrame.model.contentType)
+            {
+                case XHHomeWorkTextType:
+                {
+                    [self.collectionView resetFrame:CGRectZero];
+                }
+                    break;
+                case XHHomeWorkTextAndImageType:
+                {
+                    [self.collectionView resetFrame:CGRectMake(self.headerImageView.left, self.contentLabel.bottom+5.0, itemFrame.previewSize.width, itemFrame.previewSize.height)];
+                    [self.collectionView setItemArray:itemFrame.model.imageUrlArray];
+                }
+                    break;
+            }
             
-            //设置属性
-            [self.subjectLabel setLayerCornerRadius:5.0];
-            [self.subjectLabel setBackgroundColor:itemFrame.model.subjectColor];
+            
+            
+           
             
             
             //赋值
@@ -115,39 +132,56 @@
             //设置头像
             [self.headerImageView setFrame:CGRectMake(10.0, 10.0, 40.0, 40.0)];
             [self.headerImageView setLayerCornerRadius:(self.headerImageView.height/2.0)];
-            //设置用户名
-            [self.userNameLael setFrame:CGRectMake(self.headerImageView.right+10.0, self.headerImageView.top, 60.0, 20.0)];
-            //设置日期
-            [self.dateLabel setFrame:CGRectMake(self.userNameLael.left, self.userNameLael.bottom, (itemFrame.itemFrame.size.width-(self.userNameLael.right+55.0)), self.userNameLael.height)];
-            [self.subjectLabel setFrame:CGRectMake((itemFrame.itemFrame.size.width-45.0), (self.headerImageView.top+2.5), 35.0, 35.0)];
-            //设置内容视图
-            [self.contentLabel setFrame:CGRectMake(self.userNameLael.left, self.userNameLael.bottom, (itemFrame.itemFrame.size.width-(self.userNameLael.left+10.0)), 30.0)];
-            [self.lineView setFrame:CGRectMake(0, itemFrame.itemFrame.size.height-0.5, itemFrame.itemFrame.size.width, 0.5)];
-            
             //设置属性
+            [self.subjectLabel setFrame:CGRectMake(self.headerImageView.left+30.0, (self.headerImageView.top+2.5), 10.0, 10.0)];
             [self.subjectLabel setLayerCornerRadius:(self.subjectLabel.height/2.0)];
-            [self.subjectLabel setBackgroundColor:itemFrame.model.subjectColor];
-            [self.contentLabel setNumberOfLines:1];
+            //设置用户名
+            [self.userNameLael setFrame:CGRectMake((self.headerImageView.right+10.0), (self.headerImageView.top+10.0), ((itemFrame.itemFrame.size.width-(self.headerImageView.right+20.0))/2.0), 20.0)];
+            //设置日期
+            [self.dateLabel setFrame:CGRectMake(self.userNameLael.right, (self.userNameLael.top), self.userNameLael.width, (self.userNameLael.height-5.0))];
+            [self.dateLabel setTextAlignment:NSTextAlignmentRight];
+            //设置内容视图
+            [self.contentLabel setFrame:CGRectMake(self.headerImageView.left, (self.headerImageView.bottom+10.0), (itemFrame.contentSize.width), (itemFrame.contentSize.height))];
+            
+            //设置
+            switch (itemFrame.model.contentType)
+            {
+                case XHHomeWorkTextType:
+                {
+                    [self.collectionView resetFrame:CGRectZero];
+                }
+                    break;
+                case XHHomeWorkTextAndImageType:
+                {
+                    [self.collectionView resetFrame:CGRectMake(self.headerImageView.left, self.contentLabel.bottom+5.0, itemFrame.previewSize.width, itemFrame.previewSize.height)];
+                    [self.collectionView setItemArray:itemFrame.model.imageUrlArray];
+                }
+                    break;
+            }
+            
+            
+            
+            
             
             
             //赋值
-            [self.headerImageView setImage:[UIImage imageNamed:@""]];
+            [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:itemFrame.model.headerUrl]];
             [self.userNameLael setText:itemFrame.model.userName];
-            [self.subjectLabel setText:itemFrame.model.subject];
             [self.dateLabel setText:itemFrame.model.releaseDate];
             [self.contentLabel setText:itemFrame.model.workContent];
+            
             switch (itemFrame.model.homeWorkUnreadType)
             {
                 case HomeWorkUnreadType:
                 {
-                    [self.userNameLael setFont:[UIFont boldSystemFontOfSize:16.0]];
-                    [self.contentLabel setFont:[UIFont boldSystemFontOfSize:16.0]];
+                    [self.subjectLabel setBackgroundColor:RGB(255,86,87)];
+                    [self.subjectLabel setHidden:NO];
                 }
                     break;
                 case HomeWorkAlreadyReadType:
                 {
-                    [self.userNameLael setFont:FontLevel2];
-                    [self.contentLabel setFont:FontLevel2];
+                    [self.subjectLabel setBackgroundColor:RGB(81,200,162)];
+                    [self.subjectLabel setHidden:YES];
                 }
                     break;
             }
@@ -220,16 +254,6 @@
     return _contentLabel;
 }
 
--(UIView *)lineView
-{
-    if (_lineView == nil)
-    {
-        _lineView = [[UIView alloc]init];
-        [_lineView setBackgroundColor:LineViewColor];
-    }
-    return _lineView;
-}
-
 -(XHHomeWorkCollectionView *)collectionView
 {
     if (_collectionView == nil)
@@ -254,6 +278,7 @@
         [self.dateLabel setBackgroundColor:[UIColor darkGrayColor]];
         [self.contentLabel setBackgroundColor:[UIColor purpleColor]];
         [self.headerImageView setBackgroundColor:[UIColor orangeColor]];
+        [self.collectionView setBackgroundColor:[UIColor orangeColor]];
     }
 }
 

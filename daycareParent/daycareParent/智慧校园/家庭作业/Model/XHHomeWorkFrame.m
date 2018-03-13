@@ -28,39 +28,30 @@
     {
         case HomeWorkType:
         {
-            [self setItemFrame:CGRectMake(10.0, 10.0, SCREEN_WIDTH-20.0, 60.0+self.contentSize.height+10.0)];
-            [self setCellHeight:self.itemFrame.size.height+20.0];
-        }
-            break;
-        case NotifyType:
-        {
-            CGSize contentSize = [NSObject contentSizeWithTitle:model.workContent withFontOfSize:FontLevel2 withWidth:(SCREEN_WIDTH-90.0)];
-            [self setContentSize:CGSizeMake((SCREEN_WIDTH-90.0), contentSize.height)];
-            
             switch (model.contentType)
             {
                 case XHHomeWorkTextType:
                 {
-                    [self setItemFrame:CGRectMake(0, 0, SCREEN_WIDTH, (60.0+contentSize.height+20.0))];
-                    [self setCellHeight:self.itemFrame.size.height];
+                    [self setItemFrame:CGRectMake(10.0, 10.0, SCREEN_WIDTH-20.0, 60.0+self.contentSize.height+10.0)];
+                    [self setCellHeight:self.itemFrame.size.height+10.0];
                 }
                     break;
                 case XHHomeWorkTextAndImageType:
                 {
                     if ([model.imageUrlArray count])
                     {
-                        [model.imageUrlArray enumerateObjectsUsingBlock:^(XHPreviewModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
+                        [model.imageUrlArray enumerateObjectsUsingBlock:^(XHPreviewModel *obj, NSUInteger idx, BOOL * _Nonnull stop)
                          {
-                             [obj setItemSize:CGSizeMake((SCREEN_WIDTH-90.0-30)/3.0, 50.0)];
+                             [obj setItemSize:CGSizeMake(((SCREEN_WIDTH-60.0)/3.0), ((SCREEN_WIDTH-70.0)/3.0))];
                          }];
                         
-                        if ([model.imageUrlArray count] <= 3)
+                        if ([model.imageUrlArray count] > 3)
                         {
-                            [self setPreviewSize:CGSizeMake((SCREEN_WIDTH-90.0), 60.0)];
+                            [self setPreviewSize:CGSizeMake((SCREEN_WIDTH-40.0), ((SCREEN_WIDTH-60.0)/3.0)*2+15.0)];   
                         }
                         else
                         {
-                            [self setPreviewSize:CGSizeMake((SCREEN_WIDTH-90.0), 115.0)];
+                            [self setPreviewSize:CGSizeMake((SCREEN_WIDTH-40.0), ((SCREEN_WIDTH-70.0)/3.0)+10.0)];
                         }
                     }
                     else
@@ -68,8 +59,50 @@
                         [self setPreviewSize:CGSizeMake(0, 0)];
                     }
                     
-                    [self setItemFrame:CGRectMake(0, 0, SCREEN_WIDTH, (60.0+contentSize.height+self.previewSize.height+20.0))];
-                    [self setCellHeight:self.itemFrame.size.height];
+                    
+                    [self setItemFrame:CGRectMake(10.0, 10.0, SCREEN_WIDTH-20.0, (60.0+contentSize.height+self.previewSize.height+10.0))];
+                    [self setCellHeight:self.itemFrame.size.height+10.0];
+                }
+                    break;
+            }
+        }
+            break;
+        case NotifyType:
+        {
+            switch (model.contentType)
+            {
+                case XHHomeWorkTextType:
+                {
+                    [self setItemFrame:CGRectMake(10.0, 10.0, SCREEN_WIDTH-20.0, 60.0+self.contentSize.height+10.0)];
+                    [self setCellHeight:self.itemFrame.size.height+10.0];
+                }
+                    break;
+                case XHHomeWorkTextAndImageType:
+                {
+                    if ([model.imageUrlArray count])
+                    {
+                        [model.imageUrlArray enumerateObjectsUsingBlock:^(XHPreviewModel *obj, NSUInteger idx, BOOL * _Nonnull stop)
+                         {
+                             [obj setItemSize:CGSizeMake(((SCREEN_WIDTH-60.0)/3.0), ((SCREEN_WIDTH-70.0)/3.0))];
+                         }];
+                        
+                        if ([model.imageUrlArray count] > 3)
+                        {
+                            [self setPreviewSize:CGSizeMake((SCREEN_WIDTH-40.0), ((SCREEN_WIDTH-60.0)/3.0)*2+15.0)];
+                        }
+                        else
+                        {
+                            [self setPreviewSize:CGSizeMake((SCREEN_WIDTH-40.0), ((SCREEN_WIDTH-70.0)/3.0)+10.0)];
+                        }
+                    }
+                    else
+                    {
+                        [self setPreviewSize:CGSizeMake(0, 0)];
+                    }
+                    
+                    
+                    [self setItemFrame:CGRectMake(10.0, 10.0, SCREEN_WIDTH-20.0, (60.0+contentSize.height+self.previewSize.height+10.0))];
+                    [self setCellHeight:self.itemFrame.size.height+10.0];
                 }
                     break;
             }

@@ -44,7 +44,6 @@ typedef NS_ENUM(NSInteger,HomeWorkModelType)
 @property (nonatomic,copy) NSString *vedioUrl;  //!< 视频播放url地址
 @property (nonatomic,copy) NSString *vedioFirstPicUrl; //!< 视频预览图
 @property (nonatomic,strong) NSMutableArray <XHPreviewModel*> *imageUrlArray; //!< 图片的Url数组
-@property (nonatomic,strong) UIColor *subjectColor; //!< 学科颜色类型
 
 @property (nonatomic,assign) HomeWorkModelUnreadType homeWorkUnreadType; //!< 是否已读取枚举类型
 @property (nonatomic,assign) HomeWorkModelType homeWorkType; //!< 数据模型的类型

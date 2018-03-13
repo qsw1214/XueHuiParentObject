@@ -39,7 +39,7 @@
     {
         _navigationView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 64.0)];
         UIImageView *iconImageView=[[UIImageView alloc] initWithFrame:CGRectMake(10, 32, 20, 20)];
-        iconImageView.image=[UIImage imageNamed:@"ico_return"];
+        iconImageView.image=[UIImage imageNamed:@"arr_back"];
         [_navigationView addSubview:iconImageView];
         UILabel *Label=[[UILabel alloc] initWithFrame:CGRectMake(20, 30, 50, 24)];
         Label.text=@"返回";

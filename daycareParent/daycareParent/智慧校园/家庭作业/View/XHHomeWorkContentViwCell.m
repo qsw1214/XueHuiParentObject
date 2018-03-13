@@ -25,6 +25,7 @@
     self = [super initWithFrame:frame];
     if (self)
     {
+        [self.contentView setBackgroundColor:[UIColor greenColor]];
         [self.contentView addSubview:self.imageView];
         [self.imageView setFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
     }
@@ -49,9 +50,8 @@
     if (_imageView == nil)
     {
         _imageView = [[UIImageView alloc]init];
-        //[_imageView setBackgroundColor:[UIColor redColor]];
-        [_imageView setContentMode:UIViewContentModeScaleAspectFit];
-        [_imageView.layer setMasksToBounds:YES];
+        [_imageView setContentMode:UIViewContentModeScaleAspectFill];
+        [_imageView setLayerCornerRadius:0.0];
     }
     return _imageView;
 }

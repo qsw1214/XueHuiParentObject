@@ -7,7 +7,6 @@
 //
 
 #import "ParentModel.h"
-
 typedef NS_ENUM(NSInteger,XHRecipientModelType)
 {
     XHRecipientAddModelType = 1 ,//!< 添加数据模型

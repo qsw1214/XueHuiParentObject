@@ -21,7 +21,7 @@
 #import "XHSubmitView.h"//!<  提交按钮视图
 #import "XHRecipientModel.h"
 #import "XHCustomPickerView.h"//!<请假类型
-@interface XHAskforLeaveContentView () <BaseTextViewDeletage,XHDatePickerControlDeletage,XHAskforLeavePreviewControlDeletage,CameraManageDeletage,XHCustomPickerViewDelegate>
+@interface XHAskforLeaveContentView () <BaseTextViewDeletage,XHDatePickerControlDeletage,XHAskforLeavePreviewControlDeletage,CameraManageDeletage,XHCustomPickerViewDelegate,XHSubmitViewDelegate>
 
 @property (nonatomic,strong) UIAlertController *alertController; //!< 弹出框视图控制器
 @property (nonatomic,weak) BaseViewController *viewController;
@@ -264,7 +264,6 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
              [self.alertController addAction:action];
          }];
     }
-    [self setRecipientModelArry];
 }
 
 
@@ -306,9 +305,16 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
             break;
     }
 }
+#pragma mark  请假类型Delegate
 -(void)getItemObject:(NSString *)itemObject atItemIndex:(NSInteger)index
 {
     [self.askforLeaveTypeControl setDescribe:itemObject];
+}
+#pragma mark  submitDelegate
+-(void)getItemObject:(NSString *)ItemObject
+{
+    NSLog(@"=====%@",ItemObject);
+    self.submitView.teacherId=ItemObject;
 }
 #pragma mark XHAskforLeavePreviewControlDeletage
 -(void)askforLeavePreviewControlAction:(UIImage*)image
@@ -414,25 +420,6 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
              }
          } error:^(NSError *error){}];
     }
-}
-
--(void)setRecipientModelArry
-{
-    NSMutableArray *arry=[[NSMutableArray alloc] init];
-    for (int i=0; i<2; i++) {
-        XHRecipientModel *model=[[XHRecipientModel alloc] init];
-        model.name=@"李四";
-        if (i==0) {
-            model.modelType=XHRecipientNomalModelType;
-        }
-        else
-        {
-            model.modelType=XHRecipientAddModelType;
-        }
-        [arry addObject:model];
-    }
-   
-    [self.submitView setItemArry:arry];
 }
 
 
@@ -657,6 +644,7 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
     if (_submitView == nil)
     {
         _submitView = [[XHSubmitView alloc]init];
+        _submitView.delegate=self;
     }
     return _submitView;
 }

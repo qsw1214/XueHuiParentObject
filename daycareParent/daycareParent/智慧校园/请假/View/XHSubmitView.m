@@ -14,6 +14,7 @@
 @property(nonatomic,strong)UILabel *titleLabel;
 @property(nonatomic,strong)UICollectionView *collectionView;
 @property(nonatomic,strong)NSMutableArray *dataArry;
+@property(nonatomic,strong)NSMutableArray *teacherArry;
 @end
 
 @implementation XHSubmitView
@@ -68,17 +69,34 @@
          {
              [self.dataArry removeObject:model];
              [self.collectionView reloadData];
+             [self.teacherArry removeObject:model.ID];
+             if ([_delegate respondsToSelector:@selector(getItemObject:)]) {
+                 NSString * teacherId = [self.teacherArry componentsJoinedByString:@","];
+                 [self.delegate getItemObject:teacherId];
+             }
          }
              break;
              
          case XHRecipientAddModelType:
          {
              XHTeacherAddressBookViewController *teacherAddressBook = [[XHTeacherAddressBookViewController alloc]init];
-             
+              teacherAddressBook.enterType=TeacherAddressBookAskLeaveType;
                 [[XHHelper sharedHelper].currentlyViewController.navigationController pushViewController:teacherAddressBook animated:YES];
                          teacherAddressBook.didselectBack = ^(XHTeacherAddressBookFrame *itemObject)
                          {
-                             //[self.chargeTeacherControl setTeacherAddressBook:itemObject];
+                             XHRecipientModel *model=[[XHRecipientModel alloc] init];
+                             model.name=itemObject.model.teacherName;
+                             model.headPic=itemObject.model.headerUrl;
+                             model.ID=itemObject.model.ID;
+                             model.modelType=XHRecipientNomalModelType;
+                             [self.dataArry insertObject:model atIndex:self.dataArry.count-1];
+                             
+                             [self.collectionView reloadData];
+                             [self.teacherArry addObject:[NSString safeString:itemObject.model.ID]];
+                             if ([_delegate respondsToSelector:@selector(getItemObject:)]) {
+                                 NSString * teacherId = [self.teacherArry componentsJoinedByString:@","];
+                                 [self.delegate getItemObject:teacherId];
+                             }
                          };
          }
              break;
@@ -135,8 +153,18 @@
 {
     if (_dataArry==nil) {
         _dataArry=[[NSMutableArray alloc] init];
+        XHRecipientModel *model=[[XHRecipientModel alloc] init];
+        model.modelType=XHRecipientAddModelType;
+        [_dataArry addObject:model];
     }
     return _dataArry;
+}
+-(NSMutableArray *)teacherArry
+{
+    if (_teacherArry==nil) {
+        _teacherArry=[[NSMutableArray alloc] init];
+    }
+    return _teacherArry;
 }
 /*
 // Only override drawRect: if you perform custom drawing.

@@ -49,6 +49,7 @@
             [model setTeacherName:@"姚立志"];
             [model setPhone:@"15515667760"];
             [model setHeaderUrl:@""];
+            [model setID:@"123456"];
             [frame setModel:model];
             [self.dataArray addObject:frame];
         }

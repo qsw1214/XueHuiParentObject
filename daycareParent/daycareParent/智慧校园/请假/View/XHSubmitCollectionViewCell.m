@@ -25,7 +25,6 @@
         [self.contentView addSubview:_headImageView];
         _nameLabel=[[ParentLabel alloc] initWithFrame:CGRectMake(0, _headImageView.bottom, frame.size.width, frame.size.height-_headImageView.height)];
         _nameLabel.textAlignment=NSTextAlignmentCenter;
-        //_nameLabel.text=@"完颜忍忍";
         [self.contentView addSubview:_nameLabel];
     }
     return self;

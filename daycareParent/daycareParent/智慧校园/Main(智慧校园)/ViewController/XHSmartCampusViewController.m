@@ -18,6 +18,7 @@
 #import "XHSyllabusViewController.h"  //!< 课程表
 #import "XHAchievementViewController.h" //!< 成绩
 #import "XHSafeLocationViewController.h" //!< 定位
+#import "XHHomeWorkViewController.h"
 #import "XHLoginViewController.h"
 #import "SDCycleScrollView.h"
 #import "XHTeacherAddressBookViewController.h"
@@ -116,8 +117,21 @@
             if ([self refreshChild])
             {
                 XHTeacherAddressBookViewController *leave = [[XHTeacherAddressBookViewController alloc]initHiddenWhenPushHidden];
+                [leave setEnterType:TeacherAddressBookAskLeaveType];
+                leave.didselectBack = ^(XHTeacherAddressBookFrame *itemObject)
+                {
+                    NSLog(@"%@",itemObject.model.teacherName);
+                };
                 [self.navigationController pushViewController:leave animated:YES];
             }
+            
+        }
+            break;
+#pragma mark case 7
+        case 7:
+        {
+            XHHomeWorkViewController *leave = [[XHHomeWorkViewController alloc]initHiddenWhenPushHidden];
+            [self.navigationController pushViewController:leave animated:YES];
             
         }
             break;

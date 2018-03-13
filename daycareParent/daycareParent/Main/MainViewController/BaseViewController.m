@@ -236,6 +236,19 @@
 }
 
 
+-(BaseTableView *)mainTableView
+{
+    if (!_mainTableView)
+    {
+        _mainTableView = [[BaseTableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+    }
+    return _mainTableView;
+}
+
+
+
+
+
 
 
 

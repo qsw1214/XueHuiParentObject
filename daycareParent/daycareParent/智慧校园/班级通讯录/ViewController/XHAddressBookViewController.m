@@ -16,7 +16,7 @@
 
 
 @property (nonatomic,strong) XHAddressBookHeader *addressBookHeader;
-@property (nonatomic,strong) BaseTableView *tableView;
+
 @property (nonatomic,strong) NSMutableArray *tableArray;
 
 
@@ -45,6 +45,8 @@
     if (subview)
     {
         
+        
+        
         for (int i = 0; i<10; i++)
         {
             XHChildListModel *model = [[XHChildListModel alloc]init];
@@ -67,13 +69,13 @@
        
         [self.view addSubview:self.addressBookHeader];
         [self.addressBookHeader resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, 60.0)];
-        [self.tableView resetFrame:CGRectMake(0.0, (self.addressBookHeader.bottom+10.0), SCREEN_WIDTH, SCREEN_HEIGHT-(self.addressBookHeader.bottom+10.0))];
-        [self.view addSubview:self.tableView];
+        [self.mainTableView resetFrame:CGRectMake(0.0, (self.addressBookHeader.bottom+10.0), SCREEN_WIDTH, SCREEN_HEIGHT-(self.addressBookHeader.bottom+10.0))];
+        [self.mainTableView setDelegate:self];
+        [self.mainTableView setDataSource:self];
+        [self.view addSubview:self.mainTableView];
         
         [self.addressBookHeader setItemArray:self.dataArray];
-        
-        
-        [self.tableView reloadData];
+        [self.mainTableView reloadData];
     }
 }
 
@@ -133,16 +135,6 @@
     return _addressBookHeader;
 }
 
--(BaseTableView *)tableView
-{
-    if (!_tableView)
-    {
-        _tableView = [[BaseTableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
-        [_tableView setDelegate:self];
-        [_tableView setDataSource:self];
-    }
-    return _tableView;
-}
 
 -(NSMutableArray *)tableArray
 {

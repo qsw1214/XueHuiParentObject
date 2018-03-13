@@ -23,9 +23,9 @@
 @implementation XHHomeWorkTableViewCell
 
 
--(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+-(instancetype)init
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    self = [super init];
     if (self)
     {
         [self.contentView addSubview:self.contentControl];
@@ -47,7 +47,6 @@
     if (_contentControl == nil)
     {
         _contentControl = [[XHHomeWorkCellContentView alloc]init];
-        _contentControl.backgroundColor=[UIColor whiteColor];
     }
     return _contentControl;
 }

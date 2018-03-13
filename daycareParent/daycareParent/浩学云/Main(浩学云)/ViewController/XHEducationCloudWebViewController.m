@@ -52,7 +52,7 @@
 {
     if (!_webView)
     {
-        _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.height)];
+        _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, CONTENT_HEIGHT)];
         _webView.scalesPageToFit = YES;
         _webView.delegate=self;
         

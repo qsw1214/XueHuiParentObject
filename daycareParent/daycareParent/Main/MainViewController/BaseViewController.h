@@ -21,6 +21,7 @@
 
 @interface BaseViewController : UIViewController 
 
+@property (nonatomic,strong) BaseTableView *mainTableView;
 @property (nonatomic,assign) BOOL isLogin;  //当前视图控制器是否登录过
 @property (nonatomic,strong) BaseNavigationView  *navigationView;
 @property (nonatomic,strong) NSMutableArray *dataArray; //!< 数组

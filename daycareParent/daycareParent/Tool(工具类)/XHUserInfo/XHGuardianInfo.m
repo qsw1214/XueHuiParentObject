@@ -25,7 +25,7 @@
         _headPic=[object objectItemKey:@"headPic"];
         _type=[object objectItemKey:@"type"];
         if ([_type integerValue]) {
-            _typeName=FAMILY_TIES[[_type integerValue]-1];
+            _typeName=kFamilyList[[_type integerValue]-1];
         }
        
         if ([_sex integerValue]) {

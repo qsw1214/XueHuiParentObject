@@ -8,6 +8,18 @@
 
 #import "XHCustomPickerView.h"
 
+@interface XHCustomPickerView()<UIPickerViewDataSource,UIPickerViewDelegate>
+{
+    NSInteger _row;
+}
+
+@property(nonatomic,strong) NSMutableArray *itemArry;
+@property(nonatomic,strong) UIPickerView *pickerView;
+@property(nonatomic,strong) UIView *bgView;
+@property(nonatomic,assign)id <XHCustomPickerViewDelegate> delegate;
+@end
+
+
 @implementation XHCustomPickerView
 
 /*
@@ -17,33 +29,52 @@
     // Drawing code
 }
 */
--(id)initWithFrame:(CGRect)frame
+-(id)initWithDelegate:(id)delegate
 {
-    if (self=[super initWithFrame:frame]) {
-         itemArry=FAMILY_TIES;
+    if (self = [super initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)]) {
         self.backgroundColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
-        _view=[[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-220, SCREEN_WIDTH, 220)];
-        _view.backgroundColor=[UIColor whiteColor];
-        [self addSubview:_view];
+        _bgView=[[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-220, SCREEN_WIDTH, 220)];
+        _bgView.backgroundColor=[UIColor whiteColor];
+        [self addSubview:_bgView];
         UIButton *cancleBtn=[[UIButton alloc] initWithFrame:CGRectMake(5, 5, 45, 45)];
         [cancleBtn setTitle:@"取消" forState:UIControlStateNormal];
-        [cancleBtn addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
+        [cancleBtn addTarget:self action:@selector(cancleBtnClick) forControlEvents:UIControlEventTouchUpInside];
         [cancleBtn setTitleColor:MainColor forState:UIControlStateNormal];
-        [_view addSubview:cancleBtn];
+        [_bgView addSubview:cancleBtn];
         UIButton *sureBtn=[[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-50, 5, 45, 45)];
         [sureBtn setTitle:@"确定" forState:UIControlStateNormal];
         [sureBtn addTarget:self action:@selector(sureBtnClick) forControlEvents:UIControlEventTouchUpInside];
         [sureBtn setTitleColor:MainColor forState:UIControlStateNormal];
-        [_view addSubview:sureBtn];
-       UIPickerView *_pickerView=[[UIPickerView alloc] initWithFrame:CGRectMake(0,50, SCREEN_WIDTH, 170)];
-        _pickerView.backgroundColor=[UIColor whiteColor];
-        _pickerView.delegate=self;
-        _pickerView.dataSource=self;
-        _pickerView.backgroundColor=RGB(214, 214, 214);
-        [_view addSubview:_pickerView];
-       
+        [_bgView addSubview:sureBtn];
+        [_bgView addSubview:self.pickerView];
+        self.delegate=delegate;
     }
     return self;
+}
+
+-(void)show
+{
+    [kWindow addSubview:self];
+    [UIView animateWithDuration:0.25 animations:^{
+        
+      _bgView.frame=CGRectMake(0, SCREEN_HEIGHT-220, SCREEN_WIDTH, 220);
+        
+    } completion:^(BOOL finished){}];
+}
+-(void)dismiss
+{
+    [UIView animateWithDuration:0.20 animations:^{
+        
+    _bgView.frame=CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT);
+        
+    } completion:^(BOOL finished)
+     {
+         [self removeFromSuperview];
+     }];
+}
+-(void)setItemObjectArry:(NSMutableArray *)arry
+{
+    [self.itemArry setArray:arry];
 }
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView*)pickerView
 {
@@ -55,7 +86,7 @@
 {
     // 由于该控件只包含一列，因此无须理会列序号参数component
     // 该方法返回teams.count，表明teams包含多少个元素，该控件就包含多少行
-    return itemArry.count;
+    return self.itemArry.count;
 }
 
 
@@ -68,7 +99,7 @@
     // 该方法根据row参数返回teams中的元素，row参数代表列表项的编号，
     // 因此该方法表示第几个列表项，就使用teams中的第几个元素
     
-    return [itemArry objectAtIndex:row];
+    return [self.itemArry objectAtIndex:row];
 }
 
 // 当用户选中UIPickerViewDataSource中指定列和列表项时激发该方法
@@ -77,31 +108,34 @@
 {
     _row=row;
 }
--(void)btnClick
+-(void)cancleBtnClick
 {
-    [self removeCustomView];
+    [self dismiss];
 }
 -(void)sureBtnClick
 {
-    [self removeCustomView];
-    if ([_delegate respondsToSelector:@selector(getFamily:)]) {
-        [_delegate getFamily:_row];
+    if ([_delegate respondsToSelector:@selector(getItemObject:atItemIndex:)]) {
+        [_delegate getItemObject:self.itemArry[_row] atItemIndex:_row];
     }
+    
+    [self dismiss];
 }
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+
+-(UIPickerView *)pickerView
 {
-    [self removeCustomView];
+    if (_pickerView==nil) {
+        _pickerView=[[UIPickerView alloc] initWithFrame:CGRectMake(0,50, SCREEN_WIDTH, 170)];
+        _pickerView.delegate=self;
+        _pickerView.dataSource=self;
+    }
+    return _pickerView;
 }
--(void)removeCustomView
+-(NSMutableArray *)itemArry
 {
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.5];
-    _view.frame=CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT);
-    [UIView commitAnimations];
-    [self performSelector:@selector(delayMethod) withObject:nil afterDelay:0.5f];
-}
--(void)delayMethod
-{
-    [self removeFromSuperview];
+    if (_itemArry==nil)
+    {
+        _itemArry=[[NSMutableArray alloc] init];
+    }
+    return _itemArry;
 }
 @end

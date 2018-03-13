@@ -104,7 +104,7 @@
         {
             if ([self refreshChild])
             {
-                XHAchievementViewController *achievement = [[XHAchievementViewController alloc]initHiddenWhenPushHidden];
+                XHAskforLeaveViewController *achievement = [[XHAskforLeaveViewController alloc]initHiddenWhenPushHidden];
                 [self.navigationController pushViewController:achievement animated:YES];
             }
            

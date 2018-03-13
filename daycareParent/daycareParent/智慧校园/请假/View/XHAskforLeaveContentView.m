@@ -19,7 +19,9 @@
 #import "XHLoseSubjectView.h"//!<  缺失课程显示
 #import "XHSubjectModel.h"
 #import "XHSubmitView.h"//!<  提交按钮视图
-@interface XHAskforLeaveContentView () <BaseTextViewDeletage,XHDatePickerControlDeletage,XHAskforLeavePreviewControlDeletage,CameraManageDeletage>
+#import "XHRecipientModel.h"
+#import "XHCustomPickerView.h"//!<请假类型
+@interface XHAskforLeaveContentView () <BaseTextViewDeletage,XHDatePickerControlDeletage,XHAskforLeavePreviewControlDeletage,CameraManageDeletage,XHCustomPickerViewDelegate,XHSubmitViewDelegate>
 
 @property (nonatomic,strong) UIAlertController *alertController; //!< 弹出框视图控制器
 @property (nonatomic,weak) BaseViewController *viewController;
@@ -43,6 +45,7 @@
 @property (nonatomic,strong) XHSubmitView *submitView;   //!< 提交视图
 @property (nonatomic,assign) NSInteger selectTimeControl; //!< 记录选择的是哪个时间选择器
 @property(nonatomic,strong)NSMutableArray *subjectArry;//!<或缺课程数组
+@property(nonatomic,strong)XHCustomPickerView *pickerView;//!<选择请假类型
 
 @end
 
@@ -69,9 +72,6 @@
         [self addSubview:self.middleAccessoryView];
         [self addSubview:self.loseSubjectView];
         [self addSubview:self.bottomAccessoryView];
-        //[self addSubview:self.chargeTeacherControl];
-        //[self addSubview:self.otherControl];
-        //[self addSubview:self.submitControl];
         [self addSubview:self.submitView];
         [self setShowsVerticalScrollIndicator:NO];
         [self setShowsHorizontalScrollIndicator:NO];
@@ -94,17 +94,15 @@
     [self.startTimeControl resetFrame:CGRectMake(self.topAccessoryView.left, self.addPhotoControl.bottom+10.0, frame.size.width, self.childOptionsControl.height)];
     [self.endTimeControl resetFrame:CGRectMake(self.startTimeControl.left, self.startTimeControl.bottom, self.startTimeControl.width, self.startTimeControl.height)];
      [self.timeControl resetFrame:CGRectMake(self.endTimeControl.left, self.endTimeControl.bottom, self.endTimeControl.width, self.endTimeControl.height)];
-     [_timeControl setDescribeLabelFrame:CGRectMake(130.0, 0, (_timeControl.width-140), _timeControl.height)];
+    // [_timeControl setDescribeLabelFrame:CGRectMake(130.0, 0, (_timeControl.width-150), _timeControl.height)];
     [self.timeLabel setFrame:CGRectMake(10,self.timeControl.bottom,self.topAccessoryView.width-20, 40)];
     [self.middleAccessoryView resetFrame:CGRectMake(self.topAccessoryView.left,self.timeLabel.bottom,self.topAccessoryView.width, self.topAccessoryView.height)];
     [self.loseSubjectView resetFrame:CGRectMake(0, self.middleAccessoryView.bottom, self.middleAccessoryView.width, 90)];
     
     [self.bottomAccessoryView resetFrame:CGRectMake(self.topAccessoryView.left,self.loseSubjectView.bottom,self.topAccessoryView.width, self.topAccessoryView.height)];
-    
-   // [self.chargeTeacherControl resetFrame:CGRectMake(self.bottomAccessoryView.left, self.bottomAccessoryView.bottom, 80.0, 105)];
-    //[self.otherControl resetFrame:CGRectMake(self.chargeTeacherControl.right, self.chargeTeacherControl.top, self.chargeTeacherControl.width, self.chargeTeacherControl.height)];
-    //[self.submitControl resetFrame:CGRectMake(10, self.chargeTeacherControl.bottom+20.0, (frame.size.width-20.0), 40.0)];
-     [self.submitView resetFrame:CGRectMake(10, self.bottomAccessoryView.bottom, (frame.size.width-20.0), 170.0)];
+     [self.submitView resetFrame:CGRectMake(0, self.bottomAccessoryView.bottom, frame.size.width, 190.0)];
+    [self.submitView.submitButton setTag:7];
+    [self.submitView.submitButton addTarget:self action:@selector(controlAction:) forControlEvents:UIControlEventTouchUpInside];
     [self setContentSize:CGSizeMake(frame.size.width, self.submitView.bottom+20.0)];
     
     
@@ -118,7 +116,7 @@
     [self.reasonTextView resignFirstResponder];
     switch (sender.tag)
     {
-#pragma mark case 1 请假孩子
+#pragma mark case 1 请假学生
         case 1:
         {
             
@@ -128,7 +126,8 @@
    #pragma mark case 2 请假类型
             case 2:
         {
-            
+            [self.pickerView setItemObjectArry:(NSMutableArray *)kAskforLeaveList];
+            [self.pickerView show];
         }
             break;
 #pragma mark case 3 添加图片
@@ -146,32 +145,17 @@
             [[XHDatePickerControl sharedObject] showWithDeletage:self];
         }
             break;
-#pragma mark case 6  班主任
-        case 6:
+#pragma mark case 6  请假时长
+            case 6:
         {
-            XHTeacherAddressBookViewController *teacherAddressBook = [[XHTeacherAddressBookViewController alloc]init];
-            [teacherAddressBook setModel:self.childOptionsControl.model];
-            [self.viewController.navigationController pushViewController:teacherAddressBook animated:YES];
-            teacherAddressBook.didselectBack = ^(XHTeacherAddressBookFrame *itemObject)
-            {
-                [self.chargeTeacherControl setTeacherAddressBook:itemObject];
-            };
+           UIAlertController *alertController= [UIAlertController addtextFeildWithmessage:@"请输入请假时长" controller:self.viewController indexBlock:^(NSInteger index, id object) {
+                [self.timeControl setDescribe:[NSString stringWithFormat:@"%@天",object]];
+            }];
+alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunctuation;
         }
             break;
-#pragma mark case 7 相关人
+#pragma mark case 7 提交
         case 7:
-        {
-            XHTeacherAddressBookViewController *teacherAddressBook = [[XHTeacherAddressBookViewController alloc]init];
-            [teacherAddressBook setModel:self.childOptionsControl.model];
-            [self.viewController.navigationController pushViewController:teacherAddressBook animated:YES];
-            teacherAddressBook.didselectBack = ^(XHTeacherAddressBookFrame *itemObject)
-            {
-                [self.otherControl setTeacherAddressBook:itemObject];
-            };
-        }
-            break;
-#pragma mark case 8 提交
-        case 8:
         {
             [self uploadImageWithImage:self.addPhotoControl.image withImageName:[XHHelper createGuid] WithContent:self.reasonTextView.text withBeginTime:self.startTimeControl.describe withEndTime:self.endTimeControl.describe withActorId:[XHUserInfo sharedUserInfo].guardianModel.guardianId withStudentBaseId:self.childOptionsControl.model.studentBaseId withShr:self.chargeTeacherControl.teacherAddressBook.model.ID withCsr:self.otherControl.teacherAddressBook.model.ID];
             
@@ -278,12 +262,12 @@
 {
     switch (self.selectTimeControl)
     {
-        case 3:
+        case 4:
         {
             [self.startTimeControl setDescribe:date];
         }
             break;
-        case 4:
+        case 5:
         {
             [self.endTimeControl setDescribe:date];
             
@@ -291,7 +275,17 @@
             break;
     }
 }
-
+#pragma mark  请假类型Delegate
+-(void)getItemObject:(NSString *)itemObject atItemIndex:(NSInteger)index
+{
+    [self.askforLeaveTypeControl setDescribe:itemObject];
+}
+#pragma mark  submitDelegate
+-(void)getItemObject:(NSString *)ItemObject
+{
+    NSLog(@"=====%@",ItemObject);
+    self.submitView.teacherId=ItemObject;
+}
 #pragma mark XHAskforLeavePreviewControlDeletage
 -(void)askforLeavePreviewControlAction:(UIImage*)image
 {
@@ -397,8 +391,6 @@
          } error:^(NSError *error){}];
     }
 }
-
-
 
 
 #pragma mark - Getter / Setter
@@ -530,7 +522,7 @@
         [_timeControl setTitle:@"请假时长（天）"];
         [_timeControl setDescribe:@"请输入时长"];
         [_timeControl addTarget:self action:@selector(controlAction:) forControlEvents:UIControlEventTouchUpInside];
-        [_timeControl setTag:5];
+        [_timeControl setTag:6];
     }
     return _timeControl;
 }
@@ -571,50 +563,6 @@
     }
     return _loseSubjectView;
 }
-#pragma mark 班主任
--(XHAskforLeaveChargeTeacherControl *)chargeTeacherControl
-{
-    if (_chargeTeacherControl == nil)
-    {
-        _chargeTeacherControl = [[XHAskforLeaveChargeTeacherControl alloc]init];
-        [_chargeTeacherControl setTitle:@"接收人"];
-        [_chargeTeacherControl setImaeg:[UIImage imageNamed:@"addman"]];
-       [_chargeTeacherControl addTarget:self action:@selector(controlAction:) forControlEvents:UIControlEventTouchUpInside];
-        [_chargeTeacherControl setTag:6];
-    }
-    return _chargeTeacherControl;
-}
-
-
-
-
-#pragma mark 相关人
--(XHAskforLeaveChargeTeacherControl *)otherControl
-{
-    if (_otherControl == nil)
-    {
-        _otherControl = [[XHAskforLeaveChargeTeacherControl alloc]init];
-        [_otherControl setImaeg:[UIImage imageNamed:@"ico_addpeo"]];
-        [_otherControl addTarget:self action:@selector(controlAction:) forControlEvents:UIControlEventTouchUpInside];
-        [_otherControl setTag:7];
-    }
-    return _otherControl;
-}
-
-
-#pragma mark 提交
--(XHAskforLeaveSubmitControl *)submitControl
-{
-    if (_submitControl == nil)
-    {
-        _submitControl = [[XHAskforLeaveSubmitControl alloc]init];
-        [_submitControl setBackgroundColor:MainColor];
-        [_submitControl setTitle:@"提交"];
-        [_submitControl addTarget:self action:@selector(controlAction:) forControlEvents:UIControlEventTouchUpInside];
-        [_submitControl setTag:8];
-    }
-    return _submitControl;
-}
 
 #pragma mark 提交视图
 -(XHSubmitView *)submitView
@@ -622,7 +570,7 @@
     if (_submitView == nil)
     {
         _submitView = [[XHSubmitView alloc]init];
-        _submitView.backgroundColor=[UIColor orangeColor];
+        _submitView.delegate=self;
     }
     return _submitView;
 }
@@ -654,7 +602,13 @@
     }
     return _bottomAccessoryView;
 }
-
+-(XHCustomPickerView *)pickerView
+{
+    if (_pickerView==nil) {
+        _pickerView=[[XHCustomPickerView alloc] initWithDelegate:self];
+    }
+    return _pickerView;
+}
 
 #pragma mark 孩子列表
 -(UIAlertController *)alertController

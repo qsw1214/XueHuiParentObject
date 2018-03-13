@@ -30,7 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [self setNavtionTitle:@"通讯录"];
 }
 
 - (void)didReceiveMemoryWarning

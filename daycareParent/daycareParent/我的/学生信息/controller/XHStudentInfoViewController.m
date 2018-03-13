@@ -200,7 +200,8 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section==1) {
-    [self.view addSubview:self.customPickerViewerView];
+       [self.customPickerViewerView setItemObjectArry:(NSMutableArray *)kFamilyList];
+        [self.customPickerViewerView show];
     }
     if (indexPath.section==2&&indexPath.row!=0 ) {
         if ([_selfModel.isMajor integerValue]==1)
@@ -307,30 +308,24 @@
 -(XHCustomPickerView *)customPickerViewerView
 {
     if (_customPickerViewerView==nil) {
-        _customPickerViewerView=[[XHCustomPickerView alloc] initWithFrame:WindowScreen];
-        _customPickerViewerView.delegate=self;
+        _customPickerViewerView=[[XHCustomPickerView alloc] initWithDelegate:self];
     }
-    [self.view addSubview:_customPickerViewerView];
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.5];
-    _customPickerViewerView.view.frame=CGRectMake(0, SCREEN_HEIGHT-220, SCREEN_WIDTH, 220);
-    [UIView commitAnimations];
     return _customPickerViewerView;
 }
 #pragma mark-----------选择家属后回调代理方法----------
--(void)getFamily:(NSInteger)familyIndex
+- (void)getItemObject:(NSString *)itemObject atItemIndex:(NSInteger )index
 {
         [self.netWorkConfig setObject:_selfModel.ID forKey:@"id"];
-        [self.netWorkConfig setObject:[NSString stringWithFormat:@"%zd",familyIndex+1] forKey:@"type"];
+        [self.netWorkConfig setObject:[NSString stringWithFormat:@"%zd",index+1] forKey:@"type"];
         [XHShowHUD showTextHud];
         [self.netWorkConfig postWithUrl:@"zzjt-app-api_student007" sucess:^(id object, BOOL verifyObject) {
             if (verifyObject) {
                 NSIndexPath *  indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
                 //找到对应的cell
                 XHUserTableViewCell *cell = [_tableView cellForRowAtIndexPath:indexPath];
-                cell.backLabel.text=FAMILY_TIES[familyIndex];
-                 [XHUserInfo sharedUserInfo].guardianModel.type=[NSString stringWithFormat:@"%zd",familyIndex+1];
-                [XHUserInfo sharedUserInfo].guardianModel.typeName=FAMILY_TIES[familyIndex];
+                cell.backLabel.text=itemObject;
+                 [XHUserInfo sharedUserInfo].guardianModel.type=[NSString stringWithFormat:@"%zd",index+1];
+                [XHUserInfo sharedUserInfo].guardianModel.typeName=itemObject;
             }
         } error:^(NSError *error) {
             

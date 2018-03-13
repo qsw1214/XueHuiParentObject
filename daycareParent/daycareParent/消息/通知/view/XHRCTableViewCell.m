@@ -42,7 +42,7 @@
     }
     return self;
 }
--(void)setItemObject:(XHRCModel *)model
+-(void)setItemObject:(XHRCModel *)model atIndex:(NSInteger)Index
 {
     _titleLab.text=model.RCtitle;
     _headImageView.frame=CGRectMake(15, 15, 40, 40);
@@ -54,7 +54,16 @@
     _smallLab.text=@"10";
     _smallLab.frame=CGRectMake(50, 7, [self getCustomWidth:_smallLab.text], 15);
     _smallLab.layer.cornerRadius=7.5;
-
+    if (Index==2)
+    {
+        self.bgLabel.hidden=NO;
+    }
+    
+    else
+    {
+        self.bgLabel.hidden=YES;
+        self.backgroundColor=[UIColor whiteColor];
+    }
 }
 -(CGFloat)getCustomWidth:(NSString *)str
 {

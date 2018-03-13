@@ -28,7 +28,7 @@
                 _sexName=@"男";
             }
         _type=[dic objectItemKey:@"type"];
-        _typeName=FAMILY_TIES[[_type integerValue] -1];
+        _typeName=kFamilyList[[_type integerValue] -1];
         _isMajor=[dic objectItemKey:@"isMajor"];
     }
     return self;

@@ -8,8 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol XHSubmitViewDelegate <NSObject>
+
+-(void)getItemObject:(NSString *)ItemObject;
+
+
+@end
+
 @interface XHSubmitView : UIView
+
 @property(nonatomic,strong)UIButton *submitButton;
+@property(nonatomic,copy)NSString *teacherId;
+@property(nonatomic,assign)id <XHSubmitViewDelegate> delegate;
 -(void)resetFrame:(CGRect)frame;
 -(void)setItemArry:(NSMutableArray *)arry;
+
 @end

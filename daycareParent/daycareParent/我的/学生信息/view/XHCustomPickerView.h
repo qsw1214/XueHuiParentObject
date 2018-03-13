@@ -10,15 +10,12 @@
 
 @protocol XHCustomPickerViewDelegate <NSObject>
 
-- (void)getFamily:(NSInteger )familyIndex;
+- (void)getItemObject:(NSString *)itemObject atItemIndex:(NSInteger )index;
 
 @end
 
-@interface XHCustomPickerView : UIView<UIPickerViewDataSource,UIPickerViewDelegate>
-{
-    NSArray *itemArry;
-    NSInteger _row;
-}
-@property(nonatomic,strong)UIView *view;
-@property(nonatomic,assign)id <XHCustomPickerViewDelegate> delegate;
+@interface XHCustomPickerView : ParentView
+
+-(id)initWithDelegate:(id)delegate;
+-(void)show;
 @end

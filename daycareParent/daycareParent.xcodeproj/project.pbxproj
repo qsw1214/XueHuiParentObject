@@ -424,6 +424,14 @@
 		8C7AE7411FE7967B00BE7A02 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7AE7401FE7967B00BE7A02 /* libsqlite3.0.tbd */; };
 		8C7AE7431FE796A400BE7A02 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7AE7421FE7969900BE7A02 /* CoreMotion.framework */; };
 		8C7AE74B1FE7BE6A00BE7A02 /* XHvipInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7AE74A1FE7BE6A00BE7A02 /* XHvipInfo.m */; };
+		8C7DDC0320575DA300AF8D04 /* ParentLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7DDC0220575DA300AF8D04 /* ParentLabel.m */; };
+		8C7DDC062057601E00AF8D04 /* ParentCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7DDC052057601E00AF8D04 /* ParentCollectionViewCell.m */; };
+		8C7DDC092057608500AF8D04 /* XHSubmitCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7DDC082057608500AF8D04 /* XHSubmitCollectionViewCell.m */; };
+		8C7DDC0C2057639800AF8D04 /* ParentImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7DDC0B2057639800AF8D04 /* ParentImageView.m */; };
+		8C7DDC0F20576A6300AF8D04 /* ParentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7DDC0E20576A6300AF8D04 /* ParentModel.m */; };
+		8C7DDC1220576AC500AF8D04 /* XHRecipientModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7DDC1120576AC500AF8D04 /* XHRecipientModel.m */; };
+		8C7DDC15205773FA00AF8D04 /* UIAlertController+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7DDC13205773FA00AF8D04 /* UIAlertController+Category.m */; };
+		8C7DDC182057779100AF8D04 /* ParentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7DDC172057779100AF8D04 /* ParentView.m */; };
 		8C7E980E1FECDB510096288E /* XHLocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7E980D1FECDB510096288E /* XHLocationModel.m */; };
 		8C7E98101FECE8C80096288E /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8C7E980F1FECE8C70096288E /* AMap.bundle */; };
 		8C7E982F1FECF1660096288E /* UIImage+ImageSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7E98221FECF1660096288E /* UIImage+ImageSize.m */; };
@@ -1334,6 +1342,22 @@
 		8C7AE7421FE7969900BE7A02 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		8C7AE7491FE7BE6A00BE7A02 /* XHvipInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHvipInfo.h; sourceTree = "<group>"; };
 		8C7AE74A1FE7BE6A00BE7A02 /* XHvipInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHvipInfo.m; sourceTree = "<group>"; };
+		8C7DDC0120575DA300AF8D04 /* ParentLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParentLabel.h; sourceTree = "<group>"; };
+		8C7DDC0220575DA300AF8D04 /* ParentLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParentLabel.m; sourceTree = "<group>"; };
+		8C7DDC042057601E00AF8D04 /* ParentCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParentCollectionViewCell.h; sourceTree = "<group>"; };
+		8C7DDC052057601E00AF8D04 /* ParentCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParentCollectionViewCell.m; sourceTree = "<group>"; };
+		8C7DDC072057608500AF8D04 /* XHSubmitCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHSubmitCollectionViewCell.h; sourceTree = "<group>"; };
+		8C7DDC082057608500AF8D04 /* XHSubmitCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHSubmitCollectionViewCell.m; sourceTree = "<group>"; };
+		8C7DDC0A2057639800AF8D04 /* ParentImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParentImageView.h; sourceTree = "<group>"; };
+		8C7DDC0B2057639800AF8D04 /* ParentImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParentImageView.m; sourceTree = "<group>"; };
+		8C7DDC0D20576A6300AF8D04 /* ParentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParentModel.h; sourceTree = "<group>"; };
+		8C7DDC0E20576A6300AF8D04 /* ParentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParentModel.m; sourceTree = "<group>"; };
+		8C7DDC1020576AC500AF8D04 /* XHRecipientModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHRecipientModel.h; sourceTree = "<group>"; };
+		8C7DDC1120576AC500AF8D04 /* XHRecipientModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHRecipientModel.m; sourceTree = "<group>"; };
+		8C7DDC13205773FA00AF8D04 /* UIAlertController+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Category.m"; sourceTree = "<group>"; };
+		8C7DDC14205773FA00AF8D04 /* UIAlertController+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Category.h"; sourceTree = "<group>"; };
+		8C7DDC162057779100AF8D04 /* ParentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParentView.h; sourceTree = "<group>"; };
+		8C7DDC172057779100AF8D04 /* ParentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParentView.m; sourceTree = "<group>"; };
 		8C7E980C1FECDB510096288E /* XHLocationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XHLocationModel.h; path = "daycareParent/智慧校园/定位/model/XHLocationModel.h"; sourceTree = SOURCE_ROOT; };
 		8C7E980D1FECDB510096288E /* XHLocationModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = XHLocationModel.m; path = "daycareParent/智慧校园/定位/model/XHLocationModel.m"; sourceTree = SOURCE_ROOT; };
 		8C7E980F1FECE8C70096288E /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AMap.bundle; sourceTree = "<group>"; };
@@ -2346,6 +2370,8 @@
 				4B07CC1B1FD4DAC800B2DBDA /* XHLeaveRecordFrame.m */,
 				8C16422820567887001DCA01 /* XHSubjectModel.h */,
 				8C16422920567887001DCA01 /* XHSubjectModel.m */,
+				8C7DDC1020576AC500AF8D04 /* XHRecipientModel.h */,
+				8C7DDC1120576AC500AF8D04 /* XHRecipientModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2375,6 +2401,8 @@
 				8C1642262056741D001DCA01 /* XHLoseSubjectView.m */,
 				8C16422B20568892001DCA01 /* XHSubmitView.h */,
 				8C16422C20568892001DCA01 /* XHSubmitView.m */,
+				8C7DDC072057608500AF8D04 /* XHSubmitCollectionViewCell.h */,
+				8C7DDC082057608500AF8D04 /* XHSubmitCollectionViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2588,6 +2616,8 @@
 				4B80F32D1FCC113500BC7B52 /* UIView+Frame.m */,
 				8C5121E21FDF64BB00973E77 /* NSDictionary+Category.h */,
 				8C5121E31FDF64BB00973E77 /* NSDictionary+Category.m */,
+				8C7DDC14205773FA00AF8D04 /* UIAlertController+Category.h */,
+				8C7DDC13205773FA00AF8D04 /* UIAlertController+Category.m */,
 			);
 			path = "Category(分类)";
 			sourceTree = "<group>";
@@ -2617,6 +2647,8 @@
 			isa = PBXGroup;
 			children = (
 				0474F6452057CA990081A37D /* XHDatePicker */,
+				8C7DDBFF20575D7800AF8D04 /* ParentModel */,
+				8C7DDC0020575D7800AF8D04 /* ParentView */,
 				041649D820524E7700D2CF4C /* XHDropDownMen */,
 				4BD8D3EE2020691500A98CEE /* XHStoreHelper */,
 				8C7AE70C1FE795ED00BE7A02 /* ping++ */,
@@ -3701,6 +3733,30 @@
 			path = model;
 			sourceTree = "<group>";
 		};
+		8C7DDBFF20575D7800AF8D04 /* ParentModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ParentModel;
+			sourceTree = "<group>";
+		};
+		8C7DDC0020575D7800AF8D04 /* ParentView */ = {
+			isa = PBXGroup;
+			children = (
+				8C7DDC0120575DA300AF8D04 /* ParentLabel.h */,
+				8C7DDC0220575DA300AF8D04 /* ParentLabel.m */,
+				8C7DDC042057601E00AF8D04 /* ParentCollectionViewCell.h */,
+				8C7DDC052057601E00AF8D04 /* ParentCollectionViewCell.m */,
+				8C7DDC0A2057639800AF8D04 /* ParentImageView.h */,
+				8C7DDC0B2057639800AF8D04 /* ParentImageView.m */,
+				8C7DDC0D20576A6300AF8D04 /* ParentModel.h */,
+				8C7DDC0E20576A6300AF8D04 /* ParentModel.m */,
+				8C7DDC162057779100AF8D04 /* ParentView.h */,
+				8C7DDC172057779100AF8D04 /* ParentView.m */,
+			);
+			path = ParentView;
+			sourceTree = "<group>";
+		};
 		8C7E980B1FECDB260096288E /* view */ = {
 			isa = PBXGroup;
 			children = (
@@ -4139,6 +4195,7 @@
 				4B3126191FD90AAA000CE894 /* XHDatePickerControl.m in Sources */,
 				4B31265C1FDA8F9C000CE894 /* XHAddressBookLecturesControl.m in Sources */,
 				4B80F3191FCBFD6F00BC7B52 /* EXTScope.m in Sources */,
+				8C7DDC1220576AC500AF8D04 /* XHRecipientModel.m in Sources */,
 				8C6240A21FD915BB00E6C031 /* XHDiscuntViewController.m in Sources */,
 				8C019F701FF4C373005EBC2C /* JKDBHelper.m in Sources */,
 				8CCD7E611FD145E200F7F54E /* XHVideoTableViewCell.m in Sources */,
@@ -4226,6 +4283,7 @@
 				4B31261C1FD91B20000CE894 /* XHAskforLeavePreviewControl.m in Sources */,
 				4B577FE01FF63FB30023ACBC /* MASViewConstraint.m in Sources */,
 				4B34187D1FFDC14C00A5EC56 /* ZFPlayerModel.m in Sources */,
+				8C7DDC062057601E00AF8D04 /* ParentCollectionViewCell.m in Sources */,
 				4BA8C4BB1FCFB6DC006CBEBC /* BaseModel.m in Sources */,
 				4B80F2D31FCBF04F00BC7B52 /* UIImage+GIF.m in Sources */,
 				8C377C5320089DFA001F1FC7 /* HNShopViewController.m in Sources */,
@@ -4267,6 +4325,7 @@
 				4B49763D1FECFDE600338D37 /* XHDynamicsPreviewCollectionViewCell.m in Sources */,
 				4BB792D21FD7936A00E0ED72 /* XHAchievementModel.m in Sources */,
 				4B3126331FD93CC6000CE894 /* TAPageControl.m in Sources */,
+				8C7DDC0320575DA300AF8D04 /* ParentLabel.m in Sources */,
 				4B577FDE1FF63FB30023ACBC /* MASLayoutConstraint.m in Sources */,
 				4B80F3231FCBFD6F00BC7B52 /* NSDictionary+MTLManipulationAdditions.m in Sources */,
 				04291A721FD2A101002D3B5B /* XHBackLabel.m in Sources */,
@@ -4290,6 +4349,7 @@
 				8CB5A2841FD7DF4B008E97D8 /* AreaModel.m in Sources */,
 				8C8081611FCE722000C7945A /* XHListTableViewCell.m in Sources */,
 				4B80F2D91FCBF04F00BC7B52 /* UIView+WebCacheOperation.m in Sources */,
+				8C7DDC182057779100AF8D04 /* ParentView.m in Sources */,
 				4B3126561FDA57F0000CE894 /* XHHelper.m in Sources */,
 				4B80F2C51FCBF04F00BC7B52 /* SDImageCache.m in Sources */,
 				8CDC90651FE4B86A00040D19 /* XHStudentDetailViewController.m in Sources */,
@@ -4315,6 +4375,7 @@
 				8CB5A2761FD7CA67008E97D8 /* XHCustomTextField.m in Sources */,
 				4B80F2D71FCBF04F00BC7B52 /* UIImageView+WebCache.m in Sources */,
 				4B5A3AF41FCEAA0300504229 /* XHRegisterModel.m in Sources */,
+				8C7DDC092057608500AF8D04 /* XHSubmitCollectionViewCell.m in Sources */,
 				4B278ADF201041C700293F30 /* RCDLiveCollectionViewHeader.m in Sources */,
 				8C16422A20567887001DCA01 /* XHSubjectModel.m in Sources */,
 				4B80F32F1FCC113500BC7B52 /* UIView+Frame.m in Sources */,
@@ -4493,6 +4554,7 @@
 				8C377CA32008B7BB001F1FC7 /* XCNativePlugs.m in Sources */,
 				8C3E55AD1FD51A330013002A /* XHCustomPayView.m in Sources */,
 				4B80F2891FCBF04800BC7B52 /* MJRefreshAnimateHeader.m in Sources */,
+				8C7DDC0F20576A6300AF8D04 /* ParentModel.m in Sources */,
 				8CCD7E6A1FD156BB00F7F54E /* XHBindViewController.m in Sources */,
 				4B80F2D41FCBF04F00BC7B52 /* UIImage+MultiFormat.m in Sources */,
 				4BD33DDA1FCD555500BC52B6 /* XHSmartCampusContentView.m in Sources */,
@@ -4501,7 +4563,9 @@
 				8C67F82B1FD6479C007DFD53 /* XHDelegateView.m in Sources */,
 				4B80F2261FCBEC2B00BC7B52 /* TabBarItem.m in Sources */,
 				8C3E55B61FD5216F0013002A /* XHPayTableViewCell.m in Sources */,
+				8C7DDC0C2057639800AF8D04 /* ParentImageView.m in Sources */,
 				4B80F2871FCBF04800BC7B52 /* MJRefreshStateHeader.m in Sources */,
+				8C7DDC15205773FA00AF8D04 /* UIAlertController+Category.m in Sources */,
 				4B80F2881FCBF04800BC7B52 /* MJRefreshAnimateFooter.m in Sources */,
 				4B80F2841FCBF04800BC7B52 /* MJRefreshBackStateFooter.m in Sources */,
 				4B4A00081FE23F1400B8A8F8 /* XHDynamicsViewController.m in Sources */,

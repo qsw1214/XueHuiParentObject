@@ -13,6 +13,7 @@
 #import "XHEducationCloudViewController.h"
 #import "XHEducationCloudViewController.h"
 #import "XHPersonalCenterViewController.h"
+#import "XHAddressBookViewController.h"
 #import "TabBarItem.h"
 #import "TabBarView.h"
 #import <RongIMKit/RongIMKit.h>
@@ -46,8 +47,8 @@
     XHChatViewController *Notice = [[XHChatViewController alloc] init];
     [self addChildViewController:Notice];
     
-    XHIMNoticeViewController *imNotice = [[XHIMNoticeViewController alloc] init];
-    [self addChildViewController:imNotice];
+    XHAddressBookViewController *book = [[XHAddressBookViewController alloc] init];
+    [self addChildViewController:book];
 
     XHSmartCampusViewController *MiddleSmartCampus = [[XHSmartCampusViewController alloc] init];
     [self addChildViewController:MiddleSmartCampus];

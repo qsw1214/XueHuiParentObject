@@ -16,5 +16,5 @@
 @property(nonatomic,strong)UILabel *smallLab;
 @property(nonatomic,strong)UILabel *bgLabel;
 @property(nonatomic,strong)UIImageView *smalImage;
--(void)setItemObject:(RCConversationModel *)model;
+-(void)setItemObject:(RCConversationModel *)model atIndex:(NSInteger)Index;
 @end

@@ -72,9 +72,6 @@
         [self addSubview:self.middleAccessoryView];
         [self addSubview:self.loseSubjectView];
         [self addSubview:self.bottomAccessoryView];
-        //[self addSubview:self.chargeTeacherControl];
-        //[self addSubview:self.otherControl];
-        //[self addSubview:self.submitControl];
         [self addSubview:self.submitView];
         [self setShowsVerticalScrollIndicator:NO];
         [self setShowsHorizontalScrollIndicator:NO];
@@ -97,17 +94,13 @@
     [self.startTimeControl resetFrame:CGRectMake(self.topAccessoryView.left, self.addPhotoControl.bottom+10.0, frame.size.width, self.childOptionsControl.height)];
     [self.endTimeControl resetFrame:CGRectMake(self.startTimeControl.left, self.startTimeControl.bottom, self.startTimeControl.width, self.startTimeControl.height)];
      [self.timeControl resetFrame:CGRectMake(self.endTimeControl.left, self.endTimeControl.bottom, self.endTimeControl.width, self.endTimeControl.height)];
-     [_timeControl setDescribeLabelFrame:CGRectMake(130.0, 0, (_timeControl.width-140), _timeControl.height)];
+    // [_timeControl setDescribeLabelFrame:CGRectMake(130.0, 0, (_timeControl.width-150), _timeControl.height)];
     [self.timeLabel setFrame:CGRectMake(10,self.timeControl.bottom,self.topAccessoryView.width-20, 40)];
     [self.middleAccessoryView resetFrame:CGRectMake(self.topAccessoryView.left,self.timeLabel.bottom,self.topAccessoryView.width, self.topAccessoryView.height)];
     [self.loseSubjectView resetFrame:CGRectMake(0, self.middleAccessoryView.bottom, self.middleAccessoryView.width, 90)];
     
     [self.bottomAccessoryView resetFrame:CGRectMake(self.topAccessoryView.left,self.loseSubjectView.bottom,self.topAccessoryView.width, self.topAccessoryView.height)];
-    
-   // [self.chargeTeacherControl resetFrame:CGRectMake(self.bottomAccessoryView.left, self.bottomAccessoryView.bottom, 80.0, 105)];
-    //[self.otherControl resetFrame:CGRectMake(self.chargeTeacherControl.right, self.chargeTeacherControl.top, self.chargeTeacherControl.width, self.chargeTeacherControl.height)];
-    //[self.submitControl resetFrame:CGRectMake(10, self.chargeTeacherControl.bottom+20.0, (frame.size.width-20.0), 40.0)];
-     [self.submitView resetFrame:CGRectMake(10, self.bottomAccessoryView.bottom, (frame.size.width-20.0), 190.0)];
+     [self.submitView resetFrame:CGRectMake(0, self.bottomAccessoryView.bottom, frame.size.width, 190.0)];
     [self.submitView.submitButton setTag:7];
     [self.submitView.submitButton addTarget:self action:@selector(controlAction:) forControlEvents:UIControlEventTouchUpInside];
     [self setContentSize:CGSizeMake(frame.size.width, self.submitView.bottom+20.0)];
@@ -161,29 +154,6 @@
 alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunctuation;
         }
             break;
-//        case 6:
-//        {
-//            XHTeacherAddressBookViewController *teacherAddressBook = [[XHTeacherAddressBookViewController alloc]init];
-//            [teacherAddressBook setModel:self.childOptionsControl.model];
-//            [self.viewController.navigationController pushViewController:teacherAddressBook animated:YES];
-//            teacherAddressBook.didselectBack = ^(XHTeacherAddressBookFrame *itemObject)
-//            {
-//                [self.chargeTeacherControl setTeacherAddressBook:itemObject];
-//            };
-//        }
-//            break;
-//#pragma mark case 7 相关人
-//        case 7:
-//        {
-//            XHTeacherAddressBookViewController *teacherAddressBook = [[XHTeacherAddressBookViewController alloc]init];
-//            [teacherAddressBook setModel:self.childOptionsControl.model];
-//            [self.viewController.navigationController pushViewController:teacherAddressBook animated:YES];
-//            teacherAddressBook.didselectBack = ^(XHTeacherAddressBookFrame *itemObject)
-//            {
-//                [self.otherControl setTeacherAddressBook:itemObject];
-//            };
-//        }
-//            break;
 #pragma mark case 7 提交
         case 7:
         {
@@ -592,50 +562,6 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
         [_loseSubjectView setItemArry:self.subjectArry];
     }
     return _loseSubjectView;
-}
-#pragma mark 班主任
--(XHAskforLeaveChargeTeacherControl *)chargeTeacherControl
-{
-    if (_chargeTeacherControl == nil)
-    {
-        _chargeTeacherControl = [[XHAskforLeaveChargeTeacherControl alloc]init];
-        [_chargeTeacherControl setTitle:@"接收人"];
-        [_chargeTeacherControl setImaeg:[UIImage imageNamed:@"addman"]];
-       [_chargeTeacherControl addTarget:self action:@selector(controlAction:) forControlEvents:UIControlEventTouchUpInside];
-        [_chargeTeacherControl setTag:6];
-    }
-    return _chargeTeacherControl;
-}
-
-
-
-
-#pragma mark 相关人
--(XHAskforLeaveChargeTeacherControl *)otherControl
-{
-    if (_otherControl == nil)
-    {
-        _otherControl = [[XHAskforLeaveChargeTeacherControl alloc]init];
-        [_otherControl setImaeg:[UIImage imageNamed:@"ico_addpeo"]];
-        [_otherControl addTarget:self action:@selector(controlAction:) forControlEvents:UIControlEventTouchUpInside];
-        [_otherControl setTag:7];
-    }
-    return _otherControl;
-}
-
-
-#pragma mark 提交
--(XHAskforLeaveSubmitControl *)submitControl
-{
-    if (_submitControl == nil)
-    {
-        _submitControl = [[XHAskforLeaveSubmitControl alloc]init];
-        [_submitControl setBackgroundColor:MainColor];
-        [_submitControl setTitle:@"提交"];
-        [_submitControl addTarget:self action:@selector(controlAction:) forControlEvents:UIControlEventTouchUpInside];
-        [_submitControl setTag:8];
-    }
-    return _submitControl;
 }
 
 #pragma mark 提交视图

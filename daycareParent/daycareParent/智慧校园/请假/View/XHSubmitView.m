@@ -81,6 +81,7 @@
          {
              XHTeacherAddressBookViewController *teacherAddressBook = [[XHTeacherAddressBookViewController alloc]init];
               teacherAddressBook.enterType=TeacherAddressBookAskLeaveType;
+              [teacherAddressBook setNavtionTitle:@"选择接收人"];
                 [[XHHelper sharedHelper].currentlyViewController.navigationController pushViewController:teacherAddressBook animated:YES];
                          teacherAddressBook.didselectBack = ^(XHTeacherAddressBookFrame *itemObject)
                          {

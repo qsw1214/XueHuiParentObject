@@ -163,7 +163,14 @@
 #define  AutoLogin @"autoLogin"
 
 #define  kFamilyList @[@"爸爸",@"妈妈",@"爷爷",@"奶奶",@"外公",@"外婆",@"其他"]
-#define  kAskforLeaveList @[@"事假",@"病假",@"年假",@"调休",@"陪产假",@"婚假",@"丧假",@"产假"]
+#define  kAskforLeaveList @[@"事假",@"病假",@"年假",@"调休",@"陪产假",@"例假",@"婚假",@"丧假",@"产假"]
+#define kNSFormatLog(...) NSLog(@"%s 第%d行 \n %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
+
+#define  kNSLog(...) NSLog(@"%@%s",__VA_ARGS__,__func__)
+#define   kFormat(...)  [NSString stringWithFormat:__VA_ARGS__]
+
+
+
 #define ALGetFileVedio(name) [NSString stringWithFormat:@"http://vedio.ixuehui.cn/vedio/%@",name]
 #define ALGetFileHeadThumbnail(name) [NSString stringWithFormat:@"http://img.ixuehui.cn/xh/%@@!100-100-ios-head",name]             //头像缩略
 #define ALGetFileImageThumbnail(name) [NSString stringWithFormat:@"http://img.ixuehui.cn/xh/%@@!160-160-ios-list-item",name]            //图片缩略

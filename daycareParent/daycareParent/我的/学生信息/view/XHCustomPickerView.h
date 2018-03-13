@@ -12,12 +12,10 @@
 
 - (void)getItemObject:(NSString *)itemObject atItemIndex:(NSInteger )index;
 
-
 @end
 
 @interface XHCustomPickerView : ParentView
 
 -(id)initWithDelegate:(id)delegate;
 -(void)show;
--(void)dismiss;
 @end

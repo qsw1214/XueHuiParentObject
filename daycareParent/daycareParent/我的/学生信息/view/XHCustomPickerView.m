@@ -13,41 +13,38 @@
     NSInteger _row;
 }
 
-@property(nonatomic,strong) NSMutableArray *itemArry;
-@property(nonatomic,strong) UIPickerView *pickerView;
-@property(nonatomic,strong) UIView *bgView;
+@property(nonatomic,strong) NSMutableArray *itemArry;//!< 数据源
+
+@property(nonatomic,strong) UIPickerView *pickerView;//!< 选择器
+
+@property(nonatomic,strong) UIView *bgView;//!< 背景视图
+
 @property(nonatomic,assign)id <XHCustomPickerViewDelegate> delegate;
+
 @end
 
 
 @implementation XHCustomPickerView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 -(id)initWithDelegate:(id)delegate
 {
     if (self = [super initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)]) {
         self.backgroundColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
-        _bgView=[[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-220, SCREEN_WIDTH, 220)];
-        _bgView.backgroundColor=[UIColor whiteColor];
-        [self addSubview:_bgView];
+        [self addSubview:self.bgView];
+        
         UIButton *cancleBtn=[[UIButton alloc] initWithFrame:CGRectMake(5, 5, 45, 45)];
         [cancleBtn setTitle:@"取消" forState:UIControlStateNormal];
         [cancleBtn addTarget:self action:@selector(cancleBtnClick) forControlEvents:UIControlEventTouchUpInside];
         [cancleBtn setTitleColor:MainColor forState:UIControlStateNormal];
-        [_bgView addSubview:cancleBtn];
+        [self.bgView addSubview:cancleBtn];
         UIButton *sureBtn=[[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-50, 5, 45, 45)];
         [sureBtn setTitle:@"确定" forState:UIControlStateNormal];
         [sureBtn addTarget:self action:@selector(sureBtnClick) forControlEvents:UIControlEventTouchUpInside];
         [sureBtn setTitleColor:MainColor forState:UIControlStateNormal];
-        [_bgView addSubview:sureBtn];
-        [_bgView addSubview:self.pickerView];
-        self.delegate=delegate;
+        [self.bgView addSubview:sureBtn];
+        [self.bgView addSubview:self.pickerView];
+        
+        [self setDelegate:delegate];
     }
     return self;
 }
@@ -55,11 +52,21 @@
 -(void)show
 {
     [kWindow addSubview:self];
+    
     [UIView animateWithDuration:0.25 animations:^{
         
-      _bgView.frame=CGRectMake(0, SCREEN_HEIGHT-220, SCREEN_WIDTH, 220);
+      _bgView.frame=CGRectMake(0, SCREEN_HEIGHT-240, SCREEN_WIDTH, 240);
         
-    } completion:^(BOOL finished){}];
+    } completion:^(BOOL finished){
+        
+        for(UIView *speartorView in self.pickerView.subviews)
+        {
+            if (speartorView.frame.size.height < 1)//取出分割线view
+            {
+                speartorView.backgroundColor = LineViewColor;//修改分割线颜色
+            }
+        }
+    }];
 }
 -(void)dismiss
 {
@@ -76,37 +83,35 @@
 {
     [self.itemArry setArray:arry];
 }
+#pragma mark  pickerViewDataSource
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView*)pickerView
 {
-    return 1; // 返回1表明该控件只包含1列
+    return 1;
 }
-
-//UIPickerViewDataSource中定义的方法，该方法的返回值决定该控件指定列包含多少个列表项
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    // 由于该控件只包含一列，因此无须理会列序号参数component
-    // 该方法返回teams.count，表明teams包含多少个元素，该控件就包含多少行
     return self.itemArry.count;
 }
 
-
-// UIPickerViewDelegate中定义的方法，该方法返回的NSString将作为UIPickerView
-// 中指定列和列表项的标题文本
+#pragma mark pickerViewDelegate
 - (NSString *)pickerView:(UIPickerView *)pickerView
              titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    // 由于该控件只包含一列，因此无须理会列序号参数component
-    // 该方法根据row参数返回teams中的元素，row参数代表列表项的编号，
-    // 因此该方法表示第几个列表项，就使用teams中的第几个元素
-    
     return [self.itemArry objectAtIndex:row];
 }
-
-// 当用户选中UIPickerViewDataSource中指定列和列表项时激发该方法
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:
 (NSInteger)row inComponent:(NSInteger)component
 {
     _row=row;
+}
+#pragma mark  修改字体颜色和大小等属性
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(nullable UIView *)view
+{
+    //设置文字的属性
+    UILabel *genderLabel = [UILabel new];
+    genderLabel.textAlignment = NSTextAlignmentCenter;
+    genderLabel.text = self.itemArry[row];
+    return genderLabel;
 }
 -(void)cancleBtnClick
 {
@@ -124,11 +129,19 @@
 -(UIPickerView *)pickerView
 {
     if (_pickerView==nil) {
-        _pickerView=[[UIPickerView alloc] initWithFrame:CGRectMake(0,50, SCREEN_WIDTH, 170)];
+        _pickerView=[[UIPickerView alloc] initWithFrame:CGRectMake(0,50, SCREEN_WIDTH, 190)];
         _pickerView.delegate=self;
         _pickerView.dataSource=self;
     }
     return _pickerView;
+}
+-(UIView *)bgView
+{
+    if (_bgView==nil) {
+        _bgView=[[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-240, SCREEN_WIDTH, 240)];
+        _bgView.backgroundColor=[UIColor whiteColor];
+    }
+    return _bgView;
 }
 -(NSMutableArray *)itemArry
 {

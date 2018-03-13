@@ -21,7 +21,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setNavtionTitle:@"选择审批人"];
 }
 
 

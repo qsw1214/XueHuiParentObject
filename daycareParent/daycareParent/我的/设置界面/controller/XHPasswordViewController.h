@@ -9,7 +9,7 @@
 #import "BaseViewController.h"
 #pragma  mark--------------设置主界面----》修改密码---------
 @interface XHPasswordViewController : BaseViewController
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic)  UITableView *tableView;
 @property (strong, nonatomic) IBOutlet XHBaseBtn *sureBtn;
 
 @end

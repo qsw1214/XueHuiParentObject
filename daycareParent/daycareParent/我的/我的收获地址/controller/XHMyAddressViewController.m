@@ -20,7 +20,6 @@
 
 @property(strong,nonatomic)UIView *CustomView;
 
-@property (nonatomic,strong) BaseTableView *tableView;
 
 @end
 
@@ -38,25 +37,25 @@
     [self setNavtionTitle:@"我的收货地址"];
     self.view.backgroundColor=RGB(239, 239, 244);
     _section=0;
-    self.tableView=[[BaseTableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-124) style:UITableViewStyleGrouped];
-    self.tableView.delegate=self;
-    self.tableView.dataSource=self;
-    self.tableView.sectionHeaderHeight=0;
-    self.tableView.sectionFooterHeight=0;
-    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
-    [self.tableView registerNib:[UINib nibWithNibName:@"XHNameTableViewCell" bundle:nil] forCellReuseIdentifier:@"nameCell"];
-    [self.tableView registerNib:[UINib nibWithNibName:@"XHAddressTableViewCell" bundle:nil] forCellReuseIdentifier:@"addressCell"];
-    [self.view addSubview:self.tableView];
-    [self.tableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHeader)];
-    [self.tableView setTipType:TipImage withTipTitle:nil withTipImage:@"ico-no-data"];
-     [self.tableView beginRefreshing];
+    self.mainTableView=[[BaseTableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-124) style:UITableViewStyleGrouped];
+    self.mainTableView.delegate=self;
+    self.mainTableView.dataSource=self;
+    self.mainTableView.sectionHeaderHeight=0;
+    self.mainTableView.sectionFooterHeight=0;
+    self.mainTableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
+    self.mainTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
+    [self.mainTableView registerNib:[UINib nibWithNibName:@"XHNameTableViewCell" bundle:nil] forCellReuseIdentifier:@"nameCell"];
+    [self.mainTableView registerNib:[UINib nibWithNibName:@"XHAddressTableViewCell" bundle:nil] forCellReuseIdentifier:@"addressCell"];
+    [self.view addSubview:self.mainTableView];
+    [self.mainTableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHeader)];
+    [self.mainTableView setTipType:TipImage withTipTitle:nil withTipImage:@"ico-no-data"];
+     [self.mainTableView beginRefreshing];
     
 }
 -(void)refreshHeader
 {
     [self reloadModel];
-    [self.tableView refreshReloadData];
+    [self.mainTableView refreshReloadData];
 }
 -(void)reloadModel
 {
@@ -70,7 +69,7 @@
                 [self.dataArray addObject:model];
             }
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.tableView refreshReloadData];
+                [self.mainTableView refreshReloadData];
                 if (self.dataArray.count==0) {
                     self.CustomView.frame=CGRectMake(0, 64, SCREEN_WIDTH, 60);
                 }
@@ -81,7 +80,7 @@
             });
         }
     } error:^(NSError *error) {
-        [self.tableView refreshReloadData];
+        [self.mainTableView refreshReloadData];
         if (self.dataArray.count==0) {
             self.CustomView.frame=CGRectMake(0, 64, SCREEN_WIDTH, 60);
         }
@@ -93,7 +92,7 @@
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    [self.tableView tableTipViewWithArray:self.dataArray];
+    [self.mainTableView tableTipViewWithArray:self.dataArray];
     return self.dataArray.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

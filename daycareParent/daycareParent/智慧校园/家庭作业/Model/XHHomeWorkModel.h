@@ -26,7 +26,7 @@ typedef NS_ENUM(NSInteger,HomeWorkModelUnreadType)
 typedef NS_ENUM(NSInteger,HomeWorkModelType)
 {
     HomeWorkType = 1, //!< 家庭作业
-    HomeWorkDetailsType = 2,   //!< 家庭作业详情
+    NotifyType = 2,   //!< 家庭作业详情
 };
 
 
@@ -45,17 +45,11 @@ typedef NS_ENUM(NSInteger,HomeWorkModelType)
 @property (nonatomic,copy) NSString *vedioFirstPicUrl; //!< 视频预览图
 @property (nonatomic,strong) NSMutableArray <XHPreviewModel*> *imageUrlArray; //!< 图片的Url数组
 @property (nonatomic,strong) UIColor *subjectColor; //!< 学科颜色类型
+
 @property (nonatomic,assign) HomeWorkModelUnreadType homeWorkUnreadType; //!< 是否已读取枚举类型
 @property (nonatomic,assign) HomeWorkModelType homeWorkType; //!< 数据模型的类型
-
 @property (nonatomic,assign) XHHomeWorkContentType contentType; //!< 内容类型
 
-#pragma mark 设置家庭作业对象
-//!< 设置家庭作业对象
--(void)setItemObject:(NSDictionary *)object;
-//#pragma mark 设置通知对象
-////!< 设置通知对象
-//-(void)setNoticeItemObject:(NSDictionary*)object;
 
 
 @end

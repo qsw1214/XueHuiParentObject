@@ -10,11 +10,7 @@
 
 
 
-@interface XHTeacherAddressBookViewController () <XHTeacherAddressBookContentViewDeletage>
-
-@property (nonatomic,strong) XHTeacherAddressBookContentView *contentView; //!< 内容视图
-
-@property (nonatomic,strong) BaseTableView *tableView;
+@interface XHTeacherAddressBookViewController () <UITableViewDelegate,UITableViewDataSource>
 
 
 
@@ -39,8 +35,10 @@
 {
     if (subview)
     {
-        [self.view addSubview:self.tableView];
-        [self.tableView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.height)];
+        [self.view addSubview:self.mainTableView];
+        [self.mainTableView setDelegate:self];
+        [self.mainTableView setDataSource:self];
+        [self.mainTableView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, CONTENT_HEIGHT)];
         
         
         
@@ -56,14 +54,13 @@
         }
         
         
-        [self.tableView reloadData];
+        [self.mainTableView reloadData];
     }
 }
 
 -(void)setModel:(XHChildListModel *)model
 {
     _model = model;
-    [self.contentView setModel:model];
 }
 
 
@@ -92,15 +89,30 @@
     return [[self.dataArray objectAtIndex:indexPath.row] cellHeight];
 }
 
-#pragma mark XHTeacherAddressBookContentViewDeletage
--(void)didSelectRowAtIndexItemObject:(XHTeacherAddressBookFrame *)object
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.didselectBack)
+    switch (self.enterType)
     {
-        self.didselectBack(object);
+#pragma mark - case TeacherAddressBookIMType 联系老师进入
+        case TeacherAddressBookIMType:
+        {
+            
+        }
+            break;
+#pragma mark - case TeacherAddressBookAskLeaveType 请假进入
+        case TeacherAddressBookAskLeaveType:
+        {
+            if (self.didselectBack)
+            {
+                self.didselectBack([self.dataArray objectAtIndex:indexPath.row]);
+            }
+            
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+            break;
     }
 }
-
 
 -(void)dissmissPopWithItemObjec:(XHTeacherAddressBookFrame *)object
 {
@@ -111,17 +123,9 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma mark - Getter / Setter
--(BaseTableView *)tableView
-{
-    if (!_tableView)
-    {
-        _tableView = [[BaseTableView alloc]init];
-        [_tableView setDelegate:self];
-        [_tableView setDataSource:self];
-    }
-    return _tableView;
-}
+
+
+
 
 
 

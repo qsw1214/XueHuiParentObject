@@ -18,15 +18,21 @@
     
     CGSize subjectSize = [NSObject contentSizeWithTitle:model.subject withFontOfSize:FontLevel3 withWidth:100.0];
     [self setSubjectSize:CGSizeMake(subjectSize.width+10.0, subjectSize.height)];
+    
+    //!< 设置内容的size
+    CGSize contentSize = [NSObject contentSizeWithTitle:model.workContent withFontOfSize:FontLevel2 withWidth:(SCREEN_WIDTH-40.0)];
+    [self setContentSize:contentSize];
+    
+    
     switch (model.homeWorkType)
     {
         case HomeWorkType:
         {
-            [self setItemFrame:CGRectMake(0, 0, SCREEN_WIDTH, 80.0)];
-            [self setCellHeight:self.itemFrame.size.height];
+            [self setItemFrame:CGRectMake(10.0, 10.0, SCREEN_WIDTH-20.0, 60.0+self.contentSize.height+10.0)];
+            [self setCellHeight:self.itemFrame.size.height+20.0];
         }
             break;
-        case HomeWorkDetailsType:
+        case NotifyType:
         {
             CGSize contentSize = [NSObject contentSizeWithTitle:model.workContent withFontOfSize:FontLevel2 withWidth:(SCREEN_WIDTH-90.0)];
             [self setContentSize:CGSizeMake((SCREEN_WIDTH-90.0), contentSize.height)];

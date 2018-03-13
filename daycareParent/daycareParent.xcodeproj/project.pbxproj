@@ -150,7 +150,6 @@
 		4B4F921E200DB8F1003BE008 /* XHLiveContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4F9215200DB8F0003BE008 /* XHLiveContentView.m */; };
 		4B4F921F200DB8F1003BE008 /* XHLiveTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4F9217200DB8F0003BE008 /* XHLiveTableViewCell.m */; };
 		4B4F9220200DB8F1003BE008 /* XHLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4F921A200DB8F0003BE008 /* XHLiveViewController.m */; };
-		4B523BC41FD12D43006DD565 /* XHHomeWorkDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B523BC31FD12D43006DD565 /* XHHomeWorkDetailsViewController.m */; };
 		4B523BC71FD14782006DD565 /* XHHomeWorkCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B523BC61FD14782006DD565 /* XHHomeWorkCollectionView.m */; };
 		4B523BCA1FD14A27006DD565 /* XHHomeWorkContentViwCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B523BC91FD14A27006DD565 /* XHHomeWorkContentViwCell.m */; };
 		4B523BD81FD1579B006DD565 /* XHAskforLeaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B523BD71FD1579B006DD565 /* XHAskforLeaveViewController.m */; };
@@ -384,7 +383,6 @@
 		8C3E55B71FD5216F0013002A /* XHPayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C3E55B51FD5216F0013002A /* XHPayTableViewCell.xib */; };
 		8C3E55C11FD549B60013002A /* XHStudyRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3E55C01FD549B60013002A /* XHStudyRecordViewController.m */; };
 		8C42CFCE1FF5D86D00CEDBDA /* XHNewUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C42CFCD1FF5D86D00CEDBDA /* XHNewUserInfoViewController.m */; };
-		8C4DB5D91FEBB55D00B14073 /* XHHomeWorkDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4DB5D81FEBB55D00B14073 /* XHHomeWorkDetailView.m */; };
 		8C5121E41FDF64BB00973E77 /* NSDictionary+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5121E31FDF64BB00973E77 /* NSDictionary+Category.m */; };
 		8C5121E81FDF7B9300973E77 /* XHLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5121E71FDF7B9300973E77 /* XHLoginModel.m */; };
 		8C5EB0BA1FCFE604002ED0D7 /* XHSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5EB0B91FCFE604002ED0D7 /* XHSetViewController.m */; };
@@ -811,8 +809,6 @@
 		4B4F9217200DB8F0003BE008 /* XHLiveTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHLiveTableViewCell.m; sourceTree = "<group>"; };
 		4B4F9219200DB8F0003BE008 /* XHLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHLiveViewController.h; sourceTree = "<group>"; };
 		4B4F921A200DB8F0003BE008 /* XHLiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHLiveViewController.m; sourceTree = "<group>"; };
-		4B523BC21FD12D43006DD565 /* XHHomeWorkDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHHomeWorkDetailsViewController.h; sourceTree = "<group>"; };
-		4B523BC31FD12D43006DD565 /* XHHomeWorkDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHHomeWorkDetailsViewController.m; sourceTree = "<group>"; };
 		4B523BC51FD14782006DD565 /* XHHomeWorkCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHHomeWorkCollectionView.h; sourceTree = "<group>"; };
 		4B523BC61FD14782006DD565 /* XHHomeWorkCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHHomeWorkCollectionView.m; sourceTree = "<group>"; };
 		4B523BC81FD14A27006DD565 /* XHHomeWorkContentViwCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHHomeWorkContentViwCell.h; sourceTree = "<group>"; };
@@ -1282,8 +1278,6 @@
 		8C3E55C01FD549B60013002A /* XHStudyRecordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHStudyRecordViewController.m; sourceTree = "<group>"; };
 		8C42CFCC1FF5D86D00CEDBDA /* XHNewUserInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHNewUserInfoViewController.h; sourceTree = "<group>"; };
 		8C42CFCD1FF5D86D00CEDBDA /* XHNewUserInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHNewUserInfoViewController.m; sourceTree = "<group>"; };
-		8C4DB5D71FEBB55D00B14073 /* XHHomeWorkDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHHomeWorkDetailView.h; sourceTree = "<group>"; };
-		8C4DB5D81FEBB55D00B14073 /* XHHomeWorkDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHHomeWorkDetailView.m; sourceTree = "<group>"; };
 		8C5121E21FDF64BB00973E77 /* NSDictionary+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Category.h"; sourceTree = "<group>"; };
 		8C5121E31FDF64BB00973E77 /* NSDictionary+Category.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Category.m"; sourceTree = "<group>"; };
 		8C5121E61FDF7B9300973E77 /* XHLoginModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XHLoginModel.h; path = "daycareParent/注册登录/model/XHLoginModel.h"; sourceTree = SOURCE_ROOT; };
@@ -3161,8 +3155,6 @@
 			children = (
 				4BA8C4E01FCFF788006CBEBC /* XHHomeWorkContentView.h */,
 				4BA8C4E11FCFF788006CBEBC /* XHHomeWorkContentView.m */,
-				8C4DB5D71FEBB55D00B14073 /* XHHomeWorkDetailView.h */,
-				8C4DB5D81FEBB55D00B14073 /* XHHomeWorkDetailView.m */,
 				4BA8C4E31FD0002D006CBEBC /* XHHomeWorkTableViewCell.h */,
 				4BA8C4E41FD0002D006CBEBC /* XHHomeWorkTableViewCell.m */,
 				4B523BC51FD14782006DD565 /* XHHomeWorkCollectionView.h */,
@@ -3180,8 +3172,6 @@
 			children = (
 				4BA8C4D71FCFF305006CBEBC /* XHHomeWorkViewController.h */,
 				4BA8C4D81FCFF305006CBEBC /* XHHomeWorkViewController.m */,
-				4B523BC21FD12D43006DD565 /* XHHomeWorkDetailsViewController.h */,
-				4B523BC31FD12D43006DD565 /* XHHomeWorkDetailsViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -4376,7 +4366,6 @@
 				4B4A00111FE240BD00B8A8F8 /* XHDynamicsFrame.m in Sources */,
 				4B278ACB2010400B00293F30 /* RCDLive.m in Sources */,
 				4B07CC191FD4DAB800B2DBDA /* XHLeaveRecordModel.m in Sources */,
-				8C4DB5D91FEBB55D00B14073 /* XHHomeWorkDetailView.m in Sources */,
 				4B11AF321FCCE958002738F1 /* XHSmartCampusViewController.m in Sources */,
 				4B3418741FFDC14C00A5EC56 /* UINavigationController+ZFPlayerRotation.m in Sources */,
 				4B80F3281FCBFD6F00BC7B52 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m in Sources */,
@@ -4523,7 +4512,6 @@
 				4B4338B41FDF5C8E0047AC52 /* XHUserInfo.m in Sources */,
 				8CCD7E2C1FD11ECA00F7F54E /* XHTelephoneTableViewCell.m in Sources */,
 				4B80F2CB1FCBF04F00BC7B52 /* SDWebImageDownloaderOperation.m in Sources */,
-				4B523BC41FD12D43006DD565 /* XHHomeWorkDetailsViewController.m in Sources */,
 				04291A7A1FD2AD68002D3B5B /* XHListCollectionViewCell.m in Sources */,
 				8C91E01E1FEA39A00040A205 /* XHCustomView.m in Sources */,
 				4B577F9F1FF5C4F60023ACBC /* XHNoticeContentView.m in Sources */,

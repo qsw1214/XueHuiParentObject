@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface XHUserTableViewCell : UITableViewCell
+@interface XHUserTableViewCell : ParentTableViewCell
 @property(nonatomic,strong)XHBaseLabel *frontLabel;
 @property(nonatomic,strong)XHBackLabel *backLabel;
 @property(nonatomic,strong)UIImageView *famman;//ico-famman

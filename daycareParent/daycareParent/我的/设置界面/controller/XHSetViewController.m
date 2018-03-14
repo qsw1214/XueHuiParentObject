@@ -14,12 +14,14 @@
 #import <RongIMKit/RongIMKit.h>
 #import "XHLoginViewController.h"
 #import "JPUSHService.h"
+#import "XHSystemModel.h"
+#define kTitle @[@"修改密码",@"更换安全电话",@"开启消息推送",@"清除缓存",@"关于我们",@"版本更新"]
 @interface XHSetViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
-    UITableView *_tableView;
-    NSArray *arry;
     float fileSize;
 }
+@property(nonatomic,strong) UITableView *tableView;
+@property(nonatomic,strong)  UIButton *outButton;
 @end
 
 @implementation XHSetViewController
@@ -28,58 +30,43 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setNavtionTitle:@"设置"];
-    arry=@[@"修改密码",@"更换安全电话",@"关于我们",@"当前版本",@"清除缓存"];
-    _tableView=[[UITableView alloc] initWithFrame:CGRectMake(0,64, SCREEN_WIDTH, SCREEN_HEIGHT-64) style:UITableViewStyleGrouped];
-     _tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
-    _tableView.delegate=self;
-    _tableView.dataSource=self;
-    _tableView.rowHeight=50;
-    [_tableView registerClass:[XHUserTableViewCell class] forCellReuseIdentifier:@"cell"];
-    _tableView.bounces=NO;
-    [self.view addSubview:_tableView];
-    XHBaseBtn *btn=[[XHBaseBtn alloc] initWithFrame:CGRectMake(10, 340, SCREEN_WIDTH-20, 50)];
-    btn.backgroundColor=[UIColor redColor];
-    [btn setTitle:@"退出" forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(logOutClick) forControlEvents:UIControlEventTouchUpInside];
-     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.view  addSubview:btn];
+    [self.view addSubview:self.tableView];
+    [self.tableView  addSubview:self.outButton];
+    [self.outButton addTarget:self action:@selector(logOutClick) forControlEvents:UIControlEventTouchUpInside];
+    
 }
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:YES];
-    fileSize= (float)[[SDImageCache sharedImageCache] getSize]/1024.0/1024.0;
-    [_tableView reloadData];
-}
--(NSString *)DocumentsTruePath
-{
-    return  NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
-}
+
 #pragma mark----tableviewDelegate------
-
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
-    return 5;
-   
+    return kTitle.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
         XHUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
        cell.frontLabel.frame=CGRectMake(10, 0, 120, cell.bounds.size.height);
         cell.backLabel.frame=CGRectMake(120, 0, SCREEN_WIDTH-150, cell.bounds.size.height);
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.frontLabel.text=arry[indexPath.row];
-    switch (indexPath.row) {
-            case 3:
-                cell.backLabel.text=CFBundleShortVersionString;
-                break;
-            case 4:
-                cell.backLabel.text=[NSString stringWithFormat:@"清理缓存(%.2fM)",fileSize];
-                break;
+        cell.frontLabel.text=kTitle[indexPath.row];
+    cell.headBtn.frame=CGRectMake(SCREEN_WIDTH-70, 10, 50, 30);
+    cell.headBtn.layer.cornerRadius=0;
+    [cell.headBtn setBackgroundImage:[UIImage imageNamed:@"ico_set_open"] forState:UIControlStateNormal];
+    [cell.headBtn addTarget:self action:@selector(headBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        if (indexPath.row==2)
+        {
+            cell.headBtn.hidden=NO;
+            cell.accessoryType = UITableViewCellAccessoryNone;
         }
-        return cell;
+        else
+        {
+            cell.headBtn.hidden=YES;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            if (indexPath.row==3)
+            {
+                cell.backLabel.text=[NSString stringWithFormat:@"清理缓存(%.2fM)",fileSize];
+            }
+        }
+    return cell;
    
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -97,38 +84,51 @@
             XHChagePhoneViewController *chagephone=[XHChagePhoneViewController new];
             [self.navigationController pushViewController:chagephone animated:YES];
         }
-            
-            break;
-            case 2:
-        {
-            XHAboutUsViewController *about=[XHAboutUsViewController new];
-            [self.navigationController pushViewController:about animated:YES];
-        }
-            
-            break;
         case 3:
-        {
-           // [self updateVersion];
-            
-        }
-            
-            break;
-        case 4:
         {
             [XHShowHUD showTextHud];
             [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
                 [XHShowHUD showOKHud:@"清除完成!"];
                 fileSize=0;
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [_tableView reloadData];
+                    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
                 });
             }];
         }
             
             break;
+            break;
+            case 4:
+        {
+            XHAboutUsViewController *about=[XHAboutUsViewController new];
+            [self.navigationController pushViewController:about animated:YES];
+        }
+            
+            break;
+        case 5:
+        {
+            [self updateVersion];
+            
+        }
+            
+            break;
+      
     }
     
     
+}
+-(void)headBtnClick:(UIButton *)btn
+{
+    if (btn.selected==YES) {
+          [btn setBackgroundImage:[UIImage imageNamed:@"ico_set_open"] forState:UIControlStateNormal];
+        btn.selected=NO;
+    }
+    else
+    {
+         [btn setBackgroundImage:[UIImage imageNamed:@"ico_set_close"] forState:UIControlStateNormal];
+          btn.selected=YES;
+    }
+
 }
 -(void)logOutClick
 {
@@ -157,7 +157,41 @@
     }]];
     [self presentViewController:alertController animated:YES completion:nil];
 }
-/*
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    fileSize= (float)[[SDImageCache sharedImageCache] getSize]/1024.0/1024.0;
+    [self.tableView reloadData];
+}
+-(NSString *)DocumentsTruePath
+{
+    return  NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
+}
+-(UITableView *)tableView
+{
+    if (_tableView==nil) {
+        _tableView=[[UITableView alloc] initWithFrame:CGRectMake(0,64, SCREEN_WIDTH, SCREEN_HEIGHT-64) style:UITableViewStyleGrouped];
+        _tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
+        _tableView.delegate=self;
+        _tableView.dataSource=self;
+        _tableView.rowHeight=50;
+        [_tableView registerClass:[XHUserTableViewCell class] forCellReuseIdentifier:@"cell"];
+    }
+    return _tableView;
+}
+-(UIButton *)outButton
+{
+    if (_outButton==nil) {
+       _outButton=[[UIButton alloc] initWithFrame:CGRectMake(10, 330, SCREEN_WIDTH-20, 50)];
+        _outButton.backgroundColor=[UIColor redColor];
+        [_outButton setTitle:@"退出" forState:UIControlStateNormal];
+        [_outButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _outButton.layer.cornerRadius=8;
+        _outButton.layer.masksToBounds=YES;
+    }
+    return _outButton;
+    
+}
 -(void)updateVersion
 {
     XHNetWorkConfig *Net=[[XHNetWorkConfig alloc] init];
@@ -220,7 +254,7 @@
         
     }];
 }
-*/
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -50,6 +50,9 @@
         UIButton *btn=[[UIButton alloc] initWithFrame:CGRectMake(10, 30, 50, 24)];
         [btn addTarget:self action:@selector(backMethod) forControlEvents:UIControlEventTouchUpInside];
         [_navigationView addSubview:btn];
+        UIView *bottomView=[[UIView alloc] initWithFrame:CGRectMake(0, 63, SCREEN_WIDTH, 1)];
+        bottomView.backgroundColor=LineViewColor;
+        [_navigationView addSubview:bottomView];
     }
     return _navigationView;
 }

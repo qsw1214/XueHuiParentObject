@@ -1,0 +1,93 @@
+//
+//  XHSystemNoticeTableViewCell.m
+//  daycareParent
+//
+//  Created by 钧泰科技 on 2018/3/14.
+//  Copyright © 2018年 XueHui. All rights reserved.
+//
+
+#import "XHSystemNoticeTableViewCell.h"
+#import "XHSystemModel.h"
+@implementation XHSystemNoticeTableViewCell
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    // Initialization code
+}
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self.contentView addSubview:self.titleImageView];
+        [self.contentView addSubview:self.titleLabel];
+        [self.contentView addSubview:self.dateLabel];
+        [self.contentView addSubview:self.contentLabel];
+    }
+    return self;
+}
+-(void)setItemObject:(XHSystemModel *)model
+{
+    [self.titleImageView setFrame:CGRectMake(15, 10, 20, 20)];
+    [self.titleLabel setFrame:CGRectMake(self.titleImageView.right+10, self.titleImageView.top, (SCREEN_WIDTH-self.titleImageView.right-30)/2.0, self.titleImageView.height)];
+    [self.dateLabel setFrame:CGRectMake(self.titleLabel.right+5, self.titleImageView.top, (SCREEN_WIDTH-self.titleImageView.right-30)/2.0, self.titleImageView.height)];
+    [self.contentLabel setFrame:CGRectMake(10, self.titleImageView.bottom, SCREEN_WIDTH-20,self.contentView.frame.size.height- self.titleImageView.bottom)];
+    switch (model.modelType)
+    {
+        case XHSystemNoticeType:
+            {
+                self.titleImageView.image=[UIImage imageNamed:@"ico_notice"];
+            }
+            break;
+            
+        case XHSystemOtherType:
+        {
+            self.titleImageView.image=[UIImage imageNamed:@"ico_active"];
+        }
+            break;
+    }
+    self.titleLabel.text=model.title;
+    self.dateLabel.text=model.date;
+    self.contentLabel.text=model.content;
+    kNSLog(model.title);
+}
+-(ParentImageView *)titleImageView
+{
+    if (_titleImageView==nil) {
+        _titleImageView=[[ParentImageView alloc] init];
+    }
+    return _titleImageView;
+}
+-(UILabel *)titleLabel
+{
+    if (_titleLabel==nil) {
+        _titleLabel=[[ParentLabel alloc] init];
+        _titleLabel.font=kFont(17.0);
+    }
+    return _titleLabel;
+}
+-(UILabel *)dateLabel
+{
+    if (_dateLabel==nil) {
+        _dateLabel=[[ParentLabel alloc] init];
+        _dateLabel.textAlignment=NSTextAlignmentRight;
+        _dateLabel.textColor=DEFAULTCOLOR;
+        
+    }
+    return _dateLabel;
+}
+-(UILabel *)contentLabel
+{
+    if (_contentLabel==nil) {
+        _contentLabel=[[ParentLabel alloc] init];
+        _contentLabel.numberOfLines=0;
+        _contentLabel.font=kFont(15.0);
+        
+    }
+    return _contentLabel;
+}
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
+
+@end

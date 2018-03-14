@@ -9,10 +9,18 @@
 #import "ParentModel.h"
 
 @implementation ParentModel
--(id)initWithDic:(NSDictionary *)dic
+-(instancetype)init
+{
+    if (self=[super init])
+    {
+       
+    }
+    return self;
+}
+-(instancetype)initWithDic:(NSDictionary *)dic
 {
     if (self=[super init]) {
-        
+    
     }
     return self;
 }

@@ -12,7 +12,7 @@
 
 @property (nonatomic,strong) UILabel *titleLabel; //!< 标题标签
 
-
+@property (nonatomic,strong) UIView *bottomView; //!< 底部颜色视图
 
 @end
 
@@ -29,7 +29,7 @@
         [self addSubview:self.letfItem];
         [self addSubview:self.rightItem];
         [self addSubview:self.titleLabel];
-        
+        [self addSubview:self.bottomView];
         [self setItemColor:NO];
     }
     return self;
@@ -182,7 +182,14 @@
     return _titleLabel;
 }
 
-
+-(UIView *)bottomView
+{
+    if (_bottomView==nil) {
+        _bottomView=[[UIView alloc] initWithFrame:CGRectMake(0, 63, SCREEN_WIDTH, 1)];
+        _bottomView.backgroundColor=LineViewColor;
+    }
+    return _bottomView;
+}
 
 
 

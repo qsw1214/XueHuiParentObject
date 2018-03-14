@@ -102,7 +102,7 @@
 }
 - (CGFloat)rcConversationListTableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return [self.conversationListDataSource[indexPath.row] itemCellHeight];
+    return [self.conversationListDataSource[indexPath.row] CellHeight];
 }
 
 - (RCConversationBaseCell *)rcConversationListTableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -156,6 +156,18 @@
     
     }
 }
+
+- (NSMutableArray *)willReloadTableData:(NSMutableArray *)dataSource
+{
+        [self.conversationListDataSource setArray:dataSource];
+        for (int i = 0; i<kTitleList.count; i++) {
+            XHRCModel *model = [[XHRCModel alloc]initWithDic:nil];
+            model.conversationModelType = RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION;
+            [self.conversationListDataSource insertObject:model atIndex:i];
+        }
+    [self refreshHead];
+    return self.conversationListDataSource;
+}
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
     XHRCModel *model = [self.conversationListDataSource objectAtIndex:indexPath.row];
     if(model.conversationModelType == RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION){
@@ -172,25 +184,6 @@
     });
     
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-- (NSMutableArray *)willReloadTableData:(NSMutableArray *)dataSource
-{
-        [self.conversationListDataSource setArray:dataSource];
-        for (int i = 0; i<kTitleList.count; i++) {
-            XHRCModel *model = [[XHRCModel alloc]initWithDic:nil];
-            model.conversationModelType = RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION;
-//            model.RCtitle=kTitleList[i];
-//            model.RCtitlePic=kTitlePic[i];
-            [self.conversationListDataSource insertObject:model atIndex:i];
-        }
-    [self refreshHead];
-    return self.conversationListDataSource;
-}
-
 - (void)didLongPressCellPortrait:(RCConversationModel *)model
 {
     if (model.isTop) {
@@ -227,7 +220,10 @@
         titleLabel.textAlignment=NSTextAlignmentCenter;
         [titleLabel setFont:[UIFont boldSystemFontOfSize:18.0]];
         titleLabel.text=@"消息";
+        UIView *bottomView=[[UIView alloc] initWithFrame:CGRectMake(0, 63, SCREEN_WIDTH, 1)];
+        bottomView.backgroundColor=LineViewColor;
         [_navigationView addSubview:titleLabel];
+        [_navigationView addSubview:bottomView];
     }
     return _navigationView;
 }
@@ -243,8 +239,8 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden=YES;
-//    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-//    [app reloadIMBadge];
+    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [app reloadIMBadge];
 }
 /*
 #pragma mark - Navigation

@@ -30,7 +30,7 @@ typedef NS_ENUM(NSInteger,XHRCModelType)
 
 @property(nonatomic,copy)NSString *sum;//!< 未读数字
 
-@property(nonatomic,assign)NSInteger itemCellHeight;//!< 行高
+@property(nonatomic,assign)NSInteger CellHeight;//!< 行高
 
 @property(nonatomic,assign)XHRCModelType modelType;
 -(id)initWithDic:(NSDictionary *)dic;

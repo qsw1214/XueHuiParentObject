@@ -1,14 +1,13 @@
 //
-//  ParentView.h
+//  ParentTableViewCell.h
 //  daycareParent
 //
-//  Created by 钧泰科技 on 2018/3/13.
+//  Created by 钧泰科技 on 2018/3/14.
 //  Copyright © 2018年 XueHui. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface ParentView : UIView
+@interface ParentTableViewCell : UITableViewCell
 -(void)setItemObject:(id)object;
--(void)setItemObjectArry:(NSMutableArray *)arry;
 @end

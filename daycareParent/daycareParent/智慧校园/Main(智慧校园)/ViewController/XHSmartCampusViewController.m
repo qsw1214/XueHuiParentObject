@@ -22,6 +22,7 @@
 #import "XHLoginViewController.h"
 #import "SDCycleScrollView.h"
 #import "XHTeacherAddressBookViewController.h"
+#import "XHBindViewController.h"
 
 
 
@@ -130,7 +131,7 @@
 #pragma mark case 7
         case 7:
         {
-            XHHomeWorkViewController *leave = [[XHHomeWorkViewController alloc]initHiddenWhenPushHidden];
+            XHBindViewController *leave = [[XHBindViewController alloc]initHiddenWhenPushHidden];
             [self.navigationController pushViewController:leave animated:YES];
             
         }

@@ -25,7 +25,7 @@
 {
     [super viewDidLoad];
     [self setNavtionTitle:@"请假"];
-    [self setItemContentType:NavigationTitleType withItemType:NavigationItemRightype withIconName:nil withTitle:@"请假记录"];
+    [self setItemContentType:NavigationIconype withItemType:NavigationItemRightype withIconName:@"ico_record" withTitle:@"请假记录"];
    
 }
 

@@ -7,9 +7,12 @@
 //
 
 #import "BaseViewController.h"
-#pragma mark-------绑定学生界面------------
 
+
+
+#pragma mark 绑定孩子
 
 @interface XHBindViewController : BaseViewController
+
 
 @end

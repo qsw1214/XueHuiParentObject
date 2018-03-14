@@ -155,12 +155,17 @@ typedef NS_ENUM(NSInteger,BaseControlModelType)
 -(void)setinputTextFont:(UIFont*)font withNumberType:(NSInteger)type withAllType:(BOOL)allType;
 
 
+#pragma mark - 文本的占位内容
+/**
+ 文本输入域内容颜色
+ */
+-(void)setinputTextPlaceholder:(NSString*)placeholder withNumberType:(NSInteger)type withAllType:(BOOL)allType;
+
 #pragma mark - 文本输入域内容颜色
 /**
  文本输入域内容颜色
  */
 -(void)setInputTextViewColor:(UIColor*)color withNumberType:(NSInteger)type withAllType:(BOOL)allType;
-
 
 
 
@@ -255,6 +260,10 @@ typedef NS_ENUM(NSInteger,BaseControlModelType)
 
 #pragma mark 设置图片的URL地址
 -(void)sd_setImageWithURL:(NSString*)url withPlaceholder:(NSString*)placeholder withNumberType:(NSInteger)type withAllType:(BOOL)allType;
+
+-(void)setItemColor:(BOOL)color;
+
+
 #pragma mark - 取消第一响应者
 -(void)resignInputFirstResponder;
 

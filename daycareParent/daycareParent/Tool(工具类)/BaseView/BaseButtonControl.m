@@ -11,16 +11,16 @@
 @interface BaseButtonControl ()
 
 #pragma mark 显示标签
-@property (nonatomic,strong) NSMutableArray *labelArray; //!< 标签数组
+@property (nonatomic,strong) NSMutableArray <UILabel*> *labelArray; //!< 标签数组
 #pragma mark 输入标签
-@property (nonatomic,strong) NSMutableArray *textFieldArray; //!< 标签数组
+@property (nonatomic,strong) NSMutableArray <UITextField*> *textFieldArray; //!< 标签数组
 #pragma mark 图片视图
-@property (nonatomic,strong) NSMutableArray *imageViewArray; //!< 标签数组
+@property (nonatomic,strong) NSMutableArray <UIImageView*> *imageViewArray; //!< 标签数组
 #pragma mark 分割线
-@property (nonatomic,strong) NSMutableArray *lineViewArray; //!< 标签数组
+@property (nonatomic,strong) NSMutableArray <UIView*> *lineViewArray; //!< 标签数组
 
 #pragma mark 文本域输入框
-@property (nonatomic,strong) NSMutableArray *textViewArray; //!< 标签数组
+@property (nonatomic,strong) NSMutableArray <BaseTextView*> *textViewArray; //!< 标签数组
 
 
 @end
@@ -80,7 +80,7 @@
     for (int i = 1; i <= numberLineView; i++)
     {
         UIView *lineView = [[UIView alloc]init];
-        [lineView setBackgroundColor:RGB(200.0, 200.0, 200.0)];
+        [lineView setBackgroundColor:RGB(244,244,244)];
         [self addSubview:lineView];
         [self.lineViewArray addObject:lineView];
     }
@@ -431,6 +431,26 @@
          else if (type == idx)
          {
              [obj setFont:font];
+             *stop = YES;
+         }
+     }];
+}
+
+#pragma mark - 文本的占位内容
+/**
+ 文本输入域内容颜色
+ */
+-(void)setinputTextPlaceholder:(NSString*)placeholder withNumberType:(NSInteger)type withAllType:(BOOL)allType
+{
+    [self.textFieldArray enumerateObjectsUsingBlock:^(UITextField   *obj, NSUInteger idx, BOOL *  stop)
+     {
+         if (allType)
+         {
+             [obj setPlaceholder:placeholder];
+         }
+         else if (type == idx)
+         {
+             [obj setPlaceholder:placeholder];
              *stop = YES;
          }
      }];
@@ -843,6 +863,30 @@
 {
     if (color)
     {
+        [self.labelArray enumerateObjectsUsingBlock:^(UILabel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
+         {
+             [obj setBackgroundColor:[UIColor blueColor]];
+         }];
+        
+        [self.textFieldArray enumerateObjectsUsingBlock:^(UITextField * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
+         {
+             [obj setBackgroundColor:[UIColor greenColor]];
+         }];
+        
+        [self.imageViewArray enumerateObjectsUsingBlock:^(UIImageView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
+         {
+             [obj setBackgroundColor:[UIColor yellowColor]];
+         }];
+        
+        [self.lineViewArray enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
+         {
+             [obj setBackgroundColor:[UIColor purpleColor]];
+         }];
+        
+        [self.textViewArray enumerateObjectsUsingBlock:^(BaseTextView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
+         {
+             [obj setBackgroundColor:[UIColor orangeColor]];
+         }];
         
     }
 }

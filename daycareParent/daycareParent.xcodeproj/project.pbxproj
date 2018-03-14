@@ -326,7 +326,6 @@
 		4BB792D61FD7939500E0ED72 /* XHAchievementFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB792D51FD7939500E0ED72 /* XHAchievementFrame.m */; };
 		4BB792DD1FD7981A00E0ED72 /* BaseMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB792DC1FD7981A00E0ED72 /* BaseMenuCell.m */; };
 		4BB792E01FD798B000E0ED72 /* BaseMenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB792DF1FD798B000E0ED72 /* BaseMenuModel.m */; };
-		4BB792E31FD79F4F00E0ED72 /* XHSyllabusContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB792E21FD79F4F00E0ED72 /* XHSyllabusContentView.m */; };
 		4BB792E41FD7B3B400E0ED72 /* BaseMenuControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB792D91FD7963600E0ED72 /* BaseMenuControl.m */; };
 		4BB96B9A1FF238FB00F0A73C /* XHEducationCloudWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB96B991FF238FB00F0A73C /* XHEducationCloudWebViewController.m */; };
 		4BB9BE9A1FDE4B40004F5622 /* XHEducationCloudContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB9BE991FDE4B40004F5622 /* XHEducationCloudContentView.m */; };
@@ -1171,8 +1170,6 @@
 		4BB792DC1FD7981A00E0ED72 /* BaseMenuCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseMenuCell.m; sourceTree = "<group>"; };
 		4BB792DE1FD798B000E0ED72 /* BaseMenuModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseMenuModel.h; sourceTree = "<group>"; };
 		4BB792DF1FD798B000E0ED72 /* BaseMenuModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseMenuModel.m; sourceTree = "<group>"; };
-		4BB792E11FD79F4F00E0ED72 /* XHSyllabusContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHSyllabusContentView.h; sourceTree = "<group>"; };
-		4BB792E21FD79F4F00E0ED72 /* XHSyllabusContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHSyllabusContentView.m; sourceTree = "<group>"; };
 		4BB96B981FF238FB00F0A73C /* XHEducationCloudWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHEducationCloudWebViewController.h; sourceTree = "<group>"; };
 		4BB96B991FF238FB00F0A73C /* XHEducationCloudWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHEducationCloudWebViewController.m; sourceTree = "<group>"; };
 		4BB9BE981FDE4B40004F5622 /* XHEducationCloudContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHEducationCloudContentView.h; sourceTree = "<group>"; };
@@ -3229,8 +3226,6 @@
 		4BB792BC1FD791E000E0ED72 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4BB792E11FD79F4F00E0ED72 /* XHSyllabusContentView.h */,
-				4BB792E21FD79F4F00E0ED72 /* XHSyllabusContentView.m */,
 				4B9110761FD7B9E600841505 /* XHSyllabusCell.h */,
 				4B9110771FD7B9E600841505 /* XHSyllabusCell.m */,
 				4B9110791FD7BA3300841505 /* XHSyllabusCellContentView.h */,
@@ -4369,7 +4364,6 @@
 				4B1066A71FD7D1FA004A7CB7 /* XHAchievementCellContentView.m in Sources */,
 				4BB9BEA31FDE4C54004F5622 /* XHEducationCloudSwitchMenuView.m in Sources */,
 				4B3043D51FEE566C004017C7 /* BaseScrollView.m in Sources */,
-				4BB792E31FD79F4F00E0ED72 /* XHSyllabusContentView.m in Sources */,
 				4B3418721FFDC14C00A5EC56 /* UIAlertController+ZFPlayerRotation.m in Sources */,
 				4B80F20F1FCBE7DB00BC7B52 /* NSString+Category.m in Sources */,
 				8CB5A2761FD7CA67008E97D8 /* XHCustomTextField.m in Sources */,

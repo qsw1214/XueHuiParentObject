@@ -18,13 +18,13 @@
     {
         case SyllabusWeekType:
         {
-            [self setItemFrame:CGRectMake(0, 0, SCREEN_WIDTH, 49.0)];
+            [self setItemFrame:CGRectMake(10.0, 0, (SCREEN_WIDTH-20.0), 50.0)];
             [self setCellHeight:self.itemFrame.size.height];
         }
             break;
         case SyllabusContentType:
         {
-            [self setItemFrame:CGRectMake(0, 0, SCREEN_WIDTH, 57.0)];
+            [self setItemFrame:CGRectMake(10.0, 0, (SCREEN_WIDTH-20.0), 60.0)];
             [self setCellHeight:self.itemFrame.size.height];
         }
             break;

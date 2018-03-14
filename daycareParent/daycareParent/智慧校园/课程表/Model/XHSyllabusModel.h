@@ -18,9 +18,13 @@ typedef NS_ENUM(NSInteger,XHSyllabusModelType)
 
 @interface XHSyllabusModel : BaseModel
 
-@property (nonatomic,copy) NSString *time;    //!< 上课时间
-@property (nonatomic,copy) NSString *subject; //!< 学科
-@property (nonatomic,copy) NSString *weekday; //!< 课程
+
+@property (nonatomic,strong) NSString *month; //!< 时间标签
+@property (nonatomic,strong) NSString *monday; //!< 周一标签
+@property (nonatomic,strong) NSString *tuesday; //!< 周二标签
+@property (nonatomic,strong) NSString *wednesday; //!< 周三标签
+@property (nonatomic,strong) NSString *thursday; //!< 周四标签
+@property (nonatomic,strong) NSString *friday; //!< 周五标签
 
 
 @property (nonatomic,assign) XHSyllabusModelType modelType; //!< 数据模型类型

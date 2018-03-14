@@ -24,7 +24,6 @@
     if (self)
     {
         [self.contentView addSubview:self.cellContentView];
-        [self.contentView setBackgroundColor:[UIColor whiteColor]];
     }
     return self;
 }

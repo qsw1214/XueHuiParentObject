@@ -1633,6 +1633,37 @@
 			path = XHDatePicker;
 			sourceTree = "<group>";
 		};
+		04AAEBA42058C54300EF225D /* 问题反馈 */ = {
+			isa = PBXGroup;
+			children = (
+				04AAEBA52058C56300EF225D /* Model */,
+				04AAEBA72058C56300EF225D /* View */,
+				04AAEBA62058C56300EF225D /* Viewcontroller */,
+			);
+			path = "问题反馈";
+			sourceTree = "<group>";
+		};
+		04AAEBA52058C56300EF225D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04AAEBA62058C56300EF225D /* Viewcontroller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Viewcontroller;
+			sourceTree = "<group>";
+		};
+		04AAEBA72058C56300EF225D /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		04B740091FD81C62008627CF /* view */ = {
 			isa = PBXGroup;
 			children = (
@@ -2577,6 +2608,7 @@
 		4B80F1FC1FCBE43E00BC7B52 /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
+				04AAEBA42058C54300EF225D /* 问题反馈 */,
 				8C3E55BB1FD5494B0013002A /* 学习记录 */,
 				04291A7B1FD2DB77002D3B5B /* 学生信息 */,
 				8CCD7E631FD1565F00F7F54E /* 绑定学生 */,

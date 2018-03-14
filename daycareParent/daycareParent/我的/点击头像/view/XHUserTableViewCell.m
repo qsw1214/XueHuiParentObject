@@ -7,6 +7,7 @@
 //
 
 #import "XHUserTableViewCell.h"
+#import "XHSystemModel.h"
 @implementation XHUserTableViewCell
 
 - (void)awakeFromNib {
@@ -28,9 +29,11 @@
         _famman=[[UIImageView alloc] init];
         _famman.image=[UIImage imageNamed:@"ico-famman"];
         [self.contentView addSubview:_famman];
+        
     }
     return self;
 }
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

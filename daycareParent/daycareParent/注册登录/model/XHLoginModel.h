@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-
 @interface XHLoginModel : NSObject
 @property(nonatomic,copy)NSString *loginName,*pwd;
 @property(nonatomic,assign)NSInteger type;

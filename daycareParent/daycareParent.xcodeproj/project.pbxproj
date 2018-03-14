@@ -474,6 +474,11 @@
 		8C8337061FDD002100F48A25 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C8337051FDD002100F48A25 /* libresolv.tbd */; };
 		8C91E01E1FEA39A00040A205 /* XHCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C91E01D1FEA39A00040A205 /* XHCustomView.m */; };
 		8C922BD91FDE65EB00BA0EAB /* XHForgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C922BD81FDE65EB00BA0EAB /* XHForgetViewController.m */; };
+		8CAC51192058CCBD00D2924F /* ParentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAC51182058CCBD00D2924F /* ParentTableViewCell.m */; };
+		8CAC51202058E6EB00D2924F /* XHFeedBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAC511F2058E6EB00D2924F /* XHFeedBackViewController.m */; };
+		8CAC51292058F54D00D2924F /* XHSystemNotificViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAC51282058F54D00D2924F /* XHSystemNotificViewController.m */; };
+		8CAC512C2058FC5800D2924F /* XHSystemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAC512B2058FC5800D2924F /* XHSystemModel.m */; };
+		8CAC512F2058FE4E00D2924F /* XHSystemNoticeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAC512E2058FE4E00D2924F /* XHSystemNoticeTableViewCell.m */; };
 		8CB5A25B1FD7825D008E97D8 /* XHNameTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CB5A2591FD7825D008E97D8 /* XHNameTableViewCell.m */; };
 		8CB5A25C1FD7825D008E97D8 /* XHNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CB5A25A1FD7825D008E97D8 /* XHNameTableViewCell.xib */; };
 		8CB5A2601FD78270008E97D8 /* XHAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CB5A25E1FD78270008E97D8 /* XHAddressTableViewCell.m */; };
@@ -1423,6 +1428,16 @@
 		8C91E01D1FEA39A00040A205 /* XHCustomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHCustomView.m; sourceTree = "<group>"; };
 		8C922BD71FDE65EB00BA0EAB /* XHForgetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHForgetViewController.h; sourceTree = "<group>"; };
 		8C922BD81FDE65EB00BA0EAB /* XHForgetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHForgetViewController.m; sourceTree = "<group>"; };
+		8CAC51172058CCBD00D2924F /* ParentTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParentTableViewCell.h; sourceTree = "<group>"; };
+		8CAC51182058CCBD00D2924F /* ParentTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParentTableViewCell.m; sourceTree = "<group>"; };
+		8CAC511E2058E6EB00D2924F /* XHFeedBackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHFeedBackViewController.h; sourceTree = "<group>"; };
+		8CAC511F2058E6EB00D2924F /* XHFeedBackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHFeedBackViewController.m; sourceTree = "<group>"; };
+		8CAC51272058F54D00D2924F /* XHSystemNotificViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHSystemNotificViewController.h; sourceTree = "<group>"; };
+		8CAC51282058F54D00D2924F /* XHSystemNotificViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHSystemNotificViewController.m; sourceTree = "<group>"; };
+		8CAC512A2058FC5800D2924F /* XHSystemModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHSystemModel.h; sourceTree = "<group>"; };
+		8CAC512B2058FC5800D2924F /* XHSystemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHSystemModel.m; sourceTree = "<group>"; };
+		8CAC512D2058FE4E00D2924F /* XHSystemNoticeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHSystemNoticeTableViewCell.h; sourceTree = "<group>"; };
+		8CAC512E2058FE4E00D2924F /* XHSystemNoticeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHSystemNoticeTableViewCell.m; sourceTree = "<group>"; };
 		8CB5A2581FD7825D008E97D8 /* XHNameTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XHNameTableViewCell.h; path = "daycareParent/我的/我的收获地址/view/XHNameTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		8CB5A2591FD7825D008E97D8 /* XHNameTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = XHNameTableViewCell.m; path = "daycareParent/我的/我的收获地址/view/XHNameTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		8CB5A25A1FD7825D008E97D8 /* XHNameTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = XHNameTableViewCell.xib; path = "daycareParent/我的/我的收获地址/view/XHNameTableViewCell.xib"; sourceTree = SOURCE_ROOT; };
@@ -1631,37 +1646,6 @@
 				0474F64A2057CAF10081A37D /* XHDatePickerBoard.m */,
 			);
 			path = XHDatePicker;
-			sourceTree = "<group>";
-		};
-		04AAEBA42058C54300EF225D /* 问题反馈 */ = {
-			isa = PBXGroup;
-			children = (
-				04AAEBA52058C56300EF225D /* Model */,
-				04AAEBA72058C56300EF225D /* View */,
-				04AAEBA62058C56300EF225D /* Viewcontroller */,
-			);
-			path = "问题反馈";
-			sourceTree = "<group>";
-		};
-		04AAEBA52058C56300EF225D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		04AAEBA62058C56300EF225D /* Viewcontroller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Viewcontroller;
-			sourceTree = "<group>";
-		};
-		04AAEBA72058C56300EF225D /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		04B740091FD81C62008627CF /* view */ = {
@@ -2608,7 +2592,8 @@
 		4B80F1FC1FCBE43E00BC7B52 /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
-				04AAEBA42058C54300EF225D /* 问题反馈 */,
+				8CAC51212058F4DD00D2924F /* 系统通知 */,
+				8CAC511A2058E68500D2924F /* 问题反馈 */,
 				8C3E55BB1FD5494B0013002A /* 学习记录 */,
 				04291A7B1FD2DB77002D3B5B /* 学生信息 */,
 				8CCD7E631FD1565F00F7F54E /* 绑定学生 */,
@@ -3780,6 +3765,8 @@
 				8C7DDC0B2057639800AF8D04 /* ParentImageView.m */,
 				8C7DDC162057779100AF8D04 /* ParentView.h */,
 				8C7DDC172057779100AF8D04 /* ParentView.m */,
+				8CAC51172058CCBD00D2924F /* ParentTableViewCell.h */,
+				8CAC51182058CCBD00D2924F /* ParentTableViewCell.m */,
 			);
 			path = ParentView;
 			sourceTree = "<group>";
@@ -3904,6 +3891,76 @@
 				8C8336F81FDCFEB200F48A25 /* JPUSHService.h */,
 			);
 			path = JPushFramework;
+			sourceTree = "<group>";
+		};
+		8CAC511A2058E68500D2924F /* 问题反馈 */ = {
+			isa = PBXGroup;
+			children = (
+				8CAC51252058F50000D2924F /* model */,
+				8CAC51262058F50000D2924F /* view */,
+				8CAC511B2058E68500D2924F /* controller */,
+			);
+			path = "问题反馈";
+			sourceTree = "<group>";
+		};
+		8CAC511B2058E68500D2924F /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				8CAC511E2058E6EB00D2924F /* XHFeedBackViewController.h */,
+				8CAC511F2058E6EB00D2924F /* XHFeedBackViewController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		8CAC51212058F4DD00D2924F /* 系统通知 */ = {
+			isa = PBXGroup;
+			children = (
+				8CAC51222058F4DD00D2924F /* controller */,
+				8CAC51232058F4DD00D2924F /* model */,
+				8CAC51242058F4DD00D2924F /* view */,
+			);
+			path = "系统通知";
+			sourceTree = "<group>";
+		};
+		8CAC51222058F4DD00D2924F /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				8CAC51272058F54D00D2924F /* XHSystemNotificViewController.h */,
+				8CAC51282058F54D00D2924F /* XHSystemNotificViewController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		8CAC51232058F4DD00D2924F /* model */ = {
+			isa = PBXGroup;
+			children = (
+				8CAC512A2058FC5800D2924F /* XHSystemModel.h */,
+				8CAC512B2058FC5800D2924F /* XHSystemModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		8CAC51242058F4DD00D2924F /* view */ = {
+			isa = PBXGroup;
+			children = (
+				8CAC512D2058FE4E00D2924F /* XHSystemNoticeTableViewCell.h */,
+				8CAC512E2058FE4E00D2924F /* XHSystemNoticeTableViewCell.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		8CAC51252058F50000D2924F /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		8CAC51262058F50000D2924F /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		8CB5A2521FD77FCF008E97D8 /* model */ = {
@@ -4251,6 +4308,7 @@
 				4B278ABD20103EE400293F30 /* RCDLiveMessageModel.m in Sources */,
 				4B80F2D51FCBF04F00BC7B52 /* UIImage+WebP.m in Sources */,
 				04E5D1481FD39F0D0021B842 /* XHVIPTableViewCell.m in Sources */,
+				8CAC51292058F54D00D2924F /* XHSystemNotificViewController.m in Sources */,
 				8C5EB0C31FCFF22C002ED0D7 /* XHPassWordTableViewCell.m in Sources */,
 				4B278AC820103FE800293F30 /* RCDLiveKitUtility.m in Sources */,
 				4B80F2C91FCBF04F00BC7B52 /* SDWebImageCompat.m in Sources */,
@@ -4274,6 +4332,7 @@
 				4B80F2D21FCBF04F00BC7B52 /* UIImage+ForceDecode.m in Sources */,
 				4B577FDD1FF63FB30023ACBC /* MASConstraintMaker.m in Sources */,
 				8C2311671FE22C330013F476 /* XHVIPModel.m in Sources */,
+				8CAC51202058E6EB00D2924F /* XHFeedBackViewController.m in Sources */,
 				4B80F2231FCBEC2B00BC7B52 /* BaseViewController.m in Sources */,
 				4B3418781FFDC14C00A5EC56 /* UIWindow+CurrentViewController.m in Sources */,
 				4BB792B01FD7783700E0ED72 /* XHAskforLeaveContentView.m in Sources */,
@@ -4323,6 +4382,7 @@
 				4B80F3271FCBFD6F00BC7B52 /* NSValueTransformer+MTLInversionAdditions.m in Sources */,
 				4B80F33A1FCC130C00BC7B52 /* MBProgressHUD.m in Sources */,
 				8C7E98381FECF1930096288E /* XHBindCardViewController.m in Sources */,
+				8CAC512C2058FC5800D2924F /* XHSystemModel.m in Sources */,
 				4BB792AE1FD7752B00E0ED72 /* XHAskforLeaveArrowCell.m in Sources */,
 				4B577FDC1FF63FB30023ACBC /* MASConstraint.m in Sources */,
 				4BBC43411FD0E43E00555846 /* BaseTableViewCell.m in Sources */,
@@ -4405,6 +4465,7 @@
 				4B278ADF201041C700293F30 /* RCDLiveCollectionViewHeader.m in Sources */,
 				8C16422A20567887001DCA01 /* XHSubjectModel.m in Sources */,
 				4B80F32F1FCC113500BC7B52 /* UIView+Frame.m in Sources */,
+				8CAC512F2058FE4E00D2924F /* XHSystemNoticeTableViewCell.m in Sources */,
 				8C67F8341FD68570007DFD53 /* XHSelectFileTableViewCell.m in Sources */,
 				4B80F1E61FCBE3F700BC7B52 /* main.m in Sources */,
 				4B80F2221FCBEC2B00BC7B52 /* BaseNavigationView.m in Sources */,
@@ -4484,6 +4545,7 @@
 				4B80F2CE1FCBF04F00BC7B52 /* SDWebImageManager.m in Sources */,
 				8C7E980E1FECDB510096288E /* XHLocationModel.m in Sources */,
 				8C01A2362006E94800E4D768 /* NJKWebViewProgressView.m in Sources */,
+				8CAC51192058CCBD00D2924F /* ParentTableViewCell.m in Sources */,
 				4BA8C4E51FD0002D006CBEBC /* XHHomeWorkTableViewCell.m in Sources */,
 				4B3418F61FFF14F100A5EC56 /* XHVideoControl.m in Sources */,
 				4B9110781FD7B9E600841505 /* XHSyllabusCell.m in Sources */,

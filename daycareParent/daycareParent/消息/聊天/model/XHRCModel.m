@@ -22,13 +22,13 @@
     switch (modelType) {
         case XHRCnoticeType:
         {
-            _itemCellHeight=85;
+            _CellHeight=85;
         }
             break;
             
         default:
         {
-            _itemCellHeight=70;
+            _CellHeight=70;
         }
             break;
     }

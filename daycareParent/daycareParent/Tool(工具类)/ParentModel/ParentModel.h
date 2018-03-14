@@ -14,6 +14,6 @@
 
 @property(nonatomic,assign)CGFloat itemCellHeight;
 
--(id)initWithDic:(NSDictionary *)dic;
+-(instancetype)initWithDic:(NSDictionary *)dic;
 
 @end

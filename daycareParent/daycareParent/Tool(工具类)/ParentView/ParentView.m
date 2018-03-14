@@ -9,6 +9,10 @@
 #import "ParentView.h"
 
 @implementation ParentView
+-(void)setItemObject:(id)object
+{
+    
+}
 -(void)setItemObjectArry:(NSMutableArray *)arry
 {
     

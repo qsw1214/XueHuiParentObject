@@ -211,8 +211,8 @@
         [_weekMenuControl setFont:FontLevel1 withNumberType:0 withAllType:NO];
         [_weekMenuControl setTextAlignment:NSTextAlignmentCenter withNumberType:0 withAllType:NO];
         [_weekMenuControl setImage:@"ico_arr_week" withNumberType:0 withAllType:NO];
-        [_weekMenuControl setItemColor:YES];
         [_weekMenuControl addTarget:self action:@selector(weekMenuControlAction:) forControlEvents:UIControlEventTouchUpInside];
+        [_weekMenuControl setItemColor:NO];
     }
     return _weekMenuControl;
 }

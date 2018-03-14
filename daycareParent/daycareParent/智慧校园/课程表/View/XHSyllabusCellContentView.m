@@ -18,6 +18,14 @@
 @property (nonatomic,strong) UILabel *thursdayLabel; //!< 周四标签
 @property (nonatomic,strong) UILabel *fridayLabel; //!< 周五标签
 
+//@property (nonatomic,strong) UILabel *monthNumberLabel; //!< 时间标签
+//@property (nonatomic,strong) UILabel *mondayLabel; //!< 周一标签
+//@property (nonatomic,strong) UILabel *tuesdayLabel; //!< 周二标签
+//@property (nonatomic,strong) UILabel *wednesdayLabel; //!< 周三标签
+//@property (nonatomic,strong) UILabel *thursdayLabel; //!< 周四标签
+//@property (nonatomic,strong) UILabel *fridayLabel; //!< 周五标签
+
+
 
 @end
 

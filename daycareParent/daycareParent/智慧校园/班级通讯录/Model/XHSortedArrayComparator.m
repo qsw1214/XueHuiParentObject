@@ -104,7 +104,7 @@
     //!< 重新排序
     NSArray *comparatorArray = [array sortedArrayUsingComparator:^NSComparisonResult(XHSyllabusFrame *obj1, XHSyllabusFrame *obj2)
     {
-        return [obj1.model.time compare:obj2.model.time]; //倒序
+        return [obj1.model.month compare:obj2.model.month]; //倒序
     }];
     return comparatorArray;
 }

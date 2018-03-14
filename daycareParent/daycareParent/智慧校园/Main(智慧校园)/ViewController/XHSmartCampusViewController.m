@@ -83,7 +83,7 @@
         {
             if ([self refreshChild])
             {
-                XHCookBookViewController *cookBook = [[XHCookBookViewController alloc]initHiddenWhenPushHidden];
+                XHSyllabusViewController *cookBook = [[XHSyllabusViewController alloc]initHiddenWhenPushHidden];
                 [self.navigationController pushViewController:cookBook animated:YES];
             }
             

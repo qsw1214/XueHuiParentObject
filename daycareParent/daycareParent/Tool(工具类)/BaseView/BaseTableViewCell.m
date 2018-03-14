@@ -16,7 +16,7 @@
     self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     if (self)
     {
-        [self.contentView setBackgroundColor:RGB(238.0, 238.0, 238.0)];
+        [self.contentView setBackgroundColor:RGB(229,229,229)];
         [self setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
     return self;

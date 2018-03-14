@@ -182,11 +182,11 @@ contentArry=@[@"ico_mycontact",@"ico_myquestion",@"ico_myshare",@"ico_mynotice",
 -(UIView *)h_view
 {
     if (_h_view==nil) {
-        _h_view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, USER_HEARD*3+100)];
+        _h_view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, USER_HEARD*2+160)];
         _h_view.layer.masksToBounds=YES;
         UIView *bgView=[[UIView alloc] initWithFrame:CGRectMake(0, _h_view.bottom-SCREEN_WIDTH/2.0, SCREEN_WIDTH*2, SCREEN_WIDTH)];
         //SCREEN_WIDTH+SCREEN_WIDTH/9
-        bgView.center=CGPointMake(SCREEN_WIDTH/2.0, SCREEN_WIDTH*1.25);
+        bgView.center=CGPointMake(SCREEN_WIDTH/2.0, SCREEN_WIDTH+70);
         bgView.layer.cornerRadius=SCREEN_WIDTH;
         bgView.backgroundColor=RGB(239, 239, 239);
         [_h_view addSubview:bgView];

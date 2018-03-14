@@ -44,7 +44,7 @@
     [self setConversationPortraitSize:CGSizeMake(60, 60)];
     [self.view addSubview:self.navigationView];
     self.conversationListTableView.frame=CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64);
-    
+    self.conversationListTableView.separatorColor =LineViewColor;
     [self.conversationListTableView registerClass:[XHRCTableViewCell class] forCellReuseIdentifier:@"RongYunListCell"];
     
     self.conversationListTableView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshHead)];
@@ -58,20 +58,41 @@
     [XHUserInfo sharedUserInfo].sum=0;
     for (int i = 0; i<3; i++)
     {
-        XHRCModel *model = [[XHRCModel alloc] init];
+        XHRCModel *model = [[XHRCModel alloc] initWithDic:nil];
         model.conversationModelType = RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION;
         model.RCtitle=kTitleList[i];
         model.RCtitlePic=kTitlePic[i];
-        model.RCContent=@"123456";
-        model.sum=@"10";
+        switch (i) {
+                case 0:
+            {
+                model.modelType=XHRCTeacherBookType;
+            }
+                break;
+            case 1:
+            {
+                model.RCContent=@"家庭作业";
+                model.sum=@"5";
+                model.modelType=XHRCHomeWorkType;
+            }
+                break;
+                
+            case 2:
+            {
+                model.RCContent=@"放假通知";
+                model.sum=@"10";
+                model.modelType=XHRCnoticeType;
+            }
+                break;
+        }
+        
         [XHUserInfo sharedUserInfo].sum=[XHUserInfo sharedUserInfo].sum+[model.sum integerValue];
         [self.conversationListDataSource replaceObjectAtIndex:i withObject:model];
         [self.mouArry addObject:model];
     }
     [self.conversationListTableView reloadData];
-   
     [self.conversationListTableView.header endRefreshing];
-    [XHUserInfo sharedUserInfo].sum= [XHUserInfo sharedUserInfo].sum-10;
+    
+    [XHUserInfo sharedUserInfo].sum= [XHUserInfo sharedUserInfo].sum;
     AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [app reloadIMBadge];
 }
@@ -80,67 +101,60 @@
     return self.conversationListDataSource.count;
 }
 - (CGFloat)rcConversationListTableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    switch (indexPath.row) {
-        case 2:
-            {
-                return 85;
-            }
-            break;
-            
-        default:
-        {
-             return 70;
-        }
-            break;
-    }
-   
+    
+    return [self.conversationListDataSource[indexPath.row] itemCellHeight];
 }
 
 - (RCConversationBaseCell *)rcConversationListTableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     XHRCTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RongYunListCell" forIndexPath:indexPath];
-    [cell setItemObject:self.conversationListDataSource[indexPath.row] atIndex:indexPath.row];
-     self.conversationListTableView.separatorColor =LineViewColor;
-   
+    [cell setItemObject:self.conversationListDataSource[indexPath.row]];
     return cell;
 }
 
-/**
- *重写RCConversationListViewController的onSelectedTableRow事件
- *
- *  @param conversationModelType 数据模型类型
- *  @param model                 数据模型
- *  @param indexPath             索引
- */
--(void)onSelectedTableRow:(RCConversationModelType)conversationModelType conversationModel:(RCConversationModel *)model atIndexPath:(NSIndexPath *)indexPath
+-(void)onSelectedTableRow:(RCConversationModelType)conversationModelType conversationModel:(XHRCModel *)model atIndexPath:(NSIndexPath *)indexPath
 {
     [self.conversationListTableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.row>2)
-    {
-        AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [app sendRCIMInfo];
-        XHRCConversationViewController *conversationVC = [[XHRCConversationViewController alloc]init];
-        conversationVC.conversationType =model.conversationType;
-        conversationVC.targetId = model.targetId;
-        conversationVC.titleLabel.text = model.conversationTitle;
-        conversationVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:conversationVC animated:YES];
-    }
-    else
-    {
-        switch (indexPath.row) {
-            case 0:
-            {
-                XHTeacherAddressBookViewController *teacherBook=[[XHTeacherAddressBookViewController alloc] initHiddenWhenPushHidden];
-                [teacherBook setNavtionTitle:@"给老师留言"];
-                [self.navigationController pushViewController:teacherBook animated:YES];
-            }
-                break;
-                
+    switch (model.conversationModelType ) {
+        case RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION:
+        {
+            switch (model.modelType) {
+                case XHRCTeacherBookType:
+                {
+                    XHTeacherAddressBookViewController *teacherBook=[[XHTeacherAddressBookViewController alloc] initHiddenWhenPushHidden];
+                    [teacherBook setNavtionTitle:@"给老师留言"];
+                    [self.navigationController pushViewController:teacherBook animated:YES];
+                }
+                    break;
+                    case XHRCHomeWorkType:
+                {
+                    
+                }
+                    break;
+                    case XHRCnoticeType:
+                {
+                    
+                }
+                    break;
         }
+            break;
+            
+        default:
+            {
+                AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                [app sendRCIMInfo];
+                XHRCConversationViewController *conversationVC = [[XHRCConversationViewController alloc]init];
+                conversationVC.conversationType =model.conversationType;
+                conversationVC.targetId = model.targetId;
+                conversationVC.titleLabel.text = model.conversationTitle;
+                conversationVC.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:conversationVC animated:YES];
+            }
+            break;
     }
     
+    }
 }
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
     XHRCModel *model = [self.conversationListDataSource objectAtIndex:indexPath.row];
@@ -167,7 +181,7 @@
 {
         [self.conversationListDataSource setArray:dataSource];
         for (int i = 0; i<kTitleList.count; i++) {
-            XHRCModel *model = [[XHRCModel alloc]init];
+            XHRCModel *model = [[XHRCModel alloc]initWithDic:nil];
             model.conversationModelType = RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION;
 //            model.RCtitle=kTitleList[i];
 //            model.RCtitlePic=kTitlePic[i];

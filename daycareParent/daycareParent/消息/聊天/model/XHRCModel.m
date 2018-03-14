@@ -9,5 +9,28 @@
 #import "XHRCModel.h"
 
 @implementation XHRCModel
-
+-(id)initWithDic:(NSDictionary *)dic
+{
+    if (self=[super init]) {
+        
+    }
+    return self;
+}
+-(void)setModelType:(XHRCModelType)modelType
+{
+    _modelType=modelType;
+    switch (modelType) {
+        case XHRCnoticeType:
+        {
+            _itemCellHeight=85;
+        }
+            break;
+            
+        default:
+        {
+            _itemCellHeight=70;
+        }
+            break;
+    }
+}
 @end

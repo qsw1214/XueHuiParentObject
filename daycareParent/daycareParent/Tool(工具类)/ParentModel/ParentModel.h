@@ -9,5 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface ParentModel : NSObject
+
+@property(nonatomic,assign)CGRect itemFrame;
+
+@property(nonatomic,assign)CGFloat itemCellHeight;
+
 -(id)initWithDic:(NSDictionary *)dic;
+
 @end

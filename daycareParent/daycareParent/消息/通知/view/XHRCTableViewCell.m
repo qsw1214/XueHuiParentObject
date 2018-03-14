@@ -42,27 +42,27 @@
     }
     return self;
 }
--(void)setItemObject:(XHRCModel *)model atIndex:(NSInteger)Index
+-(void)setItemObject:(XHRCModel *)model
 {
-    [self resetFrame:model atIndex:Index];
+    [self resetFrame:model];
     _titleLab.text=model.RCtitle;
     _headImageView.image=[UIImage imageNamed:model.RCtitlePic];
     _ContentLab.text=model.RCContent;
     
 }
--(void)resetFrame:(XHRCModel *)model atIndex:(NSInteger)Index
+-(void)resetFrame:(XHRCModel *)model
 {
     _smallLab.text=model.sum;
     _smallLab.frame=CGRectMake(50, 7, [self getCustomWidth:_smallLab.text], 15);
     _bgLabel.frame=CGRectMake(0, self.contentView.bottom-15, SCREEN_WIDTH, 15);
-    if (Index==2)
+    if (model.modelType==XHRCnoticeType)
     {
         self.bgLabel.hidden=NO;
     }
     
     else
     {
-        if (Index==0)
+        if (model.modelType==XHRCTeacherBookType)
         {
             self.smallLab.hidden=YES;
         }

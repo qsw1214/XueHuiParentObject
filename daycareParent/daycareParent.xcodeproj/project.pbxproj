@@ -3736,6 +3736,8 @@
 		8C7DDBFF20575D7800AF8D04 /* ParentModel */ = {
 			isa = PBXGroup;
 			children = (
+				8C7DDC0D20576A6300AF8D04 /* ParentModel.h */,
+				8C7DDC0E20576A6300AF8D04 /* ParentModel.m */,
 			);
 			path = ParentModel;
 			sourceTree = "<group>";
@@ -3749,8 +3751,6 @@
 				8C7DDC052057601E00AF8D04 /* ParentCollectionViewCell.m */,
 				8C7DDC0A2057639800AF8D04 /* ParentImageView.h */,
 				8C7DDC0B2057639800AF8D04 /* ParentImageView.m */,
-				8C7DDC0D20576A6300AF8D04 /* ParentModel.h */,
-				8C7DDC0E20576A6300AF8D04 /* ParentModel.m */,
 				8C7DDC162057779100AF8D04 /* ParentView.h */,
 				8C7DDC172057779100AF8D04 /* ParentView.m */,
 			);

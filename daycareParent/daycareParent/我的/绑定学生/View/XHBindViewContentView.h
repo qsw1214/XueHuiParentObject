@@ -10,9 +10,21 @@
 #pragma mark 绑定孩子内容视图
 
 
+
+@protocol XHBindViewContentViewDelegate <NSObject>
+
+-(void)submitControlAction:(BaseButtonControl*)sender;
+
+
+@end
+
+
 #import "BaseScrollView.h"
 
 @interface XHBindViewContentView : BaseScrollView
+
+
+@property (nonatomic,weak) id <XHBindViewContentViewDelegate> actionDeletgate;
 
 
 

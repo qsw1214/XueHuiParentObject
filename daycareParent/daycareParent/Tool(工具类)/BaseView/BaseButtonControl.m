@@ -80,7 +80,7 @@
     for (int i = 1; i <= numberLineView; i++)
     {
         UIView *lineView = [[UIView alloc]init];
-        [lineView setBackgroundColor:RGB(244,244,244)];
+        [lineView setBackgroundColor:RGB(229,229,229)];
         [self addSubview:lineView];
         [self.lineViewArray addObject:lineView];
     }

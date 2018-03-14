@@ -9,11 +9,11 @@
 #import "XHBindViewController.h"
 #import "XHPassWordTableViewCell.h"
 #import "XHChildListModel.h"
-#import "XHStudentDetailViewController.h"
+#import "XHStudentInfoViewController.h"
 #import "XHBindViewContentView.h"
 
 
-@interface XHBindViewController ()
+@interface XHBindViewController () <XHBindViewContentViewDelegate>
 
 @property (nonatomic,strong) XHBindViewContentView *contentView;  //!< 内容视图
 
@@ -50,11 +50,20 @@
 }
 
 
+#pragma mark - Delertage Method
+#pragma mark XHBindViewContentViewDelegate
+-(void)submitControlAction:(BaseButtonControl *)sender
+{
+    
+    [self.navigationController pushViewController:[[XHStudentInfoViewController alloc]init] animated:YES];
+}
+
 -(XHBindViewContentView *)contentView
 {
     if (!_contentView)
     {
         _contentView = [[XHBindViewContentView alloc]init];
+        [_contentView setActionDeletgate:self];
     }
     return _contentView;
 }

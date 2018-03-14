@@ -22,8 +22,6 @@
 		041649F4205283CD00D2CF4C /* XHddressBookMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 041649F3205283CD00D2CF4C /* XHddressBookMaskView.m */; };
 		04291A721FD2A101002D3B5B /* XHBackLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04291A711FD2A101002D3B5B /* XHBackLabel.m */; };
 		04291A7A1FD2AD68002D3B5B /* XHListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04291A791FD2AD68002D3B5B /* XHListCollectionViewCell.m */; };
-		04291A911FD2DCDF002D3B5B /* XHStudentInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04291A8F1FD2DCDF002D3B5B /* XHStudentInfoViewController.m */; };
-		04291A921FD2DCDF002D3B5B /* XHStudentInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04291A901FD2DCDF002D3B5B /* XHStudentInfoViewController.xib */; };
 		0474F6482057CAB20081A37D /* XHDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 0474F6472057CAB20081A37D /* XHDatePicker.m */; };
 		0474F64B2057CAF10081A37D /* XHDatePickerBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 0474F64A2057CAF10081A37D /* XHDatePickerBoard.m */; };
 		04AAEBB52058E7E400EF225D /* XHStudentDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AAEBAB2058E7E400EF225D /* XHStudentDetailViewController.xib */; };
@@ -32,6 +30,8 @@
 		04AAEBBA2058E7E400EF225D /* XHFamilyListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AAEBB42058E7E400EF225D /* XHFamilyListModel.m */; };
 		04AAEBBC2058E86C00EF225D /* XHBindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AAEBBB2058E86C00EF225D /* XHBindViewController.m */; };
 		04AAEBBF2058E89A00EF225D /* XHBindViewContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AAEBBE2058E89A00EF225D /* XHBindViewContentView.m */; };
+		04AAEBC22059032A00EF225D /* XHStudentInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AAEBC12059032A00EF225D /* XHStudentInfoViewController.m */; };
+		04AAEBC52059037800EF225D /* XHStudentInfoContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AAEBC42059037800EF225D /* XHStudentInfoContentView.m */; };
 		04B7400D1FD81D89008627CF /* XHAddTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7400B1FD81D89008627CF /* XHAddTableViewCell.m */; };
 		04B7400E1FD81D89008627CF /* XHAddTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B7400C1FD81D89008627CF /* XHAddTableViewCell.xib */; };
 		04E5D1431FD399800021B842 /* XHVIPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E5D1411FD399800021B842 /* XHVIPViewController.m */; };
@@ -566,9 +566,6 @@
 		04291A711FD2A101002D3B5B /* XHBackLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHBackLabel.m; sourceTree = "<group>"; };
 		04291A781FD2AD68002D3B5B /* XHListCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHListCollectionViewCell.h; sourceTree = "<group>"; };
 		04291A791FD2AD68002D3B5B /* XHListCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHListCollectionViewCell.m; sourceTree = "<group>"; };
-		04291A8E1FD2DCDF002D3B5B /* XHStudentInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHStudentInfoViewController.h; sourceTree = "<group>"; };
-		04291A8F1FD2DCDF002D3B5B /* XHStudentInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHStudentInfoViewController.m; sourceTree = "<group>"; };
-		04291A901FD2DCDF002D3B5B /* XHStudentInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XHStudentInfoViewController.xib; sourceTree = "<group>"; };
 		0474F6462057CAB20081A37D /* XHDatePicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHDatePicker.h; sourceTree = "<group>"; };
 		0474F6472057CAB20081A37D /* XHDatePicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHDatePicker.m; sourceTree = "<group>"; };
 		0474F6492057CAF10081A37D /* XHDatePickerBoard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHDatePickerBoard.h; sourceTree = "<group>"; };
@@ -584,6 +581,10 @@
 		04AAEBBB2058E86C00EF225D /* XHBindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHBindViewController.m; sourceTree = "<group>"; };
 		04AAEBBD2058E89A00EF225D /* XHBindViewContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHBindViewContentView.h; sourceTree = "<group>"; };
 		04AAEBBE2058E89A00EF225D /* XHBindViewContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHBindViewContentView.m; sourceTree = "<group>"; };
+		04AAEBC02059032A00EF225D /* XHStudentInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHStudentInfoViewController.h; sourceTree = "<group>"; };
+		04AAEBC12059032A00EF225D /* XHStudentInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHStudentInfoViewController.m; sourceTree = "<group>"; };
+		04AAEBC32059037800EF225D /* XHStudentInfoContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHStudentInfoContentView.h; sourceTree = "<group>"; };
+		04AAEBC42059037800EF225D /* XHStudentInfoContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHStudentInfoContentView.m; sourceTree = "<group>"; };
 		04B7400A1FD81D89008627CF /* XHAddTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHAddTableViewCell.h; sourceTree = "<group>"; };
 		04B7400B1FD81D89008627CF /* XHAddTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHAddTableViewCell.m; sourceTree = "<group>"; };
 		04B7400C1FD81D89008627CF /* XHAddTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XHAddTableViewCell.xib; sourceTree = "<group>"; };
@@ -1616,9 +1617,6 @@
 		04291A7C1FD2DB77002D3B5B /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				04291A8E1FD2DCDF002D3B5B /* XHStudentInfoViewController.h */,
-				04291A8F1FD2DCDF002D3B5B /* XHStudentInfoViewController.m */,
-				04291A901FD2DCDF002D3B5B /* XHStudentInfoViewController.xib */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -1670,6 +1668,8 @@
 			children = (
 				04AAEBBD2058E89A00EF225D /* XHBindViewContentView.h */,
 				04AAEBBE2058E89A00EF225D /* XHBindViewContentView.m */,
+				04AAEBC32059037800EF225D /* XHStudentInfoContentView.h */,
+				04AAEBC42059037800EF225D /* XHStudentInfoContentView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1678,12 +1678,14 @@
 			isa = PBXGroup;
 			children = (
 				04AAEBAA2058E7E400EF225D /* XHFamilyListViewController.h */,
-				04AAEBAB2058E7E400EF225D /* XHStudentDetailViewController.xib */,
-				04AAEBAC2058E7E400EF225D /* XHStudentDetailViewController.m */,
 				04AAEBAF2058E7E400EF225D /* XHFamilyListViewController.m */,
 				04AAEBB02058E7E400EF225D /* XHStudentDetailViewController.h */,
+				04AAEBAC2058E7E400EF225D /* XHStudentDetailViewController.m */,
+				04AAEBAB2058E7E400EF225D /* XHStudentDetailViewController.xib */,
 				04AAEBB12058E7E400EF225D /* XHBindViewController.h */,
 				04AAEBBB2058E86C00EF225D /* XHBindViewController.m */,
+				04AAEBC02059032A00EF225D /* XHStudentInfoViewController.h */,
+				04AAEBC12059032A00EF225D /* XHStudentInfoViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -4154,7 +4156,6 @@
 				8C7EF5391FE0BBFD00C029F2 /* 37x-Wrong.png in Resources */,
 				4B80F1E01FCBE3F700BC7B52 /* Assets.xcassets in Resources */,
 				8CCD7E281FD0F3B000F7F54E /* XHChagePhoneTableViewCell.xib in Resources */,
-				04291A921FD2DCDF002D3B5B /* XHStudentInfoViewController.xib in Resources */,
 				041649ED2052788F00D2CF4C /* 头像3@3x.png in Resources */,
 				8C3E55B71FD5216F0013002A /* XHPayTableViewCell.xib in Resources */,
 				4B3800F3200754D5004E74AC /* pageControlCurrentDot@3x.png in Resources */,
@@ -4423,6 +4424,7 @@
 				8CDDA8B61FDA5CEE000B3BAB /* XHChatViewController.m in Sources */,
 				4B34187A1FFDC14C00A5EC56 /* ZFBrightnessView.m in Sources */,
 				8C019F671FF4C365005EBC2C /* FMDatabaseAdditions.m in Sources */,
+				04AAEBC52059037800EF225D /* XHStudentInfoContentView.m in Sources */,
 				4B91107B1FD7BA3300841505 /* XHSyllabusCellContentView.m in Sources */,
 				4B07CC311FD4EF7500B2DBDA /* XHParentsMeetingCellContentView.m in Sources */,
 				4B80F3201FCBFD6F00BC7B52 /* MTLValueTransformer.m in Sources */,
@@ -4457,7 +4459,6 @@
 				4B5A3AEE1FCE785600504229 /* XHScrollPreviewControl.m in Sources */,
 				8CEDB9721FE3932E003E791F /* XHFamilyModel.m in Sources */,
 				8C019F691FF4C365005EBC2C /* FMDatabaseQueue.m in Sources */,
-				04291A911FD2DCDF002D3B5B /* XHStudentInfoViewController.m in Sources */,
 				8C8081701FCEAB7C00C7945A /* XHBaseLabel.m in Sources */,
 				4B3126361FD93CC6000CE894 /* UIView+SDExtension.m in Sources */,
 				8CB8AA2A1FE8A2920043B4EA /* UIImage+Resizing.m in Sources */,
@@ -4584,6 +4585,7 @@
 				8C3E55AD1FD51A330013002A /* XHCustomPayView.m in Sources */,
 				4B80F2891FCBF04800BC7B52 /* MJRefreshAnimateHeader.m in Sources */,
 				8C7DDC0F20576A6300AF8D04 /* ParentModel.m in Sources */,
+				04AAEBC22059032A00EF225D /* XHStudentInfoViewController.m in Sources */,
 				4B80F2D41FCBF04F00BC7B52 /* UIImage+MultiFormat.m in Sources */,
 				4BD33DDA1FCD555500BC52B6 /* XHSmartCampusContentView.m in Sources */,
 				0474F64B2057CAF10081A37D /* XHDatePickerBoard.m in Sources */,

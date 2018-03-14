@@ -241,12 +241,12 @@ contentArry=@[@"ico_mycontact",@"ico_myquestion",@"ico_myshare",@"ico_mynotice",
 #pragma mark -------------跳转到绑定孩子详情界面------=============
                 @StrongObj(self);
                 XHStudentInfoViewController *student=[[XHStudentInfoViewController alloc] initHiddenWhenPushHidden];
-                student.model=[XHUserInfo sharedUserInfo].childListArry[index];
-                student.isRefresh = ^(BOOL ok) {
-                    if (ok) {
-                        [self getChildListNet];
-                    }
-                };
+//                student.model=[XHUserInfo sharedUserInfo].childListArry[index];
+//                student.isRefresh = ^(BOOL ok) {
+//                    if (ok) {
+//                        [self getChildListNet];
+//                    }
+//                };
                 [self.navigationController pushViewController:student animated:YES];
             }
         };

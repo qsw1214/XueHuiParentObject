@@ -166,7 +166,7 @@
         [_identityControl setNumberImageView:1];
         [_identityControl setText:@"您的身份" withNumberType:0 withAllType:NO];
         [_identityControl setText:@"爸爸" withNumberType:1 withAllType:NO];
-        [_identityControl setImage:@"ico-famman" withNumberType:0 withAllType:NO];
+        [_identityControl setImage:@"ico_identity" withNumberType:0 withAllType:NO];
         [_identityControl setTextAlignment:NSTextAlignmentRight withNumberType:1 withAllType:NO];
         [_identityControl setFont:FontLevel2 withNumberType:0 withAllType:NO];
         [_identityControl setTextColor:RGB(51,51,51) withTpe:0 withAllType:NO];
@@ -187,6 +187,7 @@
         [_submitControl setText:@"确定" withNumberType:0 withAllType:NO];
         [_submitControl setBackgroundColor:MainColor];
         [_submitControl setLayerCornerRadius:5.0];
+        [_submitControl addTarget:self action:@selector(submitAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _submitControl;
 }
@@ -202,6 +203,14 @@
     [self.submitControl setItemColor:color];
 }
 
+
+-(void)submitAction:(BaseButtonControl*)sender
+{
+    if ([self.actionDeletgate respondsToSelector:@selector(submitControlAction:)])
+    {
+        [self.actionDeletgate submitControlAction:sender];
+    }
+}
 
 
 

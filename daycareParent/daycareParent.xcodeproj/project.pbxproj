@@ -1647,8 +1647,6 @@
 			path = XHDatePicker;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
-=======
 		04AAEBA42058C54300EF225D /* 问题反馈 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1716,7 +1714,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
->>>>>>> c1102681a4a369d7cc4331ba1f74c146873fea10
 		04B740091FD81C62008627CF /* view */ = {
 			isa = PBXGroup;
 			children = (

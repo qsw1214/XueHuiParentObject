@@ -42,7 +42,7 @@
         
         [self addSubview:self.collectionView];
         [self addSubview:self.switchKnob];
-        [self setBackgroundColor:[UIColor whiteColor]];
+        [self setBackgroundColor:MainColor];
     }
     return self;
 }
@@ -68,7 +68,7 @@
     
     
     
-//    [self.bridgeArray setArray:[XHUserInfo sharedUserInfo].childListArry];
+    [self.bridgeArray setArray:[XHUserInfo sharedUserInfo].childListArry];
     [NSArray enumerateObjectsWithArray:self.bridgeArray usingBlock:^(XHChildListModel *obj, NSUInteger idx, BOOL *stop)
      {
          if (idx)
@@ -82,6 +82,15 @@
      }];
 
     [self setItemArray:self.bridgeArray];
+
+    
+    if ([self.bridgeArray count])
+    {
+        if ([self.delegate respondsToSelector:@selector(didSelectItem:)])
+        {
+            [self.delegate didSelectItem:[self.dataArray firstObject]];
+        }
+    }
 }
 
 
@@ -270,10 +279,18 @@
                  [obj setShowType:ChildListAloneType];
              }];
             
+            
+            
             [self didSelectEntirelyItemAtIndexPath:YES];
             [self.switchKnob setTag:2];
             [self animationTransitionType:1];
             [self.switchKnob setTransformType:self.switchKnob.tag];
+            
+            
+            if ([self.delegate respondsToSelector:@selector(didSelectItem:)])
+            {
+                [self.delegate didSelectItem:model];
+            }
         }
             break;
     }
@@ -302,7 +319,7 @@
         [_collectionView setDelegate:self];
         [_collectionView setDataSource:self];
         [_collectionView registerClass:[XHAddressBookHeaderItemCell class] forCellWithReuseIdentifier:CellIdentifier];
-        [_collectionView setBackgroundColor:[UIColor whiteColor]];
+        [_collectionView setBackgroundColor:MainColor];
     }
     return _collectionView;
 }

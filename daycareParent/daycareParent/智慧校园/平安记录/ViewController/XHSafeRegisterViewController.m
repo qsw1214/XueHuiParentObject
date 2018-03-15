@@ -15,7 +15,7 @@
 
 
 
-@interface XHSafeRegisterViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface XHSafeRegisterViewController ()<UITableViewDelegate,UITableViewDataSource,XHAddressBookHeaderDelegate,XHDateSwitchControlDelegate>
 
 @property (nonatomic,strong) XHAddressBookHeader *switchHeaderControl;
 @property (nonatomic,strong) XHDateSwitchControl *dateSwitchControl;
@@ -57,19 +57,19 @@
         
         
         
-        for (int i = 0; i<10; i++)
-        {
-            XHRegisterFrame *frame = [[XHRegisterFrame alloc]init];
-            XHRegisterModel *model = [[XHRegisterModel alloc]init];
-            [model setTitle:@"周一"];
-            [model setDate:@"11月10日"];
-            [model setTime:@"00:00:00"];
-            [frame setModel:model];
-            
-            [self.dataArray addObject:frame];
-        }
-        
-        [self.tableView refreshReloadData];
+//        for (int i = 0; i<10; i++)
+//        {
+//            XHRegisterFrame *frame = [[XHRegisterFrame alloc]init];
+//            XHRegisterModel *model = [[XHRegisterModel alloc]init];
+//            [model setTitle:@"周一"];
+//            [model setDate:@"11月10日"];
+//            [model setTime:@"00:00:00"];
+//            [frame setModel:model];
+//
+//            [self.dataArray addObject:frame];
+//        }
+//
+//        [self.tableView refreshReloadData];
     }
 }
 
@@ -104,9 +104,49 @@
 
 
 
+#pragma mark XHAddressBookHeaderDelegate
+-(void)didSelectItem:(XHChildListModel *)model
+{
+    [self.netWorkConfig setObject:model.studentId forKey:@"studentBaseId"];
+    [self.netWorkConfig setObject:[self.dateSwitchControl getNonceDate:NO] forKey:@"date"];
+    [self getNetWorkDataWithType:YES];
+}
+
+#pragma mark XHDateSwitchControlDelegate
+-(void)dateSwitchAction:(NSString *)date
+{
+    [self.netWorkConfig setObject:date forKey:@"date"];
+    [self getNetWorkDataWithType:YES];
+}
 
 
 
+
+#pragma mark - NetWork Method
+-(void)getNetWorkDataWithType:(BOOL)type
+{
+    [self.netWorkConfig postWithUrl:@"zzjt-app-api_smartCampus002" sucess:^(id object, BOOL verifyObject)
+    {
+        if (verifyObject)
+        {
+            NSArray *itemArray = [object objectForKey:@"object"];
+            [NSArray enumerateObjectsWithArray:itemArray usingBlock:^(id obj, NSUInteger idx, BOOL *stop)
+             {
+                 XHRegisterFrame *frame = [[XHRegisterFrame alloc]init];
+                 XHRegisterModel *model = [[XHRegisterModel alloc]init];
+                 [model setItemObject:object];
+                 [frame setModel:model];
+                 [self.dataArray addObject:frame];
+             }];
+            [self.mainTableView refreshReloadData];
+        }
+        
+    } error:^(NSError *error)
+     {
+         [self.mainTableView refreshReloadData];
+     }];
+    
+}
 
 #pragma mark - Getter / Setter
 -(BaseTableView *)tableView
@@ -127,6 +167,7 @@
     {
         _dateSwitchControl = [[XHDateSwitchControl alloc]init];
         [_dateSwitchControl setBackgroundColor:RGB(244.0, 244.0, 244.0)];
+        [_dateSwitchControl setDelegate:self];
     }
     return _dateSwitchControl;
 }
@@ -137,6 +178,7 @@
     if (!_switchHeaderControl)
     {
         _switchHeaderControl = [[XHAddressBookHeader alloc]init];
+        [_switchHeaderControl setDelegate:self];
     }
     return _switchHeaderControl;
 }

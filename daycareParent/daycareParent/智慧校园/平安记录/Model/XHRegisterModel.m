@@ -11,6 +11,14 @@
 @implementation XHRegisterModel
 
 
+-(void)setItemObject:(NSDictionary *)object
+{
+    [self setTitle:[object objectItemKey:@"week"]];
+    [self setDate:[object objectItemKey:@"attendanceDate"]];
+    [self setTime:[object objectItemKey:@"attendanceDate"]];
+}
+
+
 -(void)setTime:(NSString *)time
 {
     _time = time;

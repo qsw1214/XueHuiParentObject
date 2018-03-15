@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseModel.h"
 
-@interface XHRegisterModel : NSObject
+@interface XHRegisterModel : BaseModel
 
 /*因为每个学校的时间段不一致，就暂切定义为四个时间段
  *

@@ -50,6 +50,15 @@
 -(void)dateSwitchControlAction:(BaseButtonControl*)sender
 {
     [self.titleLabel setText:[self swithDateWithType:sender.tag]];
+    NSString *date = [NSString stringWithFormat:@"%zd-%zd-%zd",self.dateSwitchYear,self.dateSwitchMonther,self.dateSwitchDay];
+    
+    if ([self.delegate respondsToSelector:@selector(dateSwitchAction:)])
+    {
+        [self.delegate dateSwitchAction:date];
+    }
+    
+    
+    
 }
 
 
@@ -226,9 +235,21 @@
     [self setDateSwitchYear:[components year]];
     [self setDateSwitchMonther:[components month]];
     [self setDateSwitchDay:[components day]];
-    NSString *yearMontherDay = [NSString stringWithFormat:@"%zd年%zd月%zd日",self.dateSwitchYear,self.dateSwitchMonther,self.dateSwitchDay];
+    NSString *yearMontherDay = @"";
     
-    NSLog(@"%@",yearMontherDay);
+    if (nonce)
+    {
+        
+        yearMontherDay = [NSString stringWithFormat:@"%zd年%zd月%zd日",self.dateSwitchYear,self.dateSwitchMonther,self.dateSwitchDay];
+        
+        NSLog(@"%@",yearMontherDay);
+        
+    }
+    else
+    {
+        yearMontherDay = [NSString stringWithFormat:@"%zd-%zd-%zd日",self.dateSwitchYear,self.dateSwitchMonther,self.dateSwitchDay];
+    }
+   
     return yearMontherDay;
 }
 

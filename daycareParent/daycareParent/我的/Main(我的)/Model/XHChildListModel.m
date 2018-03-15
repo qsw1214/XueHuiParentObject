@@ -53,7 +53,7 @@
             {
                 case ChildListAloneType:
                 {
-                    [self setItemSize:CGSizeMake((SCREEN_WIDTH-80.0), 60.0)];
+                    [self setItemSize:CGSizeMake((SCREEN_WIDTH-60.0), 60.0)];
                 }
                     break;
                 case ChildListEntirelyType:
@@ -85,7 +85,7 @@
             {
                 case ChildListAloneType:
                 {
-                    [self setItemSize:CGSizeMake((SCREEN_WIDTH-80.0), 60.0)];
+                    [self setItemSize:CGSizeMake((SCREEN_WIDTH-60.0), 60.0)];
                 }
                     break;
                 case ChildListEntirelyType:

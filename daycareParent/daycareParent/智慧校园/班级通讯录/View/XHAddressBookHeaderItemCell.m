@@ -28,6 +28,7 @@
     self = [super initWithFrame:frame];
     if (self)
     {
+        [self.contentView setBackgroundColor:MainColor];
         [self.contentView addSubview:self.headerImageView];
         [self.contentView addSubview:self.titleLabel];
         [self.contentView addSubview:self.describeLabel];
@@ -37,7 +38,7 @@
         [self.headerImageView setLayerCornerRadius:(self.headerImageView.height/2.0)];
 
         
-        [self setItemColor:YES];
+        [self setItemColor:NO];
     }
     return self;
 }
@@ -124,6 +125,8 @@
     if (!_titleLabel)
     {
         _titleLabel = [[UILabel alloc]init];
+        [_titleLabel setFont:FontLevel1];
+        [_titleLabel setTextColor:[UIColor whiteColor]];
     }
     return _titleLabel;
 }
@@ -134,6 +137,8 @@
     if (!_describeLabel)
     {
         _describeLabel = [[UILabel alloc]init];
+        [_describeLabel setFont:FontLevel4];
+        [_describeLabel setTextColor:[UIColor whiteColor]];
     }
     return _describeLabel;
 }

@@ -44,13 +44,13 @@
 
 
 
--(void)a:(NSInteger)type
+-(void)setTransformType:(NSInteger)type
 {
     switch (type)
     {
         case 1:
         {
-            [UIView animateWithDuration:0.5 animations:^{
+            [UIView animateWithDuration:1.0 animations:^{
                 
                 [self.markImageView setTransform:CGAffineTransformMakeRotation(0)];
                 
@@ -59,7 +59,7 @@
             break;
         case 2:
         {
-            [UIView animateWithDuration:0.5 animations:^{
+            [UIView animateWithDuration:1.0 animations:^{
                 
                 [self.markImageView setTransform:CGAffineTransformMakeRotation(M_PI_2)];
                 

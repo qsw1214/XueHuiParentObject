@@ -13,6 +13,7 @@
 #import "Mantle.h"
 #import "NSObject+Category.h"
 #import "NSString+Category.h"
+#import "NSArray+Category.h"
 #import "NSDictionary+Category.h"
 #import "UIView+Frame.h"
 #import "MJRefresh.h"

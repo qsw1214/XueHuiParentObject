@@ -22,6 +22,9 @@
 		041649F4205283CD00D2CF4C /* XHddressBookMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 041649F3205283CD00D2CF4C /* XHddressBookMaskView.m */; };
 		04291A721FD2A101002D3B5B /* XHBackLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04291A711FD2A101002D3B5B /* XHBackLabel.m */; };
 		04291A7A1FD2AD68002D3B5B /* XHListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04291A791FD2AD68002D3B5B /* XHListCollectionViewCell.m */; };
+		0445F6812059FA4E00B4E0A5 /* XHBindPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0445F6802059FA4E00B4E0A5 /* XHBindPasswordViewController.m */; };
+		0445F684205A046000B4E0A5 /* XHDateSwitchControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0445F683205A046000B4E0A5 /* XHDateSwitchControl.m */; };
+		0445F687205A52C300B4E0A5 /* NSArray+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 0445F686205A52C300B4E0A5 /* NSArray+Category.m */; };
 		0474F6482057CAB20081A37D /* XHDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 0474F6472057CAB20081A37D /* XHDatePicker.m */; };
 		0474F64B2057CAF10081A37D /* XHDatePickerBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 0474F64A2057CAF10081A37D /* XHDatePickerBoard.m */; };
 		04AAEBB52058E7E400EF225D /* XHStudentDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AAEBAB2058E7E400EF225D /* XHStudentDetailViewController.xib */; };
@@ -571,6 +574,12 @@
 		04291A711FD2A101002D3B5B /* XHBackLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHBackLabel.m; sourceTree = "<group>"; };
 		04291A781FD2AD68002D3B5B /* XHListCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHListCollectionViewCell.h; sourceTree = "<group>"; };
 		04291A791FD2AD68002D3B5B /* XHListCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHListCollectionViewCell.m; sourceTree = "<group>"; };
+		0445F67F2059FA4E00B4E0A5 /* XHBindPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHBindPasswordViewController.h; sourceTree = "<group>"; };
+		0445F6802059FA4E00B4E0A5 /* XHBindPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHBindPasswordViewController.m; sourceTree = "<group>"; };
+		0445F682205A046000B4E0A5 /* XHDateSwitchControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHDateSwitchControl.h; sourceTree = "<group>"; };
+		0445F683205A046000B4E0A5 /* XHDateSwitchControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHDateSwitchControl.m; sourceTree = "<group>"; };
+		0445F685205A52C300B4E0A5 /* NSArray+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Category.h"; sourceTree = "<group>"; };
+		0445F686205A52C300B4E0A5 /* NSArray+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Category.m"; sourceTree = "<group>"; };
 		0474F6462057CAB20081A37D /* XHDatePicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHDatePicker.h; sourceTree = "<group>"; };
 		0474F6472057CAB20081A37D /* XHDatePicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHDatePicker.m; sourceTree = "<group>"; };
 		0474F6492057CAF10081A37D /* XHDatePickerBoard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHDatePickerBoard.h; sourceTree = "<group>"; };
@@ -1647,37 +1656,6 @@
 			path = XHDatePicker;
 			sourceTree = "<group>";
 		};
-		04AAEBA42058C54300EF225D /* 问题反馈 */ = {
-			isa = PBXGroup;
-			children = (
-				04AAEBA52058C56300EF225D /* Model */,
-				04AAEBA72058C56300EF225D /* View */,
-				04AAEBA62058C56300EF225D /* Viewcontroller */,
-			);
-			path = "问题反馈";
-			sourceTree = "<group>";
-		};
-		04AAEBA52058C56300EF225D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		04AAEBA62058C56300EF225D /* Viewcontroller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Viewcontroller;
-			sourceTree = "<group>";
-		};
-		04AAEBA72058C56300EF225D /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		04AAEBA82058E74900EF225D /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1699,6 +1677,8 @@
 				04AAEBAB2058E7E400EF225D /* XHStudentDetailViewController.xib */,
 				04AAEBB12058E7E400EF225D /* XHBindViewController.h */,
 				04AAEBBB2058E86C00EF225D /* XHBindViewController.m */,
+				0445F67F2059FA4E00B4E0A5 /* XHBindPasswordViewController.h */,
+				0445F6802059FA4E00B4E0A5 /* XHBindPasswordViewController.m */,
 				04AAEBC02059032A00EF225D /* XHStudentInfoViewController.h */,
 				04AAEBC12059032A00EF225D /* XHStudentInfoViewController.m */,
 			);
@@ -2660,6 +2640,8 @@
 		4B80F1FD1FCBE43E00BC7B52 /* Category(分类) */ = {
 			isa = PBXGroup;
 			children = (
+				0445F685205A52C300B4E0A5 /* NSArray+Category.h */,
+				0445F686205A52C300B4E0A5 /* NSArray+Category.m */,
 				8C019F6B1FF4C372005EBC2C /* DBModel */,
 				8CB8AA281FE8A2910043B4EA /* UIImage+Resizing.h */,
 				8CB8AA291FE8A2920043B4EA /* UIImage+Resizing.m */,
@@ -3413,6 +3395,8 @@
 				4BA8C4CE1FCFEFB4006CBEBC /* XHRegisterItemControl.m */,
 				8C91E01C1FEA39A00040A205 /* XHCustomView.h */,
 				8C91E01D1FEA39A00040A205 /* XHCustomView.m */,
+				0445F682205A046000B4E0A5 /* XHDateSwitchControl.h */,
+				0445F683205A046000B4E0A5 /* XHDateSwitchControl.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4442,6 +4426,7 @@
 				4B577F9D1FF5C4F60023ACBC /* XHNoticeCellContentView.m in Sources */,
 				4B80F3221FCBFD6F00BC7B52 /* NSDictionary+MTLJSONKeyPath.m in Sources */,
 				4B80F2C21FCBF04F00BC7B52 /* MKAnnotationView+WebCache.m in Sources */,
+				0445F684205A046000B4E0A5 /* XHDateSwitchControl.m in Sources */,
 				4B278AC420103F8200293F30 /* RCDLiveAttributedLabel.m in Sources */,
 				8C5EB0BE1FCFEF6C002ED0D7 /* XHPasswordViewController.m in Sources */,
 				4B80F31C1FCBFD6F00BC7B52 /* MTLModel+NSCoding.m in Sources */,
@@ -4695,6 +4680,7 @@
 				4B523BE11FD15873006DD565 /* XHLeaveRecordTableViewCell.m in Sources */,
 				4B4A000B1FE2408F00B8A8F8 /* XHDynamicsContentView.m in Sources */,
 				8C019F681FF4C365005EBC2C /* FMDatabasePool.m in Sources */,
+				0445F6812059FA4E00B4E0A5 /* XHBindPasswordViewController.m in Sources */,
 				4B07CC481FD5106800B2DBDA /* KYSpringLayerAnimation.m in Sources */,
 				4BBC434E1FD11A1D00555846 /* BaseView.m in Sources */,
 				8CB5A2861FD7DF4B008E97D8 /* ProvinceModel.m in Sources */,
@@ -4705,6 +4691,7 @@
 				8CCD7E271FD0F3B000F7F54E /* XHChagePhoneTableViewCell.m in Sources */,
 				4B11C9FE1FCE3A7900FD0D8F /* XHFunctionMenuFrame.m in Sources */,
 				4B80F27D1FCBF04800BC7B52 /* MJRefreshFooter.m in Sources */,
+				0445F687205A52C300B4E0A5 /* NSArray+Category.m in Sources */,
 				8CD324222052688A00E7AD03 /* XHRCTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

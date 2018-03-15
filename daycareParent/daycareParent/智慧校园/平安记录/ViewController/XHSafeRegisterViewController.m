@@ -8,12 +8,17 @@
 
 #import "XHSafeRegisterViewController.h"
 #import "XHRegisterTableViewCell.h"
+#import "XHDateSwitchControl.h"
+#import "XHAddressBookHeader.h"
+
+
 
 
 
 @interface XHSafeRegisterViewController ()<UITableViewDelegate,UITableViewDataSource>
 
-
+@property (nonatomic,strong) XHAddressBookHeader *switchHeaderControl;
+@property (nonatomic,strong) XHDateSwitchControl *dateSwitchControl;
 @property (nonatomic,strong) BaseTableView *tableView;
 
 @end
@@ -43,8 +48,12 @@
 {
     if (subview)
     {
+        [self.view addSubview:self.switchHeaderControl];
+        [self.switchHeaderControl resetFrame:CGRectMake(0, self.navigationView.height, SCREEN_WIDTH, 60.0)];
+        [self.view addSubview:self.dateSwitchControl];
+        [self.dateSwitchControl resetFrame:CGRectMake(0, self.switchHeaderControl.bottom, SCREEN_WIDTH, self.switchHeaderControl.height)];
         [self.view addSubview:self.tableView];
-        [self.tableView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, CONTENT_HEIGHT)];
+        [self.tableView resetFrame:CGRectMake(0, self.dateSwitchControl.bottom, SCREEN_WIDTH, CONTENT_HEIGHT-120.0)];
         
         
         
@@ -109,6 +118,27 @@
         [_tableView setDataSource:self];
     }
     return _tableView;
+}
+
+
+-(XHDateSwitchControl *)dateSwitchControl
+{
+    if (!_dateSwitchControl)
+    {
+        _dateSwitchControl = [[XHDateSwitchControl alloc]init];
+        [_dateSwitchControl setBackgroundColor:RGB(244.0, 244.0, 244.0)];
+    }
+    return _dateSwitchControl;
+}
+
+
+-(XHAddressBookHeader *)switchHeaderControl
+{
+    if (!_switchHeaderControl)
+    {
+        _switchHeaderControl = [[XHAddressBookHeader alloc]init];
+    }
+    return _switchHeaderControl;
 }
 
 

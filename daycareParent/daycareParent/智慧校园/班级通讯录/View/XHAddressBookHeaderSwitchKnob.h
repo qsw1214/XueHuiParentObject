@@ -10,4 +10,7 @@
 
 @interface XHAddressBookHeaderSwitchKnob : BaseControl
 
+-(void)setTransformType:(NSInteger)type;
+
+
 @end

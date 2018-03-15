@@ -120,7 +120,7 @@
                     break;
                 case HomeWorkAlreadyReadType:
                 {
-                    [self.subjectLabel setBackgroundColor:RGB(81,200,162)];
+                    [self.subjectLabel setBackgroundColor:MainColor];
                 }
                     break;
             }
@@ -180,7 +180,7 @@
                     break;
                 case HomeWorkAlreadyReadType:
                 {
-                    [self.subjectLabel setBackgroundColor:RGB(81,200,162)];
+                    [self.subjectLabel setBackgroundColor:MainColor];
                     [self.subjectLabel setHidden:YES];
                 }
                     break;

@@ -22,7 +22,7 @@
 
 @property (nonatomic,strong) XHAddressBookHeaderSwitchKnob *switchKnob; //!< 头部的切换孩子旋钮
 @property (nonatomic,strong) BaseCollectionView *collectionView; //!< 孩子的滚动视图
-
+@property (nonatomic,strong) NSMutableArray  <XHChildListModel*> *bridgeArray; //!< 孩子的滚动视图
 
 
 
@@ -42,7 +42,6 @@
         
         [self addSubview:self.collectionView];
         [self addSubview:self.switchKnob];
-        
         [self setBackgroundColor:[UIColor whiteColor]];
     }
     return self;
@@ -56,6 +55,36 @@
     
     [self.collectionView resetFrame:CGRectMake(0.0, 0.0, (frame.size.width-frame.size.height), frame.size.height)];
     [self.switchKnob resetFrame:CGRectMake(self.collectionView.right, 0, frame.size.height, frame.size.height)];
+    
+    
+    for (int i = 0; i<10; i++)
+    {
+        XHChildListModel *model = [[XHChildListModel alloc]init];
+        [model setStudentName:@"姚立志"];
+        [model setClazzName:@"三年级二班"];
+        [model setMarkType:ChildListNormalType];
+        [self.dataArray addObject:model];
+    }
+    
+    
+    
+    [self.bridgeArray setArray:[XHUserInfo sharedUserInfo].childListArry];
+    [NSArray enumerateObjectsWithArray:self.bridgeArray usingBlock:^(XHChildListModel *obj, NSUInteger idx, BOOL *stop)
+     {
+         if (idx)
+         {
+             [obj setMarkType:ChildListNormalType];
+         }
+         else
+         {
+             [obj setMarkType:ChildListSelectType];
+         }
+     }];
+
+    
+    [self.dataArray setArray:self.bridgeArray];
+
+    [self setItemArray:self.dataArray];
 }
 
 
@@ -73,30 +102,71 @@
 {
     switch (sender.tag)
     {
+#pragma mark - case 1 选中状态
         case 1:
         {
-            CATransition *anima = [CATransition animation];
-            anima.type = @"cube";//设置动画的类型
-            anima.subtype = kCATransitionFromTop; //设置动画的方向
-            anima.duration = 0.35f;
-            
-            [self.layer addAnimation:anima forKey:@"revealAnimation"];
+            [self animationTransitionType:1];
+            [self tidyArrayWithType:1];
             [sender setTag:2];
         }
             break;
+#pragma mark - case 2 未选中状态
         case 2:
         {
-            CATransition *anima = [CATransition animation];
-            anima.type = @"cube";//设置动画的类型
-            anima.subtype = kCATransitionFromBottom; //设置动画的方向
-            anima.duration = 0.35f;
-            
-            [self.layer addAnimation:anima forKey:@"revealAnimation"];
+            [self animationTransitionType:2];
+            [self tidyArrayWithType:2];
             [sender setTag:1];
         }
             break;
     }
     
+    [self.switchKnob setTransformType:sender.tag];
+}
+
+
+-(void)animationTransitionType:(NSInteger)type
+{
+    CATransition *anima = [CATransition animation];
+    [anima setType:@"cube"]; //设置动画的类型
+    [anima setDuration:0.35];
+    
+    switch (type)
+    {
+        case 1:
+        {
+            [anima setSubtype:kCATransitionFromTop]; //设置动画的方向
+        }
+            break;
+        case 2:
+        {
+            [anima setSubtype:kCATransitionFromBottom]; //设置动画的方向
+        }
+            
+        default:
+            break;
+    }
+    
+    [self.layer addAnimation:anima forKey:@"revealAnimation"];
+}
+
+
+-(void)tidyArrayWithType:(NSInteger)type
+{
+    switch (type)
+    {
+#pragma mark - case 1:选中状态
+        case 1:
+        {
+            
+        }
+            break;
+#pragma mark - case 2:未选中状态
+        case 2:
+        {
+            
+        }
+            break;
+    }
     
 }
 
@@ -182,6 +252,14 @@
 }
 
 
+-(NSMutableArray <XHChildListModel*> *)bridgeArray
+{
+    if (!_bridgeArray)
+    {
+        _bridgeArray = [NSMutableArray array];
+    }
+    return _bridgeArray;
+}
 
 
 

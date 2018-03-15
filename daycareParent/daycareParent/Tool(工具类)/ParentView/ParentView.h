@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ParentView : UIView
+@property(nonatomic,strong)UIView *baseView;
 -(void)setItemObject:(id)object;
 -(void)setItemObjectArry:(NSMutableArray *)arry;
 @end

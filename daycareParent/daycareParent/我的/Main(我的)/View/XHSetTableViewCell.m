@@ -17,12 +17,11 @@
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        _setImageView=[[UIImageView alloc] initWithFrame:CGRectMake(15,(USER_HEARD-30)/2.0, 30, 30)];
-        [_setImageView setContentMode:UIViewContentModeScaleAspectFill];
+        _setImageView=[[ParentImageView alloc] initWithFrame:CGRectMake(15,(self.contentView.bounds.size.height-30)/2.0+8, 30, 30)];
         [self.contentView addSubview:_setImageView];
-        _setLabel=[[XHBaseLabel alloc] initWithFrame:CGRectMake(48, 0, SCREEN_WIDTH-193, USER_HEARD)];
+        _setLabel=[[XHBaseLabel alloc] initWithFrame:CGRectMake(48, (self.contentView.bounds.size.height-30), SCREEN_WIDTH-193, 30)];
         [self.contentView addSubview:_setLabel];
-        _setContentLabel=[[XHBackLabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-145, 0, 120, USER_HEARD)];
+        _setContentLabel=[[XHBackLabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-145, (self.contentView.bounds.size.height-30), 120, 30)];
         [self.contentView addSubview:_setContentLabel];
         
     }

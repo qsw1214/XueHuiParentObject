@@ -11,8 +11,6 @@
 
 #pragma mark ----------设置-----》更改安全电话
 @interface XHChagePhoneViewController : BaseViewController
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) IBOutlet XHBaseLabel *warnLabel;
-@property (strong, nonatomic) IBOutlet XHBaseBtn *sureBtn;
+
 
 @end

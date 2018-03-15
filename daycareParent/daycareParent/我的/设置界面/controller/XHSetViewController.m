@@ -15,7 +15,7 @@
 #import "XHLoginViewController.h"
 #import "JPUSHService.h"
 #import "XHSystemModel.h"
-#define kTitle @[@"修改密码",@"更换安全电话",@"开启消息推送",@"清除缓存",@"关于我们",@"版本更新"]
+#define kTitle @[@"修改手机号",@"开启消息推送",@"清除缓存",@"关于我们",@"版本更新"]
 @interface XHSetViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     float fileSize;
@@ -44,15 +44,15 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-        XHUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-       cell.frontLabel.frame=CGRectMake(10, 0, 120, cell.bounds.size.height);
-        cell.backLabel.frame=CGRectMake(120, 0, SCREEN_WIDTH-150, cell.bounds.size.height);
+    XHUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+       cell.frontLabel.frame=CGRectMake(10, (cell.bounds.size.height-40)/2.0, 120, 40);
+        cell.backLabel.frame=CGRectMake(120, (cell.bounds.size.height-40)/2.0, SCREEN_WIDTH-150, 40);
         cell.frontLabel.text=kTitle[indexPath.row];
-    cell.headBtn.frame=CGRectMake(SCREEN_WIDTH-70, 10, 50, 30);
+    cell.headBtn.frame=CGRectMake(SCREEN_WIDTH-60, (cell.bounds.size.height-30)/2.0, 50, 30);
     cell.headBtn.layer.cornerRadius=0;
     [cell.headBtn setBackgroundImage:[UIImage imageNamed:@"ico_set_open"] forState:UIControlStateNormal];
     [cell.headBtn addTarget:self action:@selector(headBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        if (indexPath.row==2)
+        if (indexPath.row==1)
         {
             cell.headBtn.hidden=NO;
             cell.accessoryType = UITableViewCellAccessoryNone;
@@ -61,7 +61,7 @@
         {
             cell.headBtn.hidden=YES;
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            if (indexPath.row==3)
+            if (indexPath.row==2)
             {
                 cell.backLabel.text=[NSString stringWithFormat:@"清理缓存(%.2fM)",fileSize];
             }
@@ -72,19 +72,20 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     switch (indexPath.row) {
-        case 0:
-        {
-            XHPasswordViewController *password=[XHPasswordViewController new];
-            [self.navigationController pushViewController:password animated:YES];
-        }
-            
-            break;
-            case 1:
+//        case 0:
+//        {
+//            XHPasswordViewController *password=[XHPasswordViewController new];
+//            [self.navigationController pushViewController:password animated:YES];
+//        }
+//
+//            break;
+            case 0:
         {
             XHChagePhoneViewController *chagephone=[XHChagePhoneViewController new];
             [self.navigationController pushViewController:chagephone animated:YES];
         }
-        case 3:
+            break;
+        case 2:
         {
             [XHShowHUD showTextHud];
             [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
@@ -95,17 +96,15 @@
                 });
             }];
         }
-            
             break;
-            break;
-            case 4:
+            case 3:
         {
             XHAboutUsViewController *about=[XHAboutUsViewController new];
             [self.navigationController pushViewController:about animated:YES];
         }
             
             break;
-        case 5:
+        case 4:
         {
             [self updateVersion];
             
@@ -182,11 +181,11 @@
 -(UIButton *)outButton
 {
     if (_outButton==nil) {
-       _outButton=[[UIButton alloc] initWithFrame:CGRectMake(10, 330, SCREEN_WIDTH-20, 50)];
+       _outButton=[[UIButton alloc] initWithFrame:CGRectMake(10, 280, SCREEN_WIDTH-20, 50)];
         _outButton.backgroundColor=[UIColor redColor];
         [_outButton setTitle:@"退出" forState:UIControlStateNormal];
         [_outButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _outButton.layer.cornerRadius=8;
+        _outButton.layer.cornerRadius=CORNER_BTN;
         _outButton.layer.masksToBounds=YES;
     }
     return _outButton;

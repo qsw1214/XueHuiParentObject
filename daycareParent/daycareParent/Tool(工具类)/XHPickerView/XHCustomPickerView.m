@@ -82,6 +82,7 @@
 -(void)setItemObjectArry:(NSMutableArray *)arry
 {
     [self.itemArry setArray:arry];
+    [self.pickerView reloadAllComponents];
 }
 #pragma mark  pickerViewDataSource
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView*)pickerView
@@ -110,6 +111,7 @@
     //设置文字的属性
     UILabel *genderLabel = [UILabel new];
     genderLabel.textAlignment = NSTextAlignmentCenter;
+    genderLabel.font =kFont(19.0);
     genderLabel.text = self.itemArry[row];
     return genderLabel;
 }

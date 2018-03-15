@@ -19,6 +19,7 @@
 #import "XHChildCollectionView.h" //!<孩子列表展示
 #import "XHFeedBackViewController.h"//!< 问题反馈视图
 #import "XHSystemNotificViewController.h"//!< 系统通知
+#import "XHShareView.h"//!< 分享视图
 #define  kTitle @[@"联系客服",@"问题反馈",@"好友推荐",@"系统通知",@"设置"]
 #define kTitlePic @[@"ico_mycontact",@"ico_myquestion",@"ico_myshare",@"ico_mynotice",@"ico_myset"]
 @interface XHPersonalCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -31,6 +32,7 @@
 @property(nonatomic,strong)XHNetWorkConfig *getChildListNet;
 @property(nonatomic,strong)NSMutableArray *childArry;
 @property(nonatomic,strong)BaseTableView *tableView;
+@property(nonatomic,strong)XHShareView *shareView;
 @end
 
 @implementation XHPersonalCenterViewController
@@ -78,7 +80,7 @@
 
 -(CGFloat)tableView:(BaseTableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 70;
+    return 60;
 }
 -(void)tableView:(BaseTableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -94,6 +96,11 @@
                 XHFeedBackViewController *feedBack=[[XHFeedBackViewController alloc] initHiddenWhenPushHidden];
                 [self.navigationController pushViewController:feedBack animated:YES];
             }
+            break;
+            case 2:
+        {
+            [self.shareView show];
+        }
             break;
             case 3:
         {
@@ -265,6 +272,13 @@
       
     }
     return _tableView;
+}
+-(XHShareView *)shareView
+{
+    if (_shareView==nil) {
+        _shareView=[[XHShareView alloc] initWithDelegate:self];
+    }
+    return _shareView;
 }
 -(NSMutableArray *)childArry
 {

@@ -13,6 +13,15 @@ typedef NS_ENUM(NSInteger,ChildListMarkType)
 };
 
 
+typedef NS_ENUM(NSInteger,ChildListShowType)
+{
+    ChildListEntirelyType = 0, //!< 全部展示
+    ChildListAloneType = 1, //!< 单独展示选中状态
+};
+
+
+
+
 
 #import <Foundation/Foundation.h>
 
@@ -24,7 +33,8 @@ typedef NS_ENUM(NSInteger,ChildListMarkType)
 @property (nonatomic,assign) CGSize itemSize; //!< 当前孩子item的大小
 
 
-@property (nonatomic,assign) ChildListMarkType markType;
+@property (nonatomic,assign) ChildListMarkType markType;  //!< 注意必须先给 “showType”赋值
+@property (nonatomic,assign) ChildListShowType showType;
 
 -(id)initWithDic:(NSDictionary *)Dic;
 @end

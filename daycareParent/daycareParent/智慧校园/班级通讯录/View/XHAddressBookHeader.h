@@ -9,9 +9,21 @@
 
 #pragma mark 通讯录头部选择孩子的面板
 
+
+@protocol XHAddressBookHeaderDelegate <NSObject>
+
+
+-(void)didSelectItem:(XHChildListModel*)model;
+
+
+@end
+
 #import "BaseControl.h"
 
 @interface XHAddressBookHeader : BaseControl
+
+
+@property (nonatomic,weak) id <XHAddressBookHeaderDelegate> delegate;
 
 
 

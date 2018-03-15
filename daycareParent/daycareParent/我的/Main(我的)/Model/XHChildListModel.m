@@ -49,7 +49,19 @@
     {
         case ChildListSelectType:
         {
-            [self setItemSize:CGSizeMake(100.0, 60.0)];
+            switch (self.showType)
+            {
+                case ChildListAloneType:
+                {
+                    [self setItemSize:CGSizeMake((SCREEN_WIDTH-60.0), 60.0)];
+                }
+                    break;
+                case ChildListEntirelyType:
+                {
+                    [self setItemSize:CGSizeMake(60.0, 60.0)];
+                }
+                    break;
+            }
         }
             break;
         case ChildListNormalType:
@@ -60,6 +72,37 @@
     }
 }
 
+
+
+-(void)setShowType:(ChildListShowType)showType
+{
+    _showType = showType;
+    switch (showType)
+    {
+        case ChildListSelectType:
+        {
+            switch (self.showType)
+            {
+                case ChildListAloneType:
+                {
+                    [self setItemSize:CGSizeMake((SCREEN_WIDTH-60.0), 60.0)];
+                }
+                    break;
+                case ChildListEntirelyType:
+                {
+                    [self setItemSize:CGSizeMake(60.0, 60.0)];
+                }
+                    break;
+            }
+        }
+            break;
+        case ChildListNormalType:
+        {
+            [self setItemSize:CGSizeMake(60.0, 60.0)];
+        }
+            break;
+    }
+}
 
 
 

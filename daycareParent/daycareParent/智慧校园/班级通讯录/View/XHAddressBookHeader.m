@@ -42,7 +42,7 @@
         
         [self addSubview:self.collectionView];
         [self addSubview:self.switchKnob];
-        [self setBackgroundColor:[UIColor whiteColor]];
+        [self setBackgroundColor:MainColor];
     }
     return self;
 }
@@ -53,17 +53,17 @@
 {
     [self setFrame:frame];
     
-    [self.collectionView resetFrame:CGRectMake(0.0, 0.0, (frame.size.width-frame.size.height), frame.size.height)];
-    [self.switchKnob resetFrame:CGRectMake(self.collectionView.right, 0, frame.size.height, frame.size.height)];
+    [self.collectionView resetFrame:CGRectMake(0.0, 0.0, (frame.size.width-60.0), 60.0)];
+    [self.switchKnob resetFrame:CGRectMake(self.collectionView.right, 0, 60.0, 60.0)];
     
     
     for (int i = 0; i<10; i++)
     {
         XHChildListModel *model = [[XHChildListModel alloc]init];
         [model setStudentName:@"姚立志"];
-        [model setClazzName:@"三年级二班"];
+        [model setClazzName:[NSString stringWithFormat:@"三年级%zd班",i]];
         [model setMarkType:ChildListNormalType];
-        [self.dataArray addObject:model];
+        [self.bridgeArray addObject:model];
     }
     
     
@@ -81,10 +81,16 @@
          }
      }];
 
-    
-    [self.dataArray setArray:self.bridgeArray];
+    [self setItemArray:self.bridgeArray];
 
-    [self setItemArray:self.dataArray];
+    
+    if ([self.bridgeArray count])
+    {
+        if ([self.delegate respondsToSelector:@selector(didSelectItem:)])
+        {
+            [self.delegate didSelectItem:[self.dataArray firstObject]];
+        }
+    }
 }
 
 
@@ -157,17 +163,46 @@
 #pragma mark - case 1:选中状态
         case 1:
         {
+            [self didSelectEntirelyItemAtIndexPath:YES];
             
         }
             break;
 #pragma mark - case 2:未选中状态
         case 2:
         {
-            
+            [NSArray enumerateObjectsWithArray:self.bridgeArray usingBlock:^(XHChildListModel *obj, NSUInteger idx, BOOL *stop)
+            {
+                [obj setShowType:ChildListEntirelyType];
+            }];
+            [self.dataArray setArray:self.bridgeArray];
         }
             break;
     }
     
+    [self.collectionView reloadData];
+    
+}
+
+
+-(void)didSelectEntirelyItemAtIndexPath:(BOOL)entirely
+{
+    NSMutableArray *tempArray = [NSMutableArray array];
+    [NSArray enumerateObjectsWithArray:self.bridgeArray usingBlock:^(XHChildListModel *obj, NSUInteger idx, BOOL *stop)
+     {
+         switch (obj.markType)
+         {
+             case ChildListSelectType:
+             {
+                 [obj setShowType:ChildListAloneType];
+                 [tempArray addObject:obj];
+             }
+                 break;
+             case ChildListNormalType:
+                 break;
+         }
+     }];
+    
+    [self.dataArray setArray:tempArray];
 }
 
 
@@ -217,6 +252,56 @@
 }
 
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    XHChildListModel *model = [self.dataArray objectAtIndex:indexPath.row];
+    
+    
+    switch (model.showType)
+    {
+        case ChildListAloneType:
+            break;
+        case ChildListEntirelyType:
+        {
+            [NSArray enumerateObjectsWithArray:self.dataArray usingBlock:^(XHChildListModel *obj, NSUInteger idx, BOOL *stop)
+             {
+                 if (idx == indexPath.row)
+                 {
+                     [obj setMarkType:ChildListSelectType];
+                     
+                 }
+                 else
+                 {
+                     [obj setMarkType:ChildListNormalType];
+                 }
+                 
+                 [obj setShowType:ChildListAloneType];
+             }];
+            
+            
+            
+            [self didSelectEntirelyItemAtIndexPath:YES];
+            [self.switchKnob setTag:2];
+            [self animationTransitionType:1];
+            [self.switchKnob setTransformType:self.switchKnob.tag];
+            
+            
+            if ([self.delegate respondsToSelector:@selector(didSelectItem:)])
+            {
+                [self.delegate didSelectItem:model];
+            }
+        }
+            break;
+    }
+    
+    
+    
+    [collectionView reloadData];
+  
+    
+    
+}
 
 
 
@@ -234,7 +319,7 @@
         [_collectionView setDelegate:self];
         [_collectionView setDataSource:self];
         [_collectionView registerClass:[XHAddressBookHeaderItemCell class] forCellWithReuseIdentifier:CellIdentifier];
-        [_collectionView setBackgroundColor:[UIColor whiteColor]];
+        [_collectionView setBackgroundColor:MainColor];
     }
     return _collectionView;
 }

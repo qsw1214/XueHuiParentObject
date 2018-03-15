@@ -37,6 +37,7 @@
         [self.headerImageView setLayerCornerRadius:(self.headerImageView.height/2.0)];
 
         
+        [self setItemColor:YES];
     }
     return self;
 }
@@ -51,15 +52,33 @@
     {
         case ChildListSelectType:
         {
-            //!< 首先重置Frame
-            [self.titleLabel setFrame:CGRectMake(self.headerImageView.right+10.0, self.headerImageView.top, 60.0, 20.0)];
-            [self.describeLabel setFrame:CGRectMake(self.titleLabel.left, self.titleLabel.bottom, self.titleLabel.width, self.titleLabel.height)];
-            
-            //!< 设置属性并赋值
-            [self.titleLabel setHidden:NO];
-            [self.describeLabel setHidden:NO];
-            [self.titleLabel setText:model.studentName];
-            [self.describeLabel setText:model.clazzName];
+            switch (model.showType)
+            {
+                case ChildListAloneType:
+                {
+                    //!< 首先重置Frame
+                    [self.titleLabel setFrame:CGRectMake(self.headerImageView.right+10.0, self.headerImageView.top, (model.itemSize.width-(self.headerImageView.right+20.0)), 20.0)];
+                    [self.describeLabel setFrame:CGRectMake(self.titleLabel.left, self.titleLabel.bottom, self.titleLabel.width, self.titleLabel.height)];
+                    
+                    //!< 设置属性并赋值
+                    [self.titleLabel setHidden:NO];
+                    [self.describeLabel setHidden:NO];
+                    [self.titleLabel setText:model.studentName];
+                    [self.describeLabel setText:model.clazzName];
+                }
+                    break;
+                case ChildListEntirelyType:
+                {
+                    //!<  重置frame
+                    [self.titleLabel setFrame:CGRectZero];
+                    [self.describeLabel setFrame:CGRectZero];
+                    
+                    [self.titleLabel setHidden:YES];
+                    [self.describeLabel setHidden:YES];
+                }
+                    break;
+            }
+           
         }
             break;
         case ChildListNormalType:
@@ -73,6 +92,10 @@
         }
             break;
     }
+    
+    
+    
+    
     
     
     [self.headerImageView setImage:[UIImage imageNamed:@"头像3"]];
@@ -113,6 +136,18 @@
         _describeLabel = [[UILabel alloc]init];
     }
     return _describeLabel;
+}
+
+-(void)setItemColor:(BOOL)color
+{
+    if (color)
+    {
+        [self.headerImageView setBackgroundColor:[UIColor redColor]];
+        [self.titleLabel setBackgroundColor:[UIColor purpleColor]];
+        [self.describeLabel setBackgroundColor:[UIColor orangeColor]];
+        
+        [self.contentView setBackgroundColor:[UIColor darkGrayColor]];
+    }
 }
 
 

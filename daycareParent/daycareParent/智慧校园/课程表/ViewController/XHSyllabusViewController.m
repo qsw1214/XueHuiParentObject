@@ -8,10 +8,16 @@
 
 #import "XHSyllabusViewController.h"
 #import "XHSyllabusCell.h"
+#import "XHDropDownMenuControl.h"
+
 
 
 
 @interface XHSyllabusViewController () <UITableViewDelegate,UITableViewDataSource>
+
+
+@property (nonatomic,strong) BaseButtonControl *weekMenuControl; //!< 菜单选择菜单
+
 
 
 @end
@@ -39,6 +45,10 @@
 {
     if (subview)
     {
+        [self.view addSubview:self.weekMenuControl];
+        [self.weekMenuControl resetFrame:CGRectMake(((SCREEN_WIDTH-100.0)/2.0), (self.navigationView.height-44.0), 100.0, 44.0)];
+        [self.weekMenuControl setTitleEdgeFrame:CGRectMake(0, 0, 0, self.weekMenuControl.height) withNumberType:0 withAllType:NO];
+        [self.weekMenuControl setImageEdgeFrame:CGRectMake((self.weekMenuControl.width-10.0), ((self.weekMenuControl.height-10.0)/2.0), 10.0, 10.0) withNumberType:0 withAllType:NO];
         [self.view setBackgroundColor:RGB(229,229,229)];
         [self.view addSubview:self.mainTableView];
         [self.mainTableView setDelegate:self];
@@ -162,6 +172,25 @@
 
 
 
+#pragma mark - Private Method
+-(void)weekMenuControlAction:(BaseButtonControl*)sender
+{
+    NSMutableArray *tempArray = [NSMutableArray array];
+    for (int i=0; i<10; i++)
+    {
+        XHDropDownMenuModel *model = [[XHDropDownMenuModel alloc]init];
+        [model setTitle:@"一年级三班"];
+        [model setObjectID:@"ADSFOP1903LSW"];
+        [tempArray addObject:model];
+    }
+    
+    
+    XHDropDownMenuControl *downMenu = [[XHDropDownMenuControl alloc]initWithDeletage:self];
+    [downMenu setDataArray:tempArray];
+    [downMenu show];
+}
+
+
 #pragma mark - Getter / Setter
 
 -(void)getChildModel:(XHChildListModel *)childModel
@@ -170,6 +199,23 @@
     
 }
 
+
+
+-(BaseButtonControl *)weekMenuControl
+{
+    if (!_weekMenuControl)
+    {
+        _weekMenuControl = [[BaseButtonControl alloc]init];
+        [_weekMenuControl setNumberLabel:1];
+        [_weekMenuControl setNumberImageView:1];
+        [_weekMenuControl setFont:FontLevel1 withNumberType:0 withAllType:NO];
+        [_weekMenuControl setTextAlignment:NSTextAlignmentCenter withNumberType:0 withAllType:NO];
+        [_weekMenuControl setImage:@"ico_arr_week" withNumberType:0 withAllType:NO];
+        [_weekMenuControl addTarget:self action:@selector(weekMenuControlAction:) forControlEvents:UIControlEventTouchUpInside];
+        [_weekMenuControl setItemColor:NO];
+    }
+    return _weekMenuControl;
+}
 
 
 

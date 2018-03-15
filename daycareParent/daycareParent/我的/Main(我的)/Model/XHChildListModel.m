@@ -10,7 +10,8 @@
 @implementation XHChildListModel
 -(id)initWithDic:(NSDictionary *)dic
 {
-    if (self=[super init]) {
+    if (self=[super init])
+    {
         _age=[dic objectItemKey:@"age"];
         _birthdate=[dic objectItemKey:@"birthdate"];
         _archiveId=[dic objectItemKey:@"archiveId"];
@@ -32,6 +33,9 @@
         _studentId=[dic objectItemKey:@"studentId"];
         _studentName=[dic objectItemKey:@"studentName"];
         _schoolId=[dic objectItemKey:@"schoolId"];
+        
+        
+        [self setMarkType:ChildListNormalType];
     }
     return self;
 }

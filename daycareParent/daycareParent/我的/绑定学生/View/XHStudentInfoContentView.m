@@ -52,6 +52,15 @@
 }
 
 
+#pragma mark - Private Method
+-(void)studentInfoControlAction:(BaseButtonControl*)sender
+{
+    if ([self.infoDelegate respondsToSelector:@selector(studentInfoControlAction:)])
+    {
+        [self.infoDelegate studentInfoControlAction:sender];
+    }
+    
+}
 
 
 #pragma mark - Getter /  Setter
@@ -115,7 +124,7 @@
     if (!_baseLabel)
     {
         _baseLabel = [[UILabel alloc]init];
-        [_baseLabel setTextColor:RGB(81,200,162)];
+        [_baseLabel setTextColor:MainColor];
         [_baseLabel setFont:FontLevel2];
         [_baseLabel setText:@"学生信息"];
     }
@@ -127,7 +136,7 @@
     if (!_parentInformationLabel)
     {
         _parentInformationLabel = [[UILabel alloc]init];
-        [_parentInformationLabel setTextColor:RGB(81,200,162)];
+        [_parentInformationLabel setTextColor:MainColor];
         [_parentInformationLabel setFont:FontLevel2];
         [_parentInformationLabel setText:@"家长信息"];
     }
@@ -155,8 +164,10 @@
         [_headerControl setNumberLineView:1];
         [_headerControl setNumberImageView:1];
         [_headerControl setText:@"头像" withNumberType:0 withAllType:NO];
-        [_nameControl setTextColor:RGB(51,51,51) withTpe:0 withAllType:NO];
-        [_nameControl setTextAlignment:NSTextAlignmentLeft withNumberType:0 withAllType:NO];
+        [_headerControl setTextColor:RGB(51,51,51) withTpe:0 withAllType:NO];
+        [_headerControl setTextAlignment:NSTextAlignmentLeft withNumberType:0 withAllType:NO];
+        [_headerControl addTarget:self action:@selector(studentInfoControlAction:) forControlEvents:UIControlEventTouchUpInside];
+        [_headerControl setTag:1];
     }
     return _headerControl;
 }
@@ -265,6 +276,8 @@
         [_passwordControl setTextAlignment:NSTextAlignmentLeft withNumberType:0 withAllType:NO];
         [_passwordControl setTextAlignment:NSTextAlignmentRight withNumberType:1 withAllType:NO];
         [_passwordControl setImage:@"arr_accessory" withNumberType:0 withAllType:NO];
+        [_passwordControl addTarget:self action:@selector(studentInfoControlAction:) forControlEvents:UIControlEventTouchUpInside];
+        [_passwordControl setTag:2];
         
     }
     return _passwordControl;
@@ -280,6 +293,8 @@
         [_unBindControl setText:@"解除绑定" withNumberType:0 withAllType:NO];
         [_unBindControl setTextAlignment:NSTextAlignmentCenter withNumberType:0 withAllType:NO];
         [_unBindControl setBackgroundColor:RGB(255,87,87)];
+        [_unBindControl addTarget:self action:@selector(studentInfoControlAction:) forControlEvents:UIControlEventTouchUpInside];
+        [_unBindControl setTag:3];
     }
     return _unBindControl;
 }

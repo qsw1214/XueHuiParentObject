@@ -26,6 +26,6 @@
 -(void)setItemFrame:(id)frame;
 
 
-
+-(void)setItemColor:(BOOL)color;
 
 @end

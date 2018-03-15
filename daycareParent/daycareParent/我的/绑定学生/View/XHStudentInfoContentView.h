@@ -8,6 +8,22 @@
 
 #import "BaseScrollView.h"
 
+
+
+@protocol XHStudentInfoContentViewDelegate <NSObject>
+
+
+-(void)studentInfoControlAction:(BaseButtonControl*)sender;
+
+
+@end
+
+
+
 @interface XHStudentInfoContentView : BaseScrollView
+
+
+@property (nonatomic,weak) id <XHStudentInfoContentViewDelegate> infoDelegate;
+
 
 @end

@@ -8,9 +8,11 @@
 
 #import "XHStudentInfoViewController.h"
 #import "XHStudentInfoContentView.h"
+#import "XHBindPasswordViewController.h"
 
 
-@interface XHStudentInfoViewController ()
+
+@interface XHStudentInfoViewController () <XHStudentInfoContentViewDelegate>
 
 @property (nonatomic,strong) XHStudentInfoContentView *contentView;
 
@@ -42,12 +44,41 @@
 }
 
 
+
+#pragma mark - Delegate Method
+#pragma mark XHStudentInfoContentViewDelegate
+-(void)studentInfoControlAction:(BaseButtonControl *)sender
+{
+    switch (sender.tag)
+    {
+        case 1:
+        {
+            
+        }
+            break;
+        case 2:
+        {
+            [self.navigationController pushViewController:[[XHBindPasswordViewController alloc]init] animated:YES];
+        }
+            break;
+        case 3:
+        {
+            
+        }
+            break;
+    }
+}
+
+
+
+
 #pragma mark - Getter /  Setter
 -(XHStudentInfoContentView *)contentView
 {
     if (!_contentView)
     {
         _contentView = [[XHStudentInfoContentView alloc]init];
+        [_contentView setInfoDelegate:self];
     }
     return _contentView;
 }

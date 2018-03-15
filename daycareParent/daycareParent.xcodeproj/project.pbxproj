@@ -481,6 +481,7 @@
 		8C8337021FDCFFEF00F48A25 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C8337011FDCFFE500F48A25 /* AdSupport.framework */; };
 		8C8337041FDD000F00F48A25 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C8337031FDD000500F48A25 /* UserNotifications.framework */; };
 		8C8337061FDD002100F48A25 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C8337051FDD002100F48A25 /* libresolv.tbd */; };
+		8C886EDB205A66F7004DCE55 /* XHLoginTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C886EDA205A66F7004DCE55 /* XHLoginTableViewCell.m */; };
 		8C91E01E1FEA39A00040A205 /* XHCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C91E01D1FEA39A00040A205 /* XHCustomView.m */; };
 		8C922BD91FDE65EB00BA0EAB /* XHForgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C922BD81FDE65EB00BA0EAB /* XHForgetViewController.m */; };
 		8C9DFB40205A00F000093CA6 /* XHChageTelephoneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C9DFB3F205A00F000093CA6 /* XHChageTelephoneTableViewCell.m */; };
@@ -1449,6 +1450,8 @@
 		8C8337011FDCFFE500F48A25 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		8C8337031FDD000500F48A25 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		8C8337051FDD002100F48A25 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		8C886ED9205A66F7004DCE55 /* XHLoginTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHLoginTableViewCell.h; sourceTree = "<group>"; };
+		8C886EDA205A66F7004DCE55 /* XHLoginTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHLoginTableViewCell.m; sourceTree = "<group>"; };
 		8C91E01C1FEA39A00040A205 /* XHCustomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHCustomView.h; sourceTree = "<group>"; };
 		8C91E01D1FEA39A00040A205 /* XHCustomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHCustomView.m; sourceTree = "<group>"; };
 		8C922BD71FDE65EB00BA0EAB /* XHForgetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHForgetViewController.h; sourceTree = "<group>"; };
@@ -3188,6 +3191,8 @@
 				4B07CC331FD4FACD00B2DBDA /* XHGuideViewContentView.m */,
 				4B07CC351FD4FAFA00B2DBDA /* XHGuideCollectionViewCell.h */,
 				4B07CC361FD4FAFA00B2DBDA /* XHGuideCollectionViewCell.m */,
+				8C886ED9205A66F7004DCE55 /* XHLoginTableViewCell.h */,
+				8C886EDA205A66F7004DCE55 /* XHLoginTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4497,6 +4502,7 @@
 				4B80F2D61FCBF04F00BC7B52 /* UIImageView+HighlightedWebCache.m in Sources */,
 				4B8E66151FD63FDD0006D641 /* XHCookBookViewController.m in Sources */,
 				4B80F23F1FCBF01B00BC7B52 /* BaseButtonControl.m in Sources */,
+				8C886EDB205A66F7004DCE55 /* XHLoginTableViewCell.m in Sources */,
 				8C2311641FE216A00013F476 /* XHChildListModel.m in Sources */,
 				4B80F3361FCC12DD00BC7B52 /* XHShowHUD.m in Sources */,
 				4B07CC341FD4FACD00B2DBDA /* XHGuideViewContentView.m in Sources */,

@@ -4614,11 +4614,8 @@
 				4BB9BE9A1FDE4B40004F5622 /* XHEducationCloudContentView.m in Sources */,
 				4B80F2CD1FCBF04F00BC7B52 /* SDWebImageImageIOCoder.m in Sources */,
 				4B07CC491FD5106800B2DBDA /* Line.m in Sources */,
-<<<<<<< HEAD
 				04D53978205B638900DB344E /* XHAlertItemCell.m in Sources */,
-=======
 				8C9DFB46205A20C200093CA6 /* XHChangeNameViewController.m in Sources */,
->>>>>>> 0acc497eaffe68441a6d7cd5c8ed123e768ce3a5
 				4B8E66211FD646310006D641 /* XHCookBookModel.m in Sources */,
 				4B11AF3B1FCCEA89002738F1 /* XHPersonalCenterViewController.m in Sources */,
 				4B34187C1FFDC14C00A5EC56 /* ZFPlayerControlView.m in Sources */,

@@ -29,7 +29,7 @@
     if (self)
     {
         
-        [self setItemColor:NO];
+        [self setItemColor:YES];
         
         [self setBackgroundColor:RGB(255.0, 255.0, 255.0)];
         [self.contentView addSubview:self.markImageView];
@@ -70,7 +70,8 @@
         //赋值
         [self.titleLabel setText:itemFrame.model.title];
         [self.describeLabel setText:itemFrame.model.describe];
-        [self.markImageView setImage:[UIImage imageNamed:itemFrame.model.iconName]];
+        [self.markImageView setImage:[UIImage imageNamed:itemFrame.model.title]];
+        [self.backGroundImageView setImage:[UIImage imageNamed:itemFrame.model.iconName]];
     }
     
    
@@ -97,7 +98,6 @@
     {
         _backGroundImageView = [[UIImageView alloc]init];
         [_backGroundImageView setContentMode:UIViewContentModeScaleToFill];
-        [_backGroundImageView setImage:[UIImage imageNamed:@"bg_gn_kq_xia"]];
         [_backGroundImageView.layer setMasksToBounds:YES];
     }
     return _backGroundImageView;

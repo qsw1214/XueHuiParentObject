@@ -23,5 +23,9 @@
 #pragma mark 获取当前日期字符串格式
 -(NSString*)getNonceDate:(BOOL)nonce;
 
+#pragma mark - 重置日期
+-(void)resetDate:(BOOL)nocnce;
+
+
 
 @end

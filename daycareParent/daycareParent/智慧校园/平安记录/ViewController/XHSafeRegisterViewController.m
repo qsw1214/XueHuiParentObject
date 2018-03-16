@@ -10,12 +10,14 @@
 #import "XHRegisterTableViewCell.h"
 #import "XHDateSwitchControl.h"
 #import "XHAddressBookHeader.h"
+#import "XHAlertControl.h"
 
 
 
 
 
-@interface XHSafeRegisterViewController ()<UITableViewDelegate,UITableViewDataSource,XHAddressBookHeaderDelegate,XHDateSwitchControlDelegate>
+
+@interface XHSafeRegisterViewController ()<UITableViewDelegate,UITableViewDataSource,XHAddressBookHeaderDelegate,XHDateSwitchControlDelegate,XHAlertControlDelegate>
 
 @property (nonatomic,strong) XHAddressBookHeader *switchHeaderControl;
 @property (nonatomic,strong) XHDateSwitchControl *dateSwitchControl;
@@ -29,6 +31,7 @@
 {
     [super viewDidLoad];
     [self setNavtionTitle:@"平安记录"];
+    [self setItemContentType:NavigationTitleType withItemType:NavigationItemRightype withIconName:@"" withTitle:@"开始显示"];
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -107,6 +110,7 @@
 #pragma mark XHAddressBookHeaderDelegate
 -(void)didSelectItem:(XHChildListModel *)model
 {
+    [self.dateSwitchControl resetDate:YES];
     [self.netWorkConfig setObject:model.studentId forKey:@"studentBaseId"];
     [self.netWorkConfig setObject:[self.dateSwitchControl getNonceDate:NO] forKey:@"date"];
     [self getNetWorkDataWithType:YES];
@@ -119,12 +123,39 @@
     [self getNetWorkDataWithType:YES];
 }
 
+#pragma mark XHAlertControlDelegate
+-(void)alertBoardControlAction:(XHAlertModel*)sender
+{
+    
+}
+
+
+
+#pragma mark - Public Method
+-(void)rightItemAction:(BaseNavigationControlItem *)sender
+{
+    NSMutableArray *tempArray = [NSMutableArray array];
+    for (int i = 0; i<6; i++)
+    {
+        XHAlertModel *model = [[XHAlertModel alloc]init];
+        [model setName:@"张三"];
+        [model setObjectID:[NSString stringWithFormat:@"%zd",i]];
+        [tempArray addObject:model];
+    }
+    XHAlertControl *alert = [[XHAlertControl alloc]initWithDelegate:self];
+    [alert setItemArray:tempArray];
+    [alert setBoardType:XHAlertBoardOptionType];
+    [alert setTitle:@"设定主监护人"];
+    
+    [alert show];
+}
 
 
 
 #pragma mark - NetWork Method
 -(void)getNetWorkDataWithType:(BOOL)type
 {
+    [XHShowHUD showTextHud];
     [self.netWorkConfig postWithUrl:@"zzjt-app-api_smartCampus002" sucess:^(id object, BOOL verifyObject)
     {
         if (verifyObject)
@@ -140,6 +171,7 @@
              }];
             [self.mainTableView refreshReloadData];
         }
+        
         
     } error:^(NSError *error)
      {

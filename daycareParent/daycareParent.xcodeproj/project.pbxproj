@@ -33,6 +33,20 @@
 		04AAEBBF2058E89A00EF225D /* XHBindViewContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AAEBBE2058E89A00EF225D /* XHBindViewContentView.m */; };
 		04AAEBC22059032A00EF225D /* XHStudentInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AAEBC12059032A00EF225D /* XHStudentInfoViewController.m */; };
 		04AAEBC52059037800EF225D /* XHStudentInfoContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AAEBC42059037800EF225D /* XHStudentInfoContentView.m */; };
+
+		04B7400D1FD81D89008627CF /* XHAddTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B7400B1FD81D89008627CF /* XHAddTableViewCell.m */; };
+		04B7400E1FD81D89008627CF /* XHAddTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B7400C1FD81D89008627CF /* XHAddTableViewCell.xib */; };
+		04D5396F205B5E2300DB344E /* XHAlertControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D5396E205B5E2300DB344E /* XHAlertControl.m */; };
+		04D53972205B5E6300DB344E /* XHAlertBoardControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D53971205B5E6300DB344E /* XHAlertBoardControl.m */; };
+		04D53978205B638900DB344E /* XHAlertItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D53977205B638900DB344E /* XHAlertItemCell.m */; };
+		04D5397B205B757800DB344E /* XHAlertModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D5397A205B757800DB344E /* XHAlertModel.m */; };
+		04E5D1431FD399800021B842 /* XHVIPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E5D1411FD399800021B842 /* XHVIPViewController.m */; };
+		04E5D1441FD399800021B842 /* XHVIPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E5D1421FD399800021B842 /* XHVIPViewController.xib */; };
+		04E5D1481FD39F0D0021B842 /* XHVIPTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E5D1461FD39F0D0021B842 /* XHVIPTableViewCell.m */; };
+		04E5D1491FD39F0D0021B842 /* XHVIPTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E5D1471FD39F0D0021B842 /* XHVIPTableViewCell.xib */; };
+		04E5D14D1FD39F3F0021B842 /* XHPriviTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E5D14B1FD39F3F0021B842 /* XHPriviTableViewCell.m */; };
+		04E5D14E1FD39F3F0021B842 /* XHPriviTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E5D14C1FD39F3F0021B842 /* XHPriviTableViewCell.xib */; };
+		04FB52811FD96D720070C019 /* XHStudyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FB52801FD96D720070C019 /* XHStudyModel.m */; };
 		4B07CC191FD4DAB800B2DBDA /* XHLeaveRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B07CC181FD4DAB800B2DBDA /* XHLeaveRecordModel.m */; };
 		4B07CC1C1FD4DAC800B2DBDA /* XHLeaveRecordFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B07CC1B1FD4DAC800B2DBDA /* XHLeaveRecordFrame.m */; };
 		4B07CC1D1FD4E48500B2DBDA /* XHLeaveRecordContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B523BDD1FD1584A006DD565 /* XHLeaveRecordContentView.m */; };
@@ -555,6 +569,30 @@
 		04AAEBC12059032A00EF225D /* XHStudentInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHStudentInfoViewController.m; sourceTree = "<group>"; };
 		04AAEBC32059037800EF225D /* XHStudentInfoContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHStudentInfoContentView.h; sourceTree = "<group>"; };
 		04AAEBC42059037800EF225D /* XHStudentInfoContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHStudentInfoContentView.m; sourceTree = "<group>"; };
+
+		04B7400A1FD81D89008627CF /* XHAddTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHAddTableViewCell.h; sourceTree = "<group>"; };
+		04B7400B1FD81D89008627CF /* XHAddTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHAddTableViewCell.m; sourceTree = "<group>"; };
+		04B7400C1FD81D89008627CF /* XHAddTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XHAddTableViewCell.xib; sourceTree = "<group>"; };
+		04D5396D205B5E2300DB344E /* XHAlertControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHAlertControl.h; sourceTree = "<group>"; };
+		04D5396E205B5E2300DB344E /* XHAlertControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHAlertControl.m; sourceTree = "<group>"; };
+		04D53970205B5E6300DB344E /* XHAlertBoardControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHAlertBoardControl.h; sourceTree = "<group>"; };
+		04D53971205B5E6300DB344E /* XHAlertBoardControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHAlertBoardControl.m; sourceTree = "<group>"; };
+		04D53976205B638900DB344E /* XHAlertItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHAlertItemCell.h; sourceTree = "<group>"; };
+		04D53977205B638900DB344E /* XHAlertItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHAlertItemCell.m; sourceTree = "<group>"; };
+		04D53979205B757800DB344E /* XHAlertModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHAlertModel.h; sourceTree = "<group>"; };
+		04D5397A205B757800DB344E /* XHAlertModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHAlertModel.m; sourceTree = "<group>"; };
+		04E5D1401FD399800021B842 /* XHVIPViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHVIPViewController.h; sourceTree = "<group>"; };
+		04E5D1411FD399800021B842 /* XHVIPViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHVIPViewController.m; sourceTree = "<group>"; };
+		04E5D1421FD399800021B842 /* XHVIPViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XHVIPViewController.xib; sourceTree = "<group>"; };
+		04E5D1451FD39F0D0021B842 /* XHVIPTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHVIPTableViewCell.h; sourceTree = "<group>"; };
+		04E5D1461FD39F0D0021B842 /* XHVIPTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHVIPTableViewCell.m; sourceTree = "<group>"; };
+		04E5D1471FD39F0D0021B842 /* XHVIPTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XHVIPTableViewCell.xib; sourceTree = "<group>"; };
+		04E5D14A1FD39F3F0021B842 /* XHPriviTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHPriviTableViewCell.h; sourceTree = "<group>"; };
+		04E5D14B1FD39F3F0021B842 /* XHPriviTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHPriviTableViewCell.m; sourceTree = "<group>"; };
+		04E5D14C1FD39F3F0021B842 /* XHPriviTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XHPriviTableViewCell.xib; sourceTree = "<group>"; };
+		04FB527F1FD96D720070C019 /* XHStudyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XHStudyModel.h; path = "daycareParent/我的/学习记录/model/XHStudyModel.h"; sourceTree = SOURCE_ROOT; };
+		04FB52801FD96D720070C019 /* XHStudyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = XHStudyModel.m; path = "daycareParent/我的/学习记录/model/XHStudyModel.m"; sourceTree = SOURCE_ROOT; };
+
 		4B07CC171FD4DAB800B2DBDA /* XHLeaveRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHLeaveRecordModel.h; sourceTree = "<group>"; };
 		4B07CC181FD4DAB800B2DBDA /* XHLeaveRecordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHLeaveRecordModel.m; sourceTree = "<group>"; };
 		4B07CC1A1FD4DAC800B2DBDA /* XHLeaveRecordFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHLeaveRecordFrame.h; sourceTree = "<group>"; };
@@ -1603,6 +1641,71 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+
+		04B740091FD81C62008627CF /* view */ = {
+			isa = PBXGroup;
+			children = (
+				8CB5A2581FD7825D008E97D8 /* XHNameTableViewCell.h */,
+				8CB5A2591FD7825D008E97D8 /* XHNameTableViewCell.m */,
+				8CB5A25A1FD7825D008E97D8 /* XHNameTableViewCell.xib */,
+				8CB5A25D1FD78270008E97D8 /* XHAddressTableViewCell.h */,
+				8CB5A25E1FD78270008E97D8 /* XHAddressTableViewCell.m */,
+				8CB5A25F1FD78270008E97D8 /* XHAddressTableViewCell.xib */,
+				04B7400A1FD81D89008627CF /* XHAddTableViewCell.h */,
+				04B7400B1FD81D89008627CF /* XHAddTableViewCell.m */,
+				04B7400C1FD81D89008627CF /* XHAddTableViewCell.xib */,
+				8CB5A2871FD7E029008E97D8 /* XHAddressPickerView.h */,
+				8CB5A2881FD7E029008E97D8 /* XHAddressPickerView.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		04D5396C205B5E1200DB344E /* XHAlert */ = {
+			isa = PBXGroup;
+			children = (
+				04D5396D205B5E2300DB344E /* XHAlertControl.h */,
+				04D5396E205B5E2300DB344E /* XHAlertControl.m */,
+				04D53970205B5E6300DB344E /* XHAlertBoardControl.h */,
+				04D53971205B5E6300DB344E /* XHAlertBoardControl.m */,
+				04D53976205B638900DB344E /* XHAlertItemCell.h */,
+				04D53977205B638900DB344E /* XHAlertItemCell.m */,
+				04D53979205B757800DB344E /* XHAlertModel.h */,
+				04D5397A205B757800DB344E /* XHAlertModel.m */,
+			);
+			path = XHAlert;
+			sourceTree = "<group>";
+		};
+		04E5D12D1FD397E10021B842 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				04E5D1401FD399800021B842 /* XHVIPViewController.h */,
+				04E5D1411FD399800021B842 /* XHVIPViewController.m */,
+				04E5D1421FD399800021B842 /* XHVIPViewController.xib */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		04E5D12F1FD397E10021B842 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				04E5D1451FD39F0D0021B842 /* XHVIPTableViewCell.h */,
+				04E5D1461FD39F0D0021B842 /* XHVIPTableViewCell.m */,
+				04E5D1471FD39F0D0021B842 /* XHVIPTableViewCell.xib */,
+				04E5D14A1FD39F3F0021B842 /* XHPriviTableViewCell.h */,
+				04E5D14B1FD39F3F0021B842 /* XHPriviTableViewCell.m */,
+				04E5D14C1FD39F3F0021B842 /* XHPriviTableViewCell.xib */,
+				8C3E55AB1FD51A330013002A /* XHCustomPayView.h */,
+				8C3E55AC1FD51A330013002A /* XHCustomPayView.m */,
+				8C3E55AE1FD5215F0013002A /* XHTPayTitleableViewCell.h */,
+				8C3E55AF1FD5215F0013002A /* XHTPayTitleableViewCell.m */,
+				8C3E55B01FD5215F0013002A /* XHTPayTitleableViewCell.xib */,
+				8C3E55B31FD5216F0013002A /* XHPayTableViewCell.h */,
+				8C3E55B41FD5216F0013002A /* XHPayTableViewCell.m */,
+				8C3E55B51FD5216F0013002A /* XHPayTableViewCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		04E5D1301FD397FE0021B842 /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -2473,6 +2576,7 @@
 		4B80F2001FCBE43E00BC7B52 /* Tool(工具类) */ = {
 			isa = PBXGroup;
 			children = (
+				04D5396C205B5E1200DB344E /* XHAlert */,
 				8C9DFB47205A408700093CA6 /* XHPickerView */,
 				0474F6452057CA990081A37D /* XHDatePicker */,
 				8C7DDBFF20575D7800AF8D04 /* ParentModel */,
@@ -4116,6 +4220,7 @@
 				4BB792AE1FD7752B00E0ED72 /* XHAskforLeaveArrowCell.m in Sources */,
 				4B577FDC1FF63FB30023ACBC /* MASConstraint.m in Sources */,
 				4BBC43411FD0E43E00555846 /* BaseTableViewCell.m in Sources */,
+				04D5397B205B757800DB344E /* XHAlertModel.m in Sources */,
 				4B80F2831FCBF04800BC7B52 /* MJRefreshBackNormalFooter.m in Sources */,
 				4B80F3251FCBFD6F00BC7B52 /* NSError+MTLModelException.m in Sources */,
 				04AAEBBF2058E89A00EF225D /* XHBindViewContentView.m in Sources */,
@@ -4171,6 +4276,7 @@
 				4B80F27A1FCBF04800BC7B52 /* MJRefreshAutoFooter.m in Sources */,
 				4B80F2D61FCBF04F00BC7B52 /* UIImageView+HighlightedWebCache.m in Sources */,
 				4B8E66151FD63FDD0006D641 /* XHCookBookViewController.m in Sources */,
+				04D53972205B5E6300DB344E /* XHAlertBoardControl.m in Sources */,
 				4B80F23F1FCBF01B00BC7B52 /* BaseButtonControl.m in Sources */,
 				8C886EDB205A66F7004DCE55 /* XHLoginTableViewCell.m in Sources */,
 				8C2311641FE216A00013F476 /* XHChildListModel.m in Sources */,
@@ -4231,6 +4337,11 @@
 				4B278AEC2010422C00293F30 /* RCDDanmakuInfo.m in Sources */,
 				4B31263D1FD93D78000CE894 /* XHAddressBookViewController.m in Sources */,
 				4B278ABE20103EE400293F30 /* RCDLiveGiftMessage.m in Sources */,
+
+				8CB5A26D1FD7BB8F008E97D8 /* XHAddAdressViewController.m in Sources */,
+				8C3E55B11FD5215F0013002A /* XHTPayTitleableViewCell.m in Sources */,
+				8C80815F1FCE722000C7945A /* XHChildTableViewCell.m in Sources */,
+				04D5396F205B5E2300DB344E /* XHAlertControl.m in Sources */,
 				4B80F32C1FCC108800BC7B52 /* MarqueeLabel.m in Sources */,
 				4B5A3AEE1FCE785600504229 /* XHScrollPreviewControl.m in Sources */,
 				8CEDB9721FE3932E003E791F /* XHFamilyModel.m in Sources */,
@@ -4243,6 +4354,7 @@
 				4BB9BE9A1FDE4B40004F5622 /* XHEducationCloudContentView.m in Sources */,
 				4B80F2CD1FCBF04F00BC7B52 /* SDWebImageImageIOCoder.m in Sources */,
 				4B07CC491FD5106800B2DBDA /* Line.m in Sources */,
+				04D53978205B638900DB344E /* XHAlertItemCell.m in Sources */,
 				8C9DFB46205A20C200093CA6 /* XHChangeNameViewController.m in Sources */,
 				4B8E66211FD646310006D641 /* XHCookBookModel.m in Sources */,
 				4B11AF3B1FCCEA89002738F1 /* XHPersonalCenterViewController.m in Sources */,

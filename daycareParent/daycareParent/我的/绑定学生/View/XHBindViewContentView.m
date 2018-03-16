@@ -77,7 +77,7 @@
     [self.identityControl resetFrame:CGRectMake(0, self.passwrdControl.bottom, self.passwrdControl.width, self.passwrdControl.height)];
     [self.identityControl setTitleEdgeFrame:CGRectMake(10.0, 0, ((frame.size.width-20.0)/2.0), self.identityControl.height) withNumberType:0 withAllType:NO];
     [self.identityControl setTitleEdgeFrame:CGRectMake((frame.size.width/2.0), 0, (((frame.size.width-20.0)/2.0)-40.0), self.identityControl.height) withNumberType:1 withAllType:NO];
-    [self.identityControl setImageEdgeFrame:CGRectMake((frame.size.width-40.0), (self.identityControl.height-20.0)/2.0, 20.0, 20.0) withNumberType:0 withAllType:NO];
+    [self.identityControl setImageEdgeFrame:CGRectMake((frame.size.width-30.0), (self.identityControl.height-15.0)/2.0, 15.0, 15.0) withNumberType:0 withAllType:NO];
     
     
     //!< 重置提交Frame

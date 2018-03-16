@@ -56,7 +56,8 @@
 -(void)submitControlAction:(BaseButtonControl *)sender
 {
     
-    [self.navigationController pushViewController:[[XHAddBindPasswordViewController alloc]init] animated:YES];
+//    [self.navigationController pushViewController:[[XHAddBindPasswordViewController alloc]init] animated:YES];
+    [self.navigationController pushViewController:[[XHStudentInfoViewController alloc]init] animated:YES];
 }
 
 -(XHBindViewContentView *)contentView

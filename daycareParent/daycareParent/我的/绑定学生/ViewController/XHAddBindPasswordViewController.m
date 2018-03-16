@@ -22,6 +22,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setNavtionTitle:@"设置绑定密码"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -38,8 +39,10 @@
         [self.view addSubview:self.passwordControl];
         [self.view addSubview:self.submitControl];
         
+        //!< 重置密码
         [self.passwordControl resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, 50.0)];
-        [self.passwordControl setInputEdgeFrame:CGRectMake(10.0, 0, self.passwordControl.width-20.0, self.passwordControl.height) withNumberType:0 withAllType:NO];
+        [self.passwordControl setInputEdgeFrame:CGRectMake(15.0, 0, self.passwordControl.width-30.0, self.passwordControl.height) withNumberType:0 withAllType:NO];
+        [self.passwordControl resetLineViewFrame:CGRectMake(0, self.passwordControl.height-0.5, self.passwordControl.width, 0.5) withNumberType:0 withAllType:NO];
         //!< 重置提交按钮
         [self.submitControl resetFrame:CGRectMake(40.0, self.passwordControl.bottom+30.0, self.passwordControl.width-80.0, 44.0)];
         [self.submitControl setTitleEdgeFrame:CGRectMake(0, 0, self.submitControl.width, self.submitControl.height) withNumberType:0 withAllType:NO];
@@ -56,6 +59,7 @@
     {
         _passwordControl = [[BaseButtonControl alloc]init];
         [_passwordControl setNumberTextField:1];
+        [_passwordControl setNumberLineView:1];
         [_passwordControl setinputTextPlaceholder:@"设置绑定密码（6-20位英文、数字组合）" withNumberType:0 withAllType:NO];
     }
     return _passwordControl;
@@ -72,6 +76,7 @@
         [_submitControl setTextColor:[UIColor whiteColor] withTpe:0 withAllType:NO];
         [_submitControl setFont:FontLevel2 withNumberType:0 withAllType:NO];
         [_submitControl setTextAlignment:NSTextAlignmentCenter withNumberType:0 withAllType:NO];
+        [_submitControl setLayerCornerRadius:5.0];
     }
     return _submitControl;
 }

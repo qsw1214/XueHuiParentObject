@@ -7,7 +7,14 @@
 //
 
 #import "BaseControl.h"
+#import "XHAddressBookFrame.h"
+
 
 @interface XHddressBookMaskView : BaseControl
+
+@property (nonatomic,assign) NSInteger indexPath;
+
+@property (nonatomic,strong) BaseButtonControl *markImageView; //!< 附件视图
+
 
 @end

@@ -19,7 +19,8 @@
 @property (nonatomic,strong) BaseButtonControl *schoolControl; //!< 提醒信息标签
 @property (nonatomic,strong) BaseButtonControl *classControl; //!< 提醒信息标签
 @property (nonatomic,strong) BaseButtonControl *sexControl; //!< 提醒信息标签
-@property (nonatomic,strong) BaseButtonControl *birthdayControl; //!< 提醒信息标签
+@property (nonatomic,strong) BaseButtonControl *birthdayControl; //!< 生日标签
+@property (nonatomic,strong) BaseButtonControl *identityControl;  //!< 身份
 @property (nonatomic,strong) BaseButtonControl *passwordControl; //!< 密码重置按钮
 @property (nonatomic,strong) BaseButtonControl *unBindControl; //!< 解除绑定按钮
 
@@ -43,6 +44,7 @@
         [self addSubview:self.classControl];
         [self addSubview:self.sexControl];
         [self addSubview:self.birthdayControl];
+        [self addSubview:self.identityControl];
         [self addSubview:self.parentInformationLabel];
         [self addSubview:self.tipLabel];
         [self addSubview:self.passwordControl];
@@ -99,13 +101,20 @@
     [self.birthdayControl setTitleEdgeFrame:CGRectMake(10.0, 0, (frame.size.width-20.0)/2.0, self.birthdayControl.height) withNumberType:0 withAllType:NO];
     [self.birthdayControl setTitleEdgeFrame:CGRectMake((frame.size.width)/2.0, 0, (frame.size.width-20.0)/2.0, self.birthdayControl.height) withNumberType:1 withAllType:NO];
     [self.birthdayControl resetLineViewFrame:CGRectMake(0, self.birthdayControl.height-0.5, self.birthdayControl.width, 0.5) withNumberType:0 withAllType:NO];
+    //!< 身份Frame
+    [self.identityControl resetFrame:CGRectMake(0, self.birthdayControl.bottom, self.birthdayControl.width, self.birthdayControl.height)];
+    [self.identityControl setTitleEdgeFrame:CGRectMake(10.0, 5, ((frame.size.width-20.0)/2.0), (self.identityControl.height-10.0)) withNumberType:0 withAllType:NO];
+    [self.identityControl setTitleEdgeFrame:CGRectMake((frame.size.width/2.0), 5, (((frame.size.width-20.0)/2.0)-40.0), (self.identityControl.height-10.0)) withNumberType:1 withAllType:NO];
+    [self.identityControl setImageEdgeFrame:CGRectMake((frame.size.width-30.0), (self.identityControl.height-15.0)/2.0, 15.0, 15.0) withNumberType:0 withAllType:NO];
+    [self.identityControl resetLineViewFrame:CGRectMake(0, 0.0, self.identityControl.width, 2) withNumberType:0 withAllType:NO];
+    [self.identityControl resetLineViewFrame:CGRectMake(0, self.identityControl.height-2.0, self.identityControl.width, 2.0) withNumberType:1 withAllType:NO];
     //!< 设置家长信息
-    [self.parentInformationLabel setFrame:CGRectMake(10.0, self.birthdayControl.bottom, self.baseLabel.width,self.baseLabel.height)];
+    [self.parentInformationLabel setFrame:CGRectMake(10.0, self.identityControl.bottom, self.baseLabel.width,self.baseLabel.height)];
     //!< 设置密码
     [self.passwordControl resetFrame:CGRectMake(0, self.parentInformationLabel.bottom, self.birthdayControl.width, self.birthdayControl.height)];
     [self.passwordControl setTitleEdgeFrame:CGRectMake(10.0, 0, (frame.size.width-20.0)/2.0, self.passwordControl.height) withNumberType:0 withAllType:NO];
     [self.passwordControl setTitleEdgeFrame:CGRectMake((frame.size.width)/2.0, 0, ((frame.size.width-20.0)/2.0)-30.0, self.passwordControl.height) withNumberType:1 withAllType:NO];
-    [self.passwordControl setImageEdgeFrame:CGRectMake((self.passwordControl.width-30.0), (self.passwordControl.height-20.0)/2.0, 20.0, 20.0) withNumberType:0 withAllType:NO];
+    [self.passwordControl setImageEdgeFrame:CGRectMake((self.passwordControl.width-30.0), (self.passwordControl.height-15.0)/2.0, 15.0, 15.0) withNumberType:0 withAllType:NO];
     [self.passwordControl resetLineViewFrame:CGRectMake(0, self.passwordControl.height-0.5, self.passwordControl.width, 0.5) withNumberType:0 withAllType:NO];
     //!< 设置提醒信息
     [self.tipLabel setFrame:CGRectMake(10.0, self.passwordControl.bottom, self.baseLabel.width,self.baseLabel.height)];
@@ -259,6 +268,27 @@
     }
     return _birthdayControl;
 }
+
+
+-(BaseButtonControl *)identityControl
+{
+    if (!_identityControl)
+    {
+        _identityControl = [[BaseButtonControl alloc]init];
+        [_identityControl setNumberLabel:2];
+        [_identityControl setNumberImageView:1];
+        [_identityControl setNumberLineView:2];
+        [_identityControl setText:@"您的身份" withNumberType:0 withAllType:NO];
+        [_identityControl setText:@"爸爸" withNumberType:1 withAllType:NO];
+        [_identityControl setImage:@"ico_identity" withNumberType:0 withAllType:NO];
+        [_identityControl setTextAlignment:NSTextAlignmentRight withNumberType:1 withAllType:NO];
+        [_identityControl setFont:FontLevel2 withNumberType:0 withAllType:NO];
+        [_identityControl setTextColor:RGB(51,51,51) withTpe:0 withAllType:NO];
+        [_identityControl setTextColor:RGB(51,51,51) withTpe:1 withAllType:NO];
+    }
+    return _identityControl;
+}
+
 
 
 -(BaseButtonControl *)passwordControl

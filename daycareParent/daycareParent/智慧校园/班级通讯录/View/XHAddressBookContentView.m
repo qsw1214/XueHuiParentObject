@@ -29,14 +29,8 @@
         [self.tableView setDelegate:self];
         [self.tableView setDataSource:self];
         [self.tableView setTipType:TipImage withTipTitle:nil withTipImage:@"ico-no-data"];
-        [self.tableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHead)];
     }
     return self;
-}
-
--(void)refreshHead
-{
-    [self getAddressBookWithModel:self.childModel];
 }
 
 
@@ -86,6 +80,7 @@
     
     XHAddressBookKey *bookKey = [self.dataArray objectAtIndex:indexPath.section];
     [cell setItemFrame:[bookKey.itemArray objectAtIndex:indexPath.row]];
+    [cell setIndexPath:indexPath.row];
     return cell;
 }
 
@@ -163,52 +158,10 @@
     
     [tableView reloadData];
 }
--(void)getModel:(XHChildListModel *)model
-{
-    self.childModel = model;
-    [self getAddressBookWithModel:model];
-}
 
-/**
- @param model 孩子模型
- */
--(void)getAddressBookWithModel:(XHChildListModel *)model
-{
-    if (model)
-    {
-        [self.netWorkConfig setObject:model.clazzId forKey:@"classId"];
-        [self.netWorkConfig postWithUrl:@"zzjt-app-api_smartCampus009" sucess:^(id object, BOOL verifyObject)
-        {
-            if (verifyObject)
-            {
-                [self.dataArray removeAllObjects];
-                NSArray *itemArray = [object objectItemKey:@"object"];
-                [itemArray enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop)
-                 {
-                     XHAddressBookFrame *frame = [XHAddressBookFrame alloc];
-                     XHAddressBookModel *model = [[XHAddressBookModel alloc]init];
-                     [model setItemObject:obj];
-                     [frame setModel:model];
-                     [self.dataArray addObject:frame];
-                 }];
-                
-                if ([self.dataArray count])
-                {
-                    [self.dataArray setArray:[XHSortedArrayComparator sortedArrayUsingComparatorWithKeyArray:self.dataArray]];
-                }
-                [self.tableView refreshReloadData];
-            }
-            
-        } error:^(NSError *error)
-        {
-            [self.tableView refreshReloadData];
-        }];
-    }
-    else
-    {
-        [self.tableView refreshReloadData];
-    }
-}
+
+
+
 
 
 

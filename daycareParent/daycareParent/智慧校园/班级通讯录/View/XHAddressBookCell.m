@@ -7,12 +7,12 @@
 //
 
 #import "XHAddressBookCell.h"
-#import "XHddressBookSwitchMenuView.h"
+
 
 
 @interface XHAddressBookCell ()
 
-@property (nonatomic,strong) XHddressBookSwitchMenuView *switchMenuView;
+@property (nonatomic,strong) XHAddressBookSwitchMenuView *switchMenuView;
 
 
 
@@ -27,12 +27,13 @@
 @implementation XHAddressBookCell
 
 
-- (instancetype)init
+- (instancetype)initWithDeletage:(id)delegate
 {
     self = [super init];
     if (self)
     {
         [self.contentView addSubview:self.switchMenuView];
+        [self.switchMenuView setSwitchDelegate:delegate];
     }
     return self;
 }
@@ -42,6 +43,15 @@
 -(void)setItemFrame:(XHAddressBookFrame*)frame
 {
     [self.switchMenuView resetFrame:CGRectMake(0, 0, frame.itemFrame.size.width, frame.itemFrame.size.height)];
+    [self.switchMenuView setAddressBookFrame:frame];
+}
+
+
+
+-(void)setIndexPath:(NSInteger)indexPath
+{
+    _indexPath = indexPath;
+    [self.switchMenuView setIndexPath:indexPath];
 }
 
 
@@ -49,14 +59,12 @@
 
 
 
-
-
 #pragma mark - Getter / Setter
--(XHddressBookSwitchMenuView *)switchMenuView
+-(XHAddressBookSwitchMenuView *)switchMenuView
 {
     if (!_switchMenuView)
     {
-        _switchMenuView = [[XHddressBookSwitchMenuView alloc]init];
+        _switchMenuView = [[XHAddressBookSwitchMenuView alloc]init];
     }
     return _switchMenuView;
 }

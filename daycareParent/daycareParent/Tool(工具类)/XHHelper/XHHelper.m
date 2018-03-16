@@ -14,7 +14,7 @@
 
 @implementation XHHelper
 
-
+@synthesize kvoTag;
 
 static XHHelper *helper = nil;
 

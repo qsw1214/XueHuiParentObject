@@ -8,10 +8,17 @@
 
 #import "BaseTableViewCell.h"
 #import "XHAddressBookToolBar.h"
+#import "XHAddressBookSwitchMenuView.h"
 
 
 @interface XHAddressBookCell : BaseTableViewCell
 
+
+
+@property (nonatomic,assign) NSInteger indexPath;
+
+
+- (instancetype)initWithDeletage:(id)delegate;
 
 
 

@@ -10,6 +10,7 @@
 #import "XHChildListModel.h"
 #import "XHStudentInfoViewController.h"
 #import "XHBindViewContentView.h"
+#import "XHAddBindPasswordViewController.h"
 
 
 @interface XHBindViewController () <XHBindViewContentViewDelegate>
@@ -54,6 +55,7 @@
 -(void)submitControlAction:(BaseButtonControl *)sender
 {
     
+//    [self.navigationController pushViewController:[[XHAddBindPasswordViewController alloc]init] animated:YES];
     [self.navigationController pushViewController:[[XHStudentInfoViewController alloc]init] animated:YES];
 }
 

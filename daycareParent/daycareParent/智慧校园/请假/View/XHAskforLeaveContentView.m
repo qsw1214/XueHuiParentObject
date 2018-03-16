@@ -46,7 +46,7 @@
 @property (nonatomic,assign) NSInteger selectTimeControl; //!< 记录选择的是哪个时间选择器
 @property(nonatomic,strong)NSMutableArray *subjectArry;//!<或缺课程数组
 @property(nonatomic,strong)XHCustomPickerView *pickerView;//!<选择请假类型
-
+@property(nonatomic,copy)NSString *bizType;//!<选择请假类型
 @end
 
 
@@ -156,7 +156,7 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
 #pragma mark case 7 提交
         case 7:
         {
-            [self uploadImageWithImage:self.addPhotoControl.image withImageName:[XHHelper createGuid] WithContent:self.reasonTextView.text withBeginTime:self.startTimeControl.describe withEndTime:self.endTimeControl.describe withActorId:[XHUserInfo sharedUserInfo].guardianModel.guardianId withStudentBaseId:self.childOptionsControl.model.studentBaseId withBizType:self.askforLeaveTypeControl.describe withCsr:self.otherControl.teacherAddressBook.model.ID];
+            [self uploadImageWithImage:self.addPhotoControl.image withImageName:[XHHelper createGuid] WithContent:self.reasonTextView.text withBeginTime:self.startTimeControl.describe withEndTime:self.endTimeControl.describe withBizDays:self.timeControl.describe withActorId:[XHUserInfo sharedUserInfo].guardianModel.guardianId withStudentBaseId:self.childOptionsControl.model.studentBaseId withBizType:self.bizType withCsr:self.submitView.teacherId];
             
         }
             break;
@@ -278,7 +278,12 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
 -(void)getItemObject:(NSString *)itemObject atItemIndex:(NSInteger)index
 {
     [self.askforLeaveTypeControl setDescribe:itemObject];
-    
+    if ([itemObject isEqualToString:@"事假"]) {
+        self.bizType=@"0";
+    }
+    if ([itemObject isEqualToString:@"病假"]) {
+        self.bizType=@"3";
+    }
 }
 #pragma mark  submitDelegate
 -(void)getItemObject:(NSString *)ItemObject
@@ -299,6 +304,7 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
                 WithContent:(NSString*)content  //!< 请假内容
               withBeginTime:(NSString*)beginTime  //!< 开始时间
                 withEndTime:(NSString*)endTime  //!< 结束时间
+               withBizDays:(NSString *)bizDays //!< 请假时长
                 withActorId:(NSString*)actorId   //!< 申请人ID（家长Id）
           withStudentBaseId:(NSString*)studentBaseId //!< 学生ID
                     withBizType:(NSString*)bizType //!< 请假类型
@@ -310,7 +316,7 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
          {
              if (success)
              {
-                 [self submitAskforLeaveWithContent:content withBeginTime:beginTime withEndTime:endTime withPicUrl:imageName withActorId:actorId withStudentBaseId:studentBaseId withBizType:bizType withCsr:csr];
+                 [self submitAskforLeaveWithContent:content withBeginTime:beginTime withEndTime:endTime withBizDays:bizDays withPicUrl:imageName withActorId:actorId withStudentBaseId:studentBaseId withBizType:bizType withCsr:csr];
              }
         
              
@@ -320,7 +326,7 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
     }
     else
     {
-         [self submitAskforLeaveWithContent:content withBeginTime:beginTime withEndTime:endTime withPicUrl:@"" withActorId:actorId withStudentBaseId:studentBaseId withBizType:bizType withCsr:csr];
+        [self submitAskforLeaveWithContent:content withBeginTime:beginTime withEndTime:endTime withBizDays:self.timeControl.describe withPicUrl:@"" withActorId:actorId withStudentBaseId:studentBaseId withBizType:bizType withCsr:csr];
     }
 }
 
@@ -329,6 +335,7 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
 -(void)submitAskforLeaveWithContent:(NSString*)content  //!< 请假内容
                       withBeginTime:(NSString*)beginTime  //!< 开始时间
                         withEndTime:(NSString*)endTime  //!< 结束时间
+                       withBizDays:(NSString *)bizDays//!< 请假时长
                          withPicUrl:(NSString*)picUrl  //!< 图片url地址
                         withActorId:(NSString*)actorId   //!< 申请人ID（家长Id）
                   withStudentBaseId:(NSString*)studentBaseId //!< 学生ID
@@ -363,6 +370,10 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
     {
         [XHShowHUD showNOHud:@"开始时间不能晚于结束时间"];
     }
+    else if ([[NSString safeString:bizDays] isEqualToString:@"请输入时长"])
+    {
+        [XHShowHUD showNOHud:@"请选择请假时长"];
+    }
     else if ([[NSString safeString:csr] isEqualToString:@""])
     {
         [XHShowHUD showNOHud:@"请选择接收人"];
@@ -373,13 +384,14 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
         {
             [self.netWorkConfig setObject:picUrl forKey:@"picUrl"];
         }
-        [self.netWorkConfig setObject:csr forKey:@"csr"];
+        [self.netWorkConfig setObject:studentBaseId forKey:@"studentBaseId"];
+         [self.netWorkConfig setObject:bizType forKey:@"bizType"];
         [self.netWorkConfig setObject:content forKey:@"content"];
         [self.netWorkConfig setObject:beginTime forKey:@"beginTime"];
         [self.netWorkConfig setObject:endTime forKey:@"endTime"];
+        [self.netWorkConfig setObject:bizDays forKey:@"bizDays"];
+        [self.netWorkConfig setObject:csr forKey:@"csr"];
         [self.netWorkConfig setObject:actorId forKey:@"actorId"];
-        [self.netWorkConfig setObject:studentBaseId forKey:@"studentBaseId"];
-        [self.netWorkConfig setObject:bizType forKey:@"bizType"];
         [XHShowHUD showTextHud];
         [self.netWorkConfig postWithUrl:@"zzjt-app-api_smartCampus008" sucess:^(id object, BOOL verifyObject)
          {

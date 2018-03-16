@@ -27,6 +27,13 @@
 -(void)show;
 -(void)dismiss;
 -(void)setTitle:(NSString*)title;
+
+/**
+ 设置弹框的类型
+ 注意：如果是 XHAlertBoardOptionType 类型的，必须使用“-(void)setItemArray:(NSMutableArray *)array”方法先填充数据
+
+ @param type XHAlertBoardType 类型
+ */
 -(void)setBoardType:(XHAlertBoardType)type;
 
 

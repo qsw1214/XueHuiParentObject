@@ -19,6 +19,7 @@
 @interface XHAddressBookToolBar : BaseView
 
 
+@property (nonatomic,assign) NSInteger indexPath;
 
 @property (nonatomic,strong) XHAddressBookFrame *itemFrame;
 

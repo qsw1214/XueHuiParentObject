@@ -12,7 +12,6 @@
 @interface XHddressBookMaskView ()
 
 @property (nonatomic,strong) UIImageView *headerImageView; //!< 头像视图
-@property (nonatomic,strong) UIImageView *markImageView; //!< 附件视图
 @property (nonatomic,strong) UILabel *titleLabel; //!< 标题标签
 @property (nonatomic,strong) UILabel *describeLabel; //!< 描述标签
 @property (nonatomic,strong) UILabel *subjecLabel; //!< 学科标签
@@ -52,7 +51,8 @@
     [self.subjecLabel setFrame:CGRectMake((self.headerImageView.right+10.0), self.headerImageView.top, 50.0, 24.0)];
     [self.titleLabel setFrame:CGRectMake((self.subjecLabel.right+5.0), self.subjecLabel.top, frame.size.width-(self.subjecLabel.right+5.0+40.0), self.subjecLabel.height)];
     [self.describeLabel setFrame:CGRectMake(self.subjecLabel.left, self.titleLabel.bottom, (frame.size.width-(self.subjecLabel.left+40.0)), self.titleLabel.height)];
-    [self.markImageView setFrame:CGRectMake(frame.size.width-30.0, (frame.size.height-20.0)/2.0, 20.0, 20.0)];
+    [self.markImageView resetFrame:CGRectMake(frame.size.width-30.0, (frame.size.height-20.0)/2.0, 20.0, 20.0)];
+    [self.markImageView setImageEdgeFrame:CGRectMake(0, 0, self.markImageView.width, self.markImageView.width) withNumberType:0 withAllType:NO];
 }
 
 
@@ -60,6 +60,13 @@
 
 
 #pragma mark - Getter /  Setter
+-(void)setItemFrame:(XHAddressBookFrame*)frame
+{
+    [self.titleLabel setText:frame.model.teacherName];
+    [self.describeLabel setText:frame.model.phone];
+    
+}
+
 -(UIImageView *)headerImageView
 {
     if (!_headerImageView)
@@ -70,13 +77,13 @@
     return _headerImageView;
 }
 
--(UIImageView *)markImageView
+-(BaseButtonControl *)markImageView
 {
     if (!_markImageView)
     {
-        _markImageView = [[UIImageView alloc]init];
-        [_markImageView setImage:[UIImage imageNamed:@"addressBookMore"]];
-        [_markImageView setContentMode:UIViewContentModeScaleAspectFit];
+        _markImageView = [[BaseButtonControl alloc]init];
+        [_markImageView setNumberImageView:1];
+        [_markImageView setImage:@"addressBookMore" withNumberType:0 withAllType:NO];
     }
     return _markImageView;
 }
@@ -98,7 +105,6 @@
     if (!_describeLabel)
     {
         _describeLabel = [[UILabel alloc]init];
-        [_describeLabel setText:@"学汇IOS开发负责人"];
     }
     return _describeLabel;
 }
@@ -108,9 +114,11 @@
     if (!_subjecLabel)
     {
         _subjecLabel = [[UILabel alloc]init];
-        [_subjecLabel setText:@"数学"];
+        [_subjecLabel setFont:FontLevel3];
+        [_subjecLabel setTextColor:[UIColor whiteColor]];
         [_subjecLabel setTextAlignment:NSTextAlignmentCenter];
-        [_subjecLabel setBackgroundColor:[UIColor orangeColor]];
+        [_subjecLabel setBackgroundColor:MainColor];
+        [_subjecLabel setLayerCornerRadius:5.0];
     }
     return _subjecLabel;
 }

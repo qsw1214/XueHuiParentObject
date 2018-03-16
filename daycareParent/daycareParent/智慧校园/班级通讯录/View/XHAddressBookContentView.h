@@ -10,6 +10,7 @@
 #import "XHAddressBookCell.h"
 #import "XHChildListModel.h"
 @interface XHAddressBookContentView : BaseControl
-@property(nonatomic,strong)XHChildListModel *childModel;
--(void)getModel:(XHChildListModel *)model;
+
+
+
 @end

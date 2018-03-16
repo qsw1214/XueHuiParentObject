@@ -19,7 +19,7 @@
     BOOL _ifSelect;
 }
 @property(nonatomic,strong)BaseTableView *tableView;
-@property(nonatomic,strong)UIButton *sureButton;
+@property(nonatomic,strong)XHBaseBtn *sureButton;
 @end
 
 @implementation XHForgetViewController
@@ -195,16 +195,12 @@
     }
     return _tableView;
 }
--(UIButton *)sureButton
+-(XHBaseBtn *)sureButton
 {
     if (_sureButton==nil) {
-        _sureButton=[[UIButton alloc] initWithFrame:CGRectMake(10, 180, SCREEN_WIDTH-20, LOGINBTN_HEIGHT)];
+        _sureButton=[[XHBaseBtn alloc] initWithFrame:CGRectMake(10, 180, SCREEN_WIDTH-20, LOGINBTN_HEIGHT)];
         [_sureButton setTitle:@"完成" forState:UIControlStateNormal];
         [_sureButton addTarget:self action:@selector(BnttonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [_sureButton setBackgroundColor:MainColor];
-        _sureButton.layer.cornerRadius=8;
-        _sureButton.layer.masksToBounds=YES;
-       [_sureButton setTitleColor:LOGIN_BEFORE  forState:UIControlStateNormal];
         [_sureButton setTag:2];
     }
     return _sureButton;

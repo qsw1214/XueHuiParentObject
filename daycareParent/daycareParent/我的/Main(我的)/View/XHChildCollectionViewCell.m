@@ -16,12 +16,12 @@
         _childImageView.layer.cornerRadius=USER_HEARD/2.0;
         _childImageView.layer.masksToBounds=YES;
         [self.contentView addSubview:_childImageView];
-        _childNameLabel=[[XHBaseLabel alloc] initWithFrame:CGRectMake(0, USER_HEARD+20, USER_HEARD, 20)];
+        _childNameLabel=[[ParentLabel alloc] initWithFrame:CGRectMake(0, USER_HEARD+20, USER_HEARD, 20)];
        // _childNameLabel.backgroundColor=[UIColor orangeColor];
         _childNameLabel.textAlignment=NSTextAlignmentCenter;
         _childNameLabel.font=FontLevel3;
         [self.contentView addSubview:_childNameLabel];
-        _childClassLabel=[[XHBaseLabel alloc] initWithFrame:CGRectMake(4, _childNameLabel.bottom+5, USER_HEARD-8, 15)];
+        _childClassLabel=[[ParentLabel alloc] initWithFrame:CGRectMake(4, _childNameLabel.bottom+5, USER_HEARD-8, 15)];
         _childClassLabel.textAlignment=NSTextAlignmentCenter;
         _childClassLabel.font=FontLevel4;
         _childClassLabel.textColor=DEFAULTCOLOR;

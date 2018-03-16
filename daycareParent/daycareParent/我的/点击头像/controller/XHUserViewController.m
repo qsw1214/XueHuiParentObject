@@ -13,13 +13,11 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "XHChangeNameViewController.h"
-#import "XHCustomPickerView.h"
-@interface XHUserViewController ()<UITableViewDelegate,UITableViewDataSource,CameraManageDeletage,XHCustomPickerViewDelegate>
+@interface XHUserViewController ()<UITableViewDelegate,UITableViewDataSource,CameraManageDeletage>
 {
     UITableView *_tableView;
     NSArray *_titleArry;
 }
-@property(nonatomic,strong)XHCustomPickerView *pickerView;
 @end
 
 @implementation XHUserViewController
@@ -28,7 +26,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setNavtionTitle:@"个人信息"];
-    _titleArry=@[@"头像",@"姓名",@"我与孩子的关系"];//
+    _titleArry=@[@"头像",@"姓名"];
     _tableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64) style:UITableViewStyleGrouped];
     _tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
     _tableView.delegate=self;
@@ -58,17 +56,10 @@
     else
     {
         cell.arrowsImageView.frame=CGRectMake(SCREEN_WIDTH-20, (USER_HEARD-30)/2.0, 10, 10);
-          cell.headBtn.hidden=YES;
-         cell.backLabel.hidden=NO;
-        if (indexPath.row==1) {
-            cell.backLabel.text=userInfo.guardianModel.guardianName;
-            cell.arrowsImageView.image=[UIImage imageNamed:@"arr_accessory"];
-        }
-        if (indexPath.row==2) {
-           
-            cell.backLabel.text=@"其它";
-            cell.arrowsImageView.image=[UIImage imageNamed:@"ico_identity"];
-        }
+        cell.headBtn.hidden=YES;
+        cell.backLabel.hidden=NO;
+        cell.backLabel.text=userInfo.guardianModel.guardianName;
+        cell.arrowsImageView.image=[UIImage imageNamed:@"arr_accessory"];
     }
     [cell.headBtn addTarget:self action:@selector(headClick) forControlEvents:UIControlEventTouchUpInside];
     
@@ -77,123 +68,50 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.row==0) {
-        [self openImagePiker];
+    switch (indexPath.row) {
+        case 0:
+        {
+            [self openImagePiker];
+        }
+            break;
+            
+        default:
+        {
+            XHChangeNameViewController *name=[[XHChangeNameViewController alloc] init];
+            [self.navigationController pushViewController:name animated:YES];
+        }
+            break;
     }
-    if (indexPath.row==1) {
-        XHChangeNameViewController *name=[[XHChangeNameViewController alloc] init];
-        [self.navigationController pushViewController:name animated:YES];
-    }
-    if (indexPath.row==2) {
-        [self.pickerView show];
-    }
+   
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row==0)
-    {
-        return USER_HEARD+20;
+    switch (indexPath.row) {
+        case 0:
+        {
+            return USER_HEARD+20;
+        }
+            break;
+            
+        default:
+        {
+            return USER_HEARD-20;
+        }
+            break;
     }
-    else
-    {
-        return USER_HEARD-20;
-    }
+   
 }
 #pragma mark-------修改头像
 -(void)headClick
 {
     [self openImagePiker];
 }
-#pragma mark-----pickerViewDelegate
--(void)getItemObject:(NSString *)itemObject atItemIndex:(NSInteger)index
-{
-    NSIndexPath *  indexPath = [NSIndexPath indexPathForRow:2 inSection:0];
-    //找到对应的cell
-    XHUserTableViewCell *cell = [_tableView cellForRowAtIndexPath:indexPath];
-    cell.backLabel.text=itemObject;
-}
--(void)showAlertViewWithTitle:(NSString *)title Index:(NSInteger)index
-{
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
-    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        if (index==4) {
-            textField.keyboardType=UIKeyboardTypeNumberPad;
-        }
-    }];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        UITextField *feild=[alertController.textFields firstObject];
-//        if (![UITextView verifyPhone:feild.text]&&index==4)
-//        {
-//            [XHShowHUD showNOHud:@"请输入正确的手机号格式!"];
-//            return ;
-//        }
-        if (feild.text.length==0)
-        {
-            [XHShowHUD showNOHud:@"请输入内容!"];
-            return ;
-        }
-        if (feild.text.length>4&&index==1)
-        {
-            [XHShowHUD showNOHud:@"姓名最多为四个字!"];
-            return ;
-        }
-        [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].ID forKey:@"id"];
-        [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].selfId forKey:@"selfId"];
-//        if (index==1) {
-//            [self.netWorkConfig setObject:feild.text forKey:@"nickName"];
-//        }
-        if (index==1) {
-            [self.netWorkConfig setObject:feild.text forKey:@"guardianName"];
-        
-        }
-//        if (index==4) {
-//            [self.netWorkConfig setObject:feild.text forKey:@"telphoneNumber"];
-//        }
-        [self.netWorkConfig postWithUrl:@"zzjt-app-api_user004" sucess:^(id object, BOOL verifyObject) {
-            if (verifyObject) {
-                NSIndexPath *  indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-                //找到对应的cell
-                XHUserTableViewCell *nextCell = [_tableView cellForRowAtIndexPath:indexPath];
-                nextCell.backLabel.text=feild.text;
-                NSDictionary *dic=[object objectItemKey:@"object"];
-                [XHUserInfo sharedUserInfo].nickName=[dic objectItemKey:@"nickName"];
-                 [XHUserInfo sharedUserInfo].guardianModel.guardianName=[dic objectItemKey:@"guardianName"];
-                 [XHUserInfo sharedUserInfo].telphoneNumber=[dic objectItemKey:@"telphoneNumber"];
-                 self.isRefresh(YES);
-            }
-        } error:^(NSError *error) {
-            
-        }];
-        
-    }]];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        
-    }]];
-    [self presentViewController:alertController animated:YES completion:nil];
-}
 
 -(void)openImagePiker
 {
-    
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     [alertController addAction:[UIAlertAction actionWithTitle:@"选择相机" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action)
     {
-        
-//        AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-//        if (status == AVAuthorizationStatusRestricted || status == AVAuthorizationStatusDenied) {
-//
-//            UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"请去-> [设置 - 隐私 - 相机 - 学汇家长] 打开访问开关" preferredStyle:(UIAlertControllerStyleAlert)];
-//            UIAlertAction *alertA = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
-//
-//            }];
-//
-//            [alertC addAction:alertA];
-//            [self presentViewController:alertC animated:YES completion:nil];
-//        }
-        
-        
-        
-        
         CameraManageViewController *manager=[[CameraManageViewController alloc] initWithCameraManageWithType:SourceTypeCamera setDeletate:self];
         [self.navigationController presentViewController:manager animated:YES completion:nil];
         
@@ -243,13 +161,6 @@
     } withProgressCallback:^(float progress) {
         hud.progress = progress;
     }];
-}
--(XHCustomPickerView *)pickerView
-{
-    if (_pickerView==nil) {
-        _pickerView=[[XHCustomPickerView alloc] initWithDelegate:self itemArry:kFamilyList];
-    }
-    return _pickerView;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

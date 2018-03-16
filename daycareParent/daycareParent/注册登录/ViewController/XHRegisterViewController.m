@@ -26,7 +26,7 @@
     UIButton *_selectBtn;
 }
 @property(nonatomic,strong)BaseTableView *tableView;
-@property(nonatomic,strong)UIButton *registButton;
+@property(nonatomic,strong)XHBaseBtn *registButton;
 @property(nonatomic,strong)BaseButtonControl *selectButton;
 @property(nonatomic,strong)UIButton *protocolButton;
 @end
@@ -136,39 +136,36 @@
             break;
         case 4:
         {
-            XHBindViewController *bind=[[XHBindViewController alloc] init];
-            [self.navigationController pushViewController:bind animated:YES];
-//
-//            if (![UITextView verifyPhone:phonepwd.text]) {
-//                [XHShowHUD showNOHud:@"请输入正确手机号!"];
-//                return;
-//            }
-//            if (pwd.text.length<6) {
-//                [XHShowHUD showNOHud:@"密码至少6位!"];
-//                return;
-//            }
-//            if (![UITextView verifyCodeMatch:verrifypwd.text]) {
-//                [XHShowHUD showNOHud:@"请输入正确的验证码!"];
-//                return;
-//            }
-//            if (_selectBtn.selected==NO) {
-//                [XHShowHUD showNOHud:@"请勾选同意用户协议！"];
-//                return;
-//            }
-//            XHNetWorkConfig *net=[XHNetWorkConfig new];
-//            [net setObject:phonepwd.text forKey:@"telphoneNumber"];
-//            [net setObject:pwd.text forKey:@"password"];
-//            [net setObject:@"3" forKey:@"userType"];
-//            [net setObject:verrifypwd.text forKey:@"smsCode"];
-//            [XHShowHUD showTextHud];
-//            [net postWithUrl:@"zzjt-app-api_user001" sucess:^(id object, BOOL verifyObject) {
-//                if (verifyObject) {
-//                    XHStudentInfoViewController *studentInfo=[[XHStudentInfoViewController alloc] init];
-//                    [self.navigationController pushViewController:studentInfo animated:YES];
-//                }
-//
-//            } error:^(NSError *error) {
-//            }];
+            if (![UITextView verifyPhone:phonepwd.text]) {
+                [XHShowHUD showNOHud:@"请输入正确手机号!"];
+                return;
+            }
+            if (pwd.text.length<6) {
+                [XHShowHUD showNOHud:@"密码至少6位!"];
+                return;
+            }
+            if (![UITextView verifyCodeMatch:verrifypwd.text]) {
+                [XHShowHUD showNOHud:@"请输入正确的验证码!"];
+                return;
+            }
+            if (_selectBtn.selected==NO) {
+                [XHShowHUD showNOHud:@"请勾选同意用户协议！"];
+                return;
+            }
+            XHNetWorkConfig *net=[XHNetWorkConfig new];
+            [net setObject:phonepwd.text forKey:@"telphoneNumber"];
+            [net setObject:pwd.text forKey:@"password"];
+            [net setObject:@"3" forKey:@"userType"];
+            [net setObject:verrifypwd.text forKey:@"smsCode"];
+            [XHShowHUD showTextHud];
+            [net postWithUrl:@"zzjt-app-api_user001" sucess:^(id object, BOOL verifyObject) {
+                if (verifyObject) {
+                    XHBindViewController *bind=[[XHBindViewController alloc] init];
+                    [self.navigationController pushViewController:bind animated:YES];
+                }
+
+            } error:^(NSError *error) {
+            }];
         }
             break;
     }
@@ -263,14 +260,10 @@
     }
     return _protocolButton;
 }
--(UIButton *)registButton
+-(XHBaseBtn *)registButton
 {
     if (_registButton==nil) {
-        _registButton=[[UIButton alloc] initWithFrame:CGRectMake(10, 210, SCREEN_WIDTH-20, LOGINBTN_HEIGHT)];
-        _registButton.backgroundColor=MainColor;
-        _registButton.layer.cornerRadius=8;
-        _registButton.layer.masksToBounds=YES;
-        [_registButton setTitleColor:LOGIN_BEFORE  forState:UIControlStateNormal];
+        _registButton=[[XHBaseBtn alloc] initWithFrame:CGRectMake(10, 210, SCREEN_WIDTH-20, LOGINBTN_HEIGHT)];
         [_registButton setTitle:@"确定" forState:UIControlStateNormal];
         [_registButton setTag:4];
         [_registButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];

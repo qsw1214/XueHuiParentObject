@@ -13,7 +13,7 @@
 {
     if (self=[super init])
     {
-        [self setFont:[UIFont systemFontOfSize:14.0]];
+        [self setFont:[UIFont systemFontOfSize:16.0]];
     }
     return self;
 }
@@ -21,7 +21,7 @@
 {
     if (self=[super initWithFrame:frame])
     {
-        [self setFont:[UIFont systemFontOfSize:14.0]];
+        [self setFont:[UIFont systemFontOfSize:16.0]];
     }
     return self;
 }

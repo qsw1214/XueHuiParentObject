@@ -40,7 +40,16 @@
         [XHShowHUD showNOHud:@"反馈内容不能为空！"];
         return;
     }
-    
+    [self.netWorkConfig setObject:self.questionTextView.text forKey:@"content"];
+    [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].ID forKey:@"userId"];
+    [self.netWorkConfig postWithUrl:@"zzjt-app-api_saveFeedBack" sucess:^(id object, BOOL verifyObject) {
+        if (verifyObject) {
+            [XHShowHUD showOKHud:@"提交成功!"];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    } error:^(NSError *error) {
+        
+    }];
 }
 #pragma mark - Deletage Method
 #pragma mark BaseTextViewDeletage

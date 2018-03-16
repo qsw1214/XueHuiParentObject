@@ -24,9 +24,30 @@
     [self.view addSubview:self.textFeild];
 }
 
--(void)setRightItemTitle:(NSString *)title
+-(void)rightItemAction:(BaseNavigationControlItem *)sender
 {
-    
+    if (self.textFeild.text.length==0)
+    {
+        [XHShowHUD showNOHud:@"请输入内容!"];
+        return ;
+    }
+    if (self.textFeild.text.length>4)
+    {
+        [XHShowHUD showNOHud:@"姓名最多为四个字!"];
+        return ;
+    }
+    [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].ID forKey:@"id"];
+    [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].selfId forKey:@"selfId"];
+    [self.netWorkConfig setObject:self.textFeild.text forKey:@"guardianName"];
+    [self.netWorkConfig postWithUrl:@"zzjt-app-api_user004" sucess:^(id object, BOOL verifyObject) {
+        if (verifyObject) {
+            NSDictionary *dic=[object objectItemKey:@"object"];
+            [XHUserInfo sharedUserInfo].guardianModel.guardianName=[dic objectItemKey:@"guardianName"];
+            self.isRefresh(YES);
+        }
+    } error:^(NSError *error) {
+        
+    }];
 }
 -(UITextField *)textFeild
 {

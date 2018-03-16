@@ -17,8 +17,7 @@
 @interface XHChatViewController ()
 
 @property(nonatomic,strong)UIView *navigationView;
-@property(nonatomic,strong)NSMutableArray *mouArry;
-
+@property(nonatomic,strong)XHNetWorkConfig *net;
 @end
 
 @implementation XHChatViewController
@@ -55,46 +54,38 @@
 }
 -(void)refreshHead
 {
-    [XHUserInfo sharedUserInfo].sum=0;
-    for (int i = 0; i<3; i++)
-    {
-        XHRCModel *model = [[XHRCModel alloc] initWithDic:nil];
-        model.conversationModelType = RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION;
-        model.RCtitle=kTitleList[i];
-        model.RCtitlePic=kTitlePic[i];
-        switch (i) {
-                case 0:
-            {
-                model.modelType=XHRCTeacherBookType;
-            }
-                break;
-            case 1:
-            {
-                model.RCContent=@"家庭作业";
-                model.sum=@"5";
-                model.modelType=XHRCHomeWorkType;
-            }
-                break;
+        [self.net setObject:[XHUserInfo sharedUserInfo].guardianModel.guardianId forKey:@"guardianId"];
+        [self.net postWithUrl:@"zzjt-app-api_smartCampus018" sucess:^(id object, BOOL verifyObject) {
+            if (verifyObject) {
+                NSDictionary *dic=[object objectItemKey:@"object"];
                 
-            case 2:
-            {
-                model.RCContent=@"放假通知";
-                model.sum=@"10";
+                NSDictionary *schoolWorkDic=[dic objectItemKey:@"schoolWork"];
+                XHRCModel *schoolWorkModel = [[XHRCModel alloc] initWithDic:[schoolWorkDic objectItemKey:@"propValue"]];
+                schoolWorkModel.conversationModelType = RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION;
+                schoolWorkModel.RCtitle=kTitleList[1];
+                schoolWorkModel.RCtitlePic=kTitlePic[1];
+                schoolWorkModel.modelType=XHRCHomeWorkType;
+                [XHUserInfo sharedUserInfo].sum=0;
+                [XHUserInfo sharedUserInfo].sum=[XHUserInfo sharedUserInfo].sum+[schoolWorkModel.sum integerValue];
+                [self.conversationListDataSource replaceObjectAtIndex:1 withObject:schoolWorkModel];
+                
+                XHRCModel *model = [[XHRCModel alloc] initWithDic:[dic objectItemKey:@"notice"]];
+                model.conversationModelType = RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION;
+                model.sum=[dic objectItemKey:@"noticeUnReadNum"];
+                model.RCtitle=kTitleList[2];
+                model.RCtitlePic=kTitlePic[2];
                 model.modelType=XHRCnoticeType;
+                [XHUserInfo sharedUserInfo].sum=[XHUserInfo sharedUserInfo].sum+[model.sum integerValue];
+                [self.conversationListDataSource replaceObjectAtIndex:2 withObject:model];
+               
             }
-                break;
-        }
-        
-        [XHUserInfo sharedUserInfo].sum=[XHUserInfo sharedUserInfo].sum+[model.sum integerValue];
-        [self.conversationListDataSource replaceObjectAtIndex:i withObject:model];
-        [self.mouArry addObject:model];
-    }
-    [self.conversationListTableView reloadData];
-    [self.conversationListTableView.header endRefreshing];
-    
-    [XHUserInfo sharedUserInfo].sum= [XHUserInfo sharedUserInfo].sum;
-    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [app reloadIMBadge];
+            [self.conversationListTableView reloadData];
+            [self.conversationListTableView.header endRefreshing];
+            AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            [app reloadIMBadge];
+        } error:^(NSError *error) {
+            [self.conversationListTableView.header endRefreshing];
+        }];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -163,8 +154,29 @@
         for (int i = 0; i<kTitleList.count; i++) {
             XHRCModel *model = [[XHRCModel alloc]initWithDic:nil];
             model.conversationModelType = RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION;
+            model.RCtitle=kTitleList[i];
+            model.RCtitlePic=kTitlePic[i];
+            switch (i) {
+                case 0:
+                {
+                    model.modelType=XHRCTeacherBookType;
+                }
+                    break;
+                case 1:
+                {
+                    model.modelType=XHRCHomeWorkType;
+                }
+                    break;
+                    
+                case 2:
+                {
+                    model.modelType=XHRCnoticeType;
+                }
+                    break;
+            }
             [self.conversationListDataSource insertObject:model atIndex:i];
         }
+    [self.conversationListTableView.header endRefreshing];
     [self refreshHead];
     return self.conversationListDataSource;
 }
@@ -228,19 +240,19 @@
     return _navigationView;
 }
 
--(NSMutableArray *)mouArry
-{
-    if (_mouArry==nil) {
-        _mouArry=[[NSMutableArray alloc] init];
-    }
-    return _mouArry;
-}
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden=YES;
-    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [app reloadIMBadge];
+//    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//    [app reloadIMBadge];
+}
+-(XHNetWorkConfig *)net
+{
+    if (_net==nil) {
+        _net=[[XHNetWorkConfig alloc] init];
+    }
+    return _net;
 }
 /*
 #pragma mark - Navigation

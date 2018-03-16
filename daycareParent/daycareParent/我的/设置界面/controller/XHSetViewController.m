@@ -8,7 +8,6 @@
 
 #import "XHSetViewController.h"
 #import "XHUserTableViewCell.h"
-#import "XHPasswordViewController.h"
 #import "XHChagePhoneViewController.h"
 #import "XHAboutUsViewController.h"
 #import <RongIMKit/RongIMKit.h>
@@ -235,6 +234,7 @@
             //强制升级
             if ([dic[@"isUpdate"] intValue] == 2) {
                 NSString *introduceStr = [NSString stringWithFormat:@"新版本更新的内容有：%@",dic[@"description"]];
+                kNSLog(dic[@"url"]);
                 UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"版本更新" message:introduceStr  preferredStyle:(UIAlertControllerStyleAlert)];
                 UIAlertAction *alertA = [UIAlertAction actionWithTitle:@"前往App Store" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

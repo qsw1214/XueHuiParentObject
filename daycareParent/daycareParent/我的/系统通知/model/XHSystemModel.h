@@ -10,9 +10,9 @@
 
 typedef NS_ENUM(NSInteger,XHSystemModelType)
 {
-    XHSystemNoticeType=2,//!< 通知类型
+    XHSystemNoticeType=1,//!< 通知类型
 
-    XHSystemOtherType=3,//!< 活动类型
+    XHSystemOtherType=2,//!< 活动类型
 
 }
 ;

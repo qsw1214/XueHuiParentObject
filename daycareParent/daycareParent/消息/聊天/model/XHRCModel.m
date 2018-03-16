@@ -12,7 +12,9 @@
 -(id)initWithDic:(NSDictionary *)dic
 {
     if (self=[super init]) {
-        
+        _RCContent=[dic objectItemKey:@"content"];
+        _createTime=[dic objectItemKey:@"createTime"];
+        _sum=[dic objectItemKey:@"unreadCount"];
     }
     return self;
 }

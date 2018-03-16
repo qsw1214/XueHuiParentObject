@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface XHUserTableViewCell : ParentTableViewCell
-@property(nonatomic,strong)XHBaseLabel *frontLabel;
-@property(nonatomic,strong)XHBackLabel *backLabel;
+@property(nonatomic,strong)ParentLabel *frontLabel;
+@property(nonatomic,strong)ParentLabel *backLabel;
 @property(nonatomic,strong)ParentImageView *arrowsImageView;
 @property(nonatomic,strong)UIButton *headBtn;
 @end

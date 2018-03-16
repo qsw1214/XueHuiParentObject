@@ -8,7 +8,6 @@
 
 #import "XHNoticeViewController.h"
 #import "XHNotifceTableViewCell.h"
-#import "XHParentsMeetingViewController.h"
 #import "XHAddressBookViewController.h"
 #import "XHIMNoticeModel.h"
 #import "XHNoticeListViewController.h"
@@ -125,12 +124,7 @@
         [addressBook setNavtionTitle:@"给老师留言"];
         [self.navigationController pushViewController:addressBook animated:YES];
     }
-    if (indexPath.row==2) {
-        XHParentsMeetingViewController *meet=[[XHParentsMeetingViewController alloc] initHiddenWhenPushHidden];
-        
-        [self.navigationController pushViewController:meet animated:YES];
-    }
-    
+   
 }
 -(XHNetWorkConfig *)net
 {

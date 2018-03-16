@@ -26,8 +26,6 @@
 #import "BaseViewController.h"
 #import "BaseButtonControl.h"
 #import "XHBaseBtn.h"
-#import "XHBaseLabel.h"
-#import "XHBackLabel.h"
 #import "ParentLabel.h"
 #import "ParentCollectionViewCell.h"
 #import "ParentTableViewCell.h"

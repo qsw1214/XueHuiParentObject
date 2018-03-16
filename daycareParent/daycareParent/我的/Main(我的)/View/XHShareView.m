@@ -7,6 +7,11 @@
 //
 
 #import "XHShareView.h"
+
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKUI/ShareSDK+SSUI.h>
+#import<ShareSDKExtension/ShareSDK+Extension.h>
+
 #define kTitle      @[@"微信好友",@"朋友圈"]
 #define kTitlePic  @[@"ico_wechat",@"ico_quan"]
 @interface XHShareView()
@@ -54,13 +59,13 @@
 #pragma mark-----分享微信好友
         case 10:
         {
-            
+            [self share:SSDKPlatformSubTypeWechatSession];
         }
             break;
 #pragma mark-----分享微信朋友圈
         case 11:
         {
-            
+            [self share:SSDKPlatformSubTypeWechatTimeline];
         }
             break;
 #pragma mark-----取消分享
@@ -113,6 +118,65 @@
         [_cancleShareButton setTextBackGroundColor:LineViewColor withTpe:1 withAllType:NO];
     }
     return _cancleShareButton;
+}
+- (void)share:(SSDKPlatformType)platformType
+{
+    NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+    NSArray* imageArray = @[@"http://ww4.sinaimg.cn/bmiddle/005Q8xv4gw1evlkov50xuj30go0a6mz3.jpg"];
+    [shareParams SSDKSetupShareParamsByText:@"分享内容"
+                                     images:imageArray
+                                        url:[NSURL URLWithString:@"https://itunes.apple.com/us/app/%E5%AD%A6%E6%B1%87-%E5%AE%B6%E9%95%BF/id1212759689"]
+                                      title:@"分享标题"
+                                       type:SSDKContentTypeAuto];
+    //优先使用平台客户端分享
+    [shareParams SSDKEnableUseClientShare];
+    //设置微博使用高级接口
+    //2017年6月30日后需申请高级权限
+    [shareParams SSDKEnableAdvancedInterfaceShare];
+    //设置显示平台 只能分享视频的YouTube MeiPai 不显示
+    [ShareSDK share:platformType parameters:shareParams onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+        switch (state) {
+            case SSDKResponseStateBegin:
+            {
+                //设置UI等操作
+                break;
+            }
+            case SSDKResponseStateSuccess:
+            {
+
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
+                                                                    message:nil
+                                                                   delegate:nil
+                                                          cancelButtonTitle:@"确定"
+                                                          otherButtonTitles:nil];
+                [alertView show];
+                break;
+            }
+            case SSDKResponseStateFail:
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
+                                                                message:[NSString stringWithFormat:@"%@",error]
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil, nil];
+                [alert show];
+                break;
+            }
+            case SSDKResponseStateCancel:
+            {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享已取消"
+                                                                    message:nil
+                                                                   delegate:nil
+                                                          cancelButtonTitle:@"确定"
+                                                          otherButtonTitles:nil];
+                [alertView show];
+                break;
+            }
+            default:
+                break;
+        }
+    }];
+    
 }
 @end
 

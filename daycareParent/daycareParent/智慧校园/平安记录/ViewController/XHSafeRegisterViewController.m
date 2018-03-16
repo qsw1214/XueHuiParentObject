@@ -10,6 +10,8 @@
 #import "XHRegisterTableViewCell.h"
 #import "XHDateSwitchControl.h"
 #import "XHAddressBookHeader.h"
+#import "XHAlertControl.h"
+
 
 
 
@@ -29,6 +31,7 @@
 {
     [super viewDidLoad];
     [self setNavtionTitle:@"平安记录"];
+    [self setItemContentType:NavigationTitleType withItemType:NavigationItemRightype withIconName:@"" withTitle:@"开始显示"];
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -107,6 +110,7 @@
 #pragma mark XHAddressBookHeaderDelegate
 -(void)didSelectItem:(XHChildListModel *)model
 {
+    [self.dateSwitchControl resetDate:YES];
     [self.netWorkConfig setObject:model.studentId forKey:@"studentBaseId"];
     [self.netWorkConfig setObject:[self.dateSwitchControl getNonceDate:NO] forKey:@"date"];
     [self getNetWorkDataWithType:YES];
@@ -121,10 +125,19 @@
 
 
 
+#pragma mark - Public Method
+-(void)rightItemAction:(BaseNavigationControlItem *)sender
+{
+    XHAlertControl *alert = [[XHAlertControl alloc]init];
+    [alert show];
+}
+
+
 
 #pragma mark - NetWork Method
 -(void)getNetWorkDataWithType:(BOOL)type
 {
+    [XHShowHUD showTextHud];
     [self.netWorkConfig postWithUrl:@"zzjt-app-api_smartCampus002" sucess:^(id object, BOOL verifyObject)
     {
         if (verifyObject)
@@ -140,6 +153,7 @@
              }];
             [self.mainTableView refreshReloadData];
         }
+        
         
     } error:^(NSError *error)
      {

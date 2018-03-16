@@ -227,6 +227,7 @@ static XHNetWorkConfig *net = nil;
                  NSDictionary *object = @{@"XUHEOBJECTKEY":@"XUHEOBJECTKEY"};
                  sucessBlock(object,NO);
              }
+             [XHShowHUD hideHud];
              
         
              NSLog(@"object===============%@",responseObject);

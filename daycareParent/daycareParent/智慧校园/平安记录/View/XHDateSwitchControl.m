@@ -96,9 +96,32 @@
     [self setDateSwitchDay:[components day]];
     
     
+    NSString *dateFormatter = [self getNonceDateFormatter:YES];
+    NSArray *dateArray = [dateFormatter componentsSeparatedByString:@"-"];
+
+    NSInteger year = [[dateArray objectAtIndex:0] integerValue];
+    NSInteger month = [[dateArray objectAtIndex:1] integerValue];
+    NSInteger day = [[dateArray objectAtIndex:2] integerValue];
+    
+    if (self.dateSwitchYear >= year)
+    {
+        [self setDateSwitchYear:year];
+    }
+    
+    if (self.dateSwitchMonther >= month)
+    {
+        [self setDateSwitchMonther:month];
+    }
+    
+    if (self.dateSwitchDay >= day)
+    {
+        [self setDateSwitchDay:day];
+    }
+    
     NSString *yearMontherDay = [NSString stringWithFormat:@"%zd年%zd月%zd日",self.dateSwitchYear,self.dateSwitchMonther,self.dateSwitchDay];
     
     NSLog(@"%@",yearMontherDay);
+    
     
     return yearMontherDay;
 }
@@ -254,6 +277,25 @@
 }
 
 
+#pragma mark 获取当前日期字符串格式
+-(NSString*)getNonceDateFormatter:(BOOL)nonce
+{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:[NSDate date]];
+    NSInteger year = [components year];
+    NSInteger month = [components month];
+    NSInteger day = [components day];
+    
+    NSString *yearMonthDa = [NSString stringWithFormat:@"%zd-%zd-%zd",year,month,day];
+    return yearMonthDa;
+}
+
+
+#pragma mark - 重置日期
+-(void)resetDate:(BOOL)nocnce
+{
+    [self.titleLabel setText:[self getNonceDate:nocnce]];
+}
 
 
 

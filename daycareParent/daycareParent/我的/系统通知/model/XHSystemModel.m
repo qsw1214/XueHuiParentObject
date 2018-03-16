@@ -14,6 +14,7 @@
         
         _content=[dic objectItemKey:@"content"];
         _date=[dic objectItemKey:@"createTime"];
+        _title=[dic objectItemKey:@"title"];
         self.itemCellHeight=40+[self contentSizeWithTitle:_content withFontOfSize:kFont(16) withWidth:SCREEN_WIDTH-20].height;
         switch ([[dic objectItemKey:@"type"] integerValue]) {
             case 1:

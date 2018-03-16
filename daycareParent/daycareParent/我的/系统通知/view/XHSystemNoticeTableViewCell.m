@@ -45,7 +45,7 @@
             break;
     }
     self.titleLabel.text=model.title;
-    self.dateLabel.text=model.date;
+    self.dateLabel.text=[NSDate dateStr:model.date FromFormatter:ALL_DEFAULT_TIME_FORM ToFormatter:DEFAULT_TIME_FORM1];
     self.contentLabel.text=model.content;
     kNSLog(model.title);
 }

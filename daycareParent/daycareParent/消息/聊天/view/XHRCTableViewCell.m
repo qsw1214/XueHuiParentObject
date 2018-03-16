@@ -48,7 +48,7 @@
     _titleLab.text=model.RCtitle;
     _headImageView.image=[UIImage imageNamed:model.RCtitlePic];
     _ContentLab.text=model.RCContent;
-    
+    _detailLab.text=[NSDate dateStr:model.createTime FromFormatter:ALL_DEFAULT_TIME_FORM ToFormatter:DEFAULT_TIME_FORM1];
 }
 -(void)resetFrame:(XHRCModel *)model
 {

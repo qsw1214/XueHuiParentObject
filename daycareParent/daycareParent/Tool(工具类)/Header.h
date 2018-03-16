@@ -31,6 +31,7 @@
 #import "ParentTableViewCell.h"
 #import "ParentImageView.h"
 #import "UIAlertController+Category.h"
+#import "NSDate+dateTool.h"
 #import "ParentView.h"
 #import "ParentModel.h"
 #import "XHNetWorkConfig.h"

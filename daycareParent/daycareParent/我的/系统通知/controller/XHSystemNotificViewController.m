@@ -10,6 +10,9 @@
 #import "XHSystemModel.h"
 #import "XHSystemNoticeTableViewCell.h"
 @interface XHSystemNotificViewController ()<UITableViewDelegate,UITableViewDataSource>
+{
+    NSInteger _pageNumber;
+}
 @property(nonatomic,strong)BaseTableView *tableView;
 @end
 
@@ -19,21 +22,64 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setNavtionTitle:@"系统通知"];
-    [self.view addSubview:self.tableView];    
+    _pageNumber=1;
+    [self.view addSubview:self.tableView];
+    [self.tableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHead)];
+    [self.tableView showRefresFooterWithTarget:self withSelector:@selector(refreshFoot)];
+    [self.tableView beginRefreshing];
+}
+-(void)refreshHead
+{
+    _pageNumber=1;
+    [self getRefreshType:HeaderRefresh];
+}
+-(void)refreshFoot
+{
+    [self getRefreshType:FooterRefresh];
+}
+-(void)getRefreshType:(BaseRefreshType)refreshType
+{
     [self.netWorkConfig setObject:@"1" forKey:@"clientType"];
+    [self.netWorkConfig setObject:@"10" forKey:@"pageSize"];
+    [self.netWorkConfig setObject:kFormat(@"%zd",_pageNumber) forKey:@"pageNum"];
     [self.netWorkConfig postWithUrl:@"zzjt-app-api_listAnnouncement" sucess:^(id object, BOOL verifyObject) {
         if (verifyObject) {
+            
             NSDictionary *dic=[object objectItemKey:@"object"];
             NSArray *resultArry=[dic objectItemKey:@"pageResult"];
+            switch (refreshType) {
+                case HeaderRefresh:
+                {
+                    [self.dataArray removeAllObjects];
+                }
+                    break;
+                    
+                case FooterRefresh:
+                    break;
+            }
             for (NSDictionary *dic in resultArry) {
                 NSDictionary *Dic=[dic objectItemKey:@"propValue"];
                 XHSystemModel *model=[[XHSystemModel alloc] initWithDic:Dic];
                 [self.dataArray addObject:model];
             }
+            [self.tableView refreshReloadData];
+            
+            if ([resultArry count] >= 10)
+            {
+                _pageNumber++;
+            }
+            else
+            {
+                [self.tableView noMoreData];
+            }
         }
-         [self.tableView reloadData];
+        else
+        {
+            [self.tableView refreshReloadData];
+        }
+     
     } error:^(NSError *error) {
-         [self.tableView reloadData];
+       [self.tableView refreshReloadData];
     }];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

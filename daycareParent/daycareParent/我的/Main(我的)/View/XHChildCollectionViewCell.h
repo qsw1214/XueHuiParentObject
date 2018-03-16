@@ -10,6 +10,6 @@
 
 @interface XHChildCollectionViewCell : UICollectionViewCell
 @property(nonatomic,strong)UIImageView *childImageView;
-@property(nonatomic,strong)XHBaseLabel *childNameLabel;
-@property(nonatomic,strong)XHBaseLabel *childClassLabel;
+@property(nonatomic,strong)ParentLabel *childNameLabel;
+@property(nonatomic,strong)ParentLabel *childClassLabel;
 @end

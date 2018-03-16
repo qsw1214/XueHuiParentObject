@@ -24,12 +24,12 @@
         _smallLab.layer.masksToBounds=YES;
         _smallLab.backgroundColor=[UIColor redColor];
         [self.contentView addSubview:_smallLab];
-        _titleLab=[[XHBaseLabel alloc] initWithFrame:CGRectMake(80, 0, 90, 30)];
+        _titleLab=[[ParentLabel alloc] initWithFrame:CGRectMake(80, 0, 90, 30)];
          [self.contentView addSubview:_titleLab];
-        _detailLab=[[XHBackLabel alloc] initWithFrame:CGRectMake(170, 0, SCREEN_WIDTH-180, 30)];
+        _detailLab=[[ParentLabel alloc] initWithFrame:CGRectMake(170, 0, SCREEN_WIDTH-180, 30)];
         _detailLab.textAlignment=NSTextAlignmentRight;
         [self.contentView addSubview:_detailLab];
-        _ContentLab=[[XHBackLabel alloc] init];
+        _ContentLab=[[ParentLabel alloc] init];
         [self.contentView addSubview:_ContentLab];
 
     }

@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "XHBackLabel.h"
 @interface XHNotifceTableViewCell : UITableViewCell
 @property(nonatomic,strong)UIImageView *headImageView;
-@property(nonatomic,strong)XHBaseLabel *titleLab;
-@property(nonatomic,strong)XHBackLabel *ContentLab;
-@property(nonatomic,strong)XHBackLabel *detailLab;
+@property(nonatomic,strong)ParentLabel *titleLab;
+@property(nonatomic,strong)ParentLabel *ContentLab;
+@property(nonatomic,strong)ParentLabel *detailLab;
 @property(nonatomic,strong)UILabel *smallLab;
 @property(nonatomic,strong)UIImageView *smalImage;
 @end

@@ -29,6 +29,15 @@
 #endif
 // 如果需要使用idfa功能所需要引入的头文件（可选）
 #import <AdSupport/AdSupport.h>
+
+//shareSDK
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKConnector/ShareSDKConnector.h>
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+#import "WXApi.h"
+#import "WeiboSDK.h"
+
 @interface AppDelegate ()<RCIMConnectionStatusDelegate,RCIMUserInfoDataSource,JPUSHRegisterDelegate,CLLocationManagerDelegate,UIAlertViewDelegate>  //添加代理
 {
     AMapLocationManager *_locationManager;
@@ -45,6 +54,7 @@
     [Pingpp handleOpenURL:url withCompletion:^(NSString *result, PingppError *error) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"callBack" object:result];
     }];
+    
     return YES;
 }
 
@@ -56,6 +66,7 @@
     [Pingpp handleOpenURL:url withCompletion:^(NSString *result, PingppError *error) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"callBack" object:result];//web端调用支付时，收到的支付回调
     }];
+    
     return YES;
 }
 
@@ -130,9 +141,60 @@
     
     [self.window makeKeyAndVisible];
     
+    //shareSDK
+    [ShareSDK registerApp:@"1e283da43b660" activePlatforms:@[
+                                                             @(SSDKPlatformTypeSinaWeibo),
+                                                             @(SSDKPlatformSubTypeWechatSession),
+                                                             @(SSDKPlatformSubTypeWechatTimeline),
+                                                             //                                                @(SSDKPlatformSubTypeQZone),
+                                                             @(SSDKPlatformTypeQQ)
+                                                             ] onImport:^(SSDKPlatformType platformType) {
+                                                                 switch (platformType)
+                                                                 {
+                                                                     case SSDKPlatformTypeWechat:
+                                                                         [ShareSDKConnector connectWeChat:[WXApi class]];
+                                                                         break;
+                                                                     case SSDKPlatformTypeQQ:
+                                                                         [ShareSDKConnector connectQQ:[QQApiInterface class] tencentOAuthClass:[TencentOAuth class]];
+                                                                         break;
+                                                                     case SSDKPlatformTypeSinaWeibo:
+                                                                         [ShareSDKConnector connectWeibo:[WeiboSDK class]];
+                                                                         break;
+                                                                         //                                                        case SSDKPlatformSubTypeQZone:
+                                                                         //                                                            [ShareSDKConnector connectQQ:[QQApiInterface class] tencentOAuthClass:[TencentOAuth class]];
+                                                                         //                                                            break;
+                                                                     default:
+                                                                         break;
+                                                                 }
+                                                             } onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo) {
+                                                                 switch (platformType)
+                                                                 {
+                                                                     case SSDKPlatformTypeSinaWeibo:
+                                                                         //设置新浪微博应用信息,其中authType设置为使用SSO＋Web形式授权
+                                                                         [appInfo SSDKSetupSinaWeiboByAppKey:@"568898243"
+                                                                                                   appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
+                                                                                                 redirectUri:@"http://www.sharesdk.cn"
+                                                                                                    authType:SSDKAuthTypeBoth];
+                                                                         break;
+                                                                     case SSDKPlatformTypeWechat:
+                                                                         [appInfo SSDKSetupWeChatByAppId:@"wxedbbf780e30b9bb5"
+                                                                                               appSecret:@"c8a52f2cae5bd3dc85cd7250f950824e"];
+                                                                         break;
+                                                                     case SSDKPlatformTypeQQ:
+                                                                         [appInfo SSDKSetupQQByAppId:@"1106128289"
+                                                                                              appKey:@"FhqZf9Bfz26sqKho"
+                                                                                            authType:SSDKAuthTypeBoth];
+                                                                         break;
+                                                                         
+                                                                     default:
+                                                                         break;
+                                                                 }
+                                                             }];
+    
     
     return YES;
 }
+
 - (void) getUserLocation {
     int status=[CLLocationManager authorizationStatus];
     if (![CLLocationManager locationServicesEnabled] || status < 3) {
@@ -360,6 +422,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         [self.window makeKeyAndVisible];
     }
 }
+
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     [self.window endEditing:YES];

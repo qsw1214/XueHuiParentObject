@@ -7,9 +7,7 @@
 //
 
 #import "XHChagePhoneViewController.h"
-//#import "XHChagePhoneTableViewCell.h"
-//#import "XHTelephoneTableViewCell.h"
-#import "XHScuessViewController.h"
+#import "XHLoginViewController.h"
 #import "XHChageTelephoneTableViewCell.h"
 #import "XHVerifyTableViewCell.h"
 #import "XHTipTableViewCell.h"
@@ -23,7 +21,7 @@
     NSInteger _count;
 }
 @property(nonatomic,strong)BaseTableView *tableView;
-@property(nonatomic,strong)UIButton *sureButton;
+@property(nonatomic,strong)XHBaseBtn *sureButton;
 @end
 
 @implementation XHChagePhoneViewController
@@ -111,72 +109,79 @@
             XHVerifyTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"telephonecell" forIndexPath:indexPath];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             [cell.chageTelePhoneTextField addTarget:self action:@selector(textChage) forControlEvents:UIControlEventEditingChanged];
-            [cell.verifyButton addTarget:self action:@selector(verifyBtnClick) forControlEvents:UIControlEventTouchUpInside];
+            [cell.verifyButton setTag:1];
+            [cell.verifyButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
             return cell;
         }
             break;
     }
     
 }
-#pragma mark-----verifyButtonClickMethod
--(void)verifyBtnClick
+
+#pragma mark-----btnClickMethod
+- (void)buttonClick:(UIButton *)button
 {
     UITextField *phonepwd=[_tableView viewWithTag:10086];
-    if (![UITextView verifyPhone:phonepwd.text]) {
-        [XHShowHUD showNOHud:@"请输入正确手机号!"];
-        return;
-    }
-    if (_count==0) {
-        //self.warnLabel.text=@"您的当日限制次数已经用完\n请明日再来吧";
-        return ;
-    }
-    if (_ifSelect==NO) {
-       
-            XHNetWorkConfig *net=[XHNetWorkConfig new];
-            [net setObject:phonepwd.text forKey:@"telephoneNumber"];
-            [net setObject:@"2" forKey:@"type"];
-            [XHShowHUD showTextHud];
-            [net postWithUrl:@"zzjt-app-api_personalCenter000" sucess:^(id object, BOOL verifyObject) {
+    UITextField *verrifypwd=[_tableView viewWithTag:10086+1];
+    switch (button.tag) {
+        case 1:
+        {
+            
+            if (![UITextView verifyPhone:phonepwd.text]) {
+                [XHShowHUD showNOHud:@"请输入正确手机号!"];
+                return;
+            }
+            //    if (_count==0) {
+            //        //self.warnLabel.text=@"您的当日限制次数已经用完\n请明日再来吧";
+            //        return ;
+            //    }
+            if (_ifSelect==NO) {
+                
+                XHNetWorkConfig *net=[XHNetWorkConfig new];
+                [net setObject:phonepwd.text forKey:@"telephoneNumber"];
+                [net setObject:@"2" forKey:@"type"];
+                [XHShowHUD showTextHud];
+                [net postWithUrl:@"zzjt-app-api_personalCenter000" sucess:^(id object, BOOL verifyObject) {
                     if (verifyObject) {
                         [self startCountdown];
                         _count--;
-                       // self.warnLabel.text=[NSString stringWithFormat:@"请输入您需要绑定的手机号\n当日限制操作3次，还剩下%ld次机会，请谨慎操作",_count];
+                        // self.warnLabel.text=[NSString stringWithFormat:@"请输入您需要绑定的手机号\n当日限制操作3次，还剩下%ld次机会，请谨慎操作",_count];
                     }
                     
                 } error:^(NSError *error) {
                 }];
-    }
-   
-}
-
-#pragma mark-----sureBtnClickMethod
-- (void)sureBtnClick:(UIButton *)button
-{
-    UITextField *phonepwd=[_tableView viewWithTag:10086];
-    UITextField *verrifypwd=[_tableView viewWithTag:10086+1];
-    if (![UITextView verifyPhone:phonepwd.text]) {
-        [XHShowHUD showNOHud:@"请输入正确手机号!"];
-        return;
-    }
-    if (![UITextView verifyCodeMatch:verrifypwd.text]) {
-        [XHShowHUD showNOHud:@"请输入正确的验证码!"];
-        return;
-    }
-    XHNetWorkConfig *net=[XHNetWorkConfig new];
-    [net setObject:[XHUserInfo sharedUserInfo].ID forKey:@"id"];
-     [net setObject:phonepwd.text forKey:@"newLoginName"];
-    [net setObject:verrifypwd.text forKey:@"code"];
-    [XHShowHUD showTextHud];
-    [net postWithUrl:@"zzjt-app-api_personalCenter002" sucess:^(id object, BOOL verifyObject) {
-        if (verifyObject) {
-            XHScuessViewController *success=[XHScuessViewController new];
-            success.telephoneStr=phonepwd.text;
-            [self.navigationController pushViewController:success animated:YES];
+            }
         }
-    } error:^(NSError *error) {
-        
-    }];
- 
+            break;
+            
+        case 2:
+        {
+            if (![UITextView verifyPhone:phonepwd.text]) {
+                [XHShowHUD showNOHud:@"请输入正确手机号!"];
+                return;
+            }
+            if (![UITextView verifyCodeMatch:verrifypwd.text]) {
+                [XHShowHUD showNOHud:@"请输入正确的验证码!"];
+                return;
+            }
+            XHNetWorkConfig *net=[XHNetWorkConfig new];
+            [net setObject:[XHUserInfo sharedUserInfo].ID forKey:@"id"];
+            [net setObject:phonepwd.text forKey:@"newLoginName"];
+            [net setObject:verrifypwd.text forKey:@"code"];
+            [XHShowHUD showTextHud];
+            [net postWithUrl:@"zzjt-app-api_personalCenter002" sucess:^(id object, BOOL verifyObject) {
+                if (verifyObject) {
+                    XHLoginViewController *login=[[XHLoginViewController alloc] init];
+                    UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:login];
+                    [kWindow setRootViewController:nav];
+                }
+            } error:^(NSError *error) {
+                
+            }];
+        }
+            break;
+    }
+    
 }
 #pragma mark-----开始倒计时
 - (void)startCountdown
@@ -233,15 +238,13 @@
     }
     return _tableView;
 }
--(UIButton *)sureButton
+-(XHBaseBtn *)sureButton
 {
     if (_sureButton==nil) {
-        _sureButton=[[UIButton alloc] initWithFrame:CGRectMake(10, 220, SCREEN_WIDTH-20, 50)];
-        [_sureButton setBackgroundColor:MainColor];
-        [_sureButton setTitleColor:LOGIN_BEFORE forState:UIControlStateNormal];
+        _sureButton=[[XHBaseBtn alloc] initWithFrame:CGRectMake(10, 220, SCREEN_WIDTH-20, 50)];
         [_sureButton setTitle:@"确定" forState:UIControlStateNormal];
-        _sureButton.layer.cornerRadius=CORNER_BTN;
-        [_sureButton addTarget:self action:@selector(sureBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        [_sureButton setTag:2];
+        [_sureButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _sureButton;
 }

@@ -19,33 +19,22 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setNavtionTitle:@"系统通知"];
-    [self.view addSubview:self.tableView];
-    for (int i=0; i<7; i++) {
-        if (i<3) {
-            XHSystemModel *model=[[XHSystemModel alloc] initWithDic:nil];
-            model.modelType=XHSystemNoticeType;
-            model.title=@"通知";
-            model.date=@"03-06 17:21";
-            model.content=@"抱歉抱歉，由于头像不符合规定，更新失败。抱歉抱歉，由于头像不符合规定，更新失败。抱歉抱歉，由于头像不符合规定，更新失败。抱歉抱歉，由于头像不符合规定，更新失败。抱歉抱歉，由于头像不符合规定，更新失败。抱歉抱歉，由于头像不符合规定，更新失败。抱歉抱歉，由于头像不符合规定，更新失败。抱歉抱歉，由于头像不符合规定，更新失败";
-            model.itemCellHeight=40+[self contentSizeWithTitle:model.content withFontOfSize:kFont(16.0) withWidth:SCREEN_WIDTH-20].height;
-            [self.dataArray addObject:model];
-           
+    [self.view addSubview:self.tableView];    
+    [self.netWorkConfig setObject:@"1" forKey:@"clientType"];
+    [self.netWorkConfig postWithUrl:@"zzjt-app-api_listAnnouncement" sucess:^(id object, BOOL verifyObject) {
+        if (verifyObject) {
+            NSDictionary *dic=[object objectItemKey:@"object"];
+            NSArray *resultArry=[dic objectItemKey:@"pageResult"];
+            for (NSDictionary *dic in resultArry) {
+                NSDictionary *Dic=[dic objectItemKey:@"propValue"];
+                XHSystemModel *model=[[XHSystemModel alloc] initWithDic:Dic];
+                [self.dataArray addObject:model];
+            }
         }
-        else
-        {
-            XHSystemModel *model=[[XHSystemModel alloc] initWithDic:nil];
-            model.modelType=XHSystemOtherType;
-            model.title=@"活动";
-            model.date=@"03-07 21:03";
-            model.content=@"你好，欢迎加入欢迎加入欢迎加入欢迎加入。你好，欢迎加入欢迎加入欢迎加入欢迎加入。你好，欢迎加入欢迎加入欢迎加入欢迎加入。你好，欢迎加入欢迎加入欢迎加入欢迎加入。";
-            model.itemCellHeight=40+[self contentSizeWithTitle:model.content withFontOfSize:kFont(16.0) withWidth:SCREEN_WIDTH-20].height;
-            [self.dataArray addObject:model];
-        }
-        
-    }
-    
-   
-    [self.tableView reloadData];
+         [self.tableView reloadData];
+    } error:^(NSError *error) {
+         [self.tableView reloadData];
+    }];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

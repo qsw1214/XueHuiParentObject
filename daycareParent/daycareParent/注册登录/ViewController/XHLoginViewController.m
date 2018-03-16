@@ -22,7 +22,7 @@
 
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,strong)ParentImageView *bgImageView;
-@property(nonatomic,strong)UIButton *loginButton;
+@property(nonatomic,strong)XHBaseBtn *loginButton;
 @property(nonatomic,strong)UIButton *registButton;
 @property(nonatomic,strong)UIButton *forgetButton;
 @end
@@ -178,7 +178,6 @@
 {
     if (_tableView==nil) {
         _tableView=[[UITableView alloc] initWithFrame:CGRectMake(20, 210, SCREEN_WIDTH-50, 100)];
-        //_tableView.center=CGPointMake(SCREEN_WIDTH/2.0, SCREEN_HEIGHT/2.0-40);
         _tableView.delegate=self;
         _tableView.dataSource=self;
         _tableView.bounces=NO;
@@ -187,13 +186,10 @@
     }
     return _tableView;
 }
--(UIButton *)loginButton
+-(XHBaseBtn *)loginButton
 {
     if (_loginButton==nil) {
-        _loginButton=[[UIButton alloc] initWithFrame:CGRectMake(10, 370, SCREEN_WIDTH-20, 50)];
-        _loginButton.layer.cornerRadius=8;
-        _loginButton.layer.masksToBounds=YES;
-        [_loginButton setTitleColor:LOGIN_BEFORE  forState:UIControlStateNormal];
+        _loginButton=[[XHBaseBtn alloc] initWithFrame:CGRectMake(10, 370, SCREEN_WIDTH-20, 50)];
         [_loginButton setBackgroundImage:[UIImage imageNamed:@"btn_logn"] forState:UIControlStateNormal];
         [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
         [_loginButton setTag:1];

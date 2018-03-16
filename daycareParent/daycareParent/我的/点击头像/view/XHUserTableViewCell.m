@@ -17,9 +17,9 @@
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self=[super initWithStyle: style reuseIdentifier:reuseIdentifier]) {
-        _frontLabel=[[XHBaseLabel alloc] init];
+        _frontLabel=[[ParentLabel alloc] init];
         [self.contentView addSubview:_frontLabel];
-        _backLabel=[[XHBackLabel alloc] init];
+        _backLabel=[[ParentLabel alloc] init];
         _backLabel.textAlignment=NSTextAlignmentRight;
         [self.contentView addSubview:_backLabel];
         _headBtn=[[UIButton alloc] init];

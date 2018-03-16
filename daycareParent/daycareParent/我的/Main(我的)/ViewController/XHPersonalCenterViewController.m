@@ -8,7 +8,6 @@
 
 #import "XHPersonalCenterViewController.h"
 #import "SDWebImage.h"
-#import "XHChildTableViewCell.h"
 #import "XHSetTableViewCell.h"
 #import "XHUserViewController.h"
 #import "XHSetViewController.h"
@@ -20,8 +19,10 @@
 #import "XHFeedBackViewController.h"//!< 问题反馈视图
 #import "XHSystemNotificViewController.h"//!< 系统通知
 #import "XHShareView.h"//!< 分享视图
+
 #define  kTitle @[@"联系客服",@"问题反馈",@"好友推荐",@"系统通知",@"设置"]
 #define kTitlePic @[@"ico_mycontact",@"ico_myquestion",@"ico_myshare",@"ico_mynotice",@"ico_myset"]
+
 @interface XHPersonalCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UIButton *_h_btn;
@@ -67,7 +68,7 @@
 }
 - (NSInteger)tableView:(BaseTableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return kTitle.count;
 }
 - (UITableViewCell *)tableView:(BaseTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -267,9 +268,7 @@
         _tableView.dataSource=self;
         [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
         _tableView.showsVerticalScrollIndicator=NO;
-        [_tableView registerClass:[XHChildTableViewCell class] forCellReuseIdentifier:@"childcell"];
         [_tableView registerClass:[XHSetTableViewCell class] forCellReuseIdentifier:@"cell"];
-      
     }
     return _tableView;
 }
@@ -291,11 +290,10 @@
 -(CGSize)getCustomWidth
 {
     NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:20.0]};
-    
     CGSize textSize = [[XHUserInfo sharedUserInfo].nickName boundingRectWithSize:CGSizeMake(90, USER_HEARD/2) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;;
-    
     return textSize;
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

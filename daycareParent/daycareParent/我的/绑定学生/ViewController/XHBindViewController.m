@@ -7,7 +7,6 @@
 //
 
 #import "XHBindViewController.h"
-#import "XHPassWordTableViewCell.h"
 #import "XHChildListModel.h"
 #import "XHStudentInfoViewController.h"
 #import "XHBindViewContentView.h"

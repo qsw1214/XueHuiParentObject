@@ -128,18 +128,24 @@
 {
     if (_itemArray == nil)
     {
-        NSArray *itemArray = @[@{@"title":@"考勤记录",@"describe":@"Attendance Record"},@{@"title":@"安全定位",@"describe":@"Safety Positioning"},@{@"title":@"成绩",@"describe":@"Ache"},@{@"title":@"课程表",@"describe":@"Class Schedule Card"},@{@"title":@"食谱",@"describe":@"Recipes"},@{@"title":@"请假",@"describe":@"Leave"},@{@"title":@"安全定位",@"describe":@"Safety Positioning"},@{@"title":@"成绩",@"describe":@"Ache"},@{@"title":@"食谱",@"describe":@"Recipes"}];
+        NSArray *itemArray = @[@{@"title":@"考勤记录",@"describe":@"Attendance Record",@"icon":@"bg_kaoqin"},
+  @{@"title":@"安全定位",@"describe":@"Safety Positioning",@"icon":@"bg_dingwei"},
+  @{@"title":@"成绩",@"describe":@"Ache",@"icon":@"bg_kaoqin",@"icon":@"bg_chengji"},
+  @{@"title":@"课程表",@"describe":@"Class Schedule Card",@"icon":@"bg_kechengbiao"},
+  @{@"title":@"请假",@"describe":@"Leave",@"icon":@"bg_qingjia"},
+  @{@"title":@"食谱",@"describe":@"Recipes",@"icon":@"bg_food"}];
         _itemArray = [NSMutableArray array];
         [itemArray enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop)
          {
              NSString *title = [obj objectItemKey:@"title"];
              NSString *describe = [obj objectItemKey:@"describe"];
+             NSString *icon = [obj objectItemKey:@"icon"];
              XHFunctionMenuFrame *frame = [[XHFunctionMenuFrame alloc]init];
              XHFunctionMenuModel *model = [[XHFunctionMenuModel alloc]init];
              [model setTitle:title];
              [model setDescribe:describe];
              [model setTage:idx];
-             [model setIconName:[NSString safeString:title]];
+             [model setIconName:icon];
              [frame setModel:model];
              [_itemArray addObject:frame];
          }];

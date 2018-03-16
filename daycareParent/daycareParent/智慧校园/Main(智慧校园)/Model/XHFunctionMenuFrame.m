@@ -14,7 +14,7 @@
 {
     _model = model;
     
-    [self setItemSize:CGSizeMake(((SCREEN_WIDTH-30.0)/3.0), 150.0)];
+    [self setItemSize:CGSizeMake(((SCREEN_WIDTH-30.0)/3.0), 160.0)];
     
    
     

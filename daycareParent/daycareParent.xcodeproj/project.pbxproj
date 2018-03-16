@@ -39,8 +39,8 @@
 		04B7400E1FD81D89008627CF /* XHAddTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B7400C1FD81D89008627CF /* XHAddTableViewCell.xib */; };
 		04D5396F205B5E2300DB344E /* XHAlertControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D5396E205B5E2300DB344E /* XHAlertControl.m */; };
 		04D53972205B5E6300DB344E /* XHAlertBoardControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D53971205B5E6300DB344E /* XHAlertBoardControl.m */; };
-		04D53975205B636300DB344E /* XHALertCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D53974205B636300DB344E /* XHALertCollectionView.m */; };
 		04D53978205B638900DB344E /* XHAlertItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D53977205B638900DB344E /* XHAlertItemCell.m */; };
+		04D5397B205B757800DB344E /* XHAlertModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D5397A205B757800DB344E /* XHAlertModel.m */; };
 		04E5D1431FD399800021B842 /* XHVIPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E5D1411FD399800021B842 /* XHVIPViewController.m */; };
 		04E5D1441FD399800021B842 /* XHVIPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E5D1421FD399800021B842 /* XHVIPViewController.xib */; };
 		04E5D1481FD39F0D0021B842 /* XHVIPTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E5D1461FD39F0D0021B842 /* XHVIPTableViewCell.m */; };
@@ -615,10 +615,10 @@
 		04D5396E205B5E2300DB344E /* XHAlertControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHAlertControl.m; sourceTree = "<group>"; };
 		04D53970205B5E6300DB344E /* XHAlertBoardControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHAlertBoardControl.h; sourceTree = "<group>"; };
 		04D53971205B5E6300DB344E /* XHAlertBoardControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHAlertBoardControl.m; sourceTree = "<group>"; };
-		04D53973205B636300DB344E /* XHALertCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHALertCollectionView.h; sourceTree = "<group>"; };
-		04D53974205B636300DB344E /* XHALertCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHALertCollectionView.m; sourceTree = "<group>"; };
 		04D53976205B638900DB344E /* XHAlertItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHAlertItemCell.h; sourceTree = "<group>"; };
 		04D53977205B638900DB344E /* XHAlertItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHAlertItemCell.m; sourceTree = "<group>"; };
+		04D53979205B757800DB344E /* XHAlertModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHAlertModel.h; sourceTree = "<group>"; };
+		04D5397A205B757800DB344E /* XHAlertModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHAlertModel.m; sourceTree = "<group>"; };
 		04E5D1401FD399800021B842 /* XHVIPViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHVIPViewController.h; sourceTree = "<group>"; };
 		04E5D1411FD399800021B842 /* XHVIPViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHVIPViewController.m; sourceTree = "<group>"; };
 		04E5D1421FD399800021B842 /* XHVIPViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XHVIPViewController.xib; sourceTree = "<group>"; };
@@ -1747,10 +1747,10 @@
 				04D5396E205B5E2300DB344E /* XHAlertControl.m */,
 				04D53970205B5E6300DB344E /* XHAlertBoardControl.h */,
 				04D53971205B5E6300DB344E /* XHAlertBoardControl.m */,
-				04D53973205B636300DB344E /* XHALertCollectionView.h */,
-				04D53974205B636300DB344E /* XHALertCollectionView.m */,
 				04D53976205B638900DB344E /* XHAlertItemCell.h */,
 				04D53977205B638900DB344E /* XHAlertItemCell.m */,
+				04D53979205B757800DB344E /* XHAlertModel.h */,
+				04D5397A205B757800DB344E /* XHAlertModel.m */,
 			);
 			path = XHAlert;
 			sourceTree = "<group>";
@@ -4470,6 +4470,7 @@
 				4BB792AE1FD7752B00E0ED72 /* XHAskforLeaveArrowCell.m in Sources */,
 				4B577FDC1FF63FB30023ACBC /* MASConstraint.m in Sources */,
 				4BBC43411FD0E43E00555846 /* BaseTableViewCell.m in Sources */,
+				04D5397B205B757800DB344E /* XHAlertModel.m in Sources */,
 				4B80F2831FCBF04800BC7B52 /* MJRefreshBackNormalFooter.m in Sources */,
 				4B80F3251FCBFD6F00BC7B52 /* NSError+MTLModelException.m in Sources */,
 				04AAEBBF2058E89A00EF225D /* XHBindViewContentView.m in Sources */,
@@ -4602,7 +4603,6 @@
 				04D5396F205B5E2300DB344E /* XHAlertControl.m in Sources */,
 				4B80F32C1FCC108800BC7B52 /* MarqueeLabel.m in Sources */,
 				4B5A3AEE1FCE785600504229 /* XHScrollPreviewControl.m in Sources */,
-				04D53975205B636300DB344E /* XHALertCollectionView.m in Sources */,
 				8CEDB9721FE3932E003E791F /* XHFamilyModel.m in Sources */,
 				8C019F691FF4C365005EBC2C /* FMDatabaseQueue.m in Sources */,
 				8C8081701FCEAB7C00C7945A /* XHBaseLabel.m in Sources */,

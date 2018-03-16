@@ -207,8 +207,7 @@
 
 
 
-#pragma mark - Delertage Method
-#pragma mark - Deletage Method
+#pragma mark - Delegate Method
 #pragma mark UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {

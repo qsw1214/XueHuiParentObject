@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XHAlertModel.h"
+
 
 @interface XHAlertItemCell : UICollectionViewCell
+
+@property (nonatomic,strong) XHAlertModel *model;
+
 
 @end

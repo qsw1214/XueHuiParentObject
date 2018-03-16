@@ -7,13 +7,15 @@
 //
 
 #import "XHRegisterViewController.h"
-#import "XHChagePhoneTableViewCell.h"
-#import "XHTelephoneTableViewCell.h"
+#import "XHChageTelephoneTableViewCell.h"
+#import "XHVerifyTableViewCell.h"
 #import "XHProtocolViewController.h"
 #import "AppDelegate.h"
 #import "MainRootControllerHelper.h"
+#import "XHBindViewController.h"
 #define countDownStr(s) [NSString stringWithFormat:@"%ld秒后重发",s]
 #define reviewTitle @"重新发送"
+#define kTitle @[@"请输入手机号",@"请输入验证码",@"请输入密码"]
 @interface XHRegisterViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     NSArray *arry;
@@ -21,11 +23,12 @@
     NSInteger  _currentS;
     NSTimer *_timer;
     BOOL _ifSelect;
-    UITableView *_tableView;
-    XHBaseBtn *_sureBtn;
     UIButton *_selectBtn;
 }
-
+@property(nonatomic,strong)BaseTableView *tableView;
+@property(nonatomic,strong)UIButton *registButton;
+@property(nonatomic,strong)BaseButtonControl *selectButton;
+@property(nonatomic,strong)UIButton *protocolButton;
 @end
 
 @implementation XHRegisterViewController
@@ -35,96 +38,141 @@
     // Do any additional setup after loading the view.
     [self setNavtionTitle:@"注册页面"];
     _currentS = 60;
-    arry=@[@"帐号",@"密码",@"密码",@"验证码"];
-    placeArry=@[@"请输入手机号",@"请输入密码",@"请确认密码",@"请输入验证码"];
-    _tableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, 200)];
-    _tableView.rowHeight=50;
-    _tableView.delegate=self;
-    _tableView.dataSource=self;
-    _tableView.bounces=NO;
-    [_tableView registerNib:[UINib nibWithNibName:@"XHChagePhoneTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
-    [_tableView registerNib:[UINib nibWithNibName:@"XHTelephoneTableViewCell" bundle:nil] forCellReuseIdentifier:@"telephonecell"];
-    [self.view addSubview:_tableView];
-    _selectBtn=[[UIButton alloc] initWithFrame:CGRectMake(20, 282, 14,14)];
-    [_selectBtn setBackgroundImage:[UIImage imageNamed:@"box-check"] forState:UIControlStateNormal];
-    [_selectBtn addTarget:self action:@selector(selectBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_selectBtn];
-    UILabel *label=[[UILabel alloc] initWithFrame:CGRectMake(40, 280, 100, 18)];
-    label.text=@"我已阅读并同意";
-    label.font=[UIFont systemFontOfSize:14];
-    [self.view addSubview:label];
-    UIButton *btn=[[UIButton alloc] initWithFrame:CGRectMake(132, 280, 100, 18)];
-    [btn setTitle:@"《i学汇用户》" forState:UIControlStateNormal];
-    [btn setTitleColor:MainColor forState:UIControlStateNormal];
-    btn.titleLabel.font=[UIFont systemFontOfSize:14];
-    [btn addTarget:self action:@selector(btnMethod) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btn];
-    _sureBtn=[[XHBaseBtn alloc] initWithFrame:CGRectMake(10, 318, SCREEN_WIDTH-20, LOGINBTN_HEIGHT)];
-    [_sureBtn setTitle:@"注册" forState:UIControlStateNormal];
-    [_sureBtn addTarget:self action:@selector(sureBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_sureBtn];
+    [self.view addSubview:self.tableView];
+    [self.tableView addSubview:self.selectButton];
+    [self.tableView addSubview:self.protocolButton];
+    [self.tableView addSubview:self.registButton];
     
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0.01;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 3;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row==3) {
-        XHChagePhoneTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    if (indexPath.row==1) {
+        XHVerifyTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.titleLabel.text=@"验证码";
-        cell.textFD.placeholder=@"请输入验证码";
-        cell.textFD.keyboardType=UIKeyboardTypeNumberPad;
-        cell.textFD.tag=3+10086;
-        [cell.textFD addTarget:self action:@selector(textChage) forControlEvents:UIControlEventEditingChanged];
-        cell.verifyBtn.backgroundColor=RGB(245, 245, 245);
-        [cell.verifyBtn setTitleColor:RGB(82, 82, 82) forState:UIControlStateNormal];
-        cell.verifyBtn.titleLabel.font=FontLevel3;
-        cell.verifyBtn.layer.cornerRadius=CORNER_BTN;
-        [cell.verifyBtn addTarget:self action:@selector(verifyBtnClick) forControlEvents:UIControlEventTouchUpInside];
+        cell.chageTelePhoneTextField.placeholder=kTitle[indexPath.row];
+        cell.chageTelePhoneTextField.keyboardType=UIKeyboardTypeNumberPad;
+        cell.chageTelePhoneTextField.tag=indexPath.row+10086;
+        [cell.chageTelePhoneTextField addTarget:self action:@selector(textChage) forControlEvents:UIControlEventEditingChanged];
+        cell.verifyButton.backgroundColor=MainColor;
+        cell.verifyButton.titleLabel.font=FontLevel3;
+        cell.verifyButton.layer.cornerRadius=CORNER_BTN;
+        [cell.verifyButton setTag:1];
+        [cell.verifyButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     }
     else
     {
-        XHTelephoneTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"telephonecell" forIndexPath:indexPath];
+        XHChageTelephoneTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"telephonecell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.telephoneLabel.text=arry[indexPath.row];
-        cell.telephoneTF.placeholder=placeArry[indexPath.row];
-        cell.telephoneTF.tag=indexPath.row+10086;
-        [cell.telephoneTF addTarget:self action:@selector(textChage) forControlEvents:UIControlEventEditingChanged];
+        cell.chageTelePhoneTextField.placeholder=kTitle[indexPath.row];
+        cell.chageTelePhoneTextField.tag=indexPath.row+10086;
+        [cell.chageTelePhoneTextField addTarget:self action:@selector(textChage) forControlEvents:UIControlEventEditingChanged];
         if (indexPath.row==0) {
-            cell.telephoneTF.keyboardType=UIKeyboardTypeNumberPad;
+            cell.chageTelePhoneTextField.keyboardType=UIKeyboardTypeNumberPad;
         }
         else
         {
-            cell.telephoneTF.secureTextEntry=YES;
+            cell.chageTelePhoneTextField.secureTextEntry=YES;
         }
         return cell;
     }
     
 }
--(void)verifyBtnClick
+
+
+- (void)buttonClick:(UIButton *)btn
 {
-   
+    
     UITextField *phonepwd=[_tableView viewWithTag:10086];
-    if (![UITextView verifyPhone:phonepwd.text]) {
-        [XHShowHUD showNOHud:@"请输入正确手机号!"];
-        return;
-    }
-    if (_ifSelect==NO) {
-        XHNetWorkConfig *net=[XHNetWorkConfig new];
-        [net setObject:phonepwd.text forKey:@"telephoneNumber"];
-        [net setObject:@"0" forKey:@"type"];
-        [XHShowHUD showTextHud];
-        [net postWithUrl:@"zzjt-app-api_personalCenter000" sucess:^(id object, BOOL verifyObject) {
-            if (verifyObject) {
-                [self startCountdown];
+    UITextField *verrifypwd=[_tableView viewWithTag:10086+1];
+    UITextField *pwd=[_tableView viewWithTag:10086+2];
+    switch (btn.tag) {
+        case 1:
+        {
+            if (![UITextView verifyPhone:phonepwd.text]) {
+                [XHShowHUD showNOHud:@"请输入正确手机号!"];
+                return;
             }
-        } error:^(NSError *error) {
-        }];
+            if (_ifSelect==NO) {
+                XHNetWorkConfig *net=[XHNetWorkConfig new];
+                [net setObject:phonepwd.text forKey:@"telephoneNumber"];
+                [net setObject:@"0" forKey:@"type"];
+                [XHShowHUD showTextHud];
+                [net postWithUrl:@"zzjt-app-api_personalCenter000" sucess:^(id object, BOOL verifyObject) {
+                    if (verifyObject) {
+                        [self startCountdown];
+                    }
+                } error:^(NSError *error) {
+                }];
+            }
+        }
+            break;
+            case 2:
+        {
+            if (self.selectButton.selected==NO) {
+                [self.selectButton setImage:@"ico-right" withNumberType:0 withAllType:NO];
+                self.selectButton.selected=YES;
+            }
+            else
+            {
+                 [self.selectButton setImage:@"box-check" withNumberType:0 withAllType:NO];
+                self.selectButton.selected=NO;
+            }
+        }
+            break;
+            case 3:
+        {
+            XHProtocolViewController *potocol=[XHProtocolViewController new];
+            [self.navigationController pushViewController:potocol animated:YES];
+        }
+            break;
+        case 4:
+        {
+            XHBindViewController *bind=[[XHBindViewController alloc] init];
+            [self.navigationController pushViewController:bind animated:YES];
+//
+//            if (![UITextView verifyPhone:phonepwd.text]) {
+//                [XHShowHUD showNOHud:@"请输入正确手机号!"];
+//                return;
+//            }
+//            if (pwd.text.length<6) {
+//                [XHShowHUD showNOHud:@"密码至少6位!"];
+//                return;
+//            }
+//            if (![UITextView verifyCodeMatch:verrifypwd.text]) {
+//                [XHShowHUD showNOHud:@"请输入正确的验证码!"];
+//                return;
+//            }
+//            if (_selectBtn.selected==NO) {
+//                [XHShowHUD showNOHud:@"请勾选同意用户协议！"];
+//                return;
+//            }
+//            XHNetWorkConfig *net=[XHNetWorkConfig new];
+//            [net setObject:phonepwd.text forKey:@"telphoneNumber"];
+//            [net setObject:pwd.text forKey:@"password"];
+//            [net setObject:@"3" forKey:@"userType"];
+//            [net setObject:verrifypwd.text forKey:@"smsCode"];
+//            [XHShowHUD showTextHud];
+//            [net postWithUrl:@"zzjt-app-api_user001" sucess:^(id object, BOOL verifyObject) {
+//                if (verifyObject) {
+//                    XHStudentInfoViewController *studentInfo=[[XHStudentInfoViewController alloc] init];
+//                    [self.navigationController pushViewController:studentInfo animated:YES];
+//                }
+//
+//            } error:^(NSError *error) {
+//            }];
+        }
+            break;
     }
+   
     
 }
 //开始倒计时
@@ -132,8 +180,8 @@
 {
     NSIndexPath *  indexPath = [NSIndexPath indexPathForRow:3 inSection:0];
     //找到对应的cell
-    XHChagePhoneTableViewCell *Cell = [_tableView cellForRowAtIndexPath:indexPath];
-    [Cell.verifyBtn setTitle:countDownStr(_currentS) forState:UIControlStateNormal];
+    XHVerifyTableViewCell *Cell = [_tableView cellForRowAtIndexPath:indexPath];
+    [Cell.verifyButton setTitle:countDownStr(_currentS) forState:UIControlStateNormal];
     _currentS--;
     _timer = [NSTimer scheduledTimerWithTimeInterval:1. target:self selector:@selector(timer) userInfo:nil repeats:YES];
 }
@@ -143,7 +191,7 @@
     _ifSelect=YES;
     NSIndexPath *  indexPath = [NSIndexPath indexPathForRow:3 inSection:0];
     //找到对应的cell
-    XHChagePhoneTableViewCell *Cell = [_tableView cellForRowAtIndexPath:indexPath];
+    XHVerifyTableViewCell *Cell = [_tableView cellForRowAtIndexPath:indexPath];
     --_currentS;
     if (_currentS == 0)
     {
@@ -151,88 +199,83 @@
         [_timer invalidate];
         
         _ifSelect=NO;
-        [Cell.verifyBtn setTitle:reviewTitle forState:UIControlStateNormal];
+        [Cell.verifyButton setTitle:reviewTitle forState:UIControlStateNormal];
         
         return;
     }
-    [Cell.verifyBtn setTitle:countDownStr(_currentS) forState:UIControlStateNormal];
-}
-- (void)sureBtnClick {
-    
-    [[MainRootControllerHelper sharedRootHelperHelper] autoLoginWithWindow:kWindow];
-    
-    
-    UITextField *phonepwd=[_tableView viewWithTag:10086];
-    UITextField *pwd=[_tableView viewWithTag:10086+1];
-     UITextField *surePwd=[_tableView viewWithTag:10086+2];
-    UITextField *verrifypwd=[_tableView viewWithTag:10086+3];
-    if (![UITextView verifyPhone:phonepwd.text]) {
-        [XHShowHUD showNOHud:@"请输入正确手机号!"];
-        return;
-    }
-    if (pwd.text.length<6||surePwd.text.length<6) {
-        [XHShowHUD showNOHud:@"密码至少6位!"];
-        return;
-    }
-    if (![pwd.text isEqualToString:surePwd.text]) {
-        [XHShowHUD showNOHud:@"确认密码不符!"];
-        return;
-    }
-    if (![UITextView verifyCodeMatch:verrifypwd.text]) {
-        [XHShowHUD showNOHud:@"请输入正确的验证码!"];
-        return;
-    }
-    if (_selectBtn.selected==NO) {
-        [XHShowHUD showNOHud:@"请勾选同意用户协议！"];
-        return;
-    }
-    XHNetWorkConfig *net=[XHNetWorkConfig new];
-    [net setObject:phonepwd.text forKey:@"telphoneNumber"];
-     [net setObject:pwd.text forKey:@"password"];
-     [net setObject:@"3" forKey:@"userType"];
-     [net setObject:verrifypwd.text forKey:@"smsCode"];
-     [XHShowHUD showTextHud];
-    [net postWithUrl:@"zzjt-app-api_user001" sucess:^(id object, BOOL verifyObject) {
-        if (verifyObject) {
-            
-            [[MainRootControllerHelper sharedRootHelperHelper] autoLoginWithWindow:kWindow];
-        }
-        
-    } error:^(NSError *error) {
-    }];
-    
+    [Cell.verifyButton setTitle:countDownStr(_currentS) forState:UIControlStateNormal];
 }
 -(void)textChage
 {
     UITextField *phonepwd=[_tableView viewWithTag:10086];
-    UITextField *pwd=[_tableView viewWithTag:10086+1];
-    UITextField *surePwd=[_tableView viewWithTag:10086+2];
-    UITextField *verrifypwd=[_tableView viewWithTag:10086+3];
-    if ([UITextView verifyPhone:phonepwd.text]&&pwd.text.length>5&&surePwd.text.length>5&&[UITextView verifyCodeMatch:verrifypwd.text])
+    UITextField *verrifypwd=[_tableView viewWithTag:10086+1];
+    UITextField *pwd=[_tableView viewWithTag:10086+2];
+    if ([UITextView verifyPhone:phonepwd.text]&&pwd.text.length>5&&[UITextView verifyCodeMatch:verrifypwd.text])
     {
-        [_sureBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.registButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     }
     else
     {
-        [_sureBtn setTitleColor:LOGIN_BEFORE forState:UIControlStateNormal];
+        [self.registButton setTitleColor:LOGIN_BEFORE forState:UIControlStateNormal];
     }
 }
--(void)selectBtnClick
+
+-(BaseTableView *)tableView
 {
-    if (_selectBtn.selected==NO) {
-        [_selectBtn setBackgroundImage:[UIImage imageNamed:@"ico-right"] forState:UIControlStateNormal];
-        _selectBtn.selected=YES;
+    if (_tableView==nil) {
+       // _tableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, 150)];
+        _tableView=[[BaseTableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64) style:UITableViewStyleGrouped];
+        _tableView.separatorStyle=UITableViewCellSeparatorStyleSingleLine;
+        _tableView.rowHeight=50;
+        _tableView.delegate=self;
+        _tableView.dataSource=self;
+        [_tableView registerClass:[XHChageTelephoneTableViewCell class] forCellReuseIdentifier:@"telephonecell"];
+        [_tableView registerClass:[XHVerifyTableViewCell class] forCellReuseIdentifier:@"cell"];
     }
-    else
-    {
-        [_selectBtn setBackgroundImage:[UIImage imageNamed:@"box-check"] forState:UIControlStateNormal];
-        _selectBtn.selected=NO;
-    }
+    return _tableView;
 }
--(void)btnMethod
+-(BaseButtonControl *)selectButton
 {
-    XHProtocolViewController *potocol=[XHProtocolViewController new];
-    [self.navigationController pushViewController:potocol animated:YES];
+    if (_selectButton==nil) {
+        
+        _selectButton=[[BaseButtonControl alloc] initWithFrame:CGRectMake(20, 160, 120,30)];
+        [_selectButton setNumberImageView:1];
+        [_selectButton setNumberLabel:1];
+        [_selectButton setImageEdgeFrame:CGRectMake(0, 8, 14, 14) withNumberType:0 withAllType:NO];
+        [_selectButton setImage:@"box-check" withNumberType:0 withAllType:NO];
+        [_selectButton setTitleEdgeFrame:CGRectMake(18, 6, 100, 18) withNumberType:0 withAllType:NO];
+        [_selectButton setText:@"我已阅读并同意" withNumberType:0 withAllType:NO];
+        [_selectButton setFont:kFont(14) withNumberType:0 withAllType:NO];
+        [_selectButton setTag:2];
+        [_selectButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _selectButton;
+}
+-(UIButton *)protocolButton
+{
+    if (_protocolButton==nil) {
+        _protocolButton=[[UIButton alloc] initWithFrame:CGRectMake(132, 165, 160, 18)];
+        [_protocolButton setTitle:@"《学汇校灵通用户协议》" forState:UIControlStateNormal];
+        [_protocolButton setTitleColor:MainColor forState:UIControlStateNormal];
+        _protocolButton.titleLabel.font=[UIFont systemFontOfSize:14];
+        [_protocolButton setTag:3];
+        [_protocolButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _protocolButton;
+}
+-(UIButton *)registButton
+{
+    if (_registButton==nil) {
+        _registButton=[[UIButton alloc] initWithFrame:CGRectMake(10, 210, SCREEN_WIDTH-20, LOGINBTN_HEIGHT)];
+        _registButton.backgroundColor=MainColor;
+        _registButton.layer.cornerRadius=8;
+        _registButton.layer.masksToBounds=YES;
+        [_registButton setTitleColor:LOGIN_BEFORE  forState:UIControlStateNormal];
+        [_registButton setTitle:@"确定" forState:UIControlStateNormal];
+        [_registButton setTag:4];
+        [_registButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _registButton;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

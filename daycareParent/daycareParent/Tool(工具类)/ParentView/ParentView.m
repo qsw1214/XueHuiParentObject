@@ -9,6 +9,7 @@
 #import "ParentView.h"
 
 @implementation ParentView
+
 -(void)setItemObject:(id)object
 {
     
@@ -16,6 +17,14 @@
 -(void)setItemObjectArry:(NSMutableArray *)arry
 {
     
+}
+-(UIView *)baseView
+{
+    if (_baseView==nil) {
+        _baseView=[[UIView alloc]init];
+        _baseView.backgroundColor=[UIColor whiteColor];
+    }
+    return _baseView;
 }
 /*
 // Only override drawRect: if you perform custom drawing.

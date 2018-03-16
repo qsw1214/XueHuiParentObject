@@ -16,6 +16,6 @@
 
 @interface XHCustomPickerView : ParentView
 
--(id)initWithDelegate:(id)delegate;
+-(id)initWithDelegate:(id)delegate itemArry:(NSArray *)itemArry;
 -(void)show;
 @end

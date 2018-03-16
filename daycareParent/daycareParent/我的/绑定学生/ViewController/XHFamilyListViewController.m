@@ -61,14 +61,14 @@
     [cell.headBtn setBackgroundImage:[UIImage imageNamed:@"pxfamily"] forState:UIControlStateNormal];
     cell.frontLabel.frame=CGRectMake(60, 0, 120, cell.bounds.size.height);
     cell.frontLabel.text=model.nickName;
-    cell.famman.frame=CGRectMake(SCREEN_WIDTH-45, 17, 16, 16);
-    if ([model.isMajor integerValue]==1) {
-        cell.famman.hidden=NO;
-    }
-    else
-    {
-         cell.famman.hidden=YES;
-    }
+//    cell.famman.frame=CGRectMake(SCREEN_WIDTH-45, 17, 16, 16);
+//    if ([model.isMajor integerValue]==1) {
+//        cell.famman.hidden=NO;
+//    }
+//    else
+//    {
+//         cell.famman.hidden=YES;
+//    }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }

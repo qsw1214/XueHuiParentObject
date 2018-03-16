@@ -11,6 +11,6 @@
 @interface XHUserTableViewCell : ParentTableViewCell
 @property(nonatomic,strong)XHBaseLabel *frontLabel;
 @property(nonatomic,strong)XHBackLabel *backLabel;
-@property(nonatomic,strong)UIImageView *famman;//ico-famman
+@property(nonatomic,strong)ParentImageView *arrowsImageView;
 @property(nonatomic,strong)UIButton *headBtn;
 @end

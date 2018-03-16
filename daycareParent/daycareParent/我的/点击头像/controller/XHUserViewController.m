@@ -28,7 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setNavtionTitle:@"个人信息"];
-    _titleArry=@[@"头像",@"姓名",@"我与孩子的关系"];
+    _titleArry=@[@"头像",@"姓名",@"我与孩子的关系"];//
     _tableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64) style:UITableViewStyleGrouped];
     _tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
     _tableView.delegate=self;
@@ -52,26 +52,26 @@
     if (indexPath.row==0) {
         cell.headBtn.hidden=NO;
         cell.backLabel.hidden=YES;
+        cell.arrowsImageView.image=[UIImage imageNamed:@"arr_accessory"];
+        cell.arrowsImageView.frame=CGRectMake(SCREEN_WIDTH-20, (USER_HEARD+10)/2.0, 10, 10);
     }
     else
     {
+        cell.arrowsImageView.frame=CGRectMake(SCREEN_WIDTH-20, (USER_HEARD-30)/2.0, 10, 10);
           cell.headBtn.hidden=YES;
          cell.backLabel.hidden=NO;
         if (indexPath.row==1) {
             cell.backLabel.text=userInfo.guardianModel.guardianName;
+            cell.arrowsImageView.image=[UIImage imageNamed:@"arr_accessory"];
         }
         if (indexPath.row==2) {
+           
             cell.backLabel.text=@"其它";
+            cell.arrowsImageView.image=[UIImage imageNamed:@"ico_identity"];
         }
-//        if (indexPath.row==3) {
-//            cell.backLabel.text=userInfo.guardianModel.guardianName;
-//        }
-//        if (indexPath.row==4) {
-//            cell.backLabel.text=userInfo.telphoneNumber;
-//        }
     }
     [cell.headBtn addTarget:self action:@selector(headClick) forControlEvents:UIControlEventTouchUpInside];
-    cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+    
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -80,62 +80,13 @@
     if (indexPath.row==0) {
         [self openImagePiker];
     }
-//    if (indexPath.row==1) {
-//        [self showAlertViewWithTitle:@"请输入姓名" Index:indexPath.row];
-//    }
-//    if (indexPath.row==2) {
-//        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-//        [alertController addAction:[UIAlertAction actionWithTitle:@"男" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//            [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].ID forKey:@"id"];
-//            [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].selfId forKey:@"selfId"];
-//            [self.netWorkConfig setObject:@"1" forKey:@"sex"];
-//            [self.netWorkConfig postWithUrl:@"zzjt-app-api_user004" sucess:^(id object, BOOL verifyObject) {
-//                if (verifyObject) {
-//                    NSIndexPath *  indexPath = [NSIndexPath indexPathForRow:2 inSection:0];
-//                    XHUserTableViewCell *nextCell = [tableView cellForRowAtIndexPath:indexPath];
-//                    nextCell.backLabel.text=@"男";
-//                    [XHUserInfo sharedUserInfo].sex=@"1";
-//                    [XHUserInfo sharedUserInfo].sexName=@"男";
-//                    self.isRefresh(YES);
-//                }
-//            } error:^(NSError *error) {
-//
-//            }];
-//        }]];
-//        [alertController addAction:[UIAlertAction actionWithTitle:@"女" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//            [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].ID forKey:@"id"];
-//            [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].selfId forKey:@"selfId"];
-//            [self.netWorkConfig setObject:@"0" forKey:@"sex"];
-//            [self.netWorkConfig postWithUrl:@"zzjt-app-api_user004" sucess:^(id object, BOOL verifyObject) {
-//                if (verifyObject) {
-//                    NSIndexPath *  indexPath = [NSIndexPath indexPathForRow:2 inSection:0];
-//                    XHUserTableViewCell *nextCell = [tableView cellForRowAtIndexPath:indexPath];
-//                    nextCell.backLabel.text=@"女";
-//                    [XHUserInfo sharedUserInfo].sex=@"0";
-//                    [XHUserInfo sharedUserInfo].sexName=@"女";
-//                    self.isRefresh(YES);
-//                }
-//            } error:^(NSError *error) {
-//
-//            }];
-//        }]];
-//        [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-//
-//        }]];
-//        [self presentViewController:alertController animated:YES completion:nil];
-//    }
     if (indexPath.row==1) {
         XHChangeNameViewController *name=[[XHChangeNameViewController alloc] init];
         [self.navigationController pushViewController:name animated:YES];
-        //[self showAlertViewWithTitle:@"请输入真实姓名" Index:indexPath.row];
     }
     if (indexPath.row==2) {
         [self.pickerView show];
-        [self.pickerView setItemObjectArry:(NSMutableArray *)kFamilyList];
     }
-//    if (indexPath.row==4) {
-//        [self showAlertViewWithTitle:@"请输入联系电话" Index:indexPath.row];
-//    }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -296,7 +247,7 @@
 -(XHCustomPickerView *)pickerView
 {
     if (_pickerView==nil) {
-        _pickerView=[[XHCustomPickerView alloc] initWithDelegate:self];
+        _pickerView=[[XHCustomPickerView alloc] initWithDelegate:self itemArry:kFamilyList];
     }
     return _pickerView;
 }

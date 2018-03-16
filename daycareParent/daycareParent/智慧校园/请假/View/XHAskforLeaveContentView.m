@@ -126,7 +126,6 @@
    #pragma mark case 2 请假类型
             case 2:
         {
-            [self.pickerView setItemObjectArry:(NSMutableArray *)kAskforLeaveList];
             [self.pickerView show];
         }
             break;
@@ -605,7 +604,7 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
 -(XHCustomPickerView *)pickerView
 {
     if (_pickerView==nil) {
-        _pickerView=[[XHCustomPickerView alloc] initWithDelegate:self];
+        _pickerView=[[XHCustomPickerView alloc] initWithDelegate:self itemArry:kAskforLeaveList];
     }
     return _pickerView;
 }

@@ -26,12 +26,12 @@
 
 @implementation XHCustomPickerView
 
--(id)initWithDelegate:(id)delegate
+-(id)initWithDelegate:(id)delegate itemArry:(NSArray *)itemArry
 {
     if (self = [super initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)]) {
         self.backgroundColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
         [self addSubview:self.bgView];
-        
+        [self.itemArry setArray:itemArry];
         UIButton *cancleBtn=[[UIButton alloc] initWithFrame:CGRectMake(5, 5, 45, 45)];
         [cancleBtn setTitle:@"取消" forState:UIControlStateNormal];
         [cancleBtn addTarget:self action:@selector(cancleBtnClick) forControlEvents:UIControlEventTouchUpInside];

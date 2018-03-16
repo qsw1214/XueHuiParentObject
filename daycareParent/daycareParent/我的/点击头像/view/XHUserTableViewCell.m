@@ -26,10 +26,8 @@
         _headBtn.layer.cornerRadius=USER_HEARD/2.0;
         _headBtn.layer.masksToBounds=YES;
         [self.contentView addSubview:_headBtn];
-        _famman=[[UIImageView alloc] init];
-        _famman.image=[UIImage imageNamed:@"ico-famman"];
-        [self.contentView addSubview:_famman];
-        
+        _arrowsImageView=[[ParentImageView alloc] init];
+        [self.contentView addSubview:_arrowsImageView];
     }
     return self;
 }

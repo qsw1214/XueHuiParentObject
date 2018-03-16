@@ -20,7 +20,6 @@
 #define kTitlePic @[@"ico_number",@"ico_password"]
 @interface XHLoginViewController ()<UITableViewDelegate,UITableViewDataSource>
 
-@property(nonatomic,strong)UIScrollView *scrollView;
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,strong)ParentImageView *bgImageView;
 @property(nonatomic,strong)UIButton *loginButton;
@@ -34,7 +33,6 @@
 {
     [super viewDidLoad];
     [self navtionHidden:YES];
-    //[self.view addSubview:self.scrollView];
     ParentImageView *imageView=[[ParentImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     imageView.center=CGPointMake(SCREEN_WIDTH/2.0, 125);
     imageView.image=[UIImage imageNamed:@"login_logo"];
@@ -49,7 +47,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return kTitle.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -195,6 +193,7 @@
         _loginButton=[[UIButton alloc] initWithFrame:CGRectMake(10, 370, SCREEN_WIDTH-20, 50)];
         _loginButton.layer.cornerRadius=8;
         _loginButton.layer.masksToBounds=YES;
+        [_loginButton setTitleColor:LOGIN_BEFORE  forState:UIControlStateNormal];
         [_loginButton setBackgroundImage:[UIImage imageNamed:@"btn_logn"] forState:UIControlStateNormal];
         [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
         [_loginButton setTag:1];
@@ -232,14 +231,7 @@
     }
     return _bgImageView;
 }
--(UIScrollView *)scrollView
-{
-    if (_scrollView==nil) {
-        
-        _scrollView=[[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    }
-    return _scrollView;
-}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

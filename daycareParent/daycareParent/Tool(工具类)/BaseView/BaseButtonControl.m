@@ -384,6 +384,7 @@
          if (allType)
          {
              [obj setTextColor:color];
+             
          }
          else if (type == idx)
          {
@@ -392,6 +393,29 @@
          }
      }];
 }
+
+#pragma mark - 文本输入框颜色
+/**
+ 设置描述文字的颜色
+ */
+-(void)setInputSecureTextEntry:(BOOL)secureTextEntry withNumberType:(NSInteger)type withAllType:(BOOL)allType
+{
+    [self.textFieldArray enumerateObjectsUsingBlock:^(UITextField  *obj, NSUInteger idx, BOOL *  stop)
+     {
+         if (allType)
+         {
+             [obj setSecureTextEntry:secureTextEntry];
+             
+         }
+         else if (type == idx)
+         {
+             [obj setSecureTextEntry:secureTextEntry];
+             *stop = YES;
+         }
+     }];
+    
+}
+
 
 
 

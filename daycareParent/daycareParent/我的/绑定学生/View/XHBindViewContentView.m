@@ -102,6 +102,7 @@
         [_nameControl setFont:FontLevel2 withNumberType:0 withAllType:NO];
         [_nameControl setTextColor:RGB(153,153,153) withTpe:0 withAllType:NO];
         [_nameControl setInputTintColor:MainColor withNumberType:0 withAllType:NO];
+        [_nameControl addTarget:self action:@selector(bindAction:) forControlEvents:UIControlEventTouchUpInside];
         
     }
     return _nameControl;
@@ -119,6 +120,7 @@
         [_LearningNumberControl setFont:FontLevel2 withNumberType:0 withAllType:NO];
         [_LearningNumberControl setTextColor:RGB(153,153,153) withTpe:0 withAllType:NO];
         [_LearningNumberControl setInputTintColor:MainColor withNumberType:0 withAllType:NO];
+        [_LearningNumberControl addTarget:self action:@selector(bindAction:) forControlEvents:UIControlEventTouchUpInside];
         
     }
     return _LearningNumberControl;
@@ -136,6 +138,7 @@
         [_parentNameControl setFont:FontLevel2 withNumberType:0 withAllType:NO];
         [_parentNameControl setTextColor:RGB(153,153,153) withTpe:0 withAllType:NO];
         [_parentNameControl setInputTintColor:MainColor withNumberType:0 withAllType:NO];
+        [_parentNameControl addTarget:self action:@selector(bindAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _parentNameControl;
 }
@@ -155,6 +158,7 @@
         [_identityControl setTextColor:RGB(51,51,51) withTpe:0 withAllType:NO];
         [_identityControl setTextColor:RGB(51,51,51) withTpe:1 withAllType:NO];
         [_identityControl addTarget:self action:@selector(identityControlAction:) forControlEvents:UIControlEventTouchUpInside];
+        [_identityControl addTarget:self action:@selector(bindAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _identityControl;
 }
@@ -198,6 +202,10 @@
 
 
 #pragma mark - Private Method
+-(void)bindAction:(BaseButtonControl*)sender
+{
+   [self resignInputFirstResponder];
+}
 -(void)identityControlAction:(BaseButtonControl*)sender
 {
     
@@ -240,6 +248,7 @@
 
 -(void)submitAction:(BaseButtonControl*)sender
 {
+    [self resignInputFirstResponder];
     
     NSString *archiveId = [NSString safeString:[self.LearningNumberControl textFieldTitlewithNumberType:0]];
     NSString *studentName = [NSString safeString:[self.nameControl textFieldTitlewithNumberType:0]];
@@ -263,11 +272,24 @@
         [self.netWorkConfig setObject:archiveId forKey:@"archiveId"];  //!< 学生学号
         [self.netWorkConfig setObject:parentName forKey:@"nickName"];
         
+    
+        
         if ([self.actionDeletgate respondsToSelector:@selector(submitControlAction:)])
         {
             [self.actionDeletgate submitControlAction:self.netWorkConfig];
         }
     }
+}
+
+
+
+
+-(void)resignInputFirstResponder
+{
+    [self.nameControl resignInputFirstResponder];
+    [self.LearningNumberControl resignInputFirstResponder];
+    [self.parentNameControl resignInputFirstResponder];
+    [self.identityControl resignInputFirstResponder];
 }
 
 #pragma mark - Delegate Method

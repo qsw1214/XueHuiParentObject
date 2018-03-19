@@ -128,6 +128,7 @@
     {
         _passwordControl = [[BaseButtonControl alloc]init];
         [_passwordControl setNumberTextField:1];
+        [_passwordControl setInputSecureTextEntry:YES withNumberType:0 withAllType:NO];
         [_passwordControl setNumberLineView:1];
     }
     return _passwordControl;

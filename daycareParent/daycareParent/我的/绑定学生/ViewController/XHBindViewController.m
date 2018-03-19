@@ -54,42 +54,43 @@
 #pragma mark XHBindViewContentViewDelegate
 -(void)submitControlAction:(XHNetWorkConfig*)sender
 {
-//    [sender postWithUrl:@"zzjt-app-api_studentBinding001" sucess:^(id object, BOOL verifyObject)
-//    {
-//        if (verifyObject)
-//        {
-//            object = [object objectItemKey:@"object"];
-//            NSDictionary *propValue = [object objectItemKey:@"propValue"];
-//
-//            /**
-//
-//             （1.已经有第一监护人 0.没有被绑定过）
-//
-//             */
-//            NSInteger isBinding = [[propValue objectForKey:@"isBinding"] integerValue]; //!<
-//            XHAddBindPasswordViewController *addPassword = [[XHAddBindPasswordViewController alloc]init];
-//            if (isBinding)
-//            {
-//                [addPassword setType:XHAddBindSettingPasswordType];
-//            }
-//            else
-//            {
-//                [addPassword setType:XHAddBindEnterPasswordType];
-//            }
-//            [self.navigationController pushViewController:addPassword animated:YES];
-//
-//
-//        }
-//
-//
-//
-//    } error:^(NSError *error)
-//     {
-//
-//
-//
-//
-//     }];
+    [XHShowHUD showTextHud];
+    [sender postWithUrl:@"zzjt-app-api_studentBinding001" sucess:^(id object, BOOL verifyObject)
+    {
+        if (verifyObject)
+        {
+            object = [object objectItemKey:@"object"];
+            NSDictionary *propValue = [object objectItemKey:@"propValue"];
+            NSString *studentBaseId = [object objectItemKey:@"studentBaseId"]; //!< 根据查询出来学生信息填充绑定信息
+            [sender setObject:studentBaseId forKey:@"studentBaseId"];
+            /**
+             （1.已经有第一监护人 0.没有被绑定过）
+             */
+            
+            NSInteger isBinding = [[propValue objectForKey:@"isBinding"] integerValue]; //!<
+            XHAddBindPasswordViewController *addPassword = [[XHAddBindPasswordViewController alloc]init];
+            if (isBinding)
+            {
+                [addPassword setType:XHAddBindSettingPasswordType];
+            }
+            else
+            {
+                [addPassword setType:XHAddBindEnterPasswordType];
+            }
+            [self.navigationController pushViewController:addPassword animated:YES];
+
+
+        }
+
+
+
+    } error:^(NSError *error)
+     {
+
+
+
+
+     }];
     
 //    NSInteger isBinding = [[propValue objectForKey:@"isBinding"] integerValue]; //!<
     XHAddBindPasswordViewController *addPassword = [[XHAddBindPasswordViewController alloc]init];

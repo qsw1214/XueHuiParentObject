@@ -62,7 +62,7 @@
     
     else
     {
-        if (model.modelType==XHRCTeacherBookType)
+        if (model.modelType==XHRCTeacherBookType||[model.sum integerValue]==0)
         {
             self.smallLab.hidden=YES;
         }

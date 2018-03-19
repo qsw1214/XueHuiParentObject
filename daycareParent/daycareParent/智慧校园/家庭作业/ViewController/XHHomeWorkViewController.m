@@ -136,6 +136,21 @@
     [datePicker show];
 }
 
+-(void)getNetWorkData:(BOOL)work
+{
+    if (work)
+    {
+        [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].selfId forKey:@"guardianId"];
+        [self.netWorkConfig postWithUrl:@"zzjt-app-api_smartCampus004" sucess:^(id object, BOOL verifyObject)
+        {
+            
+        } error:^(NSError *error)
+         {
+             
+         }];
+    }
+}
+
 
 
 #pragma mark - Deletage Method

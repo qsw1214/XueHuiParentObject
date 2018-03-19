@@ -13,6 +13,7 @@
 
 @protocol XHDatePickerDelegate <NSObject>
 
+-(void)datePickerAction:(NSString*)date;
 
 
 @end

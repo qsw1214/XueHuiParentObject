@@ -49,6 +49,11 @@
 
 
 
+/**
+ 默认高度：60px
+
+ @param frame 头部切换视图
+ */
 -(void)resetFrame:(CGRect)frame
 {
     [self setFrame:frame];

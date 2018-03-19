@@ -52,11 +52,31 @@
 
 #pragma mark - Delertage Method
 #pragma mark XHBindViewContentViewDelegate
--(void)submitControlAction:(BaseButtonControl *)sender
+-(void)submitControlAction:(XHNetWorkConfig*)sender
 {
+    [sender postWithUrl:@"zzjt-app-api_studentBinding001" sucess:^(id object, BOOL verifyObject)
+    {
+        if (verifyObject)
+        {
+            
+            NSString *isBinding = @"";
+            
+            
+            
+        }
+        
+        
+        
+    } error:^(NSError *error)
+     {
+         
+         
+         
+         
+     }];
     
 //    [self.navigationController pushViewController:[[XHAddBindPasswordViewController alloc]init] animated:YES];
-    [self.navigationController pushViewController:[[XHStudentInfoViewController alloc]init] animated:YES];
+////    [self.navigationController pushViewController:[[XHStudentInfoViewController alloc]init] animated:YES];
 }
 
 -(XHBindViewContentView *)contentView

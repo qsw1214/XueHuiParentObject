@@ -14,7 +14,6 @@
 @property (nonatomic,strong) BaseButtonControl *nameControl; //!< 名称
 @property (nonatomic,strong) BaseButtonControl *LearningNumberControl; //!< 学号
 @property (nonatomic,strong) BaseButtonControl *parentNameControl;  //!< 家长姓名
-@property (nonatomic,strong) BaseButtonControl *passwrdControl; //!< 设置密码
 @property (nonatomic,strong) BaseButtonControl *identityControl;  //!< 身份
 @property (nonatomic,strong) BaseButtonControl *submitControl;
 
@@ -35,7 +34,6 @@
         [self addSubview:self.nameControl];
         [self addSubview:self.LearningNumberControl];
         [self addSubview:self.parentNameControl];
-        [self addSubview:self.passwrdControl];
         [self addSubview:self.identityControl];
         [self addSubview:self.submitControl];
         
@@ -67,14 +65,9 @@
     [self.parentNameControl setTitleEdgeFrame:CGRectMake(10.0, 0, 100.0, self.parentNameControl.height) withNumberType:0 withAllType:NO];
     [self.parentNameControl setInputEdgeFrame:CGRectMake(110.0, 0, (self.parentNameControl.width-120.0), self.parentNameControl.height) withNumberType:0 withAllType:NO];
     [self.parentNameControl resetLineViewFrame:CGRectMake(0, (self.parentNameControl.height-0.5), self.parentNameControl.width, 0.5) withNumberType:0 withAllType:NO];
-    //!< 重置密码Frame
-    [self.passwrdControl resetFrame:CGRectMake(0, self.parentNameControl.bottom, self.parentNameControl.width, self.parentNameControl.height+10.0)];
-    [self.passwrdControl setTitleEdgeFrame:CGRectMake(10.0, 0, 100.0, (self.passwrdControl.height-10.0)) withNumberType:0 withAllType:NO];
-    [self.passwrdControl setInputEdgeFrame:CGRectMake(110.0, 0, (self.passwrdControl.width-120.0), (self.passwrdControl.height-10.0)) withNumberType:0 withAllType:NO];
-    [self.passwrdControl resetLineViewFrame:CGRectMake(0, (self.passwrdControl.height-10.0), self.passwrdControl.width, 10.0) withNumberType:0 withAllType:NO];
     
     //!< 身份Frame
-    [self.identityControl resetFrame:CGRectMake(0, self.passwrdControl.bottom, self.passwrdControl.width, self.passwrdControl.height)];
+    [self.identityControl resetFrame:CGRectMake(0, self.parentNameControl.bottom, self.parentNameControl.width, self.parentNameControl.height)];
     [self.identityControl setTitleEdgeFrame:CGRectMake(10.0, 0, ((frame.size.width-20.0)/2.0), self.identityControl.height) withNumberType:0 withAllType:NO];
     [self.identityControl setTitleEdgeFrame:CGRectMake((frame.size.width/2.0), 0, (((frame.size.width-20.0)/2.0)-40.0), self.identityControl.height) withNumberType:1 withAllType:NO];
     [self.identityControl setImageEdgeFrame:CGRectMake((frame.size.width-30.0), (self.identityControl.height-15.0)/2.0, 15.0, 15.0) withNumberType:0 withAllType:NO];
@@ -105,6 +98,7 @@
         [_nameControl setText:@"学生姓名" withNumberType:0 withAllType:NO];
         [_nameControl setFont:FontLevel2 withNumberType:0 withAllType:NO];
         [_nameControl setTextColor:RGB(153,153,153) withTpe:0 withAllType:NO];
+        [_nameControl setInputTintColor:MainColor withNumberType:0 withAllType:NO];
         
     }
     return _nameControl;
@@ -121,6 +115,7 @@
         [_LearningNumberControl setText:@"请输入学号" withNumberType:0 withAllType:NO];
         [_LearningNumberControl setFont:FontLevel2 withNumberType:0 withAllType:NO];
         [_LearningNumberControl setTextColor:RGB(153,153,153) withTpe:0 withAllType:NO];
+        [_LearningNumberControl setInputTintColor:MainColor withNumberType:0 withAllType:NO];
         
     }
     return _LearningNumberControl;
@@ -137,24 +132,9 @@
         [_parentNameControl setText:@"家长姓名" withNumberType:0 withAllType:NO];
         [_parentNameControl setFont:FontLevel2 withNumberType:0 withAllType:NO];
         [_parentNameControl setTextColor:RGB(153,153,153) withTpe:0 withAllType:NO];
+        [_parentNameControl setInputTintColor:MainColor withNumberType:0 withAllType:NO];
     }
     return _parentNameControl;
-}
-
--(BaseButtonControl *)passwrdControl
-{
-    if (!_passwrdControl)
-    {
-        _passwrdControl = [[BaseButtonControl alloc]init];
-        [_passwrdControl setNumberLabel:1];
-        [_passwrdControl setNumberTextField:1];
-        [_passwrdControl setNumberLineView:1];
-        [_passwrdControl setText:@"设置绑定密码" withNumberType:0 withAllType:NO];
-        [_passwrdControl setinputTextPlaceholder:@"（6-20位英文、数字组合）" withNumberType:0 withAllType:NO];
-        [_passwrdControl setFont:FontLevel2 withNumberType:0 withAllType:NO];
-        [_passwrdControl setTextColor:RGB(153,153,153) withTpe:0 withAllType:NO];
-    }
-    return _passwrdControl;
 }
 
 -(BaseButtonControl *)identityControl
@@ -198,7 +178,6 @@
     [self.nameControl setItemColor:color];
     [self.LearningNumberControl setItemColor:color];
     [self.parentNameControl setItemColor:color];
-    [self.passwrdControl setItemColor:color];
     [self.identityControl setItemColor:color];
     [self.submitControl setItemColor:color];
 }
@@ -206,10 +185,42 @@
 
 -(void)submitAction:(BaseButtonControl*)sender
 {
-    if ([self.actionDeletgate respondsToSelector:@selector(submitControlAction:)])
+    
+    NSString *archiveId = [NSString safeString:[self.LearningNumberControl textFieldTitlewithNumberType:0]];
+    NSString *studentName = [NSString safeString:[self.nameControl textFieldTitlewithNumberType:0]];
+    NSString *parentName = [NSString safeString:[self.parentNameControl textFieldTitlewithNumberType:0]];
+    XHNetWorkConfig *netWorkConfig = [[XHNetWorkConfig alloc]init];
+    if ([studentName isEqualToString:@""])
     {
-        [self.actionDeletgate submitControlAction:sender];
+        [XHShowHUD showNOHud:@"学生姓名不能为空"];
     }
+    else if ([archiveId isEqualToString:@""])
+    {
+        [XHShowHUD showNOHud:@"学号不能为空"];
+    }
+    else if ([parentName isEqualToString:@""])
+    {
+        [XHShowHUD showNOHud:@"家长姓名不能为空"];
+    }
+    else
+    {
+        [netWorkConfig setObject:studentName forKey:@"studentName"]; //!< 学生姓名
+        [netWorkConfig setObject:archiveId forKey:@"archiveId"];  //!< 学生学号
+        [netWorkConfig setObject:parentName forKey:@"nickName"];
+        
+        if ([self.actionDeletgate respondsToSelector:@selector(submitControlAction:)])
+        {
+            [self.actionDeletgate submitControlAction:netWorkConfig];
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+   
 }
 
 

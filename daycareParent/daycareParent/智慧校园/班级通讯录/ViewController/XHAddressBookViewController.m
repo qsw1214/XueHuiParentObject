@@ -31,7 +31,6 @@
 {
     [super viewDidLoad];
     [self setNavtionTitle:@"通讯录"];
-    [[XHHelper sharedHelper] addObserver:self forKeyPath:@"KVO" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:@"接收用户点击的行"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -141,9 +140,6 @@
                       [frame setModel:model];
                       [self.tableArray addObject:frame];
                   }];
-                 
-                 
-                 
                  [self.mainTableView refreshReloadData];
              }
              
@@ -159,20 +155,6 @@
 }
 
 
-
-/* 2.只要object的keyPath属性发生变化，就会调用此回调方法，进行相应的处理：UI更新：*/
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
-{
-    if([keyPath isEqualToString:@"KVO"])
-    {
-        NSInteger kvoTag = [[change valueForKey:@"new"] integerValue];
-        NSLog(@"%zd",kvoTag);
-        // 响应变化处理：UI更新（label文本改变）
-        
-        //上文注册时，枚举为2个，因此可以提取change字典中的新、旧值的这两个方法
-        NSLog(@"\noldnum:%@ newnum:%@",[change valueForKey:@"old"],[change valueForKey:@"new"]);
-    }
-}
 
 
 

@@ -13,7 +13,7 @@
 
 @protocol XHBindViewContentViewDelegate <NSObject>
 
--(void)submitControlAction:(BaseButtonControl*)sender;
+-(void)submitControlAction:(XHNetWorkConfig*)sender;
 
 
 @end

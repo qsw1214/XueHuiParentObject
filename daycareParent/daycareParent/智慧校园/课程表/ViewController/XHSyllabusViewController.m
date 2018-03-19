@@ -9,13 +9,15 @@
 #import "XHSyllabusViewController.h"
 #import "XHSyllabusCell.h"
 #import "XHDropDownMenuControl.h"
+#import "XHAddressBookHeader.h"
 
 
 
 
-@interface XHSyllabusViewController () <UITableViewDelegate,UITableViewDataSource>
 
+@interface XHSyllabusViewController () <UITableViewDelegate,UITableViewDataSource,XHAddressBookHeaderDelegate>
 
+@property (nonatomic,strong) XHAddressBookHeader *addressBookHeader;
 @property (nonatomic,strong) BaseButtonControl *weekMenuControl; //!< 菜单选择菜单
 
 
@@ -45,52 +47,50 @@
 {
     if (subview)
     {
-        [self.view addSubview:self.weekMenuControl];
-        [self.weekMenuControl resetFrame:CGRectMake(((SCREEN_WIDTH-100.0)/2.0), (self.navigationView.height-44.0), 100.0, 44.0)];
-        [self.weekMenuControl setTitleEdgeFrame:CGRectMake(0, 0, 0, self.weekMenuControl.height) withNumberType:0 withAllType:NO];
-        [self.weekMenuControl setImageEdgeFrame:CGRectMake((self.weekMenuControl.width-10.0), ((self.weekMenuControl.height-10.0)/2.0), 10.0, 10.0) withNumberType:0 withAllType:NO];
+        [self.view addSubview:self.addressBookHeader];
+        [self.addressBookHeader resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, 60.0)];
         [self.view setBackgroundColor:RGB(229,229,229)];
         [self.view addSubview:self.mainTableView];
         [self.mainTableView setDelegate:self];
         [self.mainTableView setDataSource:self];
-        [self.mainTableView resetFrame:CGRectMake(0, (self.navigationView.bottom+10.0), SCREEN_WIDTH, CONTENT_HEIGHT)];
+        [self.mainTableView resetFrame:CGRectMake(0, (self.addressBookHeader.bottom+10.0), SCREEN_WIDTH, CONTENT_HEIGHT)];
         
         
         
-        
-        for (int i = 0; i <1; i++)
-        {
-            XHSyllabusFrame *frame = [[XHSyllabusFrame alloc]init];
-            XHSyllabusModel *model = [[XHSyllabusModel alloc]init];
-            [model setMonth:@"12\n月"];
-            [model setMonday:@"1\n周一"];
-            [model setTuesday:@"2\n周二"];
-            [model setWednesday:@"3\n周三"];
-            [model setThursday:@"4\n周四"];
-            [model setFriday:@"5\n周五"];
-            [model setModelType:SyllabusWeekType];
-            [frame setModel:model];
-            [self.dataArray addObject:frame];
-        }
-
-
-        for (int i = 0; i <20; i++)
-        {
-            XHSyllabusFrame *frame = [[XHSyllabusFrame alloc]init];
-            XHSyllabusModel *model = [[XHSyllabusModel alloc]init];
-            [model setMonth:[NSString stringWithFormat:@"%d",(i+1)]];
-            [model setMonday:@"语文"];
-            [model setTuesday:@"数学"];
-            [model setWednesday:@"英语"];
-            [model setThursday:@"物理"];
-            [model setFriday:@"化学"];
-            [model setModelType:SyllabusContentType];
-            [frame setModel:model];
-            [self.dataArray addObject:frame];
-        }
-        
-        
-        [self.mainTableView reloadData];
+//
+//        for (int i = 0; i <1; i++)
+//        {
+//            XHSyllabusFrame *frame = [[XHSyllabusFrame alloc]init];
+//            XHSyllabusModel *model = [[XHSyllabusModel alloc]init];
+//            [model setMonth:@"12\n月"];
+//            [model setMonday:@"1\n周一"];
+//            [model setTuesday:@"2\n周二"];
+//            [model setWednesday:@"3\n周三"];
+//            [model setThursday:@"4\n周四"];
+//            [model setFriday:@"5\n周五"];
+//            [model setModelType:SyllabusWeekType];
+//            [frame setModel:model];
+//            [self.dataArray addObject:frame];
+//        }
+//
+//
+//        for (int i = 0; i <20; i++)
+//        {
+//            XHSyllabusFrame *frame = [[XHSyllabusFrame alloc]init];
+//            XHSyllabusModel *model = [[XHSyllabusModel alloc]init];
+//            [model setMonth:[NSString stringWithFormat:@"%d",(i+1)]];
+//            [model setMonday:@"语文"];
+//            [model setTuesday:@"数学"];
+//            [model setWednesday:@"英语"];
+//            [model setThursday:@"物理"];
+//            [model setFriday:@"化学"];
+//            [model setModelType:SyllabusContentType];
+//            [frame setModel:model];
+//            [self.dataArray addObject:frame];
+//        }
+//
+//
+//        [self.mainTableView reloadData];
     
     }
 }
@@ -124,70 +124,96 @@
 }
 
 
-
-
-
-
-
-#pragma mark 获取成绩
--(void)getSyllabusWithMode:(XHChildListModel*)model
+#pragma mark XHAddressBookHeaderDelegate
+-(void)didSelectItem:(XHChildListModel*)model
 {
-//    if (model)
-//    {
-//        [self.netWorkConfig setObject:self.childModel.clazzId forKey:@"classId"];
-//        [self.netWorkConfig postWithUrl:@"zzjt-app-api_smartCampus006" sucess:^(id object, BOOL verifyObject)
-//         {
-//             if (verifyObject)
-//             {
-//                 [self.dataArray removeAllObjects];
-//                 NSArray *arr=[object objectItemKey:@"object"];
-//                 for (NSDictionary *dic in arr)
-//                 {
-//                     XHSyllabusFrame *frame = [[XHSyllabusFrame alloc]init];
-//                     XHSyllabusModel *model = [[XHSyllabusModel alloc]init];
-//                     [model setTime:[dic objectItemKey:@"coursetime"]];
-//                     [model setSubject:[dic objectItemKey:@"subjectName"]];
-//                     [model setWeekday:[dic objectItemKey:@"weekday"]];
-//                     [frame setModel:model];
-//                     [self.dataArray addObject:frame];
-//                 }
-//                 [self.dataArray setArray:[XHSortedArrayComparator sortedArrayUsingComparatorWithSyllabusKeyArray:self.dataArray]];
-//
-//                 [self getSelectSub];
-//                 [self.tableView refreshReloadData];
-//
-//             }
-//
-//         } error:^(NSError *error) {
-//             [self getSelectSub];
-//             [self.tableView refreshReloadData];
-//         }];
-//    }
-//    else
-//    {
-//        [self getSelectSub];
-//        [self.tableView refreshReloadData];
-//    }
+    [self.netWorkConfig setObject:@"900600746423382016" forKey:@"classId"];
+    [self getNetWorkData:YES];
 }
 
 
-
-#pragma mark - Private Method
--(void)weekMenuControlAction:(BaseButtonControl*)sender
+#pragma mark - NetWorkData
+-(void)getNetWorkData:(BOOL)work
 {
-    NSMutableArray *tempArray = [NSMutableArray array];
-    for (int i=0; i<10; i++)
+    if (work)
     {
-        XHDropDownMenuModel *model = [[XHDropDownMenuModel alloc]init];
-        [model setTitle:@"一年级三班"];
-        [model setObjectID:@"ADSFOP1903LSW"];
-        [tempArray addObject:model];
+        [self.netWorkConfig postWithUrl:@"zzjt-app-api_smartCampus020" sucess:^(id object, BOOL verifyObject)
+        {
+            object = [object objectItemKey:@"object"];
+            NSArray *dateArray = [object objectForKey:@"date"];
+            NSArray *syllabusArray = [object objectForKey:@"syllabus"];
+            
+            XHSyllabusFrame *frame = [[XHSyllabusFrame alloc]init];
+            XHSyllabusModel *model = [[XHSyllabusModel alloc]init];
+            
+            [NSArray enumerateObjectsWithArray:dateArray usingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop)
+            {
+                NSArray *firstArray = [obj componentsSeparatedByString:@"-"];
+                NSString *year = [firstArray firstObject];
+                NSString *month = [firstArray objectAtIndex:1];
+                NSString *day = [firstArray lastObject];
+                switch (idx)
+                {
+                    case 0:
+                    {
+                       
+                        [model setMonth:[NSString stringWithFormat:@"%@\n月",month]];
+                        [model setMonday:[NSString stringWithFormat:@"%@\n周一",day]];
+                    }
+                        break;
+                    case 1:
+                    {
+                        [model setTuesday:[NSString stringWithFormat:@"%@\n周二",day]];
+                    }
+                        break;
+                    case 2:
+                    {
+                        [model setWednesday:[NSString stringWithFormat:@"%@\n周三",day]];
+                    }
+                        break;
+                    case 3:
+                    {
+                        
+                        [model setThursday:[NSString stringWithFormat:@"%@\n周四",day]];
+                    }
+                        break;
+                    case 4:
+                    {
+                        [model setFriday:[NSString stringWithFormat:@"%@\n周五",day]];
+                    }
+                        break;
+                }
+            }];
+            
+            [model setModelType:SyllabusWeekType];
+            [frame setModel:model];
+            [self.dataArray addObject:frame];
+            
+            
+    
+            
+            [NSArray enumerateObjectsWithArray:syllabusArray usingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop)
+             {
+                 NSMutableArray *tempArray = [NSMutableArray array];
+                 for (int i = 0; i < 5; i++)
+                 {
+                     [tempArray addObject:object];
+                 }
+                 
+                 if ([tempArray count]>=5)
+                 {
+                     
+                 }
+                 
+             }];
+            
+            [self.mainTableView reloadData];
+            
+            
+            
+            
+        } error:^(NSError *error){}];
     }
-    
-    
-    XHDropDownMenuControl *downMenu = [[XHDropDownMenuControl alloc]initWithDeletage:self];
-    [downMenu setDataArray:tempArray];
-    [downMenu show];
 }
 
 
@@ -199,24 +225,15 @@
     
 }
 
-
-
--(BaseButtonControl *)weekMenuControl
+-(XHAddressBookHeader *)addressBookHeader
 {
-    if (!_weekMenuControl)
+    if (!_addressBookHeader)
     {
-        _weekMenuControl = [[BaseButtonControl alloc]init];
-        [_weekMenuControl setNumberLabel:1];
-        [_weekMenuControl setNumberImageView:1];
-        [_weekMenuControl setFont:FontLevel1 withNumberType:0 withAllType:NO];
-        [_weekMenuControl setTextAlignment:NSTextAlignmentCenter withNumberType:0 withAllType:NO];
-        [_weekMenuControl setImage:@"ico_arr_week" withNumberType:0 withAllType:NO];
-        [_weekMenuControl addTarget:self action:@selector(weekMenuControlAction:) forControlEvents:UIControlEventTouchUpInside];
-        [_weekMenuControl setItemColor:NO];
+        _addressBookHeader = [[XHAddressBookHeader alloc]init];
+        [_addressBookHeader setDelegate:self];
     }
-    return _weekMenuControl;
+    return _addressBookHeader;
 }
-
 
 
 

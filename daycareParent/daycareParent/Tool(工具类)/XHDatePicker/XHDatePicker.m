@@ -75,6 +75,21 @@
 }
 
 
+-(void)datePickerAction:(NSDate*)date
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"YYYY-MM-DD"];
+    NSString  *string = [[NSString alloc]init];
+    string = [dateFormatter stringFromDate:date];
+    
+    
+    if ([self.delegate respondsToSelector:@selector(datePickerAction:)])
+    {
+        [self.delegate datePickerAction:string];
+    }
+    
+}
+
 
 
 #pragma mark - Getter /  Setter

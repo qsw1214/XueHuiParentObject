@@ -13,7 +13,7 @@
 
 
 
-@interface XHHomeWorkViewController () <UITableViewDataSource,UITableViewDelegate>
+@interface XHHomeWorkViewController () <UITableViewDataSource,UITableViewDelegate,XHDatePickerDelegate>
 
 
 
@@ -191,6 +191,10 @@
 }
 
 #pragma mark XHDatePickerDelegate
+-(void)datePickerAction:(NSString *)date
+{
+    NSLog(@"%@",date);
+}
 
 
 

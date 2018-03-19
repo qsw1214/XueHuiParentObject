@@ -129,6 +129,9 @@
 #pragma mark case NotifyType
         case NotifyType:
         {
+            //!< 学科
+            [self.subjectLabel setHidden:YES];
+            
             //设置头像
             [self.headerImageView setFrame:CGRectMake(10.0, 10.0, 40.0, 40.0)];
             [self.headerImageView setLayerCornerRadius:(self.headerImageView.height/2.0)];

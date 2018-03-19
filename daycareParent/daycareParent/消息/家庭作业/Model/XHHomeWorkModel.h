@@ -50,5 +50,8 @@ typedef NS_ENUM(NSInteger,HomeWorkModelType)
 @property (nonatomic,assign) XHHomeWorkContentType contentType; //!< 内容类型
 
 
+#pragma mark 设置通知对象
+//!< 设置通知对象
+-(void)setNoticeItemObject:(NSDictionary*)object;
 
 @end

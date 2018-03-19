@@ -43,6 +43,7 @@
     {
         [self.mainTableView setDelegate:self];
         [self.mainTableView setDataSource:self];
+        [self.mainTableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHeaderAction)];
         [self.mainTableView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, CONTENT_HEIGHT)];
         [self.view addSubview:self.mainTableView];
         
@@ -151,6 +152,10 @@
     }
 }
 
+-(void)refreshHeaderAction
+{
+    [self getNetWorkData:YES];
+}
 
 
 #pragma mark - Deletage Method
@@ -184,6 +189,8 @@
 {
     
 }
+
+##pragma mark XHDatePickerDelegate
 
 
 

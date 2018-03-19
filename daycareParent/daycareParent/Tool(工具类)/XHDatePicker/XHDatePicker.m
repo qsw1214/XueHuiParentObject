@@ -83,6 +83,7 @@
     if (!_datePickerBoard)
     {
         _datePickerBoard = [[XHDatePickerBoard alloc]init];
+        [_datePickerBoard.datePicker addTarget:self action:@selector(a) forControlEvents:UIControlEventValueChanged];
     }
     return _datePickerBoard;
 }

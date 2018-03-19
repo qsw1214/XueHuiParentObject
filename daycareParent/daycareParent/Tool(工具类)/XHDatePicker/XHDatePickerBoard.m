@@ -11,7 +11,7 @@
 
 @interface XHDatePickerBoard ()
 
-@property (nonatomic,strong) UIDatePicker *datePicker; //!< 日期选择器
+
 @property (nonatomic,strong) UILabel *tipLabel; //!< 提示标签
 
 

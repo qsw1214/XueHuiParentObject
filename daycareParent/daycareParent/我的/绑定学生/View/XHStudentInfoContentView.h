@@ -25,5 +25,7 @@
 
 @property (nonatomic,weak) id <XHStudentInfoContentViewDelegate> infoDelegate;
 
+-(void)getChildInfo:(XHChildListModel*)model;
+
 
 @end

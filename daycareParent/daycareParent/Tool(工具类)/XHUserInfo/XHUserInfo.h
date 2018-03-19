@@ -13,7 +13,7 @@
 @property (nonatomic,copy) NSString *age; //!< age
 @property (nonatomic,copy) NSString *birthdate;//!< birthdate
 @property (nonatomic,copy) NSString *headPic;//!< 头像
-@property (nonatomic,copy) NSString *ID;//!< ID
+@property (nonatomic,copy) NSString *ID;//!< ID  用户的id
 @property (nonatomic,copy) NSString *loginName;//!< 登录名
 @property (nonatomic,copy) NSString *nickName;//!<  用户昵称
 @property (nonatomic,copy) NSString *selfId;//!< 教师家长表ID

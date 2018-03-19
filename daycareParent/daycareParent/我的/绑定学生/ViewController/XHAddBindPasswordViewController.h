@@ -7,11 +7,30 @@
 //
 
 
+
+
 #pragma mark 设置绑定密码
+
+typedef NS_ENUM(NSInteger,XHAddBindPasswordType)
+{
+    XHAddBindEnterPasswordType = 1, //!< 输入新密码
+    XHAddBindSettingPasswordType = 2, //!<设置密码
+};
+
+
+
+
 
 
 #import "BaseViewController.h"
 
 @interface XHAddBindPasswordViewController : BaseViewController
 
+
+@property (nonatomic,assign) XHAddBindPasswordType type;
+
+
 @end
+
+
+

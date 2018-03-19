@@ -38,4 +38,5 @@
 #import "XHUserInfo.h"
 #import "XHGuardianInfo.h"
 #import "XHHelper.h"
+#import "XHAlertControl.h"
 #endif /* Header_h */

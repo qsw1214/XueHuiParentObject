@@ -7,10 +7,13 @@
 //
 
 #import "XHBindViewContentView.h"
+#import "XHAlertControl.h"
 
-@interface XHBindViewContentView ()
+
+@interface XHBindViewContentView () <XHAlertControlDelegate>
 
 
+@property (nonatomic,strong) XHNetWorkConfig *netWorkConfig;
 @property (nonatomic,strong) BaseButtonControl *nameControl; //!< 名称
 @property (nonatomic,strong) BaseButtonControl *LearningNumberControl; //!< 学号
 @property (nonatomic,strong) BaseButtonControl *parentNameControl;  //!< 家长姓名
@@ -151,6 +154,7 @@
         [_identityControl setFont:FontLevel2 withNumberType:0 withAllType:NO];
         [_identityControl setTextColor:RGB(51,51,51) withTpe:0 withAllType:NO];
         [_identityControl setTextColor:RGB(51,51,51) withTpe:1 withAllType:NO];
+        [_identityControl addTarget:self action:@selector(identityControlAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _identityControl;
 }
@@ -173,6 +177,15 @@
 }
 
 
+-(XHNetWorkConfig *)netWorkConfig
+{
+    if (!_netWorkConfig)
+    {
+        _netWorkConfig = [[XHNetWorkConfig alloc]init];
+    }
+    return _netWorkConfig;
+}
+
 -(void)setItemColor:(BOOL)color
 {
     [self.nameControl setItemColor:color];
@@ -183,13 +196,55 @@
 }
 
 
+
+#pragma mark - Private Method
+-(void)identityControlAction:(BaseButtonControl*)sender
+{
+    
+    NSMutableArray *alertArray = [NSMutableArray array];
+    for (int i= 0; i< 3; i++)
+    {
+        XHAlertModel *model = [[XHAlertModel alloc]init];
+        switch (i)
+        {
+            case 0:
+            {
+                [model setName:@"爸爸"];
+                [model setIdentityType:@"1"];
+            }
+                break;
+            case 1:
+            {
+                [model setName:@"妈妈"];
+                [model setIdentityType:@"2"];
+            }
+                break;
+            case 2:
+            {
+                [model setName:@"其他"];
+                [model setIdentityType:@"3"];
+            }
+                break;
+        }
+        
+        [alertArray addObject:model];
+    }
+    
+    XHAlertControl *alert = [[XHAlertControl alloc]initWithDelegate:self];
+    [alert setTitle:@"请选择您的身份"];
+    [alert setItemArray:alertArray];
+    [alert setBoardType:XHAlertBoardOptionType];
+    [alert show];
+}
+
+
 -(void)submitAction:(BaseButtonControl*)sender
 {
     
     NSString *archiveId = [NSString safeString:[self.LearningNumberControl textFieldTitlewithNumberType:0]];
     NSString *studentName = [NSString safeString:[self.nameControl textFieldTitlewithNumberType:0]];
     NSString *parentName = [NSString safeString:[self.parentNameControl textFieldTitlewithNumberType:0]];
-    XHNetWorkConfig *netWorkConfig = [[XHNetWorkConfig alloc]init];
+    [self.netWorkConfig setObject:@"0" forKey:@"guardianType"]; //!< 默认是“爸爸”
     if ([studentName isEqualToString:@""])
     {
         [XHShowHUD showNOHud:@"学生姓名不能为空"];
@@ -204,23 +259,26 @@
     }
     else
     {
-        [netWorkConfig setObject:studentName forKey:@"studentName"]; //!< 学生姓名
-        [netWorkConfig setObject:archiveId forKey:@"archiveId"];  //!< 学生学号
-        [netWorkConfig setObject:parentName forKey:@"nickName"];
+        [self.netWorkConfig setObject:studentName forKey:@"studentName"]; //!< 学生姓名
+        [self.netWorkConfig setObject:archiveId forKey:@"archiveId"];  //!< 学生学号
+        [self.netWorkConfig setObject:parentName forKey:@"nickName"];
         
         if ([self.actionDeletgate respondsToSelector:@selector(submitControlAction:)])
         {
-            [self.actionDeletgate submitControlAction:netWorkConfig];
+            [self.actionDeletgate submitControlAction:self.netWorkConfig];
         }
     }
+}
+
+#pragma mark - Delegate Method
+#pragma mark - XHAlertControlDelegate (点击切换身份id的内容)
+-(void)alertBoardControlAction:(XHAlertModel *)sender
+{
+    if (sender)
+    {
+        [self.netWorkConfig setObject:sender.identityType forKey:@"guardianType"];
+    }
     
-    
-    
-    
-    
-    
-    
-   
 }
 
 

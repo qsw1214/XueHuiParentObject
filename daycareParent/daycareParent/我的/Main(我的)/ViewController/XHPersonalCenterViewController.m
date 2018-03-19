@@ -208,7 +208,7 @@
         [_h_view addSubview:self.childCollectionView];
         [self.childCollectionView setItemArray:self.childArry];
         @WeakObj(self);
-        self.childCollectionView.selectBlock = ^(NSInteger index,NSString *childName) {
+        self.childCollectionView.selectBlock = ^(NSInteger index,NSString *childName,XHChildListModel *model) {
             @StrongObj(self);
             if (index==self.childArry.count-1) {
 #pragma mark -----跳转到绑定孩子界面
@@ -220,12 +220,7 @@
 #pragma mark -----跳转到绑定孩子详情界面
                 @StrongObj(self);
                 XHStudentInfoViewController *student=[[XHStudentInfoViewController alloc] initHiddenWhenPushHidden];
-//                student.model=[XHUserInfo sharedUserInfo].childListArry[index];
-//                student.isRefresh = ^(BOOL ok) {
-//                    if (ok) {
-//                        [self getChildListNet];
-//                    }
-//                };
+                [student getChildInfo:model];
                 [self.navigationController pushViewController:student animated:YES];
             }
         };

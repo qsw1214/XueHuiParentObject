@@ -12,6 +12,8 @@
 #import "XHRCTableViewCell.h"
 #import "XHRCModel.h"
 #import "XHTeacherAddressBookViewController.h"
+#import "XHHomeWorkViewController.h"
+#import "XHNoticeListViewController.h"
 #define kTitleList @[@"给老师留言",@"家庭作业",@"通知公告"]
 #define kTitlePic @[@"im_notice",@"im_message",@"im_book",@"im_notice"]
 @interface XHChatViewController ()
@@ -117,18 +119,21 @@
                 case XHRCTeacherBookType:
                 {
                     XHTeacherAddressBookViewController *teacherBook=[[XHTeacherAddressBookViewController alloc] initHiddenWhenPushHidden];
+                    teacherBook.enterType=TeacherAddressBookIMType;
                     [teacherBook setNavtionTitle:@"给老师留言"];
                     [self.navigationController pushViewController:teacherBook animated:YES];
                 }
                     break;
                     case XHRCHomeWorkType:
                 {
-                    
+                    XHHomeWorkViewController *homeWork=[[XHHomeWorkViewController alloc] initHiddenWhenPushHidden];
+                    [self.navigationController pushViewController:homeWork animated:YES];
                 }
                     break;
                     case XHRCnoticeType:
                 {
-                    
+                    XHNoticeListViewController *notice=[[XHNoticeListViewController alloc] initHiddenWhenPushHidden];
+                    [self.navigationController pushViewController:notice animated:YES];
                 }
                     break;
         }

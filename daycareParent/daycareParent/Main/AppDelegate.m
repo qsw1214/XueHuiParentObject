@@ -275,8 +275,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 - (void)setJpushAlias:(NSString *)loginName
 {
     [JPUSHService setTags:nil alias:loginName fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias){
-        NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, iTags, iAlias);
-    }];
+            NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, iTags, iAlias);
+        }];
 }
 
 #pragma mark==========刷新当前用户信息

@@ -13,7 +13,7 @@
 @interface XHDatePicker ()
 
 @property (nonatomic,strong) XHDatePickerBoard *datePickerBoard; //!< 日期模块
-
+@property (nonatomic,copy) NSString *date; //!< 日期
 
 @end
 
@@ -27,8 +27,10 @@
     if (self)
     {
         [self addSubview:self.datePickerBoard];
+        [self.datePickerBoard.cancleControl setTag:1];
         [self.datePickerBoard.cancleControl addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
-        [self.datePickerBoard.confirmControl addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
+        [self.datePickerBoard.confirmControl setTag:2];
+        [self.datePickerBoard.confirmControl addTarget:self action:@selector(confirmControlAction) forControlEvents:UIControlEventTouchUpInside];
         [self.datePickerBoard resetFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 200.0)];
         [self setBackgroundColor:RGBAlpha(0, 0, 0, 0.3)];
         [self addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
@@ -48,16 +50,22 @@
 #pragma mark - Public Method
 -(void)show
 {
-    
+    self.date = [NSDate getDateStrWithDateFormatter:YY_DEFAULT_TIME_FORM Date:[NSDate date]];
     [kWindow addSubview:self];
     [UIView animateWithDuration:0.25 animations:^{
-        
         [self.datePickerBoard setFrame:CGRectMake(0, SCREEN_HEIGHT-self.datePickerBoard.height, SCREEN_WIDTH, self.datePickerBoard.height)];
-        
-        
     } completion:^(BOOL finished) {}];
 }
 
+
+-(void)confirmControlAction
+{
+    if ([self.delegate respondsToSelector:@selector(datePickerAction:)])
+    {
+        [self.delegate datePickerAction:self.date];
+    }
+      [self dismiss];
+}
 
 
 -(void)dismiss
@@ -66,7 +74,6 @@
         
         [self.datePickerBoard setFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, self.datePickerBoard.height)];
         
-        
     } completion:^(BOOL finished)
     {
         [self removeFromSuperview];
@@ -74,23 +81,11 @@
     }];
 }
 
-
--(void)datePickerAction:(NSDate*)date
+-(void)datePickerAction:(UIDatePicker*)picker
 {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-    [dateFormatter setDateFormat:@"YYYY-MM-DD"];
-    NSString  *string = [[NSString alloc]init];
-    string = [dateFormatter stringFromDate:date];
-    
-    
-    if ([self.delegate respondsToSelector:@selector(datePickerAction:)])
-    {
-        [self.delegate datePickerAction:string];
-    }
+    self.date = [NSDate getDateStrWithDateFormatter:YY_DEFAULT_TIME_FORM Date:picker.date];
     
 }
-
-
 
 #pragma mark - Getter /  Setter
 -(XHDatePickerBoard *)datePickerBoard
@@ -102,7 +97,13 @@
     }
     return _datePickerBoard;
 }
-
+-(NSString *)date
+{
+    if (_date==nil) {
+        _date=[[NSString alloc] init];
+    }
+    return _date;
+}
 
 
 @end

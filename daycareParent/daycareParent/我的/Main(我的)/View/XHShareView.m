@@ -122,7 +122,7 @@
 - (void)share:(SSDKPlatformType)platformType
 {
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
-    NSArray* imageArray = @[@"http://ww4.sinaimg.cn/bmiddle/005Q8xv4gw1evlkov50xuj30go0a6mz3.jpg"];
+    NSArray* imageArray = @[[UIImage imageNamed:@"login_logo"]];
     [shareParams SSDKSetupShareParamsByText:@"分享内容"
                                      images:imageArray
                                         url:[NSURL URLWithString:@"https://itunes.apple.com/us/app/%E5%AD%A6%E6%B1%87-%E5%AE%B6%E9%95%BF/id1212759689"]

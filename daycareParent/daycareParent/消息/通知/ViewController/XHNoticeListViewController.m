@@ -59,7 +59,6 @@
         if (isRefesh)
         {
             [self.contentView.tableView beginRefreshing];
-            self.isRefresh(YES);
         }
         
     };

@@ -15,7 +15,8 @@
 
 @interface XHHomeWorkViewController () <UITableViewDataSource,UITableViewDelegate,XHDatePickerDelegate>
 
-
+@property(nonatomic,copy)NSString *dateStr;
+@property(nonatomic,strong)XHNetWorkConfig *netWork;
 
 @end
 
@@ -142,12 +143,26 @@
     if (work)
     {
         [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].selfId forKey:@"guardianId"];
+        if (![[NSString safeString:self.dateStr] isEqualToString:@""])
+        {
+            [self.netWorkConfig setObject:self.dateStr forKey:@"date"];
+        }
         [self.netWorkConfig postWithUrl:@"zzjt-app-api_smartCampus004" sucess:^(id object, BOOL verifyObject)
         {
-            
+            if (verifyObject) {
+                [self.dataArray removeAllObjects];
+                NSArray *itemArry=[object objectItemKey:@"object"];
+                for ( NSDictionary *dic in itemArry) {
+                    XHHomeWorkFrame *frame = [[XHHomeWorkFrame alloc]init];
+                    XHHomeWorkModel *model = [[XHHomeWorkModel alloc]init];
+                    [model setItemObject:dic];
+                    [self.dataArray addObject:frame];
+                }
+            }
+             [self.mainTableView refreshReloadData];
         } error:^(NSError *error)
          {
-             
+              [self.mainTableView refreshReloadData];
          }];
     }
 }
@@ -187,15 +202,29 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.netWork setObject:[XHUserInfo sharedUserInfo].guardianModel.guardianId forKey:@"guardianId"];
     
 }
 
 #pragma mark XHDatePickerDelegate
 -(void)datePickerAction:(NSString *)date
 {
-    NSLog(@"%@",date);
+    self.dateStr=date;
+    [self refreshHeaderAction];
 }
-
-
+-(XHNetWorkConfig *)netWork
+{
+    if (_netWork==nil) {
+        _netWork=[XHNetWorkConfig new];
+    }
+    return _netWork;
+}
+-(NSString *)dateStr
+{
+    if (_dateStr==nil) {
+        _dateStr=[[NSString alloc]init];
+    }
+    return _dateStr;
+}
 
 @end

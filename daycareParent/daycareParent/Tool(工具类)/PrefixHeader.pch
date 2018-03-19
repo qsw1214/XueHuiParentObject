@@ -166,7 +166,7 @@
 #define  kFamilyList @[@"爸爸",@"妈妈",@"爷爷",@"奶奶",@"外公",@"外婆",@"其他"]
 #define  kAskforLeaveList @[@"事假",@"病假"]
 #define kNSFormatLog(...) NSLog(@"%s 第%d行 \n %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
-
+#define KNoticeJupsh @"noticeSelect"
 #define  kNSLog(...) NSLog(@"%@%s",__VA_ARGS__,__func__)
 #define   kFormat(...)  [NSString stringWithFormat:__VA_ARGS__]
  #define   kFont(...)   [UIFont systemFontOfSize:__VA_ARGS__]

@@ -8,8 +8,9 @@
 
 #import "XHTeacherAddressBookViewController.h"
 #import "XHAddressBookHeader.h"
-
-
+#import "AppDelegate.h"
+#import "XHRCConversationViewController.h"
+#import "XHMessageUserInfo.h"
 
 
 @interface XHTeacherAddressBookViewController () <UITableViewDelegate,UITableViewDataSource,XHAddressBookHeaderDelegate>
@@ -101,6 +102,24 @@
 #pragma mark - case TeacherAddressBookIMType 联系老师进入
         case TeacherAddressBookIMType:
         {
+            XHTeacherAddressBookFrame *frame=[self.dataArray objectAtIndex:indexPath.row];
+            XHTeacherAddressBookModel *model=frame.model;
+             XHMessageUserInfo *messageInfo = [[XHMessageUserInfo alloc] init];
+             messageInfo.name = model.teacherName;
+             messageInfo.headPic =model.headerUrl;
+             messageInfo.userId = model.ID;
+             [messageInfo saveOrUpdateByColumnName:@"userId" AndColumnValue:model.ID];
+            
+             AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+             [app sendRCIMInfo];
+             
+             XHRCConversationViewController *conversationVC = [[XHRCConversationViewController alloc] init];
+             conversationVC.titleLabel.text=model.teacherName;
+             conversationVC.conversationType = ConversationType_PRIVATE;
+             conversationVC.targetId = [NSString stringWithFormat:@"%@",model.ID];
+            conversationVC.hidesBottomBarWhenPushed = YES;
+          [self.navigationController pushViewController:conversationVC animated:YES];
+            
             
         }
             break;

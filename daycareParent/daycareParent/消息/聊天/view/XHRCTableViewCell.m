@@ -58,10 +58,19 @@
     if (model.modelType==XHRCnoticeType)
     {
         self.bgLabel.hidden=NO;
+        if ([model.sum integerValue]==0)
+        {
+            self.smallLab.hidden=YES;
+        }
+        else
+        {
+            self.smallLab.hidden=NO;
+        }
     }
     
     else
     {
+        self.bgLabel.hidden=YES;
         if (model.modelType==XHRCTeacherBookType||[model.sum integerValue]==0)
         {
             self.smallLab.hidden=YES;
@@ -70,7 +79,7 @@
         {
             self.smallLab.hidden=NO;
         }
-        self.bgLabel.hidden=YES;
+      
     }
 }
 -(CGFloat)getCustomWidth:(NSString *)str

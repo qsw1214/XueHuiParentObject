@@ -49,8 +49,15 @@
         cell.frontLabel.text=kTitle[indexPath.row];
     cell.headBtn.frame=CGRectMake(SCREEN_WIDTH-60, (cell.bounds.size.height-30)/2.0, 50, 30);
     cell.headBtn.layer.cornerRadius=0;
-    [cell.headBtn setBackgroundImage:[UIImage imageNamed:@"ico_set_open"] forState:UIControlStateNormal];
-    [cell.headBtn addTarget:self action:@selector(headBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    BOOL select =[self noticeJupsh];
+    if (!select)
+    {
+          [cell.headBtn setBackgroundImage:[UIImage imageNamed:@"ico_set_close"] forState:UIControlStateNormal];
+    }
+    else
+    {
+          [cell.headBtn setBackgroundImage:[UIImage imageNamed:@"ico_set_open"] forState:UIControlStateNormal];
+    }
         if (indexPath.row==1)
         {
             cell.headBtn.hidden=NO;
@@ -71,17 +78,15 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     switch (indexPath.row) {
-//        case 0:
-//        {
-//            XHPasswordViewController *password=[XHPasswordViewController new];
-//            [self.navigationController pushViewController:password animated:YES];
-//        }
-//
-//            break;
             case 0:
         {
             XHChagePhoneViewController *chagephone=[XHChagePhoneViewController new];
             [self.navigationController pushViewController:chagephone animated:YES];
+        }
+            break;
+           case 1:
+        {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
         }
             break;
         case 2:
@@ -115,19 +120,7 @@
     
     
 }
--(void)headBtnClick:(UIButton *)btn
-{
-    if (btn.selected==YES) {
-          [btn setBackgroundImage:[UIImage imageNamed:@"ico_set_open"] forState:UIControlStateNormal];
-        btn.selected=NO;
-    }
-    else
-    {
-         [btn setBackgroundImage:[UIImage imageNamed:@"ico_set_close"] forState:UIControlStateNormal];
-          btn.selected=YES;
-    }
 
-}
 -(void)logOutClick
 {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"确定要退出登录？" message:nil preferredStyle:UIAlertControllerStyleAlert];
@@ -142,8 +135,7 @@
              [XHShowHUD hideHud];
         }];
         [[RCIM sharedRCIM]disconnect];
-        [JPUSHService setTags:nil alias:@"" fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias){
-        }];
+        [JPUSHService setTags:nil alias:@"" fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias){}];
         [NSUserDefaults removeObjectItemForKey:AutoLogin];
         XHLoginViewController *login=[XHLoginViewController new];
         UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:login];
@@ -189,6 +181,30 @@
     }
     return _outButton;
     
+}
+-(BOOL)noticeJupsh
+{
+    if ([[UIDevice currentDevice].systemVersion floatValue]>=8.0f) {
+        UIUserNotificationSettings *setting = [[UIApplication sharedApplication] currentUserNotificationSettings];
+        if (UIUserNotificationTypeNone == setting.types) {
+            NSLog(@"推送关闭");
+            return NO;
+        }else{
+            NSLog(@"推送打开");
+            return YES;
+        }
+    }else
+    {
+        UIRemoteNotificationType type = [[UIApplication sharedApplication] enabledRemoteNotificationTypes];
+        if(UIRemoteNotificationTypeNone == type)
+        {
+            NSLog(@"推送关闭");
+            return NO;
+        }else{
+            NSLog(@"推送打开");
+            return YES;
+        }
+    }
 }
 -(void)updateVersion
 {

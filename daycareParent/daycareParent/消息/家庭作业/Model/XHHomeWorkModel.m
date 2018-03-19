@@ -55,7 +55,7 @@
 //!< 设置通知对象
 -(void)setNoticeItemObject:(NSDictionary*)object
 {
-    [self setHeaderUrl:ALGetFileHeadThumbnail([object objectItemKey:@"headPic"])];
+    [self setHeaderUrl:ALGetFileHeadThumbnail([object objectItemKey:@"teacherHeadPic"])];
     [self setSubject:[object objectItemKey:@"subjectName"]];
     [self setPushInfoId:[object objectItemKey:@"pushInfoId"]];
 
@@ -81,7 +81,7 @@
     [self setUserName:[object objectItemKey:@"teacherName"]];
     [self setReleaseDate:[NSString dateStr:[object objectItemKey:@"createTime"]]];
     [self setWorkContent:[object objectItemKey:@"content"]];
-    [self setUnreadType:[object objectItemKey:@"isStatus"]];
+    [self setUnreadType:[object objectItemKey:@"isRead"]];
     [self setVedioUrl:[object objectItemKey:@"vedioUrl"]];
     [self setVedioFirstPicUrl:[object objectItemKey:@"vedioFirstPicUrl"]];
     [self setGradeName:[object objectItemKey:@"gradeName"]];

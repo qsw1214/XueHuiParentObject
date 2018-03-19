@@ -44,6 +44,15 @@
 }
 
 
+-(void)getChildInfo:(XHChildListModel*)model
+{
+    [self.contentView getChildInfo:model];
+    
+    
+    
+    
+}
+
 
 #pragma mark - Delegate Method
 #pragma mark XHStudentInfoContentViewDelegate

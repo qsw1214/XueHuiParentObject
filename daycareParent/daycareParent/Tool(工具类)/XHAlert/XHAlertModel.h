@@ -20,6 +20,7 @@ typedef NS_ENUM(NSInteger,XHAlertModelType)
 
 
 @property (nonatomic,copy) NSString *name;
+@property (nonatomic,copy) NSString *identityType; //!< 身份类型 （0.爸爸 1.妈妈 2.其他）
 @property (nonatomic,assign) CGSize itemSize;  //!< 每个item的大小
 @property (nonatomic,assign) XHAlertModelType modelType; //!< 数据模型的类型
 

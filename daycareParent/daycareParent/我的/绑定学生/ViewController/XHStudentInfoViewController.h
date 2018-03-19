@@ -10,4 +10,7 @@
 
 @interface XHStudentInfoViewController : BaseViewController
 
+-(void)getChildInfo:(XHChildListModel*)model;
+
+
 @end

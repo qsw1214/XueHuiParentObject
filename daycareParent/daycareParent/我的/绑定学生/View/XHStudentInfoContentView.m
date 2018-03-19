@@ -8,8 +8,9 @@
 
 #import "XHStudentInfoContentView.h"
 
-@interface XHStudentInfoContentView ()
+@interface XHStudentInfoContentView () <XHAlertControlDelegate>
 
+@property (nonatomic,strong) XHNetWorkConfig *netWorkConfig;
 
 @property (nonatomic,strong) UILabel *baseLabel; //!< 基本信息标签
 @property (nonatomic,strong) UILabel *parentInformationLabel; //!< 家长信息标签
@@ -55,14 +56,78 @@
 
 
 #pragma mark - Private Method
+
 -(void)studentInfoControlAction:(BaseButtonControl*)sender
 {
     if ([self.infoDelegate respondsToSelector:@selector(studentInfoControlAction:)])
     {
         [self.infoDelegate studentInfoControlAction:sender];
     }
+}
+
+#pragma mark 修改孩子之间的关系
+-(void)identityControlAction:(BaseButtonControl*)sender
+{
+    
+    NSMutableArray *alertArray = [NSMutableArray array];
+    for (int i= 0; i< 3; i++)
+    {
+        XHAlertModel *model = [[XHAlertModel alloc]init];
+        [model setIdentityType:[NSString stringWithFormat:@"%zd",i]];
+        switch (i)
+        {
+            case 0:
+            {
+                [model setName:@"爸爸"];
+            }
+                break;
+            case 1:
+            {
+                [model setName:@"妈妈"];
+            }
+                break;
+            case 2:
+            {
+                [model setName:@"其他"];
+            }
+                break;
+        }
+        
+        [alertArray addObject:model];
+    }
+    
+    XHAlertControl *alert = [[XHAlertControl alloc]initWithDelegate:self];
+    [alert setTitle:@"请选择您的身份"];
+    [alert setItemArray:alertArray];
+    [alert setBoardType:XHAlertBoardOptionType];
+    [alert show];
+}
+
+
+
+
+#pragma mark - Delegate Method
+#pragma mark XHAlertControlDelegate
+-(void)alertBoardControlAction:(XHAlertModel *)sender
+{
+    [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].selfId forKey:@"guardianId"];
+    [self.netWorkConfig setObject:sender.identityType forKey:@"type"];
+    [self.netWorkConfig postWithUrl:@"zzjt-app-api_studentBinding009" sucess:^(id object, BOOL verifyObject)
+    {
+        
+        
+    } error:^(NSError *error)
+     {
+         
+         
+         
+         
+     }];
+    
+    
     
 }
+
 
 
 #pragma mark - Getter /  Setter
@@ -285,6 +350,7 @@
         [_identityControl setFont:FontLevel2 withNumberType:0 withAllType:NO];
         [_identityControl setTextColor:RGB(51,51,51) withTpe:0 withAllType:NO];
         [_identityControl setTextColor:RGB(51,51,51) withTpe:1 withAllType:NO];
+        [_identityControl addTarget:self action:@selector(identityControlAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _identityControl;
 }
@@ -329,7 +395,45 @@
     return _unBindControl;
 }
 
+-(XHNetWorkConfig *)netWorkConfig
+{
+    if (!_netWorkConfig)
+    {
+        _netWorkConfig = [[XHNetWorkConfig alloc]init];
+    }
+    return _netWorkConfig;
+}
 
+
+#pragma mark - NetWorkData
+-(void)getChildInfo:(XHChildListModel*)model
+{
+    
+    [self.nameControl setText:model.studentName withNumberType:1 withAllType:NO];
+    [self.headerControl sd_setImageWithURL:model.headPic withNumberType:0 withAllType:NO];
+    [self.schoolControl setText:model.schoolName withNumberType:1 withAllType:NO];
+    [self.classControl setText:model.clazzName withNumberType:1 withAllType:NO];
+    [self.sexControl setText:model.sex withNumberType:1 withAllType:NO];
+    [self.birthdayControl setText:model.birthdate withNumberType:1 withAllType:NO];
+    
+    
+    
+    
+    
+    [self.netWorkConfig setObject:@"851340998992228352" forKey:@"studentBaseId"];
+    [self.netWorkConfig postWithUrl:@"zzjt-app-api_studentBinding004" sucess:^(id object, BOOL verifyObject)
+    {
+        if (verifyObject)
+        {
+
+        
+ 
+        }
+    } error:^(NSError *error)
+     {
+
+     }];
+}
 
 
 

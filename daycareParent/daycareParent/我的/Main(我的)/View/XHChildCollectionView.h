@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #pragma mark  孩子列表展示
 @interface XHChildCollectionView : UIView
-@property(nonatomic,copy)void(^selectBlock)(NSInteger ,NSString *);
+@property(nonatomic,copy)void(^selectBlock)(NSInteger ,NSString *,XHChildListModel *model);
 @property(nonatomic,strong)UICollectionView *collectionView;
 -(void)setItemArray:(NSMutableArray *)array;
 @end

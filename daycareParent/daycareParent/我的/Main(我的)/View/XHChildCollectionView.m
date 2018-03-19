@@ -65,9 +65,10 @@
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    XHChildListModel *model = _childListArry[indexPath.item];
     XHChildCollectionViewCell *cell=[_collectionView cellForItemAtIndexPath:indexPath];
     if (self.selectBlock) {
-        self.selectBlock(indexPath.row,cell.childNameLabel.text);
+        self.selectBlock(indexPath.row,cell.childNameLabel.text,model);
     }
 }
 -(void)setItemArray:(NSMutableArray *)array

@@ -18,6 +18,7 @@
 
 @property(nonatomic,strong)UIView *navigationView;
 @property(nonatomic,strong)XHNetWorkConfig *net;
+@property(nonatomic,strong)NSMutableArray *dataArry;
 @end
 
 @implementation XHChatViewController
@@ -151,6 +152,7 @@
 - (NSMutableArray *)willReloadTableData:(NSMutableArray *)dataSource
 {
         [self.conversationListDataSource setArray:dataSource];
+    if (self.dataArry.count==0) {
         for (int i = 0; i<kTitleList.count; i++) {
             XHRCModel *model = [[XHRCModel alloc]initWithDic:nil];
             model.conversationModelType = RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION;
@@ -175,9 +177,11 @@
                     break;
             }
             [self.conversationListDataSource insertObject:model atIndex:i];
+            [self.dataArry addObject:model];
         }
-    [self.conversationListTableView.header endRefreshing];
-    [self refreshHead];
+    }
+    //[self.conversationListTableView.header endRefreshing];
+//    [self refreshHead];
     return self.conversationListDataSource;
 }
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -244,8 +248,8 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden=YES;
-//    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-//    [app reloadIMBadge];
+    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [app reloadIMBadge];
 }
 -(XHNetWorkConfig *)net
 {
@@ -253,6 +257,13 @@
         _net=[[XHNetWorkConfig alloc] init];
     }
     return _net;
+}
+-(NSMutableArray *)dataArry
+{
+    if (_dataArry==nil) {
+        _dataArry=[[NSMutableArray alloc] init];
+    }
+    return _dataArry;
 }
 /*
 #pragma mark - Navigation

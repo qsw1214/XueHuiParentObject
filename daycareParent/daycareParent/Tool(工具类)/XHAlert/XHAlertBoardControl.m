@@ -124,7 +124,6 @@
 
 
 #pragma mark - Delegate Method
-#pragma mark - Delegate Method
 #pragma mark UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {

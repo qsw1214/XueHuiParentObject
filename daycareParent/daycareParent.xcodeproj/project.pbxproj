@@ -24,6 +24,7 @@
 		0445F687205A52C300B4E0A5 /* NSArray+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 0445F686205A52C300B4E0A5 /* NSArray+Category.m */; };
 		0474F6482057CAB20081A37D /* XHDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 0474F6472057CAB20081A37D /* XHDatePicker.m */; };
 		0474F64B2057CAF10081A37D /* XHDatePickerBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 0474F64A2057CAF10081A37D /* XHDatePickerBoard.m */; };
+		04AA2FD3205FC09100549D23 /* XHStudentInfofamilyItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AA2FD2205FC09100549D23 /* XHStudentInfofamilyItemCell.m */; };
 		04AAEBB52058E7E400EF225D /* XHStudentDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AAEBAB2058E7E400EF225D /* XHStudentDetailViewController.xib */; };
 		04AAEBB62058E7E400EF225D /* XHStudentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AAEBAC2058E7E400EF225D /* XHStudentDetailViewController.m */; };
 		04AAEBB92058E7E400EF225D /* XHFamilyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AAEBAF2058E7E400EF225D /* XHFamilyListViewController.m */; };
@@ -544,6 +545,8 @@
 		0474F6472057CAB20081A37D /* XHDatePicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHDatePicker.m; sourceTree = "<group>"; };
 		0474F6492057CAF10081A37D /* XHDatePickerBoard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHDatePickerBoard.h; sourceTree = "<group>"; };
 		0474F64A2057CAF10081A37D /* XHDatePickerBoard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHDatePickerBoard.m; sourceTree = "<group>"; };
+		04AA2FD1205FC09100549D23 /* XHStudentInfofamilyItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHStudentInfofamilyItemCell.h; sourceTree = "<group>"; };
+		04AA2FD2205FC09100549D23 /* XHStudentInfofamilyItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHStudentInfofamilyItemCell.m; sourceTree = "<group>"; };
 		04AAEBAA2058E7E400EF225D /* XHFamilyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHFamilyListViewController.h; sourceTree = "<group>"; };
 		04AAEBAB2058E7E400EF225D /* XHStudentDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHStudentDetailViewController.xib; sourceTree = "<group>"; };
 		04AAEBAC2058E7E400EF225D /* XHStudentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHStudentDetailViewController.m; sourceTree = "<group>"; };
@@ -1590,6 +1593,8 @@
 				04AAEBBE2058E89A00EF225D /* XHBindViewContentView.m */,
 				04AAEBC32059037800EF225D /* XHStudentInfoContentView.h */,
 				04AAEBC42059037800EF225D /* XHStudentInfoContentView.m */,
+				04AA2FD1205FC09100549D23 /* XHStudentInfofamilyItemCell.h */,
+				04AA2FD2205FC09100549D23 /* XHStudentInfofamilyItemCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4312,6 +4317,7 @@
 				8C37D3401FE8A8EF00F157D1 /* XHIMNoticeModel.m in Sources */,
 				8C1642232056184E001DCA01 /* XHRCModel.m in Sources */,
 				4B80F2811FCBF04800BC7B52 /* MJRefreshAutoStateFooter.m in Sources */,
+				04AA2FD3205FC09100549D23 /* XHStudentInfofamilyItemCell.m in Sources */,
 				4B8E66241FD6463C0006D641 /* XHCookBookFrame.m in Sources */,
 				4B31264C1FDA1FF5000CE894 /* XHAddressBookFrame.m in Sources */,
 				4B80F22B1FCBF00E00BC7B52 /* XHNetWorkConfig.m in Sources */,

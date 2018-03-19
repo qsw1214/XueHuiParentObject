@@ -30,9 +30,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setNavtionTitle:@"平安记录"];
-    [self setItemContentType:NavigationTitleType withItemType:NavigationItemRightype withIconName:@"" withTitle:@"开始显示"];
+    [self setNavtionTitle:@"考勤记录"];
 }
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];

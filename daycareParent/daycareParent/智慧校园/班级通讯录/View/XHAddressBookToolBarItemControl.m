@@ -92,7 +92,7 @@
     {
         _titleLabel = [[UILabel alloc]init];
         [_titleLabel setFont:FontLevel4];
-        [_titleLabel setTextColor:MainColor];
+        [_titleLabel setTextColor:RGB(51.0, 51.0, 51.0)];
         [_titleLabel setTextAlignment:NSTextAlignmentCenter];
     }
     return _titleLabel;

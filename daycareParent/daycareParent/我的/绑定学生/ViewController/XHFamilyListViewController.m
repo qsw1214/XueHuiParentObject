@@ -37,8 +37,6 @@
             NSArray *arry=[object objectItemKey:@"object"];
             for (NSDictionary *dicc in arry) {
                 NSDictionary *dic=[dicc objectItemKey:@"propValue"];
-                XHFamilyListModel *model=[[XHFamilyListModel alloc] initWithDic:dic];
-                [self.dataArray addObject:model];
             }
             dispatch_async(dispatch_get_main_queue(), ^{
                 [_tableView reloadData];
@@ -60,7 +58,7 @@
     cell.headBtn.layer.cornerRadius=0;
     [cell.headBtn setBackgroundImage:[UIImage imageNamed:@"pxfamily"] forState:UIControlStateNormal];
     cell.frontLabel.frame=CGRectMake(60, 0, 120, cell.bounds.size.height);
-    cell.frontLabel.text=model.nickName;
+
 //    cell.famman.frame=CGRectMake(SCREEN_WIDTH-45, 17, 16, 16);
 //    if ([model.isMajor integerValue]==1) {
 //        cell.famman.hidden=NO;

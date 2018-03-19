@@ -226,6 +226,7 @@
         _subjectLabel = [[UILabel alloc]init];
         [_subjectLabel setTextAlignment:NSTextAlignmentCenter];
         [_subjectLabel setTextColor:[UIColor whiteColor]];
+        [_subjectLabel setNumberOfLines:0];
         [_subjectLabel setFont:FontLevel4];
     }
     return _subjectLabel;

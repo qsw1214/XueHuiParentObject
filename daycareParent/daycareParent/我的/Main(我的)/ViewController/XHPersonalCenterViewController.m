@@ -178,16 +178,16 @@
 -(UIView *)h_view
 {
     if (_h_view==nil) {
-        _h_view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, USER_HEARD*2+160)];
+        _h_view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, USER_HEARD*2+200)];
         _h_view.layer.masksToBounds=YES;
         UIView *bgView=[[UIView alloc] initWithFrame:CGRectMake(0, _h_view.bottom-SCREEN_WIDTH/2.0, SCREEN_WIDTH*2, SCREEN_WIDTH)];
         //SCREEN_WIDTH+SCREEN_WIDTH/9
-        bgView.center=CGPointMake(SCREEN_WIDTH/2.0, SCREEN_WIDTH+70);
+        bgView.center=CGPointMake(SCREEN_WIDTH/2.0, SCREEN_WIDTH+110);
         bgView.layer.cornerRadius=SCREEN_WIDTH;
         bgView.backgroundColor=RGB(239, 239, 239);
         [_h_view addSubview:bgView];
         _h_btn=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, USER_HEARD+10, USER_HEARD+10)];
-        _h_btn.center=CGPointMake(SCREEN_WIDTH/2.0, USER_HEARD/2.0+25);
+        _h_btn.center=CGPointMake(SCREEN_WIDTH/2.0, USER_HEARD/2.0+65);
         _h_btn.layer.cornerRadius=USER_HEARD/2.0+5;
         _h_btn.layer.masksToBounds=YES;
         [_h_btn addTarget:self action:@selector(heardBtnClick) forControlEvents:UIControlEventTouchUpInside];

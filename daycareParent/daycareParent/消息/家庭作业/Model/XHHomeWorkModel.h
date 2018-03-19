@@ -48,7 +48,7 @@ typedef NS_ENUM(NSInteger,HomeWorkModelType)
 @property (nonatomic,assign) HomeWorkModelUnreadType homeWorkUnreadType; //!< 是否已读取枚举类型
 @property (nonatomic,assign) HomeWorkModelType homeWorkType; //!< 数据模型的类型
 @property (nonatomic,assign) XHHomeWorkContentType contentType; //!< 内容类型
-
+-(void)setNoticeItemObject:(NSDictionary*)object;
 
 
 @end

@@ -26,6 +26,7 @@
     [self.view addSubview:self.tableView];
     [self.tableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHead)];
     [self.tableView showRefresFooterWithTarget:self withSelector:@selector(refreshFoot)];
+     [self.tableView setTipType:TipTitleAndTipImage withTipTitle:@"暂无数据!" withTipImage:@"pic_nothing"];
     [self.tableView beginRefreshing];
 }
 -(void)refreshHead
@@ -84,6 +85,7 @@
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    [self.tableView tableTipViewWithArray:self.dataArray];
     return self.dataArray.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

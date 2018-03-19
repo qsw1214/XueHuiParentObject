@@ -91,9 +91,6 @@
     [self.advertisementControl resetFrame:CGRectMake(0,0, frame.size.width, 190.0)];
     [self.functionMenuControl resetFrame:CGRectMake(0, (self.advertisementControl.bottom+10.0), frame.size.width, 480.0)];
     [self setContentSize:CGSizeMake(frame.size.width, self.functionMenuControl.bottom)];
-    
-    //根据产品经理的要求，把底部九宫格首先显示出来，所以首先滚动底部
-    [self setContentOffset:CGPointMake(0, (self.functionMenuControl.bottom+10.0)-(SCREEN_HEIGHT-64-50))];
 }
 
 

@@ -29,7 +29,7 @@
     if (self)
     {
         
-        [self setItemColor:YES];
+        [self setItemColor:NO];
         
         [self setBackgroundColor:RGB(255.0, 255.0, 255.0)];
         [self.contentView addSubview:self.markImageView];

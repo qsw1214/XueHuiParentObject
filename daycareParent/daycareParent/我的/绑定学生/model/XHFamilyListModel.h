@@ -7,8 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseModel.h"
 
-@interface XHFamilyListModel : NSObject
-@property(nonatomic,copy)NSString *headPic,*nickName,*isMajor;
--(id)initWithDic:(NSDictionary *)dic;
+@interface XHFamilyListModel : BaseModel
+
+
+@property (nonatomic,copy) NSString *guardianType; //!< 监护人类型
+@property (nonatomic,copy) NSString *guardianName; //!< 监护人名称
+@property (nonatomic,copy) NSString *guardianId; //!< 监护人id
+@property (nonatomic,copy) NSString *telphoneNumber;
+@property (nonatomic,copy) NSString *headPic;
+@property (nonatomic,copy) NSString *isMajor;
+
+
+
 @end

@@ -8,14 +8,18 @@
 
 #import "XHFamilyListModel.h"
 @implementation XHFamilyListModel
--(id)initWithDic:(NSDictionary *)dic
+
+
+-(void)setItemObject:(NSDictionary *)object
 {
-    if (self=[super init]) {
-        _nickName=[dic objectItemKey:@"nickName"];
-        _headPic=[dic objectItemKey:@"headPic"];
-        _isMajor=[dic objectItemKey:@"isMajor"];
-    }
-    return self;
+    [self setHeadPic:[object objectItemKey:@"headPic"]];
+    [self setIsMajor:[object objectItemKey:@"isMajor"]];
+    [self setTelphoneNumber:[object objectItemKey:@"telphoneNumber"]];
+    [self setHeadPic:[object objectItemKey:@"guardianId"]];
+    [self setIsMajor:[object objectItemKey:@"guardianName"]];
+    [self setTelphoneNumber:[object objectItemKey:@"guardianType"]];
+    
 }
+
 
 @end

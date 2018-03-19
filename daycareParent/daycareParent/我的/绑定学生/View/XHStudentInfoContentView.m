@@ -7,8 +7,10 @@
 //
 
 #import "XHStudentInfoContentView.h"
+#import "XHStudentInfofamilyItemCell.h"
 
-@interface XHStudentInfoContentView () <XHAlertControlDelegate>
+
+@interface XHStudentInfoContentView () <XHAlertControlDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic,strong) XHNetWorkConfig *netWorkConfig;
 
@@ -24,6 +26,8 @@
 @property (nonatomic,strong) BaseButtonControl *identityControl;  //!< 身份
 @property (nonatomic,strong) BaseButtonControl *passwordControl; //!< 密码重置按钮
 @property (nonatomic,strong) BaseButtonControl *unBindControl; //!< 解除绑定按钮
+@property (nonatomic,strong) BaseCollectionView *familyCollectionView; //!< 家庭数组
+
 
 @end
 
@@ -47,6 +51,7 @@
         [self addSubview:self.birthdayControl];
         [self addSubview:self.identityControl];
         [self addSubview:self.parentInformationLabel];
+        [self addSubview:self.familyCollectionView];
         [self addSubview:self.tipLabel];
         [self addSubview:self.passwordControl];
         [self addSubview:self.unBindControl];
@@ -123,8 +128,54 @@
          
          
      }];
+}
+
+
+#pragma mark - Delegate Method
+#pragma mark UICollectionViewDataSource
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return [self.dataArray count];
+}
+
+
+
+
+- (XHStudentInfofamilyItemCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    XHStudentInfofamilyItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+    [cell setModel:[self.dataArray objectAtIndex:indexPath.row]];
+    return cell;
+}
+
+
+#pragma mark UICollectionViewDelegate
+#pragma mark UICollectionViewDelegateFlowLayout
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
     
-    
+    return CGSizeMake(SCREEN_WIDTH,60.0);
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 0;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 0;
+}
+
+
+-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    return UIEdgeInsetsMake(0, 0, 0, 0);
+}
+
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
     
 }
 
@@ -134,6 +185,8 @@
 -(void)resetFrame:(CGRect)frame
 {
     [self setFrame:frame];
+    
+    
     //!< 设置基本信息标签Frame
     [self.baseLabel setFrame:CGRectMake(10.0, 0, (frame.size.width-20.0), 40.0)];
     //!< 头像的Frame
@@ -175,20 +228,43 @@
     [self.identityControl resetLineViewFrame:CGRectMake(0, self.identityControl.height-2.0, self.identityControl.width, 2.0) withNumberType:1 withAllType:NO];
     //!< 设置家长信息
     [self.parentInformationLabel setFrame:CGRectMake(10.0, self.identityControl.bottom, self.baseLabel.width,self.baseLabel.height)];
+    
+    
+    
+    for (int i= 0; i< 20; i++)
+    {
+        XHFamilyListModel *model = [[XHFamilyListModel alloc]init];
+        [model setHeadPic:@""];
+        [model setTelphoneNumber:@"15515667760"];
+        [model setGuardianType:@"1"];
+        [model setGuardianName:@"姚立志"];
+        [model setGuardianId:@"1kskoso20--ess"];
+        [self.dataArray addObject:model];
+    }
+    
+    [self.familyCollectionView resetFrame:CGRectMake(0, self.parentInformationLabel.bottom, SCREEN_WIDTH, 60.0*[self.dataArray count])];
+    [self.familyCollectionView setItemArray:self.dataArray];
+    [self.familyCollectionView reloadData];
+    
+    
     //!< 设置密码
-    [self.passwordControl resetFrame:CGRectMake(0, self.parentInformationLabel.bottom, self.birthdayControl.width, self.birthdayControl.height)];
-    [self.passwordControl setTitleEdgeFrame:CGRectMake(10.0, 0, (frame.size.width-20.0)/2.0, self.passwordControl.height) withNumberType:0 withAllType:NO];
-    [self.passwordControl setTitleEdgeFrame:CGRectMake((frame.size.width)/2.0, 0, ((frame.size.width-20.0)/2.0)-30.0, self.passwordControl.height) withNumberType:1 withAllType:NO];
+    [self.passwordControl resetFrame:CGRectMake(0, self.familyCollectionView.bottom, self.birthdayControl.width, self.birthdayControl.height)];
+    [self.passwordControl setTitleEdgeFrame:CGRectMake(10.0, 0, (self.familyCollectionView.width-20.0)/2.0, self.passwordControl.height) withNumberType:0 withAllType:NO];
+    [self.passwordControl setTitleEdgeFrame:CGRectMake((self.familyCollectionView.width)/2.0, 0, ((self.familyCollectionView.width-20.0)/2.0)-30.0, self.passwordControl.height) withNumberType:1 withAllType:NO];
     [self.passwordControl setImageEdgeFrame:CGRectMake((self.passwordControl.width-30.0), (self.passwordControl.height-15.0)/2.0, 15.0, 15.0) withNumberType:0 withAllType:NO];
     [self.passwordControl resetLineViewFrame:CGRectMake(0, self.passwordControl.height-0.5, self.passwordControl.width, 0.5) withNumberType:0 withAllType:NO];
     //!< 设置提醒信息
     [self.tipLabel setFrame:CGRectMake(10.0, self.passwordControl.bottom, self.baseLabel.width,self.baseLabel.height)];
     //!< 设置解绑
-    [self.unBindControl resetFrame:CGRectMake(0, self.tipLabel.bottom, frame.size.width, 50.0)];
+    [self.unBindControl resetFrame:CGRectMake(0, self.tipLabel.bottom, self.familyCollectionView.width, 50.0)];
     [self.unBindControl setTitleEdgeFrame:CGRectMake(0, 0, self.unBindControl.width, self.unBindControl.height) withNumberType:0 withAllType:NO];
     
     
-    [self setContentSize:CGSizeMake(frame.size.width, self.unBindControl.bottom+20.0)];
+    [self setContentSize:CGSizeMake(self.familyCollectionView.width, self.unBindControl.bottom+20.0)];
+    
+    
+//    [self setContentSize:CGSizeMake(frame.size.width, self.parentInformationLabel.bottom+20.0)];
+    
 }
 
 
@@ -395,6 +471,21 @@
     return _unBindControl;
 }
 
+
+-(BaseCollectionView *)familyCollectionView
+{
+    if (!_familyCollectionView)
+    {
+        _familyCollectionView = [[BaseCollectionView alloc]init];
+        [_familyCollectionView setDelegate:self];
+        [_familyCollectionView setDataSource:self];
+        [_familyCollectionView registerClass:[XHStudentInfofamilyItemCell class] forCellWithReuseIdentifier:CellIdentifier];
+        [_familyCollectionView setBackgroundColor:[UIColor whiteColor]];
+        
+    }
+    return _familyCollectionView;
+}
+
 -(XHNetWorkConfig *)netWorkConfig
 {
     if (!_netWorkConfig)
@@ -418,21 +509,36 @@
     
     
     
+  
     
     
-    [self.netWorkConfig setObject:@"851340998992228352" forKey:@"studentBaseId"];
-    [self.netWorkConfig postWithUrl:@"zzjt-app-api_studentBinding004" sucess:^(id object, BOOL verifyObject)
-    {
-        if (verifyObject)
-        {
-
-        
- 
-        }
-    } error:^(NSError *error)
-     {
-
-     }];
+    
+    
+//    [self.netWorkConfig setObject:@"851340998992228352" forKey:@"studentBaseId"];
+//    [self.netWorkConfig postWithUrl:@"zzjt-app-api_studentBinding004" sucess:^(id object, BOOL verifyObject)
+//    {
+//        if (verifyObject)
+//        {
+//
+//
+//            for (int i= 0; i< 10; i++)
+//            {
+//                XHFamilyListModel *model = [[XHFamilyListModel alloc]init];
+//                [model setHeadPic:@""];
+//                [model setTelphoneNumber:@"15515667760"];
+//                [model setGuardianType:@"1"];
+//                [model setGuardianName:@"姚立志"];
+//                [model setGuardianId:@"1kskoso20--ess"];
+//                [self.dataArray addObject:model];
+//            }
+//
+//
+//
+//        }
+//    } error:^(NSError *error)
+//     {
+//
+//     }];
 }
 
 

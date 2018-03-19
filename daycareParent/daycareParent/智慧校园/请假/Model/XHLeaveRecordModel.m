@@ -16,10 +16,11 @@
 {
     
     [self setBeginTime:[object objectItemKey:@"beginTime"]];
+    [self setEndTime:[object objectItemKey:@"endTime"]];
     [self setStudentBaseId:[object objectItemKey:@"studentBaseId"]];
     [self setObjectID:[object objectItemKey:@"id"]];
     [self setStudentName:[object objectItemKey:@"studentName"]];
-    [self setBizcnt:[object objectItemKey:@"bizcnt"]];
+    [self setBizDays:[object objectItemKey:@"bizDays"]];
     [self setScheduleflg:[object objectItemKey:@"scheduleflg"]];
     NSArray *dateArray = [self.beginTime componentsSeparatedByString:@" "];
     
@@ -33,17 +34,17 @@
             NSString *month = [yearArray objectAtIndex:1];
             NSString *day = [yearArray objectAtIndex:2];
             
-            [self setTitle:[NSString stringWithFormat:@"%@于%@年%@月%@日请假，请假%@节",self.studentName,year,month,day,self.bizcnt]];
+            [self setTitle:[NSString stringWithFormat:@"%@于%@年%@月%@日请假，请假%@节",self.studentName,year,month,day,self.bizDays]];
         }
         else
         {
-            [self setTitle:[NSString stringWithFormat:@"%@请假,请假%@节",self.studentName,self.bizcnt]];
+            [self setTitle:[NSString stringWithFormat:@"%@请假,请假%@节",self.studentName,self.bizDays]];
         }
        
     }
     else
     {
-        [self setTitle:[NSString stringWithFormat:@"%@请假,请假%@节",self.studentName,self.bizcnt]];
+        [self setTitle:[NSString stringWithFormat:@"%@请假,请假%@节",self.studentName,self.bizDays]];
     }
     
     if ([self.scheduleflg isEqualToString:@"0"])

@@ -9,5 +9,12 @@
 #import "XHSubjectModel.h"
 
 @implementation XHSubjectModel
-
+-(instancetype)initWithDic:(NSDictionary *)dic
+{
+    if (self=[super init])
+    {
+        _sub=[dic objectItemKey:@"subjectName"];
+    }
+    return self;
+}
 @end

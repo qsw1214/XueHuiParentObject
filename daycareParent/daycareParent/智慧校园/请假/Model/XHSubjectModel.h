@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface XHSubjectModel : NSObject
+@interface XHSubjectModel : ParentModel
 @property(nonatomic,copy)NSString *sub;
 @end

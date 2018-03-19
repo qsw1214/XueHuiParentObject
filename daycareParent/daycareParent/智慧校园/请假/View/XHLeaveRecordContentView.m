@@ -94,8 +94,8 @@
     {
         if (verifyObject)
         {
-            
-            NSArray *itemArray = [object objectItemKey:@"object"];
+            NSDictionary *objectDic = [object objectItemKey:@"object"];
+            NSArray *itemArray=[objectDic objectItemKey:@"pageResult"];
             if (itemArray)
             {
                 [self.dataArray removeAllObjects];

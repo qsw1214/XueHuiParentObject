@@ -69,6 +69,7 @@
                 [XHUserInfo sharedUserInfo].sum=0;
                 [XHUserInfo sharedUserInfo].sum=[XHUserInfo sharedUserInfo].sum+[schoolWorkModel.sum integerValue];
                 [self.conversationListDataSource replaceObjectAtIndex:1 withObject:schoolWorkModel];
+                 [self.dataArry replaceObjectAtIndex:1 withObject:schoolWorkModel];
                 
                 XHRCModel *model = [[XHRCModel alloc] initWithDic:[dic objectItemKey:@"notice"]];
                 model.conversationModelType = RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION;
@@ -78,6 +79,7 @@
                 model.modelType=XHRCnoticeType;
                 [XHUserInfo sharedUserInfo].sum=[XHUserInfo sharedUserInfo].sum+[model.sum integerValue];
                 [self.conversationListDataSource replaceObjectAtIndex:2 withObject:model];
+                [self.dataArry replaceObjectAtIndex:2 withObject:model];
                
             }
             [self.conversationListTableView reloadData];
@@ -151,37 +153,9 @@
 
 - (NSMutableArray *)willReloadTableData:(NSMutableArray *)dataSource
 {
-        [self.conversationListDataSource setArray:dataSource];
-    if (self.dataArry.count==0) {
-        for (int i = 0; i<kTitleList.count; i++) {
-            XHRCModel *model = [[XHRCModel alloc]initWithDic:nil];
-            model.conversationModelType = RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION;
-            model.RCtitle=kTitleList[i];
-            model.RCtitlePic=kTitlePic[i];
-            switch (i) {
-                case 0:
-                {
-                    model.modelType=XHRCTeacherBookType;
-                }
-                    break;
-                case 1:
-                {
-                    model.modelType=XHRCHomeWorkType;
-                }
-                    break;
-                    
-                case 2:
-                {
-                    model.modelType=XHRCnoticeType;
-                }
-                    break;
-            }
-            [self.conversationListDataSource insertObject:model atIndex:i];
-            [self.dataArry addObject:model];
-        }
-    }
-    //[self.conversationListTableView.header endRefreshing];
-//    [self refreshHead];
+    [self.conversationListDataSource setArray:dataSource];
+    NSRange range=NSMakeRange(0,[self.dataArry count]);
+    [self.conversationListDataSource insertObjects:self.dataArry atIndexes:[NSIndexSet indexSetWithIndexesInRange:range]];
     return self.conversationListDataSource;
 }
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -262,6 +236,31 @@
 {
     if (_dataArry==nil) {
         _dataArry=[[NSMutableArray alloc] init];
+        for (int i = 0; i<kTitleList.count; i++) {
+            XHRCModel *model = [[XHRCModel alloc]initWithDic:nil];
+            model.conversationModelType = RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION;
+            model.RCtitle=kTitleList[i];
+            model.RCtitlePic=kTitlePic[i];
+            switch (i) {
+                case 0:
+                {
+                    model.modelType=XHRCTeacherBookType;
+                }
+                    break;
+                case 1:
+                {
+                    model.modelType=XHRCHomeWorkType;
+                }
+                    break;
+                    
+                case 2:
+                {
+                    model.modelType=XHRCnoticeType;
+                }
+                    break;
+            }
+            [_dataArry addObject:model];
+        }
     }
     return _dataArry;
 }

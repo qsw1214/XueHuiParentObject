@@ -83,7 +83,6 @@
 -(void)resetFrame:(CGRect)frame
 {
     [self setFrame:frame];
-    
     [self.childOptionsControl resetFrame:CGRectMake(0, 0, frame.size.width, 60.0)];
     [self.askforLeaveTypeControl resetFrame:CGRectMake(self.childOptionsControl.left, self.childOptionsControl.bottom, frame.size.width, 60.0)];
     [self.topAccessoryView resetFrame:CGRectMake(0, self.askforLeaveTypeControl.bottom, frame.size.width, 10.0)];
@@ -195,6 +194,7 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
 {
     if (subview)
     {
+        [self setBizType:@"0"];
         [[XHUserInfo sharedUserInfo].childListArry enumerateObjectsUsingBlock:^(XHChildListModel *obj, NSUInteger idx, BOOL * _Nonnull stop)
          {
              if (idx == 0)
@@ -273,6 +273,11 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
         }
             break;
     }
+    
+    if (![self.startTimeControl.describe isEqualToString:@"请选择"]&&![self.endTimeControl.describe isEqualToString:@"请选择"]) {
+         [self getLoseSubject];
+    }
+   
 }
 #pragma mark  请假类型Delegate
 -(void)getItemObject:(NSString *)itemObject atItemIndex:(NSInteger)index
@@ -404,7 +409,27 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
          } error:^(NSError *error){}];
     }
 }
-
+-(void)getLoseSubject
+{
+    XHNetWorkConfig *netWork=[XHNetWorkConfig new];
+    [netWork setObject:self.childOptionsControl.model.clazzId forKey:@"clazzId"];
+    [netWork setObject:self.startTimeControl.describe forKey:@"beginTime"];
+      [netWork setObject:self.endTimeControl.describe forKey:@"endTime"];
+    [netWork postWithUrl:@"zzjt-app-api_bizInfo007" sucess:^(id object, BOOL verifyObject) {
+        if (verifyObject) {
+            [self.subjectArry removeAllObjects];
+            NSArray *arry=[object objectItemKey:@"object"];
+            for (NSDictionary *dic in arry) {
+                NSDictionary *Dic=[dic objectItemKey:@"propValue"];
+                XHSubjectModel *model=[[XHSubjectModel alloc] initWithDic:Dic];
+                [self.subjectArry addObject:model];
+            }
+            [self.loseSubjectView setItemArry:self.subjectArry];
+        }
+    } error:^(NSError *error) {
+        
+    }];
+}
 
 #pragma mark - Getter / Setter
 #pragma mark 请假学生
@@ -557,22 +582,6 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
     if (_loseSubjectView==nil) {
         _loseSubjectView=[[XHLoseSubjectView alloc] init];
         [_loseSubjectView setTitle:@"或缺课科目"];
-        for (int i=0; i<5; i++) {
-            XHSubjectModel *model=[[XHSubjectModel alloc] init];
-            model.sub=@"数学";
-            [self.subjectArry addObject:model];
-        }
-        for (int i=0; i<5; i++) {
-            XHSubjectModel *model=[[XHSubjectModel alloc] init];
-            model.sub=@"信息技术";
-            [self.subjectArry addObject:model];
-        }
-        for (int i=0; i<5; i++) {
-            XHSubjectModel *model=[[XHSubjectModel alloc] init];
-            model.sub=@"我的课程";
-            [self.subjectArry addObject:model];
-        }
-        [_loseSubjectView setItemArry:self.subjectArry];
     }
     return _loseSubjectView;
 }

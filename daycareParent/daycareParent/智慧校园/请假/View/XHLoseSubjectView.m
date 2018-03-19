@@ -41,7 +41,7 @@
 {
     for (int i=0; i<arry.count; i++) {
         XHSubjectModel *model=arry[i];
-        UIButton *btn=[[UIButton alloc] initWithFrame:CGRectMake(10*(i+1)+Width, self.titleLabel.bottom+10, [self getCustomWidth:model.sub], 40)];
+        UIButton *btn=[[UIButton alloc] initWithFrame:CGRectMake(10*(i+1)+Width, 10, [self getCustomWidth:model.sub], 40)];
         [self setLine:btn];
         [btn setTitle:model.sub forState:UIControlStateNormal];
         [btn setTitleColor:MainColor forState:UIControlStateNormal];
@@ -57,7 +57,6 @@ self.scrollView.contentSize=CGSizeMake(Width+10*(arry.count+1), 40);
         _titleLabel=[[UILabel alloc] init];
         _titleLabel.textAlignment=NSTextAlignmentLeft;
         [_titleLabel setFont:[UIFont boldSystemFontOfSize:14.0]];
-
     }
     return _titleLabel;
 }

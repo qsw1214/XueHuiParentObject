@@ -27,6 +27,7 @@
     [super viewDidLoad];
     [self setNavtionTitle:@"家庭作业"];
     [self setItemContentType:NavigationIconype withItemType:NavigationItemRightype withIconName:@"ico_date" withTitle:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,10 +47,11 @@
         [self.mainTableView setDataSource:self];
         [self.mainTableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHeaderAction)];
         [self.mainTableView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, CONTENT_HEIGHT)];
+        [self.mainTableView setTipType:TipTitleAndTipImage withTipTitle:@"暂无数据" withTipImage:@"pic_nothing"];
+        [self.mainTableView beginRefreshing];
         [self.view addSubview:self.mainTableView];
-        
-        
-        
+       
+        /*
         for (int i=0; i<10; i++)
         {
             XHHomeWorkFrame *frame = [[XHHomeWorkFrame alloc]init];
@@ -123,7 +125,7 @@
         
         
         
-        
+        */
         
     }
 }
@@ -156,8 +158,10 @@
                     XHHomeWorkFrame *frame = [[XHHomeWorkFrame alloc]init];
                     XHHomeWorkModel *model = [[XHHomeWorkModel alloc]init];
                     [model setItemObject:dic];
+                    [frame setModel:model];
                     [self.dataArray addObject:frame];
                 }
+               
             }
              [self.mainTableView refreshReloadData];
         } error:^(NSError *error)
@@ -176,6 +180,9 @@
 #pragma mark - Deletage Method
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    [self.mainTableView tableTipViewWithArray:self.dataArray];
+    
+    kNSLog(kFormat(@"%zd",self.dataArray.count));
     return [self.dataArray count];
 }
 
@@ -210,7 +217,7 @@
 -(void)datePickerAction:(NSString *)date
 {
     self.dateStr=date;
-    [self refreshHeaderAction];
+    [self.mainTableView beginRefreshing];
 }
 -(XHNetWorkConfig *)netWork
 {

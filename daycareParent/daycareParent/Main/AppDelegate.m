@@ -142,7 +142,7 @@
     [self.window makeKeyAndVisible];
     
     //shareSDK
-    [ShareSDK registerApp:@"1e283da43b660" activePlatforms:@[
+    [ShareSDK registerApp:@"5aaf91ed8f4a9d545e000234" activePlatforms:@[
                                                              @(SSDKPlatformTypeSinaWeibo),
                                                              @(SSDKPlatformSubTypeWechatSession),
                                                              @(SSDKPlatformSubTypeWechatTimeline),

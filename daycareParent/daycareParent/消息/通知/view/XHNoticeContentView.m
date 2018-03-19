@@ -32,7 +32,7 @@
         [self addSubview:self.tableView];
         [self.tableView setDelegate:self];
         [self.tableView setDataSource:self];
-        [self.tableView setTipType:TipImage withTipTitle:nil withTipImage:@"ico-no-data"];
+        [self.tableView setTipType:TipTitleAndTipImage withTipTitle:@"暂无数据" withTipImage:@"pic_nothing"];
         [self.tableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHeaderAction)];
         [self.tableView showRefresFooterWithTarget:self withSelector:@selector(refreshFooterAction)];
         [self.tableView beginRefreshing];

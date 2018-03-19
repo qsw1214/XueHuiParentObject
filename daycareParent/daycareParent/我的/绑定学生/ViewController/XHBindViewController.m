@@ -30,6 +30,7 @@
 {
     [super viewDidLoad];
     [self setNavtionTitle:@"绑定学生"];
+    [self setItemContentType:NavigationTitleType withItemType:NavigationItemRightype withIconName:nil withTitle:@"跳过"];
 }
 
 

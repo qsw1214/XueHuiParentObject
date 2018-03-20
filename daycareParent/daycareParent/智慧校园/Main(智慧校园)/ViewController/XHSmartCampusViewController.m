@@ -97,10 +97,12 @@
             {
                 XHAskforLeaveViewController *achievement = [[XHAskforLeaveViewController alloc]initHiddenWhenPushHidden];
                 [self.navigationController pushViewController:achievement animated:YES];
+
             }
             
         }
             break;
+
 #pragma mark case 5 食谱
         case 5:
         {
@@ -137,6 +139,8 @@
 //
 //        }
 //            break;
+=======
+>>>>>>> ac8b5cc671010d3e1d17ede9f597764a7d755ddd
     }
 }
 

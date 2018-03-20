@@ -250,6 +250,7 @@
                 case 0:
                 {
                     model.modelType=XHRCTeacherBookType;
+                    model.RCContent=@"点击加强和老师的沟通哦~";
                 }
                     break;
                 case 1:

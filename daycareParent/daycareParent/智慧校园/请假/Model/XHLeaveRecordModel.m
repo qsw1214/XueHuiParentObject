@@ -22,19 +22,27 @@
     [self setStudentName:[object objectItemKey:@"studentName"]];
     [self setBizDays:[object objectItemKey:@"bizDays"]];
     [self setScheduleflg:[object objectItemKey:@"scheduleflg"]];
-    NSArray *dateArray = [self.beginTime componentsSeparatedByString:@" "];
-    
-    if (dateArray)
+    NSArray *beginArray = [self.beginTime componentsSeparatedByString:@" "];
+     NSArray *endArray = [self.endTime componentsSeparatedByString:@" "];
+    if (beginArray&&endArray)
     {
-        NSString *firstDate = [dateArray firstObject];
-        NSArray *yearArray = [firstDate componentsSeparatedByString:@"-"];
-        if (yearArray)
+        NSString *beginDate = [beginArray firstObject];
+        NSArray *begin_yearArray = [beginDate componentsSeparatedByString:@"-"];
+        
+        NSString *endDate = [endArray firstObject];
+        NSArray *end_yearArray = [endDate componentsSeparatedByString:@"-"];
+        
+        if (begin_yearArray&&endArray)
         {
-            NSString *year = [yearArray objectAtIndex:0];
-            NSString *month = [yearArray objectAtIndex:1];
-            NSString *day = [yearArray objectAtIndex:2];
+           // NSString *begin_year = [begin_yearArray objectAtIndex:0];
+            NSString *begin_month = [begin_yearArray objectAtIndex:1];
+            NSString *begin_day = [begin_yearArray objectAtIndex:2];
             
-            [self setTitle:[NSString stringWithFormat:@"%@于%@年%@月%@日请假，请假%@节",self.studentName,year,month,day,self.bizDays]];
+            //NSString *end_year = [end_yearArray objectAtIndex:0];
+            NSString *end_month = [end_yearArray objectAtIndex:1];
+            NSString *end_day = [end_yearArray objectAtIndex:2];
+            
+            [self setTitle:[NSString stringWithFormat:@"%@于%@月%@日至%@月%@日请假，请假%@节",self.studentName,begin_month,begin_day,end_month,end_day,self.bizDays]];
         }
         else
         {

@@ -191,7 +191,7 @@
     if (_loginButton==nil) {
         _loginButton=[[XHBaseBtn alloc] initWithFrame:CGRectMake(10, 370, SCREEN_WIDTH-20, 50)];
         [_loginButton setBackgroundImage:[UIImage imageNamed:@"btn_logn"] forState:UIControlStateNormal];
-        [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
+        [_loginButton setTitle:@"没错，就是我！" forState:UIControlStateNormal];
         [_loginButton setTag:1];
         [_loginButton addTarget:self action:@selector(buttonClickMethod:) forControlEvents:UIControlEventTouchUpInside];
     }

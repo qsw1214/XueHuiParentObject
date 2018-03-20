@@ -19,18 +19,18 @@
     if (self=[super initWithFrame:frame]) {
         self.selectIndex=2;
         NSMutableArray  *imageArray = [NSMutableArray arrayWithCapacity:0];
-        [imageArray addObjectsFromArray:@[[UIImage imageNamed:@"tab1-heartshow"],
-                                          [UIImage imageNamed:@"tab2-doctor"],
-                                          [UIImage imageNamed:@"plus_Last"],
-                                          [UIImage imageNamed:@"tab4-more"],
-                                          [UIImage imageNamed:@"tab5-file"]
+        [imageArray addObjectsFromArray:@[[UIImage imageNamed:@"ico_xiaoxi_xian"],
+                                          [UIImage imageNamed:@"ico_txli_xian"],
+                                          [UIImage imageNamed:@"ico_shouye_current"],
+                                          [UIImage imageNamed:@"ico_xuehui_xian"],
+                                          [UIImage imageNamed:@"ico_wo_xiao"]
                                           ]];
         
-        NSArray *selectedImageArray = @[[UIImage imageNamed:@"tab1-heart"],
-                                        [UIImage imageNamed:@"tab2-doctorshow"],
-                                        [UIImage imageNamed:@"plus_Last"],
-                                        [UIImage imageNamed:@"tab4-moreshow"],
-                                        [UIImage imageNamed:@"tab5-fileshow"]
+        NSArray *selectedImageArray = @[[UIImage imageNamed:@"ico_xiaoxi_current"],
+                                        [UIImage imageNamed:@"ico_txli_current"],
+                                        [UIImage imageNamed:@"ico_shouye_current"],
+                                        [UIImage imageNamed:@"ico_xuehui_current"],
+                                        [UIImage imageNamed:@"ico_wo_current"]
                                         ];
         
         NSMutableArray  *titleArray = [NSMutableArray arrayWithCapacity:0];

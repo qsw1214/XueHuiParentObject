@@ -61,7 +61,7 @@
 {
     switch (object.model.tage)
     {
-#pragma mark case 0 平安记录
+#pragma mark case 0 考勤记录
         case 0:
         {
             if ([self refreshChild])
@@ -72,14 +72,14 @@
           
         }
             break;
-#pragma mark case 1实时定位
+#pragma mark case 1安全定位
         case 1:
         {
             XHSafeLocationViewController *location = [[XHSafeLocationViewController alloc]initHiddenWhenPushHidden];
             [self.navigationController pushViewController:location animated:YES];
         }
             break;
-#pragma mark case 3 食谱
+#pragma mark case 3 课程表
         case 3:
         {
             if ([self refreshChild])
@@ -90,19 +90,20 @@
             
         }
             break;
-#pragma mark case 4 课程表
+#pragma mark case 4 请假
         case 4:
         {
             if ([self refreshChild])
             {
                 XHAskforLeaveViewController *achievement = [[XHAskforLeaveViewController alloc]initHiddenWhenPushHidden];
                 [self.navigationController pushViewController:achievement animated:YES];
-               
+
             }
             
         }
             break;
-#pragma mark case 5 成绩
+
+#pragma mark case 5 食谱
         case 5:
         {
             if ([self refreshChild])
@@ -110,9 +111,10 @@
                 XHCookBookViewController *syllabus = [[XHCookBookViewController alloc]initHiddenWhenPushHidden];
                 [self.navigationController pushViewController:syllabus animated:YES];
             }
-           
+            
         }
             break;
+
     }
 }
 

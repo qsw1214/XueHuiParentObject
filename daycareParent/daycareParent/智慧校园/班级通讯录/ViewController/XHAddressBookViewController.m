@@ -59,7 +59,7 @@
 #pragma mark - Delertage Method
 - (NSInteger)tableView:(BaseTableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    [tableView tableTipViewWithArray:self.dataArray];
+    [tableView tableTipViewWithArray:self.tableArray];
     return [self.tableArray count];
 }
 
@@ -112,7 +112,7 @@
          
      }];
     
-    [self.mainTableView reloadData];
+    [self.mainTableView refreshReloadData];
 }
 
 

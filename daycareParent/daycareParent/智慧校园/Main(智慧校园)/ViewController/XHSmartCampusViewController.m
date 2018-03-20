@@ -95,8 +95,9 @@
         {
             if ([self refreshChild])
             {
-                XHCookBookViewController *syllabus = [[XHCookBookViewController alloc]initHiddenWhenPushHidden];
-                [self.navigationController pushViewController:syllabus animated:YES];
+                XHAskforLeaveViewController *achievement = [[XHAskforLeaveViewController alloc]initHiddenWhenPushHidden];
+                [self.navigationController pushViewController:achievement animated:YES];
+               
             }
             
         }
@@ -106,34 +107,10 @@
         {
             if ([self refreshChild])
             {
-                XHAskforLeaveViewController *achievement = [[XHAskforLeaveViewController alloc]initHiddenWhenPushHidden];
-                [self.navigationController pushViewController:achievement animated:YES];
+                XHCookBookViewController *syllabus = [[XHCookBookViewController alloc]initHiddenWhenPushHidden];
+                [self.navigationController pushViewController:syllabus animated:YES];
             }
            
-        }
-            break;
-#pragma mark case 6 请假
-        case 6:
-        {
-            if ([self refreshChild])
-            {
-                XHTeacherAddressBookViewController *leave = [[XHTeacherAddressBookViewController alloc]initHiddenWhenPushHidden];
-                [leave setEnterType:TeacherAddressBookAskLeaveType];
-                leave.didselectBack = ^(XHTeacherAddressBookFrame *itemObject)
-                {
-                    NSLog(@"%@",itemObject.model.teacherName);
-                };
-                [self.navigationController pushViewController:leave animated:YES];
-            }
-            
-        }
-            break;
-#pragma mark case 7
-        case 7:
-        {
-            XHBindViewController *leave = [[XHBindViewController alloc]initHiddenWhenPushHidden];
-            [self.navigationController pushViewController:leave animated:YES];
-            
         }
             break;
     }

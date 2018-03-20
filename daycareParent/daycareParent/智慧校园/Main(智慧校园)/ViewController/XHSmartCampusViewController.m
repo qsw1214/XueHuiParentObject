@@ -115,32 +115,6 @@
         }
             break;
 
-//#pragma mark case 6 食谱
-//        case 6:
-//        {
-//            if ([self refreshChild])
-//            {
-//                XHTeacherAddressBookViewController *leave = [[XHTeacherAddressBookViewController alloc]initHiddenWhenPushHidden];
-//                [leave setEnterType:TeacherAddressBookAskLeaveType];
-//                leave.didselectBack = ^(XHTeacherAddressBookFrame *itemObject)
-//                {
-//                    NSLog(@"%@",itemObject.model.teacherName);
-//                };
-//                [self.navigationController pushViewController:leave animated:YES];
-//            }
-//
-//        }
-//            break;
-//#pragma mark case 7
-//        case 7:
-//        {
-//            XHBindViewController *leave = [[XHBindViewController alloc]initHiddenWhenPushHidden];
-//            [self.navigationController pushViewController:leave animated:YES];
-//
-//        }
-//            break;
-=======
->>>>>>> ac8b5cc671010d3e1d17ede9f597764a7d755ddd
     }
 }
 

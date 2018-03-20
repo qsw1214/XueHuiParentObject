@@ -22,6 +22,13 @@
 		041649F4205283CD00D2CF4C /* XHddressBookMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 041649F3205283CD00D2CF4C /* XHddressBookMaskView.m */; };
 		0445F684205A046000B4E0A5 /* XHDateSwitchControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0445F683205A046000B4E0A5 /* XHDateSwitchControl.m */; };
 		0445F687205A52C300B4E0A5 /* NSArray+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 0445F686205A52C300B4E0A5 /* NSArray+Category.m */; };
+		0455C4CA206099BD007A975C /* XHInfiniteRotationControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0455C4C9206099BD007A975C /* XHInfiniteRotationControl.m */; };
+		0455C4CD206099F3007A975C /* XHPageCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0455C4CC206099F3007A975C /* XHPageCollectionView.m */; };
+		0455C4D020609A03007A975C /* XHInfiniteRotationCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0455C4CF20609A03007A975C /* XHInfiniteRotationCollectionView.m */; };
+		0455C4D320609A2F007A975C /* XHPageCollectionViewItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0455C4D220609A2F007A975C /* XHPageCollectionViewItemCell.m */; };
+		0455C4D620609A41007A975C /* XHInfiniteRotationItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0455C4D520609A41007A975C /* XHInfiniteRotationItemCell.m */; };
+		0455C4D92060A0C7007A975C /* XHInfiniteRotationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0455C4D82060A0C7007A975C /* XHInfiniteRotationModel.m */; };
+		0455C4DC2060A0D5007A975C /* XHPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0455C4DB2060A0D5007A975C /* XHPageModel.m */; };
 		0474F6482057CAB20081A37D /* XHDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 0474F6472057CAB20081A37D /* XHDatePicker.m */; };
 		0474F64B2057CAF10081A37D /* XHDatePickerBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 0474F64A2057CAF10081A37D /* XHDatePickerBoard.m */; };
 		04AA2FD3205FC09100549D23 /* XHStudentInfofamilyItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AA2FD2205FC09100549D23 /* XHStudentInfofamilyItemCell.m */; };
@@ -541,6 +548,20 @@
 		0445F683205A046000B4E0A5 /* XHDateSwitchControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHDateSwitchControl.m; sourceTree = "<group>"; };
 		0445F685205A52C300B4E0A5 /* NSArray+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Category.h"; sourceTree = "<group>"; };
 		0445F686205A52C300B4E0A5 /* NSArray+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Category.m"; sourceTree = "<group>"; };
+		0455C4C8206099BD007A975C /* XHInfiniteRotationControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHInfiniteRotationControl.h; sourceTree = "<group>"; };
+		0455C4C9206099BD007A975C /* XHInfiniteRotationControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHInfiniteRotationControl.m; sourceTree = "<group>"; };
+		0455C4CB206099F3007A975C /* XHPageCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHPageCollectionView.h; sourceTree = "<group>"; };
+		0455C4CC206099F3007A975C /* XHPageCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHPageCollectionView.m; sourceTree = "<group>"; };
+		0455C4CE20609A03007A975C /* XHInfiniteRotationCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHInfiniteRotationCollectionView.h; sourceTree = "<group>"; };
+		0455C4CF20609A03007A975C /* XHInfiniteRotationCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHInfiniteRotationCollectionView.m; sourceTree = "<group>"; };
+		0455C4D120609A2F007A975C /* XHPageCollectionViewItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHPageCollectionViewItemCell.h; sourceTree = "<group>"; };
+		0455C4D220609A2F007A975C /* XHPageCollectionViewItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHPageCollectionViewItemCell.m; sourceTree = "<group>"; };
+		0455C4D420609A41007A975C /* XHInfiniteRotationItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHInfiniteRotationItemCell.h; sourceTree = "<group>"; };
+		0455C4D520609A41007A975C /* XHInfiniteRotationItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHInfiniteRotationItemCell.m; sourceTree = "<group>"; };
+		0455C4D72060A0C7007A975C /* XHInfiniteRotationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHInfiniteRotationModel.h; sourceTree = "<group>"; };
+		0455C4D82060A0C7007A975C /* XHInfiniteRotationModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHInfiniteRotationModel.m; sourceTree = "<group>"; };
+		0455C4DA2060A0D5007A975C /* XHPageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHPageModel.h; sourceTree = "<group>"; };
+		0455C4DB2060A0D5007A975C /* XHPageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHPageModel.m; sourceTree = "<group>"; };
 		0474F6462057CAB20081A37D /* XHDatePicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHDatePicker.h; sourceTree = "<group>"; };
 		0474F6472057CAB20081A37D /* XHDatePicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHDatePicker.m; sourceTree = "<group>"; };
 		0474F6492057CAF10081A37D /* XHDatePickerBoard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHDatePickerBoard.h; sourceTree = "<group>"; };
@@ -1575,6 +1596,27 @@
 			path = controller;
 			sourceTree = "<group>";
 		};
+		0455C4C720609995007A975C /* XHInfiniteRotation */ = {
+			isa = PBXGroup;
+			children = (
+				0455C4C8206099BD007A975C /* XHInfiniteRotationControl.h */,
+				0455C4C9206099BD007A975C /* XHInfiniteRotationControl.m */,
+				0455C4CB206099F3007A975C /* XHPageCollectionView.h */,
+				0455C4CC206099F3007A975C /* XHPageCollectionView.m */,
+				0455C4D120609A2F007A975C /* XHPageCollectionViewItemCell.h */,
+				0455C4D220609A2F007A975C /* XHPageCollectionViewItemCell.m */,
+				0455C4CE20609A03007A975C /* XHInfiniteRotationCollectionView.h */,
+				0455C4CF20609A03007A975C /* XHInfiniteRotationCollectionView.m */,
+				0455C4D420609A41007A975C /* XHInfiniteRotationItemCell.h */,
+				0455C4D520609A41007A975C /* XHInfiniteRotationItemCell.m */,
+				0455C4D72060A0C7007A975C /* XHInfiniteRotationModel.h */,
+				0455C4D82060A0C7007A975C /* XHInfiniteRotationModel.m */,
+				0455C4DA2060A0D5007A975C /* XHPageModel.h */,
+				0455C4DB2060A0D5007A975C /* XHPageModel.m */,
+			);
+			path = XHInfiniteRotation;
+			sourceTree = "<group>";
+		};
 		0474F6452057CA990081A37D /* XHDatePicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -2514,6 +2556,7 @@
 		4B80F2001FCBE43E00BC7B52 /* Tool(工具类) */ = {
 			isa = PBXGroup;
 			children = (
+				0455C4C720609995007A975C /* XHInfiniteRotation */,
 				04D5396C205B5E1200DB344E /* XHAlert */,
 				8C9DFB47205A408700093CA6 /* XHPickerView */,
 				0474F6452057CA990081A37D /* XHDatePicker */,
@@ -4069,6 +4112,7 @@
 				8C7E98331FECF1660096288E /* SGQRCodeHelperTool.m in Sources */,
 				4B3418701FFDC14C00A5EC56 /* ASValuePopUpView.m in Sources */,
 				4B80F2421FCBF01B00BC7B52 /* BaseLabelView.m in Sources */,
+				0455C4CA206099BD007A975C /* XHInfiniteRotationControl.m in Sources */,
 				4B278AEA2010422C00293F30 /* UIView+RCDDanmaku.m in Sources */,
 				4B3126191FD90AAA000CE894 /* XHDatePickerControl.m in Sources */,
 				8C9DFB43205A030100093CA6 /* XHVerifyTableViewCell.m in Sources */,
@@ -4276,9 +4320,11 @@
 				4B5A3AF11FCEA9D000504229 /* XHSafeRegisterViewController.m in Sources */,
 				04052DBC205674A200D1637F /* XHCookBookHeaderItemCell.m in Sources */,
 				4BB792B91FD780C300E0ED72 /* XHAskforLeaveSubmitControl.m in Sources */,
+				0455C4D020609A03007A975C /* XHInfiniteRotationCollectionView.m in Sources */,
 				4BEBC8D420045EDA00FD6915 /* XHDynamicsHeaderControl.m in Sources */,
 				4B80F28B1FCBF04800BC7B52 /* MJRefreshConst.m in Sources */,
 				041649EA20525DC000D2CF4C /* XHAddressBookHeaderItemCell.m in Sources */,
+				0455C4D320609A2F007A975C /* XHPageCollectionViewItemCell.m in Sources */,
 				4B80F2D11FCBF04F00BC7B52 /* UIButton+WebCache.m in Sources */,
 				04AAEBBA2058E7E400EF225D /* XHFamilyListModel.m in Sources */,
 				8C62409F1FD8E3BF00E6C031 /* XHAboutUsViewController.m in Sources */,
@@ -4289,6 +4335,7 @@
 				4B3126301FD93CC6000CE894 /* TAAbstractDotView.m in Sources */,
 				4B31264F1FDA20CD000CE894 /* XHAddressBookToolBar.m in Sources */,
 				4BB792B61FD77D7600E0ED72 /* XHAskforLeaveChargeTeacherControl.m in Sources */,
+				0455C4CD206099F3007A975C /* XHPageCollectionView.m in Sources */,
 				4B80F2C41FCBF04F00BC7B52 /* NSImage+WebCache.m in Sources */,
 				4B278AEC2010422C00293F30 /* RCDDanmakuInfo.m in Sources */,
 				4B31263D1FD93D78000CE894 /* XHAddressBookViewController.m in Sources */,
@@ -4332,6 +4379,7 @@
 				8CAC51192058CCBD00D2924F /* ParentTableViewCell.m in Sources */,
 				4BA8C4E51FD0002D006CBEBC /* XHHomeWorkTableViewCell.m in Sources */,
 				4B3418F61FFF14F100A5EC56 /* XHVideoControl.m in Sources */,
+				0455C4D92060A0C7007A975C /* XHInfiniteRotationModel.m in Sources */,
 				4B9110781FD7B9E600841505 /* XHSyllabusCell.m in Sources */,
 				4BB792E01FD798B000E0ED72 /* BaseMenuModel.m in Sources */,
 				4B80F2211FCBEC2B00BC7B52 /* BaseNavigationControlItem.m in Sources */,
@@ -4354,6 +4402,7 @@
 				4B80F2D01FCBF04F00BC7B52 /* SDWebImageWebPCoder.m in Sources */,
 				4B80F3211FCBFD6F00BC7B52 /* NSArray+MTLManipulationAdditions.m in Sources */,
 				8CCD7E1F1FD0EE0D00F7F54E /* XHChagePhoneViewController.m in Sources */,
+				0455C4DC2060A0D5007A975C /* XHPageModel.m in Sources */,
 				4B80F3321FCC114400BC7B52 /* NSUserDefaults+UserInfo.m in Sources */,
 				4BBC43451FD0F01D00555846 /* XHCGRect.m in Sources */,
 				4B80F2F01FCBF09900BC7B52 /* AFNetworkingHelper.m in Sources */,
@@ -4390,6 +4439,7 @@
 				4B80F2C61FCBF04F00BC7B52 /* SDImageCacheConfig.m in Sources */,
 				4BA8C4DF1FCFF36C006CBEBC /* XHHomeWorkFrame.m in Sources */,
 				4B4338BA1FDF9C3F0047AC52 /* XHEducationCloudItemCell.m in Sources */,
+				0455C4D620609A41007A975C /* XHInfiniteRotationItemCell.m in Sources */,
 				4B80F2C81FCBF04F00BC7B52 /* SDWebImageCodersManager.m in Sources */,
 				8C9DFB4A205A411700093CA6 /* XHShareView.m in Sources */,
 				4B3126591FDA7D5D000CE894 /* XHAddressBookKey.m in Sources */,

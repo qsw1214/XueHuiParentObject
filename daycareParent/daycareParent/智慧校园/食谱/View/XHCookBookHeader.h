@@ -15,6 +15,17 @@
 #import "XHCookBookFrame.h"
 
 
+@protocol XHCookBookHeaderDeletage <NSObject>
+
+
+-(void)didSelectItemObject:(XHCookBookFrame*)model;
+
+@end
+
 @interface XHCookBookHeader : BaseCollectionView
+
+
+-(instancetype)initWithDelegate:(id <XHCookBookHeaderDeletage>)delegate;
+
 
 @end

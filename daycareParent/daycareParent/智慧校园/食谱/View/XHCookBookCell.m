@@ -7,6 +7,8 @@
 //
 
 #import "XHCookBookCell.h"
+#import "XHInfiniteRotationControl.h"
+
 
 
 
@@ -14,7 +16,7 @@
 
 @property (nonatomic,strong) UILabel *titleLabel; //!< 标题标签
 @property (nonatomic,strong) UILabel *contentLabel; //!< 标题标签
-@property (nonatomic,strong) UIImageView *imageViewView; //!< 选中视图背景颜色
+@property (nonatomic,strong) XHInfiniteRotationControl *infiniteRotationControl; //!< 选中视图背景颜色
 
 
 @end
@@ -30,9 +32,9 @@
     self = [super init];
     if (self)
     {
+        [self.contentView addSubview:self.infiniteRotationControl];
         [self.contentView addSubview:self.titleLabel];
         [self.contentView addSubview:self.contentLabel];
-        [self.contentView addSubview:self.imageViewView];
         [self.contentView setBackgroundColor:[UIColor whiteColor]];
 
         [self setItemColor:NO];
@@ -49,16 +51,16 @@
             break;
         case CookBookDetailsType:
         {
-            [self.imageViewView setFrame:CGRectMake(0, 0, itemFrame.itemSize.width, itemFrame.itemSize.height-70.0)];
-            [self.titleLabel setFrame:CGRectMake(10.0, (self.imageViewView.bottom+10.0), self.imageViewView.width-20.0, 20.0)];
-            [self.contentLabel setFrame:CGRectMake(self.titleLabel.left, self.titleLabel.bottom, self.titleLabel.width, 30.0)];
+            [self.infiniteRotationControl resetFrame:CGRectMake(0, 0, itemFrame.itemSize.width, itemFrame.itemSize.height)];
+            [self.titleLabel setFrame:CGRectMake(10.0, (self.infiniteRotationControl.bottom-20.0), self.infiniteRotationControl.width-20.0, 20.0)];
+            [self.contentLabel setFrame:CGRectMake(self.titleLabel.left, (self.titleLabel.bottom+5.0),itemFrame.contentSize.width , itemFrame.contentSize.height)];
             
             
             //!< 赋值
             [self.titleLabel setText:itemFrame.model.title];
             [self.contentLabel setText:itemFrame.model.content];
-//            [self.imageViewView sd_setImageWithURL:[NSURL URLWithString:itemFrame.model.previewUrl]];
-            [self.imageViewView setImage:[UIImage imageNamed:@"预览.jpg"]];
+            [self.infiniteRotationControl setInfiniteRotationItemArray:itemFrame.model.infiniteRotationArray];
+            [self.infiniteRotationControl setPageItemArray:itemFrame.model.pageArray];
         }
             break;
     }
@@ -93,15 +95,14 @@
 }
 
 
--(UIImageView *)imageViewView
+-(XHInfiniteRotationControl *)infiniteRotationControl
 {
-    if (!_imageViewView)
+    if (!_infiniteRotationControl)
     {
-        _imageViewView = [[UIImageView alloc]init];
-        [_imageViewView setContentMode:UIViewContentModeScaleAspectFill];
-        [_imageViewView setLayerCornerRadius:0.0];
+        _infiniteRotationControl = [[XHInfiniteRotationControl alloc]init];
+        [_infiniteRotationControl setType:XHInfiniteRotationBottomType];
     }
-    return _imageViewView;
+    return _infiniteRotationControl;
 }
 
 
@@ -113,7 +114,8 @@
     {
         [self.titleLabel setBackgroundColor:[UIColor redColor]];
         [self.contentLabel setBackgroundColor:[UIColor greenColor]];
-        [self.imageViewView setBackgroundColor:[UIColor grayColor]];
+        [self.infiniteRotationControl setBackgroundColor:[UIColor grayColor]];
+        [self.contentView setBackgroundColor:[UIColor orangeColor]];
     }
 }
 

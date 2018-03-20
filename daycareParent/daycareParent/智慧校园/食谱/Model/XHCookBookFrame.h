@@ -14,6 +14,7 @@
 
 @property (nonatomic,strong) XHCookBookModel *model;
 @property (nonatomic,assign) CGSize itemSize;
+@property (nonatomic,assign) CGSize contentSize;
 
 
 

@@ -13,17 +13,21 @@
 
 @interface XHCookBookHeader () <UICollectionViewDelegate,UICollectionViewDataSource>
 
+@property (nonatomic,weak)id <XHCookBookHeaderDeletage> cookDeletage;
+
+
 @end
 
 
 
 @implementation XHCookBookHeader
 
-- (instancetype)init
+-(instancetype)initWithDelegate:(id <XHCookBookHeaderDeletage>)delegate
 {
     self = [super initWithType:UICollectionViewScrollDirectionHorizontal];
     if (self)
     {
+        [self setCookDeletage:delegate];
         [self setDelegate:self];
         [self setDataSource:self];
         [self registerClass:[XHCookBookHeaderItemCell class] forCellWithReuseIdentifier:CellIdentifier];
@@ -46,6 +50,24 @@
 {
     [self.dataArray setArray:array];
     [self reloadData];
+    
+    [NSArray enumerateObjectsWithArray:self.dataArray usingBlock:^(XHCookBookFrame *obj, NSUInteger idx, BOOL *stop)
+    {
+        if (idx == 0)
+        {
+            [obj.model setSelectType:CookBookSelectType];
+        }
+        else
+        {
+            [obj.model setSelectType:CookBookNormalType];
+        }
+    }];
+    
+    if ([self.cookDeletage respondsToSelector:@selector(didSelectItemObject:)])
+    {
+        [self.cookDeletage didSelectItemObject:[self.dataArray firstObject]];
+    }
+    
 }
 
 
@@ -97,6 +119,28 @@
 }
 
 
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [NSArray enumerateObjectsWithArray:self.dataArray usingBlock:^(XHCookBookFrame *obj, NSUInteger idx, BOOL *stop)
+    {
+        if (idx == indexPath.row)
+        {
+            [obj.model setSelectType:CookBookSelectType];
+        }
+        else
+        {
+            [obj.model setSelectType:CookBookNormalType];
+        }
+        
+    }];
+    
+    [self reloadData];
+    if ([self.cookDeletage respondsToSelector:@selector(didSelectItemObject:)])
+    {
+        [self.cookDeletage didSelectItemObject:[self.dataArray objectAtIndex:indexPath.row]];
+    }
+}
 
 
 @end

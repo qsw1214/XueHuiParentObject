@@ -14,6 +14,8 @@
 -(void)setModel:(XHCookBookModel *)model
 {
     _model = model;
+    CGSize contentItemSize = [NSObject contentSizeWithTitle:model.content withFontOfSize:FontLevel2 withWidth:(SCREEN_WIDTH-20.0)];
+    [self setContentSize:contentItemSize];
     switch (model.modeType)
     {
         case CookBookWeekType:
@@ -24,8 +26,8 @@
             break;
         case CookBookDetailsType:
         {
-            [self setItemFrame:CGRectMake(0, 0, 90.0, 350.0)];
-            [self setItemSize:CGSizeMake(SCREEN_WIDTH, 350.0)];
+            [self setItemSize:CGSizeMake(SCREEN_WIDTH, 300.0)];
+            [self setItemFrame:CGRectMake(0, 0, SCREEN_WIDTH, 300.0+self.contentSize.height+(5.0/**与标题间距*/+10.0/*与下面间距*/))];
         }
             break;
     }

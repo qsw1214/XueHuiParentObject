@@ -8,6 +8,8 @@
 
 #import "BaseModel.h"
 #import "XHPreviewModel.h"
+#import "XHPageModel.h"
+#import "XHInfiniteRotationModel.h"
 
 
 
@@ -39,6 +41,8 @@ typedef NS_ENUM(NSInteger,XHCookBookSelectType)
 @property (nonatomic,strong) XHPreviewModel *previewModel;
 
 @property (nonatomic,strong) NSMutableArray *contentArray; //!< 内容数组
+@property (nonatomic,strong) NSMutableArray <XHInfiniteRotationModel*> *infiniteRotationArray;
+@property (nonatomic,strong) NSMutableArray <XHPageModel*> *pageArray; //!< 分页视图数组
 
 
 @end

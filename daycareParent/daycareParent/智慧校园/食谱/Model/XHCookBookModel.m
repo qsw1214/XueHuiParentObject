@@ -12,14 +12,7 @@
 
 
 
--(NSMutableArray *)contentArray
-{
-    if (_contentArray == nil)
-    {
-        _contentArray = [NSMutableArray array];
-    }
-    return _contentArray;
-}
+
 
 
 -(void)setDate:(NSString *)date
@@ -28,6 +21,7 @@
     if (dateArray)
     {
         [self setWeekAndDate:[NSString stringWithFormat:@"%@（%@）",[XHHelper weekdayWithDate:date],date]];
+        [self setTitle:[NSString stringWithFormat:@"%@",[XHHelper weekdayWithDate:date]]];
         
         if ([dateArray count]>=3)
         {
@@ -48,9 +42,21 @@
 {
     [self setTitle:[object objectItemKey:@"title"]];
     [self setPreviewUrl:[object objectItemKey:@"picUrl"]];
-    [self setContent:[object objectItemKey:@"content"]];
     [self setObjectID:[object objectItemKey:@"id"]];
-    [self setContent:[object objectItemKey:@"demo"]];
+    [self setContent:[object objectItemKey:@"content"]];
+    
+    NSArray *imageUrlArray = [object objectItemKey:@"picUrl"];
+    [NSArray enumerateObjectsWithArray:imageUrlArray usingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop)
+    {
+        XHInfiniteRotationModel *rotaionModel = [[XHInfiniteRotationModel alloc]init];
+        [rotaionModel setImageUrl:obj];
+        XHPageModel *pageModel = [[XHPageModel alloc]init];
+        [pageModel setImageName:nil];
+        [pageModel setType:XHPageModelNormalType];
+        [self.pageArray addObject:pageModel];
+        [self.infiniteRotationArray addObject:rotaionModel];
+    }];
+    
 }
 
 
@@ -74,6 +80,35 @@
     }
     return _previewModel;
 }
+
+
+-(NSMutableArray *)contentArray
+{
+    if (_contentArray == nil)
+    {
+        _contentArray = [NSMutableArray array];
+    }
+    return _contentArray;
+}
+
+-(NSMutableArray *)infiniteRotationArray
+{
+    if (_infiniteRotationArray == nil)
+    {
+        _infiniteRotationArray = [NSMutableArray array];
+    }
+    return _infiniteRotationArray;
+}
+
+-(NSMutableArray *)pageArray
+{
+    if (_pageArray == nil)
+    {
+        _pageArray = [NSMutableArray array];
+    }
+    return _pageArray;
+}
+
 
 
 

@@ -30,10 +30,10 @@
         [self.contentView addSubview:_smallLab];
         _titleLab=[[ParentLabel alloc] initWithFrame:CGRectMake(80, 0, 90, 30)];
         [self.contentView addSubview:_titleLab];
-        _detailLab=[[ParentLabel alloc] initWithFrame:CGRectMake(170, 0, SCREEN_WIDTH-180, 30)];
+        _detailLab=[[ParentBackLabel alloc] initWithFrame:CGRectMake(170, 0, SCREEN_WIDTH-180, 30)];
         _detailLab.textAlignment=NSTextAlignmentRight;
         [self.contentView addSubview:_detailLab];
-        _ContentLab=[[ParentLabel alloc] init];
+        _ContentLab=[[ParentBackLabel alloc] init];
         _ContentLab.frame=CGRectMake(80, 35, SCREEN_WIDTH-95, 30);
         [self.contentView addSubview:_ContentLab];
         _bgLabel=[[UILabel alloc] init];

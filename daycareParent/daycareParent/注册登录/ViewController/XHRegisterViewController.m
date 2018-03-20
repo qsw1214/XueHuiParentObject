@@ -90,6 +90,8 @@
 
 - (void)buttonClick:(UIButton *)btn
 {
+    XHBindViewController *bind=[[XHBindViewController alloc] init];
+    [self.navigationController pushViewController:bind animated:YES];
     
     UITextField *phonepwd=[_tableView viewWithTag:10086];
     UITextField *verrifypwd=[_tableView viewWithTag:10086+1];

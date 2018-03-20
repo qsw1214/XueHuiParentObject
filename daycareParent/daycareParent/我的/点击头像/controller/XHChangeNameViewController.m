@@ -43,7 +43,11 @@
         if (verifyObject) {
             NSDictionary *dic=[object objectItemKey:@"object"];
             [XHUserInfo sharedUserInfo].guardianModel.guardianName=[dic objectItemKey:@"guardianName"];
-            self.isRefresh(YES);
+            [self.navigationController popViewControllerAnimated:YES];
+            if (self.isRefresh) {
+                self.isRefresh(YES);
+            }
+            
         }
     } error:^(NSError *error) {
         

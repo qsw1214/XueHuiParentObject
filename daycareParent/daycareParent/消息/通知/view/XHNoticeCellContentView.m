@@ -75,6 +75,7 @@
             [self.headerControl resetFrame:CGRectMake(10.0, 10.0, 60.0, 60.0)];
             //设置用户名
             [self.userNameLael setFrame:CGRectMake(self.headerControl.right+10.0, self.headerControl.top, (itemFrame.itemFrame.size.width-(self.headerControl.right+110)), 30.0)];
+            
             //设置日期
             [self.dateLabel setFrame:CGRectMake(self.userNameLael.right+5, self.userNameLael.top, 90, self.userNameLael.height)];
             //设置内容视图

@@ -660,6 +660,12 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
     }
     return _netWorkConfig;
 }
-
+-(NSString *)bizType
+{
+    if (_bizType==nil) {
+        _bizType=[[NSString alloc] init];
+    }
+    return _bizType;
+}
 
 @end

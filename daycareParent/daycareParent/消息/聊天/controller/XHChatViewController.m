@@ -53,7 +53,6 @@
     
     //进入刷新状态
     [self.conversationListTableView.header beginRefreshing];
-    
 }
 -(void)refreshHead
 {
@@ -122,18 +121,29 @@
                     teacherBook.enterType=TeacherAddressBookIMType;
                     [teacherBook setNavtionTitle:@"给老师留言"];
                     [self.navigationController pushViewController:teacherBook animated:YES];
+                    
                 }
                     break;
                     case XHRCHomeWorkType:
                 {
                     XHHomeWorkViewController *homeWork=[[XHHomeWorkViewController alloc] initHiddenWhenPushHidden];
                     [self.navigationController pushViewController:homeWork animated:YES];
+                    homeWork.isRefresh = ^(BOOL ok ) {
+                        if (ok) {
+                            [self refreshHead];
+                        }
+                    };
                 }
                     break;
                     case XHRCnoticeType:
                 {
                     XHNoticeListViewController *notice=[[XHNoticeListViewController alloc] initHiddenWhenPushHidden];
                     [self.navigationController pushViewController:notice animated:YES];
+                    notice.isRefresh = ^(BOOL ok ) {
+                        if (ok) {
+                            [self refreshHead];
+                        }
+                    };
                 }
                     break;
         }

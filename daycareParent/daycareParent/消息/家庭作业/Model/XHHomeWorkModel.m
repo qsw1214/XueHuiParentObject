@@ -16,7 +16,7 @@
 //!< 设置家庭作业对象
 -(void)setItemObject:(NSDictionary *)object
 {
-    [self setHeaderUrl:ALGetFileHeadThumbnail([object objectItemKey:@"headPic"])];
+    [self setHeaderUrl:ALGetFileHeadThumbnail([object objectItemKey:@"studentHeadPic"])];
     [self setSubject:[object objectItemKey:@"subjectName"]];
     [self setPushInfoId:[object objectItemKey:@"pushInfoId"]];
     
@@ -57,7 +57,7 @@
 {
     [self setHeaderUrl:ALGetFileHeadThumbnail([object objectItemKey:@"headPic"])];
     [self setSubject:[object objectItemKey:@"subjectName"]];
-    [self setPushInfoId:[object objectItemKey:@"pushInfoId"]];
+    [self setPushInfoId:[object objectItemKey:@"noticeActorId"]];
     
     NSMutableArray <XHPreviewModel*> *imageModelArray = [NSMutableArray array];
     for ( int i = 1; i<= 6; i++)
@@ -79,10 +79,9 @@
      }];
     
     [self setWorkContent:[object objectItemKey:@"content"]];
-    [self setUserName:[object objectItemKey:@"studentName"]];
+    [self setUserName:[object objectItemKey:@"teacherName"]];
     [self setReleaseDate:[NSString dateStr:[object objectItemKey:@"createTime"]]];
-    [self setWorkContent:[object objectItemKey:@"content"]];
-    [self setUnreadType:[object objectItemKey:@"isRead"]];
+    [self setUnreadType:[object objectItemKey:@"isStatus"]];
     [self setGradeName:[object objectItemKey:@"gradeName"]];
     [self setClazzName:[object objectItemKey:@"clazzName"]];
     [self setHomeWorkType:NotifyType];

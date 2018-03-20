@@ -26,7 +26,7 @@
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         layout.minimumLineSpacing = 8;
         layout.sectionInset = UIEdgeInsetsMake(15, 8, 15, 8);
-        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH,USER_HEARD*2+20) collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-20,USER_HEARD*2+20) collectionViewLayout:layout];
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.scrollsToTop = NO;
         _collectionView.bounces=NO;
@@ -75,6 +75,7 @@
 {
     _childListArry=array;
     [_collectionView reloadData];
+    [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:array.count - 1 inSection:0]  atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
 }
 /*
 // Only override drawRect: if you perform custom drawing.

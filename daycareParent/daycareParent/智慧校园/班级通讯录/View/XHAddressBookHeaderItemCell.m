@@ -99,7 +99,7 @@
     
     
     
-    [self.headerImageView setImage:[UIImage imageNamed:@"头像3"]];
+    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:ALGetFileHeadThumbnail(model.headPic)] placeholderImage:[UIImage imageNamed:@"addman"]];
 }
 
 
@@ -114,7 +114,7 @@
     if (!_headerImageView)
     {
         _headerImageView = [[UIImageView alloc]init];
-        [_headerImageView setBackgroundColor:[UIColor redColor]];
+        [_headerImageView setBackgroundColor:[UIColor whiteColor]];
     }
     return _headerImageView;
 }

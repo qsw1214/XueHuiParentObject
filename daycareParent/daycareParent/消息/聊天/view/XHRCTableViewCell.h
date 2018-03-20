@@ -11,8 +11,8 @@
 @interface XHRCTableViewCell : RCConversationBaseCell
 @property(nonatomic,strong)UIImageView *headImageView;
 @property(nonatomic,strong)ParentLabel *titleLab;
-@property(nonatomic,strong)ParentLabel *ContentLab;
-@property(nonatomic,strong)ParentLabel *detailLab;
+@property(nonatomic,strong)ParentBackLabel *ContentLab;
+@property(nonatomic,strong)ParentBackLabel *detailLab;
 @property(nonatomic,strong)UILabel *smallLab;
 @property(nonatomic,strong)UILabel *bgLabel;
 @property(nonatomic,strong)UIImageView *smalImage;

@@ -172,7 +172,6 @@
             [self.userNameLael setText:itemFrame.model.userName];
             [self.dateLabel setText:itemFrame.model.releaseDate];
             [self.contentLabel setText:itemFrame.model.workContent];
-            
             switch (itemFrame.model.homeWorkUnreadType)
             {
                 case HomeWorkUnreadType:

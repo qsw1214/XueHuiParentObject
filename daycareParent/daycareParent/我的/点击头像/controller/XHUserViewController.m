@@ -33,6 +33,7 @@
     _tableView.dataSource=self;
     [_tableView registerClass:[XHUserTableViewCell class] forCellReuseIdentifier:@"cell"];
     [self.view addSubview:_tableView];
+   
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -78,6 +79,16 @@
         default:
         {
             XHChangeNameViewController *name=[[XHChangeNameViewController alloc] init];
+            name.isRefresh = ^(BOOL ok) {
+                if (ok) {
+                    
+                    XHUserTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+                    cell.backLabel.text=[XHUserInfo sharedUserInfo].guardianModel.guardianName;
+                    if (self.isRefresh) {
+                       self.isRefresh(YES);
+                    }
+                }
+            };
             [self.navigationController pushViewController:name animated:YES];
         }
             break;

@@ -48,6 +48,8 @@
 {
     [self setFrame:frame];
     [self.headerImageView setFrame:CGRectMake(10.0, (frame.size.height-48.0)/2.0, 48.0, 48.0)];
+    self.headerImageView.layer.cornerRadius=48/2.0;
+    self.headerImageView.layer.masksToBounds=YES;
     [self.subjecLabel setFrame:CGRectMake((self.headerImageView.right+10.0), self.headerImageView.top, 40.0, 24.0)];
     [self.titleLabel setFrame:CGRectMake((self.subjecLabel.right+5.0), self.subjecLabel.top, frame.size.width-(self.subjecLabel.right+5.0+40.0), self.subjecLabel.height)];
     [self.describeLabel setFrame:CGRectMake(self.subjecLabel.left, self.titleLabel.bottom, (frame.size.width-(self.subjecLabel.left+40.0)), self.titleLabel.height)];
@@ -65,6 +67,7 @@
     [self.titleLabel setText:frame.model.teacherName];
     [self.describeLabel setText:frame.model.phone];
     [self.subjecLabel setText:@"数学"];
+    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:frame.model.headerUrl] placeholderImage:[UIImage imageNamed:@"addman"]];
     
 }
 

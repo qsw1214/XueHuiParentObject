@@ -90,9 +90,6 @@
 
 - (void)buttonClick:(UIButton *)btn
 {
-    XHBindViewController *bind=[[XHBindViewController alloc] init];
-    [self.navigationController pushViewController:bind animated:YES];
-    
     UITextField *phonepwd=[_tableView viewWithTag:10086];
     UITextField *verrifypwd=[_tableView viewWithTag:10086+1];
     UITextField *pwd=[_tableView viewWithTag:10086+2];
@@ -163,6 +160,7 @@
             [net postWithUrl:@"zzjt-app-api_user001" sucess:^(id object, BOOL verifyObject) {
                 if (verifyObject) {
                     XHBindViewController *bind=[[XHBindViewController alloc] init];
+                    bind.enterType=XHRegisterEnterType;
                     [self.navigationController pushViewController:bind animated:YES];
                 }
 

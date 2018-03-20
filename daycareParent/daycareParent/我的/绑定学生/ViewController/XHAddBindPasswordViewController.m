@@ -7,7 +7,7 @@
 //
 
 #import "XHAddBindPasswordViewController.h"
-
+#import "MainRootControllerHelper.h"
 @interface XHAddBindPasswordViewController ()
 
 
@@ -106,7 +106,22 @@
             
             [XHShowHUD showOKHud:@"绑定成功!"];
             
-            
+            switch (self.enterType) {
+                case XHRegisterAddEnterType:
+                {
+                    [[MainRootControllerHelper sharedRootHelperHelper] autoLoginWithWindow:kWindow];
+                }
+                    break;
+                    
+                case XHBindAddEnterType:
+                {
+                    if (self.isRefresh) {
+                        self.isRefresh(YES);
+                    }
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
+                    break;
+            }
             
             
             

@@ -30,7 +30,10 @@
 {
     [super viewDidLoad];
     [self setNavtionTitle:@"绑定学生"];
-    [self setItemContentType:NavigationTitleType withItemType:NavigationItemRightype withIconName:nil withTitle:@"跳过"];
+    if (self.enterType==XHRegisterEnterType)
+    {
+      [self setItemContentType:NavigationTitleType withItemType:NavigationItemRightype withIconName:nil withTitle:@"跳过"];
+    }
 }
 
 
@@ -70,6 +73,19 @@
             
             NSInteger isBinding = [[propValue objectForKey:@"isBinding"] integerValue]; //!<
             XHAddBindPasswordViewController *addPassword = [[XHAddBindPasswordViewController alloc]init];
+            switch (self.enterType) {
+                case XHRegisterEnterType:
+                {
+                    addPassword.enterType=XHRegisterAddEnterType;
+                }
+                    break;
+                    
+                case XHBindEnterType:
+                {
+                     addPassword.enterType=XHBindAddEnterType;
+                }
+                    break;
+            }
             if (isBinding)
             {
                 [addPassword setType:XHAddBindSettingPasswordType];
@@ -78,6 +94,13 @@
             {
                 [addPassword setType:XHAddBindEnterPasswordType];
             }
+            addPassword.isRefresh = ^(BOOL ok) {
+                if (ok) {
+                    if (self.isRefresh) {
+                        self.isRefresh(YES);
+                    }
+                }
+            };
             [self.navigationController pushViewController:addPassword animated:YES];
 
 

@@ -214,6 +214,11 @@
             if (index==self.childArry.count-1) {
 #pragma mark -----跳转到绑定孩子界面
                 XHBindViewController *bind=[[XHBindViewController alloc] initHiddenWhenPushHidden];
+                bind.isRefresh = ^(BOOL ok) {
+                    if (ok) {
+                        [self getChildListNet];
+                    }
+                };
                 [self.navigationController pushViewController:bind animated:YES];
             }
             else

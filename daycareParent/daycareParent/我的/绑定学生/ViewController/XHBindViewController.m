@@ -55,10 +55,12 @@
 
 
 #pragma mark - Delertage Method
-#pragma mark XHBindViewContentViewDelegate
+#pragma mark XHBindViewContentViewDelegate （根据当前还是确定是否被绑定过）
 -(void)submitControlAction:(XHNetWorkConfig*)sender
 {
     [XHShowHUD showTextHud];
+    [sender setObject:@"张晓" forKey:@"studentName"];
+    [sender setObject:@"101" forKey:@"archiveId"];
     [sender postWithUrl:@"zzjt-app-api_studentBinding001" sucess:^(id object, BOOL verifyObject)
     {
         if (verifyObject)
@@ -73,7 +75,9 @@
             
             NSInteger isBinding = [[propValue objectForKey:@"isBinding"] integerValue]; //!<
             XHAddBindPasswordViewController *addPassword = [[XHAddBindPasswordViewController alloc]init];
-            switch (self.enterType) {
+            [addPassword setNetWorkConfig:sender];
+            switch (self.enterType)
+            {
                 case XHRegisterEnterType:
                 {
                     addPassword.enterType=XHRegisterAddEnterType;
@@ -88,11 +92,11 @@
             }
             if (isBinding)
             {
-                [addPassword setType:XHAddBindSettingPasswordType];
+                [addPassword setType:XHAddBindEnterPasswordType];
             }
             else
             {
-                [addPassword setType:XHAddBindEnterPasswordType];
+                [addPassword setType:XHAddBindSettingPasswordType];
             }
             addPassword.isRefresh = ^(BOOL ok) {
                 if (ok) {
@@ -115,19 +119,6 @@
 
 
      }];
-    
-//    NSInteger isBinding = [[propValue objectForKey:@"isBinding"] integerValue]; //!<
-    XHAddBindPasswordViewController *addPassword = [[XHAddBindPasswordViewController alloc]init];
-    if (0)
-    {
-        [addPassword setType:XHAddBindSettingPasswordType];
-    }
-    else
-    {
-        [addPassword setType:XHAddBindEnterPasswordType];
-    }
-    [addPassword setNetWorkConfig:sender];
-    [self.navigationController pushViewController:addPassword animated:YES];
 }
 -(void)rightItemAction:(BaseNavigationControlItem *)sender
 {

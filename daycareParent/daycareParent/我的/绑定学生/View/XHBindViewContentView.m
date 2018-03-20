@@ -296,6 +296,8 @@
 #pragma mark - XHAlertControlDelegate (点击切换身份id的内容)
 -(void)alertBoardControlAction:(XHAlertModel *)sender
 {
+    [self.identityControl setText:sender.name withNumberType:1 withAllType:NO];
+    
     if (sender)
     {
         [self.netWorkConfig setObject:sender.identityType forKey:@"guardianType"];

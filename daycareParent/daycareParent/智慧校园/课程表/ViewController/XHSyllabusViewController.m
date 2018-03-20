@@ -19,7 +19,8 @@
 
 @property (nonatomic,strong) XHAddressBookHeader *addressBookHeader;
 @property (nonatomic,strong) BaseButtonControl *weekMenuControl; //!< 菜单选择菜单
-
+@property (nonatomic,strong) NSMutableArray *firstArry;
+@property (nonatomic,strong) NSMutableArray *twoArry;
 
 
 @end
@@ -139,6 +140,7 @@
     {
         [self.netWorkConfig postWithUrl:@"zzjt-app-api_smartCampus020" sucess:^(id object, BOOL verifyObject)
         {
+            [self.dataArray removeAllObjects];
             object = [object objectItemKey:@"object"];
             NSArray *dateArray = [object objectForKey:@"date"];
             NSArray *syllabusArray = [object objectForKey:@"syllabus"];
@@ -231,8 +233,71 @@
     {
         _addressBookHeader = [[XHAddressBookHeader alloc]init];
         [_addressBookHeader setDelegate:self];
+       
+        NSArray *a = @[@"1",@"2",@"3",@"1",@"2" ,@"3",@"1",@"2",@"3",@"1" ,@"2",@"3",@"1" ,@"2",@"3"];
+        
+        
+        
+        NSMutableArray *daaa = [NSMutableArray array];
+        
+        [a enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
+         {
+    
+             if ((idx %5== 0) && idx!=0)
+             {
+                 [daaa addObject:@"="];
+                 [daaa addObject:obj];
+             }
+             else
+             {
+                 [daaa addObject:obj];
+             }
+         }];
+        
+
+    
+        
+        
+        NSArray *rowarray = [self seprateArray:daaa count:5];
+        
+        
+        
     }
     return _addressBookHeader;
+}
+
+-(NSMutableArray *)firstArry
+{
+    if (_firstArry==nil) {
+        _firstArry=[[NSMutableArray alloc] init];
+    }
+    return _firstArry;
+}
+
+-(NSMutableArray *)twoArry
+{
+    if (_twoArry==nil) {
+        _twoArry=[[NSMutableArray alloc] init];
+    }
+    return _twoArry;
+}
+
+
+
+
+- (NSArray *)seprateArray:(NSArray *)temp count:(NSInteger)count
+{
+    NSMutableArray *tempArray = [[NSMutableArray alloc] initWithCapacity:0];
+    NSInteger row = 5;//temp.count/count;
+    NSInteger col = temp.count%count;
+//    NSAssert(col != 0, @"不能平均分");
+//    for (NSInteger i = 0; i < row; i++)
+//    {
+//        NSArray *rowArray = [temp subarrayWithRange:NSMakeRange(i * row, row)];
+//        [tempArray addObject:rowArray];
+//    }
+    
+    return tempArray;
 }
 
 

@@ -511,34 +511,33 @@
     
   
     
+//    @"851340998992228352"
     
-    
-    
-//    [self.netWorkConfig setObject:@"851340998992228352" forKey:@"studentBaseId"];
-//    [self.netWorkConfig postWithUrl:@"zzjt-app-api_studentBinding004" sucess:^(id object, BOOL verifyObject)
-//    {
-//        if (verifyObject)
-//        {
-//
-//
-//            for (int i= 0; i< 10; i++)
-//            {
-//                XHFamilyListModel *model = [[XHFamilyListModel alloc]init];
-//                [model setHeadPic:@""];
-//                [model setTelphoneNumber:@"15515667760"];
-//                [model setGuardianType:@"1"];
-//                [model setGuardianName:@"姚立志"];
-//                [model setGuardianId:@"1kskoso20--ess"];
-//                [self.dataArray addObject:model];
-//            }
-//
-//
-//
-//        }
-//    } error:^(NSError *error)
-//     {
-//
-//     }];
+    [self.netWorkConfig setObject:model.studentBaseId forKey:@"studentBaseId"];
+    [self.netWorkConfig postWithUrl:@"zzjt-app-api_studentBinding004" sucess:^(id object, BOOL verifyObject)
+    {
+        if (verifyObject)
+        {
+
+
+            for (int i= 0; i< 10; i++)
+            {
+                XHFamilyListModel *model = [[XHFamilyListModel alloc]init];
+                [model setHeadPic:@""];
+                [model setTelphoneNumber:@"15515667760"];
+                [model setGuardianType:@"1"];
+                [model setGuardianName:@"姚立志"];
+                [model setGuardianId:@"1kskoso20--ess"];
+                [self.dataArray addObject:model];
+            }
+
+
+
+        }
+    } error:^(NSError *error)
+     {
+
+     }];
 }
 
 

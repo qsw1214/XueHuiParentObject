@@ -106,7 +106,8 @@
             
             [XHShowHUD showOKHud:@"绑定成功!"];
             
-            switch (self.enterType) {
+            switch (self.enterType)
+            {
                 case XHRegisterAddEnterType:
                 {
                     [[MainRootControllerHelper sharedRootHelperHelper] autoLoginWithWindow:kWindow];
@@ -127,7 +128,11 @@
             
         }
         
-    } error:^(NSError *error){}];
+    } error:^(NSError *error){
+        
+        
+        
+    }];
     
     
     

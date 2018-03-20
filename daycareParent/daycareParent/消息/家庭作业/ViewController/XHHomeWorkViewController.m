@@ -50,7 +50,16 @@
         [self.mainTableView setTipType:TipTitleAndTipImage withTipTitle:@"暂无数据" withTipImage:@"pic_nothing"];
         [self.mainTableView beginRefreshing];
         [self.view addSubview:self.mainTableView];
-       
+       //刷新未读数据
+        [self.netWork setObject:[XHUserInfo sharedUserInfo].guardianModel.guardianId forKey:@"guardianId"];
+        [self.netWork postWithUrl:@"zzjt-app-api_smartCampus012" sucess:^(id object, BOOL verifyObject) {
+            if (verifyObject)
+            {
+                if (self.isRefresh) {self.isRefresh(YES);
+            }
+                
+            }
+        } error:^(NSError *error) {}];
         /*
         for (int i=0; i<10; i++)
         {
@@ -181,8 +190,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     [self.mainTableView tableTipViewWithArray:self.dataArray];
-    
-    kNSLog(kFormat(@"%zd",self.dataArray.count));
     return [self.dataArray count];
 }
 
@@ -204,13 +211,6 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return [[self.dataArray objectAtIndex:indexPath.row] cellHeight];
-}
-
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [self.netWork setObject:[XHUserInfo sharedUserInfo].guardianModel.guardianId forKey:@"guardianId"];
-    
 }
 
 #pragma mark XHDatePickerDelegate

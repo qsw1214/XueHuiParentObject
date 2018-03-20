@@ -9,8 +9,10 @@
 #import "XHHomeWorkCollectionView.h"
 #import "XHHomeWorkContentViwCell.h"
 #import "XHDynamicsPreviewControl.h"
-
-
+#import "XHHomeWorkFrame.h"
+@interface XHHomeWorkCollectionView()
+@property(nonatomic,strong)XHNetWorkConfig *net;
+@end
 
 @implementation XHHomeWorkCollectionView
 
@@ -75,7 +77,6 @@
 #pragma mark UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     XHDynamicsPreviewControl *dynamicsPreview = [[XHDynamicsPreviewControl alloc]init];
     [dynamicsPreview show];
     [dynamicsPreview setItemArray:self.dataArray];
@@ -103,7 +104,13 @@
 {
     return UIEdgeInsetsMake(5, 0, 0, 0);
 }
-
+-(XHNetWorkConfig *)net
+{
+    if (_net==nil) {
+        _net=[[XHNetWorkConfig alloc] init];
+    }
+    return _net;
+}
 
 
 

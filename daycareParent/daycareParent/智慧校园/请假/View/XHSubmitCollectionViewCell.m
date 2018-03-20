@@ -33,7 +33,7 @@
 {
     if (model.modelType==XHRecipientNomalModelType) {
         self.nameLabel.text=model.name;
-        [self.headImageView sd_setImageWithURL:[NSURL URLWithString:ALGetFileHeadThumbnail(model.headPic)] placeholderImage:[UIImage imageNamed:@"addman"]];
+        [self.headImageView sd_setImageWithURL:[NSURL URLWithString:model.headPic] placeholderImage:[UIImage imageNamed:@"addman"]];
     }
     else
     {

@@ -88,7 +88,7 @@
                     
                 default:
                 {
-                    cell.tipLabel.text=@"当前手机号：13500000012";
+                    cell.tipLabel.text=kFormat(@"当前手机号：%@",[XHUserInfo sharedUserInfo].loginName);
                 }
                     break;
             }

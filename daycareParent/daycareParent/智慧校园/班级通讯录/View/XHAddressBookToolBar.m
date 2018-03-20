@@ -72,7 +72,6 @@
 #pragma mark case 3 发送消息
         case 3:
         {
-                BaseViewController *vc =[[XHHelper sharedHelper] currentVC];
                 XHMessageUserInfo *messageInfo = [[XHMessageUserInfo alloc] init];
                 messageInfo.name = [NSString stringWithFormat:@"%@",self.itemFrame.model.teacherName];
                 messageInfo.headPic = [NSString stringWithFormat:@"%@",self.itemFrame.model.headerUrl];
@@ -84,7 +83,7 @@
             conversationVC.titleLabel.text=self.itemFrame.model.teacherName;
                 conversationVC.conversationType = ConversationType_PRIVATE;
                 conversationVC.targetId = [NSString stringWithFormat:@"%@", self.itemFrame.model.userID];
-              [vc.navigationController pushViewController:conversationVC animated:YES];
+              [[XHHelper sharedHelper].currentlyViewController.navigationController pushViewController:conversationVC animated:YES];
         }
             break;
 #pragma mark case 4 所授课程

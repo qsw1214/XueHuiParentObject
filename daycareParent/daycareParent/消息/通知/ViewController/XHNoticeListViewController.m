@@ -46,10 +46,11 @@
         [self.mainTableView setDataSource:self];
         [self.mainTableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHeaderAction)];
         [self.mainTableView showRefresFooterWithTarget:self withSelector:@selector(refreshFooterAction)];
+        [self.mainTableView setTipType:TipTitleAndTipImage withTipTitle:@"暂无数据" withTipImage:@"pic_nothing"];
         [self.mainTableView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, CONTENT_HEIGHT)];
         [self.view addSubview:self.mainTableView];
-        
-        
+        [self.mainTableView beginRefreshing];
+        /*
         
         for (int i=0; i<10; i++)
         {
@@ -123,7 +124,7 @@
         [self.mainTableView reloadData];
         
         
-        
+        */
     }
 }
 
@@ -194,6 +195,7 @@
 #pragma mark - Delegate Method
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    [self.mainTableView tableTipViewWithArray:self.dataArray];
     return [self.dataArray count];
 }
 
@@ -222,7 +224,21 @@
 {
     
 //    [self.netWork setObject:[XHUserInfo sharedUserInfo].guardianModel.guardianId forKey:@"guardianId"];
-    
+    /**
+     无论发送已读状态成功与否都要进入通知的详请
+     */
+    XHHomeWorkFrame *frame=self.dataArray[indexPath.row];
+    [self.netWorkConfig setObject:frame.model.pushInfoId forKey:@"noticeActorId"];
+    [self.netWorkConfig postWithUrl:@"zzjt-app-api_smartCampus016" sucess:^(id object, BOOL verifyObject)
+     {
+         if (verifyObject)
+         {
+             [self.mainTableView refreshReloadData];
+             if (self.isRefresh) {
+                 self.isRefresh(YES);
+             }
+         }
+     } error:^(NSError *error){}];
 }
 
 #pragma mark XHDatePickerDelegate

@@ -37,11 +37,10 @@
         [titleArray addObjectsFromArray:@[@"消息", @"通讯录", @"", @"学汇", @"我的"]];
         
         UIImageView *lineImageView = [[UIImageView alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width/2 - 40, - 17,80, 80)];
-        lineImageView.backgroundColor = [UIColor blueColor];
-        [lineImageView setBackgroundColor:[UIColor colorWithRed:250.0/255 green:250.0/255 blue:250.0/255 alpha:1]];
+        lineImageView.backgroundColor = [UIColor whiteColor];
         lineImageView.layer.masksToBounds = YES;
         lineImageView.layer.cornerRadius = 40;
-        lineImageView.layer.borderColor = [UIColor lightGrayColor].CGColor;//边框颜色
+        lineImageView.layer.borderColor = LineViewColor.CGColor;//边框颜色
         lineImageView.layer.borderWidth = 1;//边框宽度
         [self addSubview:lineImageView];
         [self sendSubviewToBack:lineImageView];
@@ -49,15 +48,15 @@
         
         UIImageView *backImageView = [[UIImageView alloc] init];
         [backImageView setFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 54)];
-        [backImageView setBackgroundColor:[UIColor colorWithRed:250.0/255 green:250.0/255 blue:250.0/255 alpha:1]];
+        backImageView.backgroundColor=[UIColor whiteColor];
         [self addSubview:backImageView];
         
         UIImageView *leftLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,[UIScreen mainScreen].bounds.size.width/2 - 32, 1)];
-        leftLine.backgroundColor =[UIColor lightGrayColor]; //LINECOLOR;
+        leftLine.backgroundColor =LineViewColor; //LINECOLOR;
         [self addSubview:leftLine];
         
         UIImageView *rightLine = [[UIImageView alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width/2 + 32, 0,[UIScreen mainScreen].bounds.size.width/2 - 30, 1)];
-        rightLine.backgroundColor = [UIColor lightGrayColor];//LINECOLOR;
+        rightLine.backgroundColor = LineViewColor;//LINECOLOR;
         [self addSubview:rightLine];
         
         for (int i = 0; i < 5; i ++)

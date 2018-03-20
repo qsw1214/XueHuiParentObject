@@ -31,6 +31,7 @@
 {
     [super viewDidLoad];
     [self setNavtionTitle:@"通讯录"];
+    [self navtionItemHidden:NavigationItemLeftType];
 }
 
 - (void)didReceiveMemoryWarning

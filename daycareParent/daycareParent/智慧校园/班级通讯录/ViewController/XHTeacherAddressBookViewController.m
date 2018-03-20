@@ -73,6 +73,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    [self.mainTableView tableTipViewWithArray:self.dataArray];
     return [self.dataArray count];
 }
 

@@ -76,7 +76,7 @@
         _customTabBarView = [[TabBarView alloc] initWithFrame:CGRectMake(0, [[UIScreen mainScreen] bounds].size.height - 54, [[UIScreen mainScreen] bounds].size.width, 54)];
         _customTabBarView.tag = 1000;
         _customTabBarView.delegate=self;
-        [_customTabBarView setBackgroundColor:[UIColor clearColor]];
+        [_customTabBarView setBackgroundColor:[UIColor whiteColor]];
     }
     return _customTabBarView;
 }

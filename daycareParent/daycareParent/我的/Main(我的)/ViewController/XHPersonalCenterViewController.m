@@ -89,7 +89,7 @@
     switch (indexPath.row) {
             case 0:
         {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://400-6778-599"]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://0371-6778599"]];
         }
             break;
             case 1:
@@ -144,12 +144,12 @@
 {
     XHUserInfo *userInfo=[XHUserInfo sharedUserInfo];
     [_h_btn sd_setImageWithURL:[NSURL URLWithString:ALGetFileHeadThumbnail(userInfo.headPic)]forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"addman"]];
-    if (![userInfo.nickName isEqualToString:@""]) {
-        _nameLabel.text=userInfo.nickName;
+    if (![userInfo.guardianModel.guardianName isEqualToString:@""]) {
+        _nameLabel.text=userInfo.guardianModel.guardianName;
     }
     else
     {
-        _nameLabel.text=@"昵称";
+        _nameLabel.text=@"姓名";
     }
 }
 -(void)refreshUserInfo

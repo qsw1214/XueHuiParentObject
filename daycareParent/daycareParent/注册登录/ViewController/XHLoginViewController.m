@@ -103,11 +103,12 @@
                     XHNetWorkConfig *netWork=[[XHNetWorkConfig alloc] init];
                     [netWork setObject:[XHUserInfo sharedUserInfo].guardianModel.guardianId forKey:@"guardianId"];
                     [XHShowHUD showTextHud];
-                    [netWork postWithUrl:@"zzjt-app-api_smartCampus011" sucess:^(id object, BOOL verifyObject) {
+                    [netWork postWithUrl:@"zzjt-app-api_studentBinding008" sucess:^(id object, BOOL verifyObject) {
                         if (verifyObject) {
                             
                             NSMutableArray *tempChildArray = [NSMutableArray array];
-                            for (NSDictionary *dic in [object objectItemKey:@"object"]) {
+                            NSArray *itemArry=[object objectItemKey:@"object"];
+                            for (NSDictionary *dic in itemArry) {
                                 XHChildListModel *model=[[XHChildListModel alloc] initWithDic:dic];
                                 [tempChildArray addObject:model];
                             }
@@ -116,18 +117,10 @@
                                 AppDelegate *app=(AppDelegate *)[UIApplication sharedApplication].delegate;
                                 [app loginRongCloud:[XHUserInfo sharedUserInfo].token];
                                 [app setJpushAlias:[XHUserInfo sharedUserInfo].loginName];
-                                if ([[XHUserInfo sharedUserInfo].nickName isEqualToString:@""]) {
-                                    //跳转补全信息界面
-                                    XHNewUserInfoViewController *newUser = [[XHNewUserInfoViewController alloc]init];
-                                    UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:newUser];
-                                    [kWindow setRootViewController:nav];
-                                }
-                                else
-                                {
-                                    MianTabBarViewController *main=[MianTabBarViewController new];
-                                    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:main];
-                                    [kWindow setRootViewController:navigationController];
-                                }
+                                
+                                MianTabBarViewController *main=[MianTabBarViewController new];
+                                UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:main];
+                                [kWindow setRootViewController:navigationController];
                                 
                             });
                             

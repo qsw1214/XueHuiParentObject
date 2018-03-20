@@ -11,7 +11,7 @@
 #import "XHStudentInfoViewController.h"
 #import "XHBindViewContentView.h"
 #import "XHAddBindPasswordViewController.h"
-
+#import "MainRootControllerHelper.h"
 
 @interface XHBindViewController () <XHBindViewContentViewDelegate>
 
@@ -106,7 +106,11 @@
     [addPassword setNetWorkConfig:sender];
     [self.navigationController pushViewController:addPassword animated:YES];
 }
-
+-(void)rightItemAction:(BaseNavigationControlItem *)sender
+{
+    //自动登录
+    [[MainRootControllerHelper sharedRootHelperHelper] autoLoginWithWindow:kWindow];
+}
 -(XHBindViewContentView *)contentView
 {
     if (!_contentView)

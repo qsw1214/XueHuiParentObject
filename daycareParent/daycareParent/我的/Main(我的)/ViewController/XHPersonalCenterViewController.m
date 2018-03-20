@@ -166,6 +166,7 @@
     [net postWithUrl:@"zzjt-app-api_login" sucess:^(id object, BOOL verifyObject) {
         if (verifyObject)
         {
+            [XHShowHUD showOKHud:@"修改成功"];
             XHGuardianInfo *guardianModel=[[XHGuardianInfo alloc] initWithDic:[[[object objectItemKey:@"object"] objectItemKey:@"propValue"] objectItemKey:@"guardian"]];
             [XHUserInfo sharedUserInfo].guardianModel=guardianModel;
         }

@@ -30,7 +30,7 @@
     {
         [self.contentView addSubview:self.imageView];
         [self.contentView setBackgroundColor:RGB(255, 254, 254)];
-        [self.imageView setFrame:CGRectMake(10, 10, (frame.size.width-20.0), (frame.size.height-20.0))];
+        [self.imageView setFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
     }
     return self;
 }

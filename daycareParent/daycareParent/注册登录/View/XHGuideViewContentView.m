@@ -58,7 +58,9 @@
     };
     
     [self.experienceControl resetFrame:CGRectMake(((frame.size.width-120.0)/2.0), (frame.size.height-80.0), 120.0, 40.0)];
-    [self.experienceControl setImageEdgeFrame:CGRectMake(0, 0, 120, 40.0) withNumberType:0 withAllType:NO];
+    self.experienceControl.layer.cornerRadius=20.0;
+    self.experienceControl.layer.borderWidth=2.0;
+    [self.experienceControl setTitleEdgeFrame:CGRectMake(0, 0, 120, 40.0) withNumberType:0 withAllType:NO];
     [self.experienceControl setHidden:YES];
 }
 
@@ -222,9 +224,12 @@
     if (_experienceControl == nil)
     {
         _experienceControl = [[BaseButtonControl alloc]init];
-        [_experienceControl setImageContentMode:UIViewContentModeScaleAspectFit withNumberType:0 withAllType:NO];
-        [_experienceControl setNumberImageView:1];
-        [_experienceControl setImage:@"experiencel" withNumberType:0 withAllType:NO];
+        [_experienceControl setNumberLabel:1];
+        [_experienceControl setText:@"立即体验" withNumberType:0 withAllType:NO];
+        [_experienceControl setTextAlignment:NSTextAlignmentCenter withNumberType:0 withAllType:NO];
+        [_experienceControl setTextColor:RGB(125, 95, 235) withTpe:0 withAllType:NO];
+        _experienceControl.layer.borderColor=RGB(125, 95, 235).CGColor;
+        _experienceControl.layer.masksToBounds=YES;
         [_experienceControl addTarget:self action:@selector(experienceControlAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _experienceControl;

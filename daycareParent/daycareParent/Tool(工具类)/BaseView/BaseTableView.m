@@ -112,7 +112,7 @@
  */
 -(void)tableTipViewWithArray:(NSMutableArray*)taskArray
 {
-    [self setDataSourceArray:taskArray];
+    [self.dataSourceArray setArray:taskArray];
 }
 
 #pragma mark 设置提醒类型、提醒标题、提醒图标
@@ -158,7 +158,7 @@
 -(void)refreshReloadData
 {
     [self reloadData];
-    [self.dataSourceArray count] >0 ? [self.tipView setHidden:YES] :[self.tipView setHidden:NO];
+    [self.dataSourceArray count] > 0 ? [self.tipView setHidden:YES] :[self.tipView setHidden:NO];
     [self.header endRefreshing];
     [self.footer endRefreshing];
 }

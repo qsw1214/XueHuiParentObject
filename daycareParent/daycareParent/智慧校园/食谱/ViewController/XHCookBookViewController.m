@@ -9,16 +9,20 @@
 #import "XHCookBookViewController.h"
 #import "XHCookBookHeader.h"
 #import "XHCookBookCell.h"
+#import "XHAddressBookHeader.h"
 
 
 
-@interface XHCookBookViewController () <UITableViewDelegate,UITableViewDataSource>
+
+@interface XHCookBookViewController () <UITableViewDelegate,UITableViewDataSource,XHAddressBookHeaderDelegate>
 
 
 
 @property (nonatomic,strong) XHCookBookHeader *cookBookHeader;  //!< 头部星期选择视图
 @property (nonatomic,strong) NSMutableArray *cookBookItemArray; //!< 食谱内容数组
 @property (nonatomic,strong) BaseTableView *tableView; //!< 表视图
+@property (nonatomic,strong) XHAddressBookHeader *addressBookHeader;
+
 
 @end
 
@@ -46,8 +50,10 @@
 {
     if (subview)
     {
+        [self.view addSubview:self.addressBookHeader];
+        [self.addressBookHeader resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, 60.0)];
         [self.view addSubview:self.cookBookHeader];
-        [self.cookBookHeader resetFrame:CGRectMake(15.0, self.navigationView.bottom, (SCREEN_WIDTH-30.0), 80.0)];
+        [self.cookBookHeader resetFrame:CGRectMake(0.0, self.addressBookHeader.bottom, self.addressBookHeader.width, 80.0)];
         [self.view addSubview:self.tableView];
         [self.tableView resetFrame:CGRectMake(0, self.cookBookHeader.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.cookBookHeader.bottom)];
         
@@ -125,6 +131,11 @@
 }
 
 
+#pragma mark XHAddressBookHeaderDelegate
+-(void)didSelectItem:(XHChildListModel *)model
+{
+    [self getCookBookWithSchoolId:model.schoolId];
+}
 
 
 
@@ -210,6 +221,17 @@
         [_tableView setDataSource:self];
     }
     return _tableView;
+}
+
+
+-(XHAddressBookHeader *)addressBookHeader
+{
+    if (!_addressBookHeader)
+    {
+        _addressBookHeader = [[XHAddressBookHeader alloc]init];
+        [_addressBookHeader setDelegate:self];
+    }
+    return _addressBookHeader;
 }
 
 @end

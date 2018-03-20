@@ -57,8 +57,9 @@
 
 
 #pragma mark - Delertage Method
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(BaseTableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    [tableView tableTipViewWithArray:self.dataArray];
     return [self.tableArray count];
 }
 

@@ -239,10 +239,11 @@
         _getChildListNet=[[XHNetWorkConfig alloc] init];
     }
     [_getChildListNet setObject:[XHUserInfo sharedUserInfo].guardianModel.guardianId forKey:@"guardianId"];
-    [_getChildListNet postWithUrl:@"zzjt-app-api_smartCampus011" sucess:^(id object, BOOL verifyObject) {
+    [_getChildListNet postWithUrl:@"zzjt-app-api_studentBinding008" sucess:^(id object, BOOL verifyObject) {
         if (verifyObject) {
             [self.childArry removeAllObjects];
-            for (NSDictionary *dic in [object objectItemKey:@"object"]) {
+            NSArray *itemArry=[object objectItemKey:@"object"];
+            for (NSDictionary *dic in itemArry) {
                 XHChildListModel *model=[[XHChildListModel alloc] initWithDic:dic];
                 [self.childArry addObject:model];
             }

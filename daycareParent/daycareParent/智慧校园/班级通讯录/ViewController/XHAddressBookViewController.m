@@ -132,7 +132,7 @@
          {
              if (verifyObject)
              {
-                 [self.dataArray removeAllObjects];
+                 [self.tableArray removeAllObjects];
                  NSArray *itemArray = [object objectItemKey:@"object"];
                  [itemArray enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop)
                   {

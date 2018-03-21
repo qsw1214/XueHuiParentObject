@@ -15,4 +15,7 @@
 
 @interface XHBindPasswordViewController : BaseViewController
 
+@property (nonatomic,strong) XHChildListModel *model;
+
+
 @end

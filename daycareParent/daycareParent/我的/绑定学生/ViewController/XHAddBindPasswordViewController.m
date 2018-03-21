@@ -8,6 +8,7 @@
 
 #import "XHAddBindPasswordViewController.h"
 #import "MainRootControllerHelper.h"
+#import "XHPersonalCenterViewController.h"
 @interface XHAddBindPasswordViewController ()
 
 
@@ -81,12 +82,12 @@
     {
         case XHAddBindEnterPasswordType:
         {
-            interface = @"zzjt-app-api_studentBinding002";
+            interface = @"zzjt-app-api_studentBinding003";
         }
             break;
         case XHAddBindSettingPasswordType:
         {
-            interface = @"zzjt-app-api_studentBinding003";
+            interface = @"zzjt-app-api_studentBinding002";
         }
             break;
     }
@@ -96,6 +97,10 @@
     [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].selfId forKey:@"guardianId"];
     [self.netWorkConfig setObject:password forKey:@"bindingPassword"];
     
+    
+    NSLog(@"%@",self.netWorkConfig.paramDictionary);
+    
+    [XHShowHUD showTextHud];
     [self.netWorkConfig postWithUrl:interface sucess:^(id object, BOOL verifyObject)
     {
         if (verifyObject)

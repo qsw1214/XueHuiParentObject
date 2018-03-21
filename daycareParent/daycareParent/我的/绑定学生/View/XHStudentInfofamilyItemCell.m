@@ -29,7 +29,7 @@
     self = [super initWithFrame:frame];
     if (self)
     {
-        [self setItemColor:YES];
+        [self setItemColor:NO];
         
         [self.contentView addSubview:self.headerImageView];
         [self.contentView addSubview:self.titleLabel];

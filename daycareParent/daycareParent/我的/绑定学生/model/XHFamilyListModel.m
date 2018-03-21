@@ -16,7 +16,7 @@
     [self setIsMajor:[object objectItemKey:@"isMajor"]];
     [self setTelphoneNumber:[object objectItemKey:@"telphoneNumber"]];
     [self setGuardianId:[object objectItemKey:@"guardianId"]];
-    [self setIsMajor:[object objectItemKey:@"guardianName"]];
+    [self setGuardianName:[object objectItemKey:@"guardianName"]];
     [self setGuardianType:[object objectItemKey:@"guardianType"]];
     
     if ([self.guardianType isEqualToString:@"0"])

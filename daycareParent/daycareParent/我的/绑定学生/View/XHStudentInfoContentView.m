@@ -72,27 +72,53 @@
 #pragma mark - 解除绑定
 -(void)unBindControlAction:(BaseButtonControl*)sender
 {
-    
+    switch ([XHUserInfo sharedUserInfo].isMajor)
     {
-        
-        NSMutableArray *alertArray = [NSMutableArray array];
-        
-        [NSArray enumerateObjectsWithArray:self.dataArray usingBlock:^(XHFamilyListModel *obj, NSUInteger idx, BOOL *stop)
-         {
-             XHAlertModel *model = [[XHAlertModel alloc]init];
-             [model setAlertTag:2];
-             [model setName:obj.guardianName];
-             [model setObjectID:obj.guardianId];
-             [alertArray addObject:model];
-        }];
-
-        
-        XHAlertControl *alert = [[XHAlertControl alloc]initWithDelegate:self];
-        [alert setTitle:@"设定主监护人"];
-        [alert setItemArray:alertArray];
-        [alert setBoardType:XHAlertBoardOptionType];
-        [alert show];
+#pragma mark case 0 不是主监护人
+        case 0:
+        {
+            
+            
+            XHAlertControl *alert = [[XHAlertControl alloc]initWithDelegate:self];
+            [alert setTitle:@"解绑学生"];
+            [alert setBoardType:XHAlertBoardNormalType];
+            [alert show];
+        }
+            break;
+#pragma mark  cas 1 是主要监护人
+        case 1:
+        {
+            if ([self.dataArray count]>1)
+            {
+                
+                NSMutableArray *alertArray = [NSMutableArray array];
+                
+                [NSArray enumerateObjectsWithArray:self.dataArray usingBlock:^(XHFamilyListModel *obj, NSUInteger idx, BOOL *stop)
+                 {
+                     XHAlertModel *model = [[XHAlertModel alloc]init];
+                     [model setAlertTag:2];
+                     [model setName:obj.guardianName];
+                     [model setObjectID:obj.guardianId];
+                     [alertArray addObject:model];
+                 }];
+                
+                
+                XHAlertControl *alert = [[XHAlertControl alloc]initWithDelegate:self];
+                [alert setTitle:@"设定主监护人"];
+                [alert setItemArray:alertArray];
+                [alert setBoardType:XHAlertBoardOptionType];
+                [alert show];
+            }
+            else
+            {
+                [XHShowHUD showOKHud:@"主监护人不能解绑"];
+            }
+        }
+            break;
     }
+    
+    
+   
 }
 
 
@@ -144,49 +170,88 @@
 -(void)alertBoardControlAction:(XHAlertModel *)sender
 {
     [XHShowHUD showTextHud];
-    switch (sender.AlertTag)
+    if (sender)
     {
+        switch (sender.AlertTag)
+        {
 #pragma mark - case 1 修改关系
-        case 1:
-        {
-            [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].selfId forKey:@"guardianId"];
-            [self.netWorkConfig setObject:sender.identityType forKey:@"type"];
-            [self.netWorkConfig postWithUrl:@"zzjt-app-api_studentBinding009" sucess:^(id object, BOOL verifyObject)
-             {
-                 if (verifyObject)
-                 {
-                     [self.identityControl setText:sender.name withNumberType:1 withAllType:NO];
-                     
-                 }
-             } error:^(NSError *error)
+            case 1:
             {
-                 [XHShowHUD showOKHud:@"修改关系失败!"];
-             }];
-        }
-            break;
+                [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].selfId forKey:@"guardianId"];
+                [self.netWorkConfig setObject:sender.identityType forKey:@"type"];
+                [self.netWorkConfig postWithUrl:@"zzjt-app-api_studentBinding009" sucess:^(id object, BOOL verifyObject)
+                 {
+                     if (verifyObject)
+                     {
+                         [self.identityControl setText:sender.name withNumberType:1 withAllType:NO];
+                         
+                         [self getFamilyInfo:YES];
+                         
+                     }
+                 } error:^(NSError *error)
+                 {
+                     [XHShowHUD showOKHud:@"修改关系失败!"];
+                 }];
+            }
+                break;
 #pragma mark - case 2 解除绑定
-        case 2:
-        {
-            [self.netWorkConfig setObject:sender.objectID forKey:@"NewGuardianId"];
-            [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].selfId forKey:@"OldGuardianId"];
-            [self.netWorkConfig postWithUrl:@"zzjt-app-api_studentBinding005" sucess:^(id object, BOOL verifyObject)
-             {
-                 if (verifyObject)
+            case 2:
+            {
+                
+                
+                [self.netWorkConfig setObject:sender.objectID forKey:@"NewGuardianId"];
+                [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].selfId forKey:@"OldGuardianId"];
+                [self.netWorkConfig postWithUrl:@"zzjt-app-api_studentBinding005" sucess:^(id object, BOOL verifyObject)
+                 {
+                     if (verifyObject)
+                     {
+                         
+                         [XHShowHUD showOKHud:@"解绑成功!"];
+                         [self getFamilyInfo:YES];
+                         
+                         
+                         if ([self.infoDelegate respondsToSelector:@selector(studentInfoControlAction:)])
+                         {
+                             [self.infoDelegate studentInfoControlAction:3];
+                         }
+                         
+                     }
+                 } error:^(NSError *error)
                  {
                      
-                     [XHShowHUD showOKHud:@"解绑成功!"];
-                     [self getFamilyInfo:YES];
-                     
-                 }
-            } error:^(NSError *error)
+                 }];
+                
+            }
+                break;
+        }
+    }
+    else
+    {
+        
+        [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].selfId forKey:@"guardianId"];
+        [self.netWorkConfig postWithUrl:@"zzjt-app-api_studentBinding006" sucess:^(id object, BOOL verifyObject)
+         {
+             if (verifyObject)
              {
                  
-             }];
-            
-        }
-            
-            break;
+                 [XHShowHUD showOKHud:@"解绑成功!"];
+                 [self getFamilyInfo:YES];
+                 
+                 if ([self.infoDelegate respondsToSelector:@selector(studentInfoControlAction:)])
+                 {
+                     [self.infoDelegate studentInfoControlAction:3];
+                 }
+             }
+         } error:^(NSError *error)
+         {
+             
+         }];
+        
+        
     }
+    
+    
+
     
     
 }
@@ -552,9 +617,12 @@
          if (verifyObject)
          {
              
-             NSArray *FamilyArray = [object objectItemKey:@"object"];
-             
-             [NSArray enumerateObjectsWithArray:FamilyArray usingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop)
+             NSArray *familyArray = [object objectItemKey:@"object"];
+             if (familyArray)
+             {
+                 [self.dataArray removeAllObjects];
+             }
+             [NSArray enumerateObjectsWithArray:familyArray usingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop)
               {
                   obj = [obj objectItemKey:@"propValue"];
                   XHFamilyListModel *model = [[XHFamilyListModel alloc]init];
@@ -596,7 +664,7 @@
     [self.familyCollectionView reloadData];
     
     
-    if (![XHUserInfo sharedUserInfo].isMajor)
+    if ([XHUserInfo sharedUserInfo].isMajor)
     {
         //!< 设置密码
         [self.passwordControl resetFrame:CGRectMake(0, self.familyCollectionView.bottom, self.birthdayControl.width, self.birthdayControl.height)];
@@ -614,9 +682,15 @@
     }
     else
     {
-        [self setContentSize:CGSizeMake(self.familyCollectionView.width, self.familyCollectionView.bottom+20.0)];
+        [self.unBindControl resetFrame:CGRectMake(0, (self.familyCollectionView.bottom+10.0), self.familyCollectionView.width, 50.0)];
+        [self.unBindControl setTitleEdgeFrame:CGRectMake(0, 0, self.unBindControl.width, self.unBindControl.height) withNumberType:0 withAllType:NO];
+        
+       
     }
     
+    
+    
+     [self setContentSize:CGSizeMake(self.familyCollectionView.width, self.unBindControl.bottom+20.0)];
     
     
     

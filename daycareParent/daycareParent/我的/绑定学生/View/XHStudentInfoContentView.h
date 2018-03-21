@@ -13,7 +13,7 @@
 @protocol XHStudentInfoContentViewDelegate <NSObject>
 
 
--(void)studentInfoControlAction:(BaseButtonControl*)sender;
+-(void)studentInfoControlAction:(NSInteger)sender;
 
 
 @end

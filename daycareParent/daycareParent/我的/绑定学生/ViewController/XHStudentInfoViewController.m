@@ -58,9 +58,9 @@
 
 #pragma mark - Delegate Method
 #pragma mark XHStudentInfoContentViewDelegate
--(void)studentInfoControlAction:(BaseButtonControl *)sender
+-(void)studentInfoControlAction:( NSInteger)sender
 {
-    switch (sender.tag)
+    switch (sender)
     {
 #pragma mark - case 3 修改密码
         case 1:
@@ -71,14 +71,16 @@
 #pragma mark - case 3 修改密码
         case 2:
         {
-            [self.navigationController pushViewController:[[XHBindPasswordViewController alloc]init] animated:YES];
+            XHBindPasswordViewController *bindPassword = [[XHBindPasswordViewController alloc]init];
+            [bindPassword setModel:self.model];
+            [self.navigationController pushViewController:bindPassword animated:YES];
         }
             break;
 #pragma mark - case 3 解除绑定
         case 3:
         {
             
-            
+            [self.navigationController popViewControllerAnimated:YES];
             
             
         }

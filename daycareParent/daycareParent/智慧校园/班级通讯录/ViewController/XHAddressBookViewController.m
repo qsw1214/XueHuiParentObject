@@ -47,14 +47,24 @@
 {
     if (subview)
     {
-        [self.view addSubview:self.addressBookHeader];
-        [self.addressBookHeader resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, 60.0)];
-        [self.mainTableView resetFrame:CGRectMake(0.0, (self.addressBookHeader.bottom+10.0), SCREEN_WIDTH, SCREEN_HEIGHT-(self.addressBookHeader.bottom+10.0))];
-        [self.mainTableView setDelegate:self];
-        [self.mainTableView setDataSource:self];
-        [self.mainTableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHead)];
-        [self.mainTableView beginRefreshing];
-        [self.view addSubview:self.mainTableView];
+        if ([[XHUserInfo sharedUserInfo].childListArry count])
+        {
+            [self.view addSubview:self.addressBookHeader];
+            [self.addressBookHeader resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, 60.0)];
+            [self.mainTableView resetFrame:CGRectMake(0.0, (self.addressBookHeader.bottom+10.0), SCREEN_WIDTH, SCREEN_HEIGHT-(self.addressBookHeader.bottom+10.0))];
+            [self.mainTableView setDelegate:self];
+            [self.mainTableView setDataSource:self];
+            [self.view addSubview:self.mainTableView];
+        }
+        else
+        {
+            [self.mainTableView resetFrame:CGRectMake(0.0, (self.navigationView.bottom), SCREEN_WIDTH, SCREEN_HEIGHT)];
+            [self.mainTableView setDelegate:self];
+            [self.mainTableView setDataSource:self];
+            [self.view addSubview:self.mainTableView];
+            [self.mainTableView refreshReloadData];
+        }
+      
     }
 }
 

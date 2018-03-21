@@ -66,7 +66,7 @@
 {
     [self.titleLabel setText:frame.model.teacherName];
     [self.describeLabel setText:frame.model.phone];
-    [self.subjecLabel setText:@"数学"];
+    [self.subjecLabel setText:frame.model.subject];
     [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:frame.model.headerUrl] placeholderImage:[UIImage imageNamed:@"addman"]];
     
 }

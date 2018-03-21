@@ -53,9 +53,23 @@
     {
         return  [str componentsSeparatedByString:@","];
     }
-    
 }
 
+
+
+
+-(NSString *)subject
+{
+    if ([self.courseArray count])
+    {
+        _subject = [self.courseArray firstObject];
+    }
+    else
+    {
+        _subject = @"";
+    }
+    return _subject;
+}
 
 
 @end

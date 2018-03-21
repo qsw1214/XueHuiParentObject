@@ -26,6 +26,7 @@ typedef NS_ENUM(NSInteger,XHAddressBookModelType)
 @property (nonatomic,copy) NSString *phone; //!< 手机
 @property (nonatomic,copy) NSString *userID; //!< 用户ID
 @property (nonatomic,strong) NSMutableArray <NSString *> *courseArray; //!< 课程数组
+@property (nonatomic,copy) NSString *subject; //!< 科目
 
 @property (nonatomic,assign) XHAddressBookModelType modelType;
 

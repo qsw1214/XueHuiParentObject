@@ -73,8 +73,8 @@
         case TipTitleAndTipImage:
         {
             [self.tipButton resetFrame:CGRectMake(10.0, ((self.height-200.0)/2.0), SCREEN_WIDTH-20.0, 200.0)];
-            [self.tipButton setImageEdgeFrame:CGRectMake(0, 0, self.tipButton.width, 140.0) withNumberType:0 withAllType:NO];
-            [self.tipButton setTitleEdgeFrame:CGRectMake(0, 140.0, self.tipButton.width, 60.0) withNumberType:0 withAllType:NO];
+            [self.tipButton setImageEdgeFrame:CGRectMake((self.tipButton.width-80.0)/2.0, 40.0, 80.0, 80.0) withNumberType:0 withAllType:NO];
+            [self.tipButton setTitleEdgeFrame:CGRectMake(0, 120.0, self.tipButton.width, 40.0) withNumberType:0 withAllType:NO];
             [self.tipButton setText:tipTitle withNumberType:0 withAllType:NO];
             [self.tipButton setText:tipTitle withNumberType:0 withAllType:NO];
             [self.tipButton setImage:imageName withNumberType:0 withAllType:NO];
@@ -104,6 +104,7 @@
         [_tipButton setTextColor:[UIColor grayColor] withTpe:0 withAllType:NO];
         [_tipButton setNumberOfLines:0 withTpe:0 withAllType:NO];
         [_tipButton setImageContentMode:UIViewContentModeScaleAspectFit withNumberType:0 withAllType:NO];
+        [_tipButton setItemColor:NO];
     }
     return _tipButton;
 }

@@ -17,6 +17,8 @@
 @property (nonatomic,copy) NSString *loginName;//!< 登录名
 @property (nonatomic,copy) NSString *nickName;//!<  用户昵称
 @property (nonatomic,copy) NSString *selfId;//!< 教师家长表ID
+@property (nonatomic,assign) NSInteger isMajor;//!< 是否是主监护人 （1是  0 不是）
+@property (nonatomic,copy) NSString *guardianType;//!< 家长类型 （0爸爸  1妈妈 2其他）
 @property (nonatomic,copy) NSString *sessionId;//!< sessionId
 @property (nonatomic,copy) NSString *sex;//!< 性别
 @property (nonatomic,copy) NSString *sexName;//!< 性别

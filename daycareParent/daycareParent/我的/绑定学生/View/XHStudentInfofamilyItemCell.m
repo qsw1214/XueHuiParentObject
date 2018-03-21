@@ -41,12 +41,11 @@
         
         [self.headerImageView setFrame:CGRectMake(10.0, 10.0, 40.0, 40.0)];
         [self.headerImageView setLayerCornerRadius:(self.headerImageView.height/2.0)];
-        [self.titleLabel setFrame:CGRectMake(self.headerImageView.right+5.0, (frame.size.height-20.0)/2.0, 60.0, 20.0)];
-        [self.markImageView setFrame:CGRectMake(self.titleLabel.right, self.titleLabel.top, 20.0, 20.0)];
+        [self.titleLabel setFrame:CGRectMake(self.headerImageView.right+5.0, (frame.size.height-20.0)/2.0, 40.0, 20.0)];
+        [self.markImageView setFrame:CGRectMake(self.titleLabel.right, (self.titleLabel.top+2.5), 15.0, 15.0)];
         [self.phoneLabel setFrame:CGRectMake(self.markImageView.right, self.markImageView.top, frame.size.width-(self.markImageView.right+10.0), self.markImageView.height)];
         
         [self.lineView setFrame:CGRectMake(0, frame.size.height-0.5, frame.size.width, 0.5)];
-        [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:@"http://pic2.ooopic.com/12/42/25/02bOOOPIC95_1024.jpg"]];
     }
     return self;
 }
@@ -59,6 +58,30 @@
     
     [self.titleLabel setText:model.guardianName];
     [self.phoneLabel setText:model.telphoneNumber];
+    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:model.headPic]];
+    
+    if ([model.isMajor isEqualToString:@"1"])
+    {
+        [self.markImageView setHidden:NO];
+    }
+    else
+    {
+        [self.markImageView setHidden:YES];
+    }
+    
+    
+    if ([model.guardianType isEqualToString:@"0"])
+    {
+        [self.titleLabel setText:@"爸爸"];
+    }
+    else if ([model.guardianType isEqualToString:@"1"])
+    {
+        [self.titleLabel setText:@"妈妈"];
+    }
+    else if ([model.guardianType isEqualToString:@"2"])
+    {
+        [self.titleLabel setText:@"其他"];
+    }
 }
 
 
@@ -86,7 +109,8 @@
     if (!_markImageView)
     {
         _markImageView = [[UIImageView alloc]init];
-        [_markImageView setBackgroundColor:MainColor];
+        [_markImageView setContentMode:UIViewContentModeScaleAspectFit];
+        [_markImageView setImage:[UIImage imageNamed:@"ico_zhujiazhang"]];
     }
     return _markImageView;
 }

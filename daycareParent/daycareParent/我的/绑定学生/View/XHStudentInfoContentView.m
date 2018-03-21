@@ -13,7 +13,6 @@
 @interface XHStudentInfoContentView () <XHAlertControlDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic,strong) XHNetWorkConfig *netWorkConfig;
-
 @property (nonatomic,strong) UILabel *baseLabel; //!< 基本信息标签
 @property (nonatomic,strong) UILabel *parentInformationLabel; //!< 家长信息标签
 @property (nonatomic,strong) UILabel *tipLabel; //!< 提醒信息标签
@@ -27,7 +26,6 @@
 @property (nonatomic,strong) BaseButtonControl *passwordControl; //!< 密码重置按钮
 @property (nonatomic,strong) BaseButtonControl *unBindControl; //!< 解除绑定按钮
 @property (nonatomic,strong) BaseCollectionView *familyCollectionView; //!< 家庭数组
-
 
 @end
 
@@ -70,6 +68,35 @@
     }
 }
 
+
+#pragma mark - 解除绑定
+-(void)unBindControlAction:(BaseButtonControl*)sender
+{
+    
+    {
+        
+        NSMutableArray *alertArray = [NSMutableArray array];
+        
+        [NSArray enumerateObjectsWithArray:self.dataArray usingBlock:^(XHFamilyListModel *obj, NSUInteger idx, BOOL *stop)
+         {
+             XHAlertModel *model = [[XHAlertModel alloc]init];
+             [model setAlertTag:2];
+             [model setName:obj.guardianName];
+             [model setObjectID:obj.guardianId];
+             [alertArray addObject:model];
+        }];
+
+        
+        XHAlertControl *alert = [[XHAlertControl alloc]initWithDelegate:self];
+        [alert setTitle:@"设定主监护人"];
+        [alert setItemArray:alertArray];
+        [alert setBoardType:XHAlertBoardOptionType];
+        [alert show];
+    }
+}
+
+
+
 #pragma mark 修改孩子之间的关系
 -(void)identityControlAction:(BaseButtonControl*)sender
 {
@@ -78,6 +105,7 @@
     for (int i= 0; i< 3; i++)
     {
         XHAlertModel *model = [[XHAlertModel alloc]init];
+        [model setAlertTag:1];
         [model setIdentityType:[NSString stringWithFormat:@"%zd",i]];
         switch (i)
         {
@@ -112,22 +140,55 @@
 
 
 #pragma mark - Delegate Method
-#pragma mark XHAlertControlDelegate
+#pragma mark XHAlertControlDelegate (弹框回调)
 -(void)alertBoardControlAction:(XHAlertModel *)sender
 {
-    [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].selfId forKey:@"guardianId"];
-    [self.netWorkConfig setObject:sender.identityType forKey:@"type"];
-    [self.netWorkConfig postWithUrl:@"zzjt-app-api_studentBinding009" sucess:^(id object, BOOL verifyObject)
+    [XHShowHUD showTextHud];
+    switch (sender.AlertTag)
     {
-        
-        
-    } error:^(NSError *error)
-     {
-         
-         
-         
-         
-     }];
+#pragma mark - case 1 修改关系
+        case 1:
+        {
+            [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].selfId forKey:@"guardianId"];
+            [self.netWorkConfig setObject:sender.identityType forKey:@"type"];
+            [self.netWorkConfig postWithUrl:@"zzjt-app-api_studentBinding009" sucess:^(id object, BOOL verifyObject)
+             {
+                 if (verifyObject)
+                 {
+                     [self.identityControl setText:sender.name withNumberType:1 withAllType:NO];
+                     
+                 }
+             } error:^(NSError *error)
+            {
+                 [XHShowHUD showOKHud:@"修改关系失败!"];
+             }];
+        }
+            break;
+#pragma mark - case 2 解除绑定
+        case 2:
+        {
+            [self.netWorkConfig setObject:sender.objectID forKey:@"NewGuardianId"];
+            [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].selfId forKey:@"OldGuardianId"];
+            [self.netWorkConfig postWithUrl:@"zzjt-app-api_studentBinding005" sucess:^(id object, BOOL verifyObject)
+             {
+                 if (verifyObject)
+                 {
+                     
+                     [XHShowHUD showOKHud:@"解绑成功!"];
+                     [self getFamilyInfo:YES];
+                     
+                 }
+            } error:^(NSError *error)
+             {
+                 
+             }];
+            
+        }
+            
+            break;
+    }
+    
+    
 }
 
 
@@ -229,41 +290,10 @@
     //!< 设置家长信息
     [self.parentInformationLabel setFrame:CGRectMake(10.0, self.identityControl.bottom, self.baseLabel.width,self.baseLabel.height)];
     
+   
     
     
-    for (int i= 0; i< 20; i++)
-    {
-        XHFamilyListModel *model = [[XHFamilyListModel alloc]init];
-        [model setHeadPic:@""];
-        [model setTelphoneNumber:@"15515667760"];
-        [model setGuardianType:@"1"];
-        [model setGuardianName:@"姚立志"];
-        [model setGuardianId:@"1kskoso20--ess"];
-        [self.dataArray addObject:model];
-    }
-    
-    [self.familyCollectionView resetFrame:CGRectMake(0, self.parentInformationLabel.bottom, SCREEN_WIDTH, 60.0*[self.dataArray count])];
-    [self.familyCollectionView setItemArray:self.dataArray];
-    [self.familyCollectionView reloadData];
-    
-    
-    //!< 设置密码
-    [self.passwordControl resetFrame:CGRectMake(0, self.familyCollectionView.bottom, self.birthdayControl.width, self.birthdayControl.height)];
-    [self.passwordControl setTitleEdgeFrame:CGRectMake(10.0, 0, (self.familyCollectionView.width-20.0)/2.0, self.passwordControl.height) withNumberType:0 withAllType:NO];
-    [self.passwordControl setTitleEdgeFrame:CGRectMake((self.familyCollectionView.width)/2.0, 0, ((self.familyCollectionView.width-20.0)/2.0)-30.0, self.passwordControl.height) withNumberType:1 withAllType:NO];
-    [self.passwordControl setImageEdgeFrame:CGRectMake((self.passwordControl.width-30.0), (self.passwordControl.height-15.0)/2.0, 15.0, 15.0) withNumberType:0 withAllType:NO];
-    [self.passwordControl resetLineViewFrame:CGRectMake(0, self.passwordControl.height-0.5, self.passwordControl.width, 0.5) withNumberType:0 withAllType:NO];
-    //!< 设置提醒信息
-    [self.tipLabel setFrame:CGRectMake(10.0, self.passwordControl.bottom, self.baseLabel.width,self.baseLabel.height)];
-    //!< 设置解绑
-    [self.unBindControl resetFrame:CGRectMake(0, self.tipLabel.bottom, self.familyCollectionView.width, 50.0)];
-    [self.unBindControl setTitleEdgeFrame:CGRectMake(0, 0, self.unBindControl.width, self.unBindControl.height) withNumberType:0 withAllType:NO];
-    
-    
-    [self setContentSize:CGSizeMake(self.familyCollectionView.width, self.unBindControl.bottom+20.0)];
-    
-    
-//    [self setContentSize:CGSizeMake(frame.size.width, self.parentInformationLabel.bottom+20.0)];
+    [self setContentSize:CGSizeMake(frame.size.width, self.parentInformationLabel.bottom+20.0)];
     
 }
 
@@ -465,7 +495,7 @@
         [_unBindControl setText:@"解除绑定" withNumberType:0 withAllType:NO];
         [_unBindControl setTextAlignment:NSTextAlignmentCenter withNumberType:0 withAllType:NO];
         [_unBindControl setBackgroundColor:RGB(255,87,87)];
-        [_unBindControl addTarget:self action:@selector(studentInfoControlAction:) forControlEvents:UIControlEventTouchUpInside];
+        [_unBindControl addTarget:self action:@selector(unBindControlAction:) forControlEvents:UIControlEventTouchUpInside];
         [_unBindControl setTag:3];
     }
     return _unBindControl;
@@ -507,40 +537,91 @@
     [self.sexControl setText:model.sex withNumberType:1 withAllType:NO];
     [self.birthdayControl setText:model.birthdate withNumberType:1 withAllType:NO];
     
-    
-    
-  
-    
-//    @"851340998992228352"
-    
     [self.netWorkConfig setObject:model.studentBaseId forKey:@"studentBaseId"];
+    
+    [self getFamilyInfo:YES];
+
+}
+
+-(void)getFamilyInfo:(BOOL)info
+{
+    [XHShowHUD showTextHud];
     [self.netWorkConfig postWithUrl:@"zzjt-app-api_studentBinding004" sucess:^(id object, BOOL verifyObject)
-    {
-        if (verifyObject)
-        {
-
-
-            for (int i= 0; i< 10; i++)
-            {
-                XHFamilyListModel *model = [[XHFamilyListModel alloc]init];
-                [model setHeadPic:@""];
-                [model setTelphoneNumber:@"15515667760"];
-                [model setGuardianType:@"1"];
-                [model setGuardianName:@"姚立志"];
-                [model setGuardianId:@"1kskoso20--ess"];
-                [self.dataArray addObject:model];
-            }
-
-
-
-        }
-    } error:^(NSError *error)
      {
-
-     }];
+         if (verifyObject)
+         {
+             
+             NSArray *FamilyArray = [object objectItemKey:@"object"];
+             
+             [NSArray enumerateObjectsWithArray:FamilyArray usingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop)
+              {
+                  obj = [obj objectItemKey:@"propValue"];
+                  XHFamilyListModel *model = [[XHFamilyListModel alloc]init];
+                  [model setItemObject:obj];
+                  [self.dataArray addObject:model];
+              }];
+             
+             
+             if ([self.dataArray count])
+             {
+                 [self stretchingWithArray:self.dataArray];
+             }
+             
+             
+         }
+     } error:^(NSError *error){}];
 }
 
 
+
+-(void)stretchingWithArray:(NSArray*)array
+{
+    //!< 设置与孩子关系
+    if ([[XHUserInfo sharedUserInfo].guardianType isEqualToString:@"0"])
+    {
+        [self.identityControl setText:@"爸爸" withNumberType:1 withAllType:NO];
+    }
+    else if ([[XHUserInfo sharedUserInfo].guardianType isEqualToString:@"1"])
+    {
+        [self.identityControl setText:@"妈妈" withNumberType:1 withAllType:NO];
+    }
+    else if ([[XHUserInfo sharedUserInfo].guardianType isEqualToString:@"2"])
+    {
+        [self.identityControl setText:@"其他" withNumberType:1 withAllType:NO];
+    }
+    
+    [self.familyCollectionView resetFrame:CGRectMake(0, self.parentInformationLabel.bottom, SCREEN_WIDTH, 60.0*[array count])];
+    [self.familyCollectionView setItemArray:self.dataArray];
+    [self.familyCollectionView reloadData];
+    
+    
+    if (![XHUserInfo sharedUserInfo].isMajor)
+    {
+        //!< 设置密码
+        [self.passwordControl resetFrame:CGRectMake(0, self.familyCollectionView.bottom, self.birthdayControl.width, self.birthdayControl.height)];
+        [self.passwordControl setTitleEdgeFrame:CGRectMake(10.0, 0, (self.familyCollectionView.width-20.0)/2.0, self.passwordControl.height) withNumberType:0 withAllType:NO];
+        [self.passwordControl setTitleEdgeFrame:CGRectMake((self.familyCollectionView.width)/2.0, 0, ((self.familyCollectionView.width-20.0)/2.0)-30.0, self.passwordControl.height) withNumberType:1 withAllType:NO];
+        [self.passwordControl setImageEdgeFrame:CGRectMake((self.passwordControl.width-30.0), (self.passwordControl.height-15.0)/2.0, 15.0, 15.0) withNumberType:0 withAllType:NO];
+        [self.passwordControl resetLineViewFrame:CGRectMake(0, self.passwordControl.height-0.5, self.passwordControl.width, 0.5) withNumberType:0 withAllType:NO];
+        //!< 设置提醒信息
+        [self.tipLabel setFrame:CGRectMake(10.0, self.passwordControl.bottom, self.baseLabel.width,self.baseLabel.height)];
+        //!< 设置解绑
+        [self.unBindControl resetFrame:CGRectMake(0, self.tipLabel.bottom, self.familyCollectionView.width, 50.0)];
+        [self.unBindControl setTitleEdgeFrame:CGRectMake(0, 0, self.unBindControl.width, self.unBindControl.height) withNumberType:0 withAllType:NO];
+        
+        [self setContentSize:CGSizeMake(self.familyCollectionView.width, self.unBindControl.bottom+20.0)];
+    }
+    else
+    {
+        [self setContentSize:CGSizeMake(self.familyCollectionView.width, self.familyCollectionView.bottom+20.0)];
+    }
+    
+    
+    
+    
+    
+    
+}
 
 
 

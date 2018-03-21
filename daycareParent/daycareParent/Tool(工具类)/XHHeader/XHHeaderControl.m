@@ -24,6 +24,7 @@
     if (self)
     {
         [self setBackgroundColor:MainColor];
+        
         [self addSubview:self.imageView];
         [self addSubview:self.titleLabel];
         

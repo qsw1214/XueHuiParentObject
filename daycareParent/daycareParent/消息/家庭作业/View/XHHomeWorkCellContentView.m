@@ -133,7 +133,7 @@
             [self.subjectLabel setHidden:YES];
             
             //设置头像
-            [self.headerImageView setFrame:CGRectMake(10.0, 10.0, 40.0, 40.0)];
+            [self.headerImageView resetFrame:CGRectMake(10.0, 10.0, 40.0, 40.0)];
             [self.headerImageView setLayerCornerRadius:(self.headerImageView.height/2.0)];
             //设置属性
             [self.subjectLabel setFrame:CGRectMake(self.headerImageView.left+30.0, (self.headerImageView.top+2.5), 10.0, 10.0)];

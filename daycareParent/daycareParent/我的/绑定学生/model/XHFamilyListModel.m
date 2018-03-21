@@ -12,7 +12,7 @@
 
 -(void)setItemObject:(NSDictionary *)object
 {
-    [self setHeadPic:ALGetFileHeadThumbnail([object objectItemKey:@"headPic"])];
+    [self setHeadPic:[object objectItemKey:@"headPic"]];
     [self setIsMajor:[object objectItemKey:@"isMajor"]];
     [self setTelphoneNumber:[object objectItemKey:@"telphoneNumber"]];
     [self setGuardianId:[object objectItemKey:@"guardianId"]];

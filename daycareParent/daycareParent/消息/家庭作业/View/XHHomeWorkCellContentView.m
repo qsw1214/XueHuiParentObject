@@ -15,7 +15,7 @@
 @interface XHHomeWorkCellContentView ()
 
 @property (nonatomic,strong) XHHomeWorkCollectionView *collectionView;
-@property (nonatomic,strong) UIImageView *headerImageView; //!< 头像
+@property (nonatomic,strong) XHHeaderControl *headerImageView; //!< 头像
 @property (nonatomic,strong) UILabel *userNameLael; //!< 用户名标签
 @property (nonatomic,strong) UILabel *subjectLabel;  //!< 学科标签
 @property (nonatomic,strong) UILabel *dateLabel; //!< 日期标签
@@ -69,7 +69,7 @@
         case HomeWorkType:
         {
             //设置头像
-            [self.headerImageView setFrame:CGRectMake(10.0, 10.0, 40.0, 40.0)];
+            [self.headerImageView resetFrame:CGRectMake(10.0, 10.0, 40.0, 40.0)];
             [self.headerImageView setLayerCornerRadius:(self.headerImageView.height/2.0)];
             //设置用户名
             [self.userNameLael setFrame:CGRectMake((self.headerImageView.right+10.0), self.headerImageView.top, (itemFrame.itemFrame.size.width-((self.headerImageView.right+10.0)+55.0)), 20.0)];
@@ -105,7 +105,7 @@
             
             
             //赋值
-            [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:itemFrame.model.headerUrl]];
+            [self.headerImageView setHeadrUrl:itemFrame.model.headerPic withName:itemFrame.model.userName withType:XHHeaderTeacherType];
             [self.userNameLael setText:itemFrame.model.userName];
             [self.subjectLabel setText:itemFrame.model.subject];
             [self.dateLabel setText:itemFrame.model.releaseDate];
@@ -168,7 +168,7 @@
             
             
             //赋值
-            [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:itemFrame.model.headerUrl]];
+            [self.headerImageView setHeadrUrl:itemFrame.model.headerPic withName:itemFrame.model.userName withType:XHHeaderTeacherType];
             [self.userNameLael setText:itemFrame.model.userName];
             [self.dateLabel setText:itemFrame.model.releaseDate];
             [self.contentLabel setText:itemFrame.model.workContent];
@@ -202,11 +202,11 @@
 
 
 #pragma mark - Getter / Setter
--(UIImageView *)headerImageView
+-(XHHeaderControl *)headerImageView
 {
     if (_headerImageView == nil)
     {
-        _headerImageView = [[UIImageView alloc]init];
+        _headerImageView = [[XHHeaderControl alloc]init];
     }
     return _headerImageView;
 }

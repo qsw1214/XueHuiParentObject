@@ -28,6 +28,7 @@
     [self setTeacherName:teacherName];
     [self setWorkUnit:schoolName];
     [self setHeaderUrl:ALGetFileHeadThumbnail(headPic)];
+    [self setHeaderPic:headPic];
     [self setVideoPreviewUrl:ALGetFileImageOriginal(vedioFirstPicUrl)];
     [self setVideoUrl:vedioUrl];
     [self setUnreadType:[object objectItemKey:@"isStatus"]];

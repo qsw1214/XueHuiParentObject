@@ -11,7 +11,7 @@
 
 @interface XHStudentInfofamilyItemCell ()
 
-@property (nonatomic,strong) UIImageView *headerImageView; //!< 头像
+@property (nonatomic,strong) XHHeaderControl *headerImageView; //!< 头像
 @property (nonatomic,strong) UILabel *titleLabel; //!< 称呼标签
 @property (nonatomic,strong) UIImageView *markImageView; //!< 标记图标
 @property (nonatomic,strong) UILabel *phoneLabel; //!< 电话标签
@@ -39,7 +39,7 @@
         [self.contentView setBackgroundColor:[UIColor whiteColor]];
         
         
-        [self.headerImageView setFrame:CGRectMake(10.0, 10.0, 40.0, 40.0)];
+        [self.headerImageView resetFrame:CGRectMake(10.0, 10.0, 40.0, 40.0)];
         [self.headerImageView setLayerCornerRadius:(self.headerImageView.height/2.0)];
         [self.titleLabel setFrame:CGRectMake(self.headerImageView.right+5.0, (frame.size.height-20.0)/2.0, 40.0, 20.0)];
         [self.markImageView setFrame:CGRectMake(self.titleLabel.right, (self.titleLabel.top+2.5), 15.0, 15.0)];
@@ -58,7 +58,7 @@
     
     [self.titleLabel setText:model.guardianName];
     [self.phoneLabel setText:model.telphoneNumber];
-    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:model.headPic]];
+    [self.headerImageView setHeadrUrl:model.headPic withName:model.guardianName withType:XHHeaderOtherType];
     
     if ([model.isMajor isEqualToString:@"1"])
     {
@@ -86,11 +86,11 @@
 
 
 #pragma mark - Getter /  Setter
--(UIImageView *)headerImageView
+-(XHHeaderControl *)headerImageView
 {
     if (!_headerImageView)
     {
-        _headerImageView = [[UIImageView alloc]init];
+        _headerImageView = [[XHHeaderControl alloc]init];
     }
     return _headerImageView;
 }

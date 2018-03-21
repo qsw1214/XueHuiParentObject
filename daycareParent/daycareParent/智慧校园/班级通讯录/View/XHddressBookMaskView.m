@@ -11,7 +11,7 @@
 
 @interface XHddressBookMaskView ()
 
-@property (nonatomic,strong) UIImageView *headerImageView; //!< 头像视图
+@property (nonatomic,strong) XHHeaderControl *headerImageView; //!< 头像视图
 @property (nonatomic,strong) UILabel *titleLabel; //!< 标题标签
 @property (nonatomic,strong) UILabel *describeLabel; //!< 描述标签
 @property (nonatomic,strong) UILabel *subjecLabel; //!< 学科标签
@@ -47,7 +47,7 @@
 -(void)resetFrame:(CGRect)frame
 {
     [self setFrame:frame];
-    [self.headerImageView setFrame:CGRectMake(10.0, (frame.size.height-48.0)/2.0, 48.0, 48.0)];
+    [self.headerImageView resetFrame:CGRectMake(10.0, (frame.size.height-48.0)/2.0, 48.0, 48.0)];
     self.headerImageView.layer.cornerRadius=48/2.0;
     self.headerImageView.layer.masksToBounds=YES;
     [self.subjecLabel setFrame:CGRectMake((self.headerImageView.right+10.0), self.headerImageView.top, 40.0, 24.0)];
@@ -67,16 +67,15 @@
     [self.titleLabel setText:frame.model.teacherName];
     [self.describeLabel setText:frame.model.phone];
     [self.subjecLabel setText:frame.model.subject];
-    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:frame.model.headerUrl] placeholderImage:[UIImage imageNamed:@"addman"]];
+    [self.headerImageView setHeadrUrl:frame.model.headPic withName:frame.model.teacherName withType:XHHeaderTeacherType];
     
 }
 
--(UIImageView *)headerImageView
+-(XHHeaderControl *)headerImageView
 {
     if (!_headerImageView)
     {
-        _headerImageView = [[UIImageView alloc]init];
-        [_headerImageView setImage:[UIImage imageNamed:@"头像3"]];
+        _headerImageView = [[XHHeaderControl alloc]init];
     }
     return _headerImageView;
 }

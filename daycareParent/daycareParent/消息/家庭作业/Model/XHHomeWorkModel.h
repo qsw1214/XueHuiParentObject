@@ -33,6 +33,7 @@ typedef NS_ENUM(NSInteger,HomeWorkModelType)
 @interface XHHomeWorkModel : BaseModel
 
 @property (nonatomic,copy) NSString *headerUrl; //!< 头像
+@property (nonatomic,copy) NSString *headerPic; //!< 头像
 @property (nonatomic,copy) NSString *userName; //!< 用户名
 @property (nonatomic,copy) NSString *subject; //!< 学科
 @property (nonatomic,copy) NSString *workContent; //!< 作业内容

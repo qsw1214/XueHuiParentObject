@@ -12,7 +12,7 @@
 
 @interface XHTeacherAddressBookCell ()
 
-@property (nonatomic,strong) UIImageView *headerImageView;//!< 头像
+@property (nonatomic,strong) XHHeaderControl *headerImageView;//!< 头像
 @property (nonatomic,strong) UILabel *titleLabel;//!< 标题
 @property (nonatomic,strong) UILabel *describeLabel;//!< 描述
 @property (nonatomic,strong) UIView *lineView;//!< 分割线
@@ -45,7 +45,7 @@
 {
     _itemFrame = itemFrame;
     
-    [self.headerImageView setFrame:CGRectMake(10, 10, 55, 55)];
+    [self.headerImageView resetFrame:CGRectMake(10, 10, 55, 55)];
     [self.headerImageView setLayerCornerRadius:(self.headerImageView.height/2.0)];
     [self.titleLabel setFrame:CGRectMake(self.headerImageView.right+10,20.0, (itemFrame.itemFrame.size.width-self.headerImageView.right-50), 20.0)];
     [self.describeLabel setFrame:CGRectMake(self.titleLabel.left, self.titleLabel.bottom+5.0, self.titleLabel.width, self.titleLabel.height)];
@@ -53,7 +53,7 @@
     [self.lineView setFrame:CGRectMake(0, itemFrame.itemFrame.size.height-0.5, itemFrame.itemFrame.size.width, 0.5)];
     
     
-    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:itemFrame.model.headerUrl] placeholderImage:[UIImage imageNamed:@"addman"]];
+    [self.headerImageView setHeadrUrl:itemFrame.model.headerPic withName:itemFrame.model.teacherName withType:XHHeaderTeacherType];
     [self.titleLabel setText:itemFrame.model.teacherName];
     [self.describeLabel setText:itemFrame.model.phone];
 
@@ -61,11 +61,11 @@
 
 
 #pragma mark - Getter / Setter
--(UIImageView *)headerImageView
+-(XHHeaderControl *)headerImageView
 {
     if (!_headerImageView)
     {
-        _headerImageView = [[UIImageView alloc]init];
+        _headerImageView = [[XHHeaderControl alloc]init];
     }
     return _headerImageView;
 }

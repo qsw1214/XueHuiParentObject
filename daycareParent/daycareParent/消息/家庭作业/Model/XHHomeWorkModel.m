@@ -56,6 +56,7 @@
 -(void)setNoticeItemObject:(NSDictionary*)object
 {
     [self setHeaderUrl:ALGetFileHeadThumbnail([object objectItemKey:@"headPic"])];
+    [self setHeaderPic:[object objectItemKey:@"headPic"]];
     [self setSubject:[object objectItemKey:@"subjectName"]];
     [self setPushInfoId:[object objectItemKey:@"noticeActorId"]];
     

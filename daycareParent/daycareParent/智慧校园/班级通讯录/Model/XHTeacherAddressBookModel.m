@@ -21,6 +21,7 @@
 {
     [self setTeacherName:[object objectItemKey:@"teacherName"]];
     [self setHeaderUrl:ALGetFileHeadThumbnail([object objectItemKey:@"headPic"])];
+    [self setHeaderPic:[object objectItemKey:@"headPic"]];
     [self setPhone:[object objectItemKey:@"telphoneNumber"]];
     [self setObjectID:[object objectItemKey:@"teacherId"]];
     [self setMarkType:XHTeacherAddressBookMarkNormalType];

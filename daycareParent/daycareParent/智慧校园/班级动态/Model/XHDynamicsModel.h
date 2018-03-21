@@ -40,6 +40,7 @@ typedef NS_ENUM(NSInteger,XHDynamicsModelType)
 
 
 @property (nonatomic,strong) NSString *headerUrl; //!< 头像url地址
+@property (nonatomic,strong) NSString *headerPic; //!< 头像url地址
 @property (nonatomic,strong) NSString *teacherName; //!< 名字
 @property (nonatomic,strong) NSString *date; //!< 日期
 @property (nonatomic,strong) NSMutableArray *dateArray; //!< 日期分割数组

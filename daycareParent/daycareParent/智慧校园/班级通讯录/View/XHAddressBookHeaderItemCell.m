@@ -11,7 +11,7 @@
 
 @interface XHAddressBookHeaderItemCell ()
 
-@property (nonatomic,strong) UIImageView *headerImageView; //!< 头像
+@property (nonatomic,strong) XHHeaderControl *headerImageView; //!< 头像
 @property (nonatomic,strong) UILabel *titleLabel; //!< 主标题标签
 @property (nonatomic,strong) UILabel *describeLabel; //!< 副标题标签
 
@@ -34,7 +34,7 @@
         [self.contentView addSubview:self.describeLabel];
         
         //!< 重置Frame
-        [self.headerImageView setFrame:CGRectMake(10.0, ((frame.size.height-40.0)/2.0), 40.0, 40.0)];
+        [self.headerImageView resetFrame:CGRectMake(10.0, ((frame.size.height-40.0)/2.0), 40.0, 40.0)];
         [self.headerImageView setLayerCornerRadius:(self.headerImageView.height/2.0)];
 
         
@@ -95,11 +95,7 @@
     }
     
     
-    
-    
-    
-    
-    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:ALGetFileHeadThumbnail(model.headPic)] placeholderImage:[UIImage imageNamed:@"addman"]];
+    [self.headerImageView setHeadrUrl:model.headPic withName:model.studentName withType:XHHeaderOtherType];
 }
 
 
@@ -109,12 +105,11 @@
 
 
 #pragma mark - Getter /  Setter
--(UIImageView *)headerImageView
+-(XHHeaderControl *)headerImageView
 {
     if (!_headerImageView)
     {
-        _headerImageView = [[UIImageView alloc]init];
-        [_headerImageView setBackgroundColor:[UIColor whiteColor]];
+        _headerImageView = [[XHHeaderControl alloc]init];
     }
     return _headerImageView;
 }

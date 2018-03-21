@@ -21,7 +21,7 @@
         _familyId=[dic objectItemKey:@"familyId"];
         _gradeId=[dic objectItemKey:@"gradeId"];
         _gradeName=[dic objectItemKey:@"gradeName"];
-        _headPic=[dic objectItemKey:@"headPic"];
+        _headPic = [dic objectItemKey:@"headPic"];
         _latitude=[dic objectItemKey:@"latitude"];
         _longitude=[dic objectItemKey:@"longitude"];
         _propValue_studentId=[[dic objectItemKey:@"propValue"] objectItemKey:@"studentId"];

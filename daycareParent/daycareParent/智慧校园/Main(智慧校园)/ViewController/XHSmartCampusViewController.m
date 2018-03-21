@@ -40,7 +40,39 @@
     [self setNavtionTitle:@"校园"];
     [self navtionItemHidden:NavigationItemLeftType];
     [self setItemContentType:NavigationIconype withItemType:NavigationItemRightype withIconName:@"ico_sao" withTitle:nil];
+    
+    
+    NSMutableArray *tempArray = [NSMutableArray array];
+    
+    for (int i = 0; i<75; i++)
+    {
+        NSString *a = [NSString stringWithFormat:@"测试:%zd",i];
+        [tempArray addObject:a];
+    }
+    
+    
+    
+//    NSArray *aaaa = [self seprateArray:tempArray count:5];
+    
+    
 }
+
+- (NSArray *)seprateArray:(NSArray *)temp count:(NSInteger)count {
+    NSMutableArray *tempArray = [[NSMutableArray alloc] initWithCapacity:0];
+    NSInteger row = temp.count/count;
+    NSInteger col = temp.count%count;
+    NSAssert(col != 0, @"不能平均分");
+    for (NSInteger i = 0; i < row; i++)
+    {
+        NSArray *rowArray = [temp subarrayWithRange:NSMakeRange(i * row, row)];
+        [tempArray addObject:rowArray];
+    }
+    
+    return tempArray;
+}
+
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

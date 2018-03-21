@@ -21,7 +21,7 @@
 
 @interface XHNetWorkConfig ()
 
-@property (nonatomic,strong) NSMutableDictionary *paramDictionary; //!< 参数字典
+
 
 
 

@@ -104,7 +104,7 @@
         [_tipButton setTextColor:[UIColor grayColor] withTpe:0 withAllType:NO];
         [_tipButton setNumberOfLines:0 withTpe:0 withAllType:NO];
         [_tipButton setImageContentMode:UIViewContentModeScaleAspectFit withNumberType:0 withAllType:NO];
-        [_tipButton setItemColor:NO];
+
     }
     return _tipButton;
 }
@@ -115,7 +115,9 @@
 {
     if (color)
     {
+        [self setBackgroundColor:[UIColor orangeColor]];
         [self.tipButton setBackgroundColor:[UIColor redColor]];
+        [self.tipButton setItemColor:YES];
     }
 }
 

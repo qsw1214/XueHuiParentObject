@@ -241,6 +241,7 @@
     if (!_mainTableView)
     {
         _mainTableView = [[BaseTableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+        [_mainTableView setTipType:TipTitleAndTipImage withTipTitle:@"暂无数据" withTipImage:@"pic_nothing"];
     }
     return _mainTableView;
 }

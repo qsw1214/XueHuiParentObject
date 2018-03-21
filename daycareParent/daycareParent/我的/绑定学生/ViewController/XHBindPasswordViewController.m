@@ -95,46 +95,35 @@
 
 -(void)submitControlAction:(BaseButtonControl*)sender
 {
-    NSString *o = [self.originallyPasswordControl textFieldTitlewithNumberType:0];
-    NSString *n = [self.newPasswordControl textFieldTitlewithNumberType:0];
-    NSString *v = [self.verifyPasswordControl textFieldTitlewithNumberType:0];
+    NSString *newPassword = [self.newPasswordControl textFieldTitlewithNumberType:0];
+    NSString *verifyCode = [self.verifyPasswordControl textFieldTitlewithNumberType:0];
     
-    if ([o isEqualToString:@""])
-    {
-        [XHShowHUD showNOHud:@"原密码不能为空!"];
-    }
-    else if ([n isEqualToString:@""])
+    if ([newPassword isEqualToString:@""])
     {
         [XHShowHUD showNOHud:@"新密码不能为空!"];
     }
-    else if ([v isEqualToString:@""])
+    else if ([verifyCode isEqualToString:@""])
     {
-        [XHShowHUD showNOHud:@"验证密码不能为空!"];
+        [XHShowHUD showNOHud:@"手机验证不能为空!"];
     }
-    else if ([n isEqualToString:v])
+    else
     {
-        [self.netWorkConfig setObject:o forKey:@"studentBaseId"];
-        [self.netWorkConfig setObject:o forKey:@"oldBindingPassword"];
-        [self.netWorkConfig setObject:v forKey:@"newBindingPassword"];
+        [self.netWorkConfig setObject:newPassword forKey:@"bindingPassword"];
+        [self.netWorkConfig setObject:verifyCode forKey:@"code"];
         [self.netWorkConfig postWithUrl:@"" sucess:^(id object, BOOL verifyObject)
-        {
-            if (verifyObject)
-            {
-                
-                
-                
-            }
-            
-        } error:^(NSError *error)
+         {
+             if (verifyObject)
+             {
+                 
+                 
+                 
+             }
+             
+         } error:^(NSError *error)
          {
              
          }];
         
-        
-    }
-    else
-    {
-        [XHShowHUD showNOHud:@"两次新密码不一致!"];
     }
 }
 
@@ -146,8 +135,8 @@
 {
     [XHShowHUD showTextHud];
     XHNetWorkConfig *config = [[XHNetWorkConfig alloc]init];
-    [config setObject:[XHUserInfo sharedUserInfo].telphoneNumber forKey:@"phone"];
-    [config postWithUrl:@"" sucess:^(id object, BOOL verifyObject)
+    [config setObject:[XHUserInfo sharedUserInfo].telphoneNumber forKey:@"telephoneNumber"];
+    [config postWithUrl:@"zzjt-app-api_personalCenter000" sucess:^(id object, BOOL verifyObject)
     {
         if (verifyObject)
         {

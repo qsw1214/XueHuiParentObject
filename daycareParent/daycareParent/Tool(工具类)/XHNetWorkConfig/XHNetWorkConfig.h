@@ -70,7 +70,7 @@ typedef void (^NetWorkProgressWithBlock) (NSProgress *uploadProgress);
 
 @property (nonatomic,assign) XHNetWorkOption option; //!< 选项
 
-
+@property (nonatomic,strong) NSMutableDictionary *paramDictionary; //!< 参数字典
 
 
 

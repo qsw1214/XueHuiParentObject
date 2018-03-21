@@ -128,7 +128,7 @@
 #pragma mark XHAddressBookHeaderDelegate
 -(void)didSelectItem:(XHChildListModel*)model
 {
-    [self.netWorkConfig setObject:@"900600746423382016" forKey:@"classId"];
+    [self.netWorkConfig setObject:model.clazzId forKey:@"classId"];
     [self getNetWorkData:YES];
 }
 
@@ -209,7 +209,7 @@
                  
              }];
             
-            [self.mainTableView reloadData];
+            [self.mainTableView refreshReloadData];
             
             
             
@@ -258,7 +258,7 @@
     
         
         
-        NSArray *rowarray = [self seprateArray:daaa count:5];
+//        NSArray *rowarray = [self seprateArray:daaa count:5];
         
         
         

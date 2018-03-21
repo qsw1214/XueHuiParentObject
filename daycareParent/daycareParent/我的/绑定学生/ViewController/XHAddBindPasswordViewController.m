@@ -124,7 +124,7 @@
                     if (self.isRefresh) {
                         self.isRefresh(YES);
                     }
-                    [self.navigationController popToViewController:[[XHPersonalCenterViewController alloc]init] animated:YES];
+                    [self.navigationController popViewControllerAnimated:YES];
                 }
                     break;
             }

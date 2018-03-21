@@ -53,6 +53,7 @@
     pic = [NSString safeString:pic];
     if ([pic isEqualToString:@""])
     {
+        self.headLabel.hidden=NO;
         NSInteger length = name.length;
         NSString *makeName = name;
         if ([name isEqualToString:@""])
@@ -82,6 +83,7 @@
     }
     else
     {
+        self.headLabel.hidden=YES;
         [self.childImageView sd_setImageWithURL:[NSURL URLWithString:ALGetFileHeadThumbnail(pic)]];
     }
 }

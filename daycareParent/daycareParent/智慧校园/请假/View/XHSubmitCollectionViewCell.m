@@ -33,13 +33,12 @@
 {
     if (model.modelType==XHRecipientNomalModelType) {
         self.nameLabel.text=model.name;
-        //[self.headImageView sd_setImageWithURL:[NSURL URLWithString:model.headPic] placeholderImage:[UIImage imageNamed:@"addman"]];
         [self setHeadrPic:model.headPic withName:model.name withType:XHHeaderTeacherType];
     }
     else
     {
          self.nameLabel.text=nil;
-        self.headLabel.hidden=YES;
+         self.headLabel.hidden=YES;
          self.headImageView.image=[UIImage imageNamed:@"ico_addpeo"];
         
     }

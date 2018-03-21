@@ -48,6 +48,7 @@
     XHChildCollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"childCellID" forIndexPath:indexPath];
     if (indexPath.item==_childListArry.count-1) {
         cell.childClassLabel.hidden=YES;
+        cell.headLabel.hidden=YES;
         cell.childNameLabel.text=@"绑定学生";
         cell.childImageView.image=[UIImage imageNamed:@"ico_bindstudents"];
     }

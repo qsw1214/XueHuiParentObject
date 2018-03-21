@@ -77,7 +77,6 @@
     {
       "orientation" : "portrait",
       "idiom" : "ipad",
-      "filename" : "1536x2048.png",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
       "scale" : "2x"

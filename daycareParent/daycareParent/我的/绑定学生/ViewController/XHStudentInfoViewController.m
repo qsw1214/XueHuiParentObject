@@ -71,7 +71,9 @@
 #pragma mark - case 3 修改密码
         case 2:
         {
-            [self.navigationController pushViewController:[[XHBindPasswordViewController alloc]init] animated:YES];
+            XHBindPasswordViewController *bindPassword = [[XHBindPasswordViewController alloc]init];
+            [bindPassword setModel:self.model];
+            [self.navigationController pushViewController:bindPassword animated:YES];
         }
             break;
 #pragma mark - case 3 解除绑定

@@ -191,6 +191,8 @@
                  {
                      [self.identityControl setText:sender.name withNumberType:1 withAllType:NO];
                      
+                     [self getFamilyInfo:YES];
+                     
                  }
              } error:^(NSError *error)
             {
@@ -588,9 +590,12 @@
          if (verifyObject)
          {
              
-             NSArray *FamilyArray = [object objectItemKey:@"object"];
-             
-             [NSArray enumerateObjectsWithArray:FamilyArray usingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop)
+             NSArray *familyArray = [object objectItemKey:@"object"];
+             if (familyArray)
+             {
+                 [self.dataArray removeAllObjects];
+             }
+             [NSArray enumerateObjectsWithArray:familyArray usingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop)
               {
                   obj = [obj objectItemKey:@"propValue"];
                   XHFamilyListModel *model = [[XHFamilyListModel alloc]init];

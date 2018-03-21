@@ -74,25 +74,32 @@
         
         //!< 重新赋值
         
+        NSString *phone = [XHUserInfo sharedUserInfo].telphoneNumber;
+         [self.netWorkConfig setObject:phone forKey:@"telphoneNumber"];
         if ([XHUserInfo sharedUserInfo].telphoneNumber.length>=11)
         {
             NSMutableString *telphoneNumber = [NSMutableString stringWithString:[NSString stringWithFormat:@"%@"
-                                                                                 ,[XHUserInfo sharedUserInfo].telphoneNumber]];
+                                                                                 ,phone]];
             [telphoneNumber replaceCharactersInRange:NSMakeRange(3, 4)  withString:@"****"];
              [self.originallyPasswordControl setText:[NSString stringWithFormat:@"验证电话:%@",telphoneNumber] withNumberType:0 withAllType:NO];
         }
         else
         {
             NSMutableString *telphoneNumber = [NSMutableString stringWithString:[NSString stringWithFormat:@"%@"
-                                                                                 ,[XHUserInfo sharedUserInfo].telphoneNumber]];
+                                                                                 ,phone]];
             [telphoneNumber replaceCharactersInRange:NSMakeRange(3, 1)  withString:@"****"];
              [self.originallyPasswordControl setText:[NSString stringWithFormat:@"验证电话:%@",telphoneNumber] withNumberType:0 withAllType:NO];
         }
        
        
+        
+                                              
     }
 }
 
+
+
+#pragma mark - 确定修改密码
 -(void)submitControlAction:(BaseButtonControl*)sender
 {
     NSString *newPassword = [self.newPasswordControl textFieldTitlewithNumberType:0];
@@ -110,13 +117,13 @@
     {
         [self.netWorkConfig setObject:newPassword forKey:@"bindingPassword"];
         [self.netWorkConfig setObject:verifyCode forKey:@"code"];
-        [self.netWorkConfig postWithUrl:@"" sucess:^(id object, BOOL verifyObject)
+        [self.netWorkConfig setObject:self.model.studentBaseId forKey:@"studentBaseId"];
+        [self.netWorkConfig postWithUrl:@"zzjt-app-api_studentBinding007" sucess:^(id object, BOOL verifyObject)
          {
              if (verifyObject)
              {
-                 
-                 
-                 
+                
+                 [self.navigationController popViewControllerAnimated:YES];
              }
              
          } error:^(NSError *error)
@@ -134,9 +141,9 @@
 -(void)verifyPasswordControlAction:(BaseButtonControl*)sender
 {
     [XHShowHUD showTextHud];
-    XHNetWorkConfig *config = [[XHNetWorkConfig alloc]init];
-    [config setObject:[XHUserInfo sharedUserInfo].telphoneNumber forKey:@"telephoneNumber"];
-    [config postWithUrl:@"zzjt-app-api_personalCenter000" sucess:^(id object, BOOL verifyObject)
+    [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].telphoneNumber forKey:@"telephoneNumber"];
+    [self.netWorkConfig setObject:@"1" forKey:@"type"];
+    [self.netWorkConfig postWithUrl:@"zzjt-app-api_personalCenter000" sucess:^(id object, BOOL verifyObject)
     {
         if (verifyObject)
         {
@@ -178,16 +185,6 @@
     
 }
 
-
-#pragma mark - NetWork Mthod
--(void)aas
-{
-//    zzjt-app-api_studentBinding007
-    
-    
-    [self.netWorkConfig setObject:@"" forKey:@""];
-    
-}
 
 
 #pragma mark - Getter /  Setter

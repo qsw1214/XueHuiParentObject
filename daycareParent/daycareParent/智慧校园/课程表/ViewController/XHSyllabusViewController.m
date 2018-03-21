@@ -21,7 +21,6 @@
 @property (nonatomic,strong) BaseButtonControl *weekMenuControl; //!< 菜单选择菜单
 @property (nonatomic,strong) NSMutableArray *firstArry;
 @property (nonatomic,strong) NSMutableArray *twoArry;
-@property (nonatomic,strong) NSMutableString *string;
 
 
 @end
@@ -55,7 +54,7 @@
         [self.view addSubview:self.mainTableView];
         [self.mainTableView setDelegate:self];
         [self.mainTableView setDataSource:self];
-        [self.mainTableView resetFrame:CGRectMake(0, (self.addressBookHeader.bottom+10.0), SCREEN_WIDTH, CONTENT_HEIGHT)];
+        [self.mainTableView resetFrame:CGRectMake(0, (self.addressBookHeader.bottom+10.0), SCREEN_WIDTH, CONTENT_HEIGHT-(self.addressBookHeader.height+15.0))];
         
         
         
@@ -145,6 +144,9 @@
             object = [object objectItemKey:@"object"];
             NSArray *dateArray = [object objectForKey:@"date"];
             NSArray *syllabusArray = [object objectForKey:@"syllabus"];
+            syllabusArray = @[@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"化学",@"地理"];
+            
+            
             
             XHSyllabusFrame *frame = [[XHSyllabusFrame alloc]init];
             XHSyllabusModel *model = [[XHSyllabusModel alloc]init];
@@ -152,7 +154,6 @@
             [NSArray enumerateObjectsWithArray:dateArray usingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop)
             {
                 NSArray *firstArray = [obj componentsSeparatedByString:@"-"];
-                NSString *year = [firstArray firstObject];
                 NSString *month = [firstArray objectAtIndex:1];
                 NSString *day = [firstArray lastObject];
                 switch (idx)
@@ -160,29 +161,35 @@
                     case 0:
                     {
                        
-                        [model setMonth:[NSString stringWithFormat:@"%@\n月",month]];
-                        [model setMonday:[NSString stringWithFormat:@"%@\n周一",day]];
+                        [model setMonth:[NSString stringWithFormat:@"%@",month]];
+                        [model setMonthDescribe:[NSString stringWithFormat:@"月"]];
+                        [model setMonday:[NSString stringWithFormat:@"%@",day]];
+                        [model setMondayDescribe:[NSString stringWithFormat:@"周一"]];
                     }
                         break;
                     case 1:
                     {
-                        [model setTuesday:[NSString stringWithFormat:@"%@\n周二",day]];
+                        [model setTuesday:[NSString stringWithFormat:@"%@",day]];
+                        [model setTuesdayDescribe:[NSString stringWithFormat:@"周二"]];
                     }
                         break;
                     case 2:
                     {
-                        [model setWednesday:[NSString stringWithFormat:@"%@\n周三",day]];
+                        [model setWednesday:[NSString stringWithFormat:@"%@",day]];
+                        [model setWednesdayDescribe:[NSString stringWithFormat:@"周三"]];
                     }
                         break;
                     case 3:
                     {
                         
-                        [model setThursday:[NSString stringWithFormat:@"%@\n周四",day]];
+                        [model setThursday:[NSString stringWithFormat:@"%@",day]];
+                        [model setThursdayDescribe:[NSString stringWithFormat:@"周四"]];
                     }
                         break;
                     case 4:
                     {
-                        [model setFriday:[NSString stringWithFormat:@"%@\n周五",day]];
+                        [model setFriday:[NSString stringWithFormat:@"%@",day]];
+                        [model setFridayDescribe:[NSString stringWithFormat:@"周五"]];
                     }
                         break;
                 }
@@ -192,18 +199,55 @@
             [frame setModel:model];
             [self.dataArray addObject:frame];
             
-//            [NSArray enumerateObjectsWithArray:dataArry usingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop)
-//             {
-//
-//                 NSMutableArray *tempArray = [NSMutableArray array];
-//                                  for (int i = 0; i < 5; i++)
-//                                  {
-//                                      [tempArray addObject:object];
-//                                  }
-//
-
-            [self getSubjectWithdataArry:syllabusArray];
-   
+            NSArray *itemArray = [self getSubjectWithdataArry:syllabusArray];
+    
+            
+            [NSArray enumerateObjectsWithArray:itemArray usingforceBlock:^(id obj, NSUInteger idx, BOOL *stop,BOOL forceStop)
+            {
+                if (forceStop)
+                {
+                    XHSyllabusFrame *frame = [[XHSyllabusFrame alloc]init];
+                    XHSyllabusModel *model = [[XHSyllabusModel alloc]init];
+                    [model setMonth:[NSString stringWithFormat:@"%zd",(idx+1)]];
+                    
+                    [NSArray enumerateObjectsWithArray:obj usingforceBlock:^(id obj, NSUInteger idx, BOOL *stop, BOOL forceStop)
+                    {
+                        switch (idx)
+                        {
+                            case 0:
+                            {
+                                [model setMonday:obj];
+                            }
+                                break;
+                            case 1:
+                            {
+                                [model setTuesday:obj];
+                            }
+                                break;
+                            case 2:
+                            {
+                                [model setWednesday:obj];
+                            }
+                                break;
+                            case 3:
+                            {
+                                [model setThursday:obj];
+                            }
+                                break;
+                            case 4:
+                            {
+                                 [model setFriday:obj];
+                            }
+                                break;
+                        }
+                    }];
+                    
+                    [model setModelType:SyllabusContentType];
+                    [frame setModel:model];
+                    [self.dataArray addObject:frame];
+                }
+            }];
+            
             [self.mainTableView reloadData];
 
             
@@ -229,35 +273,6 @@
     {
         _addressBookHeader = [[XHAddressBookHeader alloc]init];
         [_addressBookHeader setDelegate:self];
-       
-        NSArray *a = @[@"1",@"2",@"3",@"1",@"2" ,@"3",@"1",@"2",@"3",@"1" ,@"2",@"3",@"1" ,@"2",@"3"];
-        
-        
-        
-        NSMutableArray *daaa = [NSMutableArray array];
-        
-        [a enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
-         {
-    
-             if ((idx %5== 0) && idx!=0)
-             {
-                 [daaa addObject:@"="];
-                 [daaa addObject:obj];
-             }
-             else
-             {
-                 [daaa addObject:obj];
-             }
-         }];
-        
-
-    
-        
-        
-//        NSArray *rowarray = [self seprateArray:daaa count:5];
-        
-        
-        
     }
     return _addressBookHeader;
 }
@@ -278,53 +293,44 @@
     return _twoArry;
 }
 
--(NSMutableString *)string
-         {
-             if (_string==nil) {
-                 _string=[[NSMutableString alloc] init];
-             }
-             return _string;
-         }
-
 -(NSArray *)getSubjectWithdataArry:(NSArray *)dataArry
 {
-    NSMutableArray *mutableArry=[[NSMutableArray alloc] init];
-    
+    NSMutableString *string=[[NSMutableString alloc] init];
+    NSMutableArray *mutableArry = [[NSMutableArray alloc] init];
     [NSArray enumerateObjectsWithArray:dataArry usingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop)
      {
-         if (idx%5==0&&idx!=0) {
-             [self.string appendFormat:@"%@",@"&&&&&"];
-             [self.string appendFormat:@"%@ ",obj];
+         if (idx%5==0&&idx!=0)
+         {
+             [string appendFormat:@"%@",@"(*)"];
+             [string appendFormat:@"%@ ",obj];
          }
          else
          {
-             [self.string appendFormat:@"%@ ",obj];
+             [string appendFormat:@"%@ ",obj];
          }
          
      }];
-    NSArray *arr=[self.string componentsSeparatedByString:@"&&&&&"];
-    for (NSString *str in arr) {
+    
+    
+    NSArray *arr = [string componentsSeparatedByString:@"(*)"];
+   
+    for (NSString *str in arr)
+    {
         NSArray *arr=[str componentsSeparatedByString:@" "];
         
-        [mutableArry addObject:arr];
+        NSMutableArray *temmpArray = [[NSMutableArray alloc]initWithArray:arr];
+        [temmpArray  removeLastObject];
+        [mutableArry addObject:temmpArray];
     }
+   
+    
+  
     
     return mutableArry;
 }
-- (NSArray *)seprateArray:(NSArray *)temp count:(NSInteger)count
-{
-    NSMutableArray *tempArray = [[NSMutableArray alloc] initWithCapacity:0];
-    NSInteger row = 5;//temp.count/count;
-    NSInteger col = temp.count%count;
-//    NSAssert(col != 0, @"不能平均分");
-//    for (NSInteger i = 0; i < row; i++)
-//    {
-//        NSArray *rowArray = [temp subarrayWithRange:NSMakeRange(i * row, row)];
-//        [tempArray addObject:rowArray];
-//    }
-    
-    return tempArray;
-}
+
+
+
 
 
 

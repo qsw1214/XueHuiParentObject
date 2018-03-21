@@ -124,7 +124,7 @@
                     if (self.isRefresh) {
                         self.isRefresh(YES);
                     }
-                    [self.navigationController popViewControllerAnimated:YES];
+                    [self.navigationController popToRootViewControllerAnimated:YES];
                 }
                     break;
             }

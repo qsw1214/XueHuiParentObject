@@ -178,4 +178,29 @@
     //译文本高度
     return ContentSize;
 }
+
+
+#pragma mark - 设置富文本
+/*
+ *  设置行间距和字间距
+ *
+ *  @param string    字符串
+ *  @param lineSpace 行间距
+ *  @param kern      字间距
+ *  @param font      字体大小
+ *
+ *  @return 富文本
+ */
++(NSAttributedString *)getAttributedWithString:(NSString *)string WithLineSpace:(CGFloat)lineSpace kern:(CGFloat)kern font:(UIFont *)font
+{
+    NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
+    //调整行间距
+    paragraphStyle.lineSpacing = lineSpace;
+    NSDictionary *attriDict = @{NSParagraphStyleAttributeName:paragraphStyle,NSKernAttributeName:@(kern),
+                                NSFontAttributeName:font};
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]initWithString:string attributes:attriDict];
+    return attributedString;
+}
+
+
 @end

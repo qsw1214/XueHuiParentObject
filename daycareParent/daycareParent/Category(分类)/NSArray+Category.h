@@ -7,10 +7,13 @@
 //
 
 typedef void (^enumerateBlock) (id obj, NSUInteger idx, BOOL *stop);
+typedef void (^forceEnumerateBlock) (id obj, NSUInteger idx, BOOL *stop,BOOL forceStop);  // YES 是正常遍历， NO是强制停止
 
 #import <Foundation/Foundation.h>
 
 @interface NSArray (Category)
+
++(void)enumerateObjectsWithArray:(id)array usingforceBlock:(forceEnumerateBlock)block;
 
 +(void)enumerateObjectsWithArray:(id)array usingBlock:(enumerateBlock)block;
 

@@ -71,4 +71,18 @@
 #pragma mark 计算文本的宽度和高度
 +(CGSize)contentSizeWithTitle:(NSString*)content withFontOfSize:(UIFont*)font withWidth:(CGFloat)maxWidth;
 
+#pragma mark - 设置富文本
+/*
+ *  设置行间距和字间距
+ *
+ *  @param string    字符串
+ *  @param lineSpace 行间距
+ *  @param kern      字间距
+ *  @param font      字体大小
+ *
+ *  @return 富文本
+ */
++(NSAttributedString *)getAttributedWithString:(NSString *)string WithLineSpace:(CGFloat)lineSpace kern:(CGFloat)kern font:(UIFont *)font;
+
+
 @end

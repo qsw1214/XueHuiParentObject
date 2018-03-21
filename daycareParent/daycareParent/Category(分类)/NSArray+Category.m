@@ -11,22 +11,38 @@
 @implementation NSArray (Category)
 
 
-
-+(void)enumerateObjectsWithArray:(id)array usingBlock:(enumerateBlock)block
++(void)enumerateObjectsWithArray:(id)array usingforceBlock:(forceEnumerateBlock)block
 {
-    if ([array isKindOfClass:[NSArray class]])
+    if ([array isKindOfClass:[NSArray class]] && [array count])
     {
         [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
          {
-             block(obj,idx,stop);
+             block(obj,idx,stop,YES);
          }];
+    }
+    else
+    {
+        
+        block(nil,0,nil,NO);
+    }
+}
+
++(void)enumerateObjectsWithArray:(id)array usingBlock:(enumerateBlock)block
+{
+    if ([array isKindOfClass:[NSArray class]] && [array count])
+    {
+        [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
+        {
+            block(obj,idx,stop);
+        }];
     }
 }
 
 +(void)enumerateObjectsWithArray:(id)array withOptions:(NSEnumerationOptions)options usingBlock:(enumerateBlock)block
 {
-    if ([array isKindOfClass:[NSArray class]])
+    if ([array isKindOfClass:[NSArray class]] && [array count])
     {
+        
         [array enumerateObjectsWithOptions:options usingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
          {
              block(obj,idx,stop);

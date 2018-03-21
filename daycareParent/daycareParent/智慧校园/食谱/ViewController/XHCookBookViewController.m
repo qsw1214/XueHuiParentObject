@@ -179,13 +179,7 @@
 #pragma mark XHCookBookHeaderDeletage
 -(void)didSelectItemObject:(XHCookBookFrame *)model
 {
-    
     [self.cookBookItemArray setArray:model.model.contentArray];
-    
-    
-    
-
-    
     [self.tableView refreshReloadData];
 }
 

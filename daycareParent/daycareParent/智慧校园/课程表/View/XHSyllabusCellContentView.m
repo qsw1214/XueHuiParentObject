@@ -85,7 +85,7 @@
         [self.fridayLabel setBackgroundColor:[UIColor whiteColor]];
         
         
-        [self.monthLabel setTextColor:RGB(51.0, 51.0, 51.0)];
+        [self.monthLabel setTextColor:MainColor];
         [self.mondayLabel setTextColor:RGB(51.0, 51.0, 51.0)];
         [self.tuesdayLabel setTextColor:RGB(51.0, 51.0, 51.0)];
         [self.wednesdayLabel setTextColor:RGB(51.0, 51.0, 51.0)];

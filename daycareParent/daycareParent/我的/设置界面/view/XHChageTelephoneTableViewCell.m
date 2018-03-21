@@ -19,9 +19,7 @@
     if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         _chageTelePhoneTextField=[[UITextField alloc] initWithFrame:CGRectMake(20, 0, SCREEN_WIDTH-40, self.contentView.bounds.size.height)];
         _chageTelePhoneTextField.placeholder=@"请输入新手机号";
-        //_chageTelePhoneTextField.borderStyle=UITextBorderStyleNone;
         _chageTelePhoneTextField.clearButtonMode=UITextFieldViewModeWhileEditing;
-        _chageTelePhoneTextField.tag=10086;
         _chageTelePhoneTextField.keyboardType=UIKeyboardTypeNumberPad;
         [self.contentView addSubview:_chageTelePhoneTextField];
     }

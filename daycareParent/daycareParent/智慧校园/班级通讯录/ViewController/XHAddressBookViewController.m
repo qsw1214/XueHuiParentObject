@@ -147,7 +147,6 @@
 {
     if (model)
     {
-        [XHShowHUD showTextHud];
         [self.netWorkConfig setObject:model.clazzId forKey:@"classId"];
         [self.netWorkConfig postWithUrl:@"zzjt-app-api_smartCampus009" sucess:^(id object, BOOL verifyObject)
          {

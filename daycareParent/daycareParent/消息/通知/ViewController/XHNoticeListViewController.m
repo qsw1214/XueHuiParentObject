@@ -141,6 +141,7 @@
 
 -(void)refreshHeaderAction
 {
+    self.pageNumber=1;
     [self getNoticeWithType:HeaderRefresh];
 }
 

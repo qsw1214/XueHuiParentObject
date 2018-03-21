@@ -48,10 +48,9 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.chageTelePhoneTextField.placeholder=@"请输入验证码";
         cell.chageTelePhoneTextField.keyboardType=UIKeyboardTypeNumberPad;
-        cell.chageTelePhoneTextField.tag=1+10086;
+        cell.chageTelePhoneTextField.tag=indexPath.row+10086;
         [cell.chageTelePhoneTextField addTarget:self action:@selector(textChage) forControlEvents:UIControlEventEditingChanged];
         cell.verifyButton.backgroundColor=RGB(245, 245, 245);
-        [cell.verifyButton setTitleColor:RGB(82, 82, 82) forState:UIControlStateNormal];
         cell.verifyButton.titleLabel.font=FontLevel3;
         cell.verifyButton.layer.cornerRadius=CORNER_BTN;
         cell.verifyButton.backgroundColor=MainColor;

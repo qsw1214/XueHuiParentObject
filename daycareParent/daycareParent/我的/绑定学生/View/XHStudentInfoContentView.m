@@ -77,20 +77,12 @@
 #pragma mark case 0 不是主监护人
         case 0:
         {
-            [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].selfId forKey:@"guardianId"];
-            [self.netWorkConfig postWithUrl:@"zzjt-app-api_studentBinding006" sucess:^(id object, BOOL verifyObject)
-             {
-                 if (verifyObject)
-                 {
-                     
-                     [XHShowHUD showOKHud:@"解绑成功!"];
-                     [self getFamilyInfo:YES];
-                     
-                 }
-             } error:^(NSError *error)
-             {
-                 
-             }];
+            
+            
+            XHAlertControl *alert = [[XHAlertControl alloc]initWithDelegate:self];
+            [alert setTitle:@"解绑学生"];
+            [alert setBoardType:XHAlertBoardNormalType];
+            [alert show];
         }
             break;
 #pragma mark  cas 1 是主要监护人
@@ -178,53 +170,88 @@
 -(void)alertBoardControlAction:(XHAlertModel *)sender
 {
     [XHShowHUD showTextHud];
-    switch (sender.AlertTag)
+    if (sender)
     {
+        switch (sender.AlertTag)
+        {
 #pragma mark - case 1 修改关系
-        case 1:
-        {
-            [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].selfId forKey:@"guardianId"];
-            [self.netWorkConfig setObject:sender.identityType forKey:@"type"];
-            [self.netWorkConfig postWithUrl:@"zzjt-app-api_studentBinding009" sucess:^(id object, BOOL verifyObject)
-             {
-                 if (verifyObject)
-                 {
-                     [self.identityControl setText:sender.name withNumberType:1 withAllType:NO];
-                     
-                     [self getFamilyInfo:YES];
-                     
-                 }
-             } error:^(NSError *error)
+            case 1:
             {
-                 [XHShowHUD showOKHud:@"修改关系失败!"];
-             }];
-        }
-            break;
+                [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].selfId forKey:@"guardianId"];
+                [self.netWorkConfig setObject:sender.identityType forKey:@"type"];
+                [self.netWorkConfig postWithUrl:@"zzjt-app-api_studentBinding009" sucess:^(id object, BOOL verifyObject)
+                 {
+                     if (verifyObject)
+                     {
+                         [self.identityControl setText:sender.name withNumberType:1 withAllType:NO];
+                         
+                         [self getFamilyInfo:YES];
+                         
+                     }
+                 } error:^(NSError *error)
+                 {
+                     [XHShowHUD showOKHud:@"修改关系失败!"];
+                 }];
+            }
+                break;
 #pragma mark - case 2 解除绑定
-        case 2:
-        {
-            
-            
-            [self.netWorkConfig setObject:sender.objectID forKey:@"NewGuardianId"];
-            [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].selfId forKey:@"OldGuardianId"];
-            [self.netWorkConfig postWithUrl:@"zzjt-app-api_studentBinding005" sucess:^(id object, BOOL verifyObject)
-             {
-                 if (verifyObject)
+            case 2:
+            {
+                
+                
+                [self.netWorkConfig setObject:sender.objectID forKey:@"NewGuardianId"];
+                [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].selfId forKey:@"OldGuardianId"];
+                [self.netWorkConfig postWithUrl:@"zzjt-app-api_studentBinding005" sucess:^(id object, BOOL verifyObject)
+                 {
+                     if (verifyObject)
+                     {
+                         
+                         [XHShowHUD showOKHud:@"解绑成功!"];
+                         [self getFamilyInfo:YES];
+                         
+                         
+                         if ([self.infoDelegate respondsToSelector:@selector(studentInfoControlAction:)])
+                         {
+                             [self.infoDelegate studentInfoControlAction:3];
+                         }
+                         
+                     }
+                 } error:^(NSError *error)
                  {
                      
-                     [XHShowHUD showOKHud:@"解绑成功!"];
-                     [self getFamilyInfo:YES];
-                     
-                 }
-            } error:^(NSError *error)
+                 }];
+                
+            }
+                break;
+        }
+    }
+    else
+    {
+        
+        [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].selfId forKey:@"guardianId"];
+        [self.netWorkConfig postWithUrl:@"zzjt-app-api_studentBinding006" sucess:^(id object, BOOL verifyObject)
+         {
+             if (verifyObject)
              {
                  
-             }];
-            
-        }
-            
-            break;
+                 [XHShowHUD showOKHud:@"解绑成功!"];
+                 [self getFamilyInfo:YES];
+                 
+                 if ([self.infoDelegate respondsToSelector:@selector(studentInfoControlAction:)])
+                 {
+                     [self.infoDelegate studentInfoControlAction:3];
+                 }
+             }
+         } error:^(NSError *error)
+         {
+             
+         }];
+        
+        
     }
+    
+    
+
     
     
 }

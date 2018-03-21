@@ -76,6 +76,7 @@
             NSInteger isBinding = [[propValue objectForKey:@"isBinding"] integerValue]; //!<
             XHAddBindPasswordViewController *addPassword = [[XHAddBindPasswordViewController alloc]init];
             [addPassword setNetWorkConfig:sender];
+            
             switch (self.enterType)
             {
                 case XHRegisterEnterType:

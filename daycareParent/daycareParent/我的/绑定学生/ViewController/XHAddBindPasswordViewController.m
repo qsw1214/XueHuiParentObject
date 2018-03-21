@@ -8,6 +8,7 @@
 
 #import "XHAddBindPasswordViewController.h"
 #import "MainRootControllerHelper.h"
+#import "XHPersonalCenterViewController.h"
 @interface XHAddBindPasswordViewController ()
 
 
@@ -123,7 +124,7 @@
                     if (self.isRefresh) {
                         self.isRefresh(YES);
                     }
-                    [self.navigationController popViewControllerAnimated:YES];
+                    [self.navigationController popToViewController:[[XHPersonalCenterViewController alloc]init] animated:YES];
                 }
                     break;
             }

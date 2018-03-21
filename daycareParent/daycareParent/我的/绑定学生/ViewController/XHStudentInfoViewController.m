@@ -58,9 +58,9 @@
 
 #pragma mark - Delegate Method
 #pragma mark XHStudentInfoContentViewDelegate
--(void)studentInfoControlAction:(BaseButtonControl *)sender
+-(void)studentInfoControlAction:( NSInteger)sender
 {
-    switch (sender.tag)
+    switch (sender)
     {
 #pragma mark - case 3 修改密码
         case 1:
@@ -80,7 +80,7 @@
         case 3:
         {
             
-            
+            [self.navigationController popViewControllerAnimated:YES];
             
             
         }

@@ -15,7 +15,7 @@ typedef NS_ENUM(NSInteger,XHAddBindPasswordViewControllerEnterType)
 {
     XHRegisterAddEnterType=1,//!< 注册界面进入
     
-    XHBindAddEnterType=2,//!< 绑定孩子界面进入
+    XHBindAddEnterType=2, //!< 绑定孩子界面进入
     
 };
 

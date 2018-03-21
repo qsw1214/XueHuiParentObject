@@ -87,7 +87,7 @@
             [self.collectionView setHidden:NO];
             [self.titleLabel setFrame:CGRectMake(0, 0, SCREEN_WIDTH-100.0, 40.0)];
             
-            [self.collectionView resetFrame:CGRectMake(0, self.titleLabel.bottom, self.titleLabel.width, ([self.dataArray count]>3 ? 60.0 : 30.0))];
+            [self.collectionView resetFrame:CGRectMake(20.0, self.titleLabel.bottom, (self.titleLabel.width-40.0), ([self.dataArray count]>3 ? 60.0 : 30.0))];
             
             [self.lineView setFrame:CGRectMake(0, (self.collectionView.bottom+5.0), self.titleLabel.width, 0.5)];
             [self.cancelControl resetFrame:CGRectMake(0, self.lineView.bottom, self.lineView.width/2.0, 44.0)];
@@ -257,7 +257,6 @@
     {
         _collectionView = [[BaseCollectionView alloc]init];
         [_collectionView registerClass:[XHAlertItemCell class] forCellWithReuseIdentifier:CellIdentifier];
-        [_collectionView setBackgroundColor:[UIColor whiteColor]];
         [_collectionView setDelegate:self];
         [_collectionView setDataSource:self];
     }

@@ -13,7 +13,7 @@
 -(void)setName:(NSString *)name
 {
     _name = name;
-    [self setItemSize:CGSizeMake(((SCREEN_WIDTH-110.0)/3.0), 25.0)];
+    [self setItemSize:CGSizeMake(((SCREEN_WIDTH-140.0)/3.0), 25.0)];
 }
 
 @end

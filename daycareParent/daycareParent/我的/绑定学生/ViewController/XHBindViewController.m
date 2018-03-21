@@ -59,8 +59,8 @@
 -(void)submitControlAction:(XHNetWorkConfig*)sender
 {
     [XHShowHUD showTextHud];
-    [sender setObject:@"张晓" forKey:@"studentName"];
-    [sender setObject:@"101" forKey:@"archiveId"];
+//    [sender setObject:@"张晓" forKey:@"studentName"];
+//    [sender setObject:@"101" forKey:@"archiveId"];
     [sender postWithUrl:@"zzjt-app-api_studentBinding001" sucess:^(id object, BOOL verifyObject)
     {
         if (verifyObject)

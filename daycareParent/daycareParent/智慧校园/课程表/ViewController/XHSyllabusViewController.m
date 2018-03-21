@@ -289,7 +289,6 @@
 -(NSArray *)getSubjectWithdataArry:(NSArray *)dataArry
 {
     NSMutableArray *mutableArry=[[NSMutableArray alloc] init];
-    
     [NSArray enumerateObjectsWithArray:dataArry usingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop)
      {
          if (idx%5==0&&idx!=0) {
@@ -303,9 +302,9 @@
          
      }];
     NSArray *arr=[self.string componentsSeparatedByString:@"&&&&&"];
-    for (NSString *str in arr) {
+    for (NSString *str in arr)
+    {
         NSArray *arr=[str componentsSeparatedByString:@" "];
-        
         [mutableArry addObject:arr];
     }
     

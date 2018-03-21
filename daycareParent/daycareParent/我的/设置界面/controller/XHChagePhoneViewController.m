@@ -241,7 +241,7 @@
 -(XHBaseBtn *)sureButton
 {
     if (_sureButton==nil) {
-        _sureButton=[[XHBaseBtn alloc] initWithFrame:CGRectMake(10, 220, SCREEN_WIDTH-20, 50)];
+        _sureButton=[[XHBaseBtn alloc] initWithFrame:CGRectMake(40, 220, SCREEN_WIDTH-80, 44)];
         [_sureButton setTitle:@"确定" forState:UIControlStateNormal];
         [_sureButton setTag:2];
         [_sureButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];

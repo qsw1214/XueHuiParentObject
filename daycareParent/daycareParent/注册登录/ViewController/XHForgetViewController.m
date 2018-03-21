@@ -54,6 +54,7 @@
         [cell.verifyButton setTitleColor:RGB(82, 82, 82) forState:UIControlStateNormal];
         cell.verifyButton.titleLabel.font=FontLevel3;
         cell.verifyButton.layer.cornerRadius=CORNER_BTN;
+        cell.verifyButton.backgroundColor=MainColor;
         [cell.verifyButton setTag:1];
         [cell.verifyButton addTarget:self action:@selector(BnttonClick:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
@@ -198,7 +199,7 @@
 -(XHBaseBtn *)sureButton
 {
     if (_sureButton==nil) {
-        _sureButton=[[XHBaseBtn alloc] initWithFrame:CGRectMake(10, 180, SCREEN_WIDTH-20, LOGINBTN_HEIGHT)];
+        _sureButton=[[XHBaseBtn alloc] initWithFrame:CGRectMake(40, 180, SCREEN_WIDTH-80, 44)];
         [_sureButton setTitle:@"完成" forState:UIControlStateNormal];
         [_sureButton addTarget:self action:@selector(BnttonClick:) forControlEvents:UIControlEventTouchUpInside];
         [_sureButton setTag:2];

@@ -53,6 +53,7 @@
     
     //进入刷新状态
     [self.conversationListTableView.header beginRefreshing];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noticeMethod) name:@"noticeName" object:nil];
 }
 -(void)refreshHead
 {
@@ -239,6 +240,20 @@
     self.navigationController.navigationBar.hidden=YES;
     AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [app reloadIMBadge];
+}
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+-(void)noticeMethod
+{
+    //进入刷新状态
+    [self.conversationListTableView.header beginRefreshing];
 }
 -(XHNetWorkConfig *)net
 {

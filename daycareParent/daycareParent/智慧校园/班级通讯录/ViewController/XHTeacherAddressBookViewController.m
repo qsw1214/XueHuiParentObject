@@ -25,7 +25,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.mainTableView setTipType:TipTitleAndTipImage withTipTitle:@"暂无数据" withTipImage:@"pic_nothing"];
 }
 
 
@@ -39,29 +38,28 @@
 {
     if (subview)
     {
-        [self.view addSubview:self.addressBookHeader];
-        [self.addressBookHeader resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, 60.0)];
-         [self.mainTableView resetFrame:CGRectMake(0, self.addressBookHeader.bottom, SCREEN_WIDTH, CONTENT_HEIGHT-self.addressBookHeader.height)];
-        [self.view addSubview:self.mainTableView];
-        [self.mainTableView setDelegate:self];
-        [self.mainTableView setDataSource:self];
-        [self.mainTableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHead)];
-        [self.mainTableView beginRefreshing];
         
-//        for (int i = 0; i< 10;i++)
-//        {
-//            XHTeacherAddressBookFrame *frame = [[XHTeacherAddressBookFrame alloc]init];
-//            XHTeacherAddressBookModel *model = [[XHTeacherAddressBookModel alloc]init];
-//            [model setTeacherName:@"姚立志"];
-//            [model setPhone:@"15515667760"];
-//            [model setHeaderUrl:@""];
-//            [model setID:@"123456"];
-//            [frame setModel:model];
-//            [self.dataArray addObject:frame];
-//        }
-//
-//
-//        [self.mainTableView reloadData];
+        
+        if ([[XHUserInfo sharedUserInfo].childListArry count]>1)
+        {
+            [self.view addSubview:self.addressBookHeader];
+            [self.addressBookHeader resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, 60.0)];
+            [self.mainTableView resetFrame:CGRectMake(0, self.addressBookHeader.bottom, SCREEN_WIDTH, CONTENT_HEIGHT-self.addressBookHeader.height)];
+            [self.view addSubview:self.mainTableView];
+            [self.mainTableView setDelegate:self];
+            [self.mainTableView setDataSource:self];
+            [self.mainTableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHead)];
+            [self.mainTableView beginRefreshing];
+        }
+        else
+        {
+            [self.mainTableView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, CONTENT_HEIGHT)];
+            [self.view addSubview:self.mainTableView];
+            [self.mainTableView setDelegate:self];
+            [self.mainTableView setDataSource:self];
+            [self.mainTableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHead)];
+            [self.mainTableView beginRefreshing];
+        }
     }
 }
 -(void)refreshHead

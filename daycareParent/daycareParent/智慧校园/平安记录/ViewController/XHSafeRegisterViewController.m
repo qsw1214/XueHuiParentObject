@@ -169,13 +169,13 @@
                  [frame setModel:model];
                  [self.dataArray addObject:frame];
              }];
-            [self.mainTableView refreshReloadData];
+            [self.tableView refreshReloadData];
         }
         
         
     } error:^(NSError *error)
      {
-         [self.mainTableView refreshReloadData];
+         [self.tableView refreshReloadData];
      }];
     
 }
@@ -186,6 +186,7 @@
     if (!_tableView)
     {
         _tableView = [[BaseTableView alloc]init];
+        [_tableView setTipType:TipTitleAndTipImage withTipTitle:@"暂无数据" withTipImage:@"pic_nothing"];
         [_tableView setDelegate:self];
         [_tableView setDataSource:self];
     }

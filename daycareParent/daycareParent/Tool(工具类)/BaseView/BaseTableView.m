@@ -125,6 +125,7 @@
  tipImage:提醒的图片
  
  withSuperViewFrame:添加的父视图
+ @"pic_nothing"
  
  */
 -(void)setTipType:(BaseTipViewType)type withTipTitle:(NSString*)tipTitle withTipImage:(NSString*)tipImage

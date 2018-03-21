@@ -18,12 +18,9 @@
 #define kTitle @[@"请输入手机号",@"请输入验证码",@"请输入密码"]
 @interface XHRegisterViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
-    NSArray *arry;
-    NSArray *placeArry;
     NSInteger  _currentS;
     NSTimer *_timer;
     BOOL _ifSelect;
-    UIButton *_selectBtn;
 }
 @property(nonatomic,strong)BaseTableView *tableView;
 @property(nonatomic,strong)XHBaseBtn *registButton;
@@ -106,10 +103,12 @@
                 [net setObject:@"0" forKey:@"type"];
                 [XHShowHUD showTextHud];
                 [net postWithUrl:@"zzjt-app-api_personalCenter000" sucess:^(id object, BOOL verifyObject) {
-                    if (verifyObject) {
+                    if (verifyObject)
+                    {
                         [self startCountdown];
                     }
                 } error:^(NSError *error) {
+                    
                 }];
             }
         }
@@ -147,7 +146,7 @@
                 [XHShowHUD showNOHud:@"请输入正确的验证码!"];
                 return;
             }
-            if (_selectBtn.selected==NO) {
+            if (self.selectButton.selected==NO) {
                 [XHShowHUD showNOHud:@"请勾选同意用户协议！"];
                 return;
             }

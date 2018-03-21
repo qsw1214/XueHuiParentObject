@@ -75,22 +75,24 @@ static XHNetWorkConfig *net = nil;
  */
 -(BOOL)verifyResPonseObject:(NSDictionary*)object
 {
-    NSDictionary *response = [object objectForKey:@"response"];
-    NSInteger responseCode = [[response objectForKey:@"code"] integerValue];
-    NSString *responseMessage = [NSString safeString:[response objectForKey:@"message"]];
+    NSDictionary *response = [object objectItemKey:@"response"];
+    NSInteger responseCode = [[response objectItemKey:@"code"] integerValue];
+    NSString *responseMessage = [NSString safeString:[response objectItemKey:@"message"]];
+    NSDictionary *responseContent = [[object objectItemKey:@"responseContent"] objectItemKey:@"status"];
     
-    if (responseCode)
+    NSInteger responseContentCode = [[responseContent objectItemKey:@"code"] integerValue];
+    NSString *responseContentMessage = [NSString safeString:[responseContent objectItemKey:@"message"]];
+    NSLog(@"--------message-------%@",responseContentMessage);
+    
+    if (responseCode&&!responseContentCode)
     {
         [XHShowHUD showNOHud:responseMessage];
+        
         return NO;
     }
     else
     {
-        NSDictionary *responseContent = [[object objectForKey:@"responseContent"] objectForKey:@"status"];
-
-        NSInteger responseContentCode = [[responseContent objectForKey:@"code"] integerValue];
-        NSString *responseContentMessage = [NSString safeString:[responseContent objectForKey:@"message"]];
-        NSLog(@"--------message-------%@",responseContentMessage);
+     
         if (responseContentCode)
         {
             [XHShowHUD showNOHud:responseContentMessage];
@@ -133,7 +135,7 @@ static XHNetWorkConfig *net = nil;
     
     if ([AFNetworkingHelper connectedToNetWork])
     {
-        //[XHShowHUD showTextHud];
+       
         
         switch (self.option)
         {
@@ -189,8 +191,7 @@ static XHNetWorkConfig *net = nil;
 
     if ([AFNetworkingHelper connectedToNetWork])
     {
-       // [XHShowHUD showTextHud];
-        
+      
         switch (self.option)
         {
             case XHNetWorkOptionService:
@@ -227,9 +228,6 @@ static XHNetWorkConfig *net = nil;
                  NSDictionary *object = @{@"XUHEOBJECTKEY":@"XUHEOBJECTKEY"};
                  sucessBlock(object,NO);
              }
-             [XHShowHUD hideHud];
-             
-        
              NSLog(@"object===============%@",responseObject);
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error)
          {
@@ -252,7 +250,7 @@ static XHNetWorkConfig *net = nil;
     
     if ([AFNetworkingHelper connectedToNetWork])
     {
-         //[XHShowHUD showTextHud];
+        
         switch (self.option)
         {
             case XHNetWorkOptionService:
@@ -321,7 +319,6 @@ static XHNetWorkConfig *net = nil;
 {
     if ([AFNetworkingHelper connectedToNetWork])
     {
-         //[XHShowHUD showTextHud];
         switch (self.option)
         {
             case XHNetWorkOptionService:

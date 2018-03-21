@@ -17,6 +17,7 @@
 
 
 @property (nonatomic,strong) XHAddressBookHeader *addressBookHeader;
+@property (nonatomic,strong) XHChildListModel *childListModel;
 @end
 
 @implementation XHTeacherAddressBookViewController
@@ -24,6 +25,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.mainTableView setTipType:TipTitleAndTipImage withTipTitle:@"暂无数据" withTipImage:@"pic_nothing"];
 }
 
 
@@ -39,12 +41,12 @@
     {
         [self.view addSubview:self.addressBookHeader];
         [self.addressBookHeader resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, 60.0)];
+         [self.mainTableView resetFrame:CGRectMake(0, self.addressBookHeader.bottom, SCREEN_WIDTH, CONTENT_HEIGHT-self.addressBookHeader.height)];
         [self.view addSubview:self.mainTableView];
         [self.mainTableView setDelegate:self];
         [self.mainTableView setDataSource:self];
-        [self.mainTableView resetFrame:CGRectMake(0, self.addressBookHeader.bottom, SCREEN_WIDTH, CONTENT_HEIGHT-self.addressBookHeader.height)];
-        
-        
+        [self.mainTableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHead)];
+        [self.mainTableView beginRefreshing];
         
 //        for (int i = 0; i< 10;i++)
 //        {
@@ -62,12 +64,10 @@
 //        [self.mainTableView reloadData];
     }
 }
-
--(void)setModel:(XHChildListModel *)model
+-(void)refreshHead
 {
-    _model = model;
+    [self getAddressBookWithModel:self.childListModel];
 }
-
 
 #pragma mark - Deletage Method
 
@@ -150,7 +150,8 @@
 #pragma mark XHAddressBookHeaderDelegate
 -(void)didSelectItem:(XHChildListModel*)model
 {
-    [self getAddressBookWithModel:model];
+    [self setChildListModel:model];
+    [self.mainTableView beginRefreshing];
 }
 
 
@@ -166,7 +167,6 @@
 {
     if (model)
     {
-        [XHShowHUD showTextHud];
         [self.netWorkConfig setObject:model.clazzId forKey:@"classId"];
         [self.netWorkConfig postWithUrl:@"zzjt-app-api_smartCampus009" sucess:^(id object, BOOL verifyObject)
          {

@@ -87,7 +87,7 @@
                          {
                              XHRecipientModel *model=[[XHRecipientModel alloc] init];
                              model.name=itemObject.model.teacherName;
-                             model.headPic=itemObject.model.headerUrl;
+                             model.headPic=itemObject.model.headerPic;
                              model.ID=itemObject.model.ID;
                              model.modelType=XHRecipientNomalModelType;
                              [self.dataArry insertObject:model atIndex:self.dataArry.count-1];

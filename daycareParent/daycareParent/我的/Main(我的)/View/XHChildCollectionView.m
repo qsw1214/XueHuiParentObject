@@ -55,7 +55,7 @@
     {
         cell.childClassLabel.hidden=NO;
         XHChildListModel *model=_childListArry[indexPath.item];
-        [cell.childImageView sd_setImageWithURL:[NSURL URLWithString:ALGetFileHeadThumbnail(model.headPic)] placeholderImage:[UIImage imageNamed:@"addman"]];
+        [cell setHeadrPic:model.headPic withName:model.studentName withType:XHHeaderOtherType];
         cell.childNameLabel.text=model.studentName;
         cell.childClassLabel.text=model.clazzName;
         

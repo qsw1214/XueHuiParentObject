@@ -190,7 +190,7 @@
                                                                          break;
                                                                  }
                                                              }];
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"noticeName" object:nil];
     
     return YES;
 }

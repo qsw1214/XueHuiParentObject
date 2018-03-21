@@ -33,4 +33,57 @@
     }
     return self;
 }
+-(ParentLabel *)headLabel
+{
+    if (_headLabel==nil) {
+        _headLabel=[[ParentLabel alloc] initWithFrame:CGRectMake(0, 15, USER_HEARD, USER_HEARD)];
+        _headLabel.layer.cornerRadius=USER_HEARD/2.0;
+        _headLabel.layer.masksToBounds=YES;
+        [_headLabel setBackgroundColor:MainColor];
+        [_headLabel setTextAlignment:NSTextAlignmentCenter];
+        [_headLabel setFont:[UIFont boldSystemFontOfSize:18.0]];
+        [_headLabel setTextColor:[UIColor whiteColor]];
+        [self.contentView addSubview:_headLabel];
+    }
+    
+    return _headLabel;
+}
+-(void)setHeadrPic:(NSString*)pic withName:(NSString*)name withType:(XHHeaderType)type
+{
+    pic = [NSString safeString:pic];
+    if ([pic isEqualToString:@""])
+    {
+        NSInteger length = name.length;
+        NSString *makeName = name;
+        if ([name isEqualToString:@""])
+        {
+            [self.headLabel setText:name];
+        }
+        else
+        {
+            //        2.截取我们想要的字符串内容
+            switch (type)
+            {
+                case XHHeaderTeacherType:
+                {
+                    makeName = [name substringWithRange:NSMakeRange(0,1)];
+                }
+                    break;
+                case XHHeaderOtherType:
+                {
+                    makeName = [name substringWithRange:NSMakeRange((length-1),1)];
+                }
+                    break;
+            }
+            
+            [self.headLabel setText:makeName];
+        }
+        
+    }
+    else
+    {
+        [self.childImageView sd_setImageWithURL:[NSURL URLWithString:ALGetFileHeadThumbnail(pic)]];
+    }
+}
+
 @end

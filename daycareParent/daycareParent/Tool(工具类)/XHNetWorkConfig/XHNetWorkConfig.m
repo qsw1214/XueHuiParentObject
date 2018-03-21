@@ -75,13 +75,13 @@ static XHNetWorkConfig *net = nil;
  */
 -(BOOL)verifyResPonseObject:(NSDictionary*)object
 {
-    NSDictionary *response = [object objectForKey:@"response"];
-    NSInteger responseCode = [[response objectForKey:@"code"] integerValue];
-    NSString *responseMessage = [NSString safeString:[response objectForKey:@"message"]];
-    NSDictionary *responseContent = [[object objectForKey:@"responseContent"] objectForKey:@"status"];
+    NSDictionary *response = [object objectItemKey:@"response"];
+    NSInteger responseCode = [[response objectItemKey:@"code"] integerValue];
+    NSString *responseMessage = [NSString safeString:[response objectItemKey:@"message"]];
+    NSDictionary *responseContent = [[object objectItemKey:@"responseContent"] objectItemKey:@"status"];
     
-    NSInteger responseContentCode = [[responseContent objectForKey:@"code"] integerValue];
-    NSString *responseContentMessage = [NSString safeString:[responseContent objectForKey:@"message"]];
+    NSInteger responseContentCode = [[responseContent objectItemKey:@"code"] integerValue];
+    NSString *responseContentMessage = [NSString safeString:[responseContent objectItemKey:@"message"]];
     NSLog(@"--------message-------%@",responseContentMessage);
     
     if (responseCode&&!responseContentCode)

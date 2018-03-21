@@ -192,22 +192,34 @@
             [self.dataArray addObject:frame];
             
             
-    
+   
             
             [NSArray enumerateObjectsWithArray:syllabusArray usingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop)
              {
-                 NSMutableArray *tempArray = [NSMutableArray array];
-                 for (int i = 0; i < 5; i++)
-                 {
-                     [tempArray addObject:object];
-                 }
                  
-                 if ([tempArray count]>=5)
+                 //NSMutableArray *tempArray = [NSMutableArray array];
+//                 for (int i = 0; i < 5; i++)
+//                 {
+//                     [tempArray addObject:object];
+//                 }
+//
+//                 if ([tempArray count]>=5)
+//                 {
+//
+//                 }
+                 if (idx%5==0&&idx!=0)
                  {
-                     
+                     [self.firstArry addObject:obj];
+                     [self.twoArry addObject:self.firstArry];
+                     [self.firstArry removeAllObjects];
+                 }
+                 else
+                 {
+                     [self.firstArry addObject:obj];
                  }
                  
              }];
+            kNSLog(kFormat(@"%zd",self.twoArry.count));
             
             [self.mainTableView reloadData];
             

@@ -32,7 +32,7 @@
     [self setFrame:frame];
     self.titleLabel.frame=CGRectMake(10, 0, frame.size.width-20, 30);
     self.collectionView.frame=CGRectMake(0, self.titleLabel.bottom, frame.size.width,100);
-    self.submitButton.frame=CGRectMake(10, self.collectionView.bottom+10, frame.size.width-20, frame.size.height-self.titleLabel.height-self.collectionView.height-10);
+    self.submitButton.frame=CGRectMake(40, self.collectionView.bottom+10, frame.size.width-80, frame.size.height-self.titleLabel.height-self.collectionView.height-16);
 }
 
 -(void)setItemArry:(NSMutableArray *)arry
@@ -125,7 +125,7 @@
         _submitButton.backgroundColor=MainColor;
         [_submitButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_submitButton setTitle:@"提交" forState:UIControlStateNormal];
-        _submitButton.layer.cornerRadius=8;
+        _submitButton.layer.cornerRadius=5.0;
         _submitButton.layer.masksToBounds=YES;
     }
     return _submitButton;

@@ -38,7 +38,7 @@ typedef void (^DidSelectItemBack) (XHTeacherAddressBookFrame *itemObject);
 @interface XHTeacherAddressBookViewController : BaseViewController
 
 @property (nonatomic,assign) TeacherAddressBookEnterType enterType; //!< 进入类型
-@property (nonatomic,strong) XHChildListModel *model;
+
 @property (nonatomic,copy) DidSelectItemBack didselectBack;
 
 @end

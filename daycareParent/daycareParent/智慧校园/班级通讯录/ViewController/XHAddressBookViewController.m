@@ -19,6 +19,7 @@
 
 @property (nonatomic,strong) NSMutableArray *tableArray;
 
+@property (nonatomic,strong) XHChildListModel *childListModel;
 
 @end
 
@@ -32,6 +33,7 @@
     [super viewDidLoad];
     [self setNavtionTitle:@"通讯录"];
     [self navtionItemHidden:NavigationItemLeftType];
+    [self.mainTableView setTipType:TipTitleAndTipImage withTipTitle:@"暂无数据" withTipImage:@"pic_nothing"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,12 +52,17 @@
         [self.mainTableView resetFrame:CGRectMake(0.0, (self.addressBookHeader.bottom+10.0), SCREEN_WIDTH, SCREEN_HEIGHT-(self.addressBookHeader.bottom+10.0))];
         [self.mainTableView setDelegate:self];
         [self.mainTableView setDataSource:self];
+        [self.mainTableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHead)];
+        [self.mainTableView beginRefreshing];
         [self.view addSubview:self.mainTableView];
     }
 }
 
 
-
+-(void)refreshHead
+{
+    [self getAddressBookWithModel:self.childListModel];
+}
 
 #pragma mark - Delertage Method
 - (NSInteger)tableView:(BaseTableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -93,7 +100,8 @@
 #pragma mark XHAddressBookHeaderDelegate
 -(void)didSelectItem:(XHChildListModel*)model
 {
-    [self getAddressBookWithModel:model];
+    [self setChildListModel:model];
+    [self.mainTableView beginRefreshing];
 }
 
 #pragma mark XHddressBookSwitchMenuViewDelegate

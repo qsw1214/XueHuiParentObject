@@ -26,8 +26,7 @@
 {
     [super viewDidLoad];
     [self setNavtionTitle:@"家庭作业"];
-    [self setItemContentType:NavigationIconype withItemType:NavigationItemRightype withIconName:@"ico_date" withTitle:nil];
-    
+    [self.mainTableView setTipType:TipTitleAndTipImage withTipTitle:@"暂无数据" withTipImage:@"pic_nothing"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,19 +46,8 @@
         [self.mainTableView setDataSource:self];
         [self.mainTableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHeaderAction)];
         [self.mainTableView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, CONTENT_HEIGHT)];
-        [self.mainTableView setTipType:TipTitleAndTipImage withTipTitle:@"暂无数据" withTipImage:@"pic_nothing"];
         [self.mainTableView beginRefreshing];
         [self.view addSubview:self.mainTableView];
-       //刷新未读数据
-        [self.netWork setObject:[XHUserInfo sharedUserInfo].guardianModel.guardianId forKey:@"guardianId"];
-        [self.netWork postWithUrl:@"zzjt-app-api_smartCampus012" sucess:^(id object, BOOL verifyObject) {
-            if (verifyObject)
-            {
-                if (self.isRefresh) {self.isRefresh(YES);
-            }
-                
-            }
-        } error:^(NSError *error) {}];
         /*
         for (int i=0; i<10; i++)
         {
@@ -163,14 +151,18 @@
             if (verifyObject) {
                 [self.dataArray removeAllObjects];
                 NSArray *itemArry=[object objectItemKey:@"object"];
-                for ( NSDictionary *dic in itemArry) {
-                    XHHomeWorkFrame *frame = [[XHHomeWorkFrame alloc]init];
-                    XHHomeWorkModel *model = [[XHHomeWorkModel alloc]init];
-                    [model setItemObject:dic];
-                    [frame setModel:model];
-                    [self.dataArray addObject:frame];
+                if (itemArry) {
+                    for ( NSDictionary *dic in itemArry) {
+                        XHHomeWorkFrame *frame = [[XHHomeWorkFrame alloc]init];
+                        XHHomeWorkModel *model = [[XHHomeWorkModel alloc]init];
+                        [model setItemObject:dic];
+                        [frame setModel:model];
+                        [self.dataArray addObject:frame];
+                        if (self.isRefresh) {
+                            self.isRefresh(YES);
+                        }
+                    }
                 }
-               
             }
              [self.mainTableView refreshReloadData];
         } error:^(NSError *error)

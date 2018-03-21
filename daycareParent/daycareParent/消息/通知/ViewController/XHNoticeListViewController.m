@@ -223,22 +223,6 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-//    [self.netWork setObject:[XHUserInfo sharedUserInfo].guardianModel.guardianId forKey:@"guardianId"];
-    /**
-     无论发送已读状态成功与否都要进入通知的详请
-     */
-    XHHomeWorkFrame *frame=self.dataArray[indexPath.row];
-    [self.netWorkConfig setObject:frame.model.pushInfoId forKey:@"noticeActorId"];
-    [self.netWorkConfig postWithUrl:@"zzjt-app-api_smartCampus016" sucess:^(id object, BOOL verifyObject)
-     {
-         if (verifyObject)
-         {
-             [self.mainTableView refreshReloadData];
-             if (self.isRefresh) {
-                 self.isRefresh(YES);
-             }
-         }
-     } error:^(NSError *error){}];
 }
 
 #pragma mark XHDatePickerDelegate
@@ -282,6 +266,9 @@
                       [model setNoticeItemObject:itemObject];
                       [frame setModel:model];
                       [self.dataArray addObject:frame];
+                      if (self.isRefresh) {
+                          self.isRefresh(YES);
+                      }
                   }];
                  
                  [self.mainTableView refreshReloadData];
@@ -295,7 +282,16 @@
                      [self.mainTableView noMoreData];
                  }
              }
+             else
+             {
+                 [self.mainTableView refreshReloadData];
+             }
          }
+         else
+         {
+             [self.mainTableView refreshReloadData];
+         }
+         
      } error:^(NSError *error)
      {
          [self.mainTableView refreshReloadData];

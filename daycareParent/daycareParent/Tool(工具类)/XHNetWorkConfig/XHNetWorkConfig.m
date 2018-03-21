@@ -133,7 +133,7 @@ static XHNetWorkConfig *net = nil;
     
     if ([AFNetworkingHelper connectedToNetWork])
     {
-        //[XHShowHUD showTextHud];
+       
         
         switch (self.option)
         {
@@ -189,8 +189,7 @@ static XHNetWorkConfig *net = nil;
 
     if ([AFNetworkingHelper connectedToNetWork])
     {
-       // [XHShowHUD showTextHud];
-        
+      
         switch (self.option)
         {
             case XHNetWorkOptionService:
@@ -252,7 +251,7 @@ static XHNetWorkConfig *net = nil;
     
     if ([AFNetworkingHelper connectedToNetWork])
     {
-         //[XHShowHUD showTextHud];
+        
         switch (self.option)
         {
             case XHNetWorkOptionService:
@@ -321,7 +320,6 @@ static XHNetWorkConfig *net = nil;
 {
     if ([AFNetworkingHelper connectedToNetWork])
     {
-         //[XHShowHUD showTextHud];
         switch (self.option)
         {
             case XHNetWorkOptionService:

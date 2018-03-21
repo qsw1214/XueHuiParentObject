@@ -51,6 +51,7 @@
  */
 -(void)setHeadrUrl:(NSString*)url withName:(NSString*)name withType:(XHHeaderType)type
 {
+    url = [NSString safeString:url];
     if ([url isEqualToString:@""])
     {
         NSInteger length = name.length;

@@ -255,6 +255,7 @@
     [self.headerControl setTitleEdgeFrame:CGRectMake(10.0, 0, (frame.size.width-20.0)/2.0, self.headerControl.height) withNumberType:0 withAllType:NO];
     [self.headerControl setImageEdgeFrame:CGRectMake(frame.size.width-60.0, (self.headerControl.height-50.0)/2.0, 50.0, 50.0) withNumberType:0 withAllType:NO];
     [self.headerControl resetLineViewFrame:CGRectMake(0, self.headerControl.height-0.5, self.headerControl.width, 0.5) withNumberType:0 withAllType:NO];
+    [self.headerControl setImageLayerCornerRadius:(50.0/2.0) withNumberType:0 withAllType:NO];
     //!< 设置姓名
     [self.nameControl resetFrame:CGRectMake(0, self.headerControl.bottom, frame.size.width, 50.0)];
     [self.nameControl setTitleEdgeFrame:CGRectMake(10.0, 0, (frame.size.width-20.0)/2.0, self.nameControl.height) withNumberType:0 withAllType:NO];
@@ -531,7 +532,7 @@
 {
     
     [self.nameControl setText:model.studentName withNumberType:1 withAllType:NO];
-    [self.headerControl sd_setImageWithURL:model.headPic withNumberType:0 withAllType:NO];
+    [self.headerControl sd_setImageWithURL:ALGetFileHeadThumbnail(model.headPic) withNumberType:0 withAllType:NO];
     [self.schoolControl setText:model.schoolName withNumberType:1 withAllType:NO];
     [self.classControl setText:model.clazzName withNumberType:1 withAllType:NO];
     [self.sexControl setText:model.sex withNumberType:1 withAllType:NO];

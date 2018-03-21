@@ -106,10 +106,12 @@
                 [net setObject:@"0" forKey:@"type"];
                 [XHShowHUD showTextHud];
                 [net postWithUrl:@"zzjt-app-api_personalCenter000" sucess:^(id object, BOOL verifyObject) {
-                    if (verifyObject) {
+                    if (verifyObject)
+                    {
                         [self startCountdown];
                     }
                 } error:^(NSError *error) {
+                    
                 }];
             }
         }

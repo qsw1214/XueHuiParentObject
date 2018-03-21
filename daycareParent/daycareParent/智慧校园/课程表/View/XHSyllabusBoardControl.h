@@ -7,6 +7,7 @@
 //
 
 #import "BaseControl.h"
+#import "XHSyllabusFrame.h"
 
 @interface XHSyllabusBoardControl : BaseControl
 

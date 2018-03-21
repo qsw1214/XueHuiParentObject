@@ -79,7 +79,10 @@
 #pragma mark - case 3 解除绑定
         case 3:
         {
-            
+            if (self.isRefresh)
+            {
+                self.isRefresh(YES);
+            }
             [self.navigationController popViewControllerAnimated:YES];
             
             

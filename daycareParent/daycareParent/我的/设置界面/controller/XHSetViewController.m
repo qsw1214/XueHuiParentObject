@@ -172,7 +172,7 @@
 -(UIButton *)outButton
 {
     if (_outButton==nil) {
-       _outButton=[[UIButton alloc] initWithFrame:CGRectMake(10, 280, SCREEN_WIDTH-20, 50)];
+       _outButton=[[UIButton alloc] initWithFrame:CGRectMake(40, 280, SCREEN_WIDTH-80, 44)];
         _outButton.backgroundColor=[UIColor redColor];
         [_outButton setTitle:@"退出" forState:UIControlStateNormal];
         [_outButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

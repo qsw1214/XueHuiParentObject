@@ -18,7 +18,6 @@
     NSInteger  _currentS;
     NSTimer *_timer;
     BOOL _ifSelect;
-    NSInteger _count;
 }
 @property(nonatomic,strong)BaseTableView *tableView;
 @property(nonatomic,strong)XHBaseBtn *sureButton;
@@ -33,18 +32,6 @@
     _currentS = 60;
     [self.view addSubview:self.tableView];
     [self.tableView addSubview:self.sureButton];
-//    XHNetWorkConfig *Net=[XHNetWorkConfig new];
-//    [Net setObject:[XHUserInfo sharedUserInfo].ID forKey:@"id"];
-//    [Net postWithUrl:@"zzjt-app-api_personalCenter004" sucess:^(id object, BOOL verifyObject) {
-//    if (verifyObject) {
-//             self.warnLabel.font=FontLevel3;
-//             self.warnLabel.textColor=RGB(237, 135, 57);
-//            _count=[[[object objectItemKey:@"object"] objectItemKey:@"remainingTimes"] integerValue];
-//            self.warnLabel.text=[NSString stringWithFormat:@"请输入您需要绑定的手机号\n当日限制操作3次，还剩下%ld次机会，请谨慎操作",_count];
-//        }
-//
-//    } error:^(NSError *error) {
-//    }];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -100,6 +87,7 @@
         {
             XHChageTelephoneTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.chageTelePhoneTextField.tag=indexPath.row-2+10086;
             [cell.chageTelePhoneTextField addTarget:self action:@selector(textChage) forControlEvents:UIControlEventEditingChanged];
             return cell;
         }
@@ -108,6 +96,7 @@
         {
             XHVerifyTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"telephonecell" forIndexPath:indexPath];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.chageTelePhoneTextField.tag=indexPath.row-2+10086;
             [cell.chageTelePhoneTextField addTarget:self action:@selector(textChage) forControlEvents:UIControlEventEditingChanged];
             [cell.verifyButton setTag:1];
             [cell.verifyButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -131,10 +120,6 @@
                 [XHShowHUD showNOHud:@"请输入正确手机号!"];
                 return;
             }
-            //    if (_count==0) {
-            //        //self.warnLabel.text=@"您的当日限制次数已经用完\n请明日再来吧";
-            //        return ;
-            //    }
             if (_ifSelect==NO) {
                 
                 XHNetWorkConfig *net=[XHNetWorkConfig new];
@@ -144,8 +129,6 @@
                 [net postWithUrl:@"zzjt-app-api_personalCenter000" sucess:^(id object, BOOL verifyObject) {
                     if (verifyObject) {
                         [self startCountdown];
-                        _count--;
-                        // self.warnLabel.text=[NSString stringWithFormat:@"请输入您需要绑定的手机号\n当日限制操作3次，还剩下%ld次机会，请谨慎操作",_count];
                     }
                     
                 } error:^(NSError *error) {
@@ -241,7 +224,7 @@
 -(XHBaseBtn *)sureButton
 {
     if (_sureButton==nil) {
-        _sureButton=[[XHBaseBtn alloc] initWithFrame:CGRectMake(10, 220, SCREEN_WIDTH-20, 50)];
+        _sureButton=[[XHBaseBtn alloc] initWithFrame:CGRectMake(40, 220, SCREEN_WIDTH-80, 44)];
         [_sureButton setTitle:@"确定" forState:UIControlStateNormal];
         [_sureButton setTag:2];
         [_sureButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];

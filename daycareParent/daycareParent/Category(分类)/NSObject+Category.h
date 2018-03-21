@@ -82,7 +82,7 @@
  *
  *  @return 富文本
  */
-+(NSAttributedString *)getAttributedWithString:(NSString *)string WithLineSpace:(CGFloat)lineSpace kern:(CGFloat)kern font:(UIFont *)font;
++(NSAttributedString *)attributedWithString:(NSString *)string WithLineSpace:(CGFloat)lineSpace kern:(CGFloat)kern font:(UIFont *)font;
 
 
 @end

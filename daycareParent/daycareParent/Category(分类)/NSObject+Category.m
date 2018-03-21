@@ -191,11 +191,12 @@
  *
  *  @return 富文本
  */
-+(NSAttributedString *)getAttributedWithString:(NSString *)string WithLineSpace:(CGFloat)lineSpace kern:(CGFloat)kern font:(UIFont *)font
++(NSAttributedString *)attributedWithString:(NSString *)string WithLineSpace:(CGFloat)lineSpace kern:(CGFloat)kern font:(UIFont *)font
 {
     NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
     //调整行间距
-    paragraphStyle.lineSpacing = lineSpace;
+    [paragraphStyle setLineSpacing:lineSpace];
+    [paragraphStyle setAlignment:NSTextAlignmentCenter];
     NSDictionary *attriDict = @{NSParagraphStyleAttributeName:paragraphStyle,NSKernAttributeName:@(kern),
                                 NSFontAttributeName:font};
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]initWithString:string attributes:attriDict];

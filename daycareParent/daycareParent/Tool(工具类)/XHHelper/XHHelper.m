@@ -244,6 +244,66 @@ static XHHelper *helper = nil;
 }
 
 
+/**
+ 根据当前日期，获取当前是星期几（周日、周一、周二、周三、周四、周五、周六）
+ 
+ @param fromDate 当前日期
+ @return 返回星期几
+ */
++(NSInteger)weekdayWithNowDate:(NSDate*)fromDate
+{
+
+    
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *components = [calendar components:NSCalendarUnitWeekday fromDate:fromDate];
+    
+    NSInteger weekday = [components weekday];
+    NSString *week = @"周一";
+    switch (weekday)
+    {
+        case 1:
+        {
+            weekday = 7;
+        }
+            break;
+        case 2:
+        {
+            weekday = 1;
+        }
+            break;
+        case 3:
+        {
+            weekday = 2;
+        }
+            break;
+        case 4:
+        {
+            weekday = 3;
+        }
+            break;
+        case 5:
+        {
+            weekday = 4;
+        }
+            break;
+        case 6:
+        {
+            weekday = 5;
+        }
+            break;
+        case 7:
+        {
+            weekday = 6;
+        }
+            break;
+    }
+    
+    
+    
+    NSLog(@"weekday:%zd",weekday);
+    return weekday;
+}
+
 
 
 

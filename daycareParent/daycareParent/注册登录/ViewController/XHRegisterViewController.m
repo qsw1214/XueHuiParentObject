@@ -219,7 +219,6 @@
 -(BaseTableView *)tableView
 {
     if (_tableView==nil) {
-       // _tableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, 150)];
         _tableView=[[BaseTableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64) style:UITableViewStyleGrouped];
         _tableView.separatorStyle=UITableViewCellSeparatorStyleSingleLine;
         _tableView.rowHeight=50;
@@ -262,7 +261,7 @@
 -(XHBaseBtn *)registButton
 {
     if (_registButton==nil) {
-        _registButton=[[XHBaseBtn alloc] initWithFrame:CGRectMake(10, 210, SCREEN_WIDTH-20, LOGINBTN_HEIGHT)];
+        _registButton=[[XHBaseBtn alloc] initWithFrame:CGRectMake(40, 210, SCREEN_WIDTH-80, 44)];
         [_registButton setTitle:@"确定" forState:UIControlStateNormal];
         [_registButton setTag:4];
         [_registButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];

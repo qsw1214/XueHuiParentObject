@@ -6,11 +6,13 @@
 //  Copyright © 2017年 XueHui. All rights reserved.
 //
 
-typedef NS_ENUM(NSInteger,XHSyllabusModelType)
+
+typedef NS_ENUM(NSInteger,XHSyllabusMarkModelType)
 {
-    SyllabusWeekType = 1, //!< 星期类型
-    SyllabusContentType = 2, //!< 内容类型
+    XHSyllabusMarkType = 1,  //!< 标记
+    XHSyllabusMarkNormalType = 2, //!< 正常
 };
+
 
 
 
@@ -32,6 +34,6 @@ typedef NS_ENUM(NSInteger,XHSyllabusModelType)
 @property (nonatomic,strong) NSString *fridayDescribe; //!< 周五标签
 
 
-@property (nonatomic,assign) XHSyllabusModelType modelType; //!< 数据模型类型
+@property (nonatomic,assign) NSInteger markType; //!< 周五标签
 
 @end

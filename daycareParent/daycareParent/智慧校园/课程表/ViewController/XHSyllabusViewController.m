@@ -10,6 +10,7 @@
 #import "XHSyllabusCell.h"
 #import "XHDropDownMenuControl.h"
 #import "XHAddressBookHeader.h"
+#import "XHSyllabusHeaderBoardControl.h"
 
 
 
@@ -21,6 +22,7 @@
 @property (nonatomic,strong) BaseButtonControl *weekMenuControl; //!< 菜单选择菜单
 @property (nonatomic,strong) NSMutableArray *firstArry;
 @property (nonatomic,strong) NSMutableArray *twoArry;
+@property (nonatomic,strong) XHSyllabusHeaderBoardControl *headerBoardControl;
 
 
 @end
@@ -48,13 +50,17 @@
 {
     if (subview)
     {
+        
         [self.view addSubview:self.addressBookHeader];
         [self.addressBookHeader resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, 60.0)];
+        [self.headerBoardControl resetFrame:CGRectMake(10.0, (self.addressBookHeader.bottom+10.0), SCREEN_WIDTH-20.0, 50.0)];
+        [self.view addSubview:self.headerBoardControl];
+       
         [self.view setBackgroundColor:RGB(229,229,229)];
         [self.view addSubview:self.mainTableView];
         [self.mainTableView setDelegate:self];
         [self.mainTableView setDataSource:self];
-        [self.mainTableView resetFrame:CGRectMake(0, (self.addressBookHeader.bottom+10.0), SCREEN_WIDTH, CONTENT_HEIGHT-(self.addressBookHeader.height+15.0))];
+        [self.mainTableView resetFrame:CGRectMake(0, (self.headerBoardControl.bottom), SCREEN_WIDTH, CONTENT_HEIGHT-(self.addressBookHeader.height+self.headerBoardControl.height+15.0))];
         
         
         
@@ -138,19 +144,26 @@
 {
     if (work)
     {
+        
+        NSInteger werrk = [XHHelper weekdayWithNowDate:[NSDate date]];
         [self.netWorkConfig postWithUrl:@"zzjt-app-api_smartCampus020" sucess:^(id object, BOOL verifyObject)
         {
             [self.dataArray removeAllObjects];
             object = [object objectItemKey:@"object"];
             NSArray *dateArray = [object objectForKey:@"date"];
             NSArray *syllabusArray = [object objectForKey:@"syllabus"];
-            syllabusArray = @[@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"化学",@"地理"];
+            
+             /**
+             syllabusArray = @[@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"生物",@"想想品德",@"社会科学",@"历史",@"政治",@"语文",@"数学",@"英语",@"化学",@"地理",@"化学",@"地理"];
+             
+             
+             */
             
             
             
             XHSyllabusFrame *frame = [[XHSyllabusFrame alloc]init];
             XHSyllabusModel *model = [[XHSyllabusModel alloc]init];
-            
+            [model setMarkType:werrk];
             [NSArray enumerateObjectsWithArray:dateArray usingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop)
             {
                 NSArray *firstArray = [obj componentsSeparatedByString:@"-"];
@@ -160,7 +173,6 @@
                 {
                     case 0:
                     {
-                       
                         [model setMonth:[NSString stringWithFormat:@"%@",month]];
                         [model setMonthDescribe:[NSString stringWithFormat:@"月"]];
                         [model setMonday:[NSString stringWithFormat:@"%@",day]];
@@ -181,7 +193,6 @@
                         break;
                     case 3:
                     {
-                        
                         [model setThursday:[NSString stringWithFormat:@"%@",day]];
                         [model setThursdayDescribe:[NSString stringWithFormat:@"周四"]];
                     }
@@ -195,9 +206,8 @@
                 }
             }];
             
-            [model setModelType:SyllabusWeekType];
             [frame setModel:model];
-            [self.dataArray addObject:frame];
+            [self.headerBoardControl setItemFrame:frame];
             
             NSArray *itemArray = [self getSubjectWithdataArry:syllabusArray];
     
@@ -208,6 +218,7 @@
                 {
                     XHSyllabusFrame *frame = [[XHSyllabusFrame alloc]init];
                     XHSyllabusModel *model = [[XHSyllabusModel alloc]init];
+                    [model setMarkType:werrk];
                     [model setMonth:[NSString stringWithFormat:@"%zd",(idx+1)]];
                     
                     [NSArray enumerateObjectsWithArray:obj usingforceBlock:^(id obj, NSUInteger idx, BOOL *stop, BOOL forceStop)
@@ -242,7 +253,6 @@
                         }
                     }];
                     
-                    [model setModelType:SyllabusContentType];
                     [frame setModel:model];
                     [self.dataArray addObject:frame];
                 }
@@ -277,6 +287,15 @@
     return _addressBookHeader;
 }
 
+-(XHSyllabusHeaderBoardControl *)headerBoardControl
+{
+    if (!_headerBoardControl)
+    {
+        _headerBoardControl = [[XHSyllabusHeaderBoardControl alloc]init];
+    }
+    return _headerBoardControl;
+}
+
 -(NSMutableArray *)firstArry
 {
     if (_firstArry==nil) {
@@ -295,38 +314,46 @@
 
 -(NSArray *)getSubjectWithdataArry:(NSArray *)dataArry
 {
-    NSMutableString *string=[[NSMutableString alloc] init];
-    NSMutableArray *mutableArry = [[NSMutableArray alloc] init];
-    [NSArray enumerateObjectsWithArray:dataArry usingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop)
-     {
-         if (idx%5==0&&idx!=0)
-         {
-             [string appendFormat:@"%@",@"(*)"];
-             [string appendFormat:@"%@ ",obj];
-         }
-         else
-         {
-             [string appendFormat:@"%@ ",obj];
-         }
-         
-     }];
-    
-    
-    NSArray *arr = [string componentsSeparatedByString:@"(*)"];
-   
-    for (NSString *str in arr)
+
+    if (dataArry && [dataArry count])
     {
-        NSArray *arr=[str componentsSeparatedByString:@" "];
+        NSMutableString *string=[[NSMutableString alloc] init];
+        NSMutableArray *mutableArry = [[NSMutableArray alloc] init];
+        [NSArray enumerateObjectsWithArray:dataArry usingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop)
+         {
+             if (idx%5==0&&idx!=0)
+             {
+                 [string appendFormat:@"%@",@"(*)"];
+                 [string appendFormat:@"%@ ",obj];
+             }
+             else
+             {
+                 [string appendFormat:@"%@ ",obj];
+             }
+             
+         }];
         
-        NSMutableArray *temmpArray = [[NSMutableArray alloc]initWithArray:arr];
-        [temmpArray  removeLastObject];
-        [mutableArry addObject:temmpArray];
+        NSArray *arr = [string componentsSeparatedByString:@"(*)"];
+        
+        for (NSString *str in arr)
+        {
+            NSArray *arr=[str componentsSeparatedByString:@" "];
+            
+            NSMutableArray *temmpArray = [[NSMutableArray alloc]initWithArray:arr];
+            [temmpArray  removeLastObject];
+            [mutableArry addObject:temmpArray];
+            
+        }
+        
+        return mutableArry;
     }
-   
+    else
+    {
+        return nil;
+    }
+ 
     
-  
     
-    return mutableArry;
 }
 
 

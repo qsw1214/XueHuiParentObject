@@ -27,8 +27,9 @@
     {
         [self addSubview:self.titleLabel];
         [self addSubview:self.describeLabel];
+        [self setBackgroundColor:[UIColor whiteColor]];
         
-        [self setItemColor:YES];
+        [self setItemColor:NO];
     }
     return self;
 }

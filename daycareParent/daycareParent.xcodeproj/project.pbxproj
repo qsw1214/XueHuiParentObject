@@ -32,6 +32,7 @@
 		0474F6482057CAB20081A37D /* XHDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 0474F6472057CAB20081A37D /* XHDatePicker.m */; };
 		0474F64B2057CAF10081A37D /* XHDatePickerBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 0474F64A2057CAF10081A37D /* XHDatePickerBoard.m */; };
 		0486085E206226EF00913F2D /* XHSyllabusBoardControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0486085D206226EF00913F2D /* XHSyllabusBoardControl.m */; };
+		048608612062321600913F2D /* XHSyllabusHeaderBoardControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 048608602062321600913F2D /* XHSyllabusHeaderBoardControl.m */; };
 		04AA2FD3205FC09100549D23 /* XHStudentInfofamilyItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AA2FD2205FC09100549D23 /* XHStudentInfofamilyItemCell.m */; };
 		04AAEBB52058E7E400EF225D /* XHStudentDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AAEBAB2058E7E400EF225D /* XHStudentDetailViewController.xib */; };
 		04AAEBB62058E7E400EF225D /* XHStudentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AAEBAC2058E7E400EF225D /* XHStudentDetailViewController.m */; };
@@ -569,6 +570,8 @@
 		0474F64A2057CAF10081A37D /* XHDatePickerBoard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHDatePickerBoard.m; sourceTree = "<group>"; };
 		0486085C206226EF00913F2D /* XHSyllabusBoardControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHSyllabusBoardControl.h; sourceTree = "<group>"; };
 		0486085D206226EF00913F2D /* XHSyllabusBoardControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHSyllabusBoardControl.m; sourceTree = "<group>"; };
+		0486085F2062321600913F2D /* XHSyllabusHeaderBoardControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHSyllabusHeaderBoardControl.h; sourceTree = "<group>"; };
+		048608602062321600913F2D /* XHSyllabusHeaderBoardControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHSyllabusHeaderBoardControl.m; sourceTree = "<group>"; };
 		04AA2FD1205FC09100549D23 /* XHStudentInfofamilyItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHStudentInfofamilyItemCell.h; sourceTree = "<group>"; };
 		04AA2FD2205FC09100549D23 /* XHStudentInfofamilyItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHStudentInfofamilyItemCell.m; sourceTree = "<group>"; };
 		04AAEBAA2058E7E400EF225D /* XHFamilyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHFamilyListViewController.h; sourceTree = "<group>"; };
@@ -3150,6 +3153,8 @@
 				4B9110771FD7B9E600841505 /* XHSyllabusCell.m */,
 				0486085C206226EF00913F2D /* XHSyllabusBoardControl.h */,
 				0486085D206226EF00913F2D /* XHSyllabusBoardControl.m */,
+				0486085F2062321600913F2D /* XHSyllabusHeaderBoardControl.h */,
+				048608602062321600913F2D /* XHSyllabusHeaderBoardControl.m */,
 				4B9110791FD7BA3300841505 /* XHSyllabusCellContentView.h */,
 				4B91107A1FD7BA3300841505 /* XHSyllabusCellContentView.m */,
 			);
@@ -4442,6 +4447,7 @@
 				8C8081601FCE722000C7945A /* XHChildCollectionViewCell.m in Sources */,
 				4BB792C01FD791F800E0ED72 /* XHSyllabusViewController.m in Sources */,
 				4B80F2C61FCBF04F00BC7B52 /* SDImageCacheConfig.m in Sources */,
+				048608612062321600913F2D /* XHSyllabusHeaderBoardControl.m in Sources */,
 				4BA8C4DF1FCFF36C006CBEBC /* XHHomeWorkFrame.m in Sources */,
 				4B4338BA1FDF9C3F0047AC52 /* XHEducationCloudItemCell.m in Sources */,
 				0455C4D620609A41007A975C /* XHInfiniteRotationItemCell.m in Sources */,

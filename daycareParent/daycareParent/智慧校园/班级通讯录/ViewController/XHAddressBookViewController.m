@@ -32,6 +32,7 @@
 {
     [super viewDidLoad];
     [self setNavtionTitle:@"通讯录"];
+    [self addSubViews:YES];
     [self navtionItemHidden:NavigationItemLeftType];
     [self.mainTableView setTipType:TipTitleAndTipImage withTipTitle:@"暂无数据" withTipImage:@"pic_nothing"];
 }
@@ -54,6 +55,7 @@
             [self.mainTableView resetFrame:CGRectMake(0.0, (self.addressBookHeader.bottom+10.0), SCREEN_WIDTH, SCREEN_HEIGHT-(self.addressBookHeader.bottom+10.0))];
             [self.mainTableView setDelegate:self];
             [self.mainTableView setDataSource:self];
+            [self.mainTableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHead)];
             [self.view addSubview:self.mainTableView];
         }
         else
@@ -61,10 +63,10 @@
             [self.mainTableView resetFrame:CGRectMake(0.0, (self.navigationView.bottom), SCREEN_WIDTH, SCREEN_HEIGHT)];
             [self.mainTableView setDelegate:self];
             [self.mainTableView setDataSource:self];
+            [self.mainTableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHead)];
             [self.view addSubview:self.mainTableView];
-            [self.mainTableView refreshReloadData];
         }
-      
+      [self.mainTableView beginRefreshing];
     }
 }
 
@@ -77,7 +79,7 @@
 #pragma mark - Delertage Method
 - (NSInteger)tableView:(BaseTableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    [tableView tableTipViewWithArray:self.tableArray];
+    [self.mainTableView tableTipViewWithArray:self.tableArray];
     return [self.tableArray count];
 }
 
@@ -145,7 +147,6 @@
 {
     if (model)
     {
-        [XHShowHUD showTextHud];
         [self.netWorkConfig setObject:model.clazzId forKey:@"classId"];
         [self.netWorkConfig postWithUrl:@"zzjt-app-api_smartCampus009" sucess:^(id object, BOOL verifyObject)
          {
@@ -161,8 +162,8 @@
                       [frame setModel:model];
                       [self.tableArray addObject:frame];
                   }];
-                 [self.mainTableView refreshReloadData];
              }
+              [self.mainTableView refreshReloadData];
              
          } error:^(NSError *error)
          {

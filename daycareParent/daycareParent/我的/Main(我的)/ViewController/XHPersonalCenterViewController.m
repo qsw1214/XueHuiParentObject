@@ -81,7 +81,7 @@
 
 -(CGFloat)tableView:(BaseTableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60;
+    return 55;
 }
 -(void)tableView:(BaseTableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -226,6 +226,11 @@
 #pragma mark -----跳转到绑定孩子详情界面
                 @StrongObj(self);
                 XHStudentInfoViewController *student=[[XHStudentInfoViewController alloc] initHiddenWhenPushHidden];
+                student.isRefresh = ^(BOOL ok) {
+                    if (ok) {
+                        [self getChildListNet];
+                    }
+                };
                 [student getChildInfo:model];
                 [self.navigationController pushViewController:student animated:YES];
             }
@@ -251,6 +256,7 @@
             [self.childArry addObject:@""];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [_tableView refreshReload];
+                [self.childCollectionView setItemArray:self.childArry];
             });
 
         }

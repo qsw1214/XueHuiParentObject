@@ -61,8 +61,12 @@
         //根据类型进行控件设置Frame
         [self.markImageView setFrame:CGRectMake(((itemFrame.itemSize.width-40.0))/2.0, 10.0, 30.0, 30.0)];
         [self.titleLabel setFrame:CGRectMake(0, (self.backGroundImageView.top+80.0), itemFrame.itemSize.width, (itemFrame.itemSize.width-(25+(itemFrame.itemSize.width-50.0))))];
-        [self.describeLabel setFrame:CGRectMake(0, self.titleLabel.bottom, itemFrame.itemSize.width, (itemFrame.itemSize.width-(25+(itemFrame.itemSize.width-50.0))))];
         [self.backGroundImageView setFrame:CGRectMake(0, self.markImageView.bottom+10.0, (itemFrame.itemSize.width), itemFrame.itemSize.height-(self.markImageView.bottom+10.0))];
+        
+        
+        
+        CGSize contentSize = [NSObject contentSizeWithTitle:itemFrame.model.describe withFontOfSize:FontLevel4 withWidth:(itemFrame.itemSize.width-20.0)];
+         [self.describeLabel setFrame:CGRectMake(10.0, self.titleLabel.bottom, (itemFrame.itemSize.width-20.0), contentSize.height)];
        
         
         
@@ -124,6 +128,7 @@
         [_describeLabel setFont:FontLevel4];
         [_describeLabel setTextColor:[UIColor whiteColor]];
         [_describeLabel setTextAlignment:NSTextAlignmentCenter];
+        [_describeLabel setNumberOfLines:0];
     }
     return _describeLabel;
 }

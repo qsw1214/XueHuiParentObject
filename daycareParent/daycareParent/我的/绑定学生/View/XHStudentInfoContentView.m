@@ -16,6 +16,7 @@
 @property (nonatomic,strong) UILabel *baseLabel; //!< 基本信息标签
 @property (nonatomic,strong) UILabel *parentInformationLabel; //!< 家长信息标签
 @property (nonatomic,strong) UILabel *tipLabel; //!< 提醒信息标签
+@property (nonatomic,strong) XHHeaderControl *header; //!< 提醒信息标签
 @property (nonatomic,strong) BaseButtonControl *headerControl; //!< 提醒信息标签
 @property (nonatomic,strong) BaseButtonControl *nameControl; //!< 提醒信息标签
 @property (nonatomic,strong) BaseButtonControl *schoolControl; //!< 提醒信息标签
@@ -42,6 +43,7 @@
     {
         [self addSubview:self.baseLabel];
         [self addSubview:self.headerControl];
+        [self.headerControl addSubview:self.header];
         [self addSubview:self.nameControl];
         [self addSubview:self.schoolControl];
         [self addSubview:self.classControl];
@@ -64,7 +66,7 @@
 {
     if ([self.infoDelegate respondsToSelector:@selector(studentInfoControlAction:)])
     {
-        [self.infoDelegate studentInfoControlAction:sender];
+        [self.infoDelegate studentInfoControlAction:sender.tag];
     }
 }
 
@@ -318,9 +320,11 @@
     //!< 头像的Frame
     [self.headerControl resetFrame:CGRectMake(0, self.baseLabel.bottom, frame.size.width, 60.0)];
     [self.headerControl setTitleEdgeFrame:CGRectMake(10.0, 0, (frame.size.width-20.0)/2.0, self.headerControl.height) withNumberType:0 withAllType:NO];
-    [self.headerControl setImageEdgeFrame:CGRectMake(frame.size.width-60.0, (self.headerControl.height-50.0)/2.0, 50.0, 50.0) withNumberType:0 withAllType:NO];
     [self.headerControl resetLineViewFrame:CGRectMake(0, self.headerControl.height-0.5, self.headerControl.width, 0.5) withNumberType:0 withAllType:NO];
     [self.headerControl setImageLayerCornerRadius:(50.0/2.0) withNumberType:0 withAllType:NO];
+    //!< 头像
+    [self.header resetFrame:CGRectMake(frame.size.width-60.0, (self.headerControl.height-50.0)/2.0, 50.0, 50.0)];
+    [self.header setLayerCornerRadius:(self.header.height/2.0)];
     //!< 设置姓名
     [self.nameControl resetFrame:CGRectMake(0, self.headerControl.bottom, frame.size.width, 50.0)];
     [self.nameControl setTitleEdgeFrame:CGRectMake(10.0, 0, (frame.size.width-20.0)/2.0, self.nameControl.height) withNumberType:0 withAllType:NO];
@@ -408,7 +412,6 @@
         _headerControl = [[BaseButtonControl alloc]init];
         [_headerControl setNumberLabel:1];
         [_headerControl setNumberLineView:1];
-        [_headerControl setNumberImageView:1];
         [_headerControl setText:@"头像" withNumberType:0 withAllType:NO];
         [_headerControl setTextColor:RGB(51,51,51) withTpe:0 withAllType:NO];
         [_headerControl setTextAlignment:NSTextAlignmentLeft withNumberType:0 withAllType:NO];
@@ -418,6 +421,16 @@
     return _headerControl;
 }
 
+
+
+-(XHHeaderControl *)header
+{
+    if (!_header)
+    {
+        _header = [[XHHeaderControl alloc]init];
+    }
+    return _header;
+}
 -(BaseButtonControl *)nameControl
 {
     if (!_nameControl)
@@ -597,7 +610,7 @@
 {
     
     [self.nameControl setText:model.studentName withNumberType:1 withAllType:NO];
-    [self.headerControl sd_setImageWithURL:ALGetFileHeadThumbnail(model.headPic) withNumberType:0 withAllType:NO];
+    [self.header setHeadrUrl:model.headPic withName:model.studentName withType:XHHeaderOtherType];
     [self.schoolControl setText:model.schoolName withNumberType:1 withAllType:NO];
     [self.classControl setText:model.clazzName withNumberType:1 withAllType:NO];
     [self.sexControl setText:model.sex withNumberType:1 withAllType:NO];

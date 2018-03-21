@@ -12,12 +12,34 @@
 
 -(void)setItemObject:(NSDictionary *)object
 {
-    [self setHeadPic:[object objectItemKey:@"headPic"]];
+    [self setHeadPic:ALGetFileHeadThumbnail([object objectItemKey:@"headPic"])];
     [self setIsMajor:[object objectItemKey:@"isMajor"]];
     [self setTelphoneNumber:[object objectItemKey:@"telphoneNumber"]];
-    [self setHeadPic:[object objectItemKey:@"guardianId"]];
+    [self setGuardianId:[object objectItemKey:@"guardianId"]];
     [self setIsMajor:[object objectItemKey:@"guardianName"]];
-    [self setTelphoneNumber:[object objectItemKey:@"guardianType"]];
+    [self setGuardianType:[object objectItemKey:@"guardianType"]];
+    
+    if ([self.guardianType isEqualToString:@"0"])
+    {
+        [self setGuardianName:@"爸爸"];
+    }
+    else if ([self.guardianType isEqualToString:@"1"])
+    {
+        [self setGuardianName:@"妈妈"];
+    }
+    else if ([self.guardianType isEqualToString:@"2"])
+    {
+        [self setGuardianName:@"其他"];
+    }
+    
+    
+    if ([[XHUserInfo sharedUserInfo].selfId isEqualToString:self.guardianId])
+    {
+        [[XHUserInfo sharedUserInfo] setIsMajor:[self.isMajor integerValue]];
+        [[XHUserInfo sharedUserInfo] setGuardianType:self.guardianType];
+    }
+    
+    
     
 }
 

@@ -15,6 +15,7 @@
 @interface XHStudentInfoViewController () <XHStudentInfoContentViewDelegate>
 
 @property (nonatomic,strong) XHStudentInfoContentView *contentView;
+@property (nonatomic,strong) XHChildListModel *model;
 
 @end
 
@@ -47,6 +48,7 @@
 -(void)getChildInfo:(XHChildListModel*)model
 {
     [self.contentView getChildInfo:model];
+    [self setModel:model];
     
     
     
@@ -60,18 +62,24 @@
 {
     switch (sender.tag)
     {
+#pragma mark - case 3 修改密码
         case 1:
         {
             
         }
             break;
+#pragma mark - case 3 修改密码
         case 2:
         {
             [self.navigationController pushViewController:[[XHBindPasswordViewController alloc]init] animated:YES];
         }
             break;
+#pragma mark - case 3 解除绑定
         case 3:
         {
+            
+            
+            
             
         }
             break;

@@ -21,6 +21,7 @@
 @property (nonatomic,strong) BaseButtonControl *weekMenuControl; //!< 菜单选择菜单
 @property (nonatomic,strong) NSMutableArray *firstArry;
 @property (nonatomic,strong) NSMutableArray *twoArry;
+@property (nonatomic,strong) NSMutableString *string;
 
 
 @end
@@ -191,36 +192,24 @@
             [frame setModel:model];
             [self.dataArray addObject:frame];
             
-            
+//            [NSArray enumerateObjectsWithArray:dataArry usingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop)
+//             {
+//
+//                 NSMutableArray *tempArray = [NSMutableArray array];
+//                                  for (int i = 0; i < 5; i++)
+//                                  {
+//                                      [tempArray addObject:object];
+//                                  }
+//
+//                                  if ([tempArray count]>=5)
+//                                  {
+//                 
+//                                  }
+//
+//
+//             }];
+            [self getSubjectWithdataArry:syllabusArray];
    
-            
-            [NSArray enumerateObjectsWithArray:syllabusArray usingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop)
-             {
-                 
-                 //NSMutableArray *tempArray = [NSMutableArray array];
-//                 for (int i = 0; i < 5; i++)
-//                 {
-//                     [tempArray addObject:object];
-//                 }
-//
-//                 if ([tempArray count]>=5)
-//                 {
-//
-//                 }
-                 if (idx%5==0&&idx!=0)
-                 {
-                     [self.firstArry addObject:obj];
-                     [self.twoArry addObject:self.firstArry];
-                     [self.firstArry removeAllObjects];
-                 }
-                 else
-                 {
-                     [self.firstArry addObject:obj];
-                 }
-                 
-             }];
-            kNSLog(kFormat(@"%zd",self.twoArry.count));
-            
             [self.mainTableView reloadData];
             
             
@@ -294,9 +283,39 @@
     return _twoArry;
 }
 
+-(NSMutableString *)string
+         {
+             if (_string==nil) {
+                 _string=[[NSMutableString alloc] init];
+             }
+             return _string;
+         }
 
-
-
+-(NSArray *)getSubjectWithdataArry:(NSArray *)dataArry
+{
+    NSMutableArray *mutableArry=[[NSMutableArray alloc] init];
+    
+    [NSArray enumerateObjectsWithArray:dataArry usingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop)
+     {
+         if (idx%5==0&&idx!=0) {
+             [self.string appendFormat:@"%@",@"&&&&&"];
+             [self.string appendFormat:@"%@ ",obj];
+         }
+         else
+         {
+             [self.string appendFormat:@"%@ ",obj];
+         }
+         
+     }];
+    NSArray *arr=[self.string componentsSeparatedByString:@"&&&&&"];
+    for (NSString *str in arr) {
+        NSArray *arr=[str componentsSeparatedByString:@" "];
+        
+        [mutableArry addObject:arr];
+    }
+    
+    return mutableArry;
+}
 - (NSArray *)seprateArray:(NSArray *)temp count:(NSInteger)count
 {
     NSMutableArray *tempArray = [[NSMutableArray alloc] initWithCapacity:0];
@@ -311,10 +330,6 @@
     
     return tempArray;
 }
-
-
-
-
 
 
 

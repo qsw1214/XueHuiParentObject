@@ -29,7 +29,7 @@
     [self.view addSubview:self.questionTextView];
     [self.limitLabel setFrame:CGRectMake(0, self.questionTextView.bottom, SCREEN_WIDTH, 30)];
     [self.view addSubview:self.limitLabel];
-    [self.sureButton setFrame:CGRectMake(10, self.limitLabel.bottom+20, SCREEN_WIDTH-20, 50)];
+    [self.sureButton setFrame:CGRectMake(40, self.limitLabel.bottom+20, SCREEN_WIDTH-80, 44)];
     [self.sureButton addTarget:self action:@selector(sureBtnMethod) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.sureButton];
 }
@@ -40,6 +40,7 @@
         [XHShowHUD showNOHud:@"反馈内容不能为空！"];
         return;
     }
+    [XHShowHUD showTextHud];
     [self.netWorkConfig setObject:self.questionTextView.text forKey:@"content"];
     [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].ID forKey:@"userId"];
     [self.netWorkConfig postWithUrl:@"zzjt-app-api_saveFeedBack" sucess:^(id object, BOOL verifyObject) {
@@ -98,7 +99,7 @@
         _sureButton=[[UIButton alloc] init];
         [_sureButton setBackgroundColor:MainColor];
         [_sureButton setTitle:@"提交" forState:UIControlStateNormal];
-        [_sureButton setLayerCornerRadius:8];
+        [_sureButton setLayerCornerRadius:5.0];
         _sureButton.layer.masksToBounds=YES;
     }
     return _sureButton;

@@ -36,6 +36,7 @@
         [XHShowHUD showNOHud:@"姓名最多为四个字!"];
         return ;
     }
+    [XHShowHUD showTextHud];
     [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].ID forKey:@"id"];
     [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].selfId forKey:@"selfId"];
     [self.netWorkConfig setObject:self.textFeild.text forKey:@"guardianName"];

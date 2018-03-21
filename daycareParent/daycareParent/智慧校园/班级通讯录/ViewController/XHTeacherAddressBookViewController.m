@@ -40,7 +40,7 @@
     {
         
         
-        if ([[XHUserInfo sharedUserInfo].childListArry count]>1)
+        if ([[XHUserInfo sharedUserInfo].childListArry count])
         {
             [self.view addSubview:self.addressBookHeader];
             [self.addressBookHeader resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, 60.0)];

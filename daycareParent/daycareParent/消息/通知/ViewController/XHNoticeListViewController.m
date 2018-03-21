@@ -230,7 +230,7 @@
 -(void)datePickerAction:(NSString *)date
 {
     [self setDate:date];
-    [self refreshHeaderAction];
+    [self.mainTableView beginRefreshing];
 }
 
 
@@ -300,7 +300,13 @@
     
 }
 
-
+-(NSString *)date
+{
+    if (_date==nil) {
+        _date=[[NSString alloc]init];
+    }
+    return _date;
+}
 
 
 

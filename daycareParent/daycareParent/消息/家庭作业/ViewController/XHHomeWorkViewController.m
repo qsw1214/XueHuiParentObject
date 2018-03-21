@@ -26,7 +26,7 @@
 {
     [super viewDidLoad];
     [self setNavtionTitle:@"家庭作业"];
-    [self.mainTableView setTipType:TipTitleAndTipImage withTipTitle:@"暂无数据" withTipImage:@"pic_nothing"];
+     [self setItemContentType:NavigationIconype withItemType:NavigationItemRightype withIconName:@"ico_date" withTitle:@""];
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,10 +42,11 @@
 {
     if (subview)
     {
+          [self.mainTableView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, CONTENT_HEIGHT)];
         [self.mainTableView setDelegate:self];
         [self.mainTableView setDataSource:self];
         [self.mainTableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHeaderAction)];
-        [self.mainTableView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, CONTENT_HEIGHT)];
+         [self.mainTableView setTipType:TipTitleAndTipImage withTipTitle:@"暂无数据" withTipImage:@"pic_nothing"];
         [self.mainTableView beginRefreshing];
         [self.view addSubview:self.mainTableView];
         /*

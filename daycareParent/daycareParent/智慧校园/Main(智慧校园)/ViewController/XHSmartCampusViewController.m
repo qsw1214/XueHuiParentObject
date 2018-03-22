@@ -11,7 +11,6 @@
 #import "XHSafeRegisterViewController.h" //!< 安全签到
 #import "XHHomeWorkViewController.h" //!< 家庭作业
 #import "XHAskforLeaveViewController.h" //!< 请假
-#import "XHEducationCloudViewController.h" //!< 浩学云（教育云）
 #import "XHCookBookViewController.h" //!<  食谱
 #import "XHSyllabusViewController.h"  //!< 课程表
 #import "XHAchievementViewController.h" //!< 成绩

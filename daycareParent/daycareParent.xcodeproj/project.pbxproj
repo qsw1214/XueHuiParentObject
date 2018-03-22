@@ -12,7 +12,6 @@
 		04291A911FD2DCDF002D3B5B /* XHStudentInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04291A8F1FD2DCDF002D3B5B /* XHStudentInfoViewController.m */; };
 		04291A921FD2DCDF002D3B5B /* XHStudentInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04291A901FD2DCDF002D3B5B /* XHStudentInfoViewController.xib */; };
 		04B9C00C20633F7B004E8D3B /* XHEducationCloudWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B9C00A20633F7B004E8D3B /* XHEducationCloudWebViewController.m */; };
-		04FB52811FD96D720070C019 /* XHStudyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FB52801FD96D720070C019 /* XHStudyModel.m */; };
 		4B07CC191FD4DAB800B2DBDA /* XHLeaveRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B07CC181FD4DAB800B2DBDA /* XHLeaveRecordModel.m */; };
 		4B07CC1C1FD4DAC800B2DBDA /* XHLeaveRecordFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B07CC1B1FD4DAC800B2DBDA /* XHLeaveRecordFrame.m */; };
 		4B07CC1D1FD4E48500B2DBDA /* XHLeaveRecordContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B523BDD1FD1584A006DD565 /* XHLeaveRecordContentView.m */; };
@@ -319,7 +318,6 @@
 		8C377CA72008B7BB001F1FC7 /* XCWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C377C9E2008B7BB001F1FC7 /* XCWebViewProgressView.m */; };
 		8C37D3401FE8A8EF00F157D1 /* XHIMNoticeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C37D33F1FE8A8EF00F157D1 /* XHIMNoticeModel.m */; };
 		8C3E55A81FD4F5B00013002A /* XHCustomPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3E55A71FD4F5B00013002A /* XHCustomPickerView.m */; };
-		8C3E55C11FD549B60013002A /* XHStudyRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3E55C01FD549B60013002A /* XHStudyRecordViewController.m */; };
 		8C42CFCE1FF5D86D00CEDBDA /* XHNewUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C42CFCD1FF5D86D00CEDBDA /* XHNewUserInfoViewController.m */; };
 		8C4DB5D91FEBB55D00B14073 /* XHHomeWorkDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4DB5D81FEBB55D00B14073 /* XHHomeWorkDetailView.m */; };
 		8C5121E41FDF64BB00973E77 /* NSDictionary+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5121E31FDF64BB00973E77 /* NSDictionary+Category.m */; };
@@ -330,31 +328,9 @@
 		8C5EB0C31FCFF22C002ED0D7 /* XHPassWordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5EB0C11FCFF22C002ED0D7 /* XHPassWordTableViewCell.m */; };
 		8C5EB0C41FCFF22C002ED0D7 /* XHPassWordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C5EB0C21FCFF22C002ED0D7 /* XHPassWordTableViewCell.xib */; };
 		8C62409F1FD8E3BF00E6C031 /* XHAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C62409E1FD8E3BF00E6C031 /* XHAboutUsViewController.m */; };
-		8C67F82B1FD6479C007DFD53 /* XHDelegateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C67F82A1FD6479C007DFD53 /* XHDelegateView.m */; };
-		8C67F82F1FD666BA007DFD53 /* XHSelectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C67F82D1FD666BA007DFD53 /* XHSelectTableViewCell.m */; };
-		8C67F8301FD666BA007DFD53 /* XHSelectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C67F82E1FD666BA007DFD53 /* XHSelectTableViewCell.xib */; };
-		8C67F8341FD68570007DFD53 /* XHSelectFileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C67F8321FD68570007DFD53 /* XHSelectFileTableViewCell.m */; };
-		8C67F8351FD68570007DFD53 /* XHSelectFileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C67F8331FD68570007DFD53 /* XHSelectFileTableViewCell.xib */; };
 		8C7974021FE76F7A00AF6F6A /* UIImage+DevKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7974001FE76F7A00AF6F6A /* UIImage+DevKit.m */; };
 		8C79740A1FE772A700AF6F6A /* NYXImagesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7974091FE772A700AF6F6A /* NYXImagesHelper.m */; };
 		8C79740E1FE7795800AF6F6A /* VTGTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C79740B1FE7795700AF6F6A /* VTGTMBase64.m */; };
-		8C7AE72F1FE795ED00BE7A02 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8C7AE70F1FE795ED00BE7A02 /* AlipaySDK.bundle */; };
-		8C7AE7301FE795ED00BE7A02 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7AE7101FE795ED00BE7A02 /* AlipaySDK.framework */; };
-		8C7AE7311FE795ED00BE7A02 /* libpingpp+alipay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7AE7111FE795ED00BE7A02 /* libpingpp+alipay.a */; };
-		8C7AE7321FE795ED00BE7A02 /* libpingpp+bfbWap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7AE7131FE795ED00BE7A02 /* libpingpp+bfbWap.a */; };
-		8C7AE7331FE795ED00BE7A02 /* libpingpp+fqlpay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7AE7151FE795ED00BE7A02 /* libpingpp+fqlpay.a */; };
-		8C7AE7341FE795ED00BE7A02 /* libpingpp+jdpay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7AE7171FE795ED00BE7A02 /* libpingpp+jdpay.a */; };
-		8C7AE7351FE795ED00BE7A02 /* libpingpp+mmdpay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7AE7191FE795ED00BE7A02 /* libpingpp+mmdpay.a */; };
-		8C7AE7361FE795ED00BE7A02 /* libpingpp+qgbc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7AE71B1FE795ED00BE7A02 /* libpingpp+qgbc.a */; };
-		8C7AE7371FE795ED00BE7A02 /* libpingpp+qqwallet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7AE71D1FE795ED00BE7A02 /* libpingpp+qqwallet.a */; };
-		8C7AE7381FE795ED00BE7A02 /* libPaymentControl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7AE71F1FE795ED00BE7A02 /* libPaymentControl.a */; };
-		8C7AE7391FE795ED00BE7A02 /* libpingpp+up.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7AE7201FE795ED00BE7A02 /* libpingpp+up.a */; };
-		8C7AE73A1FE795ED00BE7A02 /* libpingpp+yeepay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7AE7221FE795ED00BE7A02 /* libpingpp+yeepay.a */; };
-		8C7AE73B1FE795ED00BE7A02 /* libpingpp+network.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7AE7251FE795ED00BE7A02 /* libpingpp+network.a */; };
-		8C7AE73C1FE795ED00BE7A02 /* libpingpp+webview.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7AE7281FE795ED00BE7A02 /* libpingpp+webview.a */; };
-		8C7AE73D1FE795ED00BE7A02 /* libpingppcore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7AE7291FE795ED00BE7A02 /* libpingppcore.a */; };
-		8C7AE73E1FE795ED00BE7A02 /* libpingpp+one.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7AE72B1FE795ED00BE7A02 /* libpingpp+one.a */; };
-		8C7AE73F1FE795ED00BE7A02 /* Pingpp.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8C7AE72D1FE795ED00BE7A02 /* Pingpp.bundle */; };
 		8C7AE7411FE7967B00BE7A02 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7AE7401FE7967B00BE7A02 /* libsqlite3.0.tbd */; };
 		8C7AE7431FE796A400BE7A02 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7AE7421FE7969900BE7A02 /* CoreMotion.framework */; };
 		8C7E980E1FECDB510096288E /* XHLocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7E980D1FECDB510096288E /* XHLocationModel.m */; };
@@ -401,25 +377,6 @@
 		8C91E01E1FEA39A00040A205 /* XHCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C91E01D1FEA39A00040A205 /* XHCustomView.m */; };
 		8C922BD91FDE65EB00BA0EAB /* XHForgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C922BD81FDE65EB00BA0EAB /* XHForgetViewController.m */; };
 		8CB8AA2A1FE8A2920043B4EA /* UIImage+Resizing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CB8AA291FE8A2920043B4EA /* UIImage+Resizing.m */; };
-		8CCB5152204D453200D5EBA4 /* XHAddAdressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB5132204D453200D5EBA4 /* XHAddAdressViewController.m */; };
-		8CCB5153204D453200D5EBA4 /* XHAddAdressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CCB5133204D453200D5EBA4 /* XHAddAdressViewController.xib */; };
-		8CCB5154204D453200D5EBA4 /* XHComplieAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB5135204D453200D5EBA4 /* XHComplieAddressViewController.m */; };
-		8CCB5155204D453200D5EBA4 /* XHComplieAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CCB5136204D453200D5EBA4 /* XHComplieAddressViewController.xib */; };
-		8CCB5156204D453200D5EBA4 /* XHMyAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB5138204D453200D5EBA4 /* XHMyAddressViewController.m */; };
-		8CCB5157204D453200D5EBA4 /* area.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8CCB513A204D453200D5EBA4 /* area.plist */; };
-		8CCB5158204D453200D5EBA4 /* AreaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB513C204D453200D5EBA4 /* AreaModel.m */; };
-		8CCB5159204D453200D5EBA4 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8CCB513D204D453200D5EBA4 /* city.plist */; };
-		8CCB515A204D453200D5EBA4 /* CityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB513F204D453200D5EBA4 /* CityModel.m */; };
-		8CCB515B204D453200D5EBA4 /* ProvinceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB5141204D453200D5EBA4 /* ProvinceModel.m */; };
-		8CCB515C204D453200D5EBA4 /* XHAddressPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB5144204D453200D5EBA4 /* XHAddressPickerView.m */; };
-		8CCB515D204D453200D5EBA4 /* XHAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB5146204D453200D5EBA4 /* XHAddressTableViewCell.m */; };
-		8CCB515E204D453200D5EBA4 /* XHAddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CCB5147204D453200D5EBA4 /* XHAddressTableViewCell.xib */; };
-		8CCB515F204D453200D5EBA4 /* XHAddTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB5149204D453200D5EBA4 /* XHAddTableViewCell.m */; };
-		8CCB5160204D453200D5EBA4 /* XHAddTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CCB514A204D453200D5EBA4 /* XHAddTableViewCell.xib */; };
-		8CCB5161204D453200D5EBA4 /* XHNameTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB514C204D453200D5EBA4 /* XHNameTableViewCell.m */; };
-		8CCB5162204D453200D5EBA4 /* XHNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CCB514D204D453200D5EBA4 /* XHNameTableViewCell.xib */; };
-		8CCB5163204D453200D5EBA4 /* XHAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB514F204D453200D5EBA4 /* XHAddressModel.m */; };
-		8CCB5164204D453200D5EBA4 /* XHCustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB5151204D453200D5EBA4 /* XHCustomTextField.m */; };
 		8CCD7E1F1FD0EE0D00F7F54E /* XHChagePhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCD7E1D1FD0EE0D00F7F54E /* XHChagePhoneViewController.m */; };
 		8CCD7E201FD0EE0D00F7F54E /* XHChagePhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CCD7E1E1FD0EE0D00F7F54E /* XHChagePhoneViewController.xib */; };
 		8CCD7E271FD0F3B000F7F54E /* XHChagePhoneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCD7E251FD0F3B000F7F54E /* XHChagePhoneTableViewCell.m */; };
@@ -475,8 +432,6 @@
 		04291A901FD2DCDF002D3B5B /* XHStudentInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XHStudentInfoViewController.xib; sourceTree = "<group>"; };
 		04B9C00A20633F7B004E8D3B /* XHEducationCloudWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHEducationCloudWebViewController.m; sourceTree = "<group>"; };
 		04B9C00B20633F7B004E8D3B /* XHEducationCloudWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHEducationCloudWebViewController.h; sourceTree = "<group>"; };
-		04FB527F1FD96D720070C019 /* XHStudyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XHStudyModel.h; path = "daycareParent/我的/学习记录/model/XHStudyModel.h"; sourceTree = SOURCE_ROOT; };
-		04FB52801FD96D720070C019 /* XHStudyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = XHStudyModel.m; path = "daycareParent/我的/学习记录/model/XHStudyModel.m"; sourceTree = SOURCE_ROOT; };
 		4B07CC171FD4DAB800B2DBDA /* XHLeaveRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHLeaveRecordModel.h; sourceTree = "<group>"; };
 		4B07CC181FD4DAB800B2DBDA /* XHLeaveRecordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHLeaveRecordModel.m; sourceTree = "<group>"; };
 		4B07CC1A1FD4DAC800B2DBDA /* XHLeaveRecordFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHLeaveRecordFrame.h; sourceTree = "<group>"; };
@@ -1085,8 +1040,6 @@
 		8C37D33F1FE8A8EF00F157D1 /* XHIMNoticeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHIMNoticeModel.m; sourceTree = "<group>"; };
 		8C3E55A61FD4F5B00013002A /* XHCustomPickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XHCustomPickerView.h; path = "daycareParent/我的/学生信息/view/XHCustomPickerView.h"; sourceTree = SOURCE_ROOT; };
 		8C3E55A71FD4F5B00013002A /* XHCustomPickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = XHCustomPickerView.m; path = "daycareParent/我的/学生信息/view/XHCustomPickerView.m"; sourceTree = SOURCE_ROOT; };
-		8C3E55BF1FD549B60013002A /* XHStudyRecordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHStudyRecordViewController.h; sourceTree = "<group>"; };
-		8C3E55C01FD549B60013002A /* XHStudyRecordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHStudyRecordViewController.m; sourceTree = "<group>"; };
 		8C42CFCC1FF5D86D00CEDBDA /* XHNewUserInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHNewUserInfoViewController.h; sourceTree = "<group>"; };
 		8C42CFCD1FF5D86D00CEDBDA /* XHNewUserInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHNewUserInfoViewController.m; sourceTree = "<group>"; };
 		8C4DB5D71FEBB55D00B14073 /* XHHomeWorkDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHHomeWorkDetailView.h; sourceTree = "<group>"; };
@@ -1105,14 +1058,6 @@
 		8C5EB0C21FCFF22C002ED0D7 /* XHPassWordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XHPassWordTableViewCell.xib; sourceTree = "<group>"; };
 		8C62409D1FD8E3BF00E6C031 /* XHAboutUsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHAboutUsViewController.h; sourceTree = "<group>"; };
 		8C62409E1FD8E3BF00E6C031 /* XHAboutUsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHAboutUsViewController.m; sourceTree = "<group>"; };
-		8C67F8291FD6479C007DFD53 /* XHDelegateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHDelegateView.h; sourceTree = "<group>"; };
-		8C67F82A1FD6479C007DFD53 /* XHDelegateView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHDelegateView.m; sourceTree = "<group>"; };
-		8C67F82C1FD666BA007DFD53 /* XHSelectTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHSelectTableViewCell.h; sourceTree = "<group>"; };
-		8C67F82D1FD666BA007DFD53 /* XHSelectTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHSelectTableViewCell.m; sourceTree = "<group>"; };
-		8C67F82E1FD666BA007DFD53 /* XHSelectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XHSelectTableViewCell.xib; sourceTree = "<group>"; };
-		8C67F8311FD68570007DFD53 /* XHSelectFileTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHSelectFileTableViewCell.h; sourceTree = "<group>"; };
-		8C67F8321FD68570007DFD53 /* XHSelectFileTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHSelectFileTableViewCell.m; sourceTree = "<group>"; };
-		8C67F8331FD68570007DFD53 /* XHSelectFileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XHSelectFileTableViewCell.xib; sourceTree = "<group>"; };
 		8C7974001FE76F7A00AF6F6A /* UIImage+DevKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+DevKit.m"; sourceTree = "<group>"; };
 		8C7974011FE76F7A00AF6F6A /* UIImage+DevKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+DevKit.h"; sourceTree = "<group>"; };
 		8C7974081FE772A600AF6F6A /* NYXImagesHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYXImagesHelper.h; sourceTree = "<group>"; };
@@ -1120,26 +1065,6 @@
 		8C79740B1FE7795700AF6F6A /* VTGTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VTGTMBase64.m; sourceTree = "<group>"; };
 		8C79740C1FE7795700AF6F6A /* VTGTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VTGTMDefines.h; sourceTree = "<group>"; };
 		8C79740D1FE7795700AF6F6A /* VTGTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VTGTMBase64.h; sourceTree = "<group>"; };
-		8C7AE70F1FE795ED00BE7A02 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
-		8C7AE7101FE795ED00BE7A02 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
-		8C7AE7111FE795ED00BE7A02 /* libpingpp+alipay.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libpingpp+alipay.a"; sourceTree = "<group>"; };
-		8C7AE7131FE795ED00BE7A02 /* libpingpp+bfbWap.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libpingpp+bfbWap.a"; sourceTree = "<group>"; };
-		8C7AE7151FE795ED00BE7A02 /* libpingpp+fqlpay.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libpingpp+fqlpay.a"; sourceTree = "<group>"; };
-		8C7AE7171FE795ED00BE7A02 /* libpingpp+jdpay.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libpingpp+jdpay.a"; sourceTree = "<group>"; };
-		8C7AE7191FE795ED00BE7A02 /* libpingpp+mmdpay.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libpingpp+mmdpay.a"; sourceTree = "<group>"; };
-		8C7AE71B1FE795ED00BE7A02 /* libpingpp+qgbc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libpingpp+qgbc.a"; sourceTree = "<group>"; };
-		8C7AE71D1FE795ED00BE7A02 /* libpingpp+qqwallet.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libpingpp+qqwallet.a"; sourceTree = "<group>"; };
-		8C7AE71F1FE795ED00BE7A02 /* libPaymentControl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPaymentControl.a; sourceTree = "<group>"; };
-		8C7AE7201FE795ED00BE7A02 /* libpingpp+up.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libpingpp+up.a"; sourceTree = "<group>"; };
-		8C7AE7221FE795ED00BE7A02 /* libpingpp+yeepay.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libpingpp+yeepay.a"; sourceTree = "<group>"; };
-		8C7AE7251FE795ED00BE7A02 /* libpingpp+network.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libpingpp+network.a"; sourceTree = "<group>"; };
-		8C7AE7261FE795ED00BE7A02 /* PingppURLResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingppURLResponse.h; sourceTree = "<group>"; };
-		8C7AE7281FE795ED00BE7A02 /* libpingpp+webview.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libpingpp+webview.a"; sourceTree = "<group>"; };
-		8C7AE7291FE795ED00BE7A02 /* libpingppcore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libpingppcore.a; sourceTree = "<group>"; };
-		8C7AE72B1FE795ED00BE7A02 /* libpingpp+one.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libpingpp+one.a"; sourceTree = "<group>"; };
-		8C7AE72C1FE795ED00BE7A02 /* Pingpp+One.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Pingpp+One.h"; sourceTree = "<group>"; };
-		8C7AE72D1FE795ED00BE7A02 /* Pingpp.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Pingpp.bundle; sourceTree = "<group>"; };
-		8C7AE72E1FE795ED00BE7A02 /* Pingpp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pingpp.h; sourceTree = "<group>"; };
 		8C7AE7401FE7967B00BE7A02 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		8C7AE7421FE7969900BE7A02 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		8C7E980C1FECDB510096288E /* XHLocationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XHLocationModel.h; path = "daycareParent/智慧校园/定位/model/XHLocationModel.h"; sourceTree = SOURCE_ROOT; };
@@ -1212,37 +1137,6 @@
 		8C922BD81FDE65EB00BA0EAB /* XHForgetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHForgetViewController.m; sourceTree = "<group>"; };
 		8CB8AA281FE8A2910043B4EA /* UIImage+Resizing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIImage+Resizing.h"; path = "../../daycareParent.xcodeproj/UIImage+Resizing.h"; sourceTree = "<group>"; };
 		8CB8AA291FE8A2920043B4EA /* UIImage+Resizing.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Resizing.m"; path = "../../daycareParent.xcodeproj/UIImage+Resizing.m"; sourceTree = "<group>"; };
-		8CCB5131204D453200D5EBA4 /* XHAddAdressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHAddAdressViewController.h; sourceTree = "<group>"; };
-		8CCB5132204D453200D5EBA4 /* XHAddAdressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHAddAdressViewController.m; sourceTree = "<group>"; };
-		8CCB5133204D453200D5EBA4 /* XHAddAdressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHAddAdressViewController.xib; sourceTree = "<group>"; };
-		8CCB5134204D453200D5EBA4 /* XHComplieAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHComplieAddressViewController.h; sourceTree = "<group>"; };
-		8CCB5135204D453200D5EBA4 /* XHComplieAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHComplieAddressViewController.m; sourceTree = "<group>"; };
-		8CCB5136204D453200D5EBA4 /* XHComplieAddressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHComplieAddressViewController.xib; sourceTree = "<group>"; };
-		8CCB5137204D453200D5EBA4 /* XHMyAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHMyAddressViewController.h; sourceTree = "<group>"; };
-		8CCB5138204D453200D5EBA4 /* XHMyAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHMyAddressViewController.m; sourceTree = "<group>"; };
-		8CCB513A204D453200D5EBA4 /* area.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = area.plist; sourceTree = "<group>"; };
-		8CCB513B204D453200D5EBA4 /* AreaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaModel.h; sourceTree = "<group>"; };
-		8CCB513C204D453200D5EBA4 /* AreaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaModel.m; sourceTree = "<group>"; };
-		8CCB513D204D453200D5EBA4 /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
-		8CCB513E204D453200D5EBA4 /* CityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityModel.h; sourceTree = "<group>"; };
-		8CCB513F204D453200D5EBA4 /* CityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityModel.m; sourceTree = "<group>"; };
-		8CCB5140204D453200D5EBA4 /* ProvinceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProvinceModel.h; sourceTree = "<group>"; };
-		8CCB5141204D453200D5EBA4 /* ProvinceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProvinceModel.m; sourceTree = "<group>"; };
-		8CCB5143204D453200D5EBA4 /* XHAddressPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHAddressPickerView.h; sourceTree = "<group>"; };
-		8CCB5144204D453200D5EBA4 /* XHAddressPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHAddressPickerView.m; sourceTree = "<group>"; };
-		8CCB5145204D453200D5EBA4 /* XHAddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHAddressTableViewCell.h; sourceTree = "<group>"; };
-		8CCB5146204D453200D5EBA4 /* XHAddressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHAddressTableViewCell.m; sourceTree = "<group>"; };
-		8CCB5147204D453200D5EBA4 /* XHAddressTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHAddressTableViewCell.xib; sourceTree = "<group>"; };
-		8CCB5148204D453200D5EBA4 /* XHAddTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHAddTableViewCell.h; sourceTree = "<group>"; };
-		8CCB5149204D453200D5EBA4 /* XHAddTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHAddTableViewCell.m; sourceTree = "<group>"; };
-		8CCB514A204D453200D5EBA4 /* XHAddTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHAddTableViewCell.xib; sourceTree = "<group>"; };
-		8CCB514B204D453200D5EBA4 /* XHNameTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHNameTableViewCell.h; sourceTree = "<group>"; };
-		8CCB514C204D453200D5EBA4 /* XHNameTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHNameTableViewCell.m; sourceTree = "<group>"; };
-		8CCB514D204D453200D5EBA4 /* XHNameTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHNameTableViewCell.xib; sourceTree = "<group>"; };
-		8CCB514E204D453200D5EBA4 /* XHAddressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHAddressModel.h; sourceTree = "<group>"; };
-		8CCB514F204D453200D5EBA4 /* XHAddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHAddressModel.m; sourceTree = "<group>"; };
-		8CCB5150204D453200D5EBA4 /* XHCustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHCustomTextField.h; sourceTree = "<group>"; };
-		8CCB5151204D453200D5EBA4 /* XHCustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHCustomTextField.m; sourceTree = "<group>"; };
 		8CCD7E1C1FD0EE0D00F7F54E /* XHChagePhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHChagePhoneViewController.h; sourceTree = "<group>"; };
 		8CCD7E1D1FD0EE0D00F7F54E /* XHChagePhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHChagePhoneViewController.m; sourceTree = "<group>"; };
 		8CCD7E1E1FD0EE0D00F7F54E /* XHChagePhoneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XHChagePhoneViewController.xib; sourceTree = "<group>"; };
@@ -1324,52 +1218,37 @@
 				8CDDA9271FDA7BD4000B3BAB /* SystemConfiguration.framework in Frameworks */,
 				8C7AE7411FE7967B00BE7A02 /* libsqlite3.0.tbd in Frameworks */,
 				8CDDA9051FDA7A90000B3BAB /* CFNetwork.framework in Frameworks */,
-				8C7AE7331FE795ED00BE7A02 /* libpingpp+fqlpay.a in Frameworks */,
-				8C7AE7321FE795ED00BE7A02 /* libpingpp+bfbWap.a in Frameworks */,
 				8C8337061FDD002100F48A25 /* libresolv.tbd in Frameworks */,
-				8C7AE73D1FE795ED00BE7A02 /* libpingppcore.a in Frameworks */,
-				8C7AE73C1FE795ED00BE7A02 /* libpingpp+webview.a in Frameworks */,
-				8C7AE7371FE795ED00BE7A02 /* libpingpp+qqwallet.a in Frameworks */,
 				4B632ACC1FE11E3A00B90B94 /* libstdc++.6.0.9.tbd in Frameworks */,
-				8C7AE7301FE795ED00BE7A02 /* AlipaySDK.framework in Frameworks */,
 				8C8337021FDCFFEF00F48A25 /* AdSupport.framework in Frameworks */,
 				8CDC90611FE4B1DB00040D19 /* AliyunOSSiOS.framework in Frameworks */,
-				8C7AE7361FE795ED00BE7A02 /* libpingpp+qgbc.a in Frameworks */,
 				8CDDA9091FDA7AC5000B3BAB /* CoreGraphics.framework in Frameworks */,
 				8CDDA9231FDA7BB5000B3BAB /* OpenGLES.framework in Frameworks */,
 				4B632AC51FE11CB700B90B94 /* AMapFoundationKit.framework in Frameworks */,
 				4B632AC61FE11CB700B90B94 /* AMapLocationKit.framework in Frameworks */,
-				8C7AE7311FE795ED00BE7A02 /* libpingpp+alipay.a in Frameworks */,
 				4B632AC71FE11CB700B90B94 /* AMapSearchKit.framework in Frameworks */,
-				8C7AE7341FE795ED00BE7A02 /* libpingpp+jdpay.a in Frameworks */,
 				4B632AC81FE11CB800B90B94 /* MAMapKit.framework in Frameworks */,
 				8C8337041FDD000F00F48A25 /* UserNotifications.framework in Frameworks */,
 				8CDDA9291FDA7BE9000B3BAB /* UIKit.framework in Frameworks */,
 				8C8336FE1FDCFFA500F48A25 /* Foundation.framework in Frameworks */,
 				8C8336FC1FDCFF6100F48A25 /* CoreFoundation.framework in Frameworks */,
-				8C7AE7391FE795ED00BE7A02 /* libpingpp+up.a in Frameworks */,
 				8CDDA92D1FDA7C0B000B3BAB /* SafariServices.framework in Frameworks */,
 				8CDDA92B1FDA7BF9000B3BAB /* Photos.framework in Frameworks */,
 				8CDDA9211FDA7BA1000B3BAB /* MapKit.framework in Frameworks */,
-				8C7AE73B1FE795ED00BE7A02 /* libpingpp+network.a in Frameworks */,
 				8C8336F91FDCFEB300F48A25 /* jcore-ios-1.1.1.a in Frameworks */,
 				8CDDA9171FDA7B4F000B3BAB /* libc++abi.tbd in Frameworks */,
 				8C8336ED1FDCD6A000F48A25 /* libopencore-amrnb.a in Frameworks */,
 				8CDDA9131FDA7B14000B3BAB /* ImageIO.framework in Frameworks */,
 				8CDDA9111FDA7B05000B3BAB /* CoreVideo.framework in Frameworks */,
 				8CDDA90D1FDA7AE6000B3BAB /* CoreMedia.framework in Frameworks */,
-				8C7AE73E1FE795ED00BE7A02 /* libpingpp+one.a in Frameworks */,
 				8C8336EC1FDCD6A000F48A25 /* RongIMKit.framework in Frameworks */,
-				8C7AE73A1FE795ED00BE7A02 /* libpingpp+yeepay.a in Frameworks */,
 				8C8336FA1FDCFEB300F48A25 /* jpush-ios-3.0.2.a in Frameworks */,
 				8CDDA9071FDA7AA9000B3BAB /* CoreAudio.framework in Frameworks */,
-				8C7AE7351FE795ED00BE7A02 /* libpingpp+mmdpay.a in Frameworks */,
 				8CDDA9021FDA7A75000B3BAB /* AudioToolbox.framework in Frameworks */,
 				8C8336EF1FDCD6A000F48A25 /* RongIMLib.framework in Frameworks */,
 				8CDDA8FF1FDA7A44000B3BAB /* AssetsLibrary.framework in Frameworks */,
 				8CDDA9191FDA7B5E000B3BAB /* libsqlite3.tbd in Frameworks */,
 				8CDDA91D1FDA7B79000B3BAB /* libxml2.tbd in Frameworks */,
-				8C7AE7381FE795ED00BE7A02 /* libPaymentControl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1426,15 +1305,6 @@
 			name = model;
 			path = "daycareParent/我的/设置界面/model";
 			sourceTree = SOURCE_ROOT;
-		};
-		04FB52821FD96DA40070C019 /* model */ = {
-			isa = PBXGroup;
-			children = (
-				04FB527F1FD96D720070C019 /* XHStudyModel.h */,
-				04FB52801FD96D720070C019 /* XHStudyModel.m */,
-			);
-			path = model;
-			sourceTree = "<group>";
 		};
 		4B0326F21FCCF1C200B9F700 /* 平安记录 */ = {
 			isa = PBXGroup;
@@ -2096,8 +1966,6 @@
 		4B80F1FC1FCBE43E00BC7B52 /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
-				8CCB512F204D453200D5EBA4 /* 我的收获地址 */,
-				8C3E55BB1FD5494B0013002A /* 学习记录 */,
 				04291A7B1FD2DB77002D3B5B /* 学生信息 */,
 				8CCD7E631FD1565F00F7F54E /* 绑定学生 */,
 				8C5EB0B41FCFE4B0002ED0D7 /* 设置界面 */,
@@ -2150,7 +2018,6 @@
 			isa = PBXGroup;
 			children = (
 				4BD8D3EE2020691500A98CEE /* XHStoreHelper */,
-				8C7AE70C1FE795ED00BE7A02 /* ping++ */,
 				8CDC90601FE4B1DB00040D19 /* AliyunOSSiOS.framework */,
 				4B4338B11FDF5C7A0047AC52 /* XHUserInfo */,
 				4B3126531FDA57D9000CE894 /* XHHelper */,
@@ -2934,40 +2801,6 @@
 			path = "daycareParent/我的/学生信息/view";
 			sourceTree = SOURCE_ROOT;
 		};
-		8C3E55BB1FD5494B0013002A /* 学习记录 */ = {
-			isa = PBXGroup;
-			children = (
-				04FB52821FD96DA40070C019 /* model */,
-				8C3E55BC1FD5494B0013002A /* controller */,
-				8C3E55BE1FD5494B0013002A /* view */,
-			);
-			path = "学习记录";
-			sourceTree = "<group>";
-		};
-		8C3E55BC1FD5494B0013002A /* controller */ = {
-			isa = PBXGroup;
-			children = (
-				8C3E55BF1FD549B60013002A /* XHStudyRecordViewController.h */,
-				8C3E55C01FD549B60013002A /* XHStudyRecordViewController.m */,
-			);
-			path = controller;
-			sourceTree = "<group>";
-		};
-		8C3E55BE1FD5494B0013002A /* view */ = {
-			isa = PBXGroup;
-			children = (
-				8C67F8291FD6479C007DFD53 /* XHDelegateView.h */,
-				8C67F82A1FD6479C007DFD53 /* XHDelegateView.m */,
-				8C67F82C1FD666BA007DFD53 /* XHSelectTableViewCell.h */,
-				8C67F82D1FD666BA007DFD53 /* XHSelectTableViewCell.m */,
-				8C67F82E1FD666BA007DFD53 /* XHSelectTableViewCell.xib */,
-				8C67F8311FD68570007DFD53 /* XHSelectFileTableViewCell.h */,
-				8C67F8321FD68570007DFD53 /* XHSelectFileTableViewCell.m */,
-				8C67F8331FD68570007DFD53 /* XHSelectFileTableViewCell.xib */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
 		8C5121E91FDFB04200973E77 /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -3033,145 +2866,6 @@
 				8CEDB9711FE3932E003E791F /* XHFamilyModel.m */,
 			);
 			path = model;
-			sourceTree = "<group>";
-		};
-		8C7AE70C1FE795ED00BE7A02 /* ping++ */ = {
-			isa = PBXGroup;
-			children = (
-				8C7AE70D1FE795ED00BE7A02 /* Channels */,
-				8C7AE7231FE795ED00BE7A02 /* Dependencies */,
-				8C7AE7291FE795ED00BE7A02 /* libpingppcore.a */,
-				8C7AE72A1FE795ED00BE7A02 /* One */,
-				8C7AE72D1FE795ED00BE7A02 /* Pingpp.bundle */,
-				8C7AE72E1FE795ED00BE7A02 /* Pingpp.h */,
-			);
-			path = "ping++";
-			sourceTree = "<group>";
-		};
-		8C7AE70D1FE795ED00BE7A02 /* Channels */ = {
-			isa = PBXGroup;
-			children = (
-				8C7AE70E1FE795ED00BE7A02 /* Alipay */,
-				8C7AE7121FE795ED00BE7A02 /* BfbWap */,
-				8C7AE7141FE795ED00BE7A02 /* Fqlpay */,
-				8C7AE7161FE795ED00BE7A02 /* Jdpay */,
-				8C7AE7181FE795ED00BE7A02 /* Mmdpay */,
-				8C7AE71A1FE795ED00BE7A02 /* Qgbc */,
-				8C7AE71C1FE795ED00BE7A02 /* QQWallet */,
-				8C7AE71E1FE795ED00BE7A02 /* UnionPay */,
-				8C7AE7211FE795ED00BE7A02 /* Yeepay */,
-			);
-			path = Channels;
-			sourceTree = "<group>";
-		};
-		8C7AE70E1FE795ED00BE7A02 /* Alipay */ = {
-			isa = PBXGroup;
-			children = (
-				8C7AE70F1FE795ED00BE7A02 /* AlipaySDK.bundle */,
-				8C7AE7101FE795ED00BE7A02 /* AlipaySDK.framework */,
-				8C7AE7111FE795ED00BE7A02 /* libpingpp+alipay.a */,
-			);
-			path = Alipay;
-			sourceTree = "<group>";
-		};
-		8C7AE7121FE795ED00BE7A02 /* BfbWap */ = {
-			isa = PBXGroup;
-			children = (
-				8C7AE7131FE795ED00BE7A02 /* libpingpp+bfbWap.a */,
-			);
-			path = BfbWap;
-			sourceTree = "<group>";
-		};
-		8C7AE7141FE795ED00BE7A02 /* Fqlpay */ = {
-			isa = PBXGroup;
-			children = (
-				8C7AE7151FE795ED00BE7A02 /* libpingpp+fqlpay.a */,
-			);
-			path = Fqlpay;
-			sourceTree = "<group>";
-		};
-		8C7AE7161FE795ED00BE7A02 /* Jdpay */ = {
-			isa = PBXGroup;
-			children = (
-				8C7AE7171FE795ED00BE7A02 /* libpingpp+jdpay.a */,
-			);
-			path = Jdpay;
-			sourceTree = "<group>";
-		};
-		8C7AE7181FE795ED00BE7A02 /* Mmdpay */ = {
-			isa = PBXGroup;
-			children = (
-				8C7AE7191FE795ED00BE7A02 /* libpingpp+mmdpay.a */,
-			);
-			path = Mmdpay;
-			sourceTree = "<group>";
-		};
-		8C7AE71A1FE795ED00BE7A02 /* Qgbc */ = {
-			isa = PBXGroup;
-			children = (
-				8C7AE71B1FE795ED00BE7A02 /* libpingpp+qgbc.a */,
-			);
-			path = Qgbc;
-			sourceTree = "<group>";
-		};
-		8C7AE71C1FE795ED00BE7A02 /* QQWallet */ = {
-			isa = PBXGroup;
-			children = (
-				8C7AE71D1FE795ED00BE7A02 /* libpingpp+qqwallet.a */,
-			);
-			path = QQWallet;
-			sourceTree = "<group>";
-		};
-		8C7AE71E1FE795ED00BE7A02 /* UnionPay */ = {
-			isa = PBXGroup;
-			children = (
-				8C7AE71F1FE795ED00BE7A02 /* libPaymentControl.a */,
-				8C7AE7201FE795ED00BE7A02 /* libpingpp+up.a */,
-			);
-			path = UnionPay;
-			sourceTree = "<group>";
-		};
-		8C7AE7211FE795ED00BE7A02 /* Yeepay */ = {
-			isa = PBXGroup;
-			children = (
-				8C7AE7221FE795ED00BE7A02 /* libpingpp+yeepay.a */,
-			);
-			path = Yeepay;
-			sourceTree = "<group>";
-		};
-		8C7AE7231FE795ED00BE7A02 /* Dependencies */ = {
-			isa = PBXGroup;
-			children = (
-				8C7AE7241FE795ED00BE7A02 /* Network */,
-				8C7AE7271FE795ED00BE7A02 /* WebView */,
-			);
-			path = Dependencies;
-			sourceTree = "<group>";
-		};
-		8C7AE7241FE795ED00BE7A02 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				8C7AE7251FE795ED00BE7A02 /* libpingpp+network.a */,
-				8C7AE7261FE795ED00BE7A02 /* PingppURLResponse.h */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		8C7AE7271FE795ED00BE7A02 /* WebView */ = {
-			isa = PBXGroup;
-			children = (
-				8C7AE7281FE795ED00BE7A02 /* libpingpp+webview.a */,
-			);
-			path = WebView;
-			sourceTree = "<group>";
-		};
-		8C7AE72A1FE795ED00BE7A02 /* One */ = {
-			isa = PBXGroup;
-			children = (
-				8C7AE72B1FE795ED00BE7A02 /* libpingpp+one.a */,
-				8C7AE72C1FE795ED00BE7A02 /* Pingpp+One.h */,
-			);
-			path = One;
 			sourceTree = "<group>";
 		};
 		8C7E980B1FECDB260096288E /* view */ = {
@@ -3306,68 +3000,6 @@
 		8CB8AA2C1FE8A8440043B4EA /* view */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
-		8CCB512F204D453200D5EBA4 /* 我的收获地址 */ = {
-			isa = PBXGroup;
-			children = (
-				8CCB5130204D453200D5EBA4 /* controller */,
-				8CCB5139204D453200D5EBA4 /* model */,
-				8CCB5142204D453200D5EBA4 /* view */,
-				8CCB514E204D453200D5EBA4 /* XHAddressModel.h */,
-				8CCB514F204D453200D5EBA4 /* XHAddressModel.m */,
-				8CCB5150204D453200D5EBA4 /* XHCustomTextField.h */,
-				8CCB5151204D453200D5EBA4 /* XHCustomTextField.m */,
-			);
-			path = "我的收获地址";
-			sourceTree = "<group>";
-		};
-		8CCB5130204D453200D5EBA4 /* controller */ = {
-			isa = PBXGroup;
-			children = (
-				8CCB5131204D453200D5EBA4 /* XHAddAdressViewController.h */,
-				8CCB5132204D453200D5EBA4 /* XHAddAdressViewController.m */,
-				8CCB5133204D453200D5EBA4 /* XHAddAdressViewController.xib */,
-				8CCB5134204D453200D5EBA4 /* XHComplieAddressViewController.h */,
-				8CCB5135204D453200D5EBA4 /* XHComplieAddressViewController.m */,
-				8CCB5136204D453200D5EBA4 /* XHComplieAddressViewController.xib */,
-				8CCB5137204D453200D5EBA4 /* XHMyAddressViewController.h */,
-				8CCB5138204D453200D5EBA4 /* XHMyAddressViewController.m */,
-			);
-			path = controller;
-			sourceTree = "<group>";
-		};
-		8CCB5139204D453200D5EBA4 /* model */ = {
-			isa = PBXGroup;
-			children = (
-				8CCB513A204D453200D5EBA4 /* area.plist */,
-				8CCB513B204D453200D5EBA4 /* AreaModel.h */,
-				8CCB513C204D453200D5EBA4 /* AreaModel.m */,
-				8CCB513D204D453200D5EBA4 /* city.plist */,
-				8CCB513E204D453200D5EBA4 /* CityModel.h */,
-				8CCB513F204D453200D5EBA4 /* CityModel.m */,
-				8CCB5140204D453200D5EBA4 /* ProvinceModel.h */,
-				8CCB5141204D453200D5EBA4 /* ProvinceModel.m */,
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		8CCB5142204D453200D5EBA4 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				8CCB5143204D453200D5EBA4 /* XHAddressPickerView.h */,
-				8CCB5144204D453200D5EBA4 /* XHAddressPickerView.m */,
-				8CCB5145204D453200D5EBA4 /* XHAddressTableViewCell.h */,
-				8CCB5146204D453200D5EBA4 /* XHAddressTableViewCell.m */,
-				8CCB5147204D453200D5EBA4 /* XHAddressTableViewCell.xib */,
-				8CCB5148204D453200D5EBA4 /* XHAddTableViewCell.h */,
-				8CCB5149204D453200D5EBA4 /* XHAddTableViewCell.m */,
-				8CCB514A204D453200D5EBA4 /* XHAddTableViewCell.xib */,
-				8CCB514B204D453200D5EBA4 /* XHNameTableViewCell.h */,
-				8CCB514C204D453200D5EBA4 /* XHNameTableViewCell.m */,
-				8CCB514D204D453200D5EBA4 /* XHNameTableViewCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -3560,29 +3192,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B80F28A1FCBF04800BC7B52 /* MJRefresh.bundle in Resources */,
-				8C67F8301FD666BA007DFD53 /* XHSelectTableViewCell.xib in Resources */,
 				4BFB975D1FCCF8CD003EEC8C /* Images.xcassets in Resources */,
-				8CCB515E204D453200D5EBA4 /* XHAddressTableViewCell.xib in Resources */,
 				8CCD7E581FD12C2600F7F54E /* XHScuessViewController.xib in Resources */,
 				8C8336EB1FDCD6A000F48A25 /* RongCloud.bundle in Resources */,
 				8CCD7E2D1FD11ECA00F7F54E /* XHTelephoneTableViewCell.xib in Resources */,
-				8CCB5155204D453200D5EBA4 /* XHComplieAddressViewController.xib in Resources */,
 				8C7EF53C1FE0BBFD00C029F2 /* 37x-Checkmark@2x.png in Resources */,
-				8C67F8351FD68570007DFD53 /* XHSelectFileTableViewCell.xib in Resources */,
 				8C7E98101FECE8C80096288E /* AMap.bundle in Resources */,
-				8CCB5162204D453200D5EBA4 /* XHNameTableViewCell.xib in Resources */,
-				8C7AE72F1FE795ED00BE7A02 /* AlipaySDK.bundle in Resources */,
 				8C7EF53A1FE0BBFD00C029F2 /* 37x-Wrong@2x.png in Resources */,
-				8CCB5157204D453200D5EBA4 /* area.plist in Resources */,
 				8C7EF5391FE0BBFD00C029F2 /* 37x-Wrong.png in Resources */,
 				4B80F1E01FCBE3F700BC7B52 /* Assets.xcassets in Resources */,
-				8CCB5153204D453200D5EBA4 /* XHAddAdressViewController.xib in Resources */,
 				8CDC90661FE4B86A00040D19 /* XHStudentDetailViewController.xib in Resources */,
 				8CCD7E281FD0F3B000F7F54E /* XHChagePhoneTableViewCell.xib in Resources */,
 				04291A921FD2DCDF002D3B5B /* XHStudentInfoViewController.xib in Resources */,
 				4B3800F3200754D5004E74AC /* pageControlCurrentDot@3x.png in Resources */,
 				8C8336EE1FDCD6A000F48A25 /* RCConfig.plist in Resources */,
-				8C7AE73F1FE795ED00BE7A02 /* Pingpp.bundle in Resources */,
 				4B3800F6200754D5004E74AC /* pageControlDot@3x.png in Resources */,
 				8C7EF53B1FE0BBFD00C029F2 /* 37x-Checkmark.png in Resources */,
 				8C8336E91FDCD6A000F48A25 /* Emoji.plist in Resources */,
@@ -3597,9 +3220,7 @@
 				8C8336EA1FDCD6A000F48A25 /* RongCloudKit.strings in Resources */,
 				8C5EB0C41FCFF22C002ED0D7 /* XHPassWordTableViewCell.xib in Resources */,
 				4B34187B1FFDC14C00A5EC56 /* ZFPlayer.bundle in Resources */,
-				8CCB5160204D453200D5EBA4 /* XHAddTableViewCell.xib in Resources */,
 				4B577FE51FF63FB30023ACBC /* README.md in Resources */,
-				8CCB5159204D453200D5EBA4 /* city.plist in Resources */,
 				8C5EB0BF1FCFEF6C002ED0D7 /* XHPasswordViewController.xib in Resources */,
 				8CCD7E201FD0EE0D00F7F54E /* XHChagePhoneViewController.xib in Resources */,
 			);
@@ -3623,7 +3244,6 @@
 				8C8081731FCEABE600C7945A /* XHBaseBtn.m in Sources */,
 				4B577FDB1FF63FB30023ACBC /* MASCompositeConstraint.m in Sources */,
 				4B80F2D81FCBF04F00BC7B52 /* UIView+WebCache.m in Sources */,
-				8CCB515A204D453200D5EBA4 /* CityModel.m in Sources */,
 				4B8E661E1FD643400006D641 /* XHCookBookCell.m in Sources */,
 				4B523BDB1FD157F8006DD565 /* XHLeaveRecordViewController.m in Sources */,
 				4B4A001A1FE2437300B8A8F8 /* XHDynamicsCollectionView.m in Sources */,
@@ -3634,7 +3254,6 @@
 				4B3126191FD90AAA000CE894 /* XHDatePickerControl.m in Sources */,
 				4B31265C1FDA8F9C000CE894 /* XHAddressBookLecturesControl.m in Sources */,
 				4B80F3191FCBFD6F00BC7B52 /* EXTScope.m in Sources */,
-				8CCB5161204D453200D5EBA4 /* XHNameTableViewCell.m in Sources */,
 				8C019F701FF4C373005EBC2C /* JKDBHelper.m in Sources */,
 				8CCD7E611FD145E200F7F54E /* XHVideoTableViewCell.m in Sources */,
 				4B3418711FFDC14C00A5EC56 /* ASValueTrackingSlider.m in Sources */,
@@ -3655,12 +3274,9 @@
 				8C377CA12008B7BB001F1FC7 /* WebViewJavascriptBridgeBase.m in Sources */,
 				4B577FAD1FF5EFA30023ACBC /* XHNotifceTableViewCell.m in Sources */,
 				4B80F2D51FCBF04F00BC7B52 /* UIImage+WebP.m in Sources */,
-				8CCB515B204D453200D5EBA4 /* ProvinceModel.m in Sources */,
 				8C5EB0C31FCFF22C002ED0D7 /* XHPassWordTableViewCell.m in Sources */,
 				4B80F2C91FCBF04F00BC7B52 /* SDWebImageCompat.m in Sources */,
 				4B80F2CC1FCBF04F00BC7B52 /* SDWebImageGIFCoder.m in Sources */,
-				8C67F82F1FD666BA007DFD53 /* XHSelectTableViewCell.m in Sources */,
-				8C3E55C11FD549B60013002A /* XHStudyRecordViewController.m in Sources */,
 				8C42CFCE1FF5D86D00CEDBDA /* XHNewUserInfoViewController.m in Sources */,
 				4B4A00171FE2411200B8A8F8 /* XHDynamicsCell.m in Sources */,
 				4BD8D40D202072A300A98CEE /* XHStoreHelper.m in Sources */,
@@ -3677,7 +3293,6 @@
 				4BB792B01FD7783700E0ED72 /* XHAskforLeaveContentView.m in Sources */,
 				4BB792CD1FD7930D00E0ED72 /* XHAchievementViewController.m in Sources */,
 				4B3126401FDA1F26000CE894 /* XHAddressBookContentView.m in Sources */,
-				8CCB5164204D453200D5EBA4 /* XHCustomTextField.m in Sources */,
 				8C019F661FF4C365005EBC2C /* FMDatabase.m in Sources */,
 				4BA8C4C21FCFD09A006CBEBC /* XHLoginViewController.m in Sources */,
 				4BD33DE61FCD5D6900BC52B6 /* XHFunctionMenuModel.m in Sources */,
@@ -3713,7 +3328,6 @@
 				4B80F3271FCBFD6F00BC7B52 /* NSValueTransformer+MTLInversionAdditions.m in Sources */,
 				4B80F33A1FCC130C00BC7B52 /* MBProgressHUD.m in Sources */,
 				8C7E98381FECF1930096288E /* XHBindCardViewController.m in Sources */,
-				8CCB515F204D453200D5EBA4 /* XHAddTableViewCell.m in Sources */,
 				4BB792AE1FD7752B00E0ED72 /* XHAskforLeaveArrowCell.m in Sources */,
 				4B577FDC1FF63FB30023ACBC /* MASConstraint.m in Sources */,
 				4BBC43411FD0E43E00555846 /* BaseTableViewCell.m in Sources */,
@@ -3747,7 +3361,6 @@
 				4B8E661B1FD641AE0006D641 /* XHCookDetailsContentView.m in Sources */,
 				4B80F27C1FCBF04800BC7B52 /* MJRefreshComponent.m in Sources */,
 				4B31265F1FDA8FFB000CE894 /* XHAddressBookLecturesContentView.m in Sources */,
-				8CCB515D204D453200D5EBA4 /* XHAddressTableViewCell.m in Sources */,
 				8C79740E1FE7795800AF6F6A /* VTGTMBase64.m in Sources */,
 				4B80F28E1FCBF04800BC7B52 /* UIView+MJExtension.m in Sources */,
 				4B80F3241FCBFD6F00BC7B52 /* NSDictionary+MTLMappingAdditions.m in Sources */,
@@ -3775,7 +3388,6 @@
 				4BD33DE01FCD57DA00BC52B6 /* XHFunctionMenuControl.m in Sources */,
 				4B3126341FD93CC6000CE894 /* SDCollectionViewCell.m in Sources */,
 				4B80F31B1FCBFD6F00BC7B52 /* MTLJSONAdapter.m in Sources */,
-				04FB52811FD96D720070C019 /* XHStudyModel.m in Sources */,
 				4B1066A71FD7D1FA004A7CB7 /* XHAchievementCellContentView.m in Sources */,
 				4B3043D51FEE566C004017C7 /* BaseScrollView.m in Sources */,
 				4BB792E31FD79F4F00E0ED72 /* XHSyllabusContentView.m in Sources */,
@@ -3784,7 +3396,6 @@
 				4B80F2D71FCBF04F00BC7B52 /* UIImageView+WebCache.m in Sources */,
 				4B5A3AF41FCEAA0300504229 /* XHRegisterModel.m in Sources */,
 				4B80F32F1FCC113500BC7B52 /* UIView+Frame.m in Sources */,
-				8C67F8341FD68570007DFD53 /* XHSelectFileTableViewCell.m in Sources */,
 				4B80F1E61FCBE3F700BC7B52 /* main.m in Sources */,
 				4B80F2221FCBEC2B00BC7B52 /* BaseNavigationView.m in Sources */,
 				4B4A00111FE240BD00B8A8F8 /* XHDynamicsFrame.m in Sources */,
@@ -3796,7 +3407,6 @@
 				4B80F3281FCBFD6F00BC7B52 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m in Sources */,
 				4B3126351FD93CC6000CE894 /* SDCycleScrollView.m in Sources */,
 				8CDDA8B61FDA5CEE000B3BAB /* XHChatViewController.m in Sources */,
-				8CCB5158204D453200D5EBA4 /* AreaModel.m in Sources */,
 				4B8E66181FD641600006D641 /* XHCookDateContentView.m in Sources */,
 				4B34187A1FFDC14C00A5EC56 /* ZFBrightnessView.m in Sources */,
 				8C019F671FF4C365005EBC2C /* FMDatabaseAdditions.m in Sources */,
@@ -3808,7 +3418,6 @@
 				4B5A3AF11FCEA9D000504229 /* XHSafeRegisterViewController.m in Sources */,
 				4BB792B91FD780C300E0ED72 /* XHAskforLeaveSubmitControl.m in Sources */,
 				4BEBC8D420045EDA00FD6915 /* XHDynamicsHeaderControl.m in Sources */,
-				8CCB5156204D453200D5EBA4 /* XHMyAddressViewController.m in Sources */,
 				4B80F28B1FCBF04800BC7B52 /* MJRefreshConst.m in Sources */,
 				4B80F2D11FCBF04F00BC7B52 /* UIButton+WebCache.m in Sources */,
 				8C62409F1FD8E3BF00E6C031 /* XHAboutUsViewController.m in Sources */,
@@ -3819,7 +3428,6 @@
 				4B31264F1FDA20CD000CE894 /* XHAddressBookToolBar.m in Sources */,
 				4BB792B61FD77D7600E0ED72 /* XHAskforLeaveChargeTeacherControl.m in Sources */,
 				4B80F2C41FCBF04F00BC7B52 /* NSImage+WebCache.m in Sources */,
-				8CCB515C204D453200D5EBA4 /* XHAddressPickerView.m in Sources */,
 				4B31263D1FD93D78000CE894 /* XHAddressBookViewController.m in Sources */,
 				8C80815F1FCE722000C7945A /* XHChildTableViewCell.m in Sources */,
 				8CDC90691FE4CB3700040D19 /* XHFamilyListViewController.m in Sources */,
@@ -3837,12 +3445,10 @@
 				4B632AA91FE0C5A000B90B94 /* XHTeacherAddressBookViewController.m in Sources */,
 				4B80F2CD1FCBF04F00BC7B52 /* SDWebImageImageIOCoder.m in Sources */,
 				4B07CC491FD5106800B2DBDA /* Line.m in Sources */,
-				8CCB5154204D453200D5EBA4 /* XHComplieAddressViewController.m in Sources */,
 				4B8E66211FD646310006D641 /* XHCookBookModel.m in Sources */,
 				4B11AF3B1FCCEA89002738F1 /* XHPersonalCenterViewController.m in Sources */,
 				4B34187C1FFDC14C00A5EC56 /* ZFPlayerControlView.m in Sources */,
 				8C377CA72008B7BB001F1FC7 /* XCWebViewProgressView.m in Sources */,
-				8CCB5152204D453200D5EBA4 /* XHAddAdressViewController.m in Sources */,
 				4B80F2851FCBF04800BC7B52 /* MJRefreshGifHeader.m in Sources */,
 				8C37D3401FE8A8EF00F157D1 /* XHIMNoticeModel.m in Sources */,
 				4B80F2811FCBF04800BC7B52 /* MJRefreshAutoStateFooter.m in Sources */,
@@ -3895,7 +3501,6 @@
 				4BA8C4C51FCFD0AF006CBEBC /* XHRegisterViewController.m in Sources */,
 				4B80F27E1FCBF04800BC7B52 /* MJRefreshHeader.m in Sources */,
 				4BB792C61FD7923C00E0ED72 /* XHSyllabusFrame.m in Sources */,
-				8CCB5163204D453200D5EBA4 /* XHAddressModel.m in Sources */,
 				8C79740A1FE772A700AF6F6A /* NYXImagesHelper.m in Sources */,
 				4B523BD81FD1579B006DD565 /* XHAskforLeaveViewController.m in Sources */,
 				8C5EB0BA1FCFE604002ED0D7 /* XHSetViewController.m in Sources */,
@@ -3941,7 +3546,6 @@
 				4B80F2D41FCBF04F00BC7B52 /* UIImage+MultiFormat.m in Sources */,
 				4BD33DDA1FCD555500BC52B6 /* XHSmartCampusContentView.m in Sources */,
 				4B80F2EA1FCBF08800BC7B52 /* AFSecurityPolicy.m in Sources */,
-				8C67F82B1FD6479C007DFD53 /* XHDelegateView.m in Sources */,
 				4B80F2261FCBEC2B00BC7B52 /* TabBarItem.m in Sources */,
 				4B80F2871FCBF04800BC7B52 /* MJRefreshStateHeader.m in Sources */,
 				4B80F2881FCBF04800BC7B52 /* MJRefreshAnimateFooter.m in Sources */,

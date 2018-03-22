@@ -16,7 +16,6 @@
 #import "JPUSHService.h"
 #import "MianTabBarViewController.h"
 #import "XHLoginViewController.h"
-#import "Pingpp.h"
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import <AMapLocationKit/AMapLocationKit.h>
 #import "XHLoginViewController.h"
@@ -39,9 +38,6 @@
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(id)annotation
 {
   
-    [Pingpp handleOpenURL:url withCompletion:^(NSString *result, PingppError *error) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"callBack" object:result];
-    }];
     return YES;
 }
 
@@ -50,9 +46,7 @@
 // iOS 9 以上请用这个
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary *)options {
     
-    [Pingpp handleOpenURL:url withCompletion:^(NSString *result, PingppError *error) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"callBack" object:result];//web端调用支付时，收到的支付回调
-    }];
+    
     return YES;
 }
 

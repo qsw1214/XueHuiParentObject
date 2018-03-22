@@ -15,12 +15,9 @@
 #import "XHSetViewController.h"
 #import "XHBindViewController.h"
 #import "XHStudentInfoViewController.h"
-#import "XHStudyRecordViewController.h"
 #import "XHChildListModel.h"
 #import "XHEducationCloudWebViewController.h"
-#import "XHMyAddressViewController.h"
 #import "BaseTableView.h"
-#define TITLE_LIST @[@"学习记录",@"收藏资源",@"下载记录",@"我的课程"]
 
 @interface XHPersonalCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -42,8 +39,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self navtionHidden:YES];
-     arry=@[@"我的收获地址",@"联系客服"];
-    contentArry=@[@"ico_location",@"ico_service"];
+     arry=@[@"联系客服"];
+    contentArry=@[@"ico_service"];
     _ChildArry=[NSMutableArray arrayWithArray:[XHUserInfo sharedUserInfo].childListArry];
     [_ChildArry addObject:@""];
     _tableView=[[BaseTableView alloc] initWithFrame:CGRectMake(0, USER_HEARD+53, SCREEN_WIDTH, SCREEN_HEIGHT-49-USER_HEARD-53) style:UITableViewStyleGrouped];
@@ -85,19 +82,13 @@
 #pragma mark----tableviewDelegate------
 - (NSInteger)numberOfSectionsInTableView:(BaseTableView *)tableView
 {
-    return 3;
+    return 2;
 }
 - (NSInteger)tableView:(BaseTableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section==2)
-    {
-          return 2;
-    }
-    else
-    {
-        return 1;
-    }
-  
+    
+    return 1;
+    
 }
 - (UITableViewCell *)tableView:(BaseTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
     {
@@ -130,26 +121,26 @@
             };
             return cell;
         }
-        if (indexPath.section==1) {
-            XHListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"listcell" forIndexPath:indexPath];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            @WeakObj(self);
-            cell.selectListBlock = ^(NSInteger index) {
-                //跳转到哪个界面
-#pragma mark -------------跳转学习记录或者我的课程等界面------=============
-                @StrongObj(self);
-                XHStudyRecordViewController *study=[[XHStudyRecordViewController alloc] initHiddenWhenPushHidden];
-                study.index=index;
-                [self.navigationController pushViewController:study animated:YES];
-            };
-            return cell;
-        }
+//        if (indexPath.section==1) {
+//            XHListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"listcell" forIndexPath:indexPath];
+//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//            @WeakObj(self);
+//            cell.selectListBlock = ^(NSInteger index) {
+//                //跳转到哪个界面
+//#pragma mark -------------跳转学习记录或者我的课程等界面------=============
+//                @StrongObj(self);
+//                XHStudyRecordViewController *study=[[XHStudyRecordViewController alloc] initHiddenWhenPushHidden];
+//                study.index=index;
+//                [self.navigationController pushViewController:study animated:YES];
+//            };
+//            return cell;
+//        }
         else
         {
             XHSetTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
             cell.setImageView.image=[UIImage imageNamed:contentArry[indexPath.row]];
             cell.setLabel.text=arry[indexPath.row];
-            cell.setContentLabel.text=indexPath.row==0?@"我的收获地址":@"400-6778-599";
+            cell.setContentLabel.text=@"400-6778-599";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             return cell;
         }
@@ -166,9 +157,6 @@
     {
         return USER_HEARD*2+20;
     }
-    if (indexPath.section==1) {
-        return SCREEN_WIDTH/4;
-    }
     else
     {
         return USER_HEARD;
@@ -177,17 +165,11 @@
 -(void)tableView:(BaseTableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
      [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.section==2)
+    if (indexPath.section==1)
     {
-        if (indexPath.row==0) {
-            XHMyAddressViewController *add=[[XHMyAddressViewController alloc] initHiddenWhenPushHidden];
-            [self.navigationController pushViewController:add animated:YES];
-        }
-        if (indexPath.row==1) {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://400-6778-599"]];
-        }
+
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://400-6778-599"]];
     }
-   
    
 }
 #pragma mark----导航栏视图

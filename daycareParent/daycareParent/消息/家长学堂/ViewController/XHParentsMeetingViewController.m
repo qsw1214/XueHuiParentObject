@@ -11,7 +11,7 @@
 #import "XHIMNoticeViewController.h"
 #import "BaseTableView.h"
 #import "XHEducationCloudWebViewController.h" //!< 家长学堂详情
-#import "HNShopViewController.h"
+
 @interface XHParentsMeetingViewController () <XHParentsMeetingContentViewDeletage>
 
 {

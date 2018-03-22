@@ -201,8 +201,8 @@
             {
                 
                 
-                [self.netWorkConfig setObject:sender.objectID forKey:@"NewGuardianId"];
-                [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].selfId forKey:@"OldGuardianId"];
+                [self.netWorkConfig setObject:sender.objectID forKey:@"newGuardianId"];
+                [self.netWorkConfig setObject:[XHUserInfo sharedUserInfo].selfId forKey:@"oldGuardianId"];
                 [self.netWorkConfig postWithUrl:@"zzjt-app-api_studentBinding005" sucess:^(id object, BOOL verifyObject)
                  {
                      if (verifyObject)

@@ -71,9 +71,15 @@
         [self.bridgeArray addObject:model];
     }
     
-    
-    
     [self.bridgeArray setArray:[XHUserInfo sharedUserInfo].childListArry];
+    
+    [NSArray enumerateObjectsWithArray:self.bridgeArray usingBlock:^(XHChildListModel *obj, NSUInteger idx, BOOL *stop)
+     {
+         [obj setMarkType:ChildListNormalType];
+         [obj setShowType:ChildListEntirelyType];
+     }];
+    
+
     [NSArray enumerateObjectsWithArray:self.bridgeArray usingBlock:^(XHChildListModel *obj, NSUInteger idx, BOOL *stop)
      {
          if (idx)

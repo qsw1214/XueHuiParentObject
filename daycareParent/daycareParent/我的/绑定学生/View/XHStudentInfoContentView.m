@@ -613,7 +613,7 @@
     [self.header setHeadrUrl:model.headPic withName:model.studentName withType:XHHeaderOtherType];
     [self.schoolControl setText:model.schoolName withNumberType:1 withAllType:NO];
     [self.classControl setText:model.clazzName withNumberType:1 withAllType:NO];
-    [self.sexControl setText:model.sex withNumberType:1 withAllType:NO];
+    [self.sexControl setText:model.sexString withNumberType:1 withAllType:NO];
     [self.birthdayControl setText:model.birthdate withNumberType:1 withAllType:NO];
     
     [self.netWorkConfig setObject:model.studentBaseId forKey:@"studentBaseId"];

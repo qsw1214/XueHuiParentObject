@@ -27,7 +27,7 @@
         _propValue_studentId=[[dic objectItemKey:@"propValue"] objectItemKey:@"studentId"];
         _schoolAddress=[dic objectItemKey:@"schoolAddress"];
         _schoolName=[dic objectItemKey:@"schoolName"];
-        _sex=[dic objectItemKey:@"sex"];
+        [self setSex:[dic objectItemKey:@"sex"]];
         _sexName=[dic objectItemKey:@"sexName"];
         _studentBaseId=[dic objectItemKey:@"studentBaseId"];
         _studentId=[dic objectItemKey:@"studentId"];
@@ -41,6 +41,27 @@
 }
 
 
+-(void)setSex:(NSString *)sex
+{
+
+    
+
+    
+    
+    _sex = sex;
+    if ([sex isEqualToString:@"0"])
+    {
+        [self setSexString:@"女"];
+    }
+    else if ([sex isEqualToString:@"1"])
+    {
+        [self setSexString:@"男"];
+    }
+    else
+    {
+        [self setSexString:@"男"];
+    }
+}
 
 -(void)setMarkType:(ChildListMarkType)markType
 {

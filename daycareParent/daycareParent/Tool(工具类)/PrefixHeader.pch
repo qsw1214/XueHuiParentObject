@@ -172,6 +172,8 @@
  #define   kFont(...)   [UIFont systemFontOfSize:__VA_ARGS__]
 
 
+
+
 #define ALGetFileVedio(name) [NSString stringWithFormat:@"http://vedio.ixuehui.cn/vedio/%@",name]
 #define ALGetFileHeadThumbnail(name) [NSString stringWithFormat:@"http://img.ixuehui.cn/xh/%@@!100-100-ios-head",name]             //头像缩略
 #define ALGetFileImageThumbnail(name) [NSString stringWithFormat:@"http://img.ixuehui.cn/xh/%@@!160-160-ios-list-item",name]            //图片缩略

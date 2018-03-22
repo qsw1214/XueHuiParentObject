@@ -33,7 +33,7 @@
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "40@3x.png",
+      "filename" : "120x120.png",
       "scale" : "3x"
     },
     {
@@ -45,7 +45,7 @@
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "60@3x.png",
+      "filename" : "180.png",
       "scale" : "3x"
     },
     {

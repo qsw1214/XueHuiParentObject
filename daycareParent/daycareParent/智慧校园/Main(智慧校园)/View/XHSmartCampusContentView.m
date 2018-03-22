@@ -88,8 +88,43 @@
 {
     [self setFrame:frame];
     
-    [self.advertisementControl resetFrame:CGRectMake(0,0, frame.size.width, 190.0)];
-    [self.functionMenuControl resetFrame:CGRectMake(0, (self.advertisementControl.bottom+10.0), frame.size.width, 360.0)];
+   
+    NSLog(@"===%.2f===%.2f",SCREEN_HEIGHT,SCREEN_WIDTH);
+    
+    if (((SCREEN_HEIGHT*2.0) <= 1920.0) && ((SCREEN_HEIGHT*3.0) <= 2436) )
+    {
+        [self.advertisementControl resetFrame:CGRectMake(0,0, frame.size.width, 260.0)];
+    }
+    else
+    {
+        if ((SCREEN_HEIGHT*2.0) <= 960.0)
+        {
+            [self.advertisementControl resetFrame:CGRectMake(0,0, frame.size.width, 190.0)];
+        }
+        else if ((SCREEN_HEIGHT*2.0) <= 1334.0)
+        {
+            [self.advertisementControl resetFrame:CGRectMake(0,0, frame.size.width, 220.0)];
+        }
+        else if ((SCREEN_HEIGHT*2.0) <= 1336.0)
+        {
+            [self.advertisementControl resetFrame:CGRectMake(0,0, frame.size.width, 220.0)];
+        }
+        else if ((SCREEN_HEIGHT*2.0) <= 1920.0)
+        {
+            [self.advertisementControl resetFrame:CGRectMake(0,0, frame.size.width, 230.0)];
+        }
+    }
+    
+    
+  
+    
+   
+    
+    
+    NSLog(@"%.2f",self.advertisementControl.height);
+    
+    
+    [self.functionMenuControl resetFrame:CGRectMake(0, (self.advertisementControl.bottom+20.0), frame.size.width, 360.0)];
     [self setContentSize:CGSizeMake(frame.size.width, self.functionMenuControl.bottom)];
 }
 

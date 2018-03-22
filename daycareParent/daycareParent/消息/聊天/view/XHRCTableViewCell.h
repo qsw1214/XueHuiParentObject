@@ -9,7 +9,7 @@
 #import <RongIMKit/RongIMKit.h>
 
 @interface XHRCTableViewCell : RCConversationBaseCell
-@property(nonatomic,strong)UIImageView *headImageView;
+@property(nonatomic,strong)ParentImageView *headImageView;
 @property(nonatomic,strong)ParentLabel *titleLab;
 @property(nonatomic,strong)ParentBackLabel *ContentLab;
 @property(nonatomic,strong)ParentBackLabel *detailLab;

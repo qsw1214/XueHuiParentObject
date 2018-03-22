@@ -18,7 +18,7 @@
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        _headImageView=[[UIImageView alloc] initWithFrame:CGRectMake(15, 15, 32, 32)];
+        _headImageView=[[ParentImageView alloc] initWithFrame:CGRectMake(15, 15, 32, 32)];
         [self.contentView addSubview:_headImageView];
         _smallLab=[[UILabel alloc] init];
         _smallLab.textAlignment=NSTextAlignmentCenter;
@@ -29,16 +29,16 @@
         _smallLab.layer.cornerRadius=7.5;
         
         [self.contentView addSubview:_smallLab];
-        _titleLab=[[ParentLabel alloc] initWithFrame:CGRectMake(70, 0, 90, 30)];
-//        _titleLab.backgroundColor=[UIColor redColor];
+        _titleLab=[[ParentLabel alloc] initWithFrame:CGRectMake(70, 5, 90, 25)];
+        //_titleLab.backgroundColor=[UIColor redColor];
         [self.contentView addSubview:_titleLab];
-        _detailLab=[[ParentBackLabel alloc] initWithFrame:CGRectMake(170, 0, SCREEN_WIDTH-180, 30)];
+        _detailLab=[[ParentBackLabel alloc] initWithFrame:CGRectMake(170, 5, SCREEN_WIDTH-180, 25)];
         _detailLab.textAlignment=NSTextAlignmentRight;
-//        _detailLab.backgroundColor=[UIColor blueColor];
+        //_detailLab.backgroundColor=[UIColor blueColor];
         [self.contentView addSubview:_detailLab];
         _ContentLab=[[ParentBackLabel alloc] init];
-        _ContentLab.frame=CGRectMake(70, 35, SCREEN_WIDTH-80, 30);
-//        _ContentLab.backgroundColor=[UIColor orangeColor];
+        _ContentLab.frame=CGRectMake(70, 35, SCREEN_WIDTH-80, 25);
+        //_ContentLab.backgroundColor=[UIColor orangeColor];
         [self.contentView addSubview:_ContentLab];
         _bgLabel=[[UILabel alloc] init];
         _bgLabel.backgroundColor=RGB(239, 239, 239);
@@ -51,7 +51,27 @@
     [self resetFrame:model];
     _titleLab.text=model.RCtitle;
     _headImageView.image=[UIImage imageNamed:model.RCtitlePic];
-    _ContentLab.text=model.RCContent;
+    switch (model.modelType) {
+        case XHRCTeacherBookType:
+        {
+            _ContentLab.text=@"点击加强和老师的沟通哦~";
+        }
+            break;
+            
+        case XHRCHomeWorkType:
+        {
+            _ContentLab.text=[[NSString safeString:model.RCContent] isEqualToString:@""]?@"暂无家庭作业哦~":model.RCContent;
+        }
+            break;
+            
+        case XHRCnoticeType:
+        {
+            _ContentLab.text=[[NSString safeString:model.RCContent] isEqualToString:@""]?@"暂无学校通知哦~":model.RCContent;
+        }
+            break;
+        
+    }
+    
     _detailLab.text=[NSDate dateStr:model.createTime FromFormatter:ALL_DEFAULT_TIME_FORM ToFormatter:DEFAULT_TIME_FORM1];
 }
 -(void)resetFrame:(XHRCModel *)model

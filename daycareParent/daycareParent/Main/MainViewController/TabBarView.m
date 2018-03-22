@@ -21,7 +21,7 @@
         NSMutableArray  *imageArray = [NSMutableArray arrayWithCapacity:0];
         [imageArray addObjectsFromArray:@[[UIImage imageNamed:@"ico_xiaoxi_xian"],
                                           [UIImage imageNamed:@"ico_txli_xian"],
-                                          [UIImage imageNamed:@"ico_shouye_current"],
+                                          [UIImage imageNamed:@"ico_shouye_xian"],
                                           [UIImage imageNamed:@"ico_xuehui_xian"],
                                           [UIImage imageNamed:@"ico_wo_xiao"]
                                           ]];
@@ -77,7 +77,7 @@
             if (i == 2) {
                 button.adjustsImageWhenHighlighted = NO;
                 [button setFrame:CGRectMake(([[UIScreen mainScreen] bounds].size.width/5)*i, -8, ([[UIScreen mainScreen] bounds].size.width/5), 60)];
-                 [button setSelected:YES];
+//                 [button setSelected:YES];
             }
             [button addTarget:self action:@selector(tabBarButtonClick:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:button];
@@ -102,8 +102,10 @@
 - (void)tabBarButtonClick:(id)sender
 {
     UIButton *button = (UIButton *)sender;
+   
     if (button.tag == self.selectIndex + 1)
     {
+        [button setSelected:YES];
         return;
     }
   
@@ -113,7 +115,7 @@
             [btn setSelected:NO];
         }
     }
-    [button setSelected:YES];
+     [button setSelected:YES];
     self.selectIndex = button.tag - 1;
     if ([_delegate respondsToSelector:@selector(setItemSelectIndex:)]) {
         [self.delegate setItemSelectIndex:button.tag-1];

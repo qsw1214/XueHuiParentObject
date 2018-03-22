@@ -19,7 +19,8 @@
 #define kTitle @[@"请输入手机号",@"请输入密码"]
 #define kTitlePic @[@"ico_number",@"ico_password"]
 @interface XHLoginViewController ()<UITableViewDelegate,UITableViewDataSource>
-
+@property(nonatomic,strong)UIScrollView *scrollView;
+@property(nonatomic,strong)ParentImageView *imageView;
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,strong)ParentImageView *bgImageView;
 @property(nonatomic,strong)XHBaseBtn *loginButton;
@@ -33,16 +34,15 @@
 {
     [super viewDidLoad];
     [self navtionHidden:YES];
-    ParentImageView *imageView=[[ParentImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-    imageView.center=CGPointMake(SCREEN_WIDTH/2.0, 125);
-    imageView.image=[UIImage imageNamed:@"login_logo"];
-    [self.view addSubview:imageView];
-    [self.view addSubview:self.tableView];
+    [self.view addSubview:self.scrollView];
+    [self.scrollView addSubview:self.imageView];
+    [self.scrollView addSubview:self.tableView];
+    [self.scrollView addSubview:self.loginButton];
+    [self.scrollView addSubview:self.forgetButton];
     [self.view addSubview:self.bgImageView];
-    [self.view addSubview:self.loginButton];
     [self.view addSubview:self.registButton];
-    [self.view addSubview:self.forgetButton];
-   
+    self.scrollView.contentSize=CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT/2.0+110);
+    [self scrollViewAddGesture];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -166,11 +166,22 @@
         [self.loginButton setTitleColor:LOGIN_BEFORE forState:UIControlStateNormal];
     }
 }
+-(UIScrollView *)scrollView
+{
+    if (_scrollView==nil) {
+        _scrollView=[[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-70)];
+        _scrollView.bounces=YES;
+        _scrollView.showsVerticalScrollIndicator=NO;
+        _scrollView.showsHorizontalScrollIndicator=NO;
+    }
+    return _scrollView;
+}
 
 -(UITableView *)tableView
 {
     if (_tableView==nil) {
         _tableView=[[UITableView alloc] initWithFrame:CGRectMake(20, 210, SCREEN_WIDTH-50, 100)];
+        _tableView.center=CGPointMake(SCREEN_WIDTH/2.0, SCREEN_HEIGHT/2.0);
         _tableView.delegate=self;
         _tableView.dataSource=self;
         _tableView.bounces=NO;
@@ -182,7 +193,7 @@
 -(XHBaseBtn *)loginButton
 {
     if (_loginButton==nil) {
-        _loginButton=[[XHBaseBtn alloc] initWithFrame:CGRectMake(40, 370, SCREEN_WIDTH-80, 44)];
+        _loginButton=[[XHBaseBtn alloc] initWithFrame:CGRectMake(40, SCREEN_HEIGHT/2.0+110, SCREEN_WIDTH-80, 44)];
         [_loginButton setBackgroundImage:[UIImage imageNamed:@"btn_logn"] forState:UIControlStateNormal];
         [_loginButton setTitle:@"没错，就是我！" forState:UIControlStateNormal];
         [_loginButton setTag:1];
@@ -193,7 +204,7 @@
 -(UIButton *)forgetButton
 {
     if (_forgetButton==nil) {
-        _forgetButton=[[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-90, 320, 82, 30)];
+        _forgetButton=[[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-90, SCREEN_HEIGHT/2.0+60, 82, 30)];
         [_forgetButton setTitle:@"忘记密码?" forState:UIControlStateNormal];
         _forgetButton.titleLabel.font=FontLevel2;
         [_forgetButton setTitleColor:MainColor forState:UIControlStateNormal];
@@ -220,13 +231,26 @@
     }
     return _bgImageView;
 }
-
+-(ParentImageView *)imageView
+{
+    if (_imageView==nil) {
+        _imageView=[[ParentImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-120)/2.0, (SCREEN_HEIGHT/2.0-120)/2.0, 120, 120)];
+        _imageView.image=[UIImage imageNamed:@"login_logo"];
+    }
+    return _imageView;
+}
+//失去第一响应者
+- (void)scrollViewAddGesture{
+    [self.scrollView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapScrollView)]];
+}
+- (void)tapScrollView
+{
+    
+    [self.view endEditing:YES];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 }
-
-
-
 
 @end

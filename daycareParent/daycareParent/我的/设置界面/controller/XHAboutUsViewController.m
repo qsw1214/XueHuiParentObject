@@ -19,7 +19,7 @@
     [self setNavtionTitle:@"关于我们"];
     UIScrollView *scrollView=[[UIScrollView alloc] initWithFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.bottom)];
     [self.view addSubview:scrollView];
-    ParentImageView *logo_imageView=[[ParentImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-100)/2.0, 10, 100, 100)];
+    ParentImageView *logo_imageView=[[ParentImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-120)/2.0, 10, 120, 120)];
     logo_imageView.image=[UIImage imageNamed:@"about_logo"];
     [scrollView addSubview:logo_imageView];
     UILabel *label=[[UILabel alloc] initWithFrame:CGRectMake(10, logo_imageView.bottom+10, SCREEN_WIDTH-20, 1)];

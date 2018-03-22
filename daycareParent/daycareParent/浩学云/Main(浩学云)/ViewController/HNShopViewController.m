@@ -25,6 +25,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self removeWebCache];
+    if ([[XHHelper sharedHelper] isIphoneX]) {
+        self.webView.frame=CGRectMake(0, 94, SCREEN_WIDTH, SCREEN_HEIGHT-94);
+    }
+    else
+    {
+        self.webView.frame=CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64);
+    }
     [self.view addSubview:self.progressView];
     self.progressView.progress=0.1;
     //注册定位，等待JS调取

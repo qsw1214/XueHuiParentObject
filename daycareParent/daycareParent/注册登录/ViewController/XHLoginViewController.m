@@ -108,9 +108,11 @@
                             
                             NSMutableArray *tempChildArray = [NSMutableArray array];
                             NSArray *itemArry=[object objectItemKey:@"object"];
-                            for (NSDictionary *dic in itemArry) {
-                                XHChildListModel *model=[[XHChildListModel alloc] initWithDic:dic];
-                                [tempChildArray addObject:model];
+                            if (itemArry) {
+                                for (NSDictionary *dic in itemArry) {
+                                    XHChildListModel *model=[[XHChildListModel alloc] initWithDic:dic];
+                                    [tempChildArray addObject:model];
+                                }
                             }
                             [[XHUserInfo sharedUserInfo].childListArry setArray:tempChildArray];
                             dispatch_async(dispatch_get_main_queue(), ^{
@@ -227,6 +229,7 @@
 {
     if (_bgImageView==nil) {
         _bgImageView=[[ParentImageView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-60, SCREEN_WIDTH, 60)];
+        [_bgImageView setContentMode:UIViewContentModeScaleAspectFill];
         _bgImageView.image=[UIImage imageNamed:@"bg_logn"];
     }
     return _bgImageView;
@@ -234,7 +237,7 @@
 -(ParentImageView *)imageView
 {
     if (_imageView==nil) {
-        _imageView=[[ParentImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-120)/2.0, (SCREEN_HEIGHT/2.0-120)/2.0, 120, 120)];
+        _imageView=[[ParentImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-150)/2.0, (SCREEN_HEIGHT/2.0-150)/2.0, 150, 150)];
         _imageView.image=[UIImage imageNamed:@"login_logo"];
     }
     return _imageView;

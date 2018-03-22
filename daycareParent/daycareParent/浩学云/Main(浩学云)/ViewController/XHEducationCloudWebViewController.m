@@ -54,11 +54,11 @@
     {
         
         if ([[XHHelper sharedHelper] isIphoneX]) {
-            _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, CONTENT_HEIGHT-self.navigationView.bottom-84)];
+            _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 94, SCREEN_WIDTH, SCREEN_HEIGHT-94)];
         }
         else
         {
-            _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, CONTENT_HEIGHT-self.navigationView.bottom-50)];
+            _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
         }
         _webView.scalesPageToFit = YES;
         _webView.delegate=self;

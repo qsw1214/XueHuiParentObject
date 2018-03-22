@@ -264,21 +264,21 @@
     }
     else if ([parentName isEqualToString:@""])
     {
-        [XHShowHUD showNOHud:@"家长姓名不能为空"];
+        [self.netWorkConfig setObject:studentName forKey:@"studentName"]; //!< 学生姓名
+        [self.netWorkConfig setObject:archiveId forKey:@"archiveId"];  //!< 学生学号
     }
     else
     {
         [self.netWorkConfig setObject:studentName forKey:@"studentName"]; //!< 学生姓名
         [self.netWorkConfig setObject:archiveId forKey:@"archiveId"];  //!< 学生学号
         [self.netWorkConfig setObject:parentName forKey:@"nickName"];
-        
-    
-        
-        if ([self.actionDeletgate respondsToSelector:@selector(submitControlAction:)])
-        {
-            [self.actionDeletgate submitControlAction:self.netWorkConfig];
-        }
     }
+    
+    if ([self.actionDeletgate respondsToSelector:@selector(submitControlAction:)])
+    {
+        [self.actionDeletgate submitControlAction:self.netWorkConfig];
+    }
+    
 }
 
 

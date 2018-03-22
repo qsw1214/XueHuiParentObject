@@ -311,11 +311,17 @@ static XHHelper *helper = nil;
     
     uname(&systemInfo);
     
-    NSString*platform = [NSString stringWithCString: systemInfo.machine encoding:NSASCIIStringEncoding];
+    NSString *platform = [NSString stringWithCString: systemInfo.machine encoding:NSASCIIStringEncoding];
     
-    if([platform isEqualToString:@"iPhone1,1"])  return@"iPhone 2G";
+    if([platform isEqualToString:@"iPhone1,1"])
+    {
+        return@"iPhone 2G";
+    }
     
-    if([platform isEqualToString:@"iPhone1,2"])  return@"iPhone 3G";
+    if([platform isEqualToString:@"iPhone1,2"])
+    {
+        return@"iPhone 3G";
+    }
     
     if([platform isEqualToString:@"iPhone2,1"])  return@"iPhone 3GS";
     

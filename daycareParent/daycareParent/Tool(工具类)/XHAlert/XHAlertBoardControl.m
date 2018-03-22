@@ -257,8 +257,10 @@
     {
         _collectionView = [[BaseCollectionView alloc]init];
         [_collectionView registerClass:[XHAlertItemCell class] forCellWithReuseIdentifier:CellIdentifier];
+        [_collectionView setBackgroundColor:[UIColor whiteColor]];
         [_collectionView setDelegate:self];
         [_collectionView setDataSource:self];
+       
     }
     return _collectionView;
 }

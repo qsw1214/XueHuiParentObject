@@ -25,6 +25,7 @@
     if (self)
     {
         
+        
         [self.contentView addSubview:self.markView];
         [self.contentView addSubview:self.titleLabel];
         

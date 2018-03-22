@@ -47,6 +47,7 @@
 
 -(void)setItemArray:(NSMutableArray *)array
 {
+    [self setAlerModel:[array firstObject]];
     [self.alertBoard setItemArray:array];
 }
 

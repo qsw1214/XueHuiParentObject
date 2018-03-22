@@ -45,7 +45,16 @@
     [self setConversationAvatarStyle:RC_USER_AVATAR_CYCLE];//显示为圆形
     [self setConversationPortraitSize:CGSizeMake(50, 50)];
     [self.view addSubview:self.navigationView];
-    self.conversationListTableView.frame=CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64);
+    
+    NSString *iphoneType=[[XHHelper sharedHelper] iphoneType] ;
+    if ([iphoneType isEqualToString:@"iPhone X"]|| [iphoneType isEqualToString:@"iPhone Simulator"])
+    {
+        self.conversationListTableView.frame=CGRectMake(0, 94, SCREEN_WIDTH, SCREEN_HEIGHT-94-49-34);
+    }
+    else
+    {
+        self.conversationListTableView.frame=CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64);
+    }
     self.conversationListTableView.rowHeight=50;
     self.conversationListTableView.separatorColor =LineViewColor;
     [self.conversationListTableView registerClass:[XHRCTableViewCell class] forCellReuseIdentifier:@"RongYunListCell"];

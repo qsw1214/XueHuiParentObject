@@ -38,12 +38,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self navtionItemHidden:NavigationItemLeftType];
+    [self setItemContentType:NavigationIconype withItemType:NavigationItemRightype withIconName:@"ico_sao" withTitle:nil];
 
-    
-    
 }
-
-
 
 
 - (void)didReceiveMemoryWarning
@@ -137,7 +134,7 @@
     if (_contentView == nil)
     {
         _contentView = [[XHSmartCampusContentView alloc]initWithDeletage:self];
-        [_contentView resetFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        [_contentView resetFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-50.0)];
     }
     return _contentView;
 }

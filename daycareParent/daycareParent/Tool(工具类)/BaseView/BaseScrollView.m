@@ -12,6 +12,30 @@
 
 
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self)
+    {
+        //去掉留白方法
+        if (@available(iOS 11.0, *))
+        {
+            self.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
+    }
+    return self;
+}
+
+#pragma mark - Public Method
+-(void)resetFrame:(CGRect)frame
+{
+    
+}
+
+-(void)setItemColor:(BOOL)color
+{
+    
+}
 
 
 #pragma mark 是否隐藏头部刷新，不调用该方法，默认为隐藏，调用该方法后即可显示

@@ -169,14 +169,16 @@
     self.pageControl.indicator.lastContentOffset = scrollView.contentOffset.x;
 }
 
--(void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
+-(void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
+{
     
     
     [self.pageControl.indicator restoreAnimation:@(1.0/self.pageControl.pageCount)];
     
 }
 
-- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+{
     self.pageControl.indicator.lastContentOffset = scrollView.contentOffset.x;
 }
 

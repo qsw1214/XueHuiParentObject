@@ -253,7 +253,6 @@
     NSString *archiveId = [NSString safeString:[self.LearningNumberControl textFieldTitlewithNumberType:0]];
     NSString *studentName = [NSString safeString:[self.nameControl textFieldTitlewithNumberType:0]];
     NSString *parentName = [NSString safeString:[self.parentNameControl textFieldTitlewithNumberType:0]];
-    [self.netWorkConfig setObject:@"0" forKey:@"guardianType"]; //!< 默认是“爸爸”
     if ([studentName isEqualToString:@""])
     {
         [XHShowHUD showNOHud:@"学生姓名不能为空"];
@@ -266,18 +265,32 @@
     {
         [self.netWorkConfig setObject:studentName forKey:@"studentName"]; //!< 学生姓名
         [self.netWorkConfig setObject:archiveId forKey:@"archiveId"];  //!< 学生学号
+        if (![self.netWorkConfig.paramDictionary objectForKey:@"guardianType"])
+        {
+            [self.netWorkConfig setObject:@"0" forKey:@"guardianType"];
+        }
+        
+        if ([self.actionDeletgate respondsToSelector:@selector(submitControlAction:)])
+        {
+            [self.actionDeletgate submitControlAction:self.netWorkConfig];
+        }
     }
     else
     {
         [self.netWorkConfig setObject:studentName forKey:@"studentName"]; //!< 学生姓名
         [self.netWorkConfig setObject:archiveId forKey:@"archiveId"];  //!< 学生学号
         [self.netWorkConfig setObject:parentName forKey:@"nickName"];
+        if (![self.netWorkConfig.paramDictionary objectForKey:@"guardianType"])
+        {
+            [self.netWorkConfig setObject:@"0" forKey:@"guardianType"];
+        }
+        if ([self.actionDeletgate respondsToSelector:@selector(submitControlAction:)])
+        {
+            [self.actionDeletgate submitControlAction:self.netWorkConfig];
+        }
     }
     
-    if ([self.actionDeletgate respondsToSelector:@selector(submitControlAction:)])
-    {
-        [self.actionDeletgate submitControlAction:self.netWorkConfig];
-    }
+    
     
 }
 

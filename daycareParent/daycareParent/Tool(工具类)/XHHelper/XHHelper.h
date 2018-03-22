@@ -75,6 +75,11 @@
  */
 +(NSInteger)weekdayWithNowDate:(NSDate*)fromDate;
 
+/**
+ 获取设备型号
 
+ @return 获取设备型号
+ */
+- (NSString*)iphoneType;
 
 @end

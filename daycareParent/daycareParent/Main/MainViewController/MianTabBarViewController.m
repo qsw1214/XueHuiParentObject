@@ -17,6 +17,7 @@
 #import "TabBarView.h"
 #import <RongIMKit/RongIMKit.h>
 #import <RongIMLib/RongIMLib.h>
+
 #define kTabbarNormalTitle @[@"tab1-heartshow",@"tab1-heartshow",@"plus_Last",@"tab4-more",@"tab5-file"]
  #define kTabbarSelectedTitle @[@"tab1-heart",@"tab2-doctorshow",@"plus_Last",@"tab4-moreshow",@"tab5-fileshow"]
 @interface MianTabBarViewController ()<TabBarViewDelegate>
@@ -72,8 +73,16 @@
 
 -(TabBarView *)customTabBarView
 {
-    if (_customTabBarView==nil) {
-        _customTabBarView = [[TabBarView alloc] initWithFrame:CGRectMake(0, [[UIScreen mainScreen] bounds].size.height - 54, [[UIScreen mainScreen] bounds].size.width, 54)];
+    if (_customTabBarView==nil)
+    {
+        if ([[[XHHelper sharedHelper] iphoneType] isEqualToString:@"iPhone X"])
+        {
+            _customTabBarView = [[TabBarView alloc] initWithFrame:CGRectMake(0, [[UIScreen mainScreen] bounds].size.height - 54-34, [[UIScreen mainScreen] bounds].size.width, 54+34)];
+        }
+      else
+      {
+          _customTabBarView = [[TabBarView alloc] initWithFrame:CGRectMake(0, [[UIScreen mainScreen] bounds].size.height - 54, [[UIScreen mainScreen] bounds].size.width, 54)];
+      }
         _customTabBarView.tag = 1000;
         _customTabBarView.delegate=self;
         [_customTabBarView setBackgroundColor:[UIColor whiteColor]];
@@ -118,4 +127,5 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
 @end

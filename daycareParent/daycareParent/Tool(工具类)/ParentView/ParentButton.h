@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface ParentButton : UIButton
-
+-(void)setNumberLabel:(NSInteger)number;
+-(void)setLabelCGRectMake:(CGRect)rect withNumberIndex:(NSInteger)index;
+-(void)setLabelText:(NSString *)text withNumberIndex:(NSInteger)index;
+-(void)setLabelTextAlignment:(NSTextAlignment)textAlignment withNumberIndex:(NSInteger)index;
+-(void)setLabelFont:(UIFont *)font withNumberIndex:(NSInteger)index;
+-(void)setLabelTextColor:(UIColor *)color withNumberIndex:(NSInteger)index;
+-(void)setLabelBackgroundColor:(UIColor *)color withNumberIndex:(NSInteger)index;
 @end

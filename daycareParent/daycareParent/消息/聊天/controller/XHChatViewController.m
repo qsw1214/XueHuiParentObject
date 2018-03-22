@@ -15,7 +15,7 @@
 #import "XHHomeWorkViewController.h"
 #import "XHNoticeListViewController.h"
 #define kTitleList @[@"给老师留言",@"家庭作业",@"通知公告"]
-#define kTitlePic @[@"im_notice",@"im_message",@"im_book",@"im_notice"]
+#define kTitlePic @[@"im_message",@"im_book",@"im_notice"]
 @interface XHChatViewController ()
 
 @property(nonatomic,strong)UIView *navigationView;
@@ -43,9 +43,10 @@
     self.conversationListTableView.tableFooterView = [UIView new];//不显示多余的cell
     self.conversationListTableView.backgroundColor=[UIColor lightTextColor];
     [self setConversationAvatarStyle:RC_USER_AVATAR_CYCLE];//显示为圆形
-    [self setConversationPortraitSize:CGSizeMake(60, 60)];
+    [self setConversationPortraitSize:CGSizeMake(50, 50)];
     [self.view addSubview:self.navigationView];
     self.conversationListTableView.frame=CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64);
+    self.conversationListTableView.rowHeight=50;
     self.conversationListTableView.separatorColor =LineViewColor;
     [self.conversationListTableView registerClass:[XHRCTableViewCell class] forCellReuseIdentifier:@"RongYunListCell"];
     

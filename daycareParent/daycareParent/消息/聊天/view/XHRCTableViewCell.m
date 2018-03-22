@@ -18,7 +18,7 @@
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        _headImageView=[[UIImageView alloc] initWithFrame:CGRectMake(15, 15, 40, 40)];
+        _headImageView=[[UIImageView alloc] initWithFrame:CGRectMake(15, 15, 32, 32)];
         [self.contentView addSubview:_headImageView];
         _smallLab=[[UILabel alloc] init];
         _smallLab.textAlignment=NSTextAlignmentCenter;
@@ -27,14 +27,18 @@
         _smallLab.layer.masksToBounds=YES;
         _smallLab.backgroundColor=[UIColor redColor];
         _smallLab.layer.cornerRadius=7.5;
+        
         [self.contentView addSubview:_smallLab];
-        _titleLab=[[ParentLabel alloc] initWithFrame:CGRectMake(80, 0, 90, 30)];
+        _titleLab=[[ParentLabel alloc] initWithFrame:CGRectMake(70, 0, 90, 30)];
+//        _titleLab.backgroundColor=[UIColor redColor];
         [self.contentView addSubview:_titleLab];
         _detailLab=[[ParentBackLabel alloc] initWithFrame:CGRectMake(170, 0, SCREEN_WIDTH-180, 30)];
         _detailLab.textAlignment=NSTextAlignmentRight;
+//        _detailLab.backgroundColor=[UIColor blueColor];
         [self.contentView addSubview:_detailLab];
         _ContentLab=[[ParentBackLabel alloc] init];
-        _ContentLab.frame=CGRectMake(80, 35, SCREEN_WIDTH-95, 30);
+        _ContentLab.frame=CGRectMake(70, 35, SCREEN_WIDTH-80, 30);
+//        _ContentLab.backgroundColor=[UIColor orangeColor];
         [self.contentView addSubview:_ContentLab];
         _bgLabel=[[UILabel alloc] init];
         _bgLabel.backgroundColor=RGB(239, 239, 239);
@@ -53,7 +57,7 @@
 -(void)resetFrame:(XHRCModel *)model
 {
     _smallLab.text=model.sum;
-    _smallLab.frame=CGRectMake(50, 7, [self getCustomWidth:_smallLab.text], 15);
+    _smallLab.frame=CGRectMake(35, 9, [self getCustomWidth:_smallLab.text], 15);
     _bgLabel.frame=CGRectMake(0, self.contentView.bottom-15, SCREEN_WIDTH, 15);
     if (model.modelType==XHRCnoticeType)
     {
@@ -67,7 +71,7 @@
             self.smallLab.hidden=NO;
         }
     }
-    
+
     else
     {
         self.bgLabel.hidden=YES;
@@ -79,7 +83,7 @@
         {
             self.smallLab.hidden=NO;
         }
-      
+
     }
 }
 -(CGFloat)getCustomWidth:(NSString *)str

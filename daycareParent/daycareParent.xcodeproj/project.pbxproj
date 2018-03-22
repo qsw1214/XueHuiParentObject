@@ -495,6 +495,7 @@
 		8CD3241C2052250600E7AD03 /* TabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD3241B2052250600E7AD03 /* TabBarView.m */; };
 		8CD3241F20524B9C00E7AD03 /* XHChildCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD3241E20524B9C00E7AD03 /* XHChildCollectionView.m */; };
 		8CD324222052688A00E7AD03 /* XHRCTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD324212052688A00E7AD03 /* XHRCTableViewCell.m */; };
+		8CD8645E2063551900A25400 /* ParentButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8645D2063551900A25400 /* ParentButton.m */; };
 		8CDC90611FE4B1DB00040D19 /* AliyunOSSiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDC90601FE4B1DB00040D19 /* AliyunOSSiOS.framework */; };
 		8CDDA8B61FDA5CEE000B3BAB /* XHChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDDA8B51FDA5CEE000B3BAB /* XHChatViewController.m */; };
 		8CDDA8FF1FDA7A44000B3BAB /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDDA8FE1FDA7A25000B3BAB /* AssetsLibrary.framework */; };
@@ -1458,6 +1459,8 @@
 		8CD3241E20524B9C00E7AD03 /* XHChildCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHChildCollectionView.m; sourceTree = "<group>"; };
 		8CD324202052688A00E7AD03 /* XHRCTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XHRCTableViewCell.h; path = "daycareParent/消息/聊天/view/XHRCTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		8CD324212052688A00E7AD03 /* XHRCTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = XHRCTableViewCell.m; path = "daycareParent/消息/聊天/view/XHRCTableViewCell.m"; sourceTree = SOURCE_ROOT; };
+		8CD8645C2063551900A25400 /* ParentButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParentButton.h; sourceTree = "<group>"; };
+		8CD8645D2063551900A25400 /* ParentButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParentButton.m; sourceTree = "<group>"; };
 		8CDC90601FE4B1DB00040D19 /* AliyunOSSiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AliyunOSSiOS.framework; sourceTree = "<group>"; };
 		8CDDA8B41FDA5CEE000B3BAB /* XHChatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHChatViewController.h; sourceTree = "<group>"; };
 		8CDDA8B51FDA5CEE000B3BAB /* XHChatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHChatViewController.m; sourceTree = "<group>"; };
@@ -3717,6 +3720,8 @@
 				8C7DDC172057779100AF8D04 /* ParentView.m */,
 				8CAC51172058CCBD00D2924F /* ParentTableViewCell.h */,
 				8CAC51182058CCBD00D2924F /* ParentTableViewCell.m */,
+				8CD8645C2063551900A25400 /* ParentButton.h */,
+				8CD8645D2063551900A25400 /* ParentButton.m */,
 			);
 			path = ParentView;
 			sourceTree = "<group>";
@@ -4495,6 +4500,7 @@
 				8C80816A1FCE919D00C7945A /* XHUserViewController.m in Sources */,
 				4BB9BE9D1FDE4BD5004F5622 /* XHEducationCloudScrollPreview.m in Sources */,
 				8C7E98351FECF1660096288E /* SGQRCodeScanningView.m in Sources */,
+				8CD8645E2063551900A25400 /* ParentButton.m in Sources */,
 				8C377CA32008B7BB001F1FC7 /* XCNativePlugs.m in Sources */,
 				4B80F2891FCBF04800BC7B52 /* MJRefreshAnimateHeader.m in Sources */,
 				8C7DDC0F20576A6300AF8D04 /* ParentModel.m in Sources */,

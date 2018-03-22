@@ -253,7 +253,6 @@
     NSString *archiveId = [NSString safeString:[self.LearningNumberControl textFieldTitlewithNumberType:0]];
     NSString *studentName = [NSString safeString:[self.nameControl textFieldTitlewithNumberType:0]];
     NSString *parentName = [NSString safeString:[self.parentNameControl textFieldTitlewithNumberType:0]];
-    [self.netWorkConfig setObject:@"0" forKey:@"guardianType"]; //!< 默认是“爸爸”
     if ([studentName isEqualToString:@""])
     {
         [XHShowHUD showNOHud:@"学生姓名不能为空"];

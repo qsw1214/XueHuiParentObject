@@ -45,13 +45,14 @@
     [self setObjectID:[object objectItemKey:@"id"]];
     [self setContent:[object objectItemKey:@"content"]];
     
-    NSArray *imageUrlArray = [object objectItemKey:@"picUrl"];
+    NSString *picUrl = [NSString safeString:[object objectItemKey:@"picUrl"]];
+    NSArray *imageUrlArray = [picUrl componentsSeparatedByString:@","];
     [NSArray enumerateObjectsWithArray:imageUrlArray usingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop)
     {
         XHInfiniteRotationModel *rotaionModel = [[XHInfiniteRotationModel alloc]init];
         [rotaionModel setImageUrl:obj];
         XHPageModel *pageModel = [[XHPageModel alloc]init];
-        [pageModel setImageName:nil];
+        [pageModel setImageName:obj];
         [pageModel setType:XHPageModelNormalType];
         [self.pageArray addObject:pageModel];
         [self.infiniteRotationArray addObject:rotaionModel];

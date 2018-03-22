@@ -38,7 +38,7 @@
     [self.navigationController.navigationBar setHidden:YES];
     [self.view addSubview:self.navigationView];
     [self.navigationView setNavtionTitleColor:RGB(44.0, 44.0, 44.0)];
-    [self.navigationView resetFrame:CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_HEIGHT*3) >= 2436 ? 64+30 :64)];
+    [self.navigationView resetFrame:CGRectMake(0, 0, SCREEN_WIDTH, [[XHHelper sharedHelper] isIphoneX] == 1 ? 64+30 :64)];
     [self setNavtionColor:[UIColor whiteColor]];
     [self setItemContentItemHiddenWithType:NavigationRightType withHidden:YES];
     [self setItemContentType:NavigationIconAndTitle withItemType:NavigationItemLeftType withIconName:@"arr_back" withTitle:@"返回"];

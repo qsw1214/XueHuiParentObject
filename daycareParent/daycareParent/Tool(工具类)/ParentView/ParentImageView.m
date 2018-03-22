@@ -13,7 +13,7 @@
 {
     if (self=[super init])
     {
-        [self setContentMode:UIViewContentModeScaleAspectFill];
+        [self setContentMode:UIViewContentModeScaleAspectFit];
     }
     return self;
 }
@@ -21,7 +21,7 @@
 {
     if (self=[super initWithFrame:frame])
     {
-        [self setContentMode:UIViewContentModeScaleAspectFill];
+        [self setContentMode:UIViewContentModeScaleAspectFit];
     }
     return self;
 }

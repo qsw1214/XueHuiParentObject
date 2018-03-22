@@ -7,7 +7,6 @@
 //
 
 #import "XHAboutUsViewController.h"
-
 @interface XHAboutUsViewController ()
 
 @end
@@ -18,67 +17,38 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setNavtionTitle:@"关于我们"];
-    UIScrollView *scrollView=[[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
-    scrollView.contentSize=CGSizeMake(SCREEN_WIDTH, 450);
+    UIScrollView *scrollView=[[UIScrollView alloc] initWithFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.bottom)];
     [self.view addSubview:scrollView];
-    ParentImageView *imageView=[[ParentImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-    imageView.center=CGPointMake(SCREEN_WIDTH/2.0, 74);
-   // imageView.layer.cornerRadius=20;
-   // imageView.layer.masksToBounds=YES;
-    imageView.image=[UIImage imageNamed:@"about_logo"];
-    [scrollView addSubview:imageView];
-//    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-//    // app名称
-//    NSString *app_Name = [infoDictionary objectForKey:@"CFBundleDisplayName"];
-////    // app版本
-////    NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-////    // app build版本
-//    UILabel *versionLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 110, SCREEN_WIDTH, 40)];
-//    versionLabel.textAlignment=NSTextAlignmentCenter;
-//    versionLabel.text=[NSString stringWithFormat:@"%@",app_Name];
-//    [scrollView addSubview:versionLabel];
-    UILabel *label=[[UILabel alloc] initWithFrame:CGRectMake(10, 150, SCREEN_WIDTH-20, 1)];
+    ParentImageView *logo_imageView=[[ParentImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-100)/2.0, 10, 100, 100)];
+    logo_imageView.image=[UIImage imageNamed:@"about_logo"];
+    [scrollView addSubview:logo_imageView];
+    UILabel *label=[[UILabel alloc] initWithFrame:CGRectMake(10, logo_imageView.bottom+10, SCREEN_WIDTH-20, 1)];
     label.backgroundColor=RGB(224, 224, 224);
     [scrollView addSubview:label];
-//    UIImageView *teleIV=[[UIImageView  alloc] initWithFrame:CGRectMake(10, 165, 20, 20)];
-//    teleIV.image=[UIImage imageNamed:@"ico-tel"];
-//    [scrollView addSubview:teleIV];
-    UILabel *teleLabel=[[UILabel alloc] initWithFrame:CGRectMake(10, 160, 90, 30)];
+    
+    
+    UILabel *teleLabel=[[UILabel alloc] initWithFrame:CGRectMake(10, logo_imageView.bottom+20, 90, 30)];
     teleLabel.text=@"联系电话：";
     teleLabel.font=[UIFont boldSystemFontOfSize:17.0];
     [scrollView addSubview:teleLabel];
-    UIButton *btn=[[UIButton alloc] initWithFrame:CGRectMake(80, 160, 150, 30)];
+    UIButton *btn=[[UIButton alloc] initWithFrame:CGRectMake(80, teleLabel.top, 150, 30)];
     [btn setTitle:@"0371-6778599" forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
     [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [scrollView addSubview:btn];
-    UILabel *label1=[[UILabel alloc] initWithFrame:CGRectMake(10, 200, SCREEN_WIDTH-20, 1)];
+    
+    UILabel *label1=[[UILabel alloc] initWithFrame:CGRectMake(10, btn.bottom+10, SCREEN_WIDTH-20, 1)];
     label1.backgroundColor=RGB(224, 224, 224);
     [scrollView addSubview:label1];
-//    UIImageView *teleIV2=[[UIImageView  alloc] initWithFrame:CGRectMake(10, 215, 20, 25)];
-//    teleIV2.image=[UIImage imageNamed:@"ico-company"];
-//    [scrollView addSubview:teleIV2];
-    UILabel *teleLabel2=[[UILabel alloc] initWithFrame:CGRectMake(10, 215, 120, 30)];
+    UILabel *teleLabel2=[[UILabel alloc] initWithFrame:CGRectMake(10, label1.bottom, 120, 30)];
     teleLabel2.text=@"公司介绍：";
     teleLabel2.font=[UIFont boldSystemFontOfSize:17.0];
     [scrollView addSubview:teleLabel2];
-    UILabel *contentLab=[[UILabel alloc] initWithFrame:CGRectMake(10, 245, SCREEN_WIDTH-20, 195)];
+    UILabel *contentLab=[[UILabel alloc] initWithFrame:CGRectMake(10, teleLabel2.bottom-5, SCREEN_WIDTH-20, 195)];
     contentLab.numberOfLines=0;
-//    contentLab.text=@"北京学汇教育科技有限公司是一家集软、硬件研发、设计、生产及销售为一体的高科综合型企业。公司自成立以来，先后研发出了<园掌助手>、<I学汇>等产品，并将竭力打造集文明、高科、仁爱、诚信为一体的现代化企业。";
     contentLab.text=@"       学汇教育专注 <共享+AI智能教育> 大数据学情分析和多元实时交互，致力于打造一站式教育服务生态平台，针对幼儿园、中小学以及第三方教辅机构，核心提供同步学习、实时互动、智慧校园、教育物联等圈层交互式专业服务。通过科学严谨的大数据学情分析，为学生提供量身定制的学习指导方案，为学校量身搭建智慧校园管理运营系统，为教育部门提供客观数据以供决策参考。";
     [scrollView addSubview:contentLab];
-//    UILabel *label2=[[UILabel alloc] initWithFrame:CGRectMake(10, 425, SCREEN_WIDTH-20, 1)];
-//    label2.backgroundColor=RGB(224, 224, 224);
-//    [scrollView addSubview:label2];
-//    UIImageView *teleIV3=[[UIImageView  alloc] initWithFrame:CGRectMake(10, 430, 20, 20)];
-//    teleIV3.image=[UIImage imageNamed:@"ico-erweima-blue"];
-//    [scrollView addSubview:teleIV3];
-//    UILabel *teleLabel3=[[UILabel alloc] initWithFrame:CGRectMake(40, 425, 80, 30)];
-//    teleLabel3.text=@"关注我们";
-//    [scrollView addSubview:teleLabel3];
-//    UIImageView *erweimaImg=[[UIImageView alloc] initWithFrame:CGRectMake(40, 460, 120, 120)];
-//    erweimaImg.image=[UIImage imageNamed:@"erweima"];
-//    [scrollView addSubview:erweimaImg];
+   scrollView.contentSize=CGSizeMake(SCREEN_WIDTH, contentLab.bottom+20);
 }
 -(void)btnClick
 {

@@ -170,7 +170,7 @@
 -(UIProgressView *)progressView
 {
     if (_progressView==nil) {
-        _progressView=[[UIProgressView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, 100)];
+        _progressView=[[UIProgressView alloc] initWithFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, 100)];
         _progressView.progressViewStyle=UIProgressViewStyleBar;
         _progressView.tintColor=RGB(242, 172, 60);
     }

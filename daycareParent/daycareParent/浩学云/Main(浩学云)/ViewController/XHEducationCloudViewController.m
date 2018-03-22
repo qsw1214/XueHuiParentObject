@@ -55,7 +55,14 @@
     if (subview)
     {
         [self.view addSubview:self.contentView];
-        [self.contentView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, CONTENT_HEIGHT-50.0)];
+        if ([[XHHelper sharedHelper] isIphoneX]) {
+            [self.contentView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, CONTENT_HEIGHT-50.0-self.navigationView.bottom)];
+        }
+        else
+        {
+            [self.contentView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, CONTENT_HEIGHT-50.0)];
+        }
+        
         [self.contentView addSwitchModel:YES];
         
     }

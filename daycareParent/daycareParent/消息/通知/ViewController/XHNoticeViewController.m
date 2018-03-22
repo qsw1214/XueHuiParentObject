@@ -28,13 +28,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.navigationView];
-    _tableView=[[BaseTableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64) style:UITableViewStyleGrouped];
+    _tableView=[[BaseTableView alloc] initWithFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.bottom) style:UITableViewStyleGrouped];
      [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     _tableView.delegate=self;
     _tableView.dataSource=self;
     _tableView.rowHeight=70;
     _tableView.backgroundColor=[UIColor whiteColor];
-    _tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, 0, CGFLOAT_MIN)];
+    _tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, self.navigationView.bottom, 0, CGFLOAT_MIN)];
     [_tableView registerClass:[XHNotifceTableViewCell class] forCellReuseIdentifier:@"cell"];
     [self.view addSubview:_tableView];
     [_tableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHead)];
@@ -137,7 +137,7 @@
 {
     if (_navigationView == nil)
     {
-        _navigationView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 64.0)];
+        _navigationView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.navigationView.bottom)];
         self.navigationView.backgroundColor=MainColor;
     }
     return _navigationView;

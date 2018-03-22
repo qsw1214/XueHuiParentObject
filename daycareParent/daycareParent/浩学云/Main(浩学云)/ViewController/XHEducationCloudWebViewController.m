@@ -52,7 +52,14 @@
 {
     if (!_webView)
     {
-        _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, CONTENT_HEIGHT)];
+        
+        if ([[XHHelper sharedHelper] isIphoneX]) {
+            _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, CONTENT_HEIGHT-self.navigationView.bottom-84)];
+        }
+        else
+        {
+            _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, CONTENT_HEIGHT-self.navigationView.bottom-50)];
+        }
         _webView.scalesPageToFit = YES;
         _webView.delegate=self;
         
@@ -62,7 +69,7 @@
 -(UIProgressView *)progressView
 {
     if (_progressView==nil) {
-        _progressView=[[UIProgressView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, 100)];
+        _progressView=[[UIProgressView alloc] initWithFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, 100)];
         _progressView.progressViewStyle=UIProgressViewStyleBar;
         _progressView.tintColor=RGB(242, 172, 60);
     }

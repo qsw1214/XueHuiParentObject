@@ -11,9 +11,6 @@
 #import "XHGuideViewController.h" //!< 引导视图控制器
 #import <RongIMKit/RongIMKit.h>
 #import <RongIMLib/RongIMLib.h>
-#import "RCDLive.h"
-#import "RCDLiveKitCommonDefine.h"
-#import "RCDLiveGiftMessage.h"
 #import "XHMessageUserInfo.h"
 #import "XHChatViewController.h"
 #import "JPUSHService.h"
@@ -165,13 +162,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [[RCIMClient sharedRCIMClient] setDeviceToken:token];
     /// Required - 注册 DeviceToken
     [JPUSHService registerDeviceToken:deviceToken];
-    [[RCDLive sharedRCDLive] connectRongCloudWithToken:token success:^(NSString *userId) {
-        
-    } error:^(RCConnectErrorCode status) {
-        
-    } tokenIncorrect:^{
-        
-    }];
+
 }
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     //Optional
@@ -185,7 +176,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 -(void)loginRongCloud:(NSString *)token
 {
     //初始化融云SDK
-    [[RCDLive sharedRCDLive] initRongCloud:RONGCLOUD_IM_APPKEY_];
+    [[RCIM sharedRCIM] initWithAppKey:RONGCLOUD_IM_APPKEY_];
     [[RCIM sharedRCIM] setConnectionStatusDelegate:self];
     [[RCIM sharedRCIM] setUserInfoDataSource:self];
     //登录融云服务器,开始阶段可以先从融云API调试网站获取，之后token需要通过服务器到融云服务器取。
@@ -208,8 +199,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     } tokenIncorrect:^{
         NSLog(@"token 无效 ，请确保生成token 使用的appkey 和初始化时的appkey 一致");
     }];
-    //注册自定义消息
-    [[RCDLive sharedRCDLive] registerRongCloudMessageType:[RCDLiveGiftMessage class]];
+    
 }
 - (void)setJpushAlias:(NSString *)loginName
 {
@@ -231,7 +221,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [RCIM sharedRCIM].enableMessageAttachUserInfo = YES;
     [RCIM sharedRCIM].currentUserInfo = userInfo;
     [[RCIM sharedRCIM] refreshUserInfoCache:userInfo withUserId:user.guardianModel.guardianId];
-    [RCDLive sharedRCDLive].currentUserInfo=userInfo;
 }
 /**
  *  网络状态变化。

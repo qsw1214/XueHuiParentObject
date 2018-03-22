@@ -9,8 +9,6 @@
 #import "MianTabBarViewController.h"
 #import "XHSmartCampusViewController.h"
 #import "XHIMNoticeViewController.h"
-#import "XHEducationCloudViewController.h"
-#import "XHEducationCloudViewController.h"
 #import "XHPersonalCenterViewController.h"
 #import "TabBarItem.h"
 #import <RongIMKit/RongIMKit.h>
@@ -51,13 +49,6 @@
     UINavigationController *imNoticeNavigation = [[UINavigationController alloc] initWithRootViewController:imNotice];
     [self addChildViewController:imNoticeNavigation];
 
-    XHEducationCloudViewController *educationCloud = [[XHEducationCloudViewController alloc] init];
-    [educationCloud navtionItemHidden:NavigationItemLeftType];
-    //创建tabBarItem
-    TabBarItem *educationCloudTabBarItem = [[TabBarItem alloc]initWithTitle:@"浩学云" imageName:@"ico_haoxueyunhui" selectedImageName:@"ico_haoxueyunse"];
-    [educationCloud setTabBarItem:educationCloudTabBarItem];
-    UINavigationController *educationCloudNavigation = [[UINavigationController alloc] initWithRootViewController:educationCloud];
-    [self addChildViewController:educationCloudNavigation];
     
     XHPersonalCenterViewController *personalCenter = [[XHPersonalCenterViewController alloc] init];
     [personalCenter navtionItemHidden:NavigationItemLeftType];

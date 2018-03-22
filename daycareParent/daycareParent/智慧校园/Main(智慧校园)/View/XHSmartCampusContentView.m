@@ -89,7 +89,7 @@
     [self setFrame:frame];
     
     [self.advertisementControl resetFrame:CGRectMake(0,0, frame.size.width, 190.0)];
-    [self.functionMenuControl resetFrame:CGRectMake(0, (self.advertisementControl.bottom+10.0), frame.size.width, 480.0)];
+    [self.functionMenuControl resetFrame:CGRectMake(0, (self.advertisementControl.bottom+10.0), frame.size.width, 360.0)];
     [self setContentSize:CGSizeMake(frame.size.width, self.functionMenuControl.bottom)];
 }
 

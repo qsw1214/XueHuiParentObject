@@ -263,7 +263,6 @@
                       NSDictionary *itemObject = [obj objectItemKey:@"propValue"];
                       XHHomeWorkFrame *frame = [[XHHomeWorkFrame alloc]init];
                       XHHomeWorkModel *model = [[XHHomeWorkModel alloc]init];
-                      [model setHomeWorkUnreadType:HomeWorkAlreadyReadType];
                       [model setNoticeItemObject:itemObject];
                       [frame setModel:model];
                       [self.dataArray addObject:frame];

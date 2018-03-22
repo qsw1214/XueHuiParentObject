@@ -491,6 +491,7 @@
 		8CAC512F2058FE4E00D2924F /* XHSystemNoticeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAC512E2058FE4E00D2924F /* XHSystemNoticeTableViewCell.m */; };
 		8CB8AA2A1FE8A2920043B4EA /* UIImage+Resizing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CB8AA291FE8A2920043B4EA /* UIImage+Resizing.m */; };
 		8CCD7E1F1FD0EE0D00F7F54E /* XHChagePhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCD7E1D1FD0EE0D00F7F54E /* XHChagePhoneViewController.m */; };
+		8CD2B37B2063336E0036F75E /* UIButton+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD2B37A2063336E0036F75E /* UIButton+Category.m */; };
 		8CD3241C2052250600E7AD03 /* TabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD3241B2052250600E7AD03 /* TabBarView.m */; };
 		8CD3241F20524B9C00E7AD03 /* XHChildCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD3241E20524B9C00E7AD03 /* XHChildCollectionView.m */; };
 		8CD324222052688A00E7AD03 /* XHRCTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD324212052688A00E7AD03 /* XHRCTableViewCell.m */; };
@@ -1449,6 +1450,8 @@
 		8CB8AA291FE8A2920043B4EA /* UIImage+Resizing.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Resizing.m"; path = "../../daycareParent.xcodeproj/UIImage+Resizing.m"; sourceTree = "<group>"; };
 		8CCD7E1C1FD0EE0D00F7F54E /* XHChagePhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHChagePhoneViewController.h; sourceTree = "<group>"; };
 		8CCD7E1D1FD0EE0D00F7F54E /* XHChagePhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHChagePhoneViewController.m; sourceTree = "<group>"; };
+		8CD2B3792063336E0036F75E /* UIButton+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Category.h"; sourceTree = "<group>"; };
+		8CD2B37A2063336E0036F75E /* UIButton+Category.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Category.m"; sourceTree = "<group>"; };
 		8CD3241A2052250600E7AD03 /* TabBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarView.h; sourceTree = "<group>"; };
 		8CD3241B2052250600E7AD03 /* TabBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarView.m; sourceTree = "<group>"; };
 		8CD3241D20524B9C00E7AD03 /* XHChildCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHChildCollectionView.h; sourceTree = "<group>"; };
@@ -2546,6 +2549,8 @@
 				8C5121E31FDF64BB00973E77 /* NSDictionary+Category.m */,
 				8C7DDC14205773FA00AF8D04 /* UIAlertController+Category.h */,
 				8C7DDC13205773FA00AF8D04 /* UIAlertController+Category.m */,
+				8CD2B3792063336E0036F75E /* UIButton+Category.h */,
+				8CD2B37A2063336E0036F75E /* UIButton+Category.m */,
 			);
 			path = "Category(分类)";
 			sourceTree = "<group>";
@@ -4346,6 +4351,7 @@
 				4BB792B91FD780C300E0ED72 /* XHAskforLeaveSubmitControl.m in Sources */,
 				0455C4D020609A03007A975C /* XHInfiniteRotationCollectionView.m in Sources */,
 				4BEBC8D420045EDA00FD6915 /* XHDynamicsHeaderControl.m in Sources */,
+				8CD2B37B2063336E0036F75E /* UIButton+Category.m in Sources */,
 				4B80F28B1FCBF04800BC7B52 /* MJRefreshConst.m in Sources */,
 				041649EA20525DC000D2CF4C /* XHAddressBookHeaderItemCell.m in Sources */,
 				0455C4D320609A2F007A975C /* XHPageCollectionViewItemCell.m in Sources */,

@@ -143,7 +143,7 @@
 -(void)refreshHeadView
 {
     XHUserInfo *userInfo=[XHUserInfo sharedUserInfo];
-    [_h_btn sd_setImageWithURL:[NSURL URLWithString:ALGetFileHeadThumbnail(userInfo.headPic)]forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"addman"]];
+    [_h_btn setHeadrPic:userInfo.headPic withName:userInfo.guardianModel.guardianName withType:XHTeacherType];
     if (![userInfo.guardianModel.guardianName isEqualToString:@""]) {
         _nameLabel.text=userInfo.guardianModel.guardianName;
     }

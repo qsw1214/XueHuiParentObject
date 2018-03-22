@@ -48,15 +48,14 @@
     XHChildCollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"childCellID" forIndexPath:indexPath];
     if (indexPath.item==_childListArry.count-1) {
         cell.childClassLabel.hidden=YES;
-        cell.headLabel.hidden=YES;
         cell.childNameLabel.text=@"绑定学生";
-        cell.childImageView.image=[UIImage imageNamed:@"ico_bindstudents"];
+        [cell.childButton setHeadBackgroundImage:[UIImage imageNamed:@"ico_bindstudents"] forState:UIControlStateNormal];
     }
     else
     {
         cell.childClassLabel.hidden=NO;
         XHChildListModel *model=_childListArry[indexPath.item];
-        [cell setHeadrPic:model.headPic withName:model.studentName withType:XHHeaderOtherType];
+        [cell.childButton setHeadrPic:model.headPic withName:model.studentName withType:XHstudentType];
         cell.childNameLabel.text=model.studentName;
         cell.childClassLabel.text=model.clazzName;
         

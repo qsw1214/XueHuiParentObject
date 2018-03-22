@@ -47,7 +47,7 @@
     cell.backLabel.frame=CGRectMake(130, 0, SCREEN_WIDTH-160, cell.bounds.size.height);
     cell.frontLabel.text=_titleArry[indexPath.row];
     cell.headBtn.frame=CGRectMake(SCREEN_WIDTH-USER_HEARD-30, 10, USER_HEARD, USER_HEARD);
-    [cell.headBtn sd_setImageWithURL:[NSURL URLWithString:ALGetFileHeadThumbnail(userInfo.headPic)] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"addman"]];
+    [cell.headBtn setHeadrPic:userInfo.headPic withName:userInfo.guardianModel.guardianName withType:XHTeacherType];
     if (indexPath.row==0) {
         cell.headBtn.hidden=NO;
         cell.backLabel.hidden=YES;

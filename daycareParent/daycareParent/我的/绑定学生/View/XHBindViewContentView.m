@@ -265,18 +265,32 @@
     {
         [self.netWorkConfig setObject:studentName forKey:@"studentName"]; //!< 学生姓名
         [self.netWorkConfig setObject:archiveId forKey:@"archiveId"];  //!< 学生学号
+        if (![self.netWorkConfig.paramDictionary objectForKey:@"guardianType"])
+        {
+            [self.netWorkConfig setObject:@"0" forKey:@"guardianType"];
+        }
+        
+        if ([self.actionDeletgate respondsToSelector:@selector(submitControlAction:)])
+        {
+            [self.actionDeletgate submitControlAction:self.netWorkConfig];
+        }
     }
     else
     {
         [self.netWorkConfig setObject:studentName forKey:@"studentName"]; //!< 学生姓名
         [self.netWorkConfig setObject:archiveId forKey:@"archiveId"];  //!< 学生学号
         [self.netWorkConfig setObject:parentName forKey:@"nickName"];
+        if (![self.netWorkConfig.paramDictionary objectForKey:@"guardianType"])
+        {
+            [self.netWorkConfig setObject:@"0" forKey:@"guardianType"];
+        }
+        if ([self.actionDeletgate respondsToSelector:@selector(submitControlAction:)])
+        {
+            [self.actionDeletgate submitControlAction:self.netWorkConfig];
+        }
     }
     
-    if ([self.actionDeletgate respondsToSelector:@selector(submitControlAction:)])
-    {
-        [self.actionDeletgate submitControlAction:self.netWorkConfig];
-    }
+    
     
 }
 

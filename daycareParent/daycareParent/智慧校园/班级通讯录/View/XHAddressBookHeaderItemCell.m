@@ -110,6 +110,7 @@
     if (!_headerImageView)
     {
         _headerImageView = [[XHHeaderControl alloc]init];
+        [_headerImageView setUserInteractionEnabled:NO];
     }
     return _headerImageView;
 }

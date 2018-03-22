@@ -69,9 +69,9 @@
 
 #pragma mark - Deletage Method
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(BaseTableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    [self.mainTableView tableTipViewWithArray:self.dataArray];
+    [tableView tableTipViewWithArray:self.dataArray];
     return [self.dataArray count];
 }
 
@@ -165,9 +165,11 @@
 {
     if (model)
     {
+        @WeakObj(self);
         [self.netWorkConfig setObject:model.clazzId forKey:@"classId"];
         [self.netWorkConfig postWithUrl:@"zzjt-app-api_smartCampus009" sucess:^(id object, BOOL verifyObject)
          {
+             @StrongObj(self);
              if (verifyObject)
              {
                  [self.dataArray removeAllObjects];

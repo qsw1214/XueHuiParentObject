@@ -43,6 +43,11 @@
 
 -(void)setSex:(NSString *)sex
 {
+
+    
+
+    
+    
     _sex = sex;
     if ([sex isEqualToString:@"0"])
     {

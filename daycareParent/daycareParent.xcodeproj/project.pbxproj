@@ -16,8 +16,6 @@
 		041649E4205251A400D2CF4C /* XHAddressBookHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 041649E3205251A400D2CF4C /* XHAddressBookHeader.m */; };
 		041649E72052572700D2CF4C /* XHAddressBookHeaderSwitchKnob.m in Sources */ = {isa = PBXBuildFile; fileRef = 041649E62052572700D2CF4C /* XHAddressBookHeaderSwitchKnob.m */; };
 		041649EA20525DC000D2CF4C /* XHAddressBookHeaderItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 041649E920525DC000D2CF4C /* XHAddressBookHeaderItemCell.m */; };
-		041649ED2052788F00D2CF4C /* 头像3@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041649EB2052788F00D2CF4C /* 头像3@3x.png */; };
-		041649EE2052788F00D2CF4C /* 头像3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041649EC2052788F00D2CF4C /* 头像3@2x.png */; };
 		041649F12052816C00D2CF4C /* XHAddressBookSwitchMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 041649F02052816C00D2CF4C /* XHAddressBookSwitchMenuView.m */; };
 		041649F4205283CD00D2CF4C /* XHddressBookMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 041649F3205283CD00D2CF4C /* XHddressBookMaskView.m */; };
 		0445F684205A046000B4E0A5 /* XHDateSwitchControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0445F683205A046000B4E0A5 /* XHDateSwitchControl.m */; };
@@ -542,8 +540,6 @@
 		041649E62052572700D2CF4C /* XHAddressBookHeaderSwitchKnob.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHAddressBookHeaderSwitchKnob.m; sourceTree = "<group>"; };
 		041649E820525DC000D2CF4C /* XHAddressBookHeaderItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHAddressBookHeaderItemCell.h; sourceTree = "<group>"; };
 		041649E920525DC000D2CF4C /* XHAddressBookHeaderItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHAddressBookHeaderItemCell.m; sourceTree = "<group>"; };
-		041649EB2052788F00D2CF4C /* 头像3@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "头像3@3x.png"; sourceTree = "<group>"; };
-		041649EC2052788F00D2CF4C /* 头像3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "头像3@2x.png"; sourceTree = "<group>"; };
 		041649EF2052816C00D2CF4C /* XHAddressBookSwitchMenuView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHAddressBookSwitchMenuView.h; sourceTree = "<group>"; };
 		041649F02052816C00D2CF4C /* XHAddressBookSwitchMenuView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHAddressBookSwitchMenuView.m; sourceTree = "<group>"; };
 		041649F2205283CD00D2CF4C /* XHddressBookMaskView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHddressBookMaskView.h; sourceTree = "<group>"; };
@@ -2038,8 +2034,6 @@
 		4B3126381FD93D3F000CE894 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				041649EC2052788F00D2CF4C /* 头像3@2x.png */,
-				041649EB2052788F00D2CF4C /* 头像3@3x.png */,
 				4B3126471FDA1FE7000CE894 /* XHAddressBookModel.h */,
 				4B3126481FDA1FE7000CE894 /* XHAddressBookModel.m */,
 				4B31264A1FDA1FF5000CE894 /* XHAddressBookFrame.h */,
@@ -4086,7 +4080,6 @@
 				8C7EF53A1FE0BBFD00C029F2 /* 37x-Wrong@2x.png in Resources */,
 				8C7EF5391FE0BBFD00C029F2 /* 37x-Wrong.png in Resources */,
 				4B80F1E01FCBE3F700BC7B52 /* Assets.xcassets in Resources */,
-				041649ED2052788F00D2CF4C /* 头像3@3x.png in Resources */,
 				4B3800F3200754D5004E74AC /* pageControlCurrentDot@3x.png in Resources */,
 				8C8336EE1FDCD6A000F48A25 /* RCConfig.plist in Resources */,
 				8C7DD7B9205B91ED00FB2497 /* README.txt in Resources */,
@@ -4099,7 +4092,6 @@
 				4B3800F5200754D5004E74AC /* pageControlCurrentDot@2x.png in Resources */,
 				4B80F31A1FCBFD6F00BC7B52 /* Info.plist in Resources */,
 				8C8336F01FDCD6A000F48A25 /* release_notes_ios.txt in Resources */,
-				041649EE2052788F00D2CF4C /* 头像3@2x.png in Resources */,
 				04AAEBB52058E7E400EF225D /* XHStudentDetailViewController.xib in Resources */,
 				8C7DD7AF205B91ED00FB2497 /* ShareSDKUI.bundle in Resources */,
 				4B3800F4200754D5004E74AC /* pageControlDot@2x.png in Resources */,

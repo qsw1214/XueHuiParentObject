@@ -7,7 +7,16 @@
 //
 
 #import "XHChildCollectionViewCell.h"
+#import "XHChildListModel.h"
 #define NAME_WIDTH
+
+@interface XHChildCollectionViewCell()
+@property(nonatomic,strong)UIButton *childButton;
+@property(nonatomic,strong)ParentLabel *childNameLabel;
+@property(nonatomic,strong)ParentLabel *childClassLabel;
+@end
+
+
 @implementation XHChildCollectionViewCell
 -(id)initWithFrame:(CGRect)frame
 {
@@ -29,6 +38,11 @@
     }
     return self;
 }
-
+-(void)setItemObject:(XHChildListModel *)model
+{
+    [self.childButton setHeadrPic:model.headPic withName:model.studentName withType:XHstudentType];
+    self.childNameLabel.text=model.studentName;
+    self.childClassLabel.text=model.clazzName;
+}
 
 @end

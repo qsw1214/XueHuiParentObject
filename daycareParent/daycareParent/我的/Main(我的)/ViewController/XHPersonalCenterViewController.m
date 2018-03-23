@@ -203,8 +203,6 @@
         _h_view.backgroundColor=RGB(69, 191, 145);
         [self refreshHeadView];
         self.childCollectionView=[[XHChildCollectionView alloc] initWithFrame:CGRectMake(10, _nameLabel.bottom+10, SCREEN_WIDTH-20, _h_view.bottom-(_nameLabel.bottom+10))];
-        self.childCollectionView.layer.cornerRadius=10;
-        self.childCollectionView.layer.masksToBounds=YES;
         [_h_view addSubview:self.childCollectionView];
         [self.childCollectionView setItemArray:self.childArry];
         @WeakObj(self);
@@ -256,7 +254,6 @@
             }
             
             [[XHUserInfo sharedUserInfo].childListArry setArray:self.childArry];
-            [self.childArry addObject:@""];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [_tableView refreshReload];
                 [self.childCollectionView setItemArray:self.childArry];
@@ -294,7 +291,6 @@
 {
     if (_childArry==nil) {
         _childArry=[NSMutableArray arrayWithArray:[XHUserInfo sharedUserInfo].childListArry];
-        [_childArry addObject:@""];
     }
     return _childArry;
 }

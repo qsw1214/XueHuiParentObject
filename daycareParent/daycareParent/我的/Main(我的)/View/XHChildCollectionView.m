@@ -10,9 +10,9 @@
 #import "XHChildCollectionViewCell.h"
 #import "XHChildListModel.h"
 @interface XHChildCollectionView()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
-{
-    NSMutableArray *_childListArry;
-}
+@property(nonatomic,strong)NSMutableArray *childListArry;
+@property(nonatomic,strong)BaseButtonControl *addButton;
+
 @end
 
 
@@ -20,13 +20,49 @@
 -(instancetype)initWithFrame:(CGRect)frame
 {
     if (self=[super initWithFrame:frame]) {
-        _childListArry=[NSMutableArray array];
+        self.layer.cornerRadius=10;
+        self.layer.masksToBounds=YES;
+        self.backgroundColor=[UIColor whiteColor];
+        [self addSubview:self.collectionView];
+        [self addSubview:self.addButton];
+    }
+    return self;
+}
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.childListArry.count;
+}
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    XHChildCollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"childCellID" forIndexPath:indexPath];
+    XHChildListModel *model=self.childListArry[indexPath.item];
+    [cell setItemObject:model];
+    return cell;
+}
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    XHChildListModel *model = self.childListArry[indexPath.item];
+    XHChildCollectionViewCell *cell=[collectionView cellForItemAtIndexPath:indexPath];
+    if (self.selectBlock) {
+        self.selectBlock(indexPath.row,model.studentName,model);
+    }
+}
+-(void)setItemArray:(NSMutableArray *)array
+{
+    self.childListArry=array;
+    [self.collectionView reloadData];
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:array.count - 1 inSection:0]  atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+}
+-(UICollectionView *)collectionView
+{
+    if (_collectionView==nil) {
         UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
         layout.itemSize = CGSizeMake(USER_HEARD, USER_HEARD*2+20);
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         layout.minimumLineSpacing = 8;
         layout.sectionInset = UIEdgeInsetsMake(15, 8, 15, 8);
-        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-20,USER_HEARD*2+20) collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-20-(USER_HEARD+8),USER_HEARD*2+20) collectionViewLayout:layout];
+        //_collectionView.backgroundColor=[UIColor redColor];
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.scrollsToTop = NO;
         _collectionView.bounces=NO;
@@ -35,47 +71,39 @@
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         [_collectionView registerClass:[XHChildCollectionViewCell class] forCellWithReuseIdentifier:@"childCellID"];
-        [self addSubview:_collectionView];
     }
-    return self;
+    return _collectionView;
 }
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+-(BaseButtonControl *)addButton
 {
-    return _childListArry.count;
-}
-- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    XHChildCollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"childCellID" forIndexPath:indexPath];
-    if (indexPath.item==_childListArry.count-1) {
-        cell.childClassLabel.hidden=YES;
-        cell.childNameLabel.text=@"绑定学生";
-        [cell.childButton setHeadBackgroundImage:[UIImage imageNamed:@"ico_bindstudents"] forState:UIControlStateNormal];
+    if (_addButton==nil) {
+        _addButton=[[BaseButtonControl alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-20-USER_HEARD-8, 0, USER_HEARD, USER_HEARD*2+20)];
+       // _addButton.backgroundColor=[UIColor orangeColor];
+        [_addButton setNumberImageView:1];
+        [_addButton setImageEdgeFrame:CGRectMake(0, 10, USER_HEARD, USER_HEARD) withNumberType:0 withAllType:NO];
+        [_addButton setImage:@"ico_bindstudents" withNumberType:0 withAllType:NO];
+        [_addButton setImageLayerCornerRadius:USER_HEARD/2.0 withNumberType:0 withAllType:NO];
+        [_addButton setNumberLabel:1];
+        [_addButton setTitleEdgeFrame:CGRectMake(0, USER_HEARD+20, USER_HEARD, 20) withNumberType:0 withAllType:NO];
+        [_addButton setTextAlignment:NSTextAlignmentCenter withNumberType:0 withAllType:NO];
+        [_addButton setFont:FontLevel3 withNumberType:0 withAllType:NO];
+        [_addButton setText:@"绑定学生" withNumberType:0 withAllType:NO];
+        [_addButton addTarget:self action:@selector(addMethod) forControlEvents:UIControlEventTouchUpInside];
     }
-    else
-    {
-        cell.childClassLabel.hidden=NO;
-        XHChildListModel *model=_childListArry[indexPath.item];
-        [cell.childButton setHeadrPic:model.headPic withName:model.studentName withType:XHstudentType];
-        cell.childNameLabel.text=model.studentName;
-        cell.childClassLabel.text=model.clazzName;
-        
-    }
-    
-    return cell;
+    return _addButton;
 }
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+-(void)addMethod
 {
-    XHChildListModel *model = _childListArry[indexPath.item];
-    XHChildCollectionViewCell *cell=[_collectionView cellForItemAtIndexPath:indexPath];
     if (self.selectBlock) {
-        self.selectBlock(indexPath.row,cell.childNameLabel.text,model);
+        self.selectBlock(self.childListArry.count-1,@"绑定学生",nil);
     }
 }
--(void)setItemArray:(NSMutableArray *)array
+-(NSMutableArray *)childListArry
 {
-    _childListArry=array;
-    [_collectionView reloadData];
-    [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:array.count - 1 inSection:0]  atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+    if (_childListArry==nil) {
+        _childListArry=[[NSMutableArray alloc] init];
+    }
+    return _childListArry;
 }
 /*
 // Only override drawRect: if you perform custom drawing.

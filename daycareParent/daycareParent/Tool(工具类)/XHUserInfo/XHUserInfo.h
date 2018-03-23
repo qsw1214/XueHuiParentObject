@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "XHGuardianInfo.h"
+
+typedef void (^isLogin)(BOOL success);
+
 @interface XHUserInfo : NSObject
 
 @property (nonatomic,copy) NSString *age; //!< age
@@ -47,4 +50,11 @@
  @param object 传入数据源字典
  */
 -(void)setItemObject:(NSDictionary*)object;
+
+/**
+ 登录方法
+
+ @param isLogin 登录方法
+ */
+-(void)isLogin:(isLogin)isLogin;
 @end

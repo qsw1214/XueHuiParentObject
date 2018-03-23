@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface XHChildCollectionViewCell : UICollectionViewCell
-@property(nonatomic,strong)UIButton *childButton;
-@property(nonatomic,strong)ParentLabel *childNameLabel;
-@property(nonatomic,strong)ParentLabel *childClassLabel;
+@interface XHChildCollectionViewCell : ParentCollectionViewCell
+
 @end

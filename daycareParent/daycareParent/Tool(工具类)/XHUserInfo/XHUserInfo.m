@@ -8,6 +8,7 @@
 
 #import "XHUserInfo.h"
 
+
 @implementation XHUserInfo
 
 static XHUserInfo *userInfo = nil;
@@ -70,7 +71,56 @@ static XHUserInfo *userInfo = nil;
     return _childListArry;
 }
 
+-(void)isLogin:(isLogin)isLogin
+{
+    {
+        XHLoginModel *model=[NSUserDefaults getLoginModel];
+        XHNetWorkConfig *net=[XHNetWorkConfig new];
+        [net setObject:model.loginName forKey:@"loginName"];
+        [net setObject:model.pwd forKey:@"pwd"];
+        [net setObject:@"3" forKey:@"type"];
+        [XHShowHUD showTextHud];
+        [net postWithUrl:@"zzjt-app-api_login" sucess:^(id object, BOOL verifyObject) {
+            if (verifyObject)
+            {
+                [[XHUserInfo sharedUserInfo] setItemObject:[object objectItemKey:@"object"]];
+                if ([[XHUserInfo sharedUserInfo].guardianModel.guardianId isEqualToString:@""]) {
+                    isLogin(NO);
+                    return ;
+                }
+                XHNetWorkConfig *netWork=[XHNetWorkConfig new];
+                [netWork setObject:[XHUserInfo sharedUserInfo].guardianModel.guardianId forKey:@"guardianId"];
+                [XHShowHUD showTextHud];
+                [netWork postWithUrl:@"zzjt-app-api_studentBinding008" sucess:^(id object, BOOL verifyObject) {
+                    if (verifyObject) {
+                        NSMutableArray *tempChildArray = [NSMutableArray array];
+                        NSArray *itemArry=[object objectItemKey:@"object"];
+                        for (NSDictionary *dic in itemArry) {
+                            XHChildListModel *model=[[XHChildListModel alloc] initWithDic:dic];
+                            [tempChildArray addObject:model];
+                        }
+                        [[XHUserInfo sharedUserInfo].childListArry setArray:tempChildArray];
+                         isLogin(YES);
+                    }
+                    else{
+                         isLogin(NO);
+                    }
+                    
+                } error:^(NSError *error) {
+                     isLogin(NO);
+                }];
+                
+            }
+            else
+            {
+                 isLogin(NO);
+            }
+        } error:^(NSError *error) {
+             isLogin(NO);
 
+        }];
+    }
+}
                   
 
 

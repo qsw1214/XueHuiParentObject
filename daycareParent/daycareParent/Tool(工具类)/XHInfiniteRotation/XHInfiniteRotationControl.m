@@ -143,25 +143,6 @@
 }
 
 
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    [NSArray enumerateObjectsWithArray:self.rotationArray usingBlock:^(XHAlertModel *obj, NSUInteger idx, BOOL *stop)
-     {
-         if (idx == indexPath.row)
-         {
-             [obj setModelType:XHAlertSelectType];
-         }
-         else
-         {
-             [obj setModelType:XHAlertNormalType];
-         }
-     }];
-    
-    [collectionView reloadData];
-}
-
-
 #pragma mark 设置页码
 -(void) scrollViewDidScroll:(UIScrollView *)scrollView
 {

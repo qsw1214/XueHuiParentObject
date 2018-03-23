@@ -32,6 +32,8 @@
         [self addSubview:self.confirmControl];
         [self setBackgroundColor:[UIColor whiteColor]];
         
+        
+        [self setItemColor:NO];
     }
     return self;
 }
@@ -41,10 +43,10 @@
 {
     [self setFrame:frame];
     [self.cancleControl resetFrame:CGRectMake(0, 0, frame.size.width/3.0, 30.0)];
-    [self.cancleControl setTitleEdgeFrame:CGRectMake(0, 0, self.cancleControl.width, self.cancleControl.height) withNumberType:0 withAllType:NO];
+    [self.cancleControl setTitleEdgeFrame:CGRectMake(20.0, 0, (self.cancleControl.width-40.0), self.cancleControl.height) withNumberType:0 withAllType:NO];
     [self.tipLabel setFrame:CGRectMake(self.cancleControl.right, self.cancleControl.top, self.cancleControl.width, self.cancleControl.height)];
     [self.confirmControl resetFrame:CGRectMake(self.tipLabel.right, self.tipLabel.top, self.tipLabel.width, self.tipLabel.height)];
-    [self.confirmControl setTitleEdgeFrame:CGRectMake(0, 0, self.cancleControl.width, self.cancleControl.height) withNumberType:0 withAllType:NO];
+    [self.confirmControl setTitleEdgeFrame:CGRectMake(20.0, 0, (self.cancleControl.width-40.0), self.cancleControl.height) withNumberType:0 withAllType:NO];
     [self.datePicker setFrame:CGRectMake(0, self.tipLabel.bottom, frame.size.width, (frame.size.height-self.tipLabel.height))];
     
 }
@@ -84,9 +86,10 @@
         _cancleControl = [[BaseButtonControl alloc]init];
         [_cancleControl setNumberLabel:1];
         [_cancleControl setTextAlignment:NSTextAlignmentCenter withNumberType:0 withAllType:NO];
-        [_cancleControl setFont:FontLevel4 withNumberType:0 withAllType:NO];
+        [_cancleControl setFont:FontLevel1 withNumberType:0 withAllType:NO];
         [_cancleControl setTextColor:[UIColor grayColor] withTpe:0 withAllType:NO];
         [_cancleControl setText:@"取消" withNumberType:0 withAllType:NO];
+        [_cancleControl setTextAlignment:NSTextAlignmentLeft withNumberType:0 withAllType:NO];
     }
     return _cancleControl;
 }
@@ -100,7 +103,7 @@
         [_tipLabel setTextColor:[UIColor grayColor]];
         [_tipLabel setTextAlignment:NSTextAlignmentCenter];
         [_tipLabel setText:@"请选择日期"];
-        [_tipLabel setFont:FontLevel3];
+        [_tipLabel setFont:FontLevel2];
         
     }
     return _tipLabel;
@@ -113,10 +116,22 @@
         _confirmControl = [[BaseButtonControl alloc]init];
         [_confirmControl setNumberLabel:1];
         [_confirmControl setTextAlignment:NSTextAlignmentCenter withNumberType:0 withAllType:NO];
-        [_confirmControl setFont:FontLevel4 withNumberType:0 withAllType:NO];
+        [_confirmControl setFont:FontLevel1 withNumberType:0 withAllType:NO];
         [_confirmControl setTextColor:MainColor withTpe:0 withAllType:NO];
         [_confirmControl setText:@"确定" withNumberType:0 withAllType:NO];
+        [_confirmControl setTextAlignment:NSTextAlignmentRight withNumberType:0 withAllType:NO];
     }
     return _confirmControl;
+}
+
+
+-(void)setItemColor:(BOOL)color
+{
+    if (color)
+    {
+        [self.tipLabel setBackgroundColor:[UIColor orangeColor]];
+        [self.cancleControl setItemColor:color];
+        [self.confirmControl setItemColor:color];
+    }
 }
 @end

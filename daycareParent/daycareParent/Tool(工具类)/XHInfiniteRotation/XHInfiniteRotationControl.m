@@ -74,7 +74,7 @@
     [self.dataArray setArray:array];
     [self.infiniteRotationView reloadData];
     
-     [self.infiniteRotationView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:MAXFLOAT/2] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
+//     [self.infiniteRotationView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:MAXFLOAT/2] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
     
 }
 

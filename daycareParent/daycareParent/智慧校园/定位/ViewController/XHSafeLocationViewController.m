@@ -81,7 +81,7 @@
 {
     if (!_mapView)
     {
-        _mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, CONTENT_HEIGHT-self.navigationView.bottom)];
+        _mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.bottom)];
         [_mapView setDelegate:self];
         [_mapView setShowsCompass:NO];
         [_mapView setUserTrackingMode:MAUserTrackingModeFollow animated:YES];

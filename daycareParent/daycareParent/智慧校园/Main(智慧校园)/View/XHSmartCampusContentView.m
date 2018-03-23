@@ -134,7 +134,7 @@
     NSLog(@"%.2f",self.advertisementControl.height);
     
     
-    [self.functionMenuControl resetFrame:CGRectMake(0, (self.advertisementControl.bottom+20.0), frame.size.width, 360.0)];
+    [self.functionMenuControl resetFrame:CGRectMake(0, (self.advertisementControl.bottom+20.0), frame.size.width, 400.0)];
     [self setContentSize:CGSizeMake(frame.size.width, self.functionMenuControl.bottom)];
 }
 

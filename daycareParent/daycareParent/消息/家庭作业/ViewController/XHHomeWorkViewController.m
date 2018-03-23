@@ -42,7 +42,7 @@
 {
     if (subview)
     {
-          [self.mainTableView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, CONTENT_HEIGHT)];
+          [self.mainTableView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.bottom)];
         [self.mainTableView setDelegate:self];
         [self.mainTableView setDataSource:self];
         [self.mainTableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHeaderAction)];

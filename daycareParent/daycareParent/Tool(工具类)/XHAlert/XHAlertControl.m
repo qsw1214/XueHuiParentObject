@@ -33,7 +33,7 @@
         [self setDelegate:delegate];
         [self setBackgroundColor:RGBAlpha(0, 0, 0, 0.3)];
         [self addSubview:self.alertBoard];
-        [self.alertBoard resetFrame:CGRectMake(50.0, 100.0, SCREEN_WIDTH-100.0, 300.0)];
+        [self.alertBoard resetFrame:CGRectMake(30.0, 100.0, SCREEN_WIDTH-60.0, 300.0)];
     }
     return self;
 }

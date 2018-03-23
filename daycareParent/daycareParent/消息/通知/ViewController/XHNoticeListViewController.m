@@ -12,7 +12,7 @@
 
 
 
-@interface XHNoticeListViewController () <UITableViewDelegate,UITableViewDataSource>
+@interface XHNoticeListViewController () <UITableViewDelegate,UITableViewDataSource,XHDatePickerDelegate>
 
 @property (nonatomic,strong) XHNoticeContentView *contentView;
 @property (nonatomic,assign) NSInteger pageNumber;
@@ -47,7 +47,7 @@
         [self.mainTableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHeaderAction)];
         [self.mainTableView showRefresFooterWithTarget:self withSelector:@selector(refreshFooterAction)];
         [self.mainTableView setTipType:TipTitleAndTipImage withTipTitle:@"暂无数据" withTipImage:@"pic_nothing"];
-        [self.mainTableView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, CONTENT_HEIGHT)];
+        [self.mainTableView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.bottom)];
         [self.view addSubview:self.mainTableView];
         [self.mainTableView beginRefreshing];
         /*
@@ -130,8 +130,6 @@
 
 -(void)rightItemAction:(BaseNavigationControlItem *)sender
 {
-    
-    
     XHDatePicker *datePicker = [[XHDatePicker alloc]init];
     [datePicker setDelegate:self];
     [datePicker show];

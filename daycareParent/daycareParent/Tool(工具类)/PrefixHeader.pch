@@ -54,7 +54,6 @@
 //设备屏幕尺寸
 #define SCREEN_HEIGHT   ([UIScreen mainScreen].bounds.size.height) //! 屏幕高度
 #define SCREEN_WIDTH    ([UIScreen mainScreen].bounds.size.width)   //!< 屏幕宽度
-#define CONTENT_HEIGHT   (SCREEN_HEIGHT-64.0) //! 内容高度
 
 
 //GCD

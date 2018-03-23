@@ -44,7 +44,7 @@
         {
             [self.view addSubview:self.addressBookHeader];
             [self.addressBookHeader resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, 60.0)];
-            [self.mainTableView resetFrame:CGRectMake(0, self.addressBookHeader.bottom, SCREEN_WIDTH, CONTENT_HEIGHT-self.addressBookHeader.height)];
+            [self.mainTableView resetFrame:CGRectMake(0, self.addressBookHeader.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-(self.addressBookHeader.bottom))];
             [self.view addSubview:self.mainTableView];
             [self.mainTableView setDelegate:self];
             [self.mainTableView setDataSource:self];
@@ -53,7 +53,7 @@
         }
         else
         {
-            [self.mainTableView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, CONTENT_HEIGHT)];
+            [self.mainTableView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.bottom)];
             [self.view addSubview:self.mainTableView];
             [self.mainTableView setDelegate:self];
             [self.mainTableView setDataSource:self];

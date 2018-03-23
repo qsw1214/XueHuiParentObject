@@ -11,6 +11,5 @@
 
 @interface XHEducationCloudWebViewController : BaseViewController
 
-//-(void)setEducationCloudObject:(XHEducationCloudFrame*)objet;
 -(void)setWebViewUrl:(NSString*)url;
 @end

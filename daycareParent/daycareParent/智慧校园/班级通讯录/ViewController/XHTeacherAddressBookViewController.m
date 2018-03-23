@@ -44,7 +44,14 @@
         {
             [self.view addSubview:self.addressBookHeader];
             [self.addressBookHeader resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, 60.0)];
-            [self.mainTableView resetFrame:CGRectMake(0, self.addressBookHeader.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-(self.addressBookHeader.bottom))];
+            if ([[XHHelper sharedHelper] isIphoneX]) {
+                [self.mainTableView resetFrame:CGRectMake(0, self.addressBookHeader.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-(self.addressBookHeader.bottom)-80)];
+            }
+            else
+            {
+               [self.mainTableView resetFrame:CGRectMake(0, self.addressBookHeader.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-(self.addressBookHeader.bottom)-50)];
+            }
+            
             [self.view addSubview:self.mainTableView];
             [self.mainTableView setDelegate:self];
             [self.mainTableView setDataSource:self];

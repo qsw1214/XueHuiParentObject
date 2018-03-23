@@ -54,7 +54,7 @@
         XHInfiniteRotationModel *rotaionModel = [[XHInfiniteRotationModel alloc]init];
         [rotaionModel setImageUrl:obj];
         XHPageModel *pageModel = [[XHPageModel alloc]init];
-        [pageModel setImageName:obj];
+        [pageModel setSize:YES];
         [pageModel setType:XHPageModelNormalType];
         [self.pageArray addObject:pageModel];
         [self.infiniteRotationArray addObject:rotaionModel];

@@ -15,13 +15,14 @@
 
 #define PageSpace 8
 #define PageItemWidth 8
+#define MaxSections 100
 
 @interface XHInfiniteRotationControl () <UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic,strong) XHPageCollectionView *pageView;
 @property (nonatomic,strong) XHInfiniteRotationCollectionView *infiniteRotationView;
 @property (nonatomic,strong) NSMutableArray *pageArray;
-
+@property (nonatomic,strong) NSMutableArray *rotationArray;
 @end
 
 @implementation XHInfiniteRotationControl
@@ -71,10 +72,10 @@
 
 -(void)setInfiniteRotationItemArray:(NSMutableArray *)array
 {
-    [self.dataArray setArray:array];
+    [self.rotationArray setArray:array];
     [self.infiniteRotationView reloadData];
     
-//     [self.infiniteRotationView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:MAXFLOAT/2] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
+     [self.infiniteRotationView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:MaxSections/2] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
     
 }
 
@@ -97,12 +98,12 @@
 #pragma mark- UICollectionViewDataSource
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return MAXFLOAT;
+    return MaxSections;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.dataArray count];
+    return [self.rotationArray count];
 }
 
 
@@ -111,7 +112,7 @@
 - (XHInfiniteRotationItemCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     XHInfiniteRotationItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
-    [cell setModel:[self.dataArray objectAtIndex:indexPath.row]];
+    [cell setModel:[self.rotationArray objectAtIndex:indexPath.row]];
     return cell;
 }
 
@@ -121,7 +122,7 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    XHAlertModel *model = [self.dataArray objectAtIndex:indexPath.row];
+    XHAlertModel *model = [self.rotationArray objectAtIndex:indexPath.row];
     return CGSizeMake(model.itemSize.width,model.itemSize.height);
 }
 
@@ -145,7 +146,7 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    [NSArray enumerateObjectsWithArray:self.dataArray usingBlock:^(XHAlertModel *obj, NSUInteger idx, BOOL *stop)
+    [NSArray enumerateObjectsWithArray:self.rotationArray usingBlock:^(XHAlertModel *obj, NSUInteger idx, BOOL *stop)
      {
          if (idx == indexPath.row)
          {
@@ -219,6 +220,15 @@
     return _pageArray;
 }
 
+
+-(NSMutableArray *)rotationArray
+{
+    if (!_rotationArray)
+    {
+        _rotationArray = [NSMutableArray array];
+    }
+    return _rotationArray;
+}
 
 -(void)setItemColor:(BOOL)color
 {

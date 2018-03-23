@@ -57,90 +57,6 @@
         [self.view addSubview:self.tableView];
         [self.tableView resetFrame:CGRectMake(0, self.cookBookHeader.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.cookBookHeader.bottom)];
         [self.tableView setTipType:TipTitleAndTipImage withTipTitle:@"暂无数据" withTipImage:@"pic_nothing"];
-        
-        
-        
-
-//        for (int i = 0; i< 1; i++)
-//        {
-//            XHCookBookFrame *frame = [[XHCookBookFrame alloc]init];
-//            XHCookBookModel *model = [[XHCookBookModel alloc]init];
-//            [model setTitle:[NSString stringWithFormat:@"周%d",i]];
-//            [model setModeType:CookBookWeekType];
-//            [model setSelectType:CookBookSelectType];
-//            [frame setModel:model];
-//            [self.dataArray addObject:frame];
-//        }
-//
-//        for (int i = 0; i< 4; i++)
-//        {
-//            XHCookBookFrame *frame = [[XHCookBookFrame alloc]init];
-//            XHCookBookModel *model = [[XHCookBookModel alloc]init];
-//            [model setTitle:[NSString stringWithFormat:@"周%d",i]];
-//            [model setModeType:CookBookWeekType];
-//            [model setSelectType:CookBookNormalType];
-//            [frame setModel:model];
-//            [self.dataArray addObject:frame];
-//        }
-//
-//        [self.cookBookHeader setItemArray:self.dataArray];
-        
-        
-//        {
-//
-//            for (int i = 0; i< 5; i++)
-//            {
-//                XHCookBookFrame *frame = [[XHCookBookFrame alloc]init];
-//                XHCookBookModel *model = [[XHCookBookModel alloc]init];
-//                [model setTitle:@"早餐"];
-//                [model setContent:@"肉末菜粥、豆沙包、芹菜豆干,肉末菜粥、豆沙包、芹菜豆干,肉末菜粥、豆沙包、芹菜豆干,肉末菜粥、豆沙包、芹菜豆干,肉末菜粥、豆沙包、芹菜豆干"];
-//                [model setPreviewUrl:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1520858413773&di=73ddf5c3cc4b1ea6af56b308aa2a7c56&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fbf096b63f6246b60553a62a0e1f81a4c510fa22a.jpg"];
-//                [model setModeType:CookBookDetailsType];
-//                [model setSelectType:CookBookNormalType];
-//
-//
-//
-//                for (int i = 0; i< 1; i++)
-//                {
-//                    XHInfiniteRotationModel *rotaionModel = [[XHInfiniteRotationModel alloc]init];
-//                    [rotaionModel setImageUrl:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1520858413773&di=73ddf5c3cc4b1ea6af56b308aa2a7c56&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fbf096b63f6246b60553a62a0e1f81a4c510fa22a.jpg"];
-//                    XHPageModel *pageModel = [[XHPageModel alloc]init];
-//                    [pageModel setImageName:nil];
-//                    [pageModel setType:XHPageModelSelectType];
-//                    [model.pageArray addObject:pageModel];
-//                    [model.infiniteRotationArray addObject:rotaionModel];
-//                }
-//
-//
-//                for (int i = 0; i< 2; i++)
-//                {
-//                    XHInfiniteRotationModel *rotaionModel = [[XHInfiniteRotationModel alloc]init];
-//                    [rotaionModel setImageUrl:@"http://img3.3lian.com/2013/c2/78/d/38.jpg"];
-//                    XHPageModel *pageModel = [[XHPageModel alloc]init];
-//                    [pageModel setImageName:nil];
-//                    [pageModel setType:XHPageModelNormalType];
-//                    [model.pageArray addObject:pageModel];
-//                    [model.infiniteRotationArray addObject:rotaionModel];
-//                }
-//
-//                for (int i = 0; i< 2; i++)
-//                {
-//                    XHInfiniteRotationModel *rotaionModel = [[XHInfiniteRotationModel alloc]init];
-//                    [rotaionModel setImageUrl:@"http://pic37.nipic.com/20140115/9448607_120900609000_2.jpg"];
-//                    XHPageModel *pageModel = [[XHPageModel alloc]init];
-//                    [pageModel setImageName:nil];
-//                    [pageModel setType:XHPageModelNormalType];
-//                    [model.pageArray addObject:pageModel];
-//                    [model.infiniteRotationArray addObject:rotaionModel];
-//                }
-//
-//
-//
-//                [frame setModel:model];
-//                [self.cookBookItemArray addObject:frame];
-//            }
-//        }
-        
     }
     
 }
@@ -215,11 +131,11 @@
                        [itemFrame setModel:itemModel];
                        [model.contentArray addObject:itemFrame];
                    }];
-                  
+
                   [frame setModel:model];
                   [self.dataArray addObject:frame];
               }];
-             
+
               [self.cookBookHeader setItemArray:self.dataArray];
          }
      } error:^(NSError *error)

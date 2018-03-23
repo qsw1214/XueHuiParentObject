@@ -57,22 +57,6 @@
         [self.dateSwitchControl resetFrame:CGRectMake(0, self.switchHeaderControl.bottom, SCREEN_WIDTH, self.switchHeaderControl.height)];
         [self.view addSubview:self.tableView];
         [self.tableView resetFrame:CGRectMake(0, self.dateSwitchControl.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.dateSwitchControl.bottom)];
-        
-        
-        
-//        for (int i = 0; i<10; i++)
-//        {
-//            XHRegisterFrame *frame = [[XHRegisterFrame alloc]init];
-//            XHRegisterModel *model = [[XHRegisterModel alloc]init];
-//            [model setTitle:@"周一"];
-//            [model setDate:@"11月10日"];
-//            [model setTime:@"00:00:00"];
-//            [frame setModel:model];
-//
-//            [self.dataArray addObject:frame];
-//        }
-//
-//        [self.tableView refreshReloadData];
     }
 }
 
@@ -155,22 +139,30 @@
 #pragma mark - NetWork Method
 -(void)getNetWorkDataWithType:(BOOL)type
 {
+    @WeakObj(self);
     [XHShowHUD showTextHud];
     [self.netWorkConfig postWithUrl:@"zzjt-app-api_smartCampus002" sucess:^(id object, BOOL verifyObject)
     {
+        @StrongObj(self);
         if (verifyObject)
         {
             NSArray *itemArray = [object objectForKey:@"object"];
-            @WeakObj(self);
-            [NSArray enumerateObjectsWithArray:itemArray usingBlock:^(id obj, NSUInteger idx, BOOL *stop)
-             {
-                 @StrongObj(self);
-                 XHRegisterFrame *frame = [[XHRegisterFrame alloc]init];
-                 XHRegisterModel *model = [[XHRegisterModel alloc]init];
-                 [model setItemObject:obj];
-                 [frame setModel:model];
-                 [self.dataArray addObject:frame];
+            NSMutableArray *tempArray = [NSMutableArray array];
+            [NSArray enumerateObjectsWithArray:itemArray usingforceBlock:^(id obj, NSUInteger idx, BOOL *stop, BOOL forceStop)
+            {
+                if (forceStop)
+                {
+                    XHRegisterFrame *frame = [[XHRegisterFrame alloc]init];
+                    XHRegisterModel *model = [[XHRegisterModel alloc]init];
+                    [model setItemObject:obj];
+                    [frame setModel:model];
+                    [tempArray addObject:frame];
+                }
+                
+                
              }];
+            
+            [self.dataArray setArray:tempArray];
             [self.tableView refreshReloadData];
         }
         

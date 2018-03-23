@@ -17,9 +17,10 @@ typedef NS_ENUM(NSInteger,XHPageModelType)
 
 @interface XHPageModel : BaseModel
 
-@property (nonatomic,copy) NSString *imageName;//!< 图片名字
 @property (nonatomic,assign) CGSize itemSize;
 @property (nonatomic,assign) XHPageModelType type; //!< 模型类型
+
+-(void)setSize:(BOOL)setSize;
 
 
 @end

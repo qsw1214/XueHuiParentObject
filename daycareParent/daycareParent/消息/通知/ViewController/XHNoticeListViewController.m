@@ -258,8 +258,10 @@
              NSArray *itemObjectArray = [[object objectItemKey:@"object"] objectItemKey:@"pageResult"];
              if (itemObjectArray)
              {
+                 @WeakObj(self);
                  [itemObjectArray enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop)
                   {
+                      @StrongObj(self);
                       NSDictionary *itemObject = [obj objectItemKey:@"propValue"];
                       XHHomeWorkFrame *frame = [[XHHomeWorkFrame alloc]init];
                       XHHomeWorkModel *model = [[XHHomeWorkModel alloc]init];

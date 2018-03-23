@@ -6,10 +6,21 @@
 //  Copyright © 2018年 XueHui. All rights reserved.
 //
 
+
+
+#pragma mark 设置绑定密码或者输入绑定密码
+
+
+
 #import "XHAddBindPasswordViewController.h"
 #import "MainRootControllerHelper.h"
 #import "XHPersonalCenterViewController.h"
+
+
+
 @interface XHAddBindPasswordViewController ()
+
+
 
 
 @property (nonatomic,strong) BaseButtonControl *passwordControl;

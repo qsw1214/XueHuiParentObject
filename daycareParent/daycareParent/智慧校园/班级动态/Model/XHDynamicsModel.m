@@ -48,8 +48,10 @@
         [imageModelArray addObject:imageModel];
     }
     
-    [imageModelArray enumerateObjectsUsingBlock:^(XHPreviewModel * _Nonnull obj, NSUInteger idx, BOOL *stop)
+    @WeakObj(self);
+    [NSArray enumerateObjectsWithArray:imageModelArray usingBlock:^(XHPreviewModel * _Nonnull obj, NSUInteger idx, BOOL *stop)
      {
+         @StrongObj(self);
          if (![obj.previewPic isEqualToString:@""])
          {
              [self.imageUrlArray addObject:obj];

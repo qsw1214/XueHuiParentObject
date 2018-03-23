@@ -153,8 +153,10 @@
                      case FooterRefresh:
                          break;
                  }
-                 [pageResultArray enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop)
+                 @WeakObj(self);
+                 [NSArray enumerateObjectsWithArray:pageResultArray usingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop)
                   {
+                      @StrongObj(self);
                       NSInteger inddexTage = [self.dataArray count];
                       NSDictionary *item = [obj objectItemKey:@"propValue"];
                       XHDynamicsFrame *frame = [[XHDynamicsFrame alloc]init];

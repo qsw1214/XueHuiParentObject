@@ -47,8 +47,10 @@
     
     NSString *picUrl = [NSString safeString:[object objectItemKey:@"picUrl"]];
     NSArray *imageUrlArray = [picUrl componentsSeparatedByString:@","];
+    @WeakObj(self);
     [NSArray enumerateObjectsWithArray:imageUrlArray usingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop)
     {
+        @StrongObj(self);
         XHInfiniteRotationModel *rotaionModel = [[XHInfiniteRotationModel alloc]init];
         [rotaionModel setImageUrl:obj];
         XHPageModel *pageModel = [[XHPageModel alloc]init];

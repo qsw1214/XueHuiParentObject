@@ -31,7 +31,7 @@
         {
             if ([model.imageUrlArray count])
             {
-                [model.imageUrlArray enumerateObjectsUsingBlock:^(XHPreviewModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
+                [NSArray enumerateObjectsWithArray:model.imageUrlArray usingBlock:^(XHPreviewModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
                  {
                      [obj setItemSize:CGSizeMake((SCREEN_WIDTH-90.0-30)/3.0, 50.0)];
                  }];

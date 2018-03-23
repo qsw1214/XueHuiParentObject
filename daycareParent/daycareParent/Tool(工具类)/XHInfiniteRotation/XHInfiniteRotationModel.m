@@ -12,7 +12,7 @@
 
 -(void)setImageUrl:(NSString *)imageUrl
 {
-    _imageUrl = imageUrl;
+    _imageUrl = ALGetFileImageOriginal(imageUrl);
     [self setItemSize:CGSizeMake(SCREEN_WIDTH, 270.0)];
 }
 

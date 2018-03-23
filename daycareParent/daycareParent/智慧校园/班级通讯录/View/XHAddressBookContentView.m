@@ -107,13 +107,13 @@
 #pragma mark UITableViewDelegate
 -(void)tableView:(BaseTableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.dataArray enumerateObjectsUsingBlock:^(XHAddressBookKey *bookKey, NSUInteger bookKeyidx, BOOL * _Nonnull stop)
+    [NSArray enumerateObjectsWithArray:self.dataArray usingBlock:^(XHAddressBookKey *bookKey, NSUInteger bookKeyidx, BOOL * _Nonnull stop)
      {
          
          if (bookKeyidx == indexPath.section)
          {
              #pragma mark 如果选中当前分组就开始遍历查询打开的是该分组下那个元素，把选中的元素打开，未选中的关闭
-             [bookKey.itemArray enumerateObjectsUsingBlock:^(XHAddressBookFrame *obj, NSUInteger idx, BOOL *stop)
+             [NSArray enumerateObjectsWithArray:bookKey.itemArray usingBlock:^(XHAddressBookFrame *obj, NSUInteger idx, BOOL *stop)
               {
                   if (idx == indexPath.row)
                   {
@@ -146,7 +146,7 @@
          else
          {
              #pragma mark 如果为选中当前分组就把该分组下所有的元素设置为未选中状态（如果之前打开过该分组的某项，在点击另一分组的时候就关闭该分组中打开的元素）
-             [bookKey.itemArray enumerateObjectsUsingBlock:^(XHAddressBookFrame *obj, NSUInteger idx, BOOL *stop)
+             [NSArray enumerateObjectsWithArray:bookKey.itemArray usingBlock:^(XHAddressBookFrame *obj, NSUInteger idx, BOOL *stop)
               {
                   [obj.model setModelType:XHAddressBookModelNormalType];
                   [obj setModel:obj.model];

@@ -121,8 +121,10 @@
 
 -(void)tableView:(BaseTableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.dataArray enumerateObjectsUsingBlock:^(XHTeacherAddressBookKey *bookKey, NSUInteger bookKeyidx, BOOL * _Nonnull stop)
+    @WeakObj(self);
+    [NSArray enumerateObjectsWithArray:self.dataArray usingBlock:^(XHTeacherAddressBookKey *bookKey, NSUInteger bookKeyidx, BOOL * _Nonnull stop)
      {
+         @StrongObj(self);
          if (bookKeyidx == indexPath.section)
          {
 #pragma mark 如果选中当前分组就开始遍历查询打开的是该分组下那个元素，把选中的元素打开，未选中的关闭
@@ -165,7 +167,7 @@
          else
          {
 #pragma mark 如果为选中当前分组就把该分组下所有的元素设置为未选中状态（如果之前打开过该分组的某项，在点击另一分组的时候就关闭该分组中打开的元素）
-             [bookKey.itemArray enumerateObjectsUsingBlock:^(XHTeacherAddressBookFrame *obj, NSUInteger idx, BOOL *stop)
+             [NSArray enumerateObjectsWithArray:bookKey.itemArray usingBlock:^(XHTeacherAddressBookFrame *obj, NSUInteger idx, BOOL *stop)
               {
                   [obj.model setMarkType:XHTeacherAddressBookMarkNormalType];
                   [obj setModel:obj.model];

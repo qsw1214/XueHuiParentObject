@@ -140,8 +140,10 @@
                 NSArray *itemObjectArray = [[object objectItemKey:@"object"] objectItemKey:@"pageResult"];
                 if (itemObjectArray)
                 {
+                    @WeakObj(self);
                     [itemObjectArray enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop)
                      {
+                         @StrongObj(self);
                          NSDictionary *itemObject = [obj objectItemKey:@"propValue"];
                          XHNoticeFrame *frame = [[XHNoticeFrame alloc]init];
                          XHNoticeModel *model = [[XHNoticeModel alloc]init];

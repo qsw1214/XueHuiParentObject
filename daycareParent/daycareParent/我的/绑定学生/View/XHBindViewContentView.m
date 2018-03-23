@@ -213,24 +213,23 @@
     for (int i= 0; i< 3; i++)
     {
         XHAlertModel *model = [[XHAlertModel alloc]init];
+        [model setIdentityType:[NSString stringWithFormat:@"%zd",i]];
         switch (i)
         {
             case 0:
             {
                 [model setName:@"爸爸"];
-                [model setIdentityType:@"1"];
+                
             }
                 break;
             case 1:
             {
                 [model setName:@"妈妈"];
-                [model setIdentityType:@"2"];
             }
                 break;
             case 2:
             {
                 [model setName:@"其他"];
-                [model setIdentityType:@"3"];
             }
                 break;
         }

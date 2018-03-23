@@ -635,8 +635,10 @@
              {
                  [self.dataArray removeAllObjects];
              }
+             @WeakObj(self);
              [NSArray enumerateObjectsWithArray:familyArray usingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop)
               {
+                  @StrongObj(self);
                   obj = [obj objectItemKey:@"propValue"];
                   XHFamilyListModel *model = [[XHFamilyListModel alloc]init];
                   [model setItemObject:obj];

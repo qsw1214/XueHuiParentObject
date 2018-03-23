@@ -259,7 +259,6 @@ static XHHelper *helper = nil;
     NSDateComponents *components = [calendar components:NSCalendarUnitWeekday fromDate:fromDate];
     
     NSInteger weekday = [components weekday];
-    NSString *week = @"周一";
     switch (weekday)
     {
         case 1:

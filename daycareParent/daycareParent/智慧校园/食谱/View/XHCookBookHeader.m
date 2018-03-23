@@ -51,22 +51,57 @@
     [self.dataArray setArray:array];
     [self reloadData];
     
-    [NSArray enumerateObjectsWithArray:self.dataArray usingBlock:^(XHCookBookFrame *obj, NSUInteger idx, BOOL *stop)
-    {
-        if (idx == 0)
-        {
-            [obj.model setSelectType:CookBookSelectType];
-        }
-        else
-        {
-            [obj.model setSelectType:CookBookNormalType];
-        }
-    }];
     
-    if ([self.cookDeletage respondsToSelector:@selector(didSelectItemObject:)])
+    
+    NSInteger weekDay = [XHHelper weekdayWithNowDate:[NSDate date]];
+    
+    switch (weekDay)
     {
-        [self.cookDeletage didSelectItemObject:[self.dataArray firstObject]];
+        case 6:
+        case 7:
+        {
+            [NSArray enumerateObjectsWithArray:self.dataArray usingBlock:^(XHCookBookFrame *obj, NSUInteger idx, BOOL *stop)
+             {
+                 [obj.model setSelectType:CookBookNormalType];
+             }];
+            
+            if ([self.cookDeletage respondsToSelector:@selector(didSelectItemObject:)])
+            {
+                [self.cookDeletage didSelectItemObject:[self.dataArray lastObject]];
+            }
+        }
+            break;
+            
+        default:
+        {
+            [NSArray enumerateObjectsWithArray:self.dataArray usingBlock:^(XHCookBookFrame *obj, NSUInteger idx, BOOL *stop)
+             {
+                 if ((weekDay-1) == idx)
+                 {
+                    [obj.model setSelectType:CookBookSelectType];
+                 }
+                 else
+                 {
+                     [obj.model setSelectType:CookBookNormalType];
+                 }
+                 
+             }];
+            
+            
+            if ([self.cookDeletage respondsToSelector:@selector(didSelectItemObject:)])
+            {
+                [self.cookDeletage didSelectItemObject:[self.dataArray objectAtIndex:(weekDay-1)]];
+            }
+           
+        }
+            break;
     }
+    
+    
+    
+   
+    
+   
     
 }
 

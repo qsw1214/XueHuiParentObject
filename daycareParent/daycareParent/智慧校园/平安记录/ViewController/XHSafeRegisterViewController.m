@@ -111,7 +111,7 @@
 -(void)didSelectItem:(XHChildListModel *)model
 {
     [self.dateSwitchControl resetDate:YES];
-    [self.netWorkConfig setObject:model.studentId forKey:@"studentBaseId"];
+    [self.netWorkConfig setObject:model.studentBaseId forKey:@"studentBaseId"];
     [self.netWorkConfig setObject:[self.dateSwitchControl getNonceDate:NO] forKey:@"date"];
     [self getNetWorkDataWithType:YES];
 }
@@ -161,11 +161,13 @@
         if (verifyObject)
         {
             NSArray *itemArray = [object objectForKey:@"object"];
+            @WeakObj(self);
             [NSArray enumerateObjectsWithArray:itemArray usingBlock:^(id obj, NSUInteger idx, BOOL *stop)
              {
+                 @StrongObj(self);
                  XHRegisterFrame *frame = [[XHRegisterFrame alloc]init];
                  XHRegisterModel *model = [[XHRegisterModel alloc]init];
-                 [model setItemObject:object];
+                 [model setItemObject:obj];
                  [frame setModel:model];
                  [self.dataArray addObject:frame];
              }];

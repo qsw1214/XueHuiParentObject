@@ -8,6 +8,10 @@
 
 #import "BaseViewController.h"
 
+
+#pragma mark 绑定孩子
+
+
 typedef NS_ENUM(NSInteger,XHBindViewControllerEnterType)
 {
     XHRegisterEnterType=1, //!< 注册界面进入
@@ -17,7 +21,7 @@ typedef NS_ENUM(NSInteger,XHBindViewControllerEnterType)
 };
 
 
-#pragma mark 绑定孩子
+
 
 @interface XHBindViewController : BaseViewController
 @property(nonatomic,assign)XHBindViewControllerEnterType enterType;

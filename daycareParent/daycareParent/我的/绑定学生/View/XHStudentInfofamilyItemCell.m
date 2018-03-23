@@ -70,15 +70,19 @@
     }
     
     
-    if ([model.guardianType isEqualToString:@"0"])
+    if ([model.guardianType isEqualToString:@"0"])  //!< 爸爸
     {
         [self.titleLabel setText:@"爸爸"];
     }
-    else if ([model.guardianType isEqualToString:@"1"])
+    else if ([model.guardianType isEqualToString:@"1"]) //!< 妈妈
     {
         [self.titleLabel setText:@"妈妈"];
     }
-    else if ([model.guardianType isEqualToString:@"2"])
+    else if ([model.guardianType isEqualToString:@"2"]) //!< 其他
+    {
+        [self.titleLabel setText:@"其他"];
+    }
+    else
     {
         [self.titleLabel setText:@"其他"];
     }

@@ -73,7 +73,7 @@
              （1.已经有第一监护人 0.没有被绑定过）
              */
             
-            NSInteger isBinding = [[propValue objectForKey:@"isBinding"] integerValue]; //!<
+            NSInteger isBinding = [[propValue objectForKey:@"isBinding"] integerValue]; //!< （1.已经有第一监护人 0.没有被绑定过）
             XHAddBindPasswordViewController *addPassword = [[XHAddBindPasswordViewController alloc]init];
             [addPassword setNetWorkConfig:sender];
             

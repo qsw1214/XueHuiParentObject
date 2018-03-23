@@ -33,9 +33,6 @@
 		048608612062321600913F2D /* XHSyllabusHeaderBoardControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 048608602062321600913F2D /* XHSyllabusHeaderBoardControl.m */; };
 		048608652062489800913F2D /* XHHeaderControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 048608642062489700913F2D /* XHHeaderControl.m */; };
 		04AA2FD3205FC09100549D23 /* XHStudentInfofamilyItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AA2FD2205FC09100549D23 /* XHStudentInfofamilyItemCell.m */; };
-		04AAEBB52058E7E400EF225D /* XHStudentDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AAEBAB2058E7E400EF225D /* XHStudentDetailViewController.xib */; };
-		04AAEBB62058E7E400EF225D /* XHStudentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AAEBAC2058E7E400EF225D /* XHStudentDetailViewController.m */; };
-		04AAEBB92058E7E400EF225D /* XHFamilyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AAEBAF2058E7E400EF225D /* XHFamilyListViewController.m */; };
 		04AAEBBA2058E7E400EF225D /* XHFamilyListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AAEBB42058E7E400EF225D /* XHFamilyListModel.m */; };
 		04AAEBBC2058E86C00EF225D /* XHBindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AAEBBB2058E86C00EF225D /* XHBindViewController.m */; };
 		04AAEBBF2058E89A00EF225D /* XHBindViewContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AAEBBE2058E89A00EF225D /* XHBindViewContentView.m */; };
@@ -575,11 +572,6 @@
 		048608642062489700913F2D /* XHHeaderControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHHeaderControl.m; sourceTree = "<group>"; };
 		04AA2FD1205FC09100549D23 /* XHStudentInfofamilyItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHStudentInfofamilyItemCell.h; sourceTree = "<group>"; };
 		04AA2FD2205FC09100549D23 /* XHStudentInfofamilyItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHStudentInfofamilyItemCell.m; sourceTree = "<group>"; };
-		04AAEBAA2058E7E400EF225D /* XHFamilyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHFamilyListViewController.h; sourceTree = "<group>"; };
-		04AAEBAB2058E7E400EF225D /* XHStudentDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHStudentDetailViewController.xib; sourceTree = "<group>"; };
-		04AAEBAC2058E7E400EF225D /* XHStudentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHStudentDetailViewController.m; sourceTree = "<group>"; };
-		04AAEBAF2058E7E400EF225D /* XHFamilyListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHFamilyListViewController.m; sourceTree = "<group>"; };
-		04AAEBB02058E7E400EF225D /* XHStudentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHStudentDetailViewController.h; sourceTree = "<group>"; };
 		04AAEBB12058E7E400EF225D /* XHBindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHBindViewController.h; sourceTree = "<group>"; };
 		04AAEBB32058E7E400EF225D /* XHFamilyListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHFamilyListModel.h; sourceTree = "<group>"; };
 		04AAEBB42058E7E400EF225D /* XHFamilyListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHFamilyListModel.m; sourceTree = "<group>"; };
@@ -1664,11 +1656,6 @@
 		04AAEBA92058E7E400EF225D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				04AAEBAA2058E7E400EF225D /* XHFamilyListViewController.h */,
-				04AAEBAF2058E7E400EF225D /* XHFamilyListViewController.m */,
-				04AAEBB02058E7E400EF225D /* XHStudentDetailViewController.h */,
-				04AAEBAC2058E7E400EF225D /* XHStudentDetailViewController.m */,
-				04AAEBAB2058E7E400EF225D /* XHStudentDetailViewController.xib */,
 				04AAEBB12058E7E400EF225D /* XHBindViewController.h */,
 				04AAEBBB2058E86C00EF225D /* XHBindViewController.m */,
 				04D5397F205BC27700DB344E /* XHAddBindPasswordViewController.h */,
@@ -4097,7 +4084,6 @@
 				4B3800F5200754D5004E74AC /* pageControlCurrentDot@2x.png in Resources */,
 				4B80F31A1FCBFD6F00BC7B52 /* Info.plist in Resources */,
 				8C8336F01FDCD6A000F48A25 /* release_notes_ios.txt in Resources */,
-				04AAEBB52058E7E400EF225D /* XHStudentDetailViewController.xib in Resources */,
 				8C7DD7AF205B91ED00FB2497 /* ShareSDKUI.bundle in Resources */,
 				4B3800F4200754D5004E74AC /* pageControlDot@2x.png in Resources */,
 				04052DBE205689C200D1637F /* 预览.jpg in Resources */,
@@ -4132,7 +4118,6 @@
 				4B80F2D81FCBF04F00BC7B52 /* UIView+WebCache.m in Sources */,
 				4B8E661E1FD643400006D641 /* XHCookBookCell.m in Sources */,
 				4B523BDB1FD157F8006DD565 /* XHLeaveRecordViewController.m in Sources */,
-				04AAEBB92058E7E400EF225D /* XHFamilyListViewController.m in Sources */,
 				4B4A001A1FE2437300B8A8F8 /* XHDynamicsCollectionView.m in Sources */,
 				8C7E98331FECF1660096288E /* SGQRCodeHelperTool.m in Sources */,
 				4B3418701FFDC14C00A5EC56 /* ASValuePopUpView.m in Sources */,
@@ -4221,7 +4206,6 @@
 				4B80F2241FCBEC2B00BC7B52 /* MainRootControllerHelper.m in Sources */,
 				4B278AE92010422C00293F30 /* RCDDanmakuManager.m in Sources */,
 				4B80F2C71FCBF04F00BC7B52 /* SDWebImageCoder.m in Sources */,
-				04AAEBB62058E7E400EF225D /* XHStudentDetailViewController.m in Sources */,
 				0474F6482057CAB20081A37D /* XHDatePicker.m in Sources */,
 				8CD3241F20524B9C00E7AD03 /* XHChildCollectionView.m in Sources */,
 				4B8E660E1FD63A460006D641 /* BaseWebView.m in Sources */,

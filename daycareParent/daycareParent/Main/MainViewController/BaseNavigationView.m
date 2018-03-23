@@ -38,7 +38,7 @@
 -(void)resetFrame:(CGRect)frame
 {
     [self setFrame:frame];
-    CGFloat hight = frame.size.height >= 64.0 ? 30.0 : 0.0;
+    CGFloat hight = frame.size.height > 64.0 ? 30.0 : 0.0;
     [self.letfItem setFrame:CGRectMake(0, (20+hight), 80, 44)];
     [self.titleLabel setFrame:CGRectMake(80, (20+hight), SCREEN_WIDTH-(80*2), 44)];
     [self.rightItem setFrame:CGRectMake(SCREEN_WIDTH-80, (20+hight), 80, 44)];

@@ -130,13 +130,13 @@
                 break;
             case 4:
             {
-                [self.thursdayLabel setBackgroundColor:[UIColor whiteColor]];
+                [self.thursdayLabel setTextColor:[UIColor whiteColor]];
                 [self.thursdayLabel setBackgroundColor:MainColor];
             }
                 break;
             case 5:
             {
-                [self.fridayLabel setBackgroundColor:[UIColor whiteColor]];
+                [self.fridayLabel setTextColor:[UIColor whiteColor]];
                 [self.fridayLabel setBackgroundColor:MainColor];
             }
                 break;

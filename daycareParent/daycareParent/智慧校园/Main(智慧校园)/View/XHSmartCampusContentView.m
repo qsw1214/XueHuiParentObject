@@ -103,7 +103,7 @@
         
         if ([iphoneType isEqualToString:@"iPhone 6"] || [iphoneType isEqualToString:@"iPhone 6S"] || [iphoneType isEqualToString:@"iPhone 7"] || [iphoneType isEqualToString:@"iPhone 8"])
         {
-            Height = 200;
+            Height = 220;
         }
         
         if ([iphoneType isEqualToString:@"iPhone 5"] || [iphoneType isEqualToString:@"iPhone 5C"])
@@ -113,7 +113,7 @@
         
         if ([iphoneType isEqualToString:@"iPhone 6 Plus"] || [iphoneType isEqualToString:@"iPhone 6s Plus"] || [iphoneType isEqualToString:@"iPhone 7 Plus"])
         {
-            Height = 230.0;
+            Height = 240.0;
         }
         
         
@@ -172,7 +172,7 @@
     {
         NSArray *itemArray = @[@{@"title":@"考勤记录",@"describe":@"Attendance Record",@"icon":@"bg_kaoqin"},
   @{@"title":@"安全定位",@"describe":@"Safety Positioning",@"icon":@"bg_dingwei"},
-  @{@"title":@"成绩",@"describe":@"Ache",@"icon":@"bg_kaoqin",@"icon":@"bg_chengji"},
+  @{@"title":@"成绩",@"describe":@"Ache",@"icon":@"bg_chengji"},
   @{@"title":@"课程表",@"describe":@"Class Schedule Card",@"icon":@"bg_kechengbiao"},
   @{@"title":@"请假",@"describe":@"Leave",@"icon":@"bg_qingjia"},
   @{@"title":@"食谱",@"describe":@"Recipes",@"icon":@"bg_food"}];

@@ -97,11 +97,15 @@
                 
                 [NSArray enumerateObjectsWithArray:self.dataArray usingBlock:^(XHFamilyListModel *obj, NSUInteger idx, BOOL *stop)
                  {
-                     XHAlertModel *model = [[XHAlertModel alloc]init];
-                     [model setAlertTag:2];
-                     [model setName:obj.guardianName];
-                     [model setObjectID:obj.guardianId];
-                     [alertArray addObject:model];
+                     if (![obj.guardianId isEqualToString:[XHUserInfo sharedUserInfo].guardianModel.guardianId])
+                     {
+                         XHAlertModel *model = [[XHAlertModel alloc]init];
+                         [model setAlertTag:2];
+                         [model setName:obj.guardianName];
+                         [model setObjectID:obj.guardianId];
+                         [alertArray addObject:model];
+                     }
+                    
                  }];
                 
                 

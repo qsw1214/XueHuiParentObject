@@ -184,7 +184,7 @@
 //开始倒计时
 - (void)startCountdown
 {
-    NSIndexPath *  indexPath = [NSIndexPath indexPathForRow:3 inSection:0];
+    NSIndexPath *  indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
     //找到对应的cell
     XHVerifyTableViewCell *Cell = [_tableView cellForRowAtIndexPath:indexPath];
     [Cell.verifyButton setTitle:countDownStr(_currentS) forState:UIControlStateNormal];
@@ -195,7 +195,7 @@
 - (void)timer
 {
     _ifSelect=YES;
-    NSIndexPath *  indexPath = [NSIndexPath indexPathForRow:3 inSection:0];
+    NSIndexPath *  indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
     //找到对应的cell
     XHVerifyTableViewCell *Cell = [_tableView cellForRowAtIndexPath:indexPath];
     --_currentS;

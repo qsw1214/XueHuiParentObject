@@ -18,7 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setNavtionTitle:@"校灵通用户协议"];
-    UIWebView *webView=[[UIWebView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+    UIWebView *webView=[[UIWebView alloc] initWithFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.bottom)];
     webView.scrollView.bounces = NO;
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://admin.ixuehui.cn/app_ua.html"]]];
     [self.view addSubview:webView];

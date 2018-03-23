@@ -135,9 +135,11 @@ static MainRootControllerHelper *rootHelper = nil;
                     if (verifyObject) {
                         NSMutableArray *tempChildArray = [NSMutableArray array];
                         NSArray *itemArry=[object objectItemKey:@"object"];
-                        for (NSDictionary *dic in itemArry) {
-                            XHChildListModel *model=[[XHChildListModel alloc] initWithDic:dic];
-                            [tempChildArray addObject:model];
+                        if (itemArry) {
+                            for (NSDictionary *dic in itemArry) {
+                                XHChildListModel *model=[[XHChildListModel alloc] initWithDic:dic];
+                                [tempChildArray addObject:model];
+                            }
                         }
                         [[XHUserInfo sharedUserInfo].childListArry setArray:tempChildArray];
                         

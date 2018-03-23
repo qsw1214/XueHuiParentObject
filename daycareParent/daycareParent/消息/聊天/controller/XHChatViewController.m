@@ -46,14 +46,13 @@
     [self setConversationPortraitSize:CGSizeMake(50, 50)];
     [self.view addSubview:self.navigationView];
     
-    NSString *iphoneType=[[XHHelper sharedHelper] iphoneType] ;
-    if ([iphoneType isEqualToString:@"iPhone X"]|| [iphoneType isEqualToString:@"iPhone Simulator"])
+    if ([[XHHelper sharedHelper] isIphoneX])
     {
         self.conversationListTableView.frame=CGRectMake(0, 94, SCREEN_WIDTH, SCREEN_HEIGHT-94-49-34);
     }
     else
     {
-        self.conversationListTableView.frame=CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64);
+        self.conversationListTableView.frame=CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64-49);
     }
     self.conversationListTableView.rowHeight=50;
     self.conversationListTableView.separatorColor =LineViewColor;
@@ -230,16 +229,32 @@
 {
     if (_navigationView == nil)
     {
-        _navigationView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 64.0)];
-        self.navigationView.backgroundColor=[UIColor whiteColor];
-        UILabel *titleLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 20, SCREEN_WIDTH, 44)];
-        titleLabel.textAlignment=NSTextAlignmentCenter;
-        [titleLabel setFont:[UIFont boldSystemFontOfSize:18.0]];
-        titleLabel.text=@"消息";
-        UIView *bottomView=[[UIView alloc] initWithFrame:CGRectMake(0, 63, SCREEN_WIDTH, 1)];
-        bottomView.backgroundColor=LineViewColor;
-        [_navigationView addSubview:titleLabel];
-        [_navigationView addSubview:bottomView];
+        if ([[XHHelper sharedHelper]isIphoneX]) {
+            _navigationView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 94.0)];
+            self.navigationView.backgroundColor=[UIColor whiteColor];
+            UILabel *titleLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 20, SCREEN_WIDTH, 74)];
+            titleLabel.textAlignment=NSTextAlignmentCenter;
+            [titleLabel setFont:[UIFont boldSystemFontOfSize:18.0]];
+            titleLabel.text=@"消息";
+            UIView *bottomView=[[UIView alloc] initWithFrame:CGRectMake(0, 93, SCREEN_WIDTH, 1)];
+            bottomView.backgroundColor=LineViewColor;
+            [_navigationView addSubview:titleLabel];
+            [_navigationView addSubview:bottomView];
+        }
+        else
+        {
+            _navigationView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 64.0)];
+            self.navigationView.backgroundColor=[UIColor whiteColor];
+            UILabel *titleLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 20, SCREEN_WIDTH, 44)];
+            titleLabel.textAlignment=NSTextAlignmentCenter;
+            [titleLabel setFont:[UIFont boldSystemFontOfSize:18.0]];
+            titleLabel.text=@"消息";
+            UIView *bottomView=[[UIView alloc] initWithFrame:CGRectMake(0, 63, SCREEN_WIDTH, 1)];
+            bottomView.backgroundColor=LineViewColor;
+            [_navigationView addSubview:titleLabel];
+            [_navigationView addSubview:bottomView];
+        }
+        
     }
     return _navigationView;
 }

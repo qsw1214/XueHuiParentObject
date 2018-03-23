@@ -17,7 +17,7 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        _titleImageView=[[ParentImageView alloc] initWithFrame:CGRectMake(20, 12, (self.contentView.bounds.size.height-26)/2.0, 26)];
+        _titleImageView=[[ParentImageView alloc] initWithFrame:CGRectMake(20, (self.contentView.bounds.size.height-25)/2.0, 25, 25)];
         [self.contentView addSubview:_titleImageView];
         _textFeild=[[UITextField alloc] initWithFrame:CGRectMake(50, 0, SCREEN_WIDTH-120, self.contentView.bounds.size.height)];
         _textFeild.clearButtonMode=UITextFieldViewModeWhileEditing;

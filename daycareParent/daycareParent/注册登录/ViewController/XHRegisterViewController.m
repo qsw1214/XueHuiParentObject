@@ -219,7 +219,7 @@
 -(BaseTableView *)tableView
 {
     if (_tableView==nil) {
-        _tableView=[[BaseTableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64) style:UITableViewStyleGrouped];
+        _tableView=[[BaseTableView alloc] initWithFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.bottom) style:UITableViewStyleGrouped];
         _tableView.separatorStyle=UITableViewCellSeparatorStyleSingleLine;
         _tableView.rowHeight=50;
         _tableView.delegate=self;

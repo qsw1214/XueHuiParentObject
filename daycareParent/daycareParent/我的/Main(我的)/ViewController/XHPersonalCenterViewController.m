@@ -248,10 +248,13 @@
         if (verifyObject) {
             [self.childArry removeAllObjects];
             NSArray *itemArry=[object objectItemKey:@"object"];
-            for (NSDictionary *dic in itemArry) {
-                XHChildListModel *model=[[XHChildListModel alloc] initWithDic:dic];
-                [self.childArry addObject:model];
+            if (itemArry) {
+                for (NSDictionary *dic in itemArry) {
+                    XHChildListModel *model=[[XHChildListModel alloc] initWithDic:dic];
+                    [self.childArry addObject:model];
+                }
             }
+            
             [[XHUserInfo sharedUserInfo].childListArry setArray:self.childArry];
             [self.childArry addObject:@""];
             dispatch_async(dispatch_get_main_queue(), ^{

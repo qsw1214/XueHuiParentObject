@@ -75,8 +75,7 @@
 {
     if (_customTabBarView==nil)
     {
-        NSString *iphonex = [[XHHelper sharedHelper] iphoneType];
-        if ([iphonex isEqualToString:@"iPhone X"] || [iphonex isEqualToString:@"iPhone Simulator"])
+        if ([[XHHelper sharedHelper]isIphoneX])
         {
             _customTabBarView = [[TabBarView alloc] initWithFrame:CGRectMake(0, [[UIScreen mainScreen] bounds].size.height - 54-34, [[UIScreen mainScreen] bounds].size.width, 54+34)];
         }

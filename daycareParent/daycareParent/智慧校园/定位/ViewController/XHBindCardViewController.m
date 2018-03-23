@@ -59,7 +59,7 @@
 
 - (SGQRCodeScanningView *)scanningView {
     if (!_scanningView) {
-        _scanningView = [[SGQRCodeScanningView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 0.9 * self.view.frame.size.height-64)];
+        _scanningView = [[SGQRCodeScanningView alloc] initWithFrame:CGRectMake(0, self.navigationView.bottom, self.view.frame.size.width, 0.9 * self.view.frame.size.height-self.navigationView.bottom)];
        
     }
     return _scanningView;

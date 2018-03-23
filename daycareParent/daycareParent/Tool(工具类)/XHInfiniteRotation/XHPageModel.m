@@ -11,7 +11,7 @@
 @implementation XHPageModel
 
 
--(void)setImageName:(NSString *)imageName
+-(void)setSize:(BOOL)setSize
 {
     [self setItemSize:CGSizeMake(8.0, 8.0)];
 }

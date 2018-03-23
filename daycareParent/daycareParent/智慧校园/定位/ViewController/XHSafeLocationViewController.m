@@ -59,12 +59,8 @@
         if (verifyObject) {
             NSArray *arr=[object objectItemKey:@"object"];
             if (arr.count==0) {
-                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"还没绑定相关卡片" preferredStyle:UIAlertControllerStyleAlert];
-                [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    
-                }]];
-                [self presentViewController:alertController animated:YES completion:nil];
-                return ;
+                [UIAlertController alertWithmessage:@"还没绑定相关卡片" titlesArry:@[@"确定"] controller:self indexBlock:^(NSInteger index, id object) {}];
+                 return ;
             }
             for (NSDictionary *dic in arr) {
                 XHLocationModel *model=[[XHLocationModel alloc] initWithDic:dic];
@@ -81,7 +77,7 @@
 {
     if (!_mapView)
     {
-        _mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, CONTENT_HEIGHT-self.navigationView.bottom)];
+        _mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.bottom)];
         [_mapView setDelegate:self];
         [_mapView setShowsCompass:NO];
         [_mapView setUserTrackingMode:MAUserTrackingModeFollow animated:YES];

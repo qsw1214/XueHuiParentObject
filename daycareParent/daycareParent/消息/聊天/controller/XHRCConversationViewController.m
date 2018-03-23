@@ -47,8 +47,9 @@
     {
         if ([[XHHelper sharedHelper]isIphoneX]) {
             _navigationView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 94.0)];
-            ParentImageView *iconImageView=[[ParentImageView alloc] initWithFrame:CGRectMake(10, 67, 10, 10)];
+            ParentImageView *iconImageView=[[ParentImageView alloc] initWithFrame:CGRectMake(10, 20+(44-15)/2.0, 15, 15)];
             iconImageView.image=[UIImage imageNamed:@"arr_back"];
+
             [_navigationView addSubview:iconImageView];
             UILabel *Label=[[UILabel alloc] initWithFrame:CGRectMake(20, 60, 50, 24)];
             Label.text=@"返回";
@@ -66,7 +67,7 @@
         else
         {
             _navigationView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 64.0)];
-            ParentImageView *iconImageView=[[ParentImageView alloc] initWithFrame:CGRectMake(10, 37, 10, 10)];
+            ParentImageView *iconImageView=[[ParentImageView alloc] initWithFrame:CGRectMake(10, 20+(44-15)/2.0, 15, 15)];
             iconImageView.image=[UIImage imageNamed:@"arr_back"];
             [_navigationView addSubview:iconImageView];
             UILabel *Label=[[UILabel alloc] initWithFrame:CGRectMake(20, 30, 50, 24)];

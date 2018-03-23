@@ -48,11 +48,11 @@
     
     if ([[XHHelper sharedHelper] isIphoneX])
     {
-        self.conversationListTableView.frame=CGRectMake(0, 94, SCREEN_WIDTH, SCREEN_HEIGHT-94-49-34);
+        self.conversationListTableView.frame=CGRectMake(0, 94, SCREEN_WIDTH, SCREEN_HEIGHT-94-50-34);
     }
     else
     {
-        self.conversationListTableView.frame=CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64-49);
+        self.conversationListTableView.frame=CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64-50);
     }
     self.conversationListTableView.rowHeight=50;
     self.conversationListTableView.separatorColor =LineViewColor;

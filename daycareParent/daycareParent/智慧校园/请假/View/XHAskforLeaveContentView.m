@@ -10,7 +10,7 @@
 #import "XHAskforLeaveArrowCell.h" //选择开始时间、结束时间、选择请假学生等视图
 #import "XHAskforLeaveChargeTeacherControl.h" //!< 班主任按钮
 #import "XHAskforLeaveSubmitControl.h" //!< 提交按钮
-#import "XHDatePickerControl.h" //!< 日期选择器
+//#import "XHDatePickerControl.h" //!< 日期选择器
 #import "XHAskforLeavePreviewControl.h" //!< 添加的请假照片预览图
 #import "CameraManageViewController.h"  //!< 相机管理类
 #import "XHTeacherAddressBookViewController.h"
@@ -21,7 +21,8 @@
 #import "XHSubmitView.h"//!<  提交按钮视图
 #import "XHRecipientModel.h"
 #import "XHCustomPickerView.h"//!<请假类型
-@interface XHAskforLeaveContentView () <BaseTextViewDeletage,XHDatePickerControlDeletage,XHAskforLeavePreviewControlDeletage,CameraManageDeletage,XHCustomPickerViewDelegate,XHSubmitViewDelegate>
+#import "XHDatePicker.h"//!< 日期选择器
+@interface XHAskforLeaveContentView () <BaseTextViewDeletage,XHDatePickerDelegate,XHAskforLeavePreviewControlDeletage,CameraManageDeletage,XHCustomPickerViewDelegate,XHSubmitViewDelegate>
 
 @property (nonatomic,strong) UIAlertController *alertController; //!< 弹出框视图控制器
 @property (nonatomic,weak) BaseViewController *viewController;
@@ -93,7 +94,6 @@
     [self.startTimeControl resetFrame:CGRectMake(self.topAccessoryView.left, self.addPhotoControl.bottom+10.0, frame.size.width, self.childOptionsControl.height)];
     [self.endTimeControl resetFrame:CGRectMake(self.startTimeControl.left, self.startTimeControl.bottom, self.startTimeControl.width, self.startTimeControl.height)];
      [self.timeControl resetFrame:CGRectMake(self.endTimeControl.left, self.endTimeControl.bottom, self.endTimeControl.width, self.endTimeControl.height)];
-    // [_timeControl setDescribeLabelFrame:CGRectMake(130.0, 0, (_timeControl.width-150), _timeControl.height)];
     [self.timeLabel setFrame:CGRectMake(10,self.timeControl.bottom,self.topAccessoryView.width-20, 40)];
     [self.middleAccessoryView resetFrame:CGRectMake(self.topAccessoryView.left,self.timeLabel.bottom,self.topAccessoryView.width, self.topAccessoryView.height)];
     [self.loseSubjectView resetFrame:CGRectMake(0, self.middleAccessoryView.bottom, self.middleAccessoryView.width, 90)];
@@ -140,13 +140,20 @@
         case 5:
         {
             [self setSelectTimeControl:sender.tag];
-            [[XHDatePickerControl sharedObject] showWithDeletage:self];
+            XHDatePicker *datePicker = [[XHDatePicker alloc]init];
+            [datePicker setDelegate:self];
+            [datePicker show];
         }
             break;
 #pragma mark case 6  请假时长
             case 6:
         {
            UIAlertController *alertController= [UIAlertController addtextFeildWithmessage:@"请输入请假时长" controller:self.viewController indexBlock:^(NSInteger index, id object) {
+               if (![NSString times:@"0.5" withMultiple:object])
+               {
+                   [XHShowHUD showNOHud:@"天数最小单位为0.5"];
+                   return ;
+               }
                 [self.timeControl setDescribe:[NSString stringWithFormat:@"%@天",object]];
             }];
 alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunctuation;
@@ -256,8 +263,8 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
 }
 
 
-#pragma mark XHDatePickerControlDeletage
--(void)datePickerClickObject:(NSString *)date
+#pragma mark XHDatePickerDeletage
+-(void)datePickerAction:(NSString *)date
 {
     switch (self.selectTimeControl)
     {
@@ -367,10 +374,10 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
     {
         [XHShowHUD showNOHud:@"请选择结束时间"];
     }
-    else if ([[NSString safeString:beginTime] isEqualToString:endTime])
-    {
-        [XHShowHUD showNOHud:@"开始结束时间不能相同"];
-    }
+//    else if ([[NSString safeString:beginTime] isEqualToString:endTime])
+//    {
+//        [XHShowHUD showNOHud:@"开始结束时间不能相同"];
+//    }
     else if ([beginTime compare:endTime] == NSOrderedDescending)
     {
         [XHShowHUD showNOHud:@"开始时间不能晚于结束时间"];
@@ -631,7 +638,6 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
     }
     return _pickerView;
 }
-
 #pragma mark 孩子列表
 -(UIAlertController *)alertController
 {

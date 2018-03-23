@@ -56,11 +56,11 @@
     {
         [self.view addSubview:self.contentView];
         if ([[XHHelper sharedHelper] isIphoneX]) {
-            [self.contentView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.bottom-50)];
+            [self.contentView resetFrame:CGRectMake(0,self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.bottom-84)];
         }
         else
         {
-            [self.contentView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.bottom-84.0)];
+            [self.contentView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.bottom-50.0)];
         }
         
         [self.contentView addSwitchModel:YES];

@@ -11,7 +11,7 @@
 #import "XHChildListModel.h"
 @interface XHChildCollectionView()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 @property(nonatomic,strong)NSMutableArray *childListArry;
-@property(nonatomic,strong)BaseButtonControl *addButton;
+@property(nonatomic,strong)ParentButton *addButton;
 
 @end
 
@@ -62,7 +62,6 @@
         layout.minimumLineSpacing = 8;
         layout.sectionInset = UIEdgeInsetsMake(15, 8, 15, 8);
         _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-20-(USER_HEARD+8),USER_HEARD*2+20) collectionViewLayout:layout];
-        //_collectionView.backgroundColor=[UIColor redColor];
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.scrollsToTop = NO;
         _collectionView.bounces=NO;
@@ -74,20 +73,20 @@
     }
     return _collectionView;
 }
--(BaseButtonControl *)addButton
+-(ParentButton *)addButton
 {
     if (_addButton==nil) {
-        _addButton=[[BaseButtonControl alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-20-USER_HEARD-8, 0, USER_HEARD, USER_HEARD*2+20)];
-       // _addButton.backgroundColor=[UIColor orangeColor];
+        _addButton=[[ParentButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-20-USER_HEARD-8, 0, USER_HEARD, USER_HEARD*2+20)];
         [_addButton setNumberImageView:1];
-        [_addButton setImageEdgeFrame:CGRectMake(0, 10, USER_HEARD, USER_HEARD) withNumberType:0 withAllType:NO];
-        [_addButton setImage:@"ico_bindstudents" withNumberType:0 withAllType:NO];
-        [_addButton setImageLayerCornerRadius:USER_HEARD/2.0 withNumberType:0 withAllType:NO];
+        [_addButton setImageViewBackgroundColor:[UIColor redColor] withNumberIndex:0];
+        [_addButton setImageViewCGRectMake:CGRectMake(0, 10, USER_HEARD, USER_HEARD) withNumberIndex:0];
+        [_addButton setImageViewName:@"ico_bindstudents" withNumberIndex:0];
+        [_addButton setImageViewCornerRadius:USER_HEARD/2.0 withNumberIndex:0];
         [_addButton setNumberLabel:1];
-        [_addButton setTitleEdgeFrame:CGRectMake(0, USER_HEARD+20, USER_HEARD, 20) withNumberType:0 withAllType:NO];
-        [_addButton setTextAlignment:NSTextAlignmentCenter withNumberType:0 withAllType:NO];
-        [_addButton setFont:FontLevel3 withNumberType:0 withAllType:NO];
-        [_addButton setText:@"绑定学生" withNumberType:0 withAllType:NO];
+        [_addButton setLabelCGRectMake:CGRectMake(0, USER_HEARD+20, USER_HEARD, 20) withNumberIndex:0];
+        [_addButton setLabelTextAlignment:NSTextAlignmentCenter withNumberIndex:0];
+        [_addButton setLabelFont:FontLevel3 withNumberIndex:0];
+        [_addButton setLabelText:@"绑定学生" withNumberIndex:0];
         [_addButton addTarget:self action:@selector(addMethod) forControlEvents:UIControlEventTouchUpInside];
     }
     return _addButton;
@@ -95,7 +94,7 @@
 -(void)addMethod
 {
     if (self.selectBlock) {
-        self.selectBlock(self.childListArry.count-1,@"绑定学生",nil);
+        self.selectBlock(self.childListArry.count,@"绑定学生",nil);
     }
 }
 -(NSMutableArray *)childListArry

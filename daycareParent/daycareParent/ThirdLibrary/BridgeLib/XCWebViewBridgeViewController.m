@@ -33,7 +33,7 @@
     _progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     
     
-    _webView = [[XCWebView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64) usingUIWebView:self.usingUIWebView];
+    _webView = [[XCWebView alloc] initWithFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.bottom) usingUIWebView:self.usingUIWebView];
     _webView.scrollView.bounces = NO;
 //    _webView.scrollView.scrollEnabled = NO;
     
@@ -87,7 +87,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    _webView.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64);
+    _webView.frame = CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.bottom);
     
     _progressView.frame = [self getProgressViewFrame];
     if (self.navigationController && self.navigationController.navigationBarHidden == NO)       //有导航
@@ -117,7 +117,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    _webView.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64);
+    _webView.frame = CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.bottom);
 }
 
 #pragma mark ----

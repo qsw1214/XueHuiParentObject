@@ -208,7 +208,7 @@
         @WeakObj(self);
         self.childCollectionView.selectBlock = ^(NSInteger index,NSString *childName,XHChildListModel *model) {
             @StrongObj(self);
-            if (index==self.childArry.count-1) {
+            if (index==self.childArry.count) {
 #pragma mark -----跳转到绑定孩子界面
                 XHBindViewController *bind=[[XHBindViewController alloc] initHiddenWhenPushHidden];
                 [bind setEnterType:XHBindEnterType];

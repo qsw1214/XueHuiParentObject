@@ -166,7 +166,7 @@
                     loginModel.type=[@"3" integerValue];
                     [NSUserDefaults  saveLocalObject:loginModel forKey:AutoLogin];
                 
-                    [[XHUserInfo sharedUserInfo] setItemObject:object];
+                    [[XHUserInfo sharedUserInfo] setItemObject:[object objectItemKey:@"object"]];
                     
                     XHBindViewController *bind=[[XHBindViewController alloc] init];
                     bind.enterType=XHRegisterEnterType;

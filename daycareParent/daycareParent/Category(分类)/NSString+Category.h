@@ -64,4 +64,13 @@
  @return 得到时间格式
  */
 +(NSString *)dateStr:(NSString *)dateStr;
+
+/**
+ 判断是否为整除
+
+ @param times 倍数
+ @param multiple 被判断数
+ @return 是否为整除
+ */
++(BOOL)times:(NSString *)times withMultiple:(NSString *)multiple;
 @end

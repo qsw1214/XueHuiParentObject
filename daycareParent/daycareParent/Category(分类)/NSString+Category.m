@@ -155,4 +155,26 @@
     NSString *String=[myDateFormatter stringFromDate:date];
     return String;
 }
+#pragma mark-----判断是被整除
++(BOOL)times:(NSString *)times withMultiple:(NSString *)multiple
+{
+#pragma mark-----除数（倍数）
+    double doubleTimes=[times doubleValue]*10;
+    int intTimes=(int)doubleTimes;
+#pragma mark-----被除数（是否为整数）
+    double doubleMultiple=[multiple doubleValue]*10;
+    int intMultiple=(int)doubleMultiple;
+    
+    if (intMultiple%intTimes==0&&intMultiple!=0)
+    {
+        kNSLog(@"整数");
+        return YES;
+    }
+    else
+    {
+        kNSLog(@"非整数");
+        return NO;
+    }
+    
+}
 @end

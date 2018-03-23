@@ -46,9 +46,11 @@
     [self.tableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHead)];
     [self.tableView beginRefreshing];
     @WeakObj(self);
-    self.isRefresh = ^(BOOL ok) {
+    self.isRefresh = ^(BOOL ok)
+    {
         @StrongObj(self);
-        if (ok) {
+        if (ok)
+        {
             [self getChildListNet];
             [self refreshUserInfo];
         }
@@ -131,8 +133,10 @@
 {
     XHUserViewController *userVC=[XHUserViewController new];
     [userVC setHidesBottomBarWhenPushed:YES];
-    userVC.isRefresh = ^(BOOL ok) {
-        if (ok) {
+    userVC.isRefresh = ^(BOOL ok)
+    {
+        if (ok)
+        {
              [self refreshHeadView];
         }
     };
@@ -144,7 +148,8 @@
 {
     XHUserInfo *userInfo=[XHUserInfo sharedUserInfo];
     [_h_btn setHeadrPic:userInfo.headPic withName:userInfo.guardianModel.guardianName withType:XHTeacherType];
-    if (![userInfo.guardianModel.guardianName isEqualToString:@""]) {
+    if (![userInfo.guardianModel.guardianName isEqualToString:@""])
+    {
         _nameLabel.text=userInfo.guardianModel.guardianName;
     }
     else
@@ -154,7 +159,8 @@
 }
 -(void)refreshUserInfo
 {
-    if (![[XHUserInfo sharedUserInfo].guardianModel.familyId isEqualToString:@""]) {
+    if (![[XHUserInfo sharedUserInfo].guardianModel.familyId isEqualToString:@""])
+    {
         
         return ;
     }
@@ -163,16 +169,15 @@
     [net setObject:model.loginName forKey:@"loginName"];
     [net setObject:model.pwd forKey:@"pwd"];
     [net setObject:@"3" forKey:@"type"];
-    [net postWithUrl:@"zzjt-app-api_login" sucess:^(id object, BOOL verifyObject) {
+    [net postWithUrl:@"zzjt-app-api_login" sucess:^(id object, BOOL verifyObject)
+    {
         if (verifyObject)
         {
             XHGuardianInfo *guardianModel=[[XHGuardianInfo alloc] initWithDic:[[[object objectItemKey:@"object"] objectItemKey:@"propValue"] objectItemKey:@"guardian"]];
             [XHUserInfo sharedUserInfo].guardianModel=guardianModel;
         }
         
-    } error:^(NSError *error) {
-        
-    }];
+    } error:^(NSError *error) {}];
 }
 #pragma mark----导航栏视图
 -(UIView *)h_view
@@ -181,7 +186,6 @@
         _h_view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, USER_HEARD*2+200)];
         _h_view.layer.masksToBounds=YES;
         UIView *bgView=[[UIView alloc] initWithFrame:CGRectMake(0, _h_view.bottom-SCREEN_WIDTH/2.0, SCREEN_WIDTH*2, SCREEN_WIDTH)];
-        //SCREEN_WIDTH+SCREEN_WIDTH/9
         bgView.center=CGPointMake(SCREEN_WIDTH/2.0, SCREEN_WIDTH+110);
         bgView.layer.cornerRadius=SCREEN_WIDTH;
         bgView.backgroundColor=RGB(239, 239, 239);
@@ -206,14 +210,18 @@
         [_h_view addSubview:self.childCollectionView];
         [self.childCollectionView setItemArray:self.childArry];
         @WeakObj(self);
-        self.childCollectionView.selectBlock = ^(NSInteger index,NSString *childName,XHChildListModel *model) {
+        self.childCollectionView.selectBlock = ^(NSInteger index,NSString *childName,XHChildListModel *model)
+        {
             @StrongObj(self);
-            if (index==self.childArry.count) {
+            if (index==self.childArry.count)
+            {
 #pragma mark -----跳转到绑定孩子界面
                 XHBindViewController *bind=[[XHBindViewController alloc] initHiddenWhenPushHidden];
                 [bind setEnterType:XHBindEnterType];
-                bind.isRefresh = ^(BOOL ok) {
-                    if (ok) {
+                bind.isRefresh = ^(BOOL ok)
+                {
+                    if (ok)
+                    {
                         [self getChildListNet];
                     }
                 };
@@ -224,8 +232,10 @@
 #pragma mark -----跳转到绑定孩子详情界面
                 @StrongObj(self);
                 XHStudentInfoViewController *student=[[XHStudentInfoViewController alloc] initHiddenWhenPushHidden];
-                student.isRefresh = ^(BOOL ok) {
-                    if (ok) {
+                student.isRefresh = ^(BOOL ok)
+                {
+                    if (ok)
+                    {
                         [self getChildListNet];
                     }
                 };
@@ -242,12 +252,16 @@
         _getChildListNet=[[XHNetWorkConfig alloc] init];
     }
     [_getChildListNet setObject:[XHUserInfo sharedUserInfo].guardianModel.guardianId forKey:@"guardianId"];
-    [_getChildListNet postWithUrl:@"zzjt-app-api_studentBinding008" sucess:^(id object, BOOL verifyObject) {
-        if (verifyObject) {
+    [_getChildListNet postWithUrl:@"zzjt-app-api_studentBinding008" sucess:^(id object, BOOL verifyObject)
+    {
+        if (verifyObject)
+        {
             [self.childArry removeAllObjects];
             NSArray *itemArry=[object objectItemKey:@"object"];
-            if (itemArry) {
-                for (NSDictionary *dic in itemArry) {
+            if (itemArry)
+            {
+                for (NSDictionary *dic in itemArry)
+                {
                     XHChildListModel *model=[[XHChildListModel alloc] initWithDic:dic];
                     [self.childArry addObject:model];
                 }

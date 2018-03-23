@@ -25,11 +25,11 @@
     self.navigationView.backgroundColor=[UIColor whiteColor];
     self.view.backgroundColor=[UIColor whiteColor];
     if ([[XHHelper sharedHelper]isIphoneX]) {
-        self.view.frame=CGRectMake(0, 94, SCREEN_WIDTH, SCREEN_HEIGHT-94-49-34);
+        self.view.frame=CGRectMake(0, 94, SCREEN_WIDTH, SCREEN_HEIGHT-94-50-34);
     }
     else
     {
-       self.view.frame=CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64-49);
+       self.view.frame=CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64-50);
     }
     
     self.conversationMessageCollectionView.frame=self.view.frame;

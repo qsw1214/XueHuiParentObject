@@ -25,11 +25,11 @@
     [self setNavtionTitle:@"问题反馈"];
     self.view.backgroundColor=LineViewColor;
     
-    [self.questionTextView resetFrame:CGRectMake(0, self.navigationView.bottom+10, SCREEN_WIDTH, 80)];
+    [self.questionTextView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, 200)];
     [self.view addSubview:self.questionTextView];
     [self.limitLabel setFrame:CGRectMake(0, self.questionTextView.bottom, SCREEN_WIDTH, 30)];
     [self.view addSubview:self.limitLabel];
-    [self.sureButton setFrame:CGRectMake(40, self.limitLabel.bottom+20, SCREEN_WIDTH-80, 44)];
+    [self.sureButton setFrame:CGRectMake(40, self.limitLabel.bottom+40, SCREEN_WIDTH-80, 44)];
     [self.sureButton addTarget:self action:@selector(sureBtnMethod) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.sureButton];
 }

@@ -260,7 +260,7 @@
 {
     if (_protocolButton==nil) {
         _protocolButton=[[UIButton alloc] initWithFrame:CGRectMake(132, 165, 160, 18)];
-        [_protocolButton setTitle:@"《学汇校灵通用户协议》" forState:UIControlStateNormal];
+        [_protocolButton setTitle:@"《学汇家长用户协议》" forState:UIControlStateNormal];
         [_protocolButton setTitleColor:MainColor forState:UIControlStateNormal];
         _protocolButton.titleLabel.font=[UIFont systemFontOfSize:14];
         [_protocolButton setTag:3];

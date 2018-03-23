@@ -51,7 +51,6 @@
 {
     self.childListArry=array;
     [self.collectionView reloadData];
-    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:array.count - 1 inSection:0]  atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
 }
 -(UICollectionView *)collectionView
 {

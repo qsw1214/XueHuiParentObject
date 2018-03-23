@@ -113,13 +113,13 @@
         
         if ([iphoneType isEqualToString:@"iPhone 6 Plus"] || [iphoneType isEqualToString:@"iPhone 6s Plus"] || [iphoneType isEqualToString:@"iPhone 7 Plus"])
         {
-            Height = 240.0;
+            Height = 250.0;
         }
         
         
         if ([iphoneType isEqualToString:@"iPhone X"])
         {
-            Height = 250.0;
+            Height = 260.0;
         }
     }
     

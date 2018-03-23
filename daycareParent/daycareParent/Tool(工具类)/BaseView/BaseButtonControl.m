@@ -60,6 +60,7 @@
     {
         UITextField *textField = [[UITextField alloc]init];
         [textField setClearButtonMode:UITextFieldViewModeWhileEditing];
+        [textField setTintColor:MainColor];
         [self addSubview:textField];
         [self.textFieldArray addObject:textField];
     }
@@ -480,6 +481,26 @@
      }];
 }
 
+
+#pragma mark - 文本输入内容
+/**
+ 文本输入内容
+ */
+-(void)setinputText:(NSString*)text withNumberType:(NSInteger)type withAllType:(BOOL)allType
+{
+    [self.textFieldArray enumerateObjectsUsingBlock:^(UITextField   *obj, NSUInteger idx, BOOL *  stop)
+     {
+         if (allType)
+         {
+             [obj setText:text];
+         }
+         else if (type == idx)
+         {
+             [obj setText:text];
+             *stop = YES;
+         }
+     }];
+}
 
 
 #pragma mark - 文本输入域内容颜色

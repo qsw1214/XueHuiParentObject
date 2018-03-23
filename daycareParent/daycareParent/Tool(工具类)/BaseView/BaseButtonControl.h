@@ -166,6 +166,13 @@ typedef NS_ENUM(NSInteger,BaseControlModelType)
  */
 -(void)setinputTextPlaceholder:(NSString*)placeholder withNumberType:(NSInteger)type withAllType:(BOOL)allType;
 
+
+#pragma mark - 文本输入内容
+/**
+ 文本输入内容
+ */
+-(void)setinputText:(NSString*)text withNumberType:(NSInteger)type withAllType:(BOOL)allType;
+
 #pragma mark - 文本输入域内容颜色
 /**
  文本输入域内容颜色

@@ -42,7 +42,7 @@ static XHUserInfo *userInfo = nil;
     _sessionId=[object objectItemKey:@"sessionId"];
     _signature=[object objectItemKey:@"signature"];
     _telphoneNumber=[object objectItemKey:@"telphoneNumber"];
-    _token=[object objectItemKey:@"token"];
+    _token = [NSString safeString:[object objectItemKey:@"token"]];
     _sex=[object objectItemKey:@"sex"];
     _primaryFamilyId=[[object objectItemKey:@"propValue"] objectItemKey:@"primaryFamilyId"];
     _guardianModel=[[XHGuardianInfo alloc] initWithDic:[[object objectItemKey:@"propValue"] objectItemKey:@"guardian"]];
@@ -59,6 +59,14 @@ static XHUserInfo *userInfo = nil;
             
         }
             break;
+    }
+    
+    if ([_token isEqualToString:@""])
+    {
+        [userInfo isLogin:^(BOOL success)
+         {
+             
+         }];
     }
 }
 

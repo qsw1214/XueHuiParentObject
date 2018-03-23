@@ -156,13 +156,18 @@
             [net setObject:@"3" forKey:@"userType"];
             [net setObject:verrifypwd.text forKey:@"smsCode"];
             [XHShowHUD showTextHud];
-            [net postWithUrl:@"zzjt-app-api_user001" sucess:^(id object, BOOL verifyObject) {
-                if (verifyObject) {
+            [net postWithUrl:@"zzjt-app-api_user001" sucess:^(id object, BOOL verifyObject)
+             {
+                if (verifyObject)
+                {
                     XHLoginModel *loginModel=[[XHLoginModel alloc] init];
-                    loginModel.loginName=phonepwd.text;
-                    loginModel.pwd=pwd.text;
+                    loginModel.loginName = phonepwd.text;
+                    loginModel.pwd = pwd.text;
                     loginModel.type=[@"3" integerValue];
                     [NSUserDefaults  saveLocalObject:loginModel forKey:AutoLogin];
+                
+                    [[XHUserInfo sharedUserInfo] setItemObject:object];
+                    
                     XHBindViewController *bind=[[XHBindViewController alloc] init];
                     bind.enterType=XHRegisterEnterType;
                     [self.navigationController pushViewController:bind animated:YES];

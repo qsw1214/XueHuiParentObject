@@ -81,6 +81,8 @@
     [self.submitControl setTitleEdgeFrame:CGRectMake(0, 0, self.submitControl.width, self.submitControl.height) withNumberType:0 withAllType:NO];
     
     
+    //!< 填充家长姓名
+    [self.parentNameControl setinputText:[XHUserInfo sharedUserInfo].guardianModel.guardianName withNumberType:0 withAllType:NO];
     
     [self setContentSize:CGSizeMake(frame.size.width, self.submitControl.bottom+20.0)];
     
@@ -101,7 +103,6 @@
         [_nameControl setText:@"学生姓名" withNumberType:0 withAllType:NO];
         [_nameControl setFont:FontLevel2 withNumberType:0 withAllType:NO];
         [_nameControl setTextColor:RGB(153,153,153) withTpe:0 withAllType:NO];
-        [_nameControl setInputTintColor:MainColor withNumberType:0 withAllType:NO];
         [_nameControl addTarget:self action:@selector(bindAction:) forControlEvents:UIControlEventTouchUpInside];
         
     }
@@ -119,7 +120,6 @@
         [_LearningNumberControl setText:@"请输入学号" withNumberType:0 withAllType:NO];
         [_LearningNumberControl setFont:FontLevel2 withNumberType:0 withAllType:NO];
         [_LearningNumberControl setTextColor:RGB(153,153,153) withTpe:0 withAllType:NO];
-        [_LearningNumberControl setInputTintColor:MainColor withNumberType:0 withAllType:NO];
         [_LearningNumberControl addTarget:self action:@selector(bindAction:) forControlEvents:UIControlEventTouchUpInside];
         
     }
@@ -137,7 +137,6 @@
         [_parentNameControl setText:@"家长姓名" withNumberType:0 withAllType:NO];
         [_parentNameControl setFont:FontLevel2 withNumberType:0 withAllType:NO];
         [_parentNameControl setTextColor:RGB(153,153,153) withTpe:0 withAllType:NO];
-        [_parentNameControl setInputTintColor:MainColor withNumberType:0 withAllType:NO];
         [_parentNameControl addTarget:self action:@selector(bindAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _parentNameControl;
@@ -262,17 +261,7 @@
     }
     else if ([parentName isEqualToString:@""])
     {
-        [self.netWorkConfig setObject:studentName forKey:@"studentName"]; //!< 学生姓名
-        [self.netWorkConfig setObject:archiveId forKey:@"archiveId"];  //!< 学生学号
-        if (![self.netWorkConfig.paramDictionary objectForKey:@"guardianType"])
-        {
-            [self.netWorkConfig setObject:@"0" forKey:@"guardianType"];
-        }
-        
-        if ([self.actionDeletgate respondsToSelector:@selector(submitControlAction:)])
-        {
-            [self.actionDeletgate submitControlAction:self.netWorkConfig];
-        }
+        [XHShowHUD showNOHud:@"家长姓名不能为空"];
     }
     else
     {
@@ -283,6 +272,7 @@
         {
             [self.netWorkConfig setObject:@"0" forKey:@"guardianType"];
         }
+        
         if ([self.actionDeletgate respondsToSelector:@selector(submitControlAction:)])
         {
             [self.actionDeletgate submitControlAction:self.netWorkConfig];

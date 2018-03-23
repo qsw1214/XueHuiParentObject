@@ -90,31 +90,41 @@
     
    
     NSLog(@"===%.2f===%.2f",SCREEN_HEIGHT,SCREEN_WIDTH);
+    NSString *iphoneType = [XHHelper iphoneType];
+    CGFloat Height = 200.0;
     
-    if (((SCREEN_HEIGHT*2.0) <= 1920.0) && ((SCREEN_HEIGHT*3.0) <= 2436) )
     {
-        [self.advertisementControl resetFrame:CGRectMake(0,0, frame.size.width, 260.0)];
-    }
-    else
-    {
-        if ((SCREEN_HEIGHT*2.0) <= 960.0)
+        if ([iphoneType isEqualToString:@"iPhone 4"] || [iphoneType isEqualToString:@"iPhone 4S"])
         {
-            [self.advertisementControl resetFrame:CGRectMake(0,0, frame.size.width, 190.0)];
+            Height = 190.0;
+           
         }
-        else if ((SCREEN_HEIGHT*2.0) <= 1334.0)
+        
+        
+        if ([iphoneType isEqualToString:@"iPhone 6"] || [iphoneType isEqualToString:@"iPhone 6S"] || [iphoneType isEqualToString:@"iPhone 7"] || [iphoneType isEqualToString:@"iPhone 8"])
         {
-            [self.advertisementControl resetFrame:CGRectMake(0,0, frame.size.width, 220.0)];
+            Height = 200;
         }
-        else if ((SCREEN_HEIGHT*2.0) <= 1336.0)
+        
+        if ([iphoneType isEqualToString:@"iPhone 5"] || [iphoneType isEqualToString:@"iPhone 5C"])
         {
-            [self.advertisementControl resetFrame:CGRectMake(0,0, frame.size.width, 220.0)];
+            Height = 220.0;
         }
-        else if ((SCREEN_HEIGHT*2.0) <= 1920.0)
+        
+        if ([iphoneType isEqualToString:@"iPhone 6 Plus"] || [iphoneType isEqualToString:@"iPhone 6s Plus"] || [iphoneType isEqualToString:@"iPhone 7 Plus"])
         {
-            [self.advertisementControl resetFrame:CGRectMake(0,0, frame.size.width, 230.0)];
+            Height = 230.0;
+        }
+        
+        
+        if ([iphoneType isEqualToString:@"iPhone X"])
+        {
+            Height = 250.0;
         }
     }
     
+    
+     [self.advertisementControl resetFrame:CGRectMake(0,0, frame.size.width, Height)];
     
   
     

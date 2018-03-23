@@ -82,4 +82,6 @@
  */
 - (BOOL)isIphoneX;
 
++(NSString*)iphoneType;
+
 @end

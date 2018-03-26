@@ -28,7 +28,7 @@
 #import "BaseButtonControl.h"
 #import "XHBaseBtn.h"
 #import "ParentLabel.h"
-#import "ParentButton.h"
+#import "ParentControl.h"
 #import "ParentBackLabel.h"
 #import "ParentCollectionViewCell.h"
 #import "ParentTableViewCell.h"

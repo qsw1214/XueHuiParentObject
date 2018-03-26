@@ -24,6 +24,7 @@
     [self setTitleColor:LOGIN_BEFORE  forState:UIControlStateNormal];
     self.layer.cornerRadius=CORNER_BTN;
     self.layer.masksToBounds=YES;
+    self.adjustsImageWhenHighlighted = NO;
 
 }
 -(id)initWithFrame:(CGRect)frame
@@ -34,6 +35,7 @@
         [self setTitleColor:LOGIN_BEFORE  forState:UIControlStateNormal];
         self.layer.cornerRadius=CORNER_BTN;
         self.layer.masksToBounds=YES;
+        self.adjustsImageWhenHighlighted = NO;
     }
     return self;
 }

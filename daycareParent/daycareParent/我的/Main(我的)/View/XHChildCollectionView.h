@@ -8,8 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #pragma mark  孩子列表展示
+
+@protocol XHChildCollectionViewDelegate <NSObject>
+-(void)getChildModel:(XHChildListModel *)childModel withChildName:(NSString *)ChildName index:(NSInteger)index;
+
+@end
+
 @interface XHChildCollectionView : UIView
-@property(nonatomic,copy)void(^selectBlock)(NSInteger ,NSString *,XHChildListModel *model);
+@property(nonatomic,weak)id <XHChildCollectionViewDelegate>delegate;
 @property(nonatomic,strong)UICollectionView *collectionView;
 -(void)setItemArray:(NSMutableArray *)array;
 @end

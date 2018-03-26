@@ -11,7 +11,7 @@
 #import "XHChildListModel.h"
 @interface XHChildCollectionView()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 @property(nonatomic,strong)NSMutableArray *childListArry;
-@property(nonatomic,strong)ParentButton *addButton;
+@property(nonatomic,strong)ParentControl *addButton;
 
 @end
 
@@ -43,9 +43,10 @@
 {
     XHChildListModel *model = self.childListArry[indexPath.item];
     XHChildCollectionViewCell *cell=[collectionView cellForItemAtIndexPath:indexPath];
-    if (self.selectBlock) {
-        self.selectBlock(indexPath.row,model.studentName,model);
+    if ([_delegate respondsToSelector:@selector(getChildModel:withChildName:index:)]) {
+        [_delegate getChildModel:model withChildName:model.studentName index:indexPath.row];
     }
+    
 }
 -(void)setItemArray:(NSMutableArray *)array
 {
@@ -72,10 +73,10 @@
     }
     return _collectionView;
 }
--(ParentButton *)addButton
+-(ParentControl *)addButton
 {
     if (_addButton==nil) {
-        _addButton=[[ParentButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-20-USER_HEARD-24, 15, USER_HEARD, USER_HEARD*2+20)];
+        _addButton=[[ParentControl alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-20-USER_HEARD-24, 5, USER_HEARD, USER_HEARD*2+15)];
         [_addButton setNumberImageView:1];
         [_addButton setImageViewBackgroundColor:[UIColor redColor] withNumberIndex:0];
         [_addButton setImageViewCGRectMake:CGRectMake(0, 10, USER_HEARD, USER_HEARD) withNumberIndex:0];
@@ -92,8 +93,8 @@
 }
 -(void)addMethod
 {
-    if (self.selectBlock) {
-        self.selectBlock(self.childListArry.count,@"绑定学生",nil);
+    if ([_delegate respondsToSelector:@selector(getChildModel:withChildName:index:)]) {
+        [_delegate getChildModel:nil withChildName:@"绑定学生" index:self.childListArry.count];
     }
 }
 -(NSMutableArray *)childListArry

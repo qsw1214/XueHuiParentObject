@@ -7,7 +7,6 @@
 //
 
 #import "XHPersonalCenterViewController.h"
-#import "SDWebImage.h"
 #import "XHSetTableViewCell.h"
 #import "XHUserViewController.h"
 #import "XHSetViewController.h"
@@ -23,12 +22,9 @@
 #define  kTitle @[@"联系客服",@"问题反馈",@"好友推荐",@"系统通知",@"设置"]
 #define kTitlePic @[@"ico_mycontact",@"ico_myquestion",@"ico_myshare",@"ico_mynotice",@"ico_myset"]
 
-@interface XHPersonalCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
-{
-    UIButton *_h_btn;
-    UILabel *_nameLabel;
-}
-@property(nonatomic,strong)UIView *h_view;
+@interface XHPersonalCenterViewController ()<UITableViewDelegate,UITableViewDataSource,XHChildCollectionViewDelegate>
+@property(nonatomic,strong)UIView *headView;
+@property(nonatomic,strong)ParentControl *headBtn;
 @property(nonatomic,strong)XHChildCollectionView *childCollectionView;//!<孩子列表展示
 @property(nonatomic,strong)XHNetWorkConfig *getChildListNet;
 @property(nonatomic,strong)NSMutableArray *childArry;
@@ -42,7 +38,7 @@
     [super viewDidLoad];
     [self navtionHidden:YES];
     [self.view addSubview:self.tableView];
-    self.tableView.tableHeaderView=self.h_view;
+    self.tableView.tableHeaderView=self.headView;
     [self.tableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHead)];
     [self.tableView beginRefreshing];
     @WeakObj(self);
@@ -147,21 +143,20 @@
 -(void)refreshHeadView
 {
     XHUserInfo *userInfo=[XHUserInfo sharedUserInfo];
-    [_h_btn setHeadrPic:userInfo.headPic withName:userInfo.guardianModel.guardianName withType:XHTeacherType];
+    [_headBtn setHeadPic:userInfo.headPic withName:userInfo.guardianModel.guardianName withType:XHTeacherType];
     if (![userInfo.guardianModel.guardianName isEqualToString:@""])
     {
-        _nameLabel.text=userInfo.guardianModel.guardianName;
+        [_headBtn setLabelText:userInfo.guardianModel.guardianName withNumberIndex:1];
     }
     else
     {
-        _nameLabel.text=@"姓名";
+        [_headBtn setLabelText:@"姓名" withNumberIndex:1];
     }
 }
 -(void)refreshUserInfo
 {
     if (![[XHUserInfo sharedUserInfo].guardianModel.familyId isEqualToString:@""])
     {
-        
         return ;
     }
     XHLoginModel *model=[NSUserDefaults getLoginModel];
@@ -180,71 +175,77 @@
     } error:^(NSError *error) {}];
 }
 #pragma mark----导航栏视图
--(UIView *)h_view
+-(UIView *)headView
 {
-    if (_h_view==nil) {
-        _h_view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, USER_HEARD*2+200)];
-        _h_view.layer.masksToBounds=YES;
-        UIView *bgView=[[UIView alloc] initWithFrame:CGRectMake(0, _h_view.bottom-SCREEN_WIDTH/2.0, SCREEN_WIDTH*2, SCREEN_WIDTH)];
-        bgView.center=CGPointMake(SCREEN_WIDTH/2.0, SCREEN_WIDTH+USER_HEARD+20);//60
+    if (_headView==nil) {
+        _headView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, USER_HEARD*2+200)];
+        _headView.layer.masksToBounds=YES;
+        _headView.backgroundColor=RGB(69, 191, 145);
+        UIView *bgView=[[UIView alloc] initWithFrame:CGRectMake(0, _headView.bottom-SCREEN_WIDTH/2.0, SCREEN_WIDTH*2, SCREEN_WIDTH)];
+        bgView.center=CGPointMake(SCREEN_WIDTH/2.0, SCREEN_WIDTH+USER_HEARD+15);
         bgView.layer.cornerRadius=SCREEN_WIDTH;
         bgView.backgroundColor=RGB(239, 239, 239);
-        [_h_view addSubview:bgView];
-        _h_btn=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, USER_HEARD+10, USER_HEARD+10)];
-        _h_btn.center=CGPointMake(SCREEN_WIDTH/2.0, USER_HEARD/2.0+65);
-        _h_btn.layer.cornerRadius=USER_HEARD/2.0+5;
-        _h_btn.layer.masksToBounds=YES;
-        [_h_btn addTarget:self action:@selector(heardBtnClick) forControlEvents:UIControlEventTouchUpInside];
-        _h_btn.backgroundColor=[UIColor whiteColor];
-        _h_view.backgroundColor=MainColor;
-        [_h_view addSubview:_h_btn];
-        _nameLabel=[[UILabel alloc] initWithFrame:CGRectMake(10,_h_btn.bottom, SCREEN_WIDTH-20 , 40)];
-        _nameLabel.numberOfLines=0;
-        _nameLabel.font=FontLevel1;
-        _nameLabel.textColor=[UIColor whiteColor];
-        [ _h_view addSubview:_nameLabel];
-        _nameLabel.textAlignment=NSTextAlignmentCenter;
-        _h_view.backgroundColor=RGB(69, 191, 145);
+        [_headView addSubview:bgView];
+        [_headView addSubview:self.headBtn];
         [self refreshHeadView];
-        self.childCollectionView=[[XHChildCollectionView alloc] initWithFrame:CGRectMake(10, _nameLabel.bottom+10, SCREEN_WIDTH-20, _h_view.bottom-(_nameLabel.bottom+10))];
-        [_h_view addSubview:self.childCollectionView];
+        self.childCollectionView=[[XHChildCollectionView alloc] initWithFrame:CGRectMake(10, _headBtn.bottom+10, SCREEN_WIDTH-20, _headView.bottom-(_headBtn.bottom+10))];
+        self.childCollectionView.delegate=self;
+        [_headView addSubview:self.childCollectionView];
         [self.childCollectionView setItemArray:self.childArry];
-        @WeakObj(self);
-        self.childCollectionView.selectBlock = ^(NSInteger index,NSString *childName,XHChildListModel *model)
-        {
-            @StrongObj(self);
-            if (index==self.childArry.count)
-            {
+    }
+    return _headView;
+}
+-(ParentControl *)headBtn
+{
+    if (_headBtn==nil) {
+        _headBtn=[[ParentControl alloc] initWithFrame:CGRectMake(0, 0, USER_HEARD+10, USER_HEARD+50)];
+        _headBtn.center=CGPointMake(SCREEN_WIDTH/2.0, USER_HEARD/2.0+65);
+        [_headBtn setNumberImageView:1];
+        [_headBtn setNumberLabel:2];
+        [_headBtn setImageViewCGRectMake:CGRectMake(0, 0, USER_HEARD+10, USER_HEARD+10) withNumberIndex:0];
+        [_headBtn setImageViewCornerRadius:USER_HEARD/2.0+5 withNumberIndex:0];
+        [_headBtn setLabelCGRectMake:CGRectMake(0, 0, USER_HEARD+10, USER_HEARD+10) withNumberIndex:0];
+        [_headBtn setLabelTextAlignment:NSTextAlignmentCenter withNumberIndex:0];
+        
+        
+        [_headBtn setLabelCGRectMake:CGRectMake(-50,USER_HEARD+10, _headBtn.width+100 , 40) withNumberIndex:1];
+        [_headBtn setLabelTextAlignment:NSTextAlignmentCenter withNumberIndex:1];
+        [_headBtn setLabelTextColor:[UIColor whiteColor] withNumberIndex:1];
+        [_headBtn addTarget:self action:@selector(heardBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _headBtn;
+}
+#pragma mark-----childCollectionDelegate
+-(void)getChildModel:(XHChildListModel *)childModel withChildName:(NSString *)ChildName index:(NSInteger)index
+{
+    if (index==self.childArry.count)
+    {
 #pragma mark -----跳转到绑定孩子界面
-                XHBindViewController *bind=[[XHBindViewController alloc] initHiddenWhenPushHidden];
-                [bind setEnterType:XHBindEnterType];
-                bind.isRefresh = ^(BOOL ok)
-                {
-                    if (ok)
-                    {
-                        [self getChildListNet];
-                    }
-                };
-                [self.navigationController pushViewController:bind animated:YES];
-            }
-            else
+        XHBindViewController *bind=[[XHBindViewController alloc] initHiddenWhenPushHidden];
+        [bind setEnterType:XHBindEnterType];
+        bind.isRefresh = ^(BOOL ok)
+        {
+            if (ok)
             {
-#pragma mark -----跳转到绑定孩子详情界面
-                @StrongObj(self);
-                XHStudentInfoViewController *student=[[XHStudentInfoViewController alloc] initHiddenWhenPushHidden];
-                student.isRefresh = ^(BOOL ok)
-                {
-                    if (ok)
-                    {
-                        [self getChildListNet];
-                    }
-                };
-                [student getChildInfo:model];
-                [self.navigationController pushViewController:student animated:YES];
+                [self getChildListNet];
             }
         };
+        [self.navigationController pushViewController:bind animated:YES];
     }
-    return _h_view;
+    else
+    {
+#pragma mark -----跳转到绑定孩子详情界面
+        XHStudentInfoViewController *student=[[XHStudentInfoViewController alloc] initHiddenWhenPushHidden];
+        student.isRefresh = ^(BOOL ok)
+        {
+            if (ok)
+            {
+                [self getChildListNet];
+            }
+        };
+        [student getChildInfo:childModel];
+        [self.navigationController pushViewController:student animated:YES];
+    }
 }
 -(XHNetWorkConfig *)getChildListNet
 {
@@ -307,12 +308,6 @@
         _childArry=[NSMutableArray arrayWithArray:[XHUserInfo sharedUserInfo].childListArry];
     }
     return _childArry;
-}
--(CGSize)getCustomWidth
-{
-    NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:20.0]};
-    CGSize textSize = [[XHUserInfo sharedUserInfo].nickName boundingRectWithSize:CGSizeMake(90, USER_HEARD/2) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;;
-    return textSize;
 }
 
 - (void)didReceiveMemoryWarning {

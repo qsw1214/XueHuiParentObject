@@ -1,5 +1,5 @@
 //
-//  ParentButton.h
+//  ParentControl
 //  daycareParent
 //
 //  Created by 钧泰科技 on 2018/3/22.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ParentButton : UIButton
+@interface ParentControl : UIControl
 
 -(void)setNumberLabel:(NSInteger)number;
 -(void)setLabelCGRectMake:(CGRect)rect withNumberIndex:(NSInteger)index;
@@ -24,4 +24,5 @@
 -(void)setImageViewBackgroundColor:(UIColor *)color withNumberIndex:(NSInteger)index;
 -(void)setImageViewCornerRadius:(CGFloat)radius withNumberIndex:(NSInteger)index;
 -(void)setImageViewBorderColor:(UIColor *)borderColor withBorderWidth:(CGFloat)borderWidth withNumberIndex:(NSInteger)index;
+-(void)setHeadPic:(NSString*)pic withName:(NSString*)name withType:(XHHeadType)type;
 @end

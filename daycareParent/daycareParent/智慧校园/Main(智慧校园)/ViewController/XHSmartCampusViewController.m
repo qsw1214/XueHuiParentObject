@@ -36,7 +36,7 @@
     [self setNavtionTitle:@"智慧校园"];
     [self navtionItemHidden:NavigationItemLeftType];
     [self setItemContentType:NavigationIconype withItemType:NavigationItemRightype withIconName:@"ico_sao" withTitle:nil];
-    //[self updateVersion];
+    [self updateVersion];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -223,7 +223,6 @@
         return YES;
     }
 }
-/*
 -(void)updateVersion
 {
     XHNetWorkConfig *Net=[[XHNetWorkConfig alloc] init];
@@ -285,5 +284,4 @@
         
     }];
 }
- */
 @end

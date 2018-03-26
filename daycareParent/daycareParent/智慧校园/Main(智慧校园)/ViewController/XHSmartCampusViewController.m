@@ -134,7 +134,7 @@
     if (_contentView == nil)
     {
         _contentView = [[XHSmartCampusContentView alloc]initWithDeletage:self];
-        [_contentView resetFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-50.0)];
+        [_contentView resetFrame:CGRectMake(0, 20.0, SCREEN_WIDTH, SCREEN_HEIGHT-70.0)];
     }
     return _contentView;
 }

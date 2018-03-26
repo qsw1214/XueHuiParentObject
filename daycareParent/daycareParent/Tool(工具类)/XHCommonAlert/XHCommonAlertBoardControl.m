@@ -99,7 +99,6 @@
         _tipLabel = [[UILabel alloc]init];
         [_tipLabel setTextAlignment:NSTextAlignmentCenter];
         [_tipLabel setFont:[UIFont boldSystemFontOfSize:18.0]];
-        [_tipLabel setBackgroundColor:[UIColor greenColor]];
     }
     return _tipLabel;
 }

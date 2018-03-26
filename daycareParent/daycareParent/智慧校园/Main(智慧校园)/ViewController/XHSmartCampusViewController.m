@@ -36,6 +36,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //!< 判断是否强制更新
+    [[XHUpdateHelper alloc] updateVersionWithViewController:self];
     [self setNavtionTitle:@"智慧校园"];
     [self navtionItemHidden:NavigationItemLeftType];
     [self setItemContentType:NavigationIconype withItemType:NavigationItemRightype withIconName:@"ico_sao" withTitle:nil];
@@ -50,8 +52,7 @@
 {
     [super viewWillAppear:animated];
     
-    //!< 判断是否强制更新
-    [[XHUpdateHelper alloc] updateVersionWithViewController:self];
+    
 }
 
 

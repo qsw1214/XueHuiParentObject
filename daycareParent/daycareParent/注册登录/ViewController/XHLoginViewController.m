@@ -196,6 +196,7 @@
 {
     if (_loginButton==nil) {
         _loginButton=[[XHBaseBtn alloc] initWithFrame:CGRectMake(40, SCREEN_HEIGHT/2.0+110, SCREEN_WIDTH-80, 44)];
+        [_loginButton setBackgroundColor:[UIColor clearColor]];
         [_loginButton setBackgroundImage:[UIImage imageNamed:@"btn_logn"] forState:UIControlStateNormal];
         [_loginButton setTitle:@"没错，就是我！" forState:UIControlStateNormal];
         [_loginButton setTag:1];
@@ -228,7 +229,19 @@
 -(ParentImageView *)bgImageView
 {
     if (_bgImageView==nil) {
-        _bgImageView=[[ParentImageView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-60, SCREEN_WIDTH, 60)];
+       
+        if ([[XHHelper iphoneType] isEqualToString:@"iPhone 4"]||[[XHHelper iphoneType] isEqualToString:@"iPhone 4S"])
+        {
+            _bgImageView=[[ParentImageView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-50, SCREEN_WIDTH, 50)];
+        }
+        else if ([[XHHelper iphoneType] isEqualToString:@"iPhone 6 Plus"]||[[XHHelper iphoneType] isEqualToString:@"iPhone 6s Plus"]||[[XHHelper iphoneType] isEqualToString:@"iPhone 7 Plus"]||[[XHHelper iphoneType] isEqualToString:@"iPhone 8 Plus"]||[[XHHelper iphoneType] isEqualToString:@"iPhone X"])
+        {
+            _bgImageView=[[ParentImageView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-120, SCREEN_WIDTH, 120)];
+        }
+        else
+        {
+            _bgImageView=[[ParentImageView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-100, SCREEN_WIDTH, 100)];
+        }
         [_bgImageView setContentMode:UIViewContentModeScaleAspectFill];
         _bgImageView.image=[UIImage imageNamed:@"bg_logn"];
     }

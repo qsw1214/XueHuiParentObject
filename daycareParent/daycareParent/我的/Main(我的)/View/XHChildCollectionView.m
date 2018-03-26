@@ -11,7 +11,7 @@
 #import "XHChildListModel.h"
 @interface XHChildCollectionView()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 @property(nonatomic,strong)NSMutableArray *childListArry;
-@property(nonatomic,strong)ParentButton *addButton;
+@property(nonatomic,strong)ParentControl *addButton;
 
 @end
 
@@ -43,9 +43,10 @@
 {
     XHChildListModel *model = self.childListArry[indexPath.item];
     XHChildCollectionViewCell *cell=[collectionView cellForItemAtIndexPath:indexPath];
-    if (self.selectBlock) {
-        self.selectBlock(indexPath.row,model.studentName,model);
+    if ([_delegate respondsToSelector:@selector(getChildModel:withChildName:index:)]) {
+        [_delegate getChildModel:model withChildName:model.studentName index:indexPath.row];
     }
+    
 }
 -(void)setItemArray:(NSMutableArray *)array
 {
@@ -58,9 +59,9 @@
         UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
         layout.itemSize = CGSizeMake(USER_HEARD, USER_HEARD*2+20);
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        layout.minimumLineSpacing = 8;
-        layout.sectionInset = UIEdgeInsetsMake(15, 8, 15, 8);
-        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-20-(USER_HEARD+8),USER_HEARD*2+20) collectionViewLayout:layout];
+        layout.minimumLineSpacing = 24;
+        layout.sectionInset = UIEdgeInsetsMake(15, 24, 15, 24);
+        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-20-(USER_HEARD+24),USER_HEARD*2+20) collectionViewLayout:layout];
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.scrollsToTop = NO;
         _collectionView.bounces=NO;
@@ -72,17 +73,17 @@
     }
     return _collectionView;
 }
--(ParentButton *)addButton
+-(ParentControl *)addButton
 {
     if (_addButton==nil) {
-        _addButton=[[ParentButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-20-USER_HEARD-8, 0, USER_HEARD, USER_HEARD*2+20)];
+        _addButton=[[ParentControl alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-20-USER_HEARD-24, 5, USER_HEARD, USER_HEARD*2+15)];
         [_addButton setNumberImageView:1];
         [_addButton setImageViewBackgroundColor:[UIColor redColor] withNumberIndex:0];
         [_addButton setImageViewCGRectMake:CGRectMake(0, 10, USER_HEARD, USER_HEARD) withNumberIndex:0];
         [_addButton setImageViewName:@"ico_bindstudents" withNumberIndex:0];
         [_addButton setImageViewCornerRadius:USER_HEARD/2.0 withNumberIndex:0];
         [_addButton setNumberLabel:1];
-        [_addButton setLabelCGRectMake:CGRectMake(0, USER_HEARD+20, USER_HEARD, 20) withNumberIndex:0];
+        [_addButton setLabelCGRectMake:CGRectMake(-10, USER_HEARD+20, USER_HEARD+20, 20) withNumberIndex:0];
         [_addButton setLabelTextAlignment:NSTextAlignmentCenter withNumberIndex:0];
         [_addButton setLabelFont:FontLevel3 withNumberIndex:0];
         [_addButton setLabelText:@"绑定学生" withNumberIndex:0];
@@ -92,8 +93,8 @@
 }
 -(void)addMethod
 {
-    if (self.selectBlock) {
-        self.selectBlock(self.childListArry.count,@"绑定学生",nil);
+    if ([_delegate respondsToSelector:@selector(getChildModel:withChildName:index:)]) {
+        [_delegate getChildModel:nil withChildName:@"绑定学生" index:self.childListArry.count];
     }
 }
 -(NSMutableArray *)childListArry

@@ -34,7 +34,6 @@
 		0441A5FB2068F75B00270E1D /* ParentLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0441A5EF2068F75900270E1D /* ParentLabel.m */; };
 		0441A5FC2068F75B00270E1D /* ParentImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0441A5F02068F75A00270E1D /* ParentImageView.m */; };
 		0441A5FD2068F75B00270E1D /* ParentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0441A5F62068F75A00270E1D /* ParentView.m */; };
-		0441A5FE2068F75B00270E1D /* ParentButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0441A5F72068F75A00270E1D /* ParentButton.m */; };
 		0441A5FF2068F75B00270E1D /* ParentBackLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0441A5F82068F75A00270E1D /* ParentBackLabel.m */; };
 		0441A6062068F76700270E1D /* XHDropDownMenuControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0441A6002068F76600270E1D /* XHDropDownMenuControl.m */; };
 		0441A6072068F76700270E1D /* XHDropDownMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0441A6012068F76600270E1D /* XHDropDownMenuCell.m */; };
@@ -491,6 +490,7 @@
 		8CD3241C2052250600E7AD03 /* TabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD3241B2052250600E7AD03 /* TabBarView.m */; };
 		8CD3241F20524B9C00E7AD03 /* XHChildCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD3241E20524B9C00E7AD03 /* XHChildCollectionView.m */; };
 		8CD324222052688A00E7AD03 /* XHRCTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD324212052688A00E7AD03 /* XHRCTableViewCell.m */; };
+		8CD8645E2063551900A25400 /* ParentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8645D2063551900A25400 /* ParentControl.m */; };
 		8CDC90611FE4B1DB00040D19 /* AliyunOSSiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDC90601FE4B1DB00040D19 /* AliyunOSSiOS.framework */; };
 		8CDDA8B61FDA5CEE000B3BAB /* XHChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDDA8B51FDA5CEE000B3BAB /* XHChatViewController.m */; };
 		8CDDA8FF1FDA7A44000B3BAB /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDDA8FE1FDA7A25000B3BAB /* AssetsLibrary.framework */; };
@@ -564,7 +564,6 @@
 		0441A5E32068F73B00270E1D /* XHDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDatePicker.h; sourceTree = "<group>"; };
 		0441A5E42068F73B00270E1D /* XHDatePickerBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDatePickerBoard.m; sourceTree = "<group>"; };
 		0441A5E52068F73B00270E1D /* XHDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDatePicker.m; sourceTree = "<group>"; };
-		0441A5EB2068F75900270E1D /* ParentButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParentButton.h; sourceTree = "<group>"; };
 		0441A5EC2068F75900270E1D /* ParentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParentTableViewCell.m; sourceTree = "<group>"; };
 		0441A5ED2068F75900270E1D /* ParentCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParentCollectionViewCell.h; sourceTree = "<group>"; };
 		0441A5EE2068F75900270E1D /* ParentCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParentCollectionViewCell.m; sourceTree = "<group>"; };
@@ -576,7 +575,6 @@
 		0441A5F42068F75A00270E1D /* ParentBackLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParentBackLabel.h; sourceTree = "<group>"; };
 		0441A5F52068F75A00270E1D /* ParentLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParentLabel.h; sourceTree = "<group>"; };
 		0441A5F62068F75A00270E1D /* ParentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParentView.m; sourceTree = "<group>"; };
-		0441A5F72068F75A00270E1D /* ParentButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParentButton.m; sourceTree = "<group>"; };
 		0441A5F82068F75A00270E1D /* ParentBackLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParentBackLabel.m; sourceTree = "<group>"; };
 		0441A6002068F76600270E1D /* XHDropDownMenuControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDropDownMenuControl.m; sourceTree = "<group>"; };
 		0441A6012068F76600270E1D /* XHDropDownMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDropDownMenuCell.m; sourceTree = "<group>"; };
@@ -1449,6 +1447,8 @@
 		8CD3241E20524B9C00E7AD03 /* XHChildCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHChildCollectionView.m; sourceTree = "<group>"; };
 		8CD324202052688A00E7AD03 /* XHRCTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XHRCTableViewCell.h; path = "daycareParent/消息/聊天/view/XHRCTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		8CD324212052688A00E7AD03 /* XHRCTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = XHRCTableViewCell.m; path = "daycareParent/消息/聊天/view/XHRCTableViewCell.m"; sourceTree = SOURCE_ROOT; };
+		8CD8645C2063551900A25400 /* ParentControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParentControl.h; sourceTree = "<group>"; };
+		8CD8645D2063551900A25400 /* ParentControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParentControl.m; sourceTree = "<group>"; };
 		8CDC90601FE4B1DB00040D19 /* AliyunOSSiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AliyunOSSiOS.framework; sourceTree = "<group>"; };
 		8CDDA8B41FDA5CEE000B3BAB /* XHChatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHChatViewController.h; sourceTree = "<group>"; };
 		8CDDA8B51FDA5CEE000B3BAB /* XHChatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHChatViewController.m; sourceTree = "<group>"; };
@@ -3691,8 +3691,6 @@
 			children = (
 				0441A5F42068F75A00270E1D /* ParentBackLabel.h */,
 				0441A5F82068F75A00270E1D /* ParentBackLabel.m */,
-				0441A5EB2068F75900270E1D /* ParentButton.h */,
-				0441A5F72068F75A00270E1D /* ParentButton.m */,
 				0441A5ED2068F75900270E1D /* ParentCollectionViewCell.h */,
 				0441A5EE2068F75900270E1D /* ParentCollectionViewCell.m */,
 				0441A5F22068F75A00270E1D /* ParentImageView.h */,
@@ -3703,6 +3701,8 @@
 				0441A5EC2068F75900270E1D /* ParentTableViewCell.m */,
 				0441A5F32068F75A00270E1D /* ParentView.h */,
 				0441A5F62068F75A00270E1D /* ParentView.m */,
+				8CD8645C2063551900A25400 /* ParentControl.h */,
+				8CD8645D2063551900A25400 /* ParentControl.m */,
 			);
 			path = ParentView;
 			sourceTree = "<group>";
@@ -4391,7 +4391,6 @@
 				4BA8C4E51FD0002D006CBEBC /* XHHomeWorkTableViewCell.m in Sources */,
 				4B3418F61FFF14F100A5EC56 /* XHVideoControl.m in Sources */,
 				0441A60C2068F8D400270E1D /* ParentModel.m in Sources */,
-				0441A5FE2068F75B00270E1D /* ParentButton.m in Sources */,
 				4B9110781FD7B9E600841505 /* XHSyllabusCell.m in Sources */,
 				4BB792E01FD798B000E0ED72 /* BaseMenuModel.m in Sources */,
 				4B80F2211FCBEC2B00BC7B52 /* BaseNavigationControlItem.m in Sources */,
@@ -4477,6 +4476,7 @@
 				8C80816A1FCE919D00C7945A /* XHUserViewController.m in Sources */,
 				4BB9BE9D1FDE4BD5004F5622 /* XHEducationCloudScrollPreview.m in Sources */,
 				8C7E98351FECF1660096288E /* SGQRCodeScanningView.m in Sources */,
+				8CD8645E2063551900A25400 /* ParentControl.m in Sources */,
 				8C377CA32008B7BB001F1FC7 /* XCNativePlugs.m in Sources */,
 				4B80F2891FCBF04800BC7B52 /* MJRefreshAnimateHeader.m in Sources */,
 				04AAEBC22059032A00EF225D /* XHStudentInfoViewController.m in Sources */,

@@ -266,14 +266,10 @@
     AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [app reloadIMBadge];
 }
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
+
 -(void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"noticeName" object:nil];
 }
 -(void)noticeMethod
 {

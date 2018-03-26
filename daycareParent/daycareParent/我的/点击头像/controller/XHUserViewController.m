@@ -106,7 +106,7 @@
             
         default:
         {
-            return USER_HEARD-20;
+            return 50;
         }
             break;
     }

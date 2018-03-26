@@ -22,8 +22,10 @@
 #import "AppDelegate.h"
 #import <AVFoundation/AVFoundation.h>
 #import "XHBindCardViewController.h"//!<扫一扫
+#import "XHCommonAlertControl.h"
+#import "XHUpdateHelper.h"
 
-@interface XHSmartCampusViewController () <XHFunctionMenuControlDeletage>
+@interface XHSmartCampusViewController () <XHFunctionMenuControlDeletage,XHCommonAlertControlDelegate>
 
 @property (nonatomic,strong) XHSmartCampusContentView *contentView;
 
@@ -31,18 +33,30 @@
 
 @implementation XHSmartCampusViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self setNavtionTitle:@"智慧校园"];
     [self navtionItemHidden:NavigationItemLeftType];
     [self setItemContentType:NavigationIconype withItemType:NavigationItemRightype withIconName:@"ico_sao" withTitle:nil];
-    [self updateVersion];
 }
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 }
-#pragma mark
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    //!< 判断是否强制更新
+    [[XHUpdateHelper alloc] updateVersionWithViewController:self];
+}
+
+
+
+
 -(void)addSubViews:(BOOL)subview
 {
     if (subview)
@@ -202,6 +216,17 @@
     
 }
 
+
+
+#pragma mark  XHCommonAlertControlDelegate
+-(void)alertBoardAction:(BaseButtonControl*)sender
+{
+    
+}
+
+
+
+
 #pragma mark - Getter / Setter
 -(XHSmartCampusContentView *)contentView
 {
@@ -223,65 +248,5 @@
         return YES;
     }
 }
--(void)updateVersion
-{
-    XHNetWorkConfig *Net=[[XHNetWorkConfig alloc] init];
-    [Net setObject:CFBundleShortVersionString forKey:@"localVersion"];////本地版本
-    [Net setObject:@"ios" forKey:@"devType"];                                           //设备信息
-    [Net setObject:@"1" forKey:@"appId"];//app的在iTunes的唯一标识符
-    [Net postWithUrl:@"zzjt-app-api_appVersion001" sucess:^(id object, BOOL verifyObject) {
-        if (verifyObject) {
-            NSDictionary *dic=[object objectItemKey:@"object"];
-            //不需要升级
-            if ([dic[@"isUpdate"] intValue]== 0) {
-                return;
-            }
-            //判断NSUserDefaults忽略版本跟version是否相同
-            if ([[NSUserDefaults  objectItemForKey:hUMtypeVersion] isEqualToString:dic[@"topVersion"]]) {
-                if ([dic[@"isUpdate"] intValue] != 2) {
-                    return;
-                }
-            }
-            //升级，可跳过升级
-            if ([dic[@"isUpdate"] intValue]== 1) {
-                NSString *introduceStr = [NSString stringWithFormat:@"%@版本 \n更新的内容有：%@",dic[@"topVersion"],dic[@"description"]];
-                UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"发现新版本" message:introduceStr  preferredStyle:(UIAlertControllerStyleAlert)];
-                UIAlertAction *alertA = [UIAlertAction actionWithTitle:@"跳过此版本" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
-                    [NSUserDefaults setItemObject:dic[@"topVersion"] forKey:hUMtypeVersion];
-                }];
-                
-                UIAlertAction *alertB = [UIAlertAction actionWithTitle:@"前往此版本" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:dic[@"url"]]];
-                        [NSUserDefaults  removeObjectItemForKey:hUMtypeVersion];
-                    });
-                    
-                }];
-                
-                [alertC addAction:alertA];
-                [alertC addAction:alertB];
-                [self presentViewController:alertC animated:YES completion:nil];
-                return;
-            }
-            //强制升级
-            if ([dic[@"isUpdate"] intValue] == 2) {
-                NSString *introduceStr = [NSString stringWithFormat:@"新版本更新的内容有：%@",dic[@"description"]];
-                UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"版本更新" message:introduceStr  preferredStyle:(UIAlertControllerStyleAlert)];
-                UIAlertAction *alertA = [UIAlertAction actionWithTitle:@"前往App Store" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                        [NSUserDefaults  removeObjectItemForKey:hUMtypeVersion];
-                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:dic[@"url"]]];
-                    });
-                    
-                }];
-                
-                [alertC addAction:alertA];
-                [self presentViewController:alertC animated:YES completion:nil];
-                return;
-            }
-        }
-    } error:^(NSError *error) {
-        
-    }];
-}
+
 @end

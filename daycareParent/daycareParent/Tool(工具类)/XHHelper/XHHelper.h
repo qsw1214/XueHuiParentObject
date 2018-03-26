@@ -8,8 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface XHHelper : NSObject
+
+@interface XHHelper : NSObject 
+
 @property(nonatomic,strong) BaseViewController *currentVC;//!< 获取当前视图控制器
+
+
 
 /**
  单例初始化方法
@@ -61,6 +65,11 @@
  @return 返回星期几
  */
 +(NSString*)weekdayWithDate:(NSString*)fromDate;
+
+
+
+
+
 
 
 

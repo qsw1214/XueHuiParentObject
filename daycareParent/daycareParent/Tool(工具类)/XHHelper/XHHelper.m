@@ -10,6 +10,7 @@
 #import <AliyunOSSiOS/OSSService.h>
 #import "UIImage+DevKit.h"
 #import "UIImage+Resizing.h"
+
 #define xOriginImageSize CGSizeMake(1080, 1920)
 
 @implementation XHHelper
@@ -242,6 +243,10 @@ static XHHelper *helper = nil;
     NSLog(@"weekday:%zd",weekday);
     return week;
 }
+
+
+
+
 
 
 

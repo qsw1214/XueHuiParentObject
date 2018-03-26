@@ -7,7 +7,7 @@
 //
 
 #import "XHGuardianInfo.h"
-
+#import "AppDelegate.h"
 @implementation XHGuardianInfo
 -(id)initWithDic:(NSDictionary *)object
 {
@@ -35,7 +35,29 @@
             {
                 _sexName=@"女";
             }
+        [self getSum];
     }
     return self;
+}
+-(void)getSum
+{
+    XHNetWorkConfig *net=[XHNetWorkConfig new];
+    [net setObject:self.guardianId forKey:@"guardianId"];
+    [net postWithUrl:@"zzjt-app-api_smartCampus018" sucess:^(id object, BOOL verifyObject) {
+        if (verifyObject) {
+            NSDictionary *dic=[object objectItemKey:@"object"];
+            
+            NSDictionary *schoolWorkDic=[dic objectItemKey:@"schoolWork"];
+            
+            [XHUserInfo sharedUserInfo].sum=0;
+            [XHUserInfo sharedUserInfo].sum=[XHUserInfo sharedUserInfo].sum+[[[schoolWorkDic objectItemKey:@"propValue"] objectItemKey:@"unreadCount"] integerValue];
+            [XHUserInfo sharedUserInfo].sum=[XHUserInfo sharedUserInfo].sum+[[dic objectItemKey:@"noticeUnReadNum"] integerValue];
+          
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            [app reloadIMBadge];
+        });
+    } error:^(NSError *error) {}];
 }
 @end

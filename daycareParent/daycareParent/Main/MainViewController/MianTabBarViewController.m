@@ -101,25 +101,28 @@
             return;
         }
         smallLabel.text =  aaa >= 99?@"99+":[NSString stringWithFormat:@"%ld", (long)aaa];
-        smallLabel.frame=CGRectMake(button.right-button.width*2/5, button.top+8, [self getCustomWidth:smallLabel.text], 15);
+        smallLabel.frame=CGRectMake(button.right-button.width*(0.42), button.top+8, [self getCustomWidth:smallLabel.text], 18);
     });
 }
 -(CGFloat)getCustomWidth:(NSString *)str
 {
     NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:14.0]};
     
-    CGSize textSize = [str boundingRectWithSize:CGSizeMake(22, 22) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;;
+    CGSize textSize = [str boundingRectWithSize:CGSizeMake(16, 16) options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;;
     if (str.length==0) {
         return 0;
     }
     if (str.length==1) {
-        return 15;
+        return 18;
     }
-    else
+   
+    else if(str.length==2)
     {
-        return textSize.width+8;
+        return textSize.width+10;
     }
-    
+    else  {
+        return textSize.width+15;
+    }
 }
 -(void)dealloc
 {

@@ -28,14 +28,13 @@
         {
             
             ParentControl *control = [[ParentControl alloc] init];
-            [control setFrame:CGRectMake((SCREEN_WIDTH/4)*i, 0, (SCREEN_WIDTH/4), 54)];
+            [control setFrame:CGRectMake((SCREEN_WIDTH/4)*i, 0, (SCREEN_WIDTH/4), 50)];
             [control setTag:i + 1];
             [control setNumberImageView:1];
             [control setNumberLabel:1];
-            [control setImageViewCGRectMake:CGRectMake((control.width-25)/2.0, 8, 25, 25) withNumberIndex:0];
+            [control setImageViewCGRectMake:CGRectMake((control.width-22)/2.0, 7, 22, 22) withNumberIndex:0];
             [control setImageViewName:kImageTitle[i] withNumberIndex:0];
-        
-             [control setLabelCGRectMake:CGRectMake(0, 30, SCREEN_WIDTH/4, 24) withNumberIndex:0];
+             [control setLabelCGRectMake:CGRectMake(0, 30, SCREEN_WIDTH/4, 20) withNumberIndex:0];
             [control setLabelFont:kFont(12.0) withNumberIndex:0];
             [control setLabelText:KTitle[i] withNumberIndex:0];
             [control setLabelTextColor:MainColor withNumberIndex:0];
@@ -43,7 +42,7 @@
             if (i == 0)
             {
                 [control setImageViewName:kImageSelectTitle[i] withNumberIndex:0];
-                [control setImageViewCGRectMake:CGRectMake((control.width-35)/2.0, 8, 35, 35) withNumberIndex:0];
+                [control setImageViewCGRectMake:CGRectMake((control.width-30)/2.0, 10, 30, 30) withNumberIndex:0];
                 [control setLabelText:@"" withNumberIndex:0];
                 [control setSelected:YES];
             }
@@ -57,8 +56,7 @@
                 smallLab.textColor=[UIColor whiteColor];
                 smallLab.layer.masksToBounds=YES;
                 smallLab.backgroundColor=[UIColor redColor];
-                smallLab.backgroundColor=[UIColor redColor];
-                smallLab.layer.cornerRadius=7.5;
+                smallLab.layer.cornerRadius=9;
                 [self addSubview:smallLab];
             }
             
@@ -82,7 +80,7 @@
         {
             ParentControl *control = (ParentControl *)view;
             [control setImageViewName:kImageTitle[control.tag-1] withNumberIndex:0];
-            [control setImageViewCGRectMake:CGRectMake((control.width-25)/2.0, 8, 25, 25) withNumberIndex:0];
+            [control setImageViewCGRectMake:CGRectMake((control.width-22)/2.0, 7, 22, 22) withNumberIndex:0];
             [control setLabelText:KTitle[control.tag-1] withNumberIndex:0];
             [control setSelected:NO];
         }
@@ -91,7 +89,7 @@
     [control setImageViewName:kImageSelectTitle[control.tag-1] withNumberIndex:0];
     if (control.tag==1)
     {
-        [control setImageViewCGRectMake:CGRectMake((control.width-35)/2.0, 8, 35, 35) withNumberIndex:0];
+        [control setImageViewCGRectMake:CGRectMake((control.width-30)/2.0, 10, 30, 30) withNumberIndex:0];
         if (control.selected==YES)
         {
             [control setLabelText:@"" withNumberIndex:0];
@@ -104,7 +102,7 @@
     }
     else
     {
-        [control setImageViewCGRectMake:CGRectMake((control.width-25)/2.0, 8, 25, 25) withNumberIndex:0];
+        [control setImageViewCGRectMake:CGRectMake((control.width-22)/2.0, 7, 22, 22) withNumberIndex:0];
         [control setLabelText:KTitle[control.tag-1] withNumberIndex:0];
     }
     self.selectIndex = control.tag - 1;

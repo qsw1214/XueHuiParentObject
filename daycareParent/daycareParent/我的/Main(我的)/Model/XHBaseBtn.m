@@ -23,6 +23,7 @@
     self.titleLabel.font=FontLevel2;
     [self setTitleColor:LOGIN_BEFORE  forState:UIControlStateNormal];
     self.layer.cornerRadius=CORNER_BTN;
+    self.layer.masksToBounds=YES;
 
 }
 -(id)initWithFrame:(CGRect)frame
@@ -32,6 +33,7 @@
         self.titleLabel.font=FontLevel2;
         [self setTitleColor:LOGIN_BEFORE  forState:UIControlStateNormal];
         self.layer.cornerRadius=CORNER_BTN;
+        self.layer.masksToBounds=YES;
     }
     return self;
 }

@@ -26,13 +26,13 @@
         _childButton.layer.masksToBounds=YES;
         _childButton.userInteractionEnabled=NO;
         [self.contentView addSubview:_childButton];
-        _childNameLabel=[[ParentLabel alloc] initWithFrame:CGRectMake(0, USER_HEARD+20, USER_HEARD, 20)];
+        _childNameLabel=[[ParentLabel alloc] initWithFrame:CGRectMake(-10, USER_HEARD+20, USER_HEARD+20, 20)];
         _childNameLabel.textAlignment=NSTextAlignmentCenter;
-        _childNameLabel.font=FontLevel3;
+        _childNameLabel.font=kFont(15.0);
         [self.contentView addSubview:_childNameLabel];
-        _childClassLabel=[[ParentLabel alloc] initWithFrame:CGRectMake(4, _childNameLabel.bottom+5, USER_HEARD-8, 15)];
+        _childClassLabel=[[ParentLabel alloc] initWithFrame:CGRectMake(-10, _childNameLabel.bottom+5, USER_HEARD+20, 15)];
         _childClassLabel.textAlignment=NSTextAlignmentCenter;
-        _childClassLabel.font=FontLevel4;
+        _childClassLabel.font=kFont(13.0);
         _childClassLabel.textColor=DEFAULTCOLOR;
         [self.contentView addSubview:_childClassLabel];
     }

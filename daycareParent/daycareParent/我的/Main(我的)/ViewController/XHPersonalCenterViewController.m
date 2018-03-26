@@ -186,7 +186,7 @@
         _h_view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, USER_HEARD*2+200)];
         _h_view.layer.masksToBounds=YES;
         UIView *bgView=[[UIView alloc] initWithFrame:CGRectMake(0, _h_view.bottom-SCREEN_WIDTH/2.0, SCREEN_WIDTH*2, SCREEN_WIDTH)];
-        bgView.center=CGPointMake(SCREEN_WIDTH/2.0, SCREEN_WIDTH+110);
+        bgView.center=CGPointMake(SCREEN_WIDTH/2.0, SCREEN_WIDTH+USER_HEARD+20);//60
         bgView.layer.cornerRadius=SCREEN_WIDTH;
         bgView.backgroundColor=RGB(239, 239, 239);
         [_h_view addSubview:bgView];

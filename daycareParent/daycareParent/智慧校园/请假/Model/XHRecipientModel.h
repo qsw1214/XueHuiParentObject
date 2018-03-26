@@ -7,6 +7,7 @@
 //
 
 #import "ParentModel.h"
+
 typedef NS_ENUM(NSInteger,XHRecipientModelType)
 {
     XHRecipientAddModelType = 1 ,//!< 添加数据模型
@@ -15,6 +16,7 @@ typedef NS_ENUM(NSInteger,XHRecipientModelType)
 };
 
 @interface XHRecipientModel : ParentModel
+
 @property(nonatomic,copy)NSString *name;//!< 接收人名字
 @property(nonatomic,copy)NSString *headPic;//!< 接收人头像
 @property(nonatomic,copy)NSString *ID;//!< 接收人id

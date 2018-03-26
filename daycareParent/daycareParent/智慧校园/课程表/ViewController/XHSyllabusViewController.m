@@ -144,6 +144,7 @@
 {
     if (work)
     {
+        [XHShowHUD showTextHud];
         
         NSInteger werrk = [XHHelper weekdayWithNowDate:[NSDate date]];
         [self.netWorkConfig postWithUrl:@"zzjt-app-api_smartCampus020" sucess:^(id object, BOOL verifyObject)

@@ -44,18 +44,16 @@
 
 -(void)addsubView
 {
-    XHChatViewController *Notice = [[XHChatViewController alloc] init];
-    [self addChildViewController:Notice];
+    
+    XHSmartCampusViewController *smartCampus = [[XHSmartCampusViewController alloc] init];
+    [self addChildViewController:smartCampus];
+    
+    XHChatViewController *chat = [[XHChatViewController alloc] init];
+    [self addChildViewController:chat];
     
     XHAddressBookViewController *book = [[XHAddressBookViewController alloc] init];
-    [self addChildViewController:book];
 
-    XHSmartCampusViewController *MiddleSmartCampus = [[XHSmartCampusViewController alloc] init];
-    [self addChildViewController:MiddleSmartCampus];
-    
-    XHEducationCloudViewController *educationCloud = [[XHEducationCloudViewController alloc] init];
-    [self addChildViewController:educationCloud];
-    
+    [self addChildViewController:book];
     XHPersonalCenterViewController *personalCenter = [[XHPersonalCenterViewController alloc] init];
     [self addChildViewController:personalCenter];
     
@@ -63,7 +61,7 @@
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:self.navigationItem.backBarButtonItem.style target:nil action:nil];
     [self.view addSubview:self.customTabBarView];
     
-    self.selectedIndex = 2;
+    self.selectedIndex = 0;
 }
 #pragma mark  tabbarViewDelegate
 -(void)setItemSelectIndex:(NSInteger)selectIndex
@@ -94,7 +92,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         NSInteger aaa=(NSInteger)[RCIMClient sharedRCIMClient].getTotalUnreadCount+[XHUserInfo sharedUserInfo].sum;
         UILabel *smallLabel = [self.customTabBarView viewWithTag:1008611];
-        UIButton *button = [self.customTabBarView viewWithTag: 1];
+        UIButton *button = [self.customTabBarView viewWithTag: 2];
         smallLabel.hidden=NO;
         if ( aaa <= 0)
         {

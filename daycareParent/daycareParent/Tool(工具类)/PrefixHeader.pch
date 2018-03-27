@@ -86,7 +86,7 @@
 
 //项目的主题颜色（浅绿色）
 #define MainColor RGBAlpha(81,200,162,1)  //(91.0, 208.0, 184.0, 1.0)
-
+#define kHeaderColor RGB(127, 233, 199)
 #pragma mark  项目中字体大小
 
 //项目的主题颜色（浅绿色）

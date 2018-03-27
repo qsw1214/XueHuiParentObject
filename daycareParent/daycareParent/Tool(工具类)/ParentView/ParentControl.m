@@ -112,7 +112,7 @@
     pic = [NSString safeString:pic];
     if ([pic isEqualToString:@""])
     {
-        [self setImageViewBackgroundColor:MainColor withNumberIndex:0];
+        [self setImageViewBackgroundColor:kHeaderColor withNumberIndex:0];
         [self setImageViewName:nil withNumberIndex:0];
         NSInteger length = name.length;
         NSString *makeName = name;

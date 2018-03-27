@@ -15,12 +15,14 @@
     [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.titleLabel.font=[UIFont boldSystemFontOfSize:18.0];
     pic = [NSString safeString:pic];
-    if ([pic isEqualToString:@""])
+    
+    
+     NSString *makeName = name;
     {
         self.backgroundColor=kHeaderColor;
         [self setBackgroundImage:nil forState:UIControlStateNormal];
         NSInteger length = name.length;
-        NSString *makeName = name;
+       
         if ([name isEqualToString:@""])
         {
             [self setTitle:name forState:UIControlStateNormal];
@@ -46,12 +48,27 @@
         }
         
     }
-    else
+    
+    
+    
+    self.backgroundColor=[UIColor whiteColor];
+    [self setTitle:makeName forState:UIControlStateNormal];
+    [self sd_setImageWithURL:[NSURL URLWithString:ALGetFileHeadThumbnail(pic)] forState:UIControlStateNormal completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL)
     {
-        self.backgroundColor=[UIColor whiteColor];
-        [self setTitle:nil forState:UIControlStateNormal];
-        [self sd_setBackgroundImageWithURL:[NSURL URLWithString:ALGetFileHeadThumbnail(pic)] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"addman"]];
-    }
+        
+        if (image)
+        {
+            [self setTitle:nil forState:UIControlStateNormal];
+        }
+        else
+        {
+            [self setBackgroundColor:kHeaderColor];
+        }
+        
+        
+    }];
+    
+    
 }
 -(void)setHeadBackgroundImage:(UIImage *)image forState:(UIControlState)controlState
 {

@@ -51,6 +51,8 @@
 		04AAEBC52059037800EF225D /* XHStudentInfoContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AAEBC42059037800EF225D /* XHStudentInfoContentView.m */; };
 		04D5397E205BC0F800DB344E /* XHBindPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D5397D205BC0F800DB344E /* XHBindPasswordViewController.m */; };
 		04D53981205BC27700DB344E /* XHAddBindPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D53980205BC27700DB344E /* XHAddBindPasswordViewController.m */; };
+		04FB54672069DA3F00FE7BEC /* XHCommonAlertControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FB54652069DA3E00FE7BEC /* XHCommonAlertControl.m */; };
+		04FB54682069DA3F00FE7BEC /* XHCommonAlertBoardControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FB54662069DA3E00FE7BEC /* XHCommonAlertBoardControl.m */; };
 		4B07CC191FD4DAB800B2DBDA /* XHLeaveRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B07CC181FD4DAB800B2DBDA /* XHLeaveRecordModel.m */; };
 		4B07CC1C1FD4DAC800B2DBDA /* XHLeaveRecordFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B07CC1B1FD4DAC800B2DBDA /* XHLeaveRecordFrame.m */; };
 		4B07CC1D1FD4E48500B2DBDA /* XHLeaveRecordContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B523BDD1FD1584A006DD565 /* XHLeaveRecordContentView.m */; };
@@ -608,6 +610,10 @@
 		04D5397D205BC0F800DB344E /* XHBindPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHBindPasswordViewController.m; sourceTree = "<group>"; };
 		04D5397F205BC27700DB344E /* XHAddBindPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHAddBindPasswordViewController.h; sourceTree = "<group>"; };
 		04D53980205BC27700DB344E /* XHAddBindPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHAddBindPasswordViewController.m; sourceTree = "<group>"; };
+		04FB54632069DA3E00FE7BEC /* XHCommonAlertControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHCommonAlertControl.h; sourceTree = "<group>"; };
+		04FB54642069DA3E00FE7BEC /* XHCommonAlertBoardControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHCommonAlertBoardControl.h; sourceTree = "<group>"; };
+		04FB54652069DA3E00FE7BEC /* XHCommonAlertControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHCommonAlertControl.m; sourceTree = "<group>"; };
+		04FB54662069DA3E00FE7BEC /* XHCommonAlertBoardControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHCommonAlertBoardControl.m; sourceTree = "<group>"; };
 		4B07CC171FD4DAB800B2DBDA /* XHLeaveRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHLeaveRecordModel.h; sourceTree = "<group>"; };
 		4B07CC181FD4DAB800B2DBDA /* XHLeaveRecordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHLeaveRecordModel.m; sourceTree = "<group>"; };
 		4B07CC1A1FD4DAC800B2DBDA /* XHLeaveRecordFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHLeaveRecordFrame.h; sourceTree = "<group>"; };
@@ -1716,6 +1722,17 @@
 			path = "daycareParent/我的/设置界面/model";
 			sourceTree = SOURCE_ROOT;
 		};
+		04FB54622069DA3E00FE7BEC /* XHCommonAlert */ = {
+			isa = PBXGroup;
+			children = (
+				04FB54632069DA3E00FE7BEC /* XHCommonAlertControl.h */,
+				04FB54642069DA3E00FE7BEC /* XHCommonAlertBoardControl.h */,
+				04FB54652069DA3E00FE7BEC /* XHCommonAlertControl.m */,
+				04FB54662069DA3E00FE7BEC /* XHCommonAlertBoardControl.m */,
+			);
+			path = XHCommonAlert;
+			sourceTree = "<group>";
+		};
 		4B0326F21FCCF1C200B9F700 /* 平安记录 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2572,6 +2589,7 @@
 		4B80F2001FCBE43E00BC7B52 /* Tool(工具类) */ = {
 			isa = PBXGroup;
 			children = (
+				04FB54622069DA3E00FE7BEC /* XHCommonAlert */,
 				0441A6092068F8D300270E1D /* ParentModel */,
 				048608622062485A00913F2D /* XHHeader */,
 				0455C4C720609995007A975C /* XHInfiniteRotation */,
@@ -4331,6 +4349,7 @@
 				041649E4205251A400D2CF4C /* XHAddressBookHeader.m in Sources */,
 				8C16422D20568892001DCA01 /* XHSubmitView.m in Sources */,
 				4B5A3AF11FCEA9D000504229 /* XHSafeRegisterViewController.m in Sources */,
+				04FB54682069DA3F00FE7BEC /* XHCommonAlertBoardControl.m in Sources */,
 				04052DBC205674A200D1637F /* XHCookBookHeaderItemCell.m in Sources */,
 				4BB792B91FD780C300E0ED72 /* XHAskforLeaveSubmitControl.m in Sources */,
 				4BEBC8D420045EDA00FD6915 /* XHDynamicsHeaderControl.m in Sources */,
@@ -4378,6 +4397,7 @@
 				4B80F2811FCBF04800BC7B52 /* MJRefreshAutoStateFooter.m in Sources */,
 				04AA2FD3205FC09100549D23 /* XHStudentInfofamilyItemCell.m in Sources */,
 				4B8E66241FD6463C0006D641 /* XHCookBookFrame.m in Sources */,
+				04FB54672069DA3F00FE7BEC /* XHCommonAlertControl.m in Sources */,
 				4B31264C1FDA1FF5000CE894 /* XHAddressBookFrame.m in Sources */,
 				4B80F22B1FCBF00E00BC7B52 /* XHNetWorkConfig.m in Sources */,
 				4B80F2411FCBF01B00BC7B52 /* BaseDynamicLabel.m in Sources */,

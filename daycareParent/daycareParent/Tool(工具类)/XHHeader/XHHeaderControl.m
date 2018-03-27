@@ -23,7 +23,7 @@
     self = [super init];
     if (self)
     {
-        [self setBackgroundColor:MainColor];
+        [self setBackgroundColor:kHeaderColor];
         
         [self addSubview:self.imageView];
         [self addSubview:self.titleLabel];

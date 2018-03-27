@@ -25,6 +25,7 @@
 @interface XHPersonalCenterViewController ()<UITableViewDelegate,UITableViewDataSource,XHChildCollectionViewDelegate>
 @property(nonatomic,strong)UIView *headView;
 @property(nonatomic,strong)ParentControl *headBtn;
+@property(nonatomic,strong)XHHeaderControl *headControl;
 @property(nonatomic,strong)XHChildCollectionView *childCollectionView;//!<孩子列表展示
 @property(nonatomic,strong)XHNetWorkConfig *getChildListNet;
 @property(nonatomic,strong)NSMutableArray *childArry;
@@ -141,14 +142,15 @@
 -(void)refreshHeadView
 {
     XHUserInfo *userInfo=[XHUserInfo sharedUserInfo];
-    [_headBtn setHeadPic:userInfo.headPic withName:userInfo.guardianModel.guardianName withType:XHTeacherType];
+    [self.headControl setHeadrUrl:ALGetFileHeadThumbnail(userInfo.headPic)
+      withName:userInfo.guardianModel.guardianName withType:XHHeaderTeacherType];
     if (![userInfo.guardianModel.guardianName isEqualToString:@""])
     {
-        [self.headBtn setLabelText:userInfo.guardianModel.guardianName withNumberIndex:1];
+        [self.headBtn setLabelText:userInfo.guardianModel.guardianName withNumberIndex:0];
     }
     else
     {
-        [self.headBtn setLabelText:@"设置姓名" withNumberIndex:1];
+        [self.headBtn setLabelText:@"设置姓名" withNumberIndex:0];
     }
 }
 
@@ -178,20 +180,25 @@
     if (_headBtn==nil) {
         _headBtn=[[ParentControl alloc] initWithFrame:CGRectMake(0, 0, USER_HEARD+10, USER_HEARD+50)];
         _headBtn.center=CGPointMake(SCREEN_WIDTH/2.0, USER_HEARD/2.0+65);
-        [_headBtn setNumberImageView:1];
-        [_headBtn setNumberLabel:2];
-        [_headBtn setImageViewCGRectMake:CGRectMake(0, 0, USER_HEARD+10, USER_HEARD+10) withNumberIndex:0];
-        [_headBtn setImageViewCornerRadius:USER_HEARD/2.0+5 withNumberIndex:0];
-        [_headBtn setLabelCGRectMake:CGRectMake(0, 0, USER_HEARD+10, USER_HEARD+10) withNumberIndex:0];
+        [_headBtn setNumberLabel:1];
+        [_headBtn addSubview:self.headControl];
+        [_headBtn setLabelCGRectMake:CGRectMake(-50,USER_HEARD+10, _headBtn.width+100 , 40) withNumberIndex:0];
         [_headBtn setLabelTextAlignment:NSTextAlignmentCenter withNumberIndex:0];
-        
-        
-        [_headBtn setLabelCGRectMake:CGRectMake(-50,USER_HEARD+10, _headBtn.width+100 , 40) withNumberIndex:1];
-        [_headBtn setLabelTextAlignment:NSTextAlignmentCenter withNumberIndex:1];
-        [_headBtn setLabelTextColor:[UIColor whiteColor] withNumberIndex:1];
+        [_headBtn setLabelTextColor:[UIColor whiteColor] withNumberIndex:0];
         [_headBtn addTarget:self action:@selector(heardBtnClick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _headBtn;
+}
+-(XHHeaderControl *)headControl
+{
+    if (_headControl==nil) {
+        _headControl=[[XHHeaderControl alloc] init];
+        [_headControl resetFrame:CGRectMake(0, 0, USER_HEARD+10, USER_HEARD+10)];
+        _headControl.layer.cornerRadius=USER_HEARD/2.0+5;
+        _headControl.layer.masksToBounds=YES;
+        _headControl.userInteractionEnabled=NO;
+    }
+    return _headControl;
 }
 #pragma mark-----childCollectionDelegate
 -(void)getChildModel:(XHChildListModel *)childModel withChildName:(NSString *)ChildName index:(NSInteger)index

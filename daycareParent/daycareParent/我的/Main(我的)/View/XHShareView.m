@@ -123,10 +123,10 @@
 {
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
     NSArray* imageArray = @[[UIImage imageNamed:@"login_logo"]];
-    [shareParams SSDKSetupShareParamsByText:@"分享内容"
+    [shareParams SSDKSetupShareParamsByText:@"Hi，欢迎使用学汇智慧校园，真正做到为学校提供交流沟通平台，为学校提供数字化校园，学汇您身边的教育专家。"
                                      images:imageArray
                                         url:[NSURL URLWithString:@"https://itunes.apple.com/us/app/%E5%AD%A6%E6%B1%87-%E5%AE%B6%E9%95%BF/id1212759689"]
-                                      title:@"分享标题"
+                                      title:@"学汇分享"
                                        type:SSDKContentTypeAuto];
     //优先使用平台客户端分享
     [shareParams SSDKEnableUseClientShare];

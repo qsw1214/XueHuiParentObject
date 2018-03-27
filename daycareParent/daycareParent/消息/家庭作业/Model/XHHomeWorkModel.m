@@ -24,7 +24,7 @@
     for ( int i = 1; i<= 6; i++)
     {
         XHPreviewModel *imageModel = [[XHPreviewModel alloc]init];
-        NSString *picStr=[NSString stringWithFormat:@"picUrl%zd",i];
+        NSString *picStr=[NSString stringWithFormat:@"picUrl%d",i];
         [imageModel setPreviewUrl:ALGetFileHeadThumbnail([object objectItemKey:picStr])];
         [imageModel setPreviewPic:[object objectItemKey:picStr]];
         [imageModel setTage:i];

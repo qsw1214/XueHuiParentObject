@@ -15,8 +15,8 @@
 
 @interface XHHomeWorkViewController () <UITableViewDataSource,UITableViewDelegate,XHDatePickerDelegate>
 
-@property(nonatomic,copy)NSString *dateStr;
-@property(nonatomic,strong)XHNetWorkConfig *netWork;
+
+@property(nonatomic,copy)NSString *dateStr; //!< 用户选择的日期
 
 @end
 
@@ -138,6 +138,10 @@
     [datePicker show];
 }
 
+
+
+
+#pragma mark 获取家庭作业
 -(void)getNetWorkData:(BOOL)work
 {
     if (work)
@@ -149,17 +153,21 @@
         }
         [self.netWorkConfig postWithUrl:@"zzjt-app-api_smartCampus004" sucess:^(id object, BOOL verifyObject)
         {
-            if (verifyObject) {
+            if (verifyObject)
+            {
                 [self.dataArray removeAllObjects];
                 NSArray *itemArry=[object objectItemKey:@"object"];
-                if (itemArry) {
-                    for ( NSDictionary *dic in itemArry) {
+                if (itemArry)
+                {
+                    for ( NSDictionary *dic in itemArry)
+                    {
                         XHHomeWorkFrame *frame = [[XHHomeWorkFrame alloc]init];
                         XHHomeWorkModel *model = [[XHHomeWorkModel alloc]init];
                         [model setItemObject:dic];
                         [frame setModel:model];
                         [self.dataArray addObject:frame];
-                        if (self.isRefresh) {
+                        if (self.isRefresh)
+                        {
                             self.isRefresh(YES);
                         }
                     }
@@ -209,19 +217,17 @@
 #pragma mark XHDatePickerDelegate
 -(void)datePickerAction:(NSString *)date
 {
-    self.dateStr=date;
+    [self setDateStr:date];
     [self.mainTableView beginRefreshing];
 }
--(XHNetWorkConfig *)netWork
-{
-    if (_netWork==nil) {
-        _netWork=[XHNetWorkConfig new];
-    }
-    return _netWork;
-}
+
+
+
+
 -(NSString *)dateStr
 {
-    if (_dateStr==nil) {
+    if (_dateStr==nil)
+    {
         _dateStr=[[NSString alloc]init];
     }
     return _dateStr;

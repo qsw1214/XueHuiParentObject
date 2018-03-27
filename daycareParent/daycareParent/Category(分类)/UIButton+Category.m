@@ -17,7 +17,7 @@
     pic = [NSString safeString:pic];
     if ([pic isEqualToString:@""])
     {
-        self.backgroundColor=MainColor;
+        self.backgroundColor=kHeaderColor;
         [self setBackgroundImage:nil forState:UIControlStateNormal];
         NSInteger length = name.length;
         NSString *makeName = name;

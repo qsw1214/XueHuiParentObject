@@ -67,7 +67,7 @@
     [self.titleLabel setText:frame.model.teacherName];
     [self.describeLabel setText:frame.model.phone];
     [self.subjecLabel setText:frame.model.subject];
-    [self.headerImageView setHeadrUrl:frame.model.headPic withName:frame.model.teacherName withType:XHHeaderTeacherType];
+    [self.headerImageView setHeadrUrl:frame.model.headerUrl withName:frame.model.teacherName withType:XHHeaderTeacherType];
     
 }
 

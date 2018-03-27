@@ -614,7 +614,7 @@
 {
     
     [self.nameControl setText:model.studentName withNumberType:1 withAllType:NO];
-    [self.header setHeadrUrl:model.headPic withName:model.studentName withType:XHHeaderOtherType];
+    [self.header setHeadrUrl:model.headerUrl withName:model.studentName withType:XHHeaderOtherType];
     [self.schoolControl setText:model.schoolName withNumberType:1 withAllType:NO];
     [self.classControl setText:model.clazzName withNumberType:1 withAllType:NO];
     [self.sexControl setText:model.sexString withNumberType:1 withAllType:NO];

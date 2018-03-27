@@ -17,6 +17,7 @@
 @property (nonatomic,copy) NSString *guardianId; //!< 监护人id
 @property (nonatomic,copy) NSString *telphoneNumber;
 @property (nonatomic,copy) NSString *headPic;
+@property (nonatomic,copy) NSString *headUrl;
 @property (nonatomic,copy) NSString *isMajor;
 
 

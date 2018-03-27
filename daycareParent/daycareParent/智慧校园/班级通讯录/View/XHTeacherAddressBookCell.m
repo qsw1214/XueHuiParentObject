@@ -53,7 +53,7 @@
     [self.lineView setFrame:CGRectMake(0, itemFrame.itemFrame.size.height-0.5, itemFrame.itemFrame.size.width, 0.5)];
     
     
-    [self.headerImageView setHeadrUrl:itemFrame.model.headerPic withName:itemFrame.model.teacherName withType:XHHeaderTeacherType];
+    [self.headerImageView setHeadrUrl:itemFrame.model.headerUrl withName:itemFrame.model.teacherName withType:XHHeaderTeacherType];
     [self.titleLabel setText:itemFrame.model.teacherName];
     [self.describeLabel setText:itemFrame.model.phone];
 

@@ -58,7 +58,7 @@
     
     [self.titleLabel setText:model.guardianName];
     [self.phoneLabel setText:model.telphoneNumber];
-    [self.headerImageView setHeadrUrl:model.headPic withName:model.guardianName withType:XHHeaderOtherType];
+    [self.headerImageView setHeadrUrl:model.headUrl withName:model.guardianName withType:XHHeaderOtherType];
     
     if ([model.isMajor isEqualToString:@"1"])
     {

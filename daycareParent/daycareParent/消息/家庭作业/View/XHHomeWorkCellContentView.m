@@ -105,7 +105,7 @@
             
             
             //赋值
-            [self.headerImageView setHeadrUrl:itemFrame.model.headerPic withName:itemFrame.model.userName withType:XHHeaderTeacherType];
+            [self.headerImageView setHeadrUrl:itemFrame.model.headerUrl withName:itemFrame.model.userName withType:XHHeaderTeacherType];
             [self.userNameLael setText:itemFrame.model.userName];
             [self.subjectLabel setText:itemFrame.model.subject];
             [self.dateLabel setText:itemFrame.model.releaseDate];
@@ -168,7 +168,7 @@
             
             
             //赋值
-            [self.headerImageView setHeadrUrl:itemFrame.model.headerPic withName:itemFrame.model.userName withType:XHHeaderTeacherType];
+            [self.headerImageView setHeadrUrl:itemFrame.model.headerUrl withName:itemFrame.model.userName withType:XHHeaderTeacherType];
             [self.userNameLael setText:itemFrame.model.userName];
             [self.dateLabel setText:itemFrame.model.releaseDate];
             [self.contentLabel setText:itemFrame.model.workContent];

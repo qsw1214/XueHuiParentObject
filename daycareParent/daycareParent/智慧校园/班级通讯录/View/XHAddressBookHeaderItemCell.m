@@ -95,7 +95,7 @@
     }
     
     
-    [self.headerImageView setHeadrUrl:model.headPic withName:model.studentName withType:XHHeaderOtherType];
+    [self.headerImageView setHeadrUrl:model.headerUrl withName:model.studentName withType:XHHeaderOtherType];
 }
 
 

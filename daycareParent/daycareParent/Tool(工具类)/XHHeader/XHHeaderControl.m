@@ -51,8 +51,12 @@
  */
 -(void)setHeadrUrl:(NSString*)url withName:(NSString*)name withType:(XHHeaderType)type
 {
+    [self.imageView setHidden:NO];
+    [self.titleLabel setHidden:NO];
+    
+    
+    
     url = [NSString safeString:url];
-    if ([url isEqualToString:@""])
     {
         NSInteger length = name.length;
         NSString *makeName = name;
@@ -62,7 +66,7 @@
         }
         else
         {
-//        2.截取我们想要的字符串内容
+            //2.截取我们想要的字符串内容
             switch (type)
             {
                 case XHHeaderTeacherType:
@@ -79,12 +83,20 @@
             
             [self.titleLabel setText:makeName];
         }
-
+        
     }
-    else
-    {
-        [self.imageView sd_setImageWithURL:[NSURL URLWithString:ALGetFileHeadThumbnail(url)]];
-    }
+    
+   
+    @WeakObj(self);
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:url] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL)
+     {
+         @StrongObj(self);
+         if (image)
+         {
+             [self.titleLabel setHidden:YES];
+         }
+     }];
+    
 }
 
 

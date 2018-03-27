@@ -170,21 +170,24 @@
 {
     if (_itemArray == nil)
     {
-        NSArray *itemArray = @[@{@"title":@"考勤记录",@"describe":@"Attendance",@"icon":@"bg_kaoqin"},
+        NSArray *itemArray = @[
+  @{@"title":@"考勤记录",@"describe":@"Attendance",@"icon":@"bg_kaoqin"},
   @{@"title":@"安全定位",@"describe":@"Location",@"icon":@"bg_dingwei"},
   @{@"title":@"成绩",@"describe":@"Performance",@"icon":@"bg_chengji"},
   @{@"title":@"课程表",@"describe":@"Timetable",@"icon":@"bg_kechengbiao"},
   @{@"title":@"请假",@"describe":@"Leave",@"icon":@"bg_qingjia"},
   @{@"title":@"食谱",@"describe":@"Recipes",@"icon":@"bg_food"}];
         _itemArray = [NSMutableArray array];
-        for (NSDictionary *dictobj in itemArray)
+        for (int i = 0; i < [itemArray count]; i++)
         {
+            NSDictionary *dictobj = [itemArray objectAtIndex:i];
             NSString *title = [dictobj objectItemKey:@"title"];
             NSString *describe = [dictobj objectItemKey:@"describe"];
             NSString *icon = [dictobj objectItemKey:@"icon"];
             XHFunctionMenuFrame *frame = [[XHFunctionMenuFrame alloc]init];
             XHFunctionMenuModel *model = [[XHFunctionMenuModel alloc]init];
             [model setTitle:title];
+            [model setTage:i];
             [model setDescribe:describe];
             [model setIconName:icon];
             [frame setModel:model];

@@ -28,6 +28,7 @@ typedef NS_ENUM(NSInteger,ChildListShowType)
 @interface XHChildListModel : NSObject
 
 @property(copy,nonatomic)NSString *age,*archiveId,*birthdate,*clazzId,*clazzName,*familyId,*gradeId,*gradeName,*headPic,*ID,*latitude,*longitude,*propValue_studentId,*schoolAddress,*schoolId,*schoolName,*sex,*sexName,*studentBaseId,*studentId,*studentName;
+@property (nonatomic,copy) NSString *headerUrl; //!< 头像
 @property(copy,nonatomic) NSString *sexString; //!< 男 、女
 
 

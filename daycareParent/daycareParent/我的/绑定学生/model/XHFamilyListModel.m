@@ -18,6 +18,7 @@
     [self setGuardianId:[object objectItemKey:@"guardianId"]];
     [self setGuardianName:[object objectItemKey:@"guardianName"]];
     [self setGuardianType:[object objectItemKey:@"guardianType"]];
+    [self setHeadUrl:ALGetFileHeadThumbnail(self.headPic)];
     
     if ([self.guardianType isEqualToString:@"0"])
     {

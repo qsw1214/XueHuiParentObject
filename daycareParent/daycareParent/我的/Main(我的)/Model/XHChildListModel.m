@@ -22,6 +22,7 @@
         _gradeId=[dic objectItemKey:@"gradeId"];
         _gradeName=[dic objectItemKey:@"gradeName"];
         _headPic = [dic objectItemKey:@"headPic"];
+        [self setHeadPic:ALGetFileHeadThumbnail(_headPic)];
         _latitude=[dic objectItemKey:@"latitude"];
         _longitude=[dic objectItemKey:@"longitude"];
         _propValue_studentId=[[dic objectItemKey:@"propValue"] objectItemKey:@"studentId"];

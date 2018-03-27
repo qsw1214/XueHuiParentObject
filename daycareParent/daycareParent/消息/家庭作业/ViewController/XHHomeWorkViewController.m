@@ -46,7 +46,7 @@
         [self.mainTableView setDelegate:self];
         [self.mainTableView setDataSource:self];
         [self.mainTableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHeaderAction)];
-         [self.mainTableView setTipType:TipTitleAndTipImage withTipTitle:@"暂无数据" withTipImage:@"pic_nothing"];
+         [self.mainTableView setTipType:TipTitleAndTipImage withTipTitle:@"暂无作业" withTipImage:@"pic_nothing"];
         [self.mainTableView beginRefreshing];
         [self.view addSubview:self.mainTableView];
         /*

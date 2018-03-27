@@ -46,7 +46,7 @@
         [self.mainTableView setDataSource:self];
         [self.mainTableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHeaderAction)];
         [self.mainTableView showRefresFooterWithTarget:self withSelector:@selector(refreshFooterAction)];
-        [self.mainTableView setTipType:TipTitleAndTipImage withTipTitle:@"暂无数据" withTipImage:@"pic_nothing"];
+        [self.mainTableView setTipType:TipTitleAndTipImage withTipTitle:@"暂无公告" withTipImage:@"pic_nothing"];
         [self.mainTableView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.bottom)];
         [self.view addSubview:self.mainTableView];
         [self.mainTableView beginRefreshing];

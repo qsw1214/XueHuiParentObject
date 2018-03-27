@@ -23,7 +23,7 @@
 #import "SDCycleScrollView.h"
 #import "XHTeacherAddressBookViewController.h"
 #import "XHBindViewController.h"
-
+#import "XHUpdateHelper.h"
 
 
 @interface XHSmartCampusViewController () <XHFunctionMenuControlDeletage>
@@ -39,7 +39,8 @@
     [super viewDidLoad];
     [self navtionItemHidden:NavigationItemLeftType];
     [self setItemContentType:NavigationIconype withItemType:NavigationItemRightype withIconName:@"ico_sao" withTitle:nil];
-
+    //是否升级
+    [[XHUpdateHelper alloc] updateVersionWithViewController:self];
 }
 
 

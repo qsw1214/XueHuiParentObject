@@ -23,6 +23,7 @@
 -(void)setImageViewName:(NSString *)imageName withNumberIndex:(NSInteger)index;
 -(void)setImageViewBackgroundColor:(UIColor *)color withNumberIndex:(NSInteger)index;
 -(void)setImageViewCornerRadius:(CGFloat)radius withNumberIndex:(NSInteger)index;
+-(void)setImageViewAlpha:(CGFloat)alpha withNumberIndex:(NSInteger)index;
 -(void)setImageViewBorderColor:(UIColor *)borderColor withBorderWidth:(CGFloat)borderWidth withNumberIndex:(NSInteger)index;
 -(void)setHeadPic:(NSString*)pic withName:(NSString*)name withType:(XHHeadType)type;
 @end

@@ -28,8 +28,8 @@
 {
     [self.titleImageView setFrame:CGRectMake(15, 10, 20, 20)];
     [self.titleLabel setFrame:CGRectMake(self.titleImageView.right+10, self.titleImageView.top, (SCREEN_WIDTH-self.titleImageView.right-30)/2.0, self.titleImageView.height)];
-    [self.dateLabel setFrame:CGRectMake(self.titleLabel.right+5, self.titleImageView.top, (SCREEN_WIDTH-self.titleImageView.right-30)/2.0, self.titleImageView.height)];
-    [self.contentLabel setFrame:CGRectMake(10, self.titleImageView.bottom, SCREEN_WIDTH-20,self.contentView.frame.size.height- self.titleImageView.bottom)];
+    [self.dateLabel setFrame:CGRectMake(self.titleLabel.right+10, self.titleImageView.top, (SCREEN_WIDTH-self.titleImageView.right-30)/2.0, self.titleImageView.height)];
+    [self.contentLabel setFrame:CGRectMake(10, self.titleImageView.bottom+5, SCREEN_WIDTH-20,self.contentView.frame.size.height- self.titleImageView.bottom-10)];
     switch (model.modelType)
     {
         case XHSystemNoticeType:
@@ -47,7 +47,7 @@
     self.titleLabel.text=model.title;
     self.dateLabel.text=[NSDate dateStr:model.date FromFormatter:ALL_DEFAULT_TIME_FORM ToFormatter:DEFAULT_TIME_FORM1];
     self.contentLabel.text=model.content;
-    kNSLog(model.title);
+    [self.contentLabel setParagraph:[NSString safeString:model.content]];
 }
 -(ParentImageView *)titleImageView
 {

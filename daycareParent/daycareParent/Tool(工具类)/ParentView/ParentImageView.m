@@ -14,6 +14,7 @@
     if (self=[super init])
     {
         [self setContentMode:UIViewContentModeScaleAspectFit];
+        self.backgroundColor=[UIColor whiteColor];
     }
     return self;
 }
@@ -22,6 +23,7 @@
     if (self=[super initWithFrame:frame])
     {
         [self setContentMode:UIViewContentModeScaleAspectFit];
+         self.backgroundColor=[UIColor whiteColor];
     }
     return self;
 }

@@ -6,12 +6,12 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "box-check@2x.png",
+      "filename" : "box_nochose@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "box-check@3x.png",
+      "filename" : "box_nochose@3x.png",
       "scale" : "3x"
     }
   ],

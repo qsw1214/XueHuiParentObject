@@ -97,10 +97,10 @@
     if (_shareButton==nil) {
         _shareButton=[[BaseButtonControl alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)];
         [_shareButton setNumberLabel:2];
-        [_shareButton setTitleEdgeFrame:CGRectMake(0, 0, SCREEN_WIDTH, _shareButton.height-1) withNumberType:0 withAllType:NO];
+        [_shareButton setTitleEdgeFrame:CGRectMake(0, 0, SCREEN_WIDTH, _shareButton.height-0.5) withNumberType:0 withAllType:NO];
         [_shareButton setText:@"分享到" withNumberType:0 withAllType:NO];
         [_shareButton setTextAlignment:NSTextAlignmentCenter withNumberType:0 withAllType:NO];
-        [_shareButton setTitleEdgeFrame:CGRectMake(0, _shareButton.height-1, SCREEN_WIDTH, 1) withNumberType:1 withAllType:NO];
+        [_shareButton setTitleEdgeFrame:CGRectMake(0, _shareButton.height-0.5, SCREEN_WIDTH, 0.5) withNumberType:1 withAllType:NO];
         [_shareButton setTextBackGroundColor:LineViewColor withTpe:1 withAllType:NO];
     }
     return _shareButton;
@@ -111,10 +111,10 @@
         _cancleShareButton=[[BaseButtonControl alloc] initWithFrame:CGRectMake(0, 210, SCREEN_WIDTH, 50)];
         [_cancleShareButton setTag:12];
         [_cancleShareButton setNumberLabel:2];
-        [_cancleShareButton setTitleEdgeFrame:CGRectMake(0, 1, SCREEN_WIDTH, _cancleShareButton.height-1) withNumberType:0 withAllType:NO];
+        [_cancleShareButton setTitleEdgeFrame:CGRectMake(0, 0.5, SCREEN_WIDTH, _cancleShareButton.height-0.5) withNumberType:0 withAllType:NO];
         [_cancleShareButton setText:@"取消分享" withNumberType:0 withAllType:NO];
         [_cancleShareButton setTextAlignment:NSTextAlignmentCenter withNumberType:0 withAllType:NO];
-        [_cancleShareButton setTitleEdgeFrame:CGRectMake(0, 0, SCREEN_WIDTH, 1) withNumberType:1 withAllType:NO];
+        [_cancleShareButton setTitleEdgeFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0.5) withNumberType:1 withAllType:NO];
         [_cancleShareButton setTextBackGroundColor:LineViewColor withTpe:1 withAllType:NO];
     }
     return _cancleShareButton;

@@ -59,12 +59,12 @@
         if (indexPath.row==1)
         {
             cell.headBtn.hidden=NO;
-            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.arrowImageView.hidden=YES;
         }
         else
         {
             cell.headBtn.hidden=YES;
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.arrowImageView.hidden=NO;
             if (indexPath.row==2)
             {
                 cell.backLabel.text=[NSString stringWithFormat:@"清理缓存(%.2fM)",self.fileSize];
@@ -155,7 +155,7 @@
 -(UITableView *)tableView
 {
     if (_tableView==nil) {
-        _tableView=[[UITableView alloc] initWithFrame:CGRectMake(0,self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.bottom) style:UITableViewStyleGrouped];
+        _tableView=[[BaseTableView alloc] initWithFrame:CGRectMake(0,self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.bottom) style:UITableViewStyleGrouped];
         _tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
         _tableView.delegate=self;
         _tableView.dataSource=self;

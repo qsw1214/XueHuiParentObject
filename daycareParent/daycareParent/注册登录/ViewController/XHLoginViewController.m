@@ -63,7 +63,6 @@
     {
         cell.textFeild.keyboardType=UIKeyboardTypeNumberPad;
     }
-    [cell.textFeild addTarget:self action:@selector(textChage) forControlEvents:UIControlEventEditingChanged];
     return cell;
 }
 - (void)buttonClickMethod:(UIButton *)btn
@@ -155,19 +154,7 @@
     
     
 }
--(void)textChage
-{
-    UITextField *telePhone=[_tableView viewWithTag:10086];
-    UITextField *pwd=[_tableView viewWithTag:10086+1];
-    if ([UITextView verifyPhone:telePhone.text]&&pwd.text.length>5)
-    {
-        [self.loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }
-    else
-    {
-        [self.loginButton setTitleColor:LOGIN_BEFORE forState:UIControlStateNormal];
-    }
-}
+
 -(UIScrollView *)scrollView
 {
     if (_scrollView==nil) {
@@ -182,12 +169,13 @@
 -(UITableView *)tableView
 {
     if (_tableView==nil) {
-        _tableView=[[UITableView alloc] initWithFrame:CGRectMake(20, 210, SCREEN_WIDTH-50, 100)];
+        _tableView=[[UITableView alloc] initWithFrame:CGRectMake(40, 210, SCREEN_WIDTH-80, 116)];
+        _tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
         _tableView.center=CGPointMake(SCREEN_WIDTH/2.0, SCREEN_HEIGHT/2.0);
         _tableView.delegate=self;
         _tableView.dataSource=self;
         _tableView.bounces=NO;
-        _tableView.rowHeight=50;
+        _tableView.rowHeight=58;
         [_tableView registerClass:[XHLoginTableViewCell class] forCellReuseIdentifier:@"cell"];
     }
     return _tableView;
@@ -207,9 +195,9 @@
 -(UIButton *)forgetButton
 {
     if (_forgetButton==nil) {
-        _forgetButton=[[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-90, SCREEN_HEIGHT/2.0+60, 82, 30)];
+        _forgetButton=[[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-122, SCREEN_HEIGHT/2.0+60, 82, 30)];
         [_forgetButton setTitle:@"忘记密码?" forState:UIControlStateNormal];
-        _forgetButton.titleLabel.font=FontLevel2;
+        _forgetButton.titleLabel.font=kFont(15.0);
         [_forgetButton setTitleColor:MainColor forState:UIControlStateNormal];
         [_forgetButton setTag:2];
         [_forgetButton addTarget:self action:@selector(buttonClickMethod:) forControlEvents:UIControlEventTouchUpInside];

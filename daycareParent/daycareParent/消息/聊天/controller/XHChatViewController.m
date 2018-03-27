@@ -109,7 +109,21 @@
     
     return [self.conversationListDataSource[indexPath.row] CellHeight];
 }
-
+//- (void)didReceiveMessageNotification:(NSNotification *)notification{
+//    
+//    
+//    
+//    RCMessage *messgae = (RCMessage *)notification.object;
+//    RCUserInfo *user = messgae.content.senderUserInfo;
+////    XHMessageUserInfo *info = [[XHMessageUserInfo alloc] init];
+////    info.name = user.name;
+////    info.headPic = user.portraitUri;
+////    info.userId = user.userId;
+////    [info saveOrUpdateByColumnName:@"userId" AndColumnValue:user.userId];
+////    dispatch_async(dispatch_get_main_queue(),^{
+////        [self reloadIMBadge];
+////    });
+//}
 - (RCConversationBaseCell *)rcConversationListTableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     XHRCTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RongYunListCell" forIndexPath:indexPath];

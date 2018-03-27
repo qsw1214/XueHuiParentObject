@@ -8,6 +8,10 @@
 
 #import "XHLoginTableViewCell.h"
 
+@interface XHLoginTableViewCell()
+
+@end
+
 @implementation XHLoginTableViewCell
 
 - (void)awakeFromNib {
@@ -17,11 +21,14 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        _titleImageView=[[ParentImageView alloc] initWithFrame:CGRectMake(20, (self.contentView.bounds.size.height-25)/2.0, 25, 25)];
+        _titleImageView=[[ParentImageView alloc] initWithFrame:CGRectMake(0, (58-25)/2.0, 25, 25)];
         [self.contentView addSubview:_titleImageView];
-        _textFeild=[[UITextField alloc] initWithFrame:CGRectMake(50, 0, SCREEN_WIDTH-120, self.contentView.bounds.size.height)];
-        _textFeild.clearButtonMode=UITextFieldViewModeWhileEditing;
+        _textFeild=[[ParentTextFeild alloc] initWithFrame:CGRectMake(35, 0, SCREEN_WIDTH-120, 58)];
         [self.contentView addSubview:_textFeild];
+         UILabel* lineLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 58-0.5, SCREEN_WIDTH, 0.5)];
+        lineLabel.backgroundColor=LineViewColor;
+        [self.contentView addSubview:lineLabel];
+          
     }
     return self;
 }

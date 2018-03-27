@@ -29,6 +29,7 @@
 #import "XHBaseBtn.h"
 #import "ParentLabel.h"
 #import "ParentControl.h"
+#import "ParentTextFeild.h"
 #import "ParentBackLabel.h"
 #import "ParentCollectionViewCell.h"
 #import "ParentTableViewCell.h"

@@ -10,5 +10,5 @@
 
 @interface XHLoginTableViewCell : ParentTableViewCell
 @property(nonatomic,strong)ParentImageView *titleImageView;
-@property(nonatomic,strong)UITextField *textFeild;
+@property(nonatomic,strong)ParentTextFeild *textFeild;
 @end

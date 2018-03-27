@@ -76,14 +76,15 @@
 -(ParentControl *)addButton
 {
     if (_addButton==nil) {
-        _addButton=[[ParentControl alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-20-USER_HEARD-24, 5, USER_HEARD, USER_HEARD*2+15)];
+        _addButton=[[ParentControl alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-20-USER_HEARD-24, 15, USER_HEARD, USER_HEARD*2+15)];
+        
         [_addButton setNumberImageView:1];
-        [_addButton setImageViewBackgroundColor:[UIColor redColor] withNumberIndex:0];
-        [_addButton setImageViewCGRectMake:CGRectMake(0, 10, USER_HEARD, USER_HEARD) withNumberIndex:0];
+        [_addButton setImageViewBackgroundColor:[UIColor whiteColor] withNumberIndex:0];
+        [_addButton setImageViewCGRectMake:CGRectMake(0, 0, USER_HEARD, USER_HEARD) withNumberIndex:0];
         [_addButton setImageViewName:@"ico_bindstudents" withNumberIndex:0];
         [_addButton setImageViewCornerRadius:USER_HEARD/2.0 withNumberIndex:0];
         [_addButton setNumberLabel:1];
-        [_addButton setLabelCGRectMake:CGRectMake(-10, USER_HEARD+20, USER_HEARD+20, 20) withNumberIndex:0];
+        [_addButton setLabelCGRectMake:CGRectMake(-10, USER_HEARD+5, USER_HEARD+20, 20) withNumberIndex:0];
         [_addButton setLabelTextAlignment:NSTextAlignmentCenter withNumberIndex:0];
         [_addButton setLabelFont:FontLevel3 withNumberIndex:0];
         [_addButton setLabelText:@"绑定学生" withNumberIndex:0];

@@ -25,6 +25,23 @@
 {
     
 }
+-(UILabel *)lineLabel
+{
+    if (_lineLabel==nil) {
+        _lineLabel=[[UILabel alloc] init];
+        _lineLabel.backgroundColor=LineViewColor;
+    }
+    return _lineLabel;
+}
+-(ParentImageView *)arrowImageView
+{
+    if (_arrowImageView==nil) {
+        _arrowImageView=[[ParentImageView alloc] init];
+        _arrowImageView.image=[UIImage imageNamed:@"ico_arrow"];
+    }
+    return _arrowImageView;
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

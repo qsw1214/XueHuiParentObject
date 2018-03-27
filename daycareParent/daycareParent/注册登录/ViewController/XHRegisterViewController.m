@@ -33,7 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self setNavtionTitle:@"注册页面"];
+    [self setNavtionTitle:@"注册"];
     _currentS = 60;
     [self.view addSubview:self.tableView];
     [self.tableView addSubview:self.selectButton];
@@ -57,7 +57,6 @@
         cell.chageTelePhoneTextField.placeholder=kTitle[indexPath.row];
         cell.chageTelePhoneTextField.keyboardType=UIKeyboardTypeNumberPad;
         cell.chageTelePhoneTextField.tag=indexPath.row+10086;
-        [cell.chageTelePhoneTextField addTarget:self action:@selector(textChage) forControlEvents:UIControlEventEditingChanged];
         cell.verifyButton.backgroundColor=MainColor;
         cell.verifyButton.titleLabel.font=FontLevel3;
         cell.verifyButton.layer.cornerRadius=CORNER_BTN;
@@ -71,7 +70,6 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.chageTelePhoneTextField.placeholder=kTitle[indexPath.row];
         cell.chageTelePhoneTextField.tag=indexPath.row+10086;
-        [cell.chageTelePhoneTextField addTarget:self action:@selector(textChage) forControlEvents:UIControlEventEditingChanged];
         if (indexPath.row==0) {
             cell.chageTelePhoneTextField.keyboardType=UIKeyboardTypeNumberPad;
         }
@@ -211,26 +209,13 @@
     }
     [Cell.verifyButton setTitle:countDownStr(_currentS) forState:UIControlStateNormal];
 }
--(void)textChage
-{
-    UITextField *phonepwd=[_tableView viewWithTag:10086];
-    UITextField *verrifypwd=[_tableView viewWithTag:10086+1];
-    UITextField *pwd=[_tableView viewWithTag:10086+2];
-    if ([UITextView verifyPhone:phonepwd.text]&&pwd.text.length>5&&[UITextView verifyCodeMatch:verrifypwd.text])
-    {
-        [self.registButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }
-    else
-    {
-        [self.registButton setTitleColor:LOGIN_BEFORE forState:UIControlStateNormal];
-    }
-}
+
 
 -(BaseTableView *)tableView
 {
     if (_tableView==nil) {
         _tableView=[[BaseTableView alloc] initWithFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.bottom) style:UITableViewStyleGrouped];
-        _tableView.separatorStyle=UITableViewCellSeparatorStyleSingleLine;
+        _tableView.backgroundColor=[UIColor whiteColor];
         _tableView.rowHeight=50;
         _tableView.delegate=self;
         _tableView.dataSource=self;
@@ -247,8 +232,9 @@
         [_selectButton setNumberImageView:1];
         [_selectButton setNumberLabel:1];
         [_selectButton setImageEdgeFrame:CGRectMake(0, 8, 14, 14) withNumberType:0 withAllType:NO];
-        [_selectButton setImage:@"box-check" withNumberType:0 withAllType:NO];
+        [_selectButton setImage:@"ico-right" withNumberType:0 withAllType:NO];
         [_selectButton setTitleEdgeFrame:CGRectMake(18, 6, 100, 18) withNumberType:0 withAllType:NO];
+        _selectButton.selected=YES;
         [_selectButton setText:@"我已阅读并同意" withNumberType:0 withAllType:NO];
         [_selectButton setFont:kFont(14) withNumberType:0 withAllType:NO];
         [_selectButton setTag:2];

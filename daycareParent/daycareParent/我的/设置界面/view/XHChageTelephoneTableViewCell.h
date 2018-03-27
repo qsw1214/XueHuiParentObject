@@ -9,5 +9,5 @@
 #import "ParentTableViewCell.h"
 
 @interface XHChageTelephoneTableViewCell : ParentTableViewCell
-@property(nonatomic,strong)UITextField *chageTelePhoneTextField;
+@property(nonatomic,strong)ParentTextFeild *chageTelePhoneTextField;
 @end

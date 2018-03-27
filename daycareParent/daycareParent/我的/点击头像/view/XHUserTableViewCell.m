@@ -26,8 +26,10 @@
         _headBtn.layer.cornerRadius=USER_HEARD/2.0;
         _headBtn.layer.masksToBounds=YES;
         [self.contentView addSubview:_headBtn];
-        _arrowsImageView=[[ParentImageView alloc] init];
-        [self.contentView addSubview:_arrowsImageView];
+        self.lineLabel.frame=CGRectMake(0, 50-0.5, SCREEN_WIDTH, 0.5);
+        [self.contentView addSubview:self.lineLabel];
+        self.arrowImageView.frame=CGRectMake(SCREEN_WIDTH-22, (50-14)/2.0, 8, 14);
+        [self.contentView addSubview:self.arrowImageView];
     }
     return self;
 }

@@ -9,6 +9,6 @@
 #import "ParentTableViewCell.h"
 
 @interface XHVerifyTableViewCell : ParentTableViewCell
-@property(nonatomic,strong)UITextField *chageTelePhoneTextField;
+@property(nonatomic,strong)ParentTextFeild *chageTelePhoneTextField;
 @property(nonatomic,strong)UIButton *verifyButton;
 @end

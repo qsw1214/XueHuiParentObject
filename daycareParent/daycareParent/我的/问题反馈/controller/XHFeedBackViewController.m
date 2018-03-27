@@ -10,7 +10,7 @@
 
 @interface XHFeedBackViewController ()<BaseTextViewDeletage>
 @property(nonatomic,strong)BaseTextView *questionTextView;//!<字数限制
-
+@property(nonatomic,strong)UIView *limitBackGroudView;//!<字数限制背景
 @property(nonatomic,strong)UILabel *limitLabel;//!< 实时显示字数
 
 @property(nonatomic,strong)UIButton *sureButton;//!< 提交按钮
@@ -23,11 +23,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setNavtionTitle:@"问题反馈"];
-    self.view.backgroundColor=LineViewColor;
-    
     [self.questionTextView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, 200)];
     [self.view addSubview:self.questionTextView];
-    [self.limitLabel setFrame:CGRectMake(0, self.questionTextView.bottom, SCREEN_WIDTH, 30)];
+    
+    [self.limitBackGroudView setFrame:CGRectMake(0, self.questionTextView.bottom, SCREEN_WIDTH, 30)];
+      [self.view addSubview:self.limitBackGroudView];
+                                                 
+    [self.limitLabel setFrame:CGRectMake(0, self.questionTextView.bottom, SCREEN_WIDTH-10, 30)];
     [self.view addSubview:self.limitLabel];
     [self.sureButton setFrame:CGRectMake(40, self.limitLabel.bottom+40, SCREEN_WIDTH-80, 44)];
     [self.sureButton addTarget:self action:@selector(sureBtnMethod) forControlEvents:UIControlEventTouchUpInside];
@@ -92,6 +94,14 @@
         [_limitLabel setText:@"0/500"];
     }
     return _limitLabel;
+}
+-(UIView *)limitBackGroudView
+{
+    if (_limitBackGroudView==nil) {
+        _limitBackGroudView = [[UIView alloc]init];
+        _limitBackGroudView.backgroundColor=[UIColor whiteColor];
+    }
+    return _limitBackGroudView;
 }
 -(UIButton *)sureButton
 {

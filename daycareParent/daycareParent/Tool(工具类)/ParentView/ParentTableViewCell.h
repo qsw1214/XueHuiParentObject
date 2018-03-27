@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ParentImageView.h"
 @interface ParentTableViewCell : UITableViewCell
+@property(nonatomic,strong)UILabel *lineLabel;
+@property(nonatomic,strong)ParentImageView *arrowImageView;
 -(void)setItemObject:(id)object;
 @end

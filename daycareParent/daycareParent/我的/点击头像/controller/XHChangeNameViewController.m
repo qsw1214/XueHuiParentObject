@@ -20,7 +20,6 @@
     [self setNavtionTitle:@"修改姓名"];
     [self setItemContentType:NavigationTitleType withItemType:NavigationItemRightype withIconName:nil withTitle:@"完成"];
     [self setItemTextColor:MainColor withItemType:NavigationItemRightype];
-    self.view.backgroundColor=LineViewColor;
     [self.view addSubview:self.textFeild];
 }
 

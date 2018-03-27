@@ -72,13 +72,12 @@
     XHSetTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.setImageView.image=[UIImage imageNamed:kTitlePic[indexPath.row]];
     cell.setLabel.text=kTitle[indexPath.row];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
 -(CGFloat)tableView:(BaseTableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 55;
+    return 50;
 }
 -(void)tableView:(BaseTableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -158,17 +157,17 @@
 -(UIView *)headView
 {
     if (_headView==nil) {
-        _headView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, USER_HEARD*2+200)];
+        _headView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, USER_HEARD*2+204)];
         _headView.layer.masksToBounds=YES;
         _headView.backgroundColor=RGB(69, 191, 145);
         UIView *bgView=[[UIView alloc] initWithFrame:CGRectMake(0, _headView.bottom-SCREEN_WIDTH/2.0, SCREEN_WIDTH*2, SCREEN_WIDTH)];
-        bgView.center=CGPointMake(SCREEN_WIDTH/2.0, SCREEN_WIDTH+USER_HEARD+15);
+        bgView.center=CGPointMake(SCREEN_WIDTH/2.0, SCREEN_WIDTH+USER_HEARD+9);
         bgView.layer.cornerRadius=SCREEN_WIDTH;
         bgView.backgroundColor=RGB(239, 239, 239);
         [_headView addSubview:bgView];
         [_headView addSubview:self.headBtn];
         [self refreshHeadView];
-        self.childCollectionView=[[XHChildCollectionView alloc] initWithFrame:CGRectMake(10, _headBtn.bottom+10, SCREEN_WIDTH-20, _headView.bottom-(_headBtn.bottom+10))];
+        self.childCollectionView=[[XHChildCollectionView alloc] initWithFrame:CGRectMake(10, _headBtn.bottom+24, SCREEN_WIDTH-20, _headView.bottom-(_headBtn.bottom+24))];
         self.childCollectionView.delegate=self;
         [_headView addSubview:self.childCollectionView];
         [self.childCollectionView setItemArray:self.childArry];
@@ -178,9 +177,13 @@
 -(ParentControl *)headBtn
 {
     if (_headBtn==nil) {
-        _headBtn=[[ParentControl alloc] initWithFrame:CGRectMake(0, 0, USER_HEARD+10, USER_HEARD+50)];
-        _headBtn.center=CGPointMake(SCREEN_WIDTH/2.0, USER_HEARD/2.0+65);
+        _headBtn=[[ParentControl alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-(USER_HEARD+10))/2.0, 50, USER_HEARD+10, USER_HEARD+50)];
         [_headBtn setNumberLabel:1];
+        [_headBtn setNumberImageView:1];
+        [_headBtn setImageViewCGRectMake:CGRectMake(-4, -4, USER_HEARD+18, USER_HEARD+18) withNumberIndex:0];
+        [_headBtn setImageViewBackgroundColor:RGB(255, 255, 255) withNumberIndex:0];
+        [_headBtn setImageViewAlpha:0.2 withNumberIndex:0];
+        [_headBtn setImageViewCornerRadius:USER_HEARD/2.0+9 withNumberIndex:0];
         [_headBtn addSubview:self.headControl];
         [_headBtn setLabelCGRectMake:CGRectMake(-50,USER_HEARD+10, _headBtn.width+100 , 40) withNumberIndex:0];
         [_headBtn setLabelTextAlignment:NSTextAlignmentCenter withNumberIndex:0];
@@ -274,7 +277,6 @@
         _tableView=[[BaseTableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-49) style:UITableViewStyleGrouped];
         _tableView.delegate=self;
         _tableView.dataSource=self;
-        [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
         _tableView.showsVerticalScrollIndicator=NO;
         [_tableView registerClass:[XHSetTableViewCell class] forCellReuseIdentifier:@"cell"];
     }

@@ -80,14 +80,25 @@
 }
 
 
+
+
+/**
+ 设置分页数组内容的
+
+ @param array 设置分页数组数据
+ */
 -(void)setPageItemArray:(NSMutableArray *)array
 {
-    NSInteger pageCount = [array count];
-    [self.pageArray setArray:array];
-    [self.pageView setItemArray:self.pageArray];
-    [self.pageView reloadData];
+    if ([array count]>1)
+    {
+        NSInteger pageCount = [array count];
+        [self.pageArray setArray:array];
+        [self.pageView setItemArray:self.pageArray];
+        [self.pageView reloadData];
+        
+        [self.pageView resetFrame:CGRectMake((self.infiniteRotationView.width-((PageItemWidth*pageCount)+((pageCount-1)*PageSpace)))/2.0, self.pageView.y, ((PageItemWidth*pageCount)+((pageCount-1)*PageSpace)), 20.0)];
+    }
     
-    [self.pageView resetFrame:CGRectMake((self.infiniteRotationView.width-((PageItemWidth*pageCount)+((pageCount-1)*PageSpace)))/2.0, self.pageView.y, ((PageItemWidth*pageCount)+((pageCount-1)*PageSpace)), 20.0)];
 }
 
 

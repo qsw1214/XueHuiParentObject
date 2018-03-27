@@ -56,7 +56,7 @@
         [self.cookBookHeader resetFrame:CGRectMake(0.0, self.addressBookHeader.bottom, self.addressBookHeader.width, 80.0)];
         [self.view addSubview:self.tableView];
         [self.tableView resetFrame:CGRectMake(0, self.cookBookHeader.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.cookBookHeader.bottom)];
-        [self.tableView setTipType:TipTitleAndTipImage withTipTitle:@"暂无数据" withTipImage:@"pic_nothing"];
+        [self.tableView setTipType:TipTitleAndTipImage withTipTitle:@"暂无食谱" withTipImage:@"pic_nothing"];
     }
     
 }

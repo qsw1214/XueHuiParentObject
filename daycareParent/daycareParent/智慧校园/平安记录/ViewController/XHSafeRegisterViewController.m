@@ -56,6 +56,7 @@
         [self.view addSubview:self.dateSwitchControl];
         [self.dateSwitchControl resetFrame:CGRectMake(0, self.switchHeaderControl.bottom, SCREEN_WIDTH, self.switchHeaderControl.height)];
         [self.view addSubview:self.tableView];
+        [self.tableView setTipType:TipTitleAndTipImage withTipTitle:@"暂无考勤记录" withTipImage:@"pic_nothing"];
         [self.tableView resetFrame:CGRectMake(0, self.dateSwitchControl.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.dateSwitchControl.bottom)];
     }
 }

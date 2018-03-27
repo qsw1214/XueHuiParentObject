@@ -158,8 +158,6 @@
                     [frame setModel:model];
                     [tempArray addObject:frame];
                 }
-                
-                
              }];
             
             [self.dataArray setArray:tempArray];

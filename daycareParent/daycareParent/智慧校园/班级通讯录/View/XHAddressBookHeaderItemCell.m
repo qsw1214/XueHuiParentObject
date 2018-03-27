@@ -111,7 +111,7 @@
     {
         _headerImageView = [[XHHeaderControl alloc]init];
         [_headerImageView setUserInteractionEnabled:NO];
-        [_headerImageView setBackgroundColor:LineViewColor];
+        [_headerImageView setBackgroundColor:kHeaderColor];
     }
     return _headerImageView;
 }

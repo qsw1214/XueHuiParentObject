@@ -31,6 +31,8 @@
 
 -(void)setWithTitle:(nullable NSString *)title message:(nullable NSString *)message delegate:(nullable id)delegate cancelButtonTitle:(nullable NSString *)cancelButtonTitle otherButtonTitle:(nullable NSString *)otherButtonTitle
 {
+    self.layer.cornerRadius=8.0;
+    self.layer.masksToBounds=YES;
     CGSize contentSize = [XHHelper contentSizeWithTitle:message withFontOfSize:[UIFont systemFontOfSize:14.0] withWidth:(SCREEN_WIDTH-60.0)];
     CGFloat contentHeight = (contentSize.height > 20.0 ? contentSize.height : 20.0);
     [self setFrame:CGRectMake(10.0, (SCREEN_HEIGHT-110.0)/2.0, (SCREEN_WIDTH-40.0), (CommonAlertconfirmHeight+30.0+20.0+20.0))];
@@ -133,9 +135,10 @@
     {
         _cancelControl = [[BaseButtonControl alloc]init];
         [_cancelControl setNumberLabel:1];
-        [_cancelControl setTextColor:LineViewColor withTpe:0 withAllType:NO];
+        [_cancelControl setTextColor:[UIColor blackColor] withTpe:0 withAllType:NO];
         [_cancelControl setFont:FontLevel2 withNumberType:0 withAllType:NO];
         [_cancelControl setTag:1];
+        [_cancelControl setTextAlignment:NSTextAlignmentCenter withNumberType:0 withAllType:NO];
     }
     return _cancelControl;
 }

@@ -27,6 +27,7 @@
     {
         [self setBackgroundColor:RGBAlpha(0, 0, 0, 0.3)];
         [self addSubview:self.alertBoard];
+       
         [self setType:type];
         [self.alertBoard setWithTitle:title message:message delegate:delegate cancelButtonTitle:cancelButtonTitle otherButtonTitle:otherButtonTitle];
         [self.alertBoard setCenter:self.center];

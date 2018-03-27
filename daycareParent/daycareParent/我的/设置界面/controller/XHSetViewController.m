@@ -14,13 +14,11 @@
 #import "XHLoginViewController.h"
 #import "JPUSHService.h"
 #import "XHSystemModel.h"
-#define kTitle @[@"修改手机号",@"开启消息推送",@"清除缓存",@"关于我们",@"版本更新"]
+#define kTitle @[@"修改手机号",@"开启消息推送",@"清除缓存",@"关于我们",@"当前版本"]
 @interface XHSetViewController ()<UITableViewDelegate,UITableViewDataSource>
-{
-    float fileSize;
-}
 @property(nonatomic,strong) UITableView *tableView;
 @property(nonatomic,strong)  UIButton *outButton;
+@property(nonatomic,assign) float fileSize;
 @end
 
 @implementation XHSetViewController
@@ -69,7 +67,11 @@
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             if (indexPath.row==2)
             {
-                cell.backLabel.text=[NSString stringWithFormat:@"清理缓存(%.2fM)",fileSize];
+                cell.backLabel.text=[NSString stringWithFormat:@"清理缓存(%.2fM)",self.fileSize];
+            }
+            if (indexPath.row==4)
+            {
+                cell.backLabel.text=kFormat(@"v%@",AppVersion);
             }
         }
     return cell;
@@ -94,7 +96,7 @@
             [XHShowHUD showTextHud];
             [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
                 [XHShowHUD showOKHud:@"清除完成!"];
-                fileSize=0;
+                self.fileSize=0;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
                 });
@@ -108,14 +110,7 @@
         }
             
             break;
-        case 4:
-        {
-            [self updateVersion];
-            
-        }
-            
-            break;
-      
+        
     }
     
     
@@ -150,7 +145,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    fileSize= (float)[[SDImageCache sharedImageCache] getSize]/1024.0/1024.0;
+    self.fileSize= (float)[[SDImageCache sharedImageCache] getSize]/1024.0/1024.0;
     [self.tableView reloadData];
 }
 -(NSString *)DocumentsTruePath
@@ -173,7 +168,7 @@
 {
     if (_outButton==nil) {
        _outButton=[[UIButton alloc] initWithFrame:CGRectMake(40, 280, SCREEN_WIDTH-80, 44)];
-        _outButton.backgroundColor=[UIColor redColor];
+        _outButton.backgroundColor=MainColor;
         [_outButton setTitle:@"退出" forState:UIControlStateNormal];
         [_outButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _outButton.layer.cornerRadius=CORNER_BTN;

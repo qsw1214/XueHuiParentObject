@@ -48,7 +48,6 @@
         if (ok)
         {
             [self getChildListNet];
-            [self refreshUserInfo];
         }
     };
 }
@@ -56,8 +55,7 @@
 {
     [self refreshHeadView];
     [self getChildListNet];
-    [self refreshUserInfo];
-    [_tableView refreshReload];
+    [self.tableView refreshReload];
 }
 #pragma mark----tableviewDelegate
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -146,34 +144,14 @@
     [_headBtn setHeadPic:userInfo.headPic withName:userInfo.guardianModel.guardianName withType:XHTeacherType];
     if (![userInfo.guardianModel.guardianName isEqualToString:@""])
     {
-        [_headBtn setLabelText:userInfo.guardianModel.guardianName withNumberIndex:1];
+        [self.headBtn setLabelText:userInfo.guardianModel.guardianName withNumberIndex:1];
     }
     else
     {
-        [_headBtn setLabelText:@"姓名" withNumberIndex:1];
+        [self.headBtn setLabelText:@"设置姓名" withNumberIndex:1];
     }
 }
--(void)refreshUserInfo
-{
-    if (![[XHUserInfo sharedUserInfo].guardianModel.familyId isEqualToString:@""])
-    {
-        return ;
-    }
-    XHLoginModel *model=[NSUserDefaults getLoginModel];
-    XHNetWorkConfig *net=[XHNetWorkConfig new];
-    [net setObject:model.loginName forKey:@"loginName"];
-    [net setObject:model.pwd forKey:@"pwd"];
-    [net setObject:@"3" forKey:@"type"];
-    [net postWithUrl:@"zzjt-app-api_login" sucess:^(id object, BOOL verifyObject)
-    {
-        if (verifyObject)
-        {
-            XHGuardianInfo *guardianModel=[[XHGuardianInfo alloc] initWithDic:[[[object objectItemKey:@"object"] objectItemKey:@"propValue"] objectItemKey:@"guardian"]];
-            [XHUserInfo sharedUserInfo].guardianModel=guardianModel;
-        }
-        
-    } error:^(NSError *error) {}];
-}
+
 #pragma mark----导航栏视图
 -(UIView *)headView
 {
@@ -270,14 +248,14 @@
             
             [[XHUserInfo sharedUserInfo].childListArry setArray:self.childArry];
             dispatch_async(dispatch_get_main_queue(), ^{
-                [_tableView refreshReload];
+                [self.tableView refreshReload];
                 [self.childCollectionView setItemArray:self.childArry];
             });
 
         }
 
     } error:^(NSError *error) {
-        [_tableView refreshReload];
+        [self.tableView refreshReload];
     }];
     return _getChildListNet;
 }

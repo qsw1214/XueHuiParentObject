@@ -367,6 +367,7 @@
 		8C019F741FF4C3DB005EBC2C /* XHMessageUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C019F731FF4C3DB005EBC2C /* XHMessageUserInfo.m */; };
 		8C01A2352006E94800E4D768 /* NJKWebViewProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C01A2322006E94800E4D768 /* NJKWebViewProgress.m */; };
 		8C01A2362006E94800E4D768 /* NJKWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C01A2342006E94800E4D768 /* NJKWebViewProgressView.m */; };
+		8C0D26FC2069D98000C246CD /* XHUpdateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C0D26FB2069D98000C246CD /* XHUpdateHelper.m */; };
 		8C1642232056184E001DCA01 /* XHRCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1642222056184E001DCA01 /* XHRCModel.m */; };
 		8C1642272056741D001DCA01 /* XHLoseSubjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1642262056741D001DCA01 /* XHLoseSubjectView.m */; };
 		8C16422A20567887001DCA01 /* XHSubjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C16422920567887001DCA01 /* XHSubjectModel.m */; };
@@ -1239,6 +1240,8 @@
 		8C01A2322006E94800E4D768 /* NJKWebViewProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgress.m; sourceTree = "<group>"; };
 		8C01A2332006E94800E4D768 /* NJKWebViewProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgressView.h; sourceTree = "<group>"; };
 		8C01A2342006E94800E4D768 /* NJKWebViewProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgressView.m; sourceTree = "<group>"; };
+		8C0D26FA2069D98000C246CD /* XHUpdateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHUpdateHelper.h; sourceTree = "<group>"; };
+		8C0D26FB2069D98000C246CD /* XHUpdateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHUpdateHelper.m; sourceTree = "<group>"; };
 		8C1642212056184E001DCA01 /* XHRCModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHRCModel.h; sourceTree = "<group>"; };
 		8C1642222056184E001DCA01 /* XHRCModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHRCModel.m; sourceTree = "<group>"; };
 		8C1642252056741D001DCA01 /* XHLoseSubjectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHLoseSubjectView.h; sourceTree = "<group>"; };
@@ -2572,6 +2575,7 @@
 		4B80F2001FCBE43E00BC7B52 /* Tool(工具类) */ = {
 			isa = PBXGroup;
 			children = (
+				8C0D26F92069D98000C246CD /* XHUpdateHelper */,
 				0441A6092068F8D300270E1D /* ParentModel */,
 				048608622062485A00913F2D /* XHHeader */,
 				0455C4C720609995007A975C /* XHInfiniteRotation */,
@@ -3328,6 +3332,15 @@
 				8C01A2342006E94800E4D768 /* NJKWebViewProgressView.m */,
 			);
 			path = NJKWebViewProgress;
+			sourceTree = "<group>";
+		};
+		8C0D26F92069D98000C246CD /* XHUpdateHelper */ = {
+			isa = PBXGroup;
+			children = (
+				8C0D26FA2069D98000C246CD /* XHUpdateHelper.h */,
+				8C0D26FB2069D98000C246CD /* XHUpdateHelper.m */,
+			);
+			path = XHUpdateHelper;
 			sourceTree = "<group>";
 		};
 		8C164224205651D9001DCA01 /* model */ = {
@@ -4161,6 +4174,7 @@
 				4B80F2CC1FCBF04F00BC7B52 /* SDWebImageGIFCoder.m in Sources */,
 				8C42CFCE1FF5D86D00CEDBDA /* XHNewUserInfoViewController.m in Sources */,
 				4B4A00171FE2411200B8A8F8 /* XHDynamicsCell.m in Sources */,
+				8C0D26FC2069D98000C246CD /* XHUpdateHelper.m in Sources */,
 				4BD8D40D202072A300A98CEE /* XHStoreHelper.m in Sources */,
 				4B278AD42010415700293F30 /* RCDLiveInputBar.m in Sources */,
 				4B80F31F1FCBFD6F00BC7B52 /* MTLTransformerErrorHandling.m in Sources */,

@@ -7,8 +7,14 @@
 //
 
 #import "ParentTableViewCell.h"
+typedef NS_ENUM(NSInteger,XHVerifyModelType)
+{
+    XHVerifyRegistType=1,
+    XHVerifyForgetType=2,
+     XHVerifyFoundType=3,
+};
 
 @interface XHVerifyTableViewCell : ParentTableViewCell
-@property(nonatomic,strong)ParentTextFeild *chageTelePhoneTextField;
 @property(nonatomic,strong)UIButton *verifyButton;
+@property(nonatomic,assign)XHVerifyModelType modelType;
 @end

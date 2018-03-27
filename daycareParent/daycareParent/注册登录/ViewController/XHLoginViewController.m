@@ -16,8 +16,7 @@
 #import "AppDelegate.h"
 #import "XHChildListModel.h"
 #import "XHNewUserInfoViewController.h"
-#define kTitle @[@"请输入手机号",@"请输入密码"]
-#define kTitlePic @[@"ico_number",@"ico_password"]
+
 @interface XHLoginViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UIScrollView *scrollView;
 @property(nonatomic,strong)ParentImageView *imageView;
@@ -33,6 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor=[UIColor whiteColor];
     [self navtionHidden:YES];
     [self.view addSubview:self.scrollView];
     [self.scrollView addSubview:self.imageView];
@@ -47,22 +47,16 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return kTitle.count;
+    return 2;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 58;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     XHLoginTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.textFeild.placeholder=kTitle[indexPath.row];
-    cell.titleImageView.image=[UIImage imageNamed:kTitlePic[indexPath.row]];
-    cell.textFeild.tag=indexPath.row+10086;
-    if (indexPath.row==1) {
-        cell.textFeild.secureTextEntry=YES;
-    }
-    else
-    {
-        cell.textFeild.keyboardType=UIKeyboardTypeNumberPad;
-    }
+    [cell setItemObject:nil withIndexPathRow:indexPath.row];
     return cell;
 }
 - (void)buttonClickMethod:(UIButton *)btn
@@ -175,7 +169,6 @@
         _tableView.delegate=self;
         _tableView.dataSource=self;
         _tableView.bounces=NO;
-        _tableView.rowHeight=58;
         [_tableView registerClass:[XHLoginTableViewCell class] forCellReuseIdentifier:@"cell"];
     }
     return _tableView;

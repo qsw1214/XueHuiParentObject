@@ -47,7 +47,8 @@
     self.titleLabel.text=model.title;
     self.dateLabel.text=[NSDate dateStr:model.date FromFormatter:ALL_DEFAULT_TIME_FORM ToFormatter:DEFAULT_TIME_FORM1];
     self.contentLabel.text=model.content;
-    [self.contentLabel setParagraph:[NSString safeString:model.content]];
+   // [self.contentLabel setParagraph:[NSString safeString:model.content]];
+    [self.contentLabel setLabelSpace:self.contentLabel withValue:[NSString safeString:model.content] withFont:kFont(16.0) withlineSpacing:6 withAttributeName:kFont(1.5)];
 }
 -(ParentImageView *)titleImageView
 {

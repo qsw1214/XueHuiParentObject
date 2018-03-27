@@ -92,16 +92,17 @@
             case 2:
         {
             XHChageTelephoneTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-            cell.chageTelePhoneTextField.tag=indexPath.row-2+10086;
-            [cell.chageTelePhoneTextField addTarget:self action:@selector(textChage) forControlEvents:UIControlEventEditingChanged];
+            cell.modelType=XHVerifyFoundType;
+            [cell setItemObject:nil withIndexPathRow:indexPath.row];
+          
             return cell;
         }
             break;
         default:
         {
             XHVerifyTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"telephonecell" forIndexPath:indexPath];
-            cell.chageTelePhoneTextField.tag=indexPath.row-2+10086;
-            [cell.chageTelePhoneTextField addTarget:self action:@selector(textChage) forControlEvents:UIControlEventEditingChanged];
+            cell.modelType=XHVerifyFoundType;
+            [cell setItemObject:nil withIndexPathRow:indexPath.row];
             [cell.verifyButton setTag:1];
             [cell.verifyButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
             return cell;
@@ -198,20 +199,7 @@
     }
     [Cell.verifyButton setTitle:countDownStr(_currentS) forState:UIControlStateNormal];
 }
-#pragma mark-----textfeildChangeMethod
--(void)textChage
-{
-    UITextField *phonepwd=[_tableView viewWithTag:10086];
-    UITextField *verrifypwd=[_tableView viewWithTag:10086+1];
-    if ([UITextView verifyPhone:phonepwd.text]&&[UITextView verifyCodeMatch:verrifypwd.text])
-    {
-        [self.sureButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }
-    else
-    {
-        [self.sureButton setTitleColor:LOGIN_BEFORE forState:UIControlStateNormal];
-    }
-}
+
 -(BaseTableView *)tableView
 {
     if (_tableView==nil) {

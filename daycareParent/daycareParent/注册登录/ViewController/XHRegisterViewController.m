@@ -53,13 +53,8 @@
 {
     if (indexPath.row==1) {
         XHVerifyTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.chageTelePhoneTextField.placeholder=kTitle[indexPath.row];
-        cell.chageTelePhoneTextField.keyboardType=UIKeyboardTypeNumberPad;
-        cell.chageTelePhoneTextField.tag=indexPath.row+10086;
-        cell.verifyButton.backgroundColor=MainColor;
-        cell.verifyButton.titleLabel.font=FontLevel3;
-        cell.verifyButton.layer.cornerRadius=CORNER_BTN;
+        cell.modelType=XHVerifyRegistType;
+        [cell setItemObject:nil withIndexPathRow:indexPath.row];
         [cell.verifyButton setTag:1];
         [cell.verifyButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
@@ -67,16 +62,8 @@
     else
     {
         XHChageTelephoneTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"telephonecell" forIndexPath:indexPath];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.chageTelePhoneTextField.placeholder=kTitle[indexPath.row];
-        cell.chageTelePhoneTextField.tag=indexPath.row+10086;
-        if (indexPath.row==0) {
-            cell.chageTelePhoneTextField.keyboardType=UIKeyboardTypeNumberPad;
-        }
-        else
-        {
-            cell.chageTelePhoneTextField.secureTextEntry=YES;
-        }
+        cell.modelType=XHChageTelephoneRegistType;
+        [cell setItemObject:nil withIndexPathRow:indexPath.row];
         return cell;
     }
     

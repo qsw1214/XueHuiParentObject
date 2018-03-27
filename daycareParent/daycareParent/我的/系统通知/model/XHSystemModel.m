@@ -12,11 +12,11 @@
 {
     if (self =[super initWithDic:dic]) {
         
-        _content=[dic objectItemKey:@"content"];
-//        _content=@"你好，这是通知。你好，这是通知。你好，这是通知。你好，这是通知。你好，这是通知。你好，这是通知。你好，这是通知。你好，这是通知。你好，这是通知。你好，这是通知。你好，这是通知。你好，这是通知。123";
+        //_content=[dic objectItemKey:@"content"];
+        _content=@"你好，这是通知。你好，这是通知。你好，这是通知。你好，这是通知。你好，这是通知。你好，这是通知。你好，这是通知。你好，这是通知。你好，这是通知。你好，这是通知。你好，这是通知。你好，这是通知。123";
         _date=[dic objectItemKey:@"createTime"];
         _title=[dic objectItemKey:@"title"];
-        self.itemCellHeight=40+[self contentSizeWithTitle:_content withFontOfSize:kFont(17.0) withWidth:SCREEN_WIDTH-20].height;
+        self.itemCellHeight=40+[self getSpaceLabelHeight:_content withFont:kFont(16.0) withWidth:SCREEN_WIDTH-20 withlineSpacing:6 withAttributeName:kFont(1.5)];
         switch ([[dic objectItemKey:@"type"] integerValue]) {
             case 1:
             {

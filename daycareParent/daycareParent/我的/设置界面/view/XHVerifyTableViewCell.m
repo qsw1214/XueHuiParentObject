@@ -7,7 +7,11 @@
 //
 
 #import "XHVerifyTableViewCell.h"
+@interface XHVerifyTableViewCell()
 
+@property(nonatomic,strong)ParentTextFeild *chageTelePhoneTextField;
+
+@end
 @implementation XHVerifyTableViewCell
 
 - (void)awakeFromNib {
@@ -17,22 +21,58 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        _chageTelePhoneTextField=[[ParentTextFeild alloc] initWithFrame:CGRectMake(20, 0, SCREEN_WIDTH-120, 50)];
-        _chageTelePhoneTextField.placeholder=@"请输入短信密码";
-       _chageTelePhoneTextField.keyboardType=UIKeyboardTypeNumberPad;
-        _chageTelePhoneTextField.clearButtonMode=UITextFieldViewModeWhileEditing;
-        [self.contentView addSubview:_chageTelePhoneTextField];
-        _verifyButton=[[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-100, 10, 80, 30)];
+       
+        [self.contentView addSubview:self.verifyButton];
+        [self.contentView addSubview:self.chageTelePhoneTextField];
+        [self.contentView addSubview:self.lineLabel];
+
+    }
+    return self;
+}
+-(void)setItemObject:(id)object withIndexPathRow:(NSInteger)row
+{
+    self.chageTelePhoneTextField.frame=CGRectMake(20, 0, SCREEN_WIDTH-120, 50);
+    self.verifyButton.frame=CGRectMake(SCREEN_WIDTH-100, 10, 80, 30);
+     self.lineLabel.frame=CGRectMake(0, self.contentView.frame.size.height-0.5, SCREEN_WIDTH, 0.5);
+    self.chageTelePhoneTextField.placeholder=@"请输入验证码";
+    
+    switch (self.modelType) {
+        case XHVerifyRegistType:
+            case XHVerifyForgetType:
+        {
+            self.chageTelePhoneTextField.tag=row+10086;
+        }
+            break;
+            
+        case XHVerifyFoundType:
+        {
+               self.chageTelePhoneTextField.tag=row-2+10086;
+        }
+            break;
+    }
+
+}
+-(UIButton *)verifyButton
+{
+    if (_verifyButton==nil) {
+        _verifyButton=[[UIButton alloc] init];
         _verifyButton.backgroundColor=MainColor;
         _verifyButton.titleLabel.font=FontLevel3;
         _verifyButton.layer.cornerRadius=CORNER_BTN;
         [_verifyButton setTitle:@"获取验证码" forState:UIControlStateNormal];
-        [self.contentView addSubview:_verifyButton];
-        UILabel* lineLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 50-0.5, SCREEN_WIDTH, 0.5)];
-        lineLabel.backgroundColor=LineViewColor;
-        [self.contentView addSubview:lineLabel];
+        
     }
-    return self;
+    return _verifyButton;
+}
+-(ParentTextFeild *)chageTelePhoneTextField
+{
+    if (_chageTelePhoneTextField==nil) {
+        _chageTelePhoneTextField=[[ParentTextFeild alloc] init];
+        _chageTelePhoneTextField.keyboardType=UIKeyboardTypeNumberPad;
+        _chageTelePhoneTextField.clearButtonMode=UITextFieldViewModeWhileEditing;
+        
+    }
+    return _chageTelePhoneTextField;
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

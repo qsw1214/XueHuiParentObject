@@ -56,18 +56,15 @@
     
     //!< 重置名称Frame
     [self.nameControl resetFrame:CGRectMake(0, 0, frame.size.width, 50.0)];
-    [self.nameControl setTitleEdgeFrame:CGRectMake(10.0, 0, 100.0, self.nameControl.height) withNumberType:0 withAllType:NO];
-    [self.nameControl setInputEdgeFrame:CGRectMake(110.0, 0, (self.nameControl.width-120.0), self.nameControl.height) withNumberType:0 withAllType:NO];
+    [self.nameControl setInputEdgeFrame:CGRectMake(15.0, 0, (self.nameControl.width-30.0), self.nameControl.height) withNumberType:0 withAllType:NO];
     [self.nameControl resetLineViewFrame:CGRectMake(0, (self.nameControl.height-0.5), self.nameControl.width, 0.5) withNumberType:0 withAllType:NO];
     //!< 重置学号Frame
     [self.LearningNumberControl resetFrame:CGRectMake(0, self.nameControl.bottom, self.nameControl.width, self.nameControl.height)];
-    [self.LearningNumberControl setTitleEdgeFrame:CGRectMake(10.0, 0, 100.0, self.LearningNumberControl.height) withNumberType:0 withAllType:NO];
-    [self.LearningNumberControl setInputEdgeFrame:CGRectMake(110.0, 0, (self.LearningNumberControl.width-120.0), self.LearningNumberControl.height) withNumberType:0 withAllType:NO];
+    [self.LearningNumberControl setInputEdgeFrame:CGRectMake(15.0, 0, (self.LearningNumberControl.width-30.0), self.LearningNumberControl.height) withNumberType:0 withAllType:NO];
     [self.LearningNumberControl resetLineViewFrame:CGRectMake(0, (self.LearningNumberControl.height-0.5), self.LearningNumberControl.width, 0.5) withNumberType:0 withAllType:NO];
     //!< 重置父母名称Frame
     [self.parentNameControl resetFrame:CGRectMake(0, self.LearningNumberControl.bottom, self.LearningNumberControl.width, self.LearningNumberControl.height)];
-    [self.parentNameControl setTitleEdgeFrame:CGRectMake(10.0, 0, 100.0, self.parentNameControl.height) withNumberType:0 withAllType:NO];
-    [self.parentNameControl setInputEdgeFrame:CGRectMake(110.0, 0, (self.parentNameControl.width-120.0), self.parentNameControl.height) withNumberType:0 withAllType:NO];
+    [self.parentNameControl setInputEdgeFrame:CGRectMake(15.0, 0, (self.parentNameControl.width-30.0), self.parentNameControl.height) withNumberType:0 withAllType:NO];
     [self.parentNameControl resetLineViewFrame:CGRectMake(0, (self.parentNameControl.height-0.5), self.parentNameControl.width, 0.5) withNumberType:0 withAllType:NO];
     
     //!< 身份Frame
@@ -99,13 +96,10 @@
     if (!_nameControl)
     {
         _nameControl = [[BaseButtonControl alloc]init];
-        [_nameControl setNumberLabel:1];
         [_nameControl setNumberTextField:1];
         [_nameControl setNumberLineView:1];
-        [_nameControl setText:@"学生姓名" withNumberType:0 withAllType:NO];
-        [_nameControl setFont:FontLevel2 withNumberType:0 withAllType:NO];
-        [_nameControl setTextColor:RGB(153,153,153) withTpe:0 withAllType:NO];
         [_nameControl setInputTextColor:RGB(51.0, 51.0, 51.0) withNumberType:0 withAllType:NO];
+        [_nameControl setinputTextPlaceholder:@"学生姓名" withNumberType:0 withAllType:NO];
         [_nameControl addTarget:self action:@selector(bindAction:) forControlEvents:UIControlEventTouchUpInside];
         
         
@@ -118,14 +112,11 @@
     if (!_LearningNumberControl)
     {
         _LearningNumberControl = [[BaseButtonControl alloc]init];
-        [_LearningNumberControl setNumberLabel:1];
         [_LearningNumberControl setNumberTextField:1];
         [_LearningNumberControl setNumberLineView:1];
         [_LearningNumberControl setKeyboardType:UIKeyboardTypeNumberPad withNumberType:0 withAllType:NO];
-        [_LearningNumberControl setText:@"请输入学号" withNumberType:0 withAllType:NO];
-        [_LearningNumberControl setFont:FontLevel2 withNumberType:0 withAllType:NO];
-        [_LearningNumberControl setTextColor:RGB(153,153,153) withTpe:0 withAllType:NO];
         [_LearningNumberControl setInputTextColor:RGB(51.0, 51.0, 51.0) withNumberType:0 withAllType:NO];
+        [_LearningNumberControl setinputTextPlaceholder:@"请输入学号" withNumberType:0 withAllType:NO];
         [_LearningNumberControl addTarget:self action:@selector(bindAction:) forControlEvents:UIControlEventTouchUpInside];
         
     }
@@ -137,13 +128,10 @@
     if (!_parentNameControl)
     {
         _parentNameControl = [[BaseButtonControl alloc]init];
-        [_parentNameControl setNumberLabel:1];
         [_parentNameControl setNumberTextField:1];
         [_parentNameControl setNumberLineView:1];
-        [_parentNameControl setText:@"家长姓名" withNumberType:0 withAllType:NO];
-        [_parentNameControl setFont:FontLevel2 withNumberType:0 withAllType:NO];
-        [_parentNameControl setTextColor:RGB(153,153,153) withTpe:0 withAllType:NO];
         [_parentNameControl setInputTextColor:RGB(51.0, 51.0, 51.0) withNumberType:0 withAllType:NO];
+        [_parentNameControl setinputTextPlaceholder:@"家长姓名" withNumberType:0 withAllType:NO];
         [_parentNameControl addTarget:self action:@selector(bindAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _parentNameControl;

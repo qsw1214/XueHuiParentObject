@@ -376,7 +376,7 @@
     }
     else
     {
-        yearMontherDay = [NSString stringWithFormat:@"%@年%@月%@日",[self formatterNumer:self.dateSwitchYear],[self formatterNumer:self.dateSwitchMonther],[self formatterNumer:self.dateSwitchDay]];
+        yearMontherDay = [NSString stringWithFormat:@"%@-%@-%@",[self formatterNumer:self.dateSwitchYear],[self formatterNumer:self.dateSwitchMonther],[self formatterNumer:self.dateSwitchDay]];
     }
    
     return yearMontherDay;

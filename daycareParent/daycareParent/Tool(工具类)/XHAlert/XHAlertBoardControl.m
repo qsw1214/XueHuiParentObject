@@ -87,7 +87,7 @@
             [self.collectionView setHidden:NO];
             [self.titleLabel setFrame:CGRectMake(0, 0, SCREEN_WIDTH-100.0, 40.0)];
             
-            [self.collectionView resetFrame:CGRectMake(20.0, self.titleLabel.bottom, (self.titleLabel.width-40.0), ([self.dataArray count]>3 ? 60.0 : 30.0))];
+            [self.collectionView resetFrame:CGRectMake(20.0, self.titleLabel.bottom, (self.titleLabel.width-40.0), 60.0)];
             
             [self.lineView setFrame:CGRectMake(0, (self.collectionView.bottom+5.0), self.titleLabel.width, 0.5)];
             [self.cancelControl resetFrame:CGRectMake(0, self.lineView.bottom, self.lineView.width/2.0, 44.0)];
@@ -157,13 +157,13 @@
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {
-    return 0;
+    return 5;
 }
 
 
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return UIEdgeInsetsMake(2.5, 0, 0, 0);
+    return UIEdgeInsetsMake(2.5, 2.5, 2.5, 2.5);
 }
 
 
@@ -173,6 +173,7 @@
     
     [NSArray enumerateObjectsWithArray:self.dataArray usingBlock:^(XHAlertModel *obj, NSUInteger idx, BOOL *stop)
     {
+        [obj setName:obj.name];
         if (idx == indexPath.row)
         {
             [obj setModelType:XHAlertSelectType];
@@ -183,7 +184,7 @@
         }
     }];
     
-    [collectionView reloadData];
+    
     
     
     
@@ -191,6 +192,8 @@
     {
         [self.delegate didSelectItem:[self.dataArray objectAtIndex:indexPath.row]];
     }
+    
+    [collectionView reloadData];
 }
 
 
@@ -256,7 +259,7 @@
 {
     if (!_collectionView)
     {
-        _collectionView = [[BaseCollectionView alloc]init];
+        _collectionView = [[BaseCollectionView alloc]initWithType:UICollectionViewScrollDirectionHorizontal];
         [_collectionView registerClass:[XHAlertItemCell class] forCellWithReuseIdentifier:CellIdentifier];
         [_collectionView setBackgroundColor:[UIColor whiteColor]];
         [_collectionView setDelegate:self];

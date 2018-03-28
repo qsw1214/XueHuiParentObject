@@ -54,12 +54,11 @@
     {
         self.conversationListTableView.frame=CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64-50);
     }
-    self.conversationListTableView.rowHeight=50;
     self.conversationListTableView.separatorColor =LineViewColor;
     [self.conversationListTableView registerClass:[XHRCTableViewCell class] forCellReuseIdentifier:@"RongYunListCell"];
     
     self.conversationListTableView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshHead)];
-    
+    [self.conversationListTableView  setSeparatorColor:LineViewColor];
     //进入刷新状态
     [self.conversationListTableView.header beginRefreshing];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noticeMethod) name:@"noticeName" object:nil];
@@ -328,6 +327,27 @@
         }
     }
     return _dataArry;
+}
+-(void)viewDidLayoutSubviews
+{
+    if ([self.conversationListTableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.conversationListTableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
+    }
+    
+    if ([self.conversationListTableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [self.conversationListTableView setLayoutMargins:UIEdgeInsetsMake(0,0,0,0)];
+    }
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 /*
 #pragma mark - Navigation

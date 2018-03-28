@@ -20,7 +20,7 @@
 {
     if (self=[super initWithFrame:frame]) {
         self.selectIndex=0;
-        UIImageView *lineImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,[UIScreen mainScreen].bounds.size.width, 1)];
+        UIImageView *lineImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,[UIScreen mainScreen].bounds.size.width, 0.5)];
         lineImageView.backgroundColor =LineViewColor; //LINECOLOR;
         [self addSubview:lineImageView];
     

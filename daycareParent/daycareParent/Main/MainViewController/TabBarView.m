@@ -42,7 +42,7 @@
             if (i == 0)
             {
                 [control setImageViewName:kImageSelectTitle[i] withNumberIndex:0];
-                [control setImageViewCGRectMake:CGRectMake((control.width-30)/2.0, 10, 30, 30) withNumberIndex:0];
+                [control setImageViewCGRectMake:CGRectMake((control.width-30)/2.0, 10, 35, 35) withNumberIndex:0];
                 [control setLabelText:@"" withNumberIndex:0];
                 [control setSelected:YES];
             }

@@ -22,6 +22,10 @@
 @property (nonatomic,assign) NSInteger dateSwitchDay;  //!<  天
 @property (nonatomic,assign) NSInteger unitDay; //!< 当天
 
+
+@property (nonatomic,assign) NSInteger currentYear;  //!<  年
+@property (nonatomic,assign) NSInteger currentMonther;  //!<  月
+@property (nonatomic,assign) NSInteger currentDay;  //!<  天
 @property (nonatomic,strong) NSDate *currentDate;
 
 
@@ -44,11 +48,17 @@
         [self setUnitDay:0];
         [self setItemColor:NO];
         
+        [self getCurrentYearMonthDay];
         
         [self addTarget:self action:@selector(dateAction:) forControlEvents:UIControlEventTouchUpInside];
         
         //!< 先设置当前的日期
         [self setCurrentDate:[NSDate date]];
+        
+        
+        
+        
+        
     }
     return self;
 }
@@ -109,17 +119,8 @@
 
 -(NSString*)swithDateWithType:(NSInteger)type
 {
-    
+    NSString *yearMontherDay = @"";
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSDateComponents *currentcomponents = [[NSDateComponents alloc] init];
-    NSDate *currentdate = [calendar dateByAddingComponents:currentcomponents toDate:[NSDate date] options:0];
-    currentcomponents = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:currentdate];
-    
-    NSInteger currentYear = [currentcomponents year];
-    
-    
-    
-    
     NSDateComponents *components = [[NSDateComponents alloc] init];
     
     switch (type)
@@ -139,50 +140,94 @@
             break;
     }
     
-   
-    
-    
-    
-
     NSDate *newdate = [calendar dateByAddingComponents:components toDate:self.currentDate options:0];
-    
-
     components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:newdate];
     
     
     [self setDateSwitchYear:[components year]];
     [self setDateSwitchMonther:[components month]];
     [self setDateSwitchDay:[components day]];
-    
-    
-    NSString *dateFormatter = [self getNonceDateFormatter:YES];
-    NSArray *dateArray = [dateFormatter componentsSeparatedByString:@"-"];
-
-    NSInteger year = [[dateArray objectAtIndex:0] integerValue];
-    NSInteger month = [[dateArray objectAtIndex:1] integerValue];
-    NSInteger day = [[dateArray objectAtIndex:2] integerValue];
-    
-    if (self.dateSwitchYear >= year)
+    if (self.dateSwitchYear <= self.currentYear)
     {
-        [self setDateSwitchYear:year];
+        if (self.dateSwitchYear >= self.currentYear)
+        {
+            [self setDateSwitchYear:self.currentYear];
+        }
+        
+        if (self.dateSwitchMonther >= self.currentMonther)
+        {
+            [self setDateSwitchMonther:self.currentMonther];
+        }
+        
+        if (self.dateSwitchDay >= self.currentDay)
+        {
+            [self setDateSwitchDay:self.currentDay];
+        }
+        yearMontherDay = [NSString stringWithFormat:@"%@年%@月%@日",[self formatterNumer:self.dateSwitchYear],[self formatterNumer:self.dateSwitchMonther],[self formatterNumer:self.dateSwitchDay]];
+        
+        switch (type)
+        {
+                
+            case 1:
+            {
+                [self setUnitDay:(self.unitDay+1)];
+                [components setDay:self.unitDay];
+            }
+                break;
+            case 2:
+            {
+                [self setUnitDay:(self.unitDay-1)];
+                [components setDay:self.unitDay];
+            }
+                break;
+        }
+    }
+    else
+    {
+       
+        
+        
+        NSString *dateFormatter = [self getNonceDateFormatter:YES];
+        NSArray *dateArray = [dateFormatter componentsSeparatedByString:@"-"];
+        
+        NSInteger year = [[dateArray objectAtIndex:0] integerValue];
+        NSInteger month = [[dateArray objectAtIndex:1] integerValue];
+        NSInteger day = [[dateArray objectAtIndex:2] integerValue];
+        
+        
+        
+        if (self.dateSwitchYear <= self.currentYear)
+        {
+            if (self.dateSwitchYear >= self.currentYear)
+            {
+                [self setDateSwitchYear:year];
+            }
+            
+            if (self.dateSwitchMonther >= self.currentMonther)
+            {
+                [self setDateSwitchMonther:month];
+            }
+            
+            if (self.dateSwitchDay >= self.currentDay)
+            {
+                [self setDateSwitchDay:day];
+            }
+            
+            yearMontherDay = [NSString stringWithFormat:@"%@年%@月%@日",[self formatterNumer:self.dateSwitchYear],[self formatterNumer:self.dateSwitchMonther],[self formatterNumer:self.dateSwitchDay]];
+            
+            NSLog(@"%@",yearMontherDay);
+            
+            
+            
+        }
     }
     
-    if (self.dateSwitchMonther >= month)
-    {
-        [self setDateSwitchMonther:month];
-    }
-    
-    if (self.dateSwitchDay >= day)
-    {
-        [self setDateSwitchDay:day];
-    }
-    
-    NSString *yearMontherDay = [NSString stringWithFormat:@"%@年%@月%@日",[self formatterNumer:self.dateSwitchYear],[self formatterNumer:self.dateSwitchMonther],[self formatterNumer:self.dateSwitchDay]];
-    
-    NSLog(@"%@",yearMontherDay);
     
     
-    return yearMontherDay;
+    
+    
+    
+   return yearMontherDay;
 }
 
 
@@ -324,14 +369,14 @@
     if (nonce)
     {
         
-        yearMontherDay = [NSString stringWithFormat:@"%zd年%zd月%zd日",self.dateSwitchYear,self.dateSwitchMonther,self.dateSwitchDay];
+        yearMontherDay = [NSString stringWithFormat:@"%@年%@月%@日",[self formatterNumer:self.dateSwitchYear],[self formatterNumer:self.dateSwitchMonther],[self formatterNumer:self.dateSwitchDay]];
         
         NSLog(@"%@",yearMontherDay);
         
     }
     else
     {
-        yearMontherDay = [NSString stringWithFormat:@"%zd-%zd-%zd",self.dateSwitchYear,self.dateSwitchMonther,self.dateSwitchDay];
+        yearMontherDay = [NSString stringWithFormat:@"%@年%@月%@日",[self formatterNumer:self.dateSwitchYear],[self formatterNumer:self.dateSwitchMonther],[self formatterNumer:self.dateSwitchDay]];
     }
    
     return yearMontherDay;
@@ -380,6 +425,21 @@
     return formatterNumber;
 }
 
+
+
+#pragma mark 获取当前年月日
+-(void)getCurrentYearMonthDay
+{
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    NSDate *newdate = [calendar dateByAddingComponents:components toDate:[NSDate date] options:0];
+    components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:newdate];
+    
+    
+    [self setCurrentYear:[components year]];
+    [self setCurrentMonther:[components month]];
+    [self setCurrentDay:[components day]];
+}
 
 
 @end

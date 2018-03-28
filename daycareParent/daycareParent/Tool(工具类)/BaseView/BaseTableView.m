@@ -53,11 +53,6 @@
 }
 
 
--(void)resetTipFrame:(CGRect)frame
-{
-    [self.tipView resetTipFrame:frame];
-    [self.tipView setBackgroundColor:[UIColor redColor]];
-}
 #pragma mark 进入刷新
 
 /**

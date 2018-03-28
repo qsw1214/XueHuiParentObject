@@ -45,15 +45,10 @@
 }
 
 
--(void)resetTipFrame:(CGRect)frame
-{
-    [self setFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
-    [self.tipButton resetFrame:CGRectMake(10.0, 20.0, frame.size.width-20.0, 200.0)];
-}
 
 -(void)layoutSubviews
 {
-    [self.tipButton setCenter:CGPointMake(self.width/2.0, self.height/2.0)];
+    [self.tipButton setCenter:CGPointMake(self.width/2.0, self.height/2.0-80.0)];
 }
 
 

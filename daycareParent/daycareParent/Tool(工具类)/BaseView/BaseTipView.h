@@ -32,7 +32,6 @@ typedef NS_ENUM(NSInteger,BaseTipViewType)
 
 
 -(void)resetFrame:(CGRect)frame;
--(void)resetTipFrame:(CGRect)frame;
 
 #pragma mark 设置提醒类型、提醒标题、提醒图标
 /**

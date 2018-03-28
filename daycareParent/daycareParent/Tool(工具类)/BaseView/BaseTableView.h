@@ -27,8 +27,6 @@ typedef NS_ENUM(NSInteger,BaseRefreshType)
 @property (nonatomic,strong) MJRefreshAutoNormalFooter *animateFooter; //!< 脚部
 
 
--(void)resetTipFrame:(CGRect)frame;
-
 
 
 #pragma mark 设置头部和脚部的标题

@@ -54,6 +54,17 @@
     NSLog(@"开始拖拽");
 }
 
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    //更新UIPageControl的当前页
+    CGPoint offset = scrollView.contentOffset;
+    if (offset.x >= (SCREEN_WIDTH - 80.0))
+    {
+        [self.bookMaskView setTransform:2];
+    }
+}
+
+
 
 #pragma mark - Public Method
 -(void)resetFrame:(CGRect)frame
@@ -76,18 +87,23 @@
     {
         case XHAddressBookSelectType:
         {
+            @WeakObj(self);
             [UIView animateWithDuration:AddressBookSwitchDuration animations:^{
-                
+
+                @StrongObj(self);
                 [self setContentOffset:CGPointMake(SCREEN_WIDTH-80.0, 0)];
             }];
         }
             break;
         case XHAddressBookModelNormalType:
         {
+            @WeakObj(self);
             [UIView animateWithDuration:AddressBookSwitchDuration animations:^{
-                
+
+                @StrongObj(self);
                 [self setContentOffset:CGPointMake(0, 0)];
-                
+                [self.bookMaskView setTransform:1];
+
             }];
         }
             break;

@@ -70,6 +70,32 @@
     
 }
 
+
+- (void)setTransform:(NSInteger)transform
+{
+    switch (transform)
+    {
+        case 1:
+        {
+            [UIView animateWithDuration:1.0 animations:^{
+                
+                [self.markImageView setTransform:CGAffineTransformMakeRotation(0)];
+                
+            }];
+        }
+            break;
+        case 2:
+        {
+            [UIView animateWithDuration:0.25 animations:^{
+                
+                [self.markImageView setTransform:CGAffineTransformMakeRotation(M_PI)];
+                
+            }];
+        }
+            break;
+    }
+}
+
 -(XHHeaderControl *)headerImageView
 {
     if (!_headerImageView)

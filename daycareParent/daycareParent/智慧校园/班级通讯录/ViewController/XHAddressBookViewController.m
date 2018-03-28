@@ -128,18 +128,18 @@
 -(void)switchDraggMenuIndexPath:(NSInteger)indexPath
 {
 
-    [self.dataArray enumerateObjectsUsingBlock:^(XHAddressBookFrame *obj, NSUInteger idx, BOOL *stop)
-     {
-         if (idx == indexPath)
-         {
-             [obj.model setModelType:XHAddressBookSelectType];
-         }
-         else
-         {
-             [obj.model setModelType:XHAddressBookModelNormalType];
-         }
-         
-     }];
+//    [self.dataArray enumerateObjectsUsingBlock:^(XHAddressBookFrame *obj, NSUInteger idx, BOOL *stop)
+//     {
+//         if (idx == indexPath)
+//         {
+//             [obj.model setModelType:XHAddressBookSelectType];
+//         }
+//         else
+//         {
+//             [obj.model setModelType:XHAddressBookModelNormalType];
+//         }
+//
+//     }];
     
     [self.mainTableView refreshReloadData];
 }

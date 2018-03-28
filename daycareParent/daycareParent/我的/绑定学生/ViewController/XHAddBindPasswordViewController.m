@@ -42,13 +42,13 @@
         case XHAddBindEnterPasswordType:
         {
             [self setNavtionTitle:@"请输入密码"];
-            [self.passwordControl setinputTextPlaceholder:@"请输入密码（6-20位英文、数字组合）" withNumberType:0 withAllType:NO];
+            [self.passwordControl setinputTextPlaceholder:@"请输入密码(6-20位英文、数字组合)" withNumberType:0 withAllType:NO];
         }
             break;
         case XHAddBindSettingPasswordType:
         {
             [self setNavtionTitle:@"设置绑定密码"];
-            [self.passwordControl setinputTextPlaceholder:@"设置绑定密码（6-20位英文、数字组合）" withNumberType:0 withAllType:NO];
+            [self.passwordControl setinputTextPlaceholder:@"设置绑定密码(6-20位英文、数字组合)" withNumberType:0 withAllType:NO];
         }
             break;
     }

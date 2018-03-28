@@ -16,5 +16,7 @@
 
 @property (nonatomic,strong) BaseButtonControl *markImageView; //!< 附件视图
 
+@property (nonatomic,assign) NSInteger transform;
+
 
 @end

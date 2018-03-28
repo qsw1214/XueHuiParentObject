@@ -37,6 +37,7 @@
     [self setUserID:[object objectItemKey:@"teacherId"]];
     [self.courseArray setArray:[self getArry:[object objectItemKey:@"clazzList"]]];
     [self setModelType:XHAddressBookModelNormalType];
+    [self setMaekOverTurnType:XHAddressBookMarkNormalType];
 }
 
 

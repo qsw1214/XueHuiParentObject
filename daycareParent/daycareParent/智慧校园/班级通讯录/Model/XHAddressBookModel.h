@@ -15,6 +15,14 @@ typedef NS_ENUM(NSInteger,XHAddressBookModelType)
 };
 
 
+typedef NS_ENUM(NSInteger,XHAddressBookMarkOverturnType)
+{
+    XHAddressBookMarkNormalType = 1,   //!< 正常类型
+    XHAddressBookMarkOverturnlType = 2, // 翻转一周
+};
+
+
+
 #import "BaseModel.h"
 
 @interface XHAddressBookModel : BaseModel
@@ -28,6 +36,7 @@ typedef NS_ENUM(NSInteger,XHAddressBookModelType)
 @property (nonatomic,strong) NSMutableArray <NSString *> *courseArray; //!< 课程数组
 @property (nonatomic,copy) NSString *subject; //!< 科目
 
+@property (nonatomic,assign) XHAddressBookMarkOverturnType maekOverTurnType;
 @property (nonatomic,assign) XHAddressBookModelType modelType;
 
 @end

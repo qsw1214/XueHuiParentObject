@@ -211,7 +211,7 @@
         [_newPasswordControl setNumberTextField:1];
         [_newPasswordControl setNumberLineView:1];
         [_newPasswordControl  setInputSecureTextEntry:YES withNumberType:0 withAllType:NO];
-        [_newPasswordControl setinputTextPlaceholder:@"请输入新密码（6-20位英文、数字组合）" withNumberType:0 withAllType:NO];
+        [_newPasswordControl setinputTextPlaceholder:@"请输入新密码(6-20位英文、数字组合)" withNumberType:0 withAllType:NO];
     }
     return _newPasswordControl;
 }

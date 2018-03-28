@@ -109,7 +109,17 @@
 
 -(NSString*)swithDateWithType:(NSInteger)type
 {
+    
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *currentcomponents = [[NSDateComponents alloc] init];
+    NSDate *currentdate = [calendar dateByAddingComponents:currentcomponents toDate:[NSDate date] options:0];
+    currentcomponents = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:currentdate];
+    
+    NSInteger currentYear = [currentcomponents year];
+    
+    
+    
+    
     NSDateComponents *components = [[NSDateComponents alloc] init];
     
     switch (type)
@@ -128,6 +138,10 @@
         }
             break;
     }
+    
+   
+    
+    
     
 
     NSDate *newdate = [calendar dateByAddingComponents:components toDate:self.currentDate options:0];

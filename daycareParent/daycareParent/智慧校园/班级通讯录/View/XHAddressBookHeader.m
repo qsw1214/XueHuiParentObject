@@ -62,21 +62,11 @@
     [self.switchKnob resetFrame:CGRectMake(self.collectionView.right, 0, 60.0, 60.0)];
     
     
-    for (int i = 0; i<10; i++)
-    {
-        XHChildListModel *model = [[XHChildListModel alloc]init];
-        [model setStudentName:@"姚立志"];
-        [model setClazzName:[NSString stringWithFormat:@"三年级%zd班",i]];
-        [model setMarkType:ChildListNormalType];
-        [self.bridgeArray addObject:model];
-    }
-    
     [self.bridgeArray setArray:[XHUserInfo sharedUserInfo].childListArry];
-    
     [NSArray enumerateObjectsWithArray:self.bridgeArray usingBlock:^(XHChildListModel *obj, NSUInteger idx, BOOL *stop)
      {
-         [obj setMarkType:ChildListNormalType];
-         [obj setShowType:ChildListEntirelyType];
+         [obj setMarkType:ChildListSelectType];
+         [obj setShowType:ChildListAloneType];
      }];
     
 
@@ -341,7 +331,7 @@
     {
         _switchKnob = [[XHAddressBookHeaderSwitchKnob alloc]init];
         [_switchKnob addTarget:self action:@selector(switchKnobAction:) forControlEvents:UIControlEventTouchUpInside];
-        [_switchKnob setTag:1];
+        [_switchKnob setTag:2];
     }
     return _switchKnob;
 }

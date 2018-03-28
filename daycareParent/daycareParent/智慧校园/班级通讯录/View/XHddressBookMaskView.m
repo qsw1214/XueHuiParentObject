@@ -33,7 +33,6 @@
         [self addSubview:self.headerImageView];
         [self addSubview:self.titleLabel];
         [self addSubview:self.describeLabel];
-        [self addSubview:self.subjecLabel];
         [self addSubview:self.markImageView];
         
         [self setItemColor:NO];
@@ -51,7 +50,7 @@
     self.headerImageView.layer.cornerRadius=48/2.0;
     self.headerImageView.layer.masksToBounds=YES;
     [self.subjecLabel setFrame:CGRectMake((self.headerImageView.right+10.0), self.headerImageView.top, 40.0, 24.0)];
-    [self.titleLabel setFrame:CGRectMake((self.subjecLabel.right+5.0), self.subjecLabel.top, frame.size.width-(self.subjecLabel.right+5.0+40.0), self.subjecLabel.height)];
+    [self.titleLabel setFrame:CGRectMake((self.headerImageView.right+10.0), self.subjecLabel.top, frame.size.width-(self.headerImageView.right+10.0+40.0), self.subjecLabel.height)];
     [self.describeLabel setFrame:CGRectMake(self.subjecLabel.left, self.titleLabel.bottom, (frame.size.width-(self.subjecLabel.left+40.0)), self.titleLabel.height)];
     [self.markImageView resetFrame:CGRectMake(frame.size.width-30.0, (frame.size.height-20.0)/2.0, 20.0, 20.0)];
     [self.markImageView setImageEdgeFrame:CGRectMake(0, 0, self.markImageView.width, self.markImageView.width) withNumberType:0 withAllType:NO];

@@ -51,6 +51,9 @@
 {
     if (subview)
     {
+        
+        
+        
         [self.view addSubview:self.switchHeaderControl];
         [self.switchHeaderControl resetFrame:CGRectMake(0, self.navigationView.height, SCREEN_WIDTH, 60.0)];
         [self.view addSubview:self.dateSwitchControl];

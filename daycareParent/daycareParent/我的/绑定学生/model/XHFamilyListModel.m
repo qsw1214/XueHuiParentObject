@@ -20,18 +20,6 @@
     [self setGuardianType:[object objectItemKey:@"guardianType"]];
     [self setHeadUrl:ALGetFileHeadThumbnail(self.headPic)];
     
-    if ([self.guardianType isEqualToString:@"0"])
-    {
-        [self setGuardianName:@"爸爸"];
-    }
-    else if ([self.guardianType isEqualToString:@"1"])
-    {
-        [self setGuardianName:@"妈妈"];
-    }
-    else if ([self.guardianType isEqualToString:@"2"])
-    {
-        [self setGuardianName:@"其他"];
-    }
     
     
     if ([[XHUserInfo sharedUserInfo].selfId isEqualToString:self.guardianId])

@@ -30,7 +30,7 @@
 -(void)resetFrame:(CGRect)frame
 {
     [self setFrame:frame];
-    self.titleLabel.frame=CGRectMake(10, 0, frame.size.width-20, 30);
+    self.titleLabel.frame=CGRectMake(17, 0, frame.size.width-20, 30);
     self.collectionView.frame=CGRectMake(0, self.titleLabel.bottom, frame.size.width,100);
     self.submitButton.frame=CGRectMake(40, self.collectionView.bottom+10, frame.size.width-80, frame.size.height-self.titleLabel.height-self.collectionView.height-16);
 }
@@ -83,8 +83,10 @@
               teacherAddressBook.enterType=TeacherAddressBookAskLeaveType;
               [teacherAddressBook setNavtionTitle:@"选择接收人"];
                 [[XHHelper sharedHelper].currentlyViewController.navigationController pushViewController:teacherAddressBook animated:YES];
+              @WeakObj(self);
                          teacherAddressBook.didselectBack = ^(XHTeacherAddressBookFrame *itemObject)
                          {
+                             @StrongObj(self);
                              XHRecipientModel *model=[[XHRecipientModel alloc] init];
                              model.name=itemObject.model.teacherName;
                              model.headPic=itemObject.model.headerPic;
@@ -94,7 +96,7 @@
                              
                              [self.collectionView reloadData];
                              [self.teacherArry addObject:[NSString safeString:itemObject.model.ID]];
-                             if ([_delegate respondsToSelector:@selector(getItemObject:)]) {
+                             if ([self.delegate respondsToSelector:@selector(getItemObject:)]) {
                                  NSString * teacherId = [self.teacherArry componentsJoinedByString:@","];
                                  [self.delegate getItemObject:teacherId];
                              }
@@ -102,17 +104,14 @@
          }
              break;
      }
-// XHChildCollectionViewCell *cell=[_collectionView cellForItemAtIndexPath:indexPath];
-// if (self.selectBlock) {
-// self.selectBlock(indexPath.row,cell.childNameLabel.text);
-// }
+
  }
 -(UILabel *)titleLabel
 {
     if (_titleLabel==nil) {
         _titleLabel=[[UILabel alloc] init];
-        [_titleLabel setTextColor:RGB(14, 14, 14)];
-        [_titleLabel setFont:[UIFont boldSystemFontOfSize:14.0]];
+        [_titleLabel setTextColor:RGB(51, 51, 51)];
+        [_titleLabel setFont:kFont(15.0)];
         _titleLabel.text=@"接收人";
     }
     return _titleLabel;

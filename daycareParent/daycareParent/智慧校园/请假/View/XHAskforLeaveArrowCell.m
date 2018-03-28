@@ -12,9 +12,9 @@
 @interface XHAskforLeaveArrowCell ()
 
 @property (nonatomic,strong) UILabel *titleLabel; //!< 标题
-@property (nonatomic,strong) UILabel *describeLabel; //!< 描述标题
+
 @property (nonatomic,strong) UIImageView *arrowImageView; //!< 箭头图片视图
-@property (nonatomic,strong) UIView *topLineView; //!< 上面的分割线
+
 @property (nonatomic,strong) UIView *bottomLineView; //!< 下面的分割线
 
 
@@ -45,9 +45,9 @@
 {
     [self setFrame:frame];
     [self.topLineView setFrame:CGRectMake(0, 0, frame.size.width, 0.5)];
-    [self.titleLabel setFrame:CGRectMake(10.0, 0, 130.0, frame.size.height)];
-    [self.describeLabel setFrame:CGRectMake(130.0, 0, (frame.size.width-130-35.0), frame.size.height)];
-    [self.arrowImageView setFrame:CGRectMake(frame.size.width-30.0, (frame.size.height-20.0)/2.0, 20.0, 20.0)];
+    [self.titleLabel setFrame:CGRectMake(15.0, 0, 130.0, frame.size.height)];
+    [self.describeLabel setFrame:CGRectMake(135.0, 0, (frame.size.width-135-30.0), frame.size.height)];
+    [self.arrowImageView setFrame:CGRectMake(frame.size.width-22.0, (frame.size.height-14.0)/2.0, 8, 14.0)];
     [self.bottomLineView setFrame:CGRectMake(0, frame.size.height-0.5, frame.size.width, 0.5)];
 }
 
@@ -101,8 +101,8 @@
     if (_titleLabel == nil)
     {
         _titleLabel = [[UILabel alloc]init];
-        [_titleLabel setTextColor:RGB(14, 14, 14)];
-        [_titleLabel setFont:[UIFont boldSystemFontOfSize:14.0]];
+        [_titleLabel setTextColor:RGB(51, 51, 51)];
+        [_titleLabel setFont:kFont(15.0)];
     }
     return _titleLabel;
 }
@@ -112,9 +112,9 @@
     if (_describeLabel == nil)
     {
         _describeLabel = [[UILabel alloc]init];
-        [_describeLabel setTextColor:RGB(64, 64, 64)];
+        [_describeLabel setTextColor:RGB(51, 51, 51)];
         [_describeLabel setTextAlignment:NSTextAlignmentRight];
-        [_describeLabel setFont:FontLevel3];
+        [_describeLabel setFont:kFont(15.0)];
     }
     return _describeLabel;
 }

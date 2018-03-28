@@ -104,6 +104,9 @@
     }
     return _date;
 }
-
+-(void)setMaximumDate:(NSDate *)maximumDate
+{
+    self.datePickerBoard.datePicker.maximumDate=maximumDate;
+}
 
 @end

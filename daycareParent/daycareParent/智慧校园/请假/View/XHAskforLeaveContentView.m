@@ -58,6 +58,7 @@
     self = [super init];
     if (self)
     {
+        self.backgroundColor=[UIColor whiteColor];
         [self setViewController:object];
         [self addSubview:self.topAccessoryView];
         [self addSubview:self.childOptionsControl];
@@ -87,9 +88,9 @@
     [self.childOptionsControl resetFrame:CGRectMake(0, 0, frame.size.width, 60.0)];
     [self.askforLeaveTypeControl resetFrame:CGRectMake(self.childOptionsControl.left, self.childOptionsControl.bottom, frame.size.width, 60.0)];
     [self.topAccessoryView resetFrame:CGRectMake(0, self.askforLeaveTypeControl.bottom, frame.size.width, 10.0)];
-    [self.reasonTitleLabel setFrame:CGRectMake(10.0, self.topAccessoryView.bottom, frame.size.width-20.0, 30.0)];
+    [self.reasonTitleLabel setFrame:CGRectMake(15.0, self.topAccessoryView.bottom, frame.size.width-20.0, 30.0)];
     [self.reasonTextView resetFrame:CGRectMake(10.0, self.reasonTitleLabel.bottom, frame.size.width-20.0, 60.0)];
-    [self.addPhotoControl resetFrame:CGRectMake(self.reasonTextView.left, self.reasonTextView.bottom+10.0, 70.0, 70.0)];
+    [self.addPhotoControl resetFrame:CGRectMake(self.reasonTextView.left+5, self.reasonTextView.bottom+10.0, 70.0, 70.0)];
     [self.limitLabel setFrame:CGRectMake(self.addPhotoControl.right, self.addPhotoControl.bottom-20.0, frame.size.width-self.addPhotoControl.right-20.0, 20.0)];
     [self.startTimeControl resetFrame:CGRectMake(self.topAccessoryView.left, self.addPhotoControl.bottom+10.0, frame.size.width, self.childOptionsControl.height)];
     [self.endTimeControl resetFrame:CGRectMake(self.startTimeControl.left, self.startTimeControl.bottom, self.startTimeControl.width, self.startTimeControl.height)];
@@ -141,6 +142,7 @@
         {
             [self setSelectTimeControl:sender.tag];
             XHDatePicker *datePicker = [[XHDatePicker alloc]init];
+            [datePicker setMaximumDate:nil];
             [datePicker setDelegate:self];
             [datePicker show];
         }
@@ -155,6 +157,7 @@
                    return ;
                }
                 [self.timeControl setDescribe:[NSString stringWithFormat:@"%@天",object]];
+               self.timeControl.describeLabel.textColor=RGB(51, 51, 51);
             }];
 alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunctuation;
         }
@@ -271,12 +274,13 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
         case 4:
         {
             [self.startTimeControl setDescribe:date];
+            self.startTimeControl.describeLabel.textColor=RGB(51, 51, 51);
         }
             break;
         case 5:
         {
             [self.endTimeControl setDescribe:date];
-            
+            self.endTimeControl.describeLabel.textColor=RGB(51, 51, 51);
         }
             break;
     }
@@ -461,6 +465,7 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
         _askforLeaveTypeControl = [[XHAskforLeaveArrowCell alloc]init];
         [_askforLeaveTypeControl setTitle:@"请假类型"];
         [_askforLeaveTypeControl setDescribe:@"事假"];
+        _askforLeaveTypeControl.topLineView.hidden=YES;
         [_askforLeaveTypeControl setImageName:@"ico_arrow"];
         [_askforLeaveTypeControl addTarget:self action:@selector(controlAction:) forControlEvents:UIControlEventTouchUpInside];
         [_askforLeaveTypeControl setTag:2];
@@ -473,7 +478,8 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
     if (_reasonTitleLabel==nil) {
         _reasonTitleLabel=[[UILabel alloc] init];
         _reasonTitleLabel.textAlignment=NSTextAlignmentLeft;
-        [_reasonTitleLabel setFont:[UIFont boldSystemFontOfSize:14.0]];
+        _reasonTitleLabel.textColor=RGB(51, 51, 51);
+        [_reasonTitleLabel setFont:kFont(15.0)];
         _reasonTitleLabel.text=@"请假理由";
     }
     return _reasonTitleLabel;
@@ -534,6 +540,7 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
         [_startTimeControl setImageName:@"ico_arrow"];
         [_startTimeControl setTitle:@"开始时间"];
         [_startTimeControl setDescribe:@"请选择"];
+        _startTimeControl.describeLabel.textColor=RGB(174, 174, 174);
         [_startTimeControl addTarget:self action:@selector(controlAction:) forControlEvents:UIControlEventTouchUpInside];
         [_startTimeControl setTag:4];
         
@@ -549,8 +556,10 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
     {
         _endTimeControl = [[XHAskforLeaveArrowCell alloc]init];
         [_endTimeControl setImageName:@"ico_arrow"];
+        _endTimeControl.topLineView.hidden=YES;
         [_endTimeControl setTitle:@"结束时间"];
         [_endTimeControl setDescribe:@"请选择"];
+        _endTimeControl.describeLabel.textColor=RGB(174, 174, 174);
         [_endTimeControl addTarget:self action:@selector(controlAction:) forControlEvents:UIControlEventTouchUpInside];
         [_endTimeControl setTag:5];
     }
@@ -563,9 +572,10 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
     if (_timeControl == nil)
     {
         _timeControl = [[XHAskforLeaveArrowCell alloc]init];
-       
+       _timeControl.topLineView.hidden=YES;
         [_timeControl setTitle:@"请假时长（天）"];
         [_timeControl setDescribe:@"请输入时长"];
+        _timeControl.describeLabel.textColor=RGB(174, 174, 174);
         [_timeControl addTarget:self action:@selector(controlAction:) forControlEvents:UIControlEventTouchUpInside];
         [_timeControl setTag:6];
     }
@@ -578,7 +588,7 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
         _timeLabel=[[UILabel alloc] init];
         _timeLabel.font=FontLevel4;
         _timeLabel.textAlignment=NSTextAlignmentLeft;
-        _timeLabel.textColor=RGB(64, 64, 64);
+        _timeLabel.textColor=RGB(174, 174, 174);
         _timeLabel.text=@"请假时长以天为单位，最小为0.5";
     }
     return _timeLabel;

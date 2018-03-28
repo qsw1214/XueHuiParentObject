@@ -36,7 +36,7 @@
 {
     
     self.titleImageView.frame=CGRectMake(0, (self.contentView.frame.size.height-25)/2.0, 25, 25);
-    self.textFeild.frame=CGRectMake(35, 0, SCREEN_WIDTH-120, self.contentView.frame.size.height);
+    self.textFeild.frame=CGRectMake(40, 0, SCREEN_WIDTH-125, self.contentView.frame.size.height);
     self.lineLabel.frame=CGRectMake(0, self.contentView.frame.size.height-0.5, SCREEN_WIDTH, 0.5);
     self.textFeild.placeholder=kTitle[row];
     self.titleImageView.image=[UIImage imageNamed:kTitlePic[row]];

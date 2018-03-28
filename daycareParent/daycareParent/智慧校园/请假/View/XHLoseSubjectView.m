@@ -56,7 +56,8 @@ self.scrollView.contentSize=CGSizeMake(Width+10*(arry.count+1), 40);
     if (_titleLabel==nil) {
         _titleLabel=[[UILabel alloc] init];
         _titleLabel.textAlignment=NSTextAlignmentLeft;
-        [_titleLabel setFont:[UIFont boldSystemFontOfSize:14.0]];
+        _titleLabel.textColor=RGB(51, 51, 51);
+        [_titleLabel setFont:kFont(15.0)];
     }
     return _titleLabel;
 }

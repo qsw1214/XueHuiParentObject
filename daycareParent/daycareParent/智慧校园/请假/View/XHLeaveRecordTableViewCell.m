@@ -46,7 +46,7 @@
 
 -(void)setItemFrame:(XHLeaveRecordFrame*)frame
 {
-    [self.titleLabel setFrame:CGRectMake(10.0, 10.0, frame.contentSize.width, frame.contentSize.height)];
+    [self.titleLabel setFrame:CGRectMake(10.0, 0, frame.itemFrame.size.width, frame.itemFrame.size.height)];
     [self.lineView setFrame:CGRectMake(0, frame.itemFrame.size.height-0.5, frame.itemFrame.size.width, 0.5)];
     [self.titleLabel setText:frame.model.title];
 }
@@ -61,7 +61,7 @@
     if (_titleLabel  == nil)
     {
         _titleLabel = [[UILabel alloc]init];
-        [_titleLabel setTextColor:RGB(3, 3, 3)];
+        [_titleLabel setTextColor:RGB(51, 51, 51)];
         [_titleLabel setNumberOfLines:0];
         [_titleLabel setFont:FontLevel3];
     }

@@ -49,7 +49,7 @@
 -(void)setPickerType:(UIDatePickerMode)type;
 
 
-
+-(void)setMaximumDate:(NSDate *)maximumDate;
 
 
 

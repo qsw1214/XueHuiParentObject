@@ -14,9 +14,8 @@
 
 @property (nonatomic,strong) XHChildListModel *model;
 
-
-
-
+@property (nonatomic,strong) UILabel *describeLabel; //!< 描述标题
+@property (nonatomic,strong) UIView *topLineView; //!< 上面的分割线
 /**
  设置标题
 

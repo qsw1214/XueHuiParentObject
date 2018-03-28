@@ -18,10 +18,10 @@
 -(id)initWithFrame:(CGRect)frame
 {
     if (self=[super initWithFrame:frame]) {
-        _headbutton=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.width)];
+        _headbutton=[[UIButton alloc] initWithFrame:CGRectMake(10, 10, frame.size.width-10, frame.size.width-10)];
         _headbutton.userInteractionEnabled=NO;
         [_headbutton setHeadBackgroundImage:[UIImage imageNamed:@"ico_addpeo"] forState:UIControlStateNormal];
-        _headbutton.layer.cornerRadius=frame.size.width/2.0;
+        _headbutton.layer.cornerRadius=frame.size.width/2.0-5;
         _headbutton.layer.masksToBounds=YES;
         [self.contentView addSubview:_headbutton];
         _nameLabel=[[ParentLabel alloc] initWithFrame:CGRectMake(0, _headbutton.bottom, frame.size.width, frame.size.height-_headbutton.height)];

@@ -95,7 +95,7 @@
     [self.startTimeControl resetFrame:CGRectMake(self.topAccessoryView.left, self.addPhotoControl.bottom+10.0, frame.size.width, self.childOptionsControl.height)];
     [self.endTimeControl resetFrame:CGRectMake(self.startTimeControl.left, self.startTimeControl.bottom, self.startTimeControl.width, self.startTimeControl.height)];
      [self.timeControl resetFrame:CGRectMake(self.endTimeControl.left, self.endTimeControl.bottom, self.endTimeControl.width, self.endTimeControl.height)];
-    [self.timeLabel setFrame:CGRectMake(10,self.timeControl.bottom,self.topAccessoryView.width-20, 40)];
+    [self.timeLabel setFrame:CGRectMake(15,self.timeControl.bottom,self.topAccessoryView.width-20, 40)];
     [self.middleAccessoryView resetFrame:CGRectMake(self.topAccessoryView.left,self.timeLabel.bottom,self.topAccessoryView.width, self.topAccessoryView.height)];
     [self.loseSubjectView resetFrame:CGRectMake(0, self.middleAccessoryView.bottom, self.middleAccessoryView.width, 90)];
     

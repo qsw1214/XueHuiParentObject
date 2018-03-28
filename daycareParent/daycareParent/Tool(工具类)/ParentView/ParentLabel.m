@@ -28,17 +28,7 @@
     }
     return self;
 }
--(void)setParagraph:(NSString *)str
-{
-    // 调整行间距
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:str];
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    [paragraphStyle setLineSpacing:4];
-    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [str length])];
-    self.attributedText = attributedString;
-    [self sizeToFit];
-    
-}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

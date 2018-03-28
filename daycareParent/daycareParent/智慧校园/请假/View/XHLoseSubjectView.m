@@ -29,7 +29,7 @@
 -(void)resetFrame:(CGRect)frame
 {
     [self setFrame:frame];
-    [self.titleLabel setFrame:CGRectMake(10, 0, SCREEN_WIDTH-20, 30)];
+    [self.titleLabel setFrame:CGRectMake(15, 0, SCREEN_WIDTH-20, 30)];
     [self.scrollView setFrame:CGRectMake(0, self.titleLabel.bottom, frame.size.width, frame.size.height-self.titleLabel.bottom)];
     
 }

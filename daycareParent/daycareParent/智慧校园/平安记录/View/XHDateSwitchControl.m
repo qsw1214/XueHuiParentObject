@@ -11,7 +11,7 @@
 
 
 
-@interface XHDateSwitchControl ()
+@interface XHDateSwitchControl () <XHDatePickerDelegate>
 
 @property (nonatomic,strong) BaseButtonControl *leftArrowControl; //!< 左侧箭头
 @property (nonatomic,strong) UILabel *titleLabel; //!< 显示日期标签
@@ -50,6 +50,11 @@
 }
 
 
+#pragma mark XHDatePickerDelegate
+-(void)datePickerAction:(NSString*)date
+{
+    
+}
 
 #pragma mark - Private Method
 -(void)dateSwitchControlAction:(BaseButtonControl*)sender

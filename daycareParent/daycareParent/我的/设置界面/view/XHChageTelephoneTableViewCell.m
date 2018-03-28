@@ -7,7 +7,7 @@
 //
 
 #import "XHChageTelephoneTableViewCell.h"
-#define kPlaceTitle @[@"请输入手机号",@"请输入验证码",@"请输入新密码（6-20位英文、数字组合）"]
+#define kPlaceTitle @[@"请输入手机号",@"请输入验证码",@"请输入新密码(6-20位英文、数字组合)"]
 @interface XHChageTelephoneTableViewCell()
 
 @property(nonatomic,strong)ParentTextFeild *chageTelePhoneTextField;

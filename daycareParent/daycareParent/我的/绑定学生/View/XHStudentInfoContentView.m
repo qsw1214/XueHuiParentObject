@@ -141,7 +141,7 @@
     {
         XHAlertModel *model = [[XHAlertModel alloc]init];
         [model setAlertTag:1];
-        [model setIdentityType:[NSString stringWithFormat:@"%zd",i]];
+        [model setIdentityType:[NSString stringWithFormat:@"%d",i]];
         switch (i)
         {
             case 0:
@@ -358,19 +358,19 @@
     [self.birthdayControl setTitleEdgeFrame:CGRectMake((frame.size.width)/2.0, 0, (frame.size.width-20.0)/2.0, self.birthdayControl.height) withNumberType:1 withAllType:NO];
     [self.birthdayControl resetLineViewFrame:CGRectMake(0, self.birthdayControl.height-0.5, self.birthdayControl.width, 0.5) withNumberType:0 withAllType:NO];
     //!< 身份Frame
-    [self.identityControl resetFrame:CGRectMake(0, self.birthdayControl.bottom, self.birthdayControl.width, self.birthdayControl.height)];
+    [self.identityControl resetFrame:CGRectMake(0, self.birthdayControl.bottom, self.birthdayControl.width, self.birthdayControl.height+20.0)];
     [self.identityControl setTitleEdgeFrame:CGRectMake(10.0, 5, ((frame.size.width-20.0)/2.0), (self.identityControl.height-10.0)) withNumberType:0 withAllType:NO];
     [self.identityControl setTitleEdgeFrame:CGRectMake((frame.size.width/2.0), 5, (((frame.size.width-20.0)/2.0)-40.0), (self.identityControl.height-10.0)) withNumberType:1 withAllType:NO];
     [self.identityControl setImageEdgeFrame:CGRectMake((frame.size.width-30.0), (self.identityControl.height-15.0)/2.0, 15.0, 15.0) withNumberType:0 withAllType:NO];
-    [self.identityControl resetLineViewFrame:CGRectMake(0, 0.0, self.identityControl.width, 2) withNumberType:0 withAllType:NO];
-    [self.identityControl resetLineViewFrame:CGRectMake(0, self.identityControl.height-2.0, self.identityControl.width, 2.0) withNumberType:1 withAllType:NO];
+    [self.identityControl resetLineViewFrame:CGRectMake(0, 0.0, self.identityControl.width, 10.0) withNumberType:0 withAllType:NO];
+    [self.identityControl resetLineViewFrame:CGRectMake(0, self.identityControl.height-2.0, self.identityControl.width, 10.0) withNumberType:1 withAllType:NO];
     //!< 设置家长信息
     [self.parentInformationLabel setFrame:CGRectMake(10.0, self.identityControl.bottom, self.baseLabel.width,self.baseLabel.height)];
     
    
     
     
-    [self setContentSize:CGSizeMake(frame.size.width, self.parentInformationLabel.bottom+20.0)];
+    [self setContentSize:CGSizeMake(frame.size.width, self.parentInformationLabel.bottom)];
     
 }
 
@@ -447,6 +447,8 @@
         [_nameControl setNumberLineView:1];
         [_nameControl setText:@"名字" withNumberType:0 withAllType:NO];
         [_nameControl setText:@"姚立志" withNumberType:1 withAllType:NO];
+        [_nameControl setFont:FontLevel2 withNumberType:0 withAllType:NO];
+        [_nameControl setFont:FontLevel2A withNumberType:1 withAllType:NO];
         [_nameControl setTextColor:RGB(51,51,51) withTpe:0 withAllType:NO];
         [_nameControl setTextColor:RGB(102,102,102) withTpe:1 withAllType:NO];
         [_nameControl setTextAlignment:NSTextAlignmentLeft withNumberType:0 withAllType:NO];
@@ -467,6 +469,8 @@
         [_schoolControl setNumberLineView:1];
         [_schoolControl setText:@"学校" withNumberType:0 withAllType:NO];
         [_schoolControl setText:@"北京大学" withNumberType:1 withAllType:NO];
+        [_schoolControl setFont:FontLevel2 withNumberType:0 withAllType:NO];
+        [_schoolControl setFont:FontLevel2A withNumberType:1 withAllType:NO];
         [_schoolControl setTextColor:RGB(51,51,51) withTpe:0 withAllType:NO];
         [_schoolControl setTextColor:RGB(102,102,102) withTpe:1 withAllType:NO];
         [_schoolControl setTextAlignment:NSTextAlignmentLeft withNumberType:0 withAllType:NO];
@@ -484,6 +488,8 @@
         [_classControl setNumberLineView:1];
         [_classControl setText:@"班级" withNumberType:0 withAllType:NO];
         [_classControl setText:@"三年级二班" withNumberType:1 withAllType:NO];
+        [_classControl setFont:FontLevel2 withNumberType:0 withAllType:NO];
+        [_classControl setFont:FontLevel2A withNumberType:1 withAllType:NO];
         [_classControl setTextColor:RGB(51,51,51) withTpe:0 withAllType:NO];
         [_classControl setTextColor:RGB(102,102,102) withTpe:1 withAllType:NO];
         [_classControl setTextAlignment:NSTextAlignmentLeft withNumberType:0 withAllType:NO];
@@ -501,6 +507,8 @@
         [_sexControl setNumberLineView:1];
         [_sexControl setText:@"性别" withNumberType:0 withAllType:NO];
         [_sexControl setText:@"男" withNumberType:1 withAllType:NO];
+        [_sexControl setFont:FontLevel2 withNumberType:0 withAllType:NO];
+        [_sexControl setFont:FontLevel2A withNumberType:1 withAllType:NO];
         [_sexControl setTextColor:RGB(51,51,51) withTpe:0 withAllType:NO];
         [_sexControl setTextColor:RGB(102,102,102) withTpe:1 withAllType:NO];
         [_sexControl setTextAlignment:NSTextAlignmentLeft withNumberType:0 withAllType:NO];
@@ -518,6 +526,8 @@
         [_birthdayControl setNumberLineView:1];
         [_birthdayControl setText:@"生日" withNumberType:0 withAllType:NO];
         [_birthdayControl setText:@"11/12" withNumberType:1 withAllType:NO];
+        [_birthdayControl setFont:FontLevel2 withNumberType:0 withAllType:NO];
+        [_birthdayControl setFont:FontLevel2A withNumberType:1 withAllType:NO];
         [_birthdayControl setTextColor:RGB(51,51,51) withTpe:0 withAllType:NO];
         [_birthdayControl setTextColor:RGB(102,102,102) withTpe:1 withAllType:NO];
         [_birthdayControl setTextAlignment:NSTextAlignmentLeft withNumberType:0 withAllType:NO];
@@ -540,6 +550,7 @@
         [_identityControl setImage:@"ico_identity" withNumberType:0 withAllType:NO];
         [_identityControl setTextAlignment:NSTextAlignmentRight withNumberType:1 withAllType:NO];
         [_identityControl setFont:FontLevel2 withNumberType:0 withAllType:NO];
+        [_identityControl setFont:FontLevel2A withNumberType:1 withAllType:NO];
         [_identityControl setTextColor:RGB(51,51,51) withTpe:0 withAllType:NO];
         [_identityControl setTextColor:RGB(51,51,51) withTpe:1 withAllType:NO];
         [_identityControl addTarget:self action:@selector(identityControlAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -559,6 +570,8 @@
         [_passwordControl setNumberImageView:1];
         [_passwordControl setText:@"主家长密码" withNumberType:0 withAllType:NO];
         [_passwordControl setText:@"重置密码" withNumberType:1 withAllType:NO];
+        [_passwordControl setFont:FontLevel2 withNumberType:0 withAllType:NO];
+        [_passwordControl setFont:FontLevel2A withNumberType:1 withAllType:NO];
         [_passwordControl setTextColor:RGB(51,51,51) withTpe:0 withAllType:NO];
         [_passwordControl setTextColor:RGB(102,102,102) withTpe:1 withAllType:NO];
         [_passwordControl setTextAlignment:NSTextAlignmentLeft withNumberType:0 withAllType:NO];
@@ -700,7 +713,7 @@
         [self.unBindControl resetFrame:CGRectMake(0, self.tipLabel.bottom, self.familyCollectionView.width, 50.0)];
         [self.unBindControl setTitleEdgeFrame:CGRectMake(0, 0, self.unBindControl.width, self.unBindControl.height) withNumberType:0 withAllType:NO];
         
-        [self setContentSize:CGSizeMake(self.familyCollectionView.width, self.unBindControl.bottom+20.0)];
+        [self setContentSize:CGSizeMake(self.familyCollectionView.width, self.unBindControl.bottom)];
     }
     else
     {
@@ -712,7 +725,7 @@
     
     
     
-     [self setContentSize:CGSizeMake(self.familyCollectionView.width, self.unBindControl.bottom+20.0)];
+     [self setContentSize:CGSizeMake(self.familyCollectionView.width, self.unBindControl.bottom)];
     
     
     

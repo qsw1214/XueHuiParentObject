@@ -53,11 +53,18 @@
     [self.fridayBoard resetFrame:CGRectMake(self.thursdayBoard.right, self.thursdayBoard.top, self.thursdayBoard.width, self.thursdayBoard.height)];
     
     //!< 设置属性
+    
     [self.mondayBoard setDescribeColor:MainColor];
     [self.tuesdayBoard setDescribeColor:MainColor];
     [self.wednesdayBoard setDescribeColor:MainColor];
     [self.thursdayBoard setDescribeColor:MainColor];
     [self.fridayBoard setDescribeColor:MainColor];
+    
+    [self.mondayBoard setTitleColor:RGB(104.0, 111.0, 121.0)];
+    [self.tuesdayBoard setTitleColor:RGB(104.0, 111.0, 121.0)];
+    [self.wednesdayBoard setTitleColor:RGB(104.0, 111.0, 121.0)];
+    [self.thursdayBoard setTitleColor:RGB(104.0, 111.0, 121.0)];
+    [self.fridayBoard setTitleColor:RGB(104.0, 111.0, 121.0)];
 }
 
 

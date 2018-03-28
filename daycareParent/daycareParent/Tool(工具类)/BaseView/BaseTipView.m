@@ -38,6 +38,19 @@
 }
 
 
+-(void)resetFrame:(CGRect)frame
+{
+    [self setFrame:frame];
+    [self.tipButton setCenter:self.center];
+}
+
+
+-(void)resetTipFrame:(CGRect)frame
+{
+    [self setFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+    [self.tipButton resetFrame:CGRectMake(10.0, 20.0, frame.size.width-20.0, 200.0)];
+}
+
 -(void)layoutSubviews
 {
     [self.tipButton setCenter:CGPointMake(self.width/2.0, self.height/2.0)];
@@ -104,6 +117,7 @@
         [_tipButton setTextColor:[UIColor grayColor] withTpe:0 withAllType:NO];
         [_tipButton setNumberOfLines:0 withTpe:0 withAllType:NO];
         [_tipButton setImageContentMode:UIViewContentModeScaleAspectFit withNumberType:0 withAllType:NO];
+        [_tipButton setBackgroundColor:[UIColor clearColor]];
 
     }
     return _tipButton;

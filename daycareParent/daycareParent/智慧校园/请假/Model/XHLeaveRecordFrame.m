@@ -15,7 +15,7 @@
 {
     _model = model;
     CGSize contentSize = [NSObject contentSizeWithTitle:model.title withFontOfSize:FontLevel3 withWidth:(SCREEN_WIDTH-20.0)];
-    [self setContentSize:contentSize];
+    [self setContentSize:CGSizeMake(contentSize.width, (contentSize.height > 30.0 ? contentSize.height : 30.0))];
     [self setItemFrame:CGRectMake(0, 0, SCREEN_WIDTH, (contentSize.height > 30.0 ? contentSize.height : 30.0) + 20.0)];
     [self setCellHeight:self.itemFrame.size.height];
 }

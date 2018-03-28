@@ -26,7 +26,7 @@
         [self addSubview:self.tableView];
         [self.tableView setDelegate:self];
         [self.tableView setDataSource:self];
-        [self.tableView setTipType:TipImage withTipTitle:nil withTipImage:@"ico-no-data"];
+        [self.tableView setTipType:TipTitleAndTipImage withTipTitle:@"暂无请假记录" withTipImage:@"pic_nothing"];
         [self.tableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHeaderAction)];
     }
     return self;

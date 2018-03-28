@@ -34,6 +34,7 @@
     self = [super init];
     if (self)
     {
+        [self setBackgroundColor:[UIColor whiteColor]];
         [self addSubview:self.nameControl];
         [self addSubview:self.LearningNumberControl];
         [self addSubview:self.parentNameControl];
@@ -70,7 +71,8 @@
     [self.parentNameControl resetLineViewFrame:CGRectMake(0, (self.parentNameControl.height-0.5), self.parentNameControl.width, 0.5) withNumberType:0 withAllType:NO];
     
     //!< 身份Frame
-    [self.identityControl resetFrame:CGRectMake(0, self.parentNameControl.bottom, self.parentNameControl.width, self.parentNameControl.height)];
+    [self.identityControl resetFrame:CGRectMake(0, self.parentNameControl.bottom, self.parentNameControl.width, self.parentNameControl.height+10.0)];
+    [self.identityControl resetLineViewFrame:CGRectMake(0, 0, self.identityControl.width, 10.0) withNumberType:0 withAllType:NO];
     [self.identityControl setTitleEdgeFrame:CGRectMake(10.0, 0, ((frame.size.width-20.0)/2.0), self.identityControl.height) withNumberType:0 withAllType:NO];
     [self.identityControl setTitleEdgeFrame:CGRectMake((frame.size.width/2.0), 0, (((frame.size.width-20.0)/2.0)-40.0), self.identityControl.height) withNumberType:1 withAllType:NO];
     [self.identityControl setImageEdgeFrame:CGRectMake((frame.size.width-30.0), (self.identityControl.height-15.0)/2.0, 15.0, 15.0) withNumberType:0 withAllType:NO];
@@ -103,7 +105,9 @@
         [_nameControl setText:@"学生姓名" withNumberType:0 withAllType:NO];
         [_nameControl setFont:FontLevel2 withNumberType:0 withAllType:NO];
         [_nameControl setTextColor:RGB(153,153,153) withTpe:0 withAllType:NO];
+        [_nameControl setInputTextColor:RGB(51.0, 51.0, 51.0) withNumberType:0 withAllType:NO];
         [_nameControl addTarget:self action:@selector(bindAction:) forControlEvents:UIControlEventTouchUpInside];
+        
         
     }
     return _nameControl;
@@ -117,9 +121,11 @@
         [_LearningNumberControl setNumberLabel:1];
         [_LearningNumberControl setNumberTextField:1];
         [_LearningNumberControl setNumberLineView:1];
+        [_LearningNumberControl setKeyboardType:UIKeyboardTypeNumberPad withNumberType:0 withAllType:NO];
         [_LearningNumberControl setText:@"请输入学号" withNumberType:0 withAllType:NO];
         [_LearningNumberControl setFont:FontLevel2 withNumberType:0 withAllType:NO];
         [_LearningNumberControl setTextColor:RGB(153,153,153) withTpe:0 withAllType:NO];
+        [_LearningNumberControl setInputTextColor:RGB(51.0, 51.0, 51.0) withNumberType:0 withAllType:NO];
         [_LearningNumberControl addTarget:self action:@selector(bindAction:) forControlEvents:UIControlEventTouchUpInside];
         
     }
@@ -137,6 +143,7 @@
         [_parentNameControl setText:@"家长姓名" withNumberType:0 withAllType:NO];
         [_parentNameControl setFont:FontLevel2 withNumberType:0 withAllType:NO];
         [_parentNameControl setTextColor:RGB(153,153,153) withTpe:0 withAllType:NO];
+        [_parentNameControl setInputTextColor:RGB(51.0, 51.0, 51.0) withNumberType:0 withAllType:NO];
         [_parentNameControl addTarget:self action:@selector(bindAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _parentNameControl;
@@ -149,6 +156,7 @@
         _identityControl = [[BaseButtonControl alloc]init];
         [_identityControl setNumberLabel:2];
         [_identityControl setNumberImageView:1];
+        [_identityControl setNumberLineView:1];
         [_identityControl setText:@"您的身份" withNumberType:0 withAllType:NO];
         [_identityControl setText:@"爸爸" withNumberType:1 withAllType:NO];
         [_identityControl setImage:@"ico_identity" withNumberType:0 withAllType:NO];
@@ -212,7 +220,7 @@
     for (int i= 0; i< 3; i++)
     {
         XHAlertModel *model = [[XHAlertModel alloc]init];
-        [model setIdentityType:[NSString stringWithFormat:@"%zd",i]];
+        [model setIdentityType:[NSString stringWithFormat:@"%d",i]];
         switch (i)
         {
             case 0:

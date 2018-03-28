@@ -100,12 +100,6 @@
         [self.thursdayLabel setText:itemFrame.model.thursday];
         [self.fridayLabel setText:itemFrame.model.friday];
         
-//        [self.monthLabel setAttributedText:[NSObject attributedWithString:itemFrame.model.month WithLineSpace:2.0 kern:2.5 font:FontLevel2]];
-//        [self.mondayLabel setAttributedText:[NSObject attributedWithString:itemFrame.model.monday WithLineSpace:2.0 kern:2.5 font:FontLevel2]];
-//        [self.tuesdayLabel setAttributedText:[NSObject attributedWithString:itemFrame.model.tuesday WithLineSpace:2.0 kern:2.5 font:FontLevel2]];
-//        [self.wednesdayLabel setAttributedText:[NSObject attributedWithString:itemFrame.model.wednesday WithLineSpace:2.0 kern:2.5 font:FontLevel2]];
-//        [self.thursdayLabel setAttributedText:[NSObject attributedWithString:itemFrame.model.thursday WithLineSpace:2.0 kern:2.5 font:FontLevel2]];
-//        [self.fridayLabel setAttributedText:[NSObject attributedWithString:itemFrame.model.friday WithLineSpace:2.0 kern:2.5 font:FontLevel2]];
         
         
         switch (itemFrame.model.markType)

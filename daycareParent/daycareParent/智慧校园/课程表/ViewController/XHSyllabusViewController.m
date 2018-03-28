@@ -56,10 +56,11 @@
         [self.headerBoardControl resetFrame:CGRectMake(10.0, (self.addressBookHeader.bottom+10.0), SCREEN_WIDTH-20.0, 50.0)];
         [self.view addSubview:self.headerBoardControl];
        
-        [self.view setBackgroundColor:RGB(229,229,229)];
+        [self.view setBackgroundColor:[UIColor whiteColor]];
         [self.view addSubview:self.mainTableView];
         [self.mainTableView setDelegate:self];
         [self.mainTableView setDataSource:self];
+        [self.mainTableView setBackgroundColor:[UIColor whiteColor]];
         [self.mainTableView resetFrame:CGRectMake(0, (self.headerBoardControl.bottom), SCREEN_WIDTH, SCREEN_HEIGHT-(self.headerBoardControl.bottom))];
         
         

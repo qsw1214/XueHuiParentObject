@@ -58,6 +58,7 @@
         [self.view addSubview:self.tableView];
         [self.tableView setTipType:TipTitleAndTipImage withTipTitle:@"暂无考勤记录" withTipImage:@"pic_nothing"];
         [self.tableView resetFrame:CGRectMake(0, self.dateSwitchControl.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.dateSwitchControl.bottom)];
+        [self.tableView resetTipFrame:CGRectMake(0, self.dateSwitchControl.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.dateSwitchControl.bottom)];
     }
 }
 
@@ -124,7 +125,7 @@
     {
         XHAlertModel *model = [[XHAlertModel alloc]init];
         [model setName:@"张三"];
-        [model setObjectID:[NSString stringWithFormat:@"%zd",i]];
+        [model setObjectID:[NSString stringWithFormat:@"%d",i]];
         [tempArray addObject:model];
     }
     XHAlertControl *alert = [[XHAlertControl alloc]initWithDelegate:self];

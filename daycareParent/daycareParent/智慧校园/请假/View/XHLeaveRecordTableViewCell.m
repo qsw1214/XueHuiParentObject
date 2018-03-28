@@ -32,6 +32,8 @@
         [self.contentView setBackgroundColor:[UIColor whiteColor]];
         [self.contentView addSubview:self.titleLabel];
         [self.contentView addSubview:self.lineView];
+        
+        [self setItemColor:NO];
     }
     return self;
 }
@@ -61,7 +63,7 @@
     if (_titleLabel  == nil)
     {
         _titleLabel = [[UILabel alloc]init];
-        [_titleLabel setTextColor:RGB(3, 3, 3)];
+        [_titleLabel setTextColor:RGB(51.0, 51.0, 51.0)];
         [_titleLabel setNumberOfLines:0];
         [_titleLabel setFont:FontLevel3];
     }
@@ -79,6 +81,15 @@
 }
 
 
+
+
+-(void)setItemColor:(BOOL)color
+{
+    if (color)
+    {
+        [self.titleLabel setBackgroundColor:[UIColor orangeColor]];
+    }
+}
 
 
 

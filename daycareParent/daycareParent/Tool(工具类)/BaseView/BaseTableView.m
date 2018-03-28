@@ -48,10 +48,15 @@
 -(void)resetFrame:(CGRect)frame
 {
     [self setFrame:frame];
-    [self.tipView setFrame:CGRectMake(0, 0, frame.size.width,frame.size.height)];
+    [self.tipView resetFrame:CGRectMake(0, 0, frame.size.width,frame.size.height)];
     [self.tipView setHidden:YES];
-    
-    
+}
+
+
+-(void)resetTipFrame:(CGRect)frame
+{
+    [self.tipView resetTipFrame:frame];
+    [self.tipView setBackgroundColor:[UIColor redColor]];
 }
 #pragma mark 进入刷新
 

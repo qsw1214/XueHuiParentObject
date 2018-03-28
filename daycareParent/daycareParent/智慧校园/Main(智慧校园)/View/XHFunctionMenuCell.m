@@ -53,23 +53,16 @@
 -(void)setItemFrame:(XHFunctionMenuFrame *)itemFrame
 {
      _itemFrame = itemFrame;
-    
-    
     {
-        
-        //根据类型进行控件设置Frame
         //根据类型进行控件设置Frame
         [self.markImageView setFrame:CGRectMake(((itemFrame.itemSize.width-30.0))/2.0, 10.0, 30.0, 30.0)];
-        [self.titleLabel setFrame:CGRectMake(0, (self.backGroundImageView.top+80.0), itemFrame.itemSize.width, (itemFrame.itemSize.width-(25+(itemFrame.itemSize.width-50.0))))];
+        [self.titleLabel setFrame:CGRectMake(0, (self.backGroundImageView.top+100.0), itemFrame.itemSize.width, (itemFrame.itemSize.width-(25+(itemFrame.itemSize.width-50.0))))];
         [self.backGroundImageView setFrame:CGRectMake(0, self.markImageView.bottom+10.0, (itemFrame.itemSize.width), itemFrame.itemSize.height-(self.markImageView.bottom+10.0))];
         
         
         
         CGSize contentSize = [NSObject contentSizeWithTitle:itemFrame.model.describe withFontOfSize:FontLevel4 withWidth:(itemFrame.itemSize.width-20.0)];
          [self.describeLabel setFrame:CGRectMake(10.0, self.titleLabel.bottom, (itemFrame.itemSize.width-20.0), contentSize.height)];
-       
-        
-        
         
         //赋值
         [self.titleLabel setText:itemFrame.model.title];

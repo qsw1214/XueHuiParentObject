@@ -34,7 +34,7 @@
         [self.contentView addSubview:self.describeLabel];
         
         //!< 重置Frame
-        [self.headerImageView resetFrame:CGRectMake(10.0, ((frame.size.height-40.0)/2.0), 40.0, 40.0)];
+        [self.headerImageView resetFrame:CGRectMake(10.0, ((frame.size.height-48.0)/2.0), 48.0, 48.0)];
         [self.headerImageView setLayerCornerRadius:(self.headerImageView.height/2.0)];
 
         
@@ -58,7 +58,7 @@
                 case ChildListAloneType:
                 {
                     //!< 首先重置Frame
-                    [self.titleLabel setFrame:CGRectMake(self.headerImageView.right+10.0, self.headerImageView.top, (model.itemSize.width-(self.headerImageView.right+20.0)), 20.0)];
+                    [self.titleLabel setFrame:CGRectMake(self.headerImageView.right+10.0, (self.headerImageView.top+4.0), (model.itemSize.width-(self.headerImageView.right+20.0)), 20.0)];
                     [self.describeLabel setFrame:CGRectMake(self.titleLabel.left, self.titleLabel.bottom, self.titleLabel.width, self.titleLabel.height)];
                     
                     //!< 设置属性并赋值

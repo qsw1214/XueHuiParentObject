@@ -55,6 +55,9 @@
         [self addSubview:self.tipLabel];
         [self addSubview:self.passwordControl];
         [self addSubview:self.unBindControl];
+        
+        
+        [self setBackgroundColor:[UIColor whiteColor]];
     }
     return self;
 }

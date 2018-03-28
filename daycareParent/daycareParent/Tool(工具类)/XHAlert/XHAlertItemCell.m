@@ -23,17 +23,13 @@
 {
     self = [super initWithFrame:frame];
     if (self)
-    {
-        
+    {        
+        [self setItemColor:NO];
         
         [self.contentView addSubview:self.markView];
         [self.contentView addSubview:self.titleLabel];
         
-        [self.markView setFrame:CGRectMake(5.0,(frame.size.height-8.0)/2.0 , 8.0, 8.0)];
-        [self.markView setLayerCornerRadius:(self.markView.height/2.0)];
-        [self.markView setLayerBorderWidth:0.5];
-        [self.markView setBorderColor:RGB(104,111,121)];
-        [self.titleLabel setFrame:CGRectMake((self.markView.right+5.0), 0, frame.size.width-(self.markView.right+5.0), frame.size.height)];
+        
     }
     return self;
 }
@@ -60,6 +56,13 @@
     }
     
     
+    [self.markView setFrame:CGRectMake(5.0,(model.itemSize.height-8.0)/2.0 , 8.0, 8.0)];
+    [self.markView setLayerCornerRadius:(self.markView.height/2.0)];
+    [self.markView setLayerBorderWidth:0.5];
+    [self.markView setBorderColor:RGB(104,111,121)];
+    [self.titleLabel setFrame:CGRectMake((self.markView.right+5.0), 0, model.itemSize.width-(self.markView.right+5.0), model.itemSize.height)];
+    
+    
     
     [self.titleLabel setText:model.name];
     
@@ -82,6 +85,16 @@
         [_titleLabel setTextColor:RGB(51.0, 51.0, 51.0)];
     }
     return _titleLabel;
+}
+
+
+-(void)setItemColor:(BOOL)color
+{
+    if (color)
+    {
+        [self.titleLabel setBackgroundColor:[UIColor orangeColor]];
+        [self.markView setBackgroundColor:[UIColor purpleColor]];
+    }
 }
 
 

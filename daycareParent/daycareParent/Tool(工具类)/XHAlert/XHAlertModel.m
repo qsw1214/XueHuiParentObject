@@ -13,7 +13,8 @@
 -(void)setName:(NSString *)name
 {
     _name = name;
-    [self setItemSize:CGSizeMake(((SCREEN_WIDTH-140.0)/3.0), 25.0)];
+    CGSize contentSize = [NSObject contentSizeWithTitle:name withFontOfSize:FontLevel2 withWidth:200.0];
+    [self setItemSize:CGSizeMake(contentSize.width+25.0, 30.0)];
 }
 
 @end

@@ -84,7 +84,7 @@
  */
 +(NSAttributedString *)attributedWithString:(NSString *)string WithLineSpace:(CGFloat)lineSpace kern:(CGFloat)kern font:(UIFont *)font;
 #pragma mark--给UILabel设置行间距和字间距
--(void)setLabelSpace:(UILabel*)label withValue:(NSString*)str withFont:(UIFont*)font withlineSpacing:(CGFloat)lineSpacing withAttributeName:(UIFont *)attributeNameFont;
+-(void)setLabelSpace:(UILabel*)label withValue:(NSString*)str withFont:(UIFont*)font withlineSpacing:(CGFloat)lineSpacing withAttributeNameFont:(NSNumber *)attributeNameFont;
 #pragma mark--计算UILabel的高度(带有行间距的情况)
--(CGFloat)getSpaceLabelHeight:(NSString*)str withFont:(UIFont*)font withWidth:(CGFloat)width withlineSpacing:(CGFloat)lineSpacing withAttributeName:(UIFont *)attributeNameFont;
+-(CGFloat)getSpaceLabelHeight:(NSString*)str withFont:(UIFont*)font withWidth:(CGFloat)width withlineSpacing:(CGFloat)lineSpacing withAttributeNameFont:(NSNumber *)attributeNameFont;
 @end

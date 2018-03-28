@@ -27,8 +27,8 @@
 -(void)setItemObject:(XHSystemModel *)model
 {
     [self.titleImageView setFrame:CGRectMake(15, 10, 20, 20)];
-    [self.titleLabel setFrame:CGRectMake(self.titleImageView.right+10, self.titleImageView.top, (SCREEN_WIDTH-self.titleImageView.right-30)/2.0, self.titleImageView.height)];
-    [self.dateLabel setFrame:CGRectMake(self.titleLabel.right+10, self.titleImageView.top, (SCREEN_WIDTH-self.titleImageView.right-30)/2.0, self.titleImageView.height)];
+    [self.titleLabel setFrame:CGRectMake(self.titleImageView.right+10, self.titleImageView.top, (SCREEN_WIDTH-self.titleImageView.right-45)/2.0, self.titleImageView.height)];
+    [self.dateLabel setFrame:CGRectMake(self.titleLabel.right+10, self.titleImageView.top, (SCREEN_WIDTH-self.titleImageView.right-45)/2.0, self.titleImageView.height)];
     [self.contentLabel setFrame:CGRectMake(10, self.titleImageView.bottom+5, SCREEN_WIDTH-20,self.contentView.frame.size.height- self.titleImageView.bottom-10)];
     switch (model.modelType)
     {
@@ -48,7 +48,7 @@
     self.dateLabel.text=[NSDate dateStr:model.date FromFormatter:ALL_DEFAULT_TIME_FORM ToFormatter:DEFAULT_TIME_FORM1];
     self.contentLabel.text=model.content;
    // [self.contentLabel setParagraph:[NSString safeString:model.content]];
-    [self.contentLabel setLabelSpace:self.contentLabel withValue:[NSString safeString:model.content] withFont:kFont(16.0) withlineSpacing:6 withAttributeName:kFont(1.5)];
+    [self.contentLabel setLabelSpace:self.contentLabel withValue:[NSString safeString:model.content] withFont:kFont(16.0) withlineSpacing:6 withAttributeNameFont:@0];
 }
 -(ParentImageView *)titleImageView
 {

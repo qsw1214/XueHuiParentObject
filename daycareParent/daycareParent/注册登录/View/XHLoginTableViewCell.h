@@ -9,6 +9,5 @@
 #import "ParentTableViewCell.h"
 
 @interface XHLoginTableViewCell : ParentTableViewCell
-@property(nonatomic,strong)ParentImageView *titleImageView;
-@property(nonatomic,strong)UITextField *textFeild;
+
 @end

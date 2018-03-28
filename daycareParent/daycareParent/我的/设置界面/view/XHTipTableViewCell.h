@@ -9,5 +9,5 @@
 #import "ParentTableViewCell.h"
 
 @interface XHTipTableViewCell : ParentTableViewCell
-@property(nonatomic,strong)UILabel *tipLabel;
+@property(nonatomic,strong)ParentLabel *tipLabel;
 @end

@@ -11,7 +11,6 @@
 #import "XHVerifyTableViewCell.h"
 #define countDownStr(s) [NSString stringWithFormat:@"%ld秒后重发",s]
 #define reviewTitle @"重新发送"
-#define kPlaceTitle @[@"请输入手机号",@"请输入验证码",@"请输入新密码（6-20位英文、数字组合）"]
 @interface XHForgetViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     NSInteger  _currentS;
@@ -35,7 +34,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return kPlaceTitle.count;
+    return 3;
 }
 -(CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -45,15 +44,9 @@
 {
     if (indexPath.row==1) {
         XHVerifyTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"telephonecell" forIndexPath:indexPath];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.chageTelePhoneTextField.placeholder=@"请输入验证码";
-        cell.chageTelePhoneTextField.keyboardType=UIKeyboardTypeNumberPad;
-        cell.chageTelePhoneTextField.tag=indexPath.row+10086;
-        [cell.chageTelePhoneTextField addTarget:self action:@selector(textChage) forControlEvents:UIControlEventEditingChanged];
-        cell.verifyButton.backgroundColor=RGB(245, 245, 245);
-        cell.verifyButton.titleLabel.font=FontLevel3;
-        cell.verifyButton.layer.cornerRadius=CORNER_BTN;
-        cell.verifyButton.backgroundColor=MainColor;
+        cell.modelType=XHVerifyForgetType;
+        [cell setItemObject:nil withIndexPathRow:indexPath.row];
+        
         [cell.verifyButton setTag:1];
         [cell.verifyButton addTarget:self action:@selector(BnttonClick:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
@@ -61,17 +54,9 @@
     else
     {
         XHChageTelephoneTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.chageTelePhoneTextField.placeholder=kPlaceTitle[indexPath.row];
-        cell.chageTelePhoneTextField.tag=indexPath.row+10086;
-        [cell.chageTelePhoneTextField addTarget:self action:@selector(textChage) forControlEvents:UIControlEventEditingChanged];
-        if (indexPath.row==0) {
-            cell.chageTelePhoneTextField.keyboardType=UIKeyboardTypeNumberPad;
-        }
-        else
-        {
-            cell.chageTelePhoneTextField.secureTextEntry=YES;
-        }
+        cell.modelType=XHVerifyForgetType;
+        [cell setItemObject:nil withIndexPathRow:indexPath.row];
+       
         return cell;
     }
     
@@ -168,26 +153,13 @@
     [Cell.verifyButton setTitle:countDownStr(_currentS) forState:UIControlStateNormal];
 }
 
--(void)textChage
-{
-    UITextField *phonepwd=[_tableView viewWithTag:10086];
-     UITextField *verrifypwd=[_tableView viewWithTag:10086+1];
-    UITextField *pwd=[_tableView viewWithTag:10086+2];
-    if ([UITextView verifyPhone:phonepwd.text]&&pwd.text.length>5&&[UITextView verifyCodeMatch:verrifypwd.text])
-    {
-        [self.sureButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }
-    else
-    {
-        [self.sureButton setTitleColor:LOGIN_BEFORE forState:UIControlStateNormal];
-    }
-}
+
 -(BaseTableView *)tableView
 {
     if (_tableView==nil) {
         _tableView=[[BaseTableView alloc] initWithFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.bottom) style:UITableViewStyleGrouped];
         _tableView.rowHeight=50;
-        _tableView.separatorStyle=UITableViewCellSeparatorStyleSingleLine;
+        _tableView.backgroundColor=[UIColor whiteColor];
         _tableView.delegate=self;
         _tableView.dataSource=self;
         [_tableView registerClass:[XHChageTelephoneTableViewCell class] forCellReuseIdentifier:@"cell"];

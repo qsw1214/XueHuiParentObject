@@ -67,15 +67,21 @@
             switch (indexPath.row) {
                 case 0:
                 {
+                    cell.tipLabel.frame=CGRectMake(20, 0, SCREEN_WIDTH-40, 40);
                     cell.tipLabel.text=@"提示，更换手机后，下次登录需使用新的手机号登录。";
                     cell.tipLabel.textColor=[UIColor orangeColor];
                     cell.tipLabel.font=kFont(13);
+                    cell.lineLabel.frame=CGRectMake(0, 40-0.5, SCREEN_WIDTH, 0.5);
+                    [cell.contentView addSubview:cell.lineLabel];
                 }
                     break;
                     
                 default:
                 {
+                    cell.tipLabel.frame=CGRectMake(20, 0, SCREEN_WIDTH-40, 50);
                     cell.tipLabel.text=kFormat(@"当前手机号：%@",[XHUserInfo sharedUserInfo].loginName);
+                    cell.lineLabel.frame=CGRectMake(0, 50-0.5, SCREEN_WIDTH, 0.5);
+                    [cell.contentView addSubview:cell.lineLabel];
                 }
                     break;
             }
@@ -86,18 +92,17 @@
             case 2:
         {
             XHChageTelephoneTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.chageTelePhoneTextField.tag=indexPath.row-2+10086;
-            [cell.chageTelePhoneTextField addTarget:self action:@selector(textChage) forControlEvents:UIControlEventEditingChanged];
+            cell.modelType=XHVerifyFoundType;
+            [cell setItemObject:nil withIndexPathRow:indexPath.row];
+          
             return cell;
         }
             break;
         default:
         {
             XHVerifyTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"telephonecell" forIndexPath:indexPath];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.chageTelePhoneTextField.tag=indexPath.row-2+10086;
-            [cell.chageTelePhoneTextField addTarget:self action:@selector(textChage) forControlEvents:UIControlEventEditingChanged];
+            cell.modelType=XHVerifyFoundType;
+            [cell setItemObject:nil withIndexPathRow:indexPath.row];
             [cell.verifyButton setTag:1];
             [cell.verifyButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
             return cell;
@@ -194,25 +199,11 @@
     }
     [Cell.verifyButton setTitle:countDownStr(_currentS) forState:UIControlStateNormal];
 }
-#pragma mark-----textfeildChangeMethod
--(void)textChage
-{
-    UITextField *phonepwd=[_tableView viewWithTag:10086];
-    UITextField *verrifypwd=[_tableView viewWithTag:10086+1];
-    if ([UITextView verifyPhone:phonepwd.text]&&[UITextView verifyCodeMatch:verrifypwd.text])
-    {
-        [self.sureButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }
-    else
-    {
-        [self.sureButton setTitleColor:LOGIN_BEFORE forState:UIControlStateNormal];
-    }
-}
+
 -(BaseTableView *)tableView
 {
     if (_tableView==nil) {
         _tableView=[[BaseTableView alloc] initWithFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.bottom) style:UITableViewStyleGrouped];
-        [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
         _tableView.delegate=self;
         _tableView.dataSource=self;
         [_tableView registerClass:[XHChageTelephoneTableViewCell class] forCellReuseIdentifier:@"cell"];

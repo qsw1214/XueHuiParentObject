@@ -25,7 +25,7 @@
     self = [super initWithFrame:frame style:style];
     if (self)
     {
-        [self setBackgroundColor:RGB(238.0, 238.0, 238.0)];
+        [self setBackgroundColor:RGB(245, 245, 245)];
         [self setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         [self setShowsVerticalScrollIndicator:NO];
         [self setShowsHorizontalScrollIndicator:NO];

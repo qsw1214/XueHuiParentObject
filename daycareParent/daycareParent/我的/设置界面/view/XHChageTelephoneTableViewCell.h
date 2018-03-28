@@ -8,6 +8,13 @@
 
 #import "ParentTableViewCell.h"
 
+typedef NS_ENUM(NSInteger,XHChageTelephoneModelType)
+{
+    XHChageTelephoneRegistType=1,
+    XHChageTelephoneForgetType=2,
+    XHChageTelephoneyFoundType=3,
+};
+
 @interface XHChageTelephoneTableViewCell : ParentTableViewCell
-@property(nonatomic,strong)UITextField *chageTelePhoneTextField;
+@property(nonatomic,assign)XHChageTelephoneModelType modelType;
 @end

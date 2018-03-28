@@ -370,6 +370,7 @@
 		8C01A2352006E94800E4D768 /* NJKWebViewProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C01A2322006E94800E4D768 /* NJKWebViewProgress.m */; };
 		8C01A2362006E94800E4D768 /* NJKWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C01A2342006E94800E4D768 /* NJKWebViewProgressView.m */; };
 		8C0D26FC2069D98000C246CD /* XHUpdateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C0D26FB2069D98000C246CD /* XHUpdateHelper.m */; };
+		8C0D26FF206A16DB00C246CD /* ParentTextFeild.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C0D26FE206A16DB00C246CD /* ParentTextFeild.m */; };
 		8C1642232056184E001DCA01 /* XHRCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1642222056184E001DCA01 /* XHRCModel.m */; };
 		8C1642272056741D001DCA01 /* XHLoseSubjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1642262056741D001DCA01 /* XHLoseSubjectView.m */; };
 		8C16422A20567887001DCA01 /* XHSubjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C16422920567887001DCA01 /* XHSubjectModel.m */; };
@@ -1248,6 +1249,8 @@
 		8C01A2342006E94800E4D768 /* NJKWebViewProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgressView.m; sourceTree = "<group>"; };
 		8C0D26FA2069D98000C246CD /* XHUpdateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHUpdateHelper.h; sourceTree = "<group>"; };
 		8C0D26FB2069D98000C246CD /* XHUpdateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHUpdateHelper.m; sourceTree = "<group>"; };
+		8C0D26FD206A16DB00C246CD /* ParentTextFeild.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParentTextFeild.h; sourceTree = "<group>"; };
+		8C0D26FE206A16DB00C246CD /* ParentTextFeild.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParentTextFeild.m; sourceTree = "<group>"; };
 		8C1642212056184E001DCA01 /* XHRCModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHRCModel.h; sourceTree = "<group>"; };
 		8C1642222056184E001DCA01 /* XHRCModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHRCModel.m; sourceTree = "<group>"; };
 		8C1642252056741D001DCA01 /* XHLoseSubjectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHLoseSubjectView.h; sourceTree = "<group>"; };
@@ -3734,6 +3737,8 @@
 				0441A5F62068F75A00270E1D /* ParentView.m */,
 				8CD8645C2063551900A25400 /* ParentControl.h */,
 				8CD8645D2063551900A25400 /* ParentControl.m */,
+				8C0D26FD206A16DB00C246CD /* ParentTextFeild.h */,
+				8C0D26FE206A16DB00C246CD /* ParentTextFeild.m */,
 			);
 			path = ParentView;
 			sourceTree = "<group>";
@@ -4521,6 +4526,7 @@
 				4B80F2EA1FCBF08800BC7B52 /* AFSecurityPolicy.m in Sources */,
 				4B80F2261FCBEC2B00BC7B52 /* TabBarItem.m in Sources */,
 				4B80F2871FCBF04800BC7B52 /* MJRefreshStateHeader.m in Sources */,
+				8C0D26FF206A16DB00C246CD /* ParentTextFeild.m in Sources */,
 				8C7DDC15205773FA00AF8D04 /* UIAlertController+Category.m in Sources */,
 				4B80F2881FCBF04800BC7B52 /* MJRefreshAnimateFooter.m in Sources */,
 				4B80F2841FCBF04800BC7B52 /* MJRefreshBackStateFooter.m in Sources */,

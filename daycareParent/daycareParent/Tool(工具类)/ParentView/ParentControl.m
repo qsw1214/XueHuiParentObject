@@ -18,7 +18,7 @@
 -(void)setNumberLabel:(NSInteger)number
 {
     for (int i=0; i<number; i++) {
-        UILabel *label=[[UILabel alloc] init];
+        ParentLabel *label=[[ParentLabel alloc] init];
         [self addSubview:label];
         [self.numberLabelArry addObject:label];
     }
@@ -26,34 +26,34 @@
 }
 -(void)setLabelCGRectMake:(CGRect)rect withNumberIndex:(NSInteger)index
 {
-    UILabel *label=self.numberLabelArry[index];
+    ParentLabel *label=self.numberLabelArry[index];
     [label setFrame:rect];
 }
 -(void)setLabelText:(NSString *)text withNumberIndex:(NSInteger)index
 {
-    UILabel *label=self.numberLabelArry[index];
+    ParentLabel *label=self.numberLabelArry[index];
     [label setText:[NSString safeString:text]];
 }
 -(void)setLabelTextAlignment:(NSTextAlignment)textAlignment withNumberIndex:(NSInteger)index
 {
-    UILabel *label=self.numberLabelArry[index];
+    ParentLabel *label=self.numberLabelArry[index];
     [label setTextAlignment:textAlignment];
 }
 
 -(void)setLabelFont:(UIFont *)font withNumberIndex:(NSInteger)index
 {
-    UILabel *label=self.numberLabelArry[index];
+    ParentLabel *label=self.numberLabelArry[index];
     [label setFont:font];
 }
 -(void)setLabelTextColor:(UIColor *)color withNumberIndex:(NSInteger)index
 {
-    UILabel *label=self.numberLabelArry[index];
+    ParentLabel *label=self.numberLabelArry[index];
     [label setTextColor:color];
 }
 
 -(void)setLabelBackgroundColor:(UIColor *)color withNumberIndex:(NSInteger)index
 {
-    UILabel *label=self.numberLabelArry[index];
+    ParentLabel *label=self.numberLabelArry[index];
     [label setBackgroundColor:color];
 }
 
@@ -70,6 +70,11 @@
 {
     ParentImageView *imageView=self.numberImageViewArry[index];
     [imageView setFrame:rect];
+}
+-(void)setImageViewAlpha:(CGFloat)alpha withNumberIndex:(NSInteger)index
+{
+    ParentImageView *imageView=self.numberImageViewArry[index];
+    imageView.alpha=alpha;
 }
 -(void)setImageViewName:(NSString *)imageName withNumberIndex:(NSInteger)index
 {

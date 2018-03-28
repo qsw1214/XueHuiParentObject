@@ -7,6 +7,12 @@
 //
 
 #import "XHChageTelephoneTableViewCell.h"
+#define kPlaceTitle @[@"请输入手机号",@"请输入验证码",@"请输入新密码（6-20位英文、数字组合）"]
+@interface XHChageTelephoneTableViewCell()
+
+@property(nonatomic,strong)ParentTextFeild *chageTelePhoneTextField;
+
+@end
 
 @implementation XHChageTelephoneTableViewCell
 
@@ -17,13 +23,44 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        _chageTelePhoneTextField=[[UITextField alloc] initWithFrame:CGRectMake(20, 0, SCREEN_WIDTH-40, self.contentView.bounds.size.height)];
-        _chageTelePhoneTextField.placeholder=@"请输入新手机号";
-        _chageTelePhoneTextField.clearButtonMode=UITextFieldViewModeWhileEditing;
+        _chageTelePhoneTextField=[[ParentTextFeild alloc] init];
         _chageTelePhoneTextField.keyboardType=UIKeyboardTypeNumberPad;
         [self.contentView addSubview:_chageTelePhoneTextField];
+        [self.contentView addSubview:self.lineLabel];
     }
     return self;
+}
+-(void)setItemObject:(id)object withIndexPathRow:(NSInteger)row
+{
+     self.chageTelePhoneTextField.frame=CGRectMake(20, 0, SCREEN_WIDTH-25, self.contentView.frame.size.height);
+     self.lineLabel.frame=CGRectMake(0, self.contentView.frame.size.height-0.5, SCREEN_WIDTH, 0.5);
+    
+    switch (self.modelType) {
+        case XHChageTelephoneRegistType:
+            case XHChageTelephoneForgetType:
+            
+        {
+            self.chageTelePhoneTextField.placeholder=kPlaceTitle[row];
+            [self.contentView addSubview:self.lineLabel];
+            self.chageTelePhoneTextField.tag=row+10086;
+            if (row==0) {
+                self.chageTelePhoneTextField.keyboardType=UIKeyboardTypeNumberPad;
+            }
+            else
+            {
+                self.chageTelePhoneTextField.secureTextEntry=YES;
+            }
+        }
+            break;
+            
+        case XHChageTelephoneyFoundType:
+        {
+              self.chageTelePhoneTextField.tag=row-2+10086;
+             self.chageTelePhoneTextField.placeholder=@"请输入新手机号";
+        }
+            break;
+    }
+  
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

@@ -27,7 +27,7 @@
     // Do any additional setup after loading the view.
     [self setNavtionTitle:@"个人信息"];
     _titleArry=@[@"头像",@"姓名"];
-    _tableView=[[UITableView alloc] initWithFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.bottom) style:UITableViewStyleGrouped];
+    _tableView=[[BaseTableView alloc] initWithFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.bottom) style:UITableViewStyleGrouped];
     _tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
     _tableView.delegate=self;
     _tableView.dataSource=self;
@@ -51,16 +51,19 @@
     if (indexPath.row==0) {
         cell.headBtn.hidden=NO;
         cell.backLabel.hidden=YES;
-        cell.arrowsImageView.image=[UIImage imageNamed:@"arr_accessory"];
-        cell.arrowsImageView.frame=CGRectMake(SCREEN_WIDTH-20, (USER_HEARD+10)/2.0, 10, 10);
+        cell.lineLabel.frame=CGRectMake(0, USER_HEARD+20-0.5, SCREEN_WIDTH, 0.5);
+        [cell.contentView addSubview:cell.lineLabel];
+        cell.arrowImageView.frame=CGRectMake(SCREEN_WIDTH-22, (USER_HEARD+6)/2.0, 8, 14);
+        [cell.contentView addSubview:cell.arrowImageView];
     }
     else
     {
-        cell.arrowsImageView.frame=CGRectMake(SCREEN_WIDTH-20, (USER_HEARD-30)/2.0, 10, 10);
         cell.headBtn.hidden=YES;
         cell.backLabel.hidden=NO;
         cell.backLabel.text=userInfo.guardianModel.guardianName;
-        cell.arrowsImageView.image=[UIImage imageNamed:@"arr_accessory"];
+        cell.lineLabel.frame=CGRectMake(0, 50-0.5, SCREEN_WIDTH, 0.5);
+        cell.arrowImageView.frame=CGRectMake(SCREEN_WIDTH-22, (50-14)/2.0, 8, 14);
+        [cell.contentView addSubview:cell.arrowImageView];
     }
     [cell.headBtn addTarget:self action:@selector(headClick) forControlEvents:UIControlEventTouchUpInside];
     

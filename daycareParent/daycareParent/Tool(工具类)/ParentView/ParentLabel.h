@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ParentLabel : UILabel
-
+-(void)setParagraph:(NSString *)str;
 @end

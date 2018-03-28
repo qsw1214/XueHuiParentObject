@@ -17,9 +17,10 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        _tipLabel=[[UILabel alloc] initWithFrame:CGRectMake(20, 0, SCREEN_WIDTH-40, self.contentView.bounds.size.height)];
+        _tipLabel=[[ParentLabel alloc] init];
         _tipLabel.numberOfLines=0;
         [self.contentView addSubview:_tipLabel];
+        
     }
     return self;
 }

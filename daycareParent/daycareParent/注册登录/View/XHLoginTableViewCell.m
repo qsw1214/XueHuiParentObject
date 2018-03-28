@@ -7,6 +7,13 @@
 //
 
 #import "XHLoginTableViewCell.h"
+#define kTitle @[@"请输入手机号",@"请输入密码"]
+#define kTitlePic @[@"ico_number",@"ico_password"]
+
+@interface XHLoginTableViewCell()
+@property(nonatomic,strong)ParentImageView *titleImageView;
+@property(nonatomic,strong)ParentTextFeild *textFeild;
+@end
 
 @implementation XHLoginTableViewCell
 
@@ -17,14 +24,49 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        _titleImageView=[[ParentImageView alloc] initWithFrame:CGRectMake(20, (self.contentView.bounds.size.height-25)/2.0, 25, 25)];
-        [self.contentView addSubview:_titleImageView];
-        _textFeild=[[UITextField alloc] initWithFrame:CGRectMake(50, 0, SCREEN_WIDTH-120, self.contentView.bounds.size.height)];
-        _textFeild.clearButtonMode=UITextFieldViewModeWhileEditing;
-        [self.contentView addSubview:_textFeild];
+        
+        [self.contentView addSubview:self.titleImageView];
+        [self.contentView addSubview:self.textFeild];
+        [self.contentView addSubview:self.lineLabel];
+        
     }
     return self;
 }
+-(void)setItemObject:(id)object withIndexPathRow:(NSInteger)row
+{
+    
+    self.titleImageView.frame=CGRectMake(0, (self.contentView.frame.size.height-25)/2.0, 25, 25);
+    self.textFeild.frame=CGRectMake(35, 0, SCREEN_WIDTH-120, self.contentView.frame.size.height);
+    self.lineLabel.frame=CGRectMake(0, self.contentView.frame.size.height-0.5, SCREEN_WIDTH, 0.5);
+    self.textFeild.placeholder=kTitle[row];
+    self.titleImageView.image=[UIImage imageNamed:kTitlePic[row]];
+    self.textFeild.tag=row+10086;
+    if (row==1)
+    {
+        self.textFeild.secureTextEntry=YES;
+    }
+    else
+    {
+        self.textFeild.keyboardType=UIKeyboardTypeNumberPad;
+    }
+}
+-(ParentImageView *)titleImageView
+{
+    if (_titleImageView==nil) {
+        _titleImageView=[[ParentImageView alloc] init];
+        
+    }
+    return _titleImageView;
+}
+-(ParentTextFeild *)textFeild
+{
+    if (_textFeild==nil) {
+        _textFeild=[[ParentTextFeild alloc] init];
+        
+    }
+    return _textFeild;
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

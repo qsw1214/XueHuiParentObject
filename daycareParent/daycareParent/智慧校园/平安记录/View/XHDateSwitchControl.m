@@ -7,6 +7,8 @@
 //
 
 #import "XHDateSwitchControl.h"
+#import "XHDatePicker.h"
+
 
 
 @interface XHDateSwitchControl ()
@@ -40,6 +42,9 @@
         [self setUnitDay:0];
         [self setItemColor:NO];
         
+        
+        [self addTarget:self action:@selector(dateAction:) forControlEvents:UIControlEventTouchUpInside];
+        
     }
     return self;
 }
@@ -56,9 +61,14 @@
     {
         [self.delegate dateSwitchAction:date];
     }
-    
-    
-    
+}
+
+
+-(void)dateAction:(BaseControl*)sender
+{
+    XHDatePicker *datePicker = [[XHDatePicker alloc]init];
+    [datePicker setDelegate:self];
+    [datePicker show];
 }
 
 
@@ -159,6 +169,7 @@
         [_leftArrowControl setImage:@"ico_arr_l" withNumberType:0 withAllType:NO];
         [_leftArrowControl addTarget:self action:@selector(dateSwitchControlAction:) forControlEvents:UIControlEventTouchUpInside];
         [_leftArrowControl setTag:1];
+        [_leftArrowControl setBackgroundColor:[UIColor clearColor]];
     }
     return _leftArrowControl;
 }
@@ -186,6 +197,7 @@
         [_rightArrowControl setImage:@"ico_arr_r" withNumberType:0 withAllType:NO];
         [_rightArrowControl addTarget:self action:@selector(dateSwitchControlAction:) forControlEvents:UIControlEventTouchUpInside];
         [_rightArrowControl setTag:2];
+        [_rightArrowControl setBackgroundColor:[UIColor clearColor]];
     }
     return _rightArrowControl;
 }

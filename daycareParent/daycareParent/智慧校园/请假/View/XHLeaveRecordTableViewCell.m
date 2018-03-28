@@ -32,6 +32,8 @@
         [self.contentView setBackgroundColor:[UIColor whiteColor]];
         [self.contentView addSubview:self.titleLabel];
         [self.contentView addSubview:self.lineView];
+        
+        [self setItemColor:NO];
     }
     return self;
 }
@@ -79,6 +81,15 @@
 }
 
 
+
+
+-(void)setItemColor:(BOOL)color
+{
+    if (color)
+    {
+        [self.titleLabel setBackgroundColor:[UIColor orangeColor]];
+    }
+}
 
 
 

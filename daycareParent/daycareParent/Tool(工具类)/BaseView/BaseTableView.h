@@ -28,6 +28,7 @@ typedef NS_ENUM(NSInteger,BaseRefreshType)
 
 
 
+
 #pragma mark 设置头部和脚部的标题
 /**
  title：刷新标题

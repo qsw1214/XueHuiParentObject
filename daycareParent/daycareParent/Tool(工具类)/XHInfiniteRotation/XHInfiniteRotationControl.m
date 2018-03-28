@@ -157,22 +157,27 @@
 #pragma mark 设置页码
 -(void) scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    NSInteger page = (NSInteger)(scrollView.contentOffset.x/scrollView.frame.size.width+0.5)%[self.pageArray count];
-    NSLog(@"%zd",page);
-    
-    [NSArray enumerateObjectsWithArray:self.pageArray usingBlock:^(XHPageModel *obj, NSUInteger idx, BOOL *stop)
+    NSInteger count = [self.pageArray count];
+    if (count)
     {
-        if (idx == page)
-        {
-            [obj setType:XHPageModelSelectType];
-        }
-        else
-        {
-            [obj setType:XHPageModelNormalType];
-        }
-    }];
+        NSInteger page = (NSInteger)(scrollView.contentOffset.x/scrollView.frame.size.width+0.5)%count;
+        NSLog(@"%zd",page);
+        
+        [NSArray enumerateObjectsWithArray:self.pageArray usingBlock:^(XHPageModel *obj, NSUInteger idx, BOOL *stop)
+         {
+             if (idx == page)
+             {
+                 [obj setType:XHPageModelSelectType];
+             }
+             else
+             {
+                 [obj setType:XHPageModelNormalType];
+             }
+         }];
+        
+        [self.pageView setItemArray:self.pageArray];
+    }
     
-    [self.pageView setItemArray:self.pageArray];
     
 }
 

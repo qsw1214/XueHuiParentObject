@@ -30,6 +30,9 @@ typedef NS_ENUM(NSInteger,BaseTipViewType)
 @property (nonatomic,strong) BaseButtonControl *tipButton; //!< 提示图片视图
 
 
+
+-(void)resetFrame:(CGRect)frame;
+
 #pragma mark 设置提醒类型、提醒标题、提醒图标
 /**
  type设置当前的提示类型

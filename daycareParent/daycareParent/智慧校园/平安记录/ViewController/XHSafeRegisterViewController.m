@@ -124,7 +124,7 @@
     {
         XHAlertModel *model = [[XHAlertModel alloc]init];
         [model setName:@"张三"];
-        [model setObjectID:[NSString stringWithFormat:@"%zd",i]];
+        [model setObjectID:[NSString stringWithFormat:@"%d",i]];
         [tempArray addObject:model];
     }
     XHAlertControl *alert = [[XHAlertControl alloc]initWithDelegate:self];

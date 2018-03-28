@@ -36,6 +36,7 @@
     if (self)
     {
         [self setItemColor:NO];
+        [self setBackgroundColor:[UIColor whiteColor]];
     }
     return self;
 }
@@ -81,7 +82,7 @@
     for (int i = 1; i <= numberLineView; i++)
     {
         UIView *lineView = [[UIView alloc]init];
-        [lineView setBackgroundColor:RGB(229,229,229)];
+        [lineView setBackgroundColor:RGB(245,245,245)];
         [self addSubview:lineView];
         [self.lineViewArray addObject:lineView];
     }
@@ -136,6 +137,7 @@
          else if (type)
          {
              [obj setKeyboardType:keyboardType];
+             *stop = YES;
          }
      }];
     

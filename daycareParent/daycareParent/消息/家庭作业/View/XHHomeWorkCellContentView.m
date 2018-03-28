@@ -240,7 +240,7 @@
     {
         _dateLabel = [[UILabel alloc]init];
         [_dateLabel setTextColor:RGB(104,111,121)];
-        [_dateLabel setFont:FontLevel2A];
+        [_dateLabel setFont:FontLevel4];
     }
     return _dateLabel;
 }

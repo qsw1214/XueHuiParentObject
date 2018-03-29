@@ -10,7 +10,7 @@
 #import "XHAskforLeaveArrowCell.h" //选择开始时间、结束时间、选择请假学生等视图
 #import "XHAskforLeaveChargeTeacherControl.h" //!< 班主任按钮
 #import "XHAskforLeaveSubmitControl.h" //!< 提交按钮
-//#import "XHDatePickerControl.h" //!< 日期选择器
+#import "XHDatePickerControl.h" //!< 日期选择器
 #import "XHAskforLeavePreviewControl.h" //!< 添加的请假照片预览图
 #import "CameraManageViewController.h"  //!< 相机管理类
 #import "XHTeacherAddressBookViewController.h"
@@ -22,7 +22,7 @@
 #import "XHRecipientModel.h"
 #import "XHCustomPickerView.h"//!<请假类型
 #import "XHDatePicker.h"//!< 日期选择器
-@interface XHAskforLeaveContentView () <BaseTextViewDeletage,XHDatePickerDelegate,XHAskforLeavePreviewControlDeletage,CameraManageDeletage,XHCustomPickerViewDelegate,XHSubmitViewDelegate>
+@interface XHAskforLeaveContentView () <BaseTextViewDeletage,XHDatePickerDelegate,XHAskforLeavePreviewControlDeletage,CameraManageDeletage,XHCustomPickerViewDelegate,XHSubmitViewDelegate,XHDatePickerControlDeletage>
 
 @property (nonatomic,strong) UIAlertController *alertController; //!< 弹出框视图控制器
 @property (nonatomic,weak) BaseViewController *viewController;
@@ -45,7 +45,6 @@
 @property (nonatomic,strong) XHAskforLeaveSubmitControl *submitControl;   //!< 提交
 @property (nonatomic,strong) XHSubmitView *submitView;   //!< 提交视图
 @property (nonatomic,assign) NSInteger selectTimeControl; //!< 记录选择的是哪个时间选择器
-@property(nonatomic,strong)NSMutableArray *subjectArry;//!<或缺课程数组
 @property(nonatomic,strong)XHCustomPickerView *pickerView;//!<选择请假类型
 @property(nonatomic,copy)NSString *bizType;//!<选择请假类型
 @end
@@ -141,10 +140,7 @@
         case 5:
         {
             [self setSelectTimeControl:sender.tag];
-            XHDatePicker *datePicker = [[XHDatePicker alloc]init];
-            [datePicker setMaximumDate:nil];
-            [datePicker setDelegate:self];
-            [datePicker show];
+            [[XHDatePickerControl sharedObject] showWithDeletage:self];
         }
             break;
 #pragma mark case 6  请假时长
@@ -267,9 +263,8 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
     }
 }
 
-
-#pragma mark XHDatePickerDeletage
--(void)datePickerAction:(NSString *)date
+#pragma mark XHDatePickerControlDeletage
+-(void)datePickerClickObject:(NSString *)date
 {
     switch (self.selectTimeControl)
     {
@@ -288,10 +283,10 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
     }
     
     if (![self.startTimeControl.describe isEqualToString:@"请选择"]&&![self.endTimeControl.describe isEqualToString:@"请选择"]) {
-         [self getLoseSubject];
+        [self getLoseSubject];
     }
-   
 }
+
 #pragma mark  请假类型Delegate
 -(void)getItemObject:(NSString *)itemObject atItemIndex:(NSInteger)index
 {
@@ -426,18 +421,20 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
 {
     XHNetWorkConfig *netWork=[XHNetWorkConfig new];
     [netWork setObject:self.childOptionsControl.model.clazzId forKey:@"clazzId"];
-    [netWork setObject:self.startTimeControl.describe forKey:@"beginTime"];
-      [netWork setObject:self.endTimeControl.describe forKey:@"endTime"];
+    kNSLog(self.startTimeControl.describe);
+    kNSLog(self.endTimeControl.describe);
+    [netWork setObject:[NSString safeString:self.startTimeControl.describe] forKey:@"beginTime"];
+      [netWork setObject:[NSString safeString:self.endTimeControl.describe] forKey:@"endTime"];
     [netWork postWithUrl:@"zzjt-app-api_bizInfo007" sucess:^(id object, BOOL verifyObject) {
         if (verifyObject) {
-            [self.subjectArry removeAllObjects];
+            NSMutableArray *loseSubJect=[[NSMutableArray alloc] init];
             NSArray *arry=[object objectItemKey:@"object"];
             for (NSDictionary *dic in arry) {
                 NSDictionary *Dic=[dic objectItemKey:@"propValue"];
                 XHSubjectModel *model=[[XHSubjectModel alloc] initWithDic:Dic];
-                [self.subjectArry addObject:model];
+                [loseSubJect addObject:model];
             }
-            [self.loseSubjectView setItemArry:self.subjectArry];
+            [self.loseSubjectView setItemArry:loseSubJect];
         }
     } error:^(NSError *error) {
         
@@ -661,13 +658,6 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
         [_alertController addAction:action];
     }
     return _alertController;
-}
--(NSMutableArray *)subjectArry
-{
-    if (_subjectArry==nil) {
-        _subjectArry=[[NSMutableArray alloc] init];
-    }
-    return _subjectArry;
 }
 
 -(XHNetWorkConfig *)netWorkConfig

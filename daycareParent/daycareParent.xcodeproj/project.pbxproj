@@ -420,6 +420,8 @@
 		8C7CE66E206B46560045505A /* XHIMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7CE66D206B46560045505A /* XHIMViewController.m */; };
 		8C7CE673206B5DC80045505A /* WMVideoMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7CE66F206B5DC60045505A /* WMVideoMessageCell.m */; };
 		8C7CE674206B5DC80045505A /* WMVideoMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7CE672206B5DC70045505A /* WMVideoMessage.m */; };
+		8C7CE677206B74E00045505A /* XHIMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7CE676206B74E00045505A /* XHIMTableViewCell.m */; };
+		8C7CE67A206B77730045505A /* XHIMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7CE679206B77730045505A /* XHIMModel.m */; };
 		8C7DD7AB205B91ED00FB2497 /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7DD783205B91ED00FB2497 /* ShareSDK.framework */; };
 		8C7DD7AC205B91ED00FB2497 /* ShareSDKConfigFile.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8C7DD786205B91ED00FB2497 /* ShareSDKConfigFile.bundle */; };
 		8C7DD7AD205B91ED00FB2497 /* ShareSDKConfigFile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7DD787205B91ED00FB2497 /* ShareSDKConfigFile.framework */; };
@@ -525,6 +527,9 @@
 		8CDDA92B1FDA7BF9000B3BAB /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDDA92A1FDA7BF4000B3BAB /* Photos.framework */; };
 		8CDDA92D1FDA7C0B000B3BAB /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDDA92C1FDA7C05000B3BAB /* SafariServices.framework */; };
 		8CEDB9721FE3932E003E791F /* XHFamilyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEDB9711FE3932E003E791F /* XHFamilyModel.m */; };
+		8CF35D81206C5E5C00E22297 /* RCDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF35D80206C5E5B00E22297 /* RCDUtilities.m */; };
+		8CF35D84206C5EF000E22297 /* DefaultPortraitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF35D82206C5EF000E22297 /* DefaultPortraitView.m */; };
+		8CF35D8A206C612500E22297 /* RCDUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF35D89206C612400E22297 /* RCDUserInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1336,6 +1341,10 @@
 		8C7CE670206B5DC70045505A /* WMVideoMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMVideoMessage.h; sourceTree = "<group>"; };
 		8C7CE671206B5DC70045505A /* WMVideoMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMVideoMessageCell.h; sourceTree = "<group>"; };
 		8C7CE672206B5DC70045505A /* WMVideoMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMVideoMessage.m; sourceTree = "<group>"; };
+		8C7CE675206B74E00045505A /* XHIMTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHIMTableViewCell.h; sourceTree = "<group>"; };
+		8C7CE676206B74E00045505A /* XHIMTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHIMTableViewCell.m; sourceTree = "<group>"; };
+		8C7CE678206B77730045505A /* XHIMModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHIMModel.h; sourceTree = "<group>"; };
+		8C7CE679206B77730045505A /* XHIMModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHIMModel.m; sourceTree = "<group>"; };
 		8C7DD783205B91ED00FB2497 /* ShareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDK.framework; sourceTree = "<group>"; };
 		8C7DD786205B91ED00FB2497 /* ShareSDKConfigFile.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDKConfigFile.bundle; sourceTree = "<group>"; };
 		8C7DD787205B91ED00FB2497 /* ShareSDKConfigFile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKConfigFile.framework; sourceTree = "<group>"; };
@@ -1499,6 +1508,12 @@
 		8CDDA92C1FDA7C05000B3BAB /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		8CEDB9701FE3932E003E791F /* XHFamilyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XHFamilyModel.h; path = "daycareParent/我的/学生信息/model/XHFamilyModel.h"; sourceTree = SOURCE_ROOT; };
 		8CEDB9711FE3932E003E791F /* XHFamilyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = XHFamilyModel.m; path = "daycareParent/我的/学生信息/model/XHFamilyModel.m"; sourceTree = SOURCE_ROOT; };
+		8CF35D7F206C5E5B00E22297 /* RCDUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDUtilities.h; sourceTree = "<group>"; };
+		8CF35D80206C5E5B00E22297 /* RCDUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDUtilities.m; sourceTree = "<group>"; };
+		8CF35D82206C5EF000E22297 /* DefaultPortraitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultPortraitView.m; sourceTree = "<group>"; };
+		8CF35D83206C5EF000E22297 /* DefaultPortraitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultPortraitView.h; sourceTree = "<group>"; };
+		8CF35D88206C612400E22297 /* RCDUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDUserInfo.h; sourceTree = "<group>"; };
+		8CF35D89206C612400E22297 /* RCDUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDUserInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3378,6 +3393,8 @@
 			children = (
 				8C1642212056184E001DCA01 /* XHRCModel.h */,
 				8C1642222056184E001DCA01 /* XHRCModel.m */,
+				8C7CE678206B77730045505A /* XHIMModel.h */,
+				8C7CE679206B77730045505A /* XHIMModel.m */,
 				8C37D33E1FE8A8EF00F157D1 /* XHIMNoticeModel.h */,
 				8C37D33F1FE8A8EF00F157D1 /* XHIMNoticeModel.m */,
 			);
@@ -3389,6 +3406,8 @@
 			children = (
 				8CD324202052688A00E7AD03 /* XHRCTableViewCell.h */,
 				8CD324212052688A00E7AD03 /* XHRCTableViewCell.m */,
+				8C7CE675206B74E00045505A /* XHIMTableViewCell.h */,
+				8C7CE676206B74E00045505A /* XHIMTableViewCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -3972,6 +3991,12 @@
 		8CDDA8AD1FDA5CCE000B3BAB /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				8CF35D88206C612400E22297 /* RCDUserInfo.h */,
+				8CF35D89206C612400E22297 /* RCDUserInfo.m */,
+				8CF35D83206C5EF000E22297 /* DefaultPortraitView.h */,
+				8CF35D82206C5EF000E22297 /* DefaultPortraitView.m */,
+				8CF35D7F206C5E5B00E22297 /* RCDUtilities.h */,
+				8CF35D80206C5E5B00E22297 /* RCDUtilities.m */,
 				8C7CE670206B5DC70045505A /* WMVideoMessage.h */,
 				8C7CE672206B5DC70045505A /* WMVideoMessage.m */,
 				8C7CE671206B5DC70045505A /* WMVideoMessageCell.h */,
@@ -4299,6 +4324,7 @@
 				8C5121E81FDF7B9300973E77 /* XHLoginModel.m in Sources */,
 				4BB792DD1FD7981A00E0ED72 /* BaseMenuCell.m in Sources */,
 				8C7EF53F1FE0C72E00C029F2 /* XHGuardianInfo.m in Sources */,
+				8C7CE67A206B77730045505A /* XHIMModel.m in Sources */,
 				4B80F2CA1FCBF04F00BC7B52 /* SDWebImageDownloader.m in Sources */,
 				4B577F9D1FF5C4F60023ACBC /* XHNoticeCellContentView.m in Sources */,
 				4B80F3221FCBFD6F00BC7B52 /* NSDictionary+MTLJSONKeyPath.m in Sources */,
@@ -4347,6 +4373,7 @@
 				4B80F27B1FCBF04800BC7B52 /* MJRefreshBackFooter.m in Sources */,
 				4BD33DE01FCD57DA00BC52B6 /* XHFunctionMenuControl.m in Sources */,
 				4B3126341FD93CC6000CE894 /* SDCollectionViewCell.m in Sources */,
+				8CF35D81206C5E5C00E22297 /* RCDUtilities.m in Sources */,
 				4B80F31B1FCBFD6F00BC7B52 /* MTLJSONAdapter.m in Sources */,
 				4B1066A71FD7D1FA004A7CB7 /* XHAchievementCellContentView.m in Sources */,
 				4BB9BEA31FDE4C54004F5622 /* XHEducationCloudSwitchMenuView.m in Sources */,
@@ -4400,11 +4427,13 @@
 				4B577FA71FF5C4F60023ACBC /* XHNoticeModel.m in Sources */,
 				4B632AAF1FE0DB2A00B90B94 /* XHTeacherAddressBookCell.m in Sources */,
 				4B3126301FD93CC6000CE894 /* TAAbstractDotView.m in Sources */,
+				8CF35D8A206C612500E22297 /* RCDUserInfo.m in Sources */,
 				4B31264F1FDA20CD000CE894 /* XHAddressBookToolBar.m in Sources */,
 				4BB792B61FD77D7600E0ED72 /* XHAskforLeaveChargeTeacherControl.m in Sources */,
 				0441A5DE2068F73000270E1D /* XHAlertItemCell.m in Sources */,
 				4B80F2C41FCBF04F00BC7B52 /* NSImage+WebCache.m in Sources */,
 				4B278AEC2010422C00293F30 /* RCDDanmakuInfo.m in Sources */,
+				8CF35D84206C5EF000E22297 /* DefaultPortraitView.m in Sources */,
 				4B31263D1FD93D78000CE894 /* XHAddressBookViewController.m in Sources */,
 				4B278ABE20103EE400293F30 /* RCDLiveGiftMessage.m in Sources */,
 				4B80F32C1FCC108800BC7B52 /* MarqueeLabel.m in Sources */,
@@ -4445,6 +4474,7 @@
 				8C01A2362006E94800E4D768 /* NJKWebViewProgressView.m in Sources */,
 				4BA8C4E51FD0002D006CBEBC /* XHHomeWorkTableViewCell.m in Sources */,
 				4B3418F61FFF14F100A5EC56 /* XHVideoControl.m in Sources */,
+				8C7CE677206B74E00045505A /* XHIMTableViewCell.m in Sources */,
 				0441A60C2068F8D400270E1D /* ParentModel.m in Sources */,
 				4B9110781FD7B9E600841505 /* XHSyllabusCell.m in Sources */,
 				4BB792E01FD798B000E0ED72 /* BaseMenuModel.m in Sources */,

@@ -80,7 +80,15 @@
         {
             ParentControl *control = (ParentControl *)view;
             [control setImageViewName:kImageTitle[control.tag-1] withNumberIndex:0];
-            [control setImageViewCGRectMake:CGRectMake((control.width-22)/2.0, 7, 22, 22) withNumberIndex:0];
+           
+            if (control.tag==1)
+            {
+                 [control setImageViewCGRectMake:CGRectMake((control.width-24)/2.0, 7, 24, 24) withNumberIndex:0];
+            }
+            else
+            {
+                 [control setImageViewCGRectMake:CGRectMake((control.width-22)/2.0, 7, 22, 22) withNumberIndex:0];
+            }
             [control setLabelText:KTitle[control.tag-1] withNumberIndex:0];
             [control setSelected:NO];
         }
@@ -89,13 +97,14 @@
     [control setImageViewName:kImageSelectTitle[control.tag-1] withNumberIndex:0];
     if (control.tag==1)
     {
-        [control setImageViewCGRectMake:CGRectMake((control.width-30)/2.0, 10, 30, 30) withNumberIndex:0];
         if (control.selected==YES)
         {
+            [control setImageViewCGRectMake:CGRectMake((control.width-30)/2.0, 10, 30, 30) withNumberIndex:0];
             [control setLabelText:@"" withNumberIndex:0];
         }
         else
         {
+            [control setImageViewCGRectMake:CGRectMake((control.width-24)/2.0, 7, 24, 24) withNumberIndex:0];
             [control setLabelText:KTitle[control.tag-1] withNumberIndex:0];
         }
         

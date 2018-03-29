@@ -37,7 +37,7 @@
 #import <TencentOpenAPI/QQApiInterface.h>
 #import "WXApi.h"
 #import "WeiboSDK.h"
-
+#import "RCDUtilities.h"
 @interface AppDelegate ()<RCIMConnectionStatusDelegate,RCIMUserInfoDataSource,JPUSHRegisterDelegate,CLLocationManagerDelegate,UIAlertViewDelegate>  //添加代理
 {
     AMapLocationManager *_locationManager;
@@ -409,8 +409,16 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     }
     RCUserInfo *userInfo = [[RCUserInfo alloc] init];
     userInfo.name = info.name;
-    userInfo.portraitUri = info.headPic;
     userInfo.userId = userId;
+//    if ([[NSString safeString:info.headPic] isEqualToString:@""])
+//    {
+        userInfo.portraitUri=[RCDUtilities defaultUserPortrait:userInfo];
+//    }
+//    else
+//    {
+//        userInfo.portraitUri = info.headPic;
+//    }
+    
     completion(userInfo);
 }
 #pragma mark--弹出视图代理

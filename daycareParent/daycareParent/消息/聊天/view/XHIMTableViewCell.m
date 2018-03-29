@@ -1,20 +1,16 @@
 //
-//  XHRCTableViewCell.m
+//  XHIMTableViewCell.m
 //  daycareParent
 //
-//  Created by 钧泰科技 on 2018/3/9.
+//  Created by 钧泰科技 on 2018/3/28.
 //  Copyright © 2018年 XueHui. All rights reserved.
 //
 
-#import "XHRCTableViewCell.h"
+#import "XHIMTableViewCell.h"
 #import "XHMessageUserInfo.h"
-#import "XHRCModel.h"
 
-@interface XHRCTableViewCell()
-@property(nonatomic,strong)UILabel *lineLabel;
-@end
 
-@implementation XHRCTableViewCell
+@implementation XHIMTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -58,73 +54,71 @@
     }
     return self;
 }
--(void)setItemObject:(XHRCModel *)model
+-(void)setItemObject:(XHIMModel *)model
 {
     [self resetFrame:model];
     _titleLab.text=model.RCtitle;
     _headImageView.image=[UIImage imageNamed:model.RCtitlePic];
-    if ([[NSString safeString:model.RCtitlePic] isEqualToString:@""]) {
-        _headImageView.image=[UIImage imageNamed:@"addman"];
-    }
-    switch (model.modelType) {
-        case XHRCTeacherBookType:
-        {
-            _ContentLab.text=@"点击加强和老师的沟通哦~";
-        }
-            break;
-            
-        case XHRCHomeWorkType:
-        {
-            _ContentLab.text=[[NSString safeString:model.RCContent] isEqualToString:@""]?@"暂无家庭作业哦~":model.RCContent;
-        }
-            break;
-            
-        case XHRCnoticeType:
-        {
-            _ContentLab.text=[[NSString safeString:model.RCContent] isEqualToString:@""]?@"暂无学校通知哦~":model.RCContent;
-        }
-            break;
-        
-    }
+//    switch (model.modelType) {
+//        case XHRCTeacherBookType:
+//        {
+//            _ContentLab.text=@"点击加强和老师的沟通哦~";
+//        }
+//            break;
+//
+//        case XHRCHomeWorkType:
+//        {
+//            _ContentLab.text=[[NSString safeString:model.RCContent] isEqualToString:@""]?@"暂无家庭作业哦~":model.RCContent;
+//        }
+//            break;
+//
+//        case XHRCnoticeType:
+//        {
+//            _ContentLab.text=[[NSString safeString:model.RCContent] isEqualToString:@""]?@"暂无学校通知哦~":model.RCContent;
+//        }
+//            break;
+//
+//    }
     
     _detailLab.text=[NSDate dateStr:model.createTime FromFormatter:ALL_DEFAULT_TIME_FORM ToFormatter:DEFAULT_TIME_FORM1];
 }
--(void)resetFrame:(XHRCModel *)model
+-(void)resetFrame:(XHIMModel *)model
 {
     _headImageView.frame=CGRectMake(15, (60-32)/2.0, 32, 32);
     _titleLab.frame=CGRectMake(70, 10, 90, 20);
     _detailLab.frame=CGRectMake(170, 10, SCREEN_WIDTH-180, 20);
     _ContentLab.frame=CGRectMake(70, 30, SCREEN_WIDTH-80, 20);
-    _smallLab.text=model.sum;
+    //_smallLab.text=model.sum;
     _smallLab.frame=CGRectMake(35, 9, [self getCustomWidth:_smallLab.text], 15);
     _bgLabel.frame=CGRectMake(0, self.contentView.frame.size.height-15, SCREEN_WIDTH, 15);
-    _lineLabel.frame=CGRectMake(0, self.contentView.frame.size.height-0.5, SCREEN_WIDTH, 0.5);
-    if (model.modelType==XHRCnoticeType)
-    {
-        self.bgLabel.hidden=NO;
-        if ([model.sum integerValue]==0)
-        {
-            self.smallLab.hidden=YES;
-        }
-        else
-        {
-            self.smallLab.hidden=NO;
-        }
-    }
-
-    else
-    {
-        self.bgLabel.hidden=YES;
-        if (model.modelType==XHRCTeacherBookType||[model.sum integerValue]==0)
-        {
-            self.smallLab.hidden=YES;
-        }
-        else
-        {
-            self.smallLab.hidden=NO;
-        }
-
-    }
+     self.lineLabel.frame=CGRectMake(0, self.contentView.frame.size.height-0.5, SCREEN_WIDTH, 0.5);
+    [self.contentView addSubview:self.lineLabel];
+//    if (model.modelType==XHRCnoticeType)
+//    {
+//        self.bgLabel.hidden=NO;
+//        if ([model.sum integerValue]==0)
+//        {
+//            self.smallLab.hidden=YES;
+//        }
+//        else
+//        {
+//            self.smallLab.hidden=NO;
+//        }
+//    }
+//
+//    else
+//    {
+//        self.bgLabel.hidden=YES;
+//        if (model.modelType==XHRCTeacherBookType||[model.sum integerValue]==0)
+//        {
+//            self.smallLab.hidden=YES;
+//        }
+//        else
+//        {
+//            self.smallLab.hidden=NO;
+//        }
+//
+//    }
 }
 -(CGFloat)getCustomWidth:(NSString *)str
 {

@@ -38,10 +38,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self navtionHidden:YES];
+    [self.view addSubview:self.headView];
     [self.view addSubview:self.tableView];
-    self.tableView.tableHeaderView=self.headView;
-    [self.tableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHead)];
-    [self.tableView beginRefreshing];
+//    [self.tableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHead)];
+//    [self.tableView beginRefreshing];
+    [self refreshHead];
     @WeakObj(self);
     self.isRefresh = ^(BOOL ok)
     {
@@ -85,7 +86,7 @@
     switch (indexPath.row) {
             case 0:
         {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://0371-6778599"]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://400-6778599"]];
         }
             break;
             case 1:
@@ -118,7 +119,7 @@
 -(UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH ,15)];
-    view.backgroundColor = RGB(239, 239, 239);
+    view.backgroundColor = RGB(245, 245, 245);
     return view;
 }
 
@@ -274,7 +275,14 @@
 -(BaseTableView *)tableView
 {
     if (_tableView==nil) {
-        _tableView=[[BaseTableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-49) style:UITableViewStyleGrouped];
+        
+        if ([[XHHelper sharedHelper] isIphoneX]) {
+            _tableView=[[BaseTableView alloc] initWithFrame:CGRectMake(0, self.headView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-84-self.headView.bottom) style:UITableViewStyleGrouped];
+        }
+        else
+        {
+            _tableView=[[BaseTableView alloc] initWithFrame:CGRectMake(0, self.headView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-50-self.headView.bottom) style:UITableViewStyleGrouped];
+        }
         _tableView.delegate=self;
         _tableView.dataSource=self;
         _tableView.showsVerticalScrollIndicator=NO;

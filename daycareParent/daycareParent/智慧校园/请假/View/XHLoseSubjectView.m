@@ -14,6 +14,7 @@
 }
 @property(nonatomic,strong)UILabel *titleLabel;
 @property(nonatomic,strong)UIScrollView *scrollView;
+@property(nonatomic,strong)NSMutableArray *buttonArry;
 @end
 
 
@@ -39,6 +40,15 @@
 }
 -(void)setItemArry:(NSMutableArray *)arry
 {
+    if ([self.buttonArry count])
+    {
+        Width=0;
+        for (int i=0; i<self.buttonArry.count; i++)
+        {
+            UIButton *btn=self.buttonArry[i];
+            [btn removeFromSuperview];
+        }
+    }
     for (int i=0; i<arry.count; i++) {
         XHSubjectModel *model=arry[i];
         UIButton *btn=[[UIButton alloc] initWithFrame:CGRectMake(10*(i+1)+Width, 10, [self getCustomWidth:model.sub], 40)];
@@ -48,8 +58,9 @@
        btn.titleLabel.font = [UIFont systemFontOfSize: 14.0];
         Width=Width+btn.width;
         [self.scrollView addSubview:btn];
+        [self.buttonArry addObject:btn];
     }
-self.scrollView.contentSize=CGSizeMake(Width+10*(arry.count+1), 40);
+  self.scrollView.contentSize=CGSizeMake(Width+10*(arry.count+1), 40);
 }
 -(UILabel *)titleLabel
 {
@@ -83,6 +94,13 @@ self.scrollView.contentSize=CGSizeMake(Width+10*(arry.count+1), 40);
         return textSize.width+8;
     }
     
+}
+-(NSMutableArray *)buttonArry
+{
+    if (_buttonArry==nil) {
+        _buttonArry=[[NSMutableArray alloc] init];
+    }
+    return _buttonArry;
 }
 -(void)setLine:(UIButton *)lineButton
 {

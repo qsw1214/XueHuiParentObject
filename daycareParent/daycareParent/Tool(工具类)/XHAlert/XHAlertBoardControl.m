@@ -83,6 +83,7 @@
         }
             break;
         case XHAlertBoardOptionType:
+        case XHAlertBoardKindType:
         {
             [self.collectionView setHidden:NO];
             [self.titleLabel setFrame:CGRectMake(0, 0, SCREEN_WIDTH-100.0, 40.0)];

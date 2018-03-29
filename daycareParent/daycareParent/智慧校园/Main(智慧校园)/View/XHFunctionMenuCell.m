@@ -35,7 +35,7 @@
         [self setBackgroundColor:RGB(255.0, 255.0, 255.0)];
         [self.contentView addSubview:self.markImageView];
          [self.contentView addSubview:self.backGroundImageView];
-        [self.contentView addSubview:self.animationImageView];
+//        [self.contentView addSubview:self.animationImageView];
         [self.contentView addSubview:self.titleLabel];
         [self.contentView addSubview:self.describeLabel];
         

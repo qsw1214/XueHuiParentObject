@@ -235,7 +235,7 @@
     XHAlertControl *alert = [[XHAlertControl alloc]initWithDelegate:self];
     [alert setTitle:@"请选择您的身份"];
     [alert setItemArray:alertArray];
-    [alert setBoardType:XHAlertBoardOptionType];
+    [alert setBoardType:XHAlertBoardKindType];
     [alert show];
 }
 

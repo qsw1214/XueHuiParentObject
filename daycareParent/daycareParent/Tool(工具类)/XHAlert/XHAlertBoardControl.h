@@ -12,6 +12,7 @@ typedef NS_ENUM(NSInteger,XHAlertBoardType)
 {
     XHAlertBoardNormalType = 1, //!< 普通类型
     XHAlertBoardOptionType = 2, //!< 选择类型（设定监护人类型）
+    XHAlertBoardKindType = 3, //!< 选择类型（爸爸、妈妈、其他类型）
 };
 
 

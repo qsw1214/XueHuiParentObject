@@ -96,6 +96,7 @@
     {
         _saveImageControl = [[BaseButtonControl alloc]init];
         [_saveImageControl setNumberImageView:1];
+        [_saveImageControl setBackgroundColor:[UIColor clearColor]];
         [_saveImageControl setImage:@"ico_save" withNumberType:0 withAllType:NO];
         [_saveImageControl addTarget:self action:@selector(saveImageControlAction:) forControlEvents:UIControlEventTouchUpInside];
     }

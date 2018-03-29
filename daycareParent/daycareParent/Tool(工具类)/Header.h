@@ -17,6 +17,7 @@
 #import "NSDictionary+Category.h"
 #import "UIView+Frame.h"
 #import "UIButton+Category.h"
+#import "UIImageView+Category.h"
 #import "MJRefresh.h"
 #import "SDWebImage.h"
 #import "AFNetworkingHelper.h"

@@ -67,7 +67,7 @@
 }
 
 
-#pragma mark XHDatePickerDelegate
+#pragma mark XHDatePickerDelegate （用户选择日期）
 -(void)datePickerAction:(NSString*)date
 {
     [self setUnitDay:0];
@@ -87,7 +87,7 @@
     // 设置日期格式 为了转换成功
     // NSString * -> NSDate *
     NSDate *formatdata = [format dateFromString:date];
-    
+    [self userSelectedDate:formatdata];
     [self setCurrentDate:formatdata];
     
      [self.titleLabel setText:yearmonthday];
@@ -98,9 +98,10 @@
 }
 
 #pragma mark - Private Method
+#pragma mark 用户点击了前进和后退按钮
 -(void)dateSwitchControlAction:(BaseButtonControl*)sender
 {
-    NSString *date = [NSString stringWithFormat:@"%@-%@-%@",[self formatterNumer:self.dateSwitchYear],[self formatterNumer:self.dateSwitchMonther],[self formatterNumer:self.dateSwitchDay]];
+    NSString *date = @"";
     switch (sender.tag)
     {
         case 1:
@@ -108,6 +109,8 @@
             [self.titleLabel setText:[self swithDateWithType:sender.tag]];
             if ([self verifyCurrentYearMonthDay])
             {
+                
+                date = [NSString stringWithFormat:@"%@-%@-%@",[self formatterNumer:self.dateSwitchYear],[self formatterNumer:self.dateSwitchMonther],[self formatterNumer:self.dateSwitchDay]];
                 if ([self.delegate respondsToSelector:@selector(dateSwitchAction:)])
                 {
                     [self.delegate dateSwitchAction:date];
@@ -120,6 +123,7 @@
             if ([self verifyCurrentYearMonthDay])
             {
                 [self.titleLabel setText:[self swithDateWithType:sender.tag]];
+                date = [NSString stringWithFormat:@"%@-%@-%@",[self formatterNumer:self.dateSwitchYear],[self formatterNumer:self.dateSwitchMonther],[self formatterNumer:self.dateSwitchDay]];
                 if ([self.delegate respondsToSelector:@selector(dateSwitchAction:)])
                 {
                     [self.delegate dateSwitchAction:date];
@@ -136,6 +140,7 @@
 }
 
 
+#pragma mark 用户点击了日期标签
 -(void)dateAction:(BaseControl*)sender
 {
     XHDatePicker *datePicker = [[XHDatePicker alloc]init];
@@ -343,6 +348,7 @@
 -(void)resetDate:(BOOL)nocnce
 {
     [self.titleLabel setText:[self getNonceDate:nocnce]];
+    [self getCurrentYearMonthDay];
 }
 
 
@@ -400,7 +406,27 @@
     [self setDateSwitchYear:[components year]];
     [self setDateSwitchMonther:[components month]];
     [self setDateSwitchDay:[components day]];
+    
+    //!< 重置到当前日期
+    [self setCurrentDate:[NSDate date]];
+    [self setUnitDay:0];
 }
+
+#pragma mark 用户选择了日期
+-(void)userSelectedDate:(NSDate*)date
+{
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    NSDate *newdate = [calendar dateByAddingComponents:components toDate:date options:0];
+    components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:newdate];
+
+    
+    [self setDateSwitchYear:[components year]];
+    [self setDateSwitchMonther:[components month]];
+    [self setDateSwitchDay:[components day]];
+}
+
+
 
 -(void)dateSwitchDayithType:(NSInteger)type withCalendar:(NSCalendar*)calendar withNSDateComponents:(NSDateComponents*)components
 {
@@ -457,7 +483,7 @@
     
     
  
-     [self setYearMontherDay: [NSString stringWithFormat:@"%@年%@月%@日",[self formatterNumer:self.dateSwitchYear],[self formatterNumer:self.dateSwitchMonther],[self formatterNumer:self.dateSwitchDay]]];
+     [self setYearMontherDay:[NSString stringWithFormat:@"%@年%@月%@日",[self formatterNumer:self.dateSwitchYear],[self formatterNumer:self.dateSwitchMonther],[self formatterNumer:self.dateSwitchDay]]];
 }
 
 

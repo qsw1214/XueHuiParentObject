@@ -17,11 +17,15 @@
 
 @interface XHFunctionMenuModel : BaseModel
 
-
+@property (nonatomic,strong) NSMutableArray *animatingArray;
 @property (nonatomic,copy) NSString *iconName; //!< 图片名称
 @property (nonatomic,copy) NSString *title;   //!< 标题
 @property (nonatomic,copy) NSString *describe; //!< 描述
 @property (nonatomic,assign) CGFloat sizeForItemWidth;
+@property (nonatomic,assign) BOOL startAnimating;
+
+
+
 
 
 

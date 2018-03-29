@@ -23,7 +23,7 @@
 {
     self = [super initWithFrame:frame];
     if (self)
-    {        
+    {
         [self setItemColor:NO];
         
         [self.contentView addSubview:self.markView];
@@ -58,8 +58,7 @@
     
     [self.markView setFrame:CGRectMake(5.0,(model.itemSize.height-8.0)/2.0 , 8.0, 8.0)];
     [self.markView setLayerCornerRadius:(self.markView.height/2.0)];
-    [self.markView setLayerBorderWidth:0.5];
-    [self.markView setBorderColor:RGB(104,111,121)];
+    [self.markView setLayerBorderWidth:1.0];
     [self.titleLabel setFrame:CGRectMake((self.markView.right+5.0), 0, model.itemSize.width-(self.markView.right+5.0), model.itemSize.height)];
     
     

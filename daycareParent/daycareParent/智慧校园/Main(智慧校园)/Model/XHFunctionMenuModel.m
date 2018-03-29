@@ -11,4 +11,24 @@
 @implementation XHFunctionMenuModel
 
 
+-(void)setIconName:(NSString *)iconName
+{
+    _iconName = iconName;
+    
+    
+    
+    
+}
+
+
+
+-(NSMutableArray *)animatingArray
+{
+    if (!_animatingArray)
+    {
+        _animatingArray = [[NSMutableArray alloc]init];
+    }
+    return _animatingArray;
+}
+
 @end

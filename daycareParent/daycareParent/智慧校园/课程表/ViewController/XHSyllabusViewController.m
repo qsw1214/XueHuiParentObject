@@ -61,6 +61,7 @@
         [self.mainTableView setDelegate:self];
         [self.mainTableView setDataSource:self];
         [self.mainTableView setBackgroundColor:[UIColor whiteColor]];
+        [self.mainTableView setTipType:TipTitleAndTipImage withTipTitle:@"暂无课程" withTipImage: @"pic_nothing"];
         [self.mainTableView resetFrame:CGRectMake(0, (self.headerBoardControl.bottom), SCREEN_WIDTH, SCREEN_HEIGHT-(self.headerBoardControl.bottom))];
         
         
@@ -261,13 +262,16 @@
                 }
             }];
             
-            [self.mainTableView reloadData];
+            [self.mainTableView refreshReloadData];
 
             
             
             
             
-        } error:^(NSError *error){}];
+        } error:^(NSError *error)
+        {
+            [self.mainTableView refreshReloadData];
+        }];
     }
 }
 

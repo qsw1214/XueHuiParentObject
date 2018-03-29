@@ -14,6 +14,7 @@
 
 @property (nonatomic,strong) UIImageView *markImageView; //!< 图片视图
 @property (nonatomic,strong) UIImageView *backGroundImageView; //!< 图片视图
+@property (nonatomic,strong) UIImageView *animationImageView; //!< 图片视图
 @property (nonatomic,strong) UILabel *titleLabel; //!< 标题
 @property (nonatomic,strong) UILabel *describeLabel; //!< 描述标题
 
@@ -33,7 +34,8 @@
         
         [self setBackgroundColor:RGB(255.0, 255.0, 255.0)];
         [self.contentView addSubview:self.markImageView];
-        [self.contentView addSubview:self.backGroundImageView];
+         [self.contentView addSubview:self.backGroundImageView];
+        [self.contentView addSubview:self.animationImageView];
         [self.contentView addSubview:self.titleLabel];
         [self.contentView addSubview:self.describeLabel];
         
@@ -43,9 +45,11 @@
         [self.layer setShadowOffset:CGSizeMake(2, 2)];//偏移距离
         [self.layer setShadowOpacity:0.6]; //不透明度
         [self.layer setShadowRadius:2.0]; //半径
+        
     }
     return self;
 }
+
 
 
 #pragma mark - Getter / Setter
@@ -56,7 +60,8 @@
     {
         //根据类型进行控件设置Frame
         [self.markImageView setFrame:CGRectMake(((itemFrame.itemSize.width-30.0))/2.0, 10.0, 30.0, 30.0)];
-        [self.titleLabel setFrame:CGRectMake(0, (self.backGroundImageView.top+100.0), itemFrame.itemSize.width, (itemFrame.itemSize.width-(25+(itemFrame.itemSize.width-50.0))))];
+        [self.titleLabel setFrame:CGRectMake(0, (self.markImageView.bottom+50.0), itemFrame.itemSize.width, (itemFrame.itemSize.width-(25+(itemFrame.itemSize.width-50.0))))];
+        [self.animationImageView setFrame:CGRectMake(0, self.markImageView.bottom+10.0, (itemFrame.itemSize.width),40.0)];
         [self.backGroundImageView setFrame:CGRectMake(0, self.markImageView.bottom+10.0, (itemFrame.itemSize.width), itemFrame.itemSize.height-(self.markImageView.bottom+10.0))];
         
         
@@ -69,6 +74,10 @@
         [self.describeLabel setText:itemFrame.model.describe];
         [self.markImageView setImage:[UIImage imageNamed:itemFrame.model.title]];
         [self.backGroundImageView setImage:[UIImage imageNamed:itemFrame.model.iconName]];
+        
+//        // 设置图片的序列帧 图片数组
+//        [self.animationImageView setAnimationImages:itemFrame.model.animatingArray];
+//        [self.animationImageView startAnimating:itemFrame.model.startAnimating];
     }
     
    
@@ -99,6 +108,23 @@
     }
     return _backGroundImageView;
 }
+
+-(UIImageView *)animationImageView
+{
+    if (_animationImageView == nil)
+    {
+        _animationImageView = [[UIImageView alloc]init];
+        [_animationImageView setContentMode:UIViewContentModeScaleAspectFit];
+        [_animationImageView.layer setMasksToBounds:YES];
+        //动画重复次数
+        [_animationImageView setAnimationRepeatCount:10];
+        //动画执行时间,多长时间执行完动画
+        [_animationImageView setAnimationDuration:0.9];
+    }
+    return _animationImageView;
+}
+
+
 
 -(UILabel *)titleLabel
 {

@@ -100,10 +100,6 @@
             }
             
             
-            
-           
-            
-            
             //赋值
             [self.headerImageView setHeadrUrl:itemFrame.model.headerUrl withName:itemFrame.model.userName withType:XHHeaderTeacherType];
             [self.userNameLael setText:itemFrame.model.userName];

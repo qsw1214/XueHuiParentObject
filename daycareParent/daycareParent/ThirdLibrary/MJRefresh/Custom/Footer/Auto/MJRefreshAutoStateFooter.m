@@ -29,6 +29,7 @@
 - (UILabel *)stateLabel
 {
     if (!_stateLabel) {
+        [_stateLabel setTextColor:LineViewColor];
         [self addSubview:_stateLabel = [UILabel label]];
     }
     return _stateLabel;
@@ -40,6 +41,7 @@
     if (title == nil) return;
     self.stateTitles[@(state)] = title;
     self.stateLabel.text = self.stateTitles[@(self.state)];
+    [self.stateLabel setTextColor:RGB(102, 102, 102)];
 }
 
 #pragma mark - 私有方法

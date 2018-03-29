@@ -26,7 +26,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setNavtionTitle:@"个人信息"];
-    _titleArry=@[@"头像",@"姓名"];
+    
     _tableView=[[BaseTableView alloc] initWithFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.bottom) style:UITableViewStyleGrouped];
     _tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
     _tableView.delegate=self;
@@ -37,34 +37,13 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _titleArry.count;
+    return kPersonTitle.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     XHUserTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    XHUserInfo *userInfo=[XHUserInfo sharedUserInfo];
-    cell.frontLabel.frame=CGRectMake(10, 0, 120, cell.bounds.size.height);
-    cell.backLabel.frame=CGRectMake(130, 0, SCREEN_WIDTH-160, cell.bounds.size.height);
-    cell.frontLabel.text=_titleArry[indexPath.row];
-    cell.headBtn.frame=CGRectMake(SCREEN_WIDTH-USER_HEARD-30, 10, USER_HEARD, USER_HEARD);
-    [cell.headBtn setHeadrPic:userInfo.headPic withName:userInfo.guardianModel.guardianName withType:XHTeacherType];
-    if (indexPath.row==0) {
-        cell.headBtn.hidden=NO;
-        cell.backLabel.hidden=YES;
-        cell.lineLabel.frame=CGRectMake(0, USER_HEARD+20-0.5, SCREEN_WIDTH, 0.5);
-        [cell.contentView addSubview:cell.lineLabel];
-        cell.arrowImageView.frame=CGRectMake(SCREEN_WIDTH-22, (USER_HEARD+6)/2.0, 8, 14);
-        [cell.contentView addSubview:cell.arrowImageView];
-    }
-    else
-    {
-        cell.headBtn.hidden=YES;
-        cell.backLabel.hidden=NO;
-        cell.backLabel.text=userInfo.guardianModel.guardianName;
-        cell.lineLabel.frame=CGRectMake(0, 50-0.5, SCREEN_WIDTH, 0.5);
-        cell.arrowImageView.frame=CGRectMake(SCREEN_WIDTH-22, (50-14)/2.0, 8, 14);
-        [cell.contentView addSubview:cell.arrowImageView];
-    }
+    cell.modelType=XHUserTableViewCellPersonType;
+    [cell setItemObject:nil withIndexPathRow:indexPath.row];
     [cell.headBtn addTarget:self action:@selector(headClick) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;

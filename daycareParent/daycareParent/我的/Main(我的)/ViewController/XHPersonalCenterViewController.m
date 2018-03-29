@@ -19,9 +19,6 @@
 #import "XHSystemNotificViewController.h"//!< 系统通知
 #import "XHShareView.h"//!< 分享视图
 
-#define  kTitle @[@"联系客服",@"问题反馈",@"好友推荐",@"系统通知",@"设置"]
-#define kTitlePic @[@"ico_mycontact",@"ico_myquestion",@"ico_myshare",@"ico_mynotice",@"ico_myset"]
-
 @interface XHPersonalCenterViewController ()<UITableViewDelegate,UITableViewDataSource,XHChildCollectionViewDelegate>
 @property(nonatomic,strong)UIView *headView;
 @property(nonatomic,strong)ParentControl *headBtn;
@@ -40,8 +37,6 @@
     [self navtionHidden:YES];
     [self.view addSubview:self.headView];
     [self.view addSubview:self.tableView];
-//    [self.tableView showRefresHeaderWithTarget:self withSelector:@selector(refreshHead)];
-//    [self.tableView beginRefreshing];
     [self refreshHead];
     @WeakObj(self);
     self.isRefresh = ^(BOOL ok)
@@ -71,8 +66,7 @@
 - (UITableViewCell *)tableView:(BaseTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     XHSetTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    cell.setImageView.image=[UIImage imageNamed:kTitlePic[indexPath.row]];
-    cell.setLabel.text=kTitle[indexPath.row];
+    [cell setItemObject:nil withIndexPathRow:indexPath.row];
     return cell;
 }
 
@@ -175,6 +169,7 @@
     }
     return _headView;
 }
+#pragma mark-----头像
 -(ParentControl *)headBtn
 {
     if (_headBtn==nil) {

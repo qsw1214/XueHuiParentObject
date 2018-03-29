@@ -8,7 +8,7 @@
 
 #import "BaseModel.h"
 #import "XHPreviewModel.h"
-#import "ZFPlayerModel.h"
+
 
 
 typedef NS_ENUM(NSInteger,XHNoticeContentType)
@@ -48,7 +48,6 @@ typedef NS_ENUM(NSInteger,NoticeModelType)
 @property (nonatomic,copy) NSString *vedioUrl;  //!< 视频播放url地址
 @property (nonatomic,copy) NSString *vedioAllUrl;  //!< 视频播放url地址
 @property (nonatomic,copy) NSString *vedioFirstPicUrl; //!< 视频预览图
-@property (nonatomic,strong) ZFPlayerModel *playModel; //!< 播放数据模型
 @property (nonatomic,strong) NSMutableArray <XHPreviewModel*> *imageUrlArray; //!< 图片的Url数组
 @property (nonatomic,assign) NoticeModelUnreadType noticekUnreadType; //!< 是否已读取枚举类型
 @property (nonatomic,assign) NoticeModelType noticeType; //!< 数据模型的类型

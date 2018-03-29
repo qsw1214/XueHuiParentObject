@@ -163,7 +163,6 @@
                       XHDynamicsModel *model = [[XHDynamicsModel alloc]init];
                       [model setTage:inddexTage];
                       [model setItemObject:item];
-                      [model.playModel setScrollView:self.tableView];
                       [frame setModel:model];
                       [self.dataArray addObject:frame];
                   }];
@@ -250,7 +249,6 @@
 #pragma mark XHDynamicsCellContentViewDeletage Method
 -(void)videoPlayerAction:(XHDynamicsFrame *)frame
 {
-    [[XHVideoControl sharedVideo] playerWithModel:frame.model.playModel];
     //先回执已读状态
     [frame.model setPlayType:XHDynamicsPlayerType];
     [self.netWorkConfig setObject:frame.model.noticeActorId forKey:@"noticeActorId"];

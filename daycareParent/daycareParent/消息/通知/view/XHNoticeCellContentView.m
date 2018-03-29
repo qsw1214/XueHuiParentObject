@@ -62,10 +62,6 @@
     
     
     [itemFrame.model setTage:indexPath.row];
-    [itemFrame.model.playModel setIndexPath:indexPath];
-    [itemFrame.model.playModel setFatherViewTag:indexPath.row];
-    [itemFrame.model setPlayModel:itemFrame.model.playModel];
-    
     
     switch (itemFrame.model.noticeType)
     {
@@ -147,10 +143,8 @@
 #pragma mark 设置视频展示的Url地址
                     [self.videoControl setNotoceObject:itemFrame];
                     [self.videoControl setTag:(indexPath.row+1)];
-                    [itemFrame.model.playModel setIndexPath:indexPath];
-                    [itemFrame.model.playModel setFatherViewTag:self.videoControl.tag];
-                    [itemFrame.model.playModel setFatherView:self.videoControl];
-                    
+                   
+        
                      [self.gradeControl resetFrame:CGRectMake(self.contentLabel.left,(self.videoControl.bottom+10.0), self.contentLabel.width/2.0, 20)];
                 }
                     break;

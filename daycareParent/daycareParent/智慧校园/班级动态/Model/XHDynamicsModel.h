@@ -8,7 +8,6 @@
 
 #import "BaseModel.h"
 #import "XHPreviewModel.h"
-#import "ZFPlayerModel.h"
 #import "XHDynamicsHeaderControl.h"
 
 typedef NS_ENUM(NSInteger,XHDynamicsModelUnreadType)
@@ -52,7 +51,7 @@ typedef NS_ENUM(NSInteger,XHDynamicsModelType)
 //noticeActorId
 @property (nonatomic,strong) NSMutableArray <XHPreviewModel*> *imageUrlArray; //!< 图片数组
 @property (nonatomic,assign) XHDynamicsModelType modelType; //!< 数据模型类型
-@property (nonatomic,strong) ZFPlayerModel *playModel; //!< 播放视频数据模型
+
 @property (nonatomic,assign) XHDynamicsModelUnreadType dynamicskUnreadType; //!< 是否已读取枚举类型
 @property (nonatomic,assign) XHDynamicsModelPlayerType playType; //!< 播放状态
 @property (nonatomic,strong) XHDynamicsHeaderControl *readHeaderControl; //!< 头像视图

@@ -40,9 +40,6 @@
 -(void)setItemFrame:(XHDynamicsFrame*)frame withIndexPath:(NSIndexPath*)index
 {
     [frame.model setTage:index.row];
-    [frame.model.playModel setIndexPath:index];
-    [frame.model.playModel setFatherViewTag:index.row];
-    [frame.model setPlayModel:frame.model.playModel];
     [self.cellContentView resetFrame:frame.itemFrame];
     [self.cellContentView setItemFrame:frame withIndexPath:index];
 }

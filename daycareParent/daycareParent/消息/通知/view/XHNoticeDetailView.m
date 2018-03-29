@@ -83,11 +83,7 @@
 
 
 
-#pragma mark XHNoticeContentViewDeletage Method
--(void)videoPlayerAction:(XHNoticeFrame *)object
-{
-    [[XHVideoControl sharedVideo] playerWithModel:object.model.playModel];
-}
+
 
 -(void)refreshHeaderAction
 {

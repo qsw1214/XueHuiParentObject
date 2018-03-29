@@ -106,7 +106,6 @@
     {
         _vedioAllUrl = ALGetFileVedio(vedioUrl);
         [self setContentType:XHNoticeTextAndVideoType];
-        [self.playModel setVideoURL:[NSURL URLWithString:_vedioAllUrl]];
     }
 }
 
@@ -142,15 +141,5 @@
 }
 
 
-
--(ZFPlayerModel *)playModel
-{
-    if (_playModel == nil)
-    {
-        _playModel = [[ZFPlayerModel alloc]init];
-    }
-    return _playModel;
-    
-}
 
 @end

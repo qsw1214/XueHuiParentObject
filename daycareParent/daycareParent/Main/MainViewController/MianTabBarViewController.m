@@ -9,8 +9,6 @@
 #import "MianTabBarViewController.h"
 #import "XHSmartCampusViewController.h"
 #import "XHChatViewController.h"
-#import "XHEducationCloudViewController.h"
-#import "XHEducationCloudViewController.h"
 #import "XHPersonalCenterViewController.h"
 #import "XHAddressBookViewController.h"
 #import "TabBarItem.h"

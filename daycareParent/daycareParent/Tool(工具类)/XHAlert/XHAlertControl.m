@@ -47,7 +47,6 @@
 
 -(void)setItemArray:(NSMutableArray *)array
 {
-    [self setAlerModel:[array firstObject]];
     [self.alertBoard setItemArray:array];
 }
 
@@ -67,9 +66,45 @@
     {
         case 2:
         {
-            if ([self.delegate respondsToSelector:@selector(alertBoardControlAction:)])
+            switch (self.alertBoard.boardTyp)
             {
-                [self.delegate alertBoardControlAction:self.alerModel];
+                case XHAlertBoardNormalType:
+                {
+                    if ([self.delegate respondsToSelector:@selector(alertBoardControlAction:)])
+                    {
+                        [self.delegate alertBoardControlAction:self.alerModel];
+                    }
+                }
+                    break;
+                case XHAlertBoardOptionType:
+                {
+                    if (self.alerModel)
+                    {
+                        if ([self.delegate respondsToSelector:@selector(alertBoardControlAction:)])
+                        {
+                            [self.delegate alertBoardControlAction:self.alerModel];
+                        }
+                    }
+                    else
+                    {
+                        [XHShowHUD showNOHud:@"请指定主监护人!"];
+                    }
+                }
+                    break;
+                case XHAlertBoardKindType:
+                {
+                    if (self.alerModel)
+                    {
+                        if ([self.delegate respondsToSelector:@selector(alertBoardControlAction:)])
+                        {
+                            [self.delegate alertBoardControlAction:self.alerModel];
+                        }
+                    }
+                    else
+                    {
+                        [XHShowHUD showNOHud:@"请选择你与孩子关系"];
+                    }
+                }
             }
             
         }

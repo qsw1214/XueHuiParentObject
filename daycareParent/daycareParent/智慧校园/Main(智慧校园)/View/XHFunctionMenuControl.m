@@ -84,10 +84,20 @@
 #pragma mark UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([self.deletage respondsToSelector:@selector(functionDidSelectItemAtindexObject:)])
+    [NSArray enumerateObjectsWithArray:self.dataArray usingBlock:^(XHFunctionMenuFrame *obj, NSUInteger idx, BOOL *stop)
     {
-        [self.deletage functionDidSelectItemAtindexObject:[self.dataArray objectAtIndex:indexPath.row]];
-    }
+        if (indexPath.row == idx)
+        {
+            [obj.model setStartAnimating:YES];
+        }
+        else
+        {
+            [obj.model setStartAnimating:NO];
+        }
+    }];
+    [collectionView reloadData];
+    
+    [self performSelector:@selector(startAnimatingWithIndexPath:) withObject:indexPath afterDelay:0.5];
 }
 
 #pragma mark UICollectionViewDelegateFlowLayout
@@ -114,6 +124,16 @@
 }
 
 
+
+
+#pragma mark 用户点击之后开始动画
+-(void)startAnimatingWithIndexPath:(NSIndexPath*)indexPath
+{
+    if ([self.deletage respondsToSelector:@selector(functionDidSelectItemAtindexObject:)])
+    {
+        [self.deletage functionDidSelectItemAtindexObject:[self.dataArray objectAtIndex:indexPath.row]];
+    }
+}
 
 
 

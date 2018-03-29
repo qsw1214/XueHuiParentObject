@@ -10,14 +10,13 @@
 #import "XHRegisterTableViewCell.h"
 #import "XHDateSwitchControl.h"
 #import "XHAddressBookHeader.h"
-#import "XHAlertControl.h"
 
 
 
 
 
 
-@interface XHSafeRegisterViewController ()<UITableViewDelegate,UITableViewDataSource,XHAddressBookHeaderDelegate,XHDateSwitchControlDelegate,XHAlertControlDelegate>
+@interface XHSafeRegisterViewController ()<UITableViewDelegate,UITableViewDataSource,XHAddressBookHeaderDelegate,XHDateSwitchControlDelegate>
 
 @property (nonatomic,strong) XHAddressBookHeader *switchHeaderControl;
 @property (nonatomic,strong) XHDateSwitchControl *dateSwitchControl;
@@ -111,31 +110,12 @@
     [self getNetWorkDataWithType:YES];
 }
 
-#pragma mark XHAlertControlDelegate
--(void)alertBoardControlAction:(XHAlertModel*)sender
-{
-    
-}
 
 
 
 #pragma mark - Public Method
 -(void)rightItemAction:(BaseNavigationControlItem *)sender
 {
-    NSMutableArray *tempArray = [NSMutableArray array];
-    for (int i = 0; i<6; i++)
-    {
-        XHAlertModel *model = [[XHAlertModel alloc]init];
-        [model setName:@"张三"];
-        [model setObjectID:[NSString stringWithFormat:@"%d",i]];
-        [tempArray addObject:model];
-    }
-    XHAlertControl *alert = [[XHAlertControl alloc]initWithDelegate:self];
-    [alert setItemArray:tempArray];
-    [alert setBoardType:XHAlertBoardOptionType];
-    [alert setTitle:@"设定主监护人"];
-    
-    [alert show];
 }
 
 

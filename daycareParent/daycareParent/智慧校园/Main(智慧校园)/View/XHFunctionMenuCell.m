@@ -76,8 +76,8 @@
         [self.backGroundImageView setImage:[UIImage imageNamed:itemFrame.model.iconName]];
         
 //        // 设置图片的序列帧 图片数组
-//        [self.animationImageView setAnimationImages:itemFrame.model.animatingArray];
-//        [self.animationImageView startAnimating:itemFrame.model.startAnimating];
+        [self.animationImageView setAnimationImages:itemFrame.model.animatingArray];
+        [self.animationImageView startAnimating:itemFrame.model.startAnimating];
     }
     
    

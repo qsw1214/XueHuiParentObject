@@ -219,9 +219,8 @@
         [_selectButton setNumberImageView:1];
         [_selectButton setNumberLabel:1];
         [_selectButton setImageEdgeFrame:CGRectMake(0, 8, 14, 14) withNumberType:0 withAllType:NO];
-        [_selectButton setImage:@"ico-right" withNumberType:0 withAllType:NO];
+        [_selectButton setImage:@"box-check" withNumberType:0 withAllType:NO];
         [_selectButton setTitleEdgeFrame:CGRectMake(18, 6, 100, 18) withNumberType:0 withAllType:NO];
-        _selectButton.selected=YES;
         [_selectButton setText:@"我已阅读并同意" withNumberType:0 withAllType:NO];
         [_selectButton setFont:kFont(14) withNumberType:0 withAllType:NO];
         [_selectButton setTag:2];

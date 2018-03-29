@@ -27,11 +27,13 @@
     [self.view addSubview:self.contentView];
     [self.contentView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.navigationView.bottom)];
     [self.contentView setItemArray:self.dataArray];
-    [self setChildListArry:[XHUserInfo sharedUserInfo].childListArry];
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    if ([XHUserInfo sharedUserInfo].childListArry.count) {
+    [super viewWillAppear:animated];
+    
+    if ([XHUserInfo sharedUserInfo].childListArry.count)
+    {
          XHChildListModel *childModel=[XHUserInfo sharedUserInfo].childListArry[0];
         [self.contentView getModel:childModel];
     }
@@ -55,24 +57,11 @@
     }
     return _contentView;
 }
--(void)getChildModel:(XHChildListModel *)childModel {
-    
-     [self setRightItemTitle:[childModel studentName]];
+-(void)getChildModel:(XHChildListModel *)childModel
+{
+    [self setRightItemTitle:[childModel studentName]];
     [self.contentView getModel:childModel];
 }
-#pragma mark 右侧按钮相应的方法
--(void)rightItemAction:(BaseNavigationControlItem*)sender
-{
-    if (self.childListView.isExist==NO) {
-        self.childListView.delegate=self;
-        [self.view addSubview:self.childListView];
-        self.childListView.isExist=YES;
-    }
-    else
-    {
-        [self.childListView removeFromSuperview];
-        self.childListView.isExist=NO;
-    }
-}
+
 
 @end

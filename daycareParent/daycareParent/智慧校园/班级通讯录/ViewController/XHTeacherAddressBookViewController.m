@@ -50,7 +50,7 @@
                     }
                     else
                     {
-                        [self.mainTableView resetFrame:CGRectMake(0, self.addressBookHeader.bottom, SCREEN_WIDTH, (SCREEN_HEIGHT-self.navigationView.bottom))];
+                        [self.mainTableView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, (SCREEN_HEIGHT-self.navigationView.bottom))];
                     }
                 }
                     break;

@@ -153,6 +153,7 @@
                    return ;
                }
                 [self.timeControl setDescribe:[NSString stringWithFormat:@"%@天",object]];
+                [self.netWorkConfig setObject:object forKey:@"bizDays"];
                self.timeControl.describeLabel.textColor=RGB(51, 51, 51);
             }];
 alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunctuation;
@@ -402,7 +403,6 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
         [self.netWorkConfig setObject:content forKey:@"content"];
         [self.netWorkConfig setObject:beginTime forKey:@"beginTime"];
         [self.netWorkConfig setObject:endTime forKey:@"endTime"];
-        [self.netWorkConfig setObject:bizDays forKey:@"bizDays"];
         [self.netWorkConfig setObject:csr forKey:@"csr"];
         [self.netWorkConfig setObject:actorId forKey:@"actorId"];
         [XHShowHUD showTextHud];

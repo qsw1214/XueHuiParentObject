@@ -163,6 +163,7 @@
         {
             [self setDateSwitchDay:self.currentDay];
         }
+        
         yearMontherDay = [NSString stringWithFormat:@"%@年%@月%@日",[self formatterNumer:self.dateSwitchYear],[self formatterNumer:self.dateSwitchMonther],[self formatterNumer:self.dateSwitchDay]];
         
         switch (type)
@@ -181,6 +182,9 @@
             }
                 break;
         }
+        
+        
+        
     }
     else
     {
@@ -223,6 +227,12 @@
     }
     
     
+    
+    
+    if ((self.dateSwitchYear == self.currentYear) && (self.dateSwitchMonther == self.currentMonther) && (self.dateSwitchDay == self.currentDay))
+    {
+        [XHShowHUD showNOHud:@"不能超过当前日期"];
+    }
     
     
     

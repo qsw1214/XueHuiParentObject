@@ -149,7 +149,7 @@ typedef NS_ENUM(NSInteger,DatePickerComponentsType)
     NSString *hour = self.hour.length == 3 ? [NSString stringWithFormat:@"%zd", self.hour.integerValue] : [NSString stringWithFormat:@"0%zd", self.hour.integerValue];
     NSString *minute = self.minute.length == 3 ? [NSString stringWithFormat:@"%zd", self.minute.integerValue] : [NSString stringWithFormat:@"0%zd", self.minute.integerValue];
     
-    self.selectStr = [NSString stringWithFormat:@"%zd-%@-%@  %@:%@", [self.year integerValue], month, day, hour, minute];
+    self.selectStr = [NSString stringWithFormat:@"%zd-%@-%@ %@:%@", [self.year integerValue], month, day, hour, minute];
     if ([self.delegate respondsToSelector:@selector(datePickerViewSaveBtnClickDelegate:)]) {
         [self.delegate datePickerViewSaveBtnClickDelegate:self.selectStr];
     }

@@ -19,6 +19,7 @@
 
 @property(nonatomic,strong)UIButton *submitButton;
 @property(nonatomic,copy)NSString *teacherId;
+@property(nonatomic,copy)NSString *classid;
 @property(nonatomic,assign)id <XHSubmitViewDelegate> delegate;
 -(void)resetFrame:(CGRect)frame;
 -(void)setItemArry:(NSMutableArray *)arry;

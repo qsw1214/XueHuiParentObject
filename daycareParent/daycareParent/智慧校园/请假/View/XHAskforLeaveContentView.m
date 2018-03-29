@@ -211,6 +211,7 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
              {
                  [obj setMarkType:ChildListSelectType];
                  [self.childOptionsControl setModel:obj];
+                 [self.submitView setClassid:obj.clazzId];
              }
              else
              {
@@ -230,6 +231,7 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
                       {
                           [obj setMarkType:ChildListSelectType];
                           [self.childOptionsControl setModel:obj];
+                          [self.submitView setClassid:obj.clazzId];
                       }
                       else
                       {
@@ -401,7 +403,7 @@ alertController.textFields.firstObject.keyboardType=UIKeyboardTypeNumbersAndPunc
             [self.netWorkConfig setObject:picUrl forKey:@"picUrl"];
         }
         [self.netWorkConfig setObject:studentBaseId forKey:@"studentBaseId"];
-         [self.netWorkConfig setObject:bizType forKey:@"bizType"];
+        [self.netWorkConfig setObject:bizType forKey:@"bizType"];
         [self.netWorkConfig setObject:content forKey:@"content"];
         [self.netWorkConfig setObject:beginTime forKey:@"beginTime"];
         [self.netWorkConfig setObject:endTime forKey:@"endTime"];

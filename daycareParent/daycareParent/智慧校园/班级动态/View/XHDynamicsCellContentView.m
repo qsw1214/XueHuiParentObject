@@ -113,9 +113,7 @@
 #pragma mark 设置视频展示的Url地址
                     [self.videoControl setObject:frame];
                     [self.videoControl setTag:(indexPath.row+1)];
-                    [frame.model.playModel setIndexPath:indexPath];
-                    [frame.model.playModel setFatherViewTag:self.videoControl.tag];
-                    [frame.model.playModel setFatherView:self.videoControl];
+                   
                 }
                     break;
                 case XHDynamicsPlayerType:

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "XHDynamicsFrame.h"
 #import "XHNoticeFrame.h"
-#import "ZFPlayerView.h"
+
 
 
 @interface XHVideoControl : UIControl
@@ -32,7 +32,7 @@
  */
 + (instancetype)sharedVideo;
 -(void)dismiss;
--(void)playerWithModel:(ZFPlayerModel*)model;
+
 
 
 

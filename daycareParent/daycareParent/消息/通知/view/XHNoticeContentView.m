@@ -148,7 +148,6 @@
                          XHNoticeFrame *frame = [[XHNoticeFrame alloc]init];
                          XHNoticeModel *model = [[XHNoticeModel alloc]init];
                          [model setItemObject:itemObject];
-                         [model.playModel setScrollView:self.tableView];
                          [frame setModel:model];
                          [self.dataArray addObject:frame];
                      }];

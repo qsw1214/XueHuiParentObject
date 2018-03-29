@@ -100,7 +100,6 @@
     {
         _videoUrl = ALGetFileVedio(videoUrl);
         [self setModelType:XHDynamicsModelTextAndVideoType];
-        [self.playModel setVideoURL:[NSURL URLWithString:_videoUrl]];
     }
 }
 
@@ -152,15 +151,5 @@
     return _dateArray;
 }
 
-
--(ZFPlayerModel *)playModel
-{
-    if (_playModel == nil)
-    {
-        _playModel = [[ZFPlayerModel alloc]init];
-    }
-    return _playModel;
-    
-}
 
 @end

@@ -13,8 +13,6 @@
 
 @property (nonatomic,strong) UIImageView *previewImageView;  //!< 预览视图
 @property (nonatomic,strong) UIImageView *playerImageView;  //!< 播放视图
-@property (nonatomic,strong) ZFPlayerView *playerView; //!< 播放器
-
 
 
 @end
@@ -120,32 +118,8 @@ static XHVideoControl *videoControl = nil;
 }
 
 
--(void)dismiss
-{
-    [videoControl.playerView dismiss];
-    
-}
--(void)playerWithModel:(ZFPlayerModel*)model
-{
-    [videoControl.playerView resetPlayer];
-    [videoControl.playerView playerModel:model];
-    [videoControl.playerView autoPlayTheVideo];
-}
 
 
-#pragma mark - Getter / Setter
--(ZFPlayerView *)playerView
-{
-    if (!_playerView)
-    {
-        _playerView = [ZFPlayerView sharedPlayerView];
-        // 设置视频的填充模式，内部设置默认（ZFPlayerLayerGravityResizeAspect：等比例填充，直到一个维度到达区域边界）
-        [_playerView setPlayerLayerGravity:ZFPlayerLayerGravityResizeAspect];
-        [_playerView setHasBack:NO];
-    }
-    
-    return _playerView;
-}
 
 
 @end

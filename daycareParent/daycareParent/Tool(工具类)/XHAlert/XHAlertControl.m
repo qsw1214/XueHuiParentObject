@@ -102,7 +102,7 @@
                     }
                     else
                     {
-                        [XHShowHUD showNOHud:@"请选择你与孩子关系"];
+                        [XHShowHUD showNOHud:@"请选择您与孩子关系"];
                     }
                 }
             }

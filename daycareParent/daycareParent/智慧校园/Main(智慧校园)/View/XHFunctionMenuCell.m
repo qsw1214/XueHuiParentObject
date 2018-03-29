@@ -35,7 +35,7 @@
         [self setBackgroundColor:RGB(255.0, 255.0, 255.0)];
         [self.contentView addSubview:self.markImageView];
          [self.contentView addSubview:self.backGroundImageView];
-        [self.contentView addSubview:self.animationImageView];
+//        [self.contentView addSubview:self.animationImageView];
         [self.contentView addSubview:self.titleLabel];
         [self.contentView addSubview:self.describeLabel];
         
@@ -76,8 +76,8 @@
         [self.backGroundImageView setImage:[UIImage imageNamed:itemFrame.model.iconName]];
         
 //        // 设置图片的序列帧 图片数组
-        [self.animationImageView setAnimationImages:itemFrame.model.animatingArray];
-        [self.animationImageView startAnimating:itemFrame.model.startAnimating];
+//        [self.animationImageView setAnimationImages:itemFrame.model.animatingArray];
+//        [self.animationImageView startAnimating:itemFrame.model.startAnimating];
     }
     
    

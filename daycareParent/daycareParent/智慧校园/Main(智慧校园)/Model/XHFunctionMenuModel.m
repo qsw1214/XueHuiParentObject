@@ -18,7 +18,7 @@
     if (!_animatingArray)
     {
         _animatingArray = [[NSMutableArray alloc]init];
-        for (int i=1; i <=21 ; i++)
+        for (int i=1; i <= 8 ; i++)
         {
             NSString *name = [NSString stringWithFormat:@"%@%d",self.describe,i];
             UIImage *image = [UIImage imageNamed:name];

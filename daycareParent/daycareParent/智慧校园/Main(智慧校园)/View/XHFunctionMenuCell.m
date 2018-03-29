@@ -60,8 +60,8 @@
     {
         //根据类型进行控件设置Frame
         [self.markImageView setFrame:CGRectMake(((itemFrame.itemSize.width-30.0))/2.0, 10.0, 30.0, 30.0)];
-        [self.titleLabel setFrame:CGRectMake(0, (self.markImageView.bottom+50.0), itemFrame.itemSize.width, (itemFrame.itemSize.width-(25+(itemFrame.itemSize.width-50.0))))];
-        [self.animationImageView setFrame:CGRectMake(0, (self.markImageView.bottom+3.0), (itemFrame.itemSize.width),40.0)];
+        [self.titleLabel setFrame:CGRectMake(0, (self.markImageView.bottom+60.0), itemFrame.itemSize.width, (itemFrame.itemSize.width-(25+(itemFrame.itemSize.width-50.0))))];
+        [self.animationImageView setFrame:CGRectMake(0, (self.markImageView.bottom+2.0), (itemFrame.itemSize.width),50.0)];
         [self.backGroundImageView setFrame:CGRectMake(0, (self.markImageView.bottom+10.0), (itemFrame.itemSize.width), itemFrame.itemSize.height-(self.markImageView.bottom+10.0))];
         
         

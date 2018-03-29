@@ -23,6 +23,7 @@
 @property (nonatomic,copy) NSString *describe; //!< 描述
 @property (nonatomic,assign) CGFloat sizeForItemWidth;
 @property (nonatomic,assign) BOOL startAnimating;
+@property (nonatomic,assign) NSInteger animatNumber; //!< 图片
 
 
 

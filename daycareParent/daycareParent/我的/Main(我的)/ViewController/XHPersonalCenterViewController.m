@@ -207,7 +207,7 @@
 #pragma mark-----childCollectionDelegate
 -(void)getChildModel:(XHChildListModel *)childModel withChildName:(NSString *)ChildName index:(NSInteger)index
 {
-    if (index==self.childArry.count)
+    if (index==0)
     {
 #pragma mark -----跳转到绑定孩子界面
         XHBindViewController *bind=[[XHBindViewController alloc] initHiddenWhenPushHidden];

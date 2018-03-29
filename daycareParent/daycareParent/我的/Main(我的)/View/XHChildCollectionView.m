@@ -44,7 +44,7 @@
     XHChildListModel *model = self.childListArry[indexPath.item];
     XHChildCollectionViewCell *cell=[collectionView cellForItemAtIndexPath:indexPath];
     if ([_delegate respondsToSelector:@selector(getChildModel:withChildName:index:)]) {
-        [_delegate getChildModel:model withChildName:model.studentName index:indexPath.row];
+        [_delegate getChildModel:model withChildName:model.studentName index:indexPath.row+1];
     }
     
 }
@@ -95,7 +95,7 @@
 -(void)addMethod
 {
     if ([_delegate respondsToSelector:@selector(getChildModel:withChildName:index:)]) {
-        [_delegate getChildModel:nil withChildName:@"绑定学生" index:self.childListArry.count];
+        [_delegate getChildModel:nil withChildName:@"绑定学生" index:0];
     }
 }
 -(NSMutableArray *)childListArry

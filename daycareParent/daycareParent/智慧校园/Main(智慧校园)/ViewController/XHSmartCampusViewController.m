@@ -82,6 +82,16 @@
             [self.navigationController pushViewController:location animated:YES];
         }
             break;
+#pragma mark case 2 成绩课表
+            case 2:
+        {
+            if ([self refreshChild])
+            {
+                XHAchievementViewController *achievement = [[XHAchievementViewController alloc]initHiddenWhenPushHidden];
+                [self.navigationController pushViewController:achievement animated:YES];
+            }
+        }
+            break;
 #pragma mark case 3 课程表
         case 3:
         {

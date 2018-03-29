@@ -38,6 +38,7 @@
 #import "WXApi.h"
 #import "WeiboSDK.h"
 #import "RCDUtilities.h"
+#import "IQKeyboardManager.h"
 @interface AppDelegate ()<RCIMConnectionStatusDelegate,RCIMUserInfoDataSource,JPUSHRegisterDelegate,CLLocationManagerDelegate,UIAlertViewDelegate>  //添加代理
 {
     AMapLocationManager *_locationManager;
@@ -192,6 +193,11 @@
                                                              }];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"noticeName" object:nil];
     
+    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
+    manager.enable = YES;
+    manager.shouldResignOnTouchOutside = YES;
+    manager.shouldToolbarUsesTextFieldTintColor = YES;
+    manager.enableAutoToolbar = NO;
     return YES;
 }
 
@@ -239,6 +245,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
 }
 
+#pragma mark-----登录融云
 /**
  *登录融云
  *
@@ -252,7 +259,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     //登录融云服务器,开始阶段可以先从融云API调试网站获取，之后token需要通过服务器到融云服务器取。
     [[RCIM sharedRCIM] connectWithToken:token success:^(NSString *userId) {
         NSLog(@"userId================%@",userId);//selfID,guaidId
-        //NSLog(@"===id%@==guainID%@===selfID%@",[XHUserInfo sharedUserInfo].ID,[XHUserInfo sharedUserInfo].guardianModel.guardianId,[XHUserInfo sharedUserInfo].selfId);
         //设置用户信息提供者,页面展现的用户头像及昵称都会从此代理取
         [[RCIM sharedRCIM] setUserInfoDataSource:self];
         BOOL creat = [XHMessageUserInfo createTable];
@@ -310,6 +316,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [[RCIM sharedRCIM] refreshUserInfoCache:userInfo withUserId:user.guardianModel.guardianId];
     [RCDLive sharedRCDLive].currentUserInfo=userInfo;
 }
+#pragma mark-----判断融云网络状态
 /**
  *  网络状态变化。
  *
@@ -397,7 +404,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     }
     completionHandler();  // 系统要求执行这个方法
 }
-
+#pragma mark-----收到融云消息后回调方法
 - (void)didReceiveMessageNotification:(NSNotification *)notification{
 
     RCMessage *messgae = (RCMessage *)notification.object;
@@ -416,6 +423,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"noticeIM" object:nil];
 }
+#pragma mark-----刷新融云本地所有用户信息
 - (void)getUserInfoWithUserId:(NSString *)userId completion:(void(^)(RCUserInfo* userInfo))completion
 {
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -431,10 +439,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         UIImageView *imageView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 0.01, 0.01)];
         [self.window addSubview:imageView];
          imageView.hidden=YES;
-        @WeakObj(self);
         [imageView sd_setImageWithURL:[NSURL URLWithString:info.headPic] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL)
          {
-             @StrongObj(self);
              if (image)
              {
                  userInfo.portraitUri = info.headPic;
@@ -459,10 +465,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     }
 }
 
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    [self.window endEditing:YES];
-}
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

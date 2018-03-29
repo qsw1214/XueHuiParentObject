@@ -118,12 +118,12 @@
         {
             if ([self verifyCurrentYearMonthDay])
             {
+                [self.titleLabel setText:[self swithDateWithType:sender.tag]];
                 if ([self.delegate respondsToSelector:@selector(dateSwitchAction:)])
                 {
                     [self.delegate dateSwitchAction:date];
                 }
             }
-            [self.titleLabel setText:[self swithDateWithType:sender.tag]];
         }
             break;
     }

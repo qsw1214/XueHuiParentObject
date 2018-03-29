@@ -50,9 +50,10 @@
 
 + (NSString *)defaultUserPortrait:(RCUserInfo *)userInfo {
     NSString *filePath = [[self class] getIconCachePath:[NSString stringWithFormat:@"user%@.png", userInfo.userId]];
-    kNSLog(userInfo.userId);
-    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
+    {
         NSURL *portraitPath = [NSURL fileURLWithPath:filePath];
+        
         return [portraitPath absoluteString];
     } else {
         DefaultPortraitView *defaultPortrait = [[DefaultPortraitView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];

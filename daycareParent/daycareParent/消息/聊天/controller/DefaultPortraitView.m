@@ -42,7 +42,7 @@
 
     NSString *firstLetter = nil;
     if (nickname.length > 0) {
-        firstLetter = [nickname substringToIndex:1];
+        firstLetter = [nickname substringToIndex:nickname.length];
     } else {
         firstLetter = @"#";
     }

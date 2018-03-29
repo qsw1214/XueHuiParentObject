@@ -18,7 +18,7 @@
 #import "XHFeedBackViewController.h"//!< 问题反馈视图
 #import "XHSystemNotificViewController.h"//!< 系统通知
 #import "XHShareView.h"//!< 分享视图
-
+#import "AppDelegate.h"
 @interface XHPersonalCenterViewController ()<UITableViewDelegate,UITableViewDataSource,XHChildCollectionViewDelegate>
 @property(nonatomic,strong)UIView *headView;
 @property(nonatomic,strong)ParentControl *headBtn;
@@ -45,6 +45,9 @@
         if (ok)
         {
             [self getChildListNet];
+            AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            [app sendRCIMInfo];
+            [self refreshHeadView];
         }
     };
 }

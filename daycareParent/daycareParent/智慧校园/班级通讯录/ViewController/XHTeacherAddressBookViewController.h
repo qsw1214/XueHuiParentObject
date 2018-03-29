@@ -39,6 +39,7 @@ typedef void (^DidSelectItemBack) (XHTeacherAddressBookFrame *itemObject);
 
 @property (nonatomic,assign) TeacherAddressBookEnterType enterType; //!< 进入类型
 
+@property (nonatomic,copy) NSString *classID; //!< 班级id获取通讯录使用
 @property (nonatomic,copy) DidSelectItemBack didselectBack;
 
 @end

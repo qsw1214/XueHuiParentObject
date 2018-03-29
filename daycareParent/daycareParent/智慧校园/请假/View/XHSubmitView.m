@@ -61,6 +61,9 @@
  
      return cell;
  }
+
+
+
  -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
  {
      XHRecipientModel *model=self.dataArry[indexPath.item];
@@ -81,6 +84,7 @@
          {
              XHTeacherAddressBookViewController *teacherAddressBook = [[XHTeacherAddressBookViewController alloc]init];
               teacherAddressBook.enterType=TeacherAddressBookAskLeaveType;
+             [teacherAddressBook setClassID:self.classid];
               [teacherAddressBook setNavtionTitle:@"选择接收人"];
                 [[XHHelper sharedHelper].currentlyViewController.navigationController pushViewController:teacherAddressBook animated:YES];
               @WeakObj(self);

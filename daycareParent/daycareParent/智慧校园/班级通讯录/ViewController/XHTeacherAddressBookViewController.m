@@ -17,7 +17,7 @@
 
 
 @property (nonatomic,strong) XHAddressBookHeader *addressBookHeader;
-@property (nonatomic,strong) XHChildListModel *childListModel;
+
 @end
 
 @implementation XHTeacherAddressBookViewController
@@ -38,19 +38,38 @@
 {
     if (subview)
     {
-        
-        
         if ([[XHUserInfo sharedUserInfo].childListArry count])
         {
-            [self.view addSubview:self.addressBookHeader];
-            [self.addressBookHeader resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, 60.0)];
-            if ([[XHHelper sharedHelper] isIphoneX]) {
-                [self.mainTableView resetFrame:CGRectMake(0, self.addressBookHeader.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-(self.addressBookHeader.bottom)-80)];
-            }
-            else
+            switch (self.enterType)
             {
-               [self.mainTableView resetFrame:CGRectMake(0, self.addressBookHeader.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-(self.addressBookHeader.bottom)-50)];
+                case TeacherAddressBookAskLeaveType:
+                {
+                    if ([[XHHelper sharedHelper] isIphoneX])
+                    {
+                        [self.mainTableView resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-(self.navigationView.bottom)-80)];
+                    }
+                    else
+                    {
+                        [self.mainTableView resetFrame:CGRectMake(0, self.addressBookHeader.bottom, SCREEN_WIDTH, (SCREEN_HEIGHT-self.navigationView.bottom))];
+                    }
+                }
+                    break;
+                case TeacherAddressBookIMType:
+                {
+                    [self.view addSubview:self.addressBookHeader];
+                    [self.addressBookHeader resetFrame:CGRectMake(0, self.navigationView.bottom, SCREEN_WIDTH, 60.0)];
+                    if ([[XHHelper sharedHelper] isIphoneX])
+                    {
+                        [self.mainTableView resetFrame:CGRectMake(0, self.addressBookHeader.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-(self.addressBookHeader.bottom)-80)];
+                    }
+                    else
+                    {
+                        [self.mainTableView resetFrame:CGRectMake(0, self.addressBookHeader.bottom, SCREEN_WIDTH, (SCREEN_HEIGHT-self.addressBookHeader.bottom))];
+                    }
+                }
+                    break;
             }
+          
             
             [self.view addSubview:self.mainTableView];
             [self.mainTableView setDelegate:self];
@@ -71,7 +90,7 @@
 }
 -(void)refreshHead
 {
-    [self getAddressBookWithModel:self.childListModel];
+    [self getAddressBookWithModel:self.classID];
 }
 
 #pragma mark - Deletage Method
@@ -155,7 +174,7 @@
 #pragma mark XHAddressBookHeaderDelegate
 -(void)didSelectItem:(XHChildListModel*)model
 {
-    [self setChildListModel:model];
+    [self setClassID:model.clazzId];
     [self.mainTableView beginRefreshing];
 }
 
@@ -166,14 +185,14 @@
 
 #pragma mark - NetWork Method
 /**
- @param model 孩子模型
+ @param classid 班级id
  */
--(void)getAddressBookWithModel:(XHChildListModel *)model
+-(void)getAddressBookWithModel:(NSString *)classid
 {
-    if (model)
+    if (classid)
     {
         @WeakObj(self);
-        [self.netWorkConfig setObject:model.clazzId forKey:@"classId"];
+        [self.netWorkConfig setObject:classid forKey:@"classId"];
         [self.netWorkConfig postWithUrl:@"zzjt-app-api_smartCampus009" sucess:^(id object, BOOL verifyObject)
          {
              @StrongObj(self);

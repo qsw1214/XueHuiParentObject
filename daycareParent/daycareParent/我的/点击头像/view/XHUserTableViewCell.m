@@ -88,7 +88,7 @@
             self.backLabel.frame=CGRectMake(130, 0, SCREEN_WIDTH-160, self.bounds.size.height);
             self.frontLabel.text=kPersonTitle[row];
             self.headBtn.frame=CGRectMake(SCREEN_WIDTH-USER_HEARD-30, 10, USER_HEARD, USER_HEARD);
-            [self.headBtn setHeadrPic:userInfo.headPic withName:userInfo.guardianModel.guardianName withType:XHTeacherType];
+            [self.headBtn setHeadrPic:userInfo.headPic withName:userInfo.guardianModel.guardianName withType:XHstudentType];
             if (row==0) {
                 self.headBtn.hidden=NO;
                 self.backLabel.hidden=YES;

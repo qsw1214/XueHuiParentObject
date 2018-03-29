@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <RongIMLib/RongIMLib.h>
 #import <UIKit/UIKit.h>
+#import "DefaultPortraitView.h"
+
 
 @interface RCDUtilities : NSObject
 + (UIImage *)imageNamed:(NSString *)name ofBundle:(NSString *)bundleName;
 + (NSString *)defaultGroupPortrait:(RCGroup *)groupInfo;
-+ (NSString *)defaultUserPortrait:(RCUserInfo *)userInfo;
++ (NSString *)defaultUserPortrait:(RCUserInfo *)userInfo with:(XHDefaultPortraitViewType)type;
 + (NSString *)getIconCachePath:(NSString *)fileName;
 + (NSString *)hanZiToPinYinWithString:(NSString *)hanZi;
 + (NSString *)getFirstUpperLetter:(NSString *)hanzi;

@@ -288,7 +288,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
              }
              else
              {
-                 userInfo.portraitUri=[RCDUtilities defaultUserPortrait:userInfo];
+                 userInfo.portraitUri=[RCDUtilities defaultUserPortrait:userInfo with:XHRCDDefaultPortraitViewHeaderOtherType];
              }
          }];
         userInfo.name = user.guardianModel.guardianName;
@@ -412,7 +412,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
              }
              else
              {
-                info.headPic= [RCDUtilities defaultUserPortrait:user];
+                info.headPic= [RCDUtilities defaultUserPortrait:user with:XHRCDDefaultPortraitViewHeaderOtherType];
              }
          }];
         [self sendRCIMInfo];
@@ -447,7 +447,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
              }
              else
              {
-                 userInfo.portraitUri=[RCDUtilities defaultUserPortrait:userInfo];
+                 userInfo.portraitUri=[RCDUtilities defaultUserPortrait:userInfo with:XHRCDDefaultPortraitViewHeaderTeacherType];
              }
          }];
         completion(userInfo);

@@ -35,7 +35,7 @@
         return [portraitPath absoluteString];
     } else {
         DefaultPortraitView *defaultPortrait = [[DefaultPortraitView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-        [defaultPortrait setColorAndLabel:groupInfo.groupId Nickname:groupInfo.groupName];
+        [defaultPortrait setColorAndLabel:groupInfo.groupId Nickname:groupInfo.groupName with:XHRCDDefaultPortraitViewHeaderOtherType];
         UIImage *portrait = [defaultPortrait imageFromView];
 
         BOOL result = [UIImagePNGRepresentation(portrait) writeToFile:filePath atomically:YES];
@@ -48,7 +48,8 @@
     }
 }
 
-+ (NSString *)defaultUserPortrait:(RCUserInfo *)userInfo {
++ (NSString *)defaultUserPortrait:(RCUserInfo *)userInfo with:(XHDefaultPortraitViewType)type
+{
     NSString *filePath = [[self class] getIconCachePath:[NSString stringWithFormat:@"user%@.png", userInfo.userId]];
     if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
     {
@@ -57,7 +58,7 @@
         return [portraitPath absoluteString];
     } else {
         DefaultPortraitView *defaultPortrait = [[DefaultPortraitView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-        [defaultPortrait setColorAndLabel:userInfo.userId Nickname:userInfo.name];
+        [defaultPortrait setColorAndLabel:userInfo.userId Nickname:userInfo.name with:type];
         UIImage *portrait = [defaultPortrait imageFromView];
 
         BOOL result = [UIImagePNGRepresentation(portrait) writeToFile:filePath atomically:YES];

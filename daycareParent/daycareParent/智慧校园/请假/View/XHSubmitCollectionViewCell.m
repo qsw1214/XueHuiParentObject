@@ -34,7 +34,7 @@
 {
     if (model.modelType==XHRecipientNomalModelType) {
         self.nameLabel.text=model.name;
-        [self.headbutton setHeadrPic:model.headPic withName:model.name withType:XHTeacherType];
+        [self.headbutton setHeadrPic:model.headPic withName:model.name withType:XHstudentType];
     }
     else
     {

@@ -26,23 +26,29 @@
     return self;
 }
 
-- (void)setColorAndLabel:(NSString *)userId Nickname:(NSString *)nickname {
+- (void)setColorAndLabel:(NSString *)userId Nickname:(NSString *)nickname with:(XHDefaultPortraitViewType)type
+{
     //设置背景色
-
     userId = [userId uppercaseString]; //设置为大写
-  //  int asciiCode = [userId characterAtIndex:0];
-//    int colorIndex = asciiCode % 5;
-//    NSArray *colorList =
-//        [[NSArray alloc] initWithObjects:@"#e97ffb", @"#00b8d4", @"#82b2ff", @"#f3db73", @"#f0857c", nil];
-//    NSString *backgroundColorStr = colorList[colorIndex];
     self.backgroundColor = kHeaderColor;
-
     //设置字母Label
     UILabel *firstCharacterLabel = [[UILabel alloc] init];
-
     NSString *firstLetter = nil;
     if (nickname.length > 0) {
-        firstLetter = [nickname substringToIndex:nickname.length];
+        switch (type) {
+            case XHRCDDefaultPortraitViewHeaderTeacherType:
+            {
+                firstLetter = [nickname substringWithRange:NSMakeRange(0,1)];
+            }
+                break;
+                
+            case XHRCDDefaultPortraitViewHeaderOtherType:
+            {
+                firstLetter = [nickname substringWithRange:NSMakeRange((nickname.length-1),1)];
+            }
+                break;
+        }
+        
     } else {
         firstLetter = @"#";
     }
@@ -51,37 +57,7 @@
     firstCharacterLabel.textAlignment = NSTextAlignmentCenter;
     firstCharacterLabel.font = kFont(37.0);
     firstCharacterLabel.frame = CGRectMake(self.frame.size.width / 2 - 30, self.frame.size.height / 2 - 30, 60, 60);
-    //    firstCharacterLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:firstCharacterLabel];
-
-    //    NSDictionary *views=NSDictionaryOfVariableBindings(firstCharacterLabel);
-    //
-    //    [self addConstraints:[NSLayoutConstraint
-    //    constraintsWithVisualFormat:@"V:|-10-[firstCharacterLabel(60)]"
-    //    options:0 metrics:nil views:views]];
-    //
-    //    [self addConstraints:[NSLayoutConstraint
-    //    constraintsWithVisualFormat:@"H:|-10-[firstCharacterLabel(60)]"
-    //    options:0 metrics:nil views:views]];
-
-    //    [self addConstraint:[NSLayoutConstraint
-    //                         constraintWithItem:firstCharacterLabel
-    //                         attribute:NSLayoutAttributeCenterY
-    //                         relatedBy:NSLayoutRelationEqual
-    //                         toItem:self
-    //                         attribute:NSLayoutAttributeCenterY
-    //                         multiplier:1.0f
-    //                         constant:0
-    //                         ]];
-    //    [self addConstraint:[NSLayoutConstraint
-    //                         constraintWithItem:firstCharacterLabel
-    //                         attribute:NSLayoutAttributeCenterX
-    //                         relatedBy:NSLayoutRelationEqual
-    //                         toItem:self
-    //                         attribute:NSLayoutAttributeCenterX
-    //                         multiplier:1.0f
-    //                         constant:0
-    //                         ]];
 }
 
 - (UIColor *)hexStringToColor:(NSString *)stringToConvert {

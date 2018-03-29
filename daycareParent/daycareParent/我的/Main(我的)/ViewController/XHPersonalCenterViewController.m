@@ -140,7 +140,7 @@
 {
     XHUserInfo *userInfo=[XHUserInfo sharedUserInfo];
     [self.headControl setHeadrUrl:ALGetFileHeadThumbnail(userInfo.headPic)
-      withName:userInfo.guardianModel.guardianName withType:XHHeaderTeacherType];
+      withName:userInfo.guardianModel.guardianName withType:XHHeaderOtherType];
     if (![userInfo.guardianModel.guardianName isEqualToString:@""])
     {
         [self.headBtn setLabelText:userInfo.guardianModel.guardianName withNumberIndex:0];

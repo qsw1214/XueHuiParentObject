@@ -13,11 +13,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "XHChangeNameViewController.h"
-#import <RongIMKit/RongIMKit.h>
-#import <RongIMLib/RongIMLib.h>
-#import "RCDUtilities.h"
-#import "XHMessageUserInfo.h"
-#import "AppDelegate.h"
+
 @interface XHUserViewController ()<UITableViewDelegate,UITableViewDataSource,CameraManageDeletage>
 {
     UITableView *_tableView;
@@ -139,10 +135,6 @@
                     [XHUserInfo sharedUserInfo].headPic=[[object objectItemKey:@"object"] objectItemKey:@"headPic"];
                     self.isRefresh(YES);
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        
-                        [self chageHeadImgView];
-                        AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-                        [app sendRCIMInfo];
                         // 这里的2和0可以根据需要求更改 这里就是第0段，第2行
                         NSIndexPath *  indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
                         //找到对应的cell
@@ -164,35 +156,7 @@
         hud.progress = progress;
     }];
 }
--(void)chageHeadImgView
-{
-    XHMessageUserInfo *info = [XHMessageUserInfo findFirstByCriteria:[NSString stringWithFormat:@"WHERE userId = %@",[XHUserInfo sharedUserInfo].guardianModel.guardianId]];
-    RCUserInfo *userInfo = [[RCUserInfo alloc] init];
-    userInfo.name = info.name;
-    userInfo.userId = info.userId;
-    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:[[self class] getIconCachePath:[NSString stringWithFormat:@"user%@.png", userInfo.userId]]];
-    if (fileExists)
-    {
-        NSError *err;
-        [[NSFileManager defaultManager] removeItemAtPath:[[self class] getIconCachePath:[NSString stringWithFormat:@"user%@.png", userInfo.userId]] error:&err];
-        [RCDUtilities defaultUserPortrait:userInfo];
-    }
-    
-}
-+ (NSString *)getIconCachePath:(NSString *)fileName {
-    NSString *cachPath =
-    [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *filePath =
-    [cachPath stringByAppendingPathComponent:[NSString stringWithFormat:@"CachedIcons/%@",
-                                              fileName]]; // 保存文件的名称
-    
-    NSString *dirPath = [cachPath stringByAppendingPathComponent:[NSString stringWithFormat:@"CachedIcons"]];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if (![fileManager fileExistsAtPath:dirPath]) {
-        [fileManager createDirectoryAtPath:dirPath withIntermediateDirectories:YES attributes:nil error:nil];
-    }
-    return filePath;
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

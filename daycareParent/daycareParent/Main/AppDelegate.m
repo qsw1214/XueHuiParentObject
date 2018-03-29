@@ -288,15 +288,16 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 #pragma mark==========刷新当前用户信息
 - (void)sendRCIMInfo
 {
-    [[RCIM sharedRCIM] setUserInfoDataSource:self];
-    [[RCIM sharedRCIM] setConnectionStatusDelegate:self];
-    XHUserInfo *user = [XHUserInfo sharedUserInfo];
-    RCUserInfo *userInfo = [[RCUserInfo alloc] init];
-    userInfo.userId = user.guardianModel.guardianId;
+   
     dispatch_async(dispatch_get_main_queue(), ^{
         UIImageView *imageView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 0.01, 0.01)];
         [self.window addSubview:imageView];
         imageView.hidden=YES;
+        [[RCIM sharedRCIM] setUserInfoDataSource:self];
+        [[RCIM sharedRCIM] setConnectionStatusDelegate:self];
+        XHUserInfo *user = [XHUserInfo sharedUserInfo];
+        RCUserInfo *userInfo = [[RCUserInfo alloc] init];
+        userInfo.userId = user.guardianModel.guardianId;
         [imageView sd_setImageWithURL:[NSURL URLWithString:ALGetFileHeadThumbnail(user.guardianModel.headPic)] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL)
          {
              if (image)
@@ -308,13 +309,14 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                  userInfo.portraitUri=[RCDUtilities defaultUserPortrait:userInfo];
              }
          }];
+        userInfo.name = user.guardianModel.guardianName;
+        [RCIM sharedRCIM].enableMessageAttachUserInfo = YES;
+        [RCIM sharedRCIM].currentUserInfo = userInfo;
+        [[RCIM sharedRCIM] refreshUserInfoCache:userInfo withUserId:user.guardianModel.guardianId];
+        [RCDLive sharedRCDLive].currentUserInfo=userInfo;
     });
     
-    userInfo.name = user.guardianModel.guardianName;
-    [RCIM sharedRCIM].enableMessageAttachUserInfo = YES;
-    [RCIM sharedRCIM].currentUserInfo = userInfo;
-    [[RCIM sharedRCIM] refreshUserInfoCache:userInfo withUserId:user.guardianModel.guardianId];
-    [RCDLive sharedRCDLive].currentUserInfo=userInfo;
+ 
 }
 #pragma mark-----判断融云网络状态
 /**
@@ -407,17 +409,33 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 #pragma mark-----收到融云消息后回调方法
 - (void)didReceiveMessageNotification:(NSNotification *)notification{
 
-    RCMessage *messgae = (RCMessage *)notification.object;
-    RCUserInfo *user = messgae.content.senderUserInfo;
-    XHMessageUserInfo *info = [[XHMessageUserInfo alloc] init];
-    info.name = user.name;
-    info.headPic = user.portraitUri;
-    info.userId = user.userId;
-    [info saveOrUpdateByColumnName:@"userId" AndColumnValue:user.userId];
+   
     dispatch_async(dispatch_get_main_queue(),^{
+        RCMessage *messgae = (RCMessage *)notification.object;
+        RCUserInfo *user = messgae.content.senderUserInfo;
+        XHMessageUserInfo *info = [[XHMessageUserInfo alloc] init];
+        info.name = user.name;
+        info.userId = user.userId;
+        [info saveOrUpdateByColumnName:@"userId" AndColumnValue:user.userId];
         [self reloadIMBadge];
+        UIImageView *imageView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 0.01, 0.01)];
+        [self.window addSubview:imageView];
+        imageView.hidden=YES;
+        [imageView sd_setImageWithURL:[NSURL URLWithString:user.portraitUri] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL)
+         {
+             if (image)
+             {
+                info.headPic = user.portraitUri;
+                 
+             }
+             else
+             {
+                info.headPic= [RCDUtilities defaultUserPortrait:user];
+             }
+         }];
+        [self sendRCIMInfo];
     });
-    [self sendRCIMInfo];
+    
 }
 - (void)reloadIMBadge
 {

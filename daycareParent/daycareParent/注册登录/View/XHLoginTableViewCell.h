@@ -7,7 +7,7 @@
 //
 
 #import "ParentTableViewCell.h"
-
+#define kTitle @[@"请输入手机号",@"请输入密码"]
 @interface XHLoginTableViewCell : ParentTableViewCell
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "ParentTableViewCell.h"
-
+#define kPlaceTitle @[@"请输入手机号",@"请输入验证码",@"请输入新密码(6-20位英文、数字组合)"]
 typedef NS_ENUM(NSInteger,XHChageTelephoneModelType)
 {
     XHChageTelephoneRegistType=1,

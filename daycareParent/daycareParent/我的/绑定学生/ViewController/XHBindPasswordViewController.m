@@ -122,7 +122,7 @@
          {
              if (verifyObject)
              {
-                
+                 [XHShowHUD showOKHud:@"修改成功！"];
                  [self.navigationController popViewControllerAnimated:YES];
              }
              

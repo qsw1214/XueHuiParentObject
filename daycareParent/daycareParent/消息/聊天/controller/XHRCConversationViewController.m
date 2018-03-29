@@ -47,7 +47,7 @@
     {
         if ([[XHHelper sharedHelper]isIphoneX]) {
             _navigationView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 94.0)];
-            ParentImageView *iconImageView=[[ParentImageView alloc] initWithFrame:CGRectMake(10, 20+(44-15)/2.0, 15, 15)];
+            ParentImageView *iconImageView=[[ParentImageView alloc] initWithFrame:CGRectMake(10, 50+(44-15)/2.0, 15, 15)];
             iconImageView.image=[UIImage imageNamed:@"arr_back"];
 
             [_navigationView addSubview:iconImageView];

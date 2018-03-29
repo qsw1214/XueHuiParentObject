@@ -178,6 +178,7 @@
 
 - (NSMutableArray *)willReloadTableData:(NSMutableArray *)dataSource
 {
+    
     [self.conversationListDataSource setArray:dataSource];
     NSRange range=NSMakeRange(0,[self.dataArry count]);
     [self.conversationListDataSource insertObjects:self.dataArry atIndexes:[NSIndexSet indexSetWithIndexesInRange:range]];

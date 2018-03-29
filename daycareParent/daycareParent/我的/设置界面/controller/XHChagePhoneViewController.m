@@ -132,10 +132,18 @@
                 [net setObject:@"2" forKey:@"type"];
                 [XHShowHUD showTextHud];
                 [net postWithUrl:@"zzjt-app-api_personalCenter000" sucess:^(id object, BOOL verifyObject) {
-                    if (verifyObject) {
+                    if (verifyObject)
+                    {
                         [self startCountdown];
                     }
-                    
+                    else
+                    {
+                        NSString *code=[[object objectItemKey:@"status"] objectItemKey:@"code"];
+                        if ([[NSString safeString:code] isEqualToString:@"505"])
+                        {
+                            [XHShowHUD showNOHud:@"该手机号已经注册"];
+                        }
+                    }
                 } error:^(NSError *error) {
                 }];
             }
@@ -163,6 +171,7 @@
                     UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:login];
                     [kWindow setRootViewController:nav];
                 }
+                
             } error:^(NSError *error) {
                 
             }];

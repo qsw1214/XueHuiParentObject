@@ -7,7 +7,7 @@
 //
 
 #import "XHLoginTableViewCell.h"
-#define kTitle @[@"请输入手机号",@"请输入密码"]
+
 #define kTitlePic @[@"ico_number",@"ico_password"]
 
 @interface XHLoginTableViewCell()

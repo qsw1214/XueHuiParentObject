@@ -17,7 +17,6 @@
 #import "TabBarView.h"
 #import <RongIMKit/RongIMKit.h>
 #import <RongIMLib/RongIMLib.h>
-#import "XHIMViewController.h"
 #define kTabbarNormalTitle @[@"tab1-heartshow",@"tab1-heartshow",@"plus_Last",@"tab4-more",@"tab5-file"]
  #define kTabbarSelectedTitle @[@"tab1-heart",@"tab2-doctorshow",@"plus_Last",@"tab4-moreshow",@"tab5-fileshow"]
 @interface MianTabBarViewController ()<TabBarViewDelegate>
@@ -51,8 +50,6 @@
     XHChatViewController *chat = [[XHChatViewController alloc] init];
     [self addChildViewController:chat];
     
-//    XHIMViewController *chat = [[XHIMViewController alloc] init];
-//    [self addChildViewController:chat];
     
     XHAddressBookViewController *book = [[XHAddressBookViewController alloc] init];
 

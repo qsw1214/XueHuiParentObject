@@ -287,7 +287,23 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     XHUserInfo *user = [XHUserInfo sharedUserInfo];
     RCUserInfo *userInfo = [[RCUserInfo alloc] init];
     userInfo.userId = user.guardianModel.guardianId;
-    userInfo.portraitUri = ALGetFileHeadThumbnail(user.guardianModel.headPic);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIImageView *imageView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 0.01, 0.01)];
+        [self.window addSubview:imageView];
+        imageView.hidden=YES;
+        [imageView sd_setImageWithURL:[NSURL URLWithString:ALGetFileHeadThumbnail(user.guardianModel.headPic)] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL)
+         {
+             if (image)
+             {
+                 userInfo.portraitUri = ALGetFileHeadThumbnail(user.guardianModel.headPic);
+             }
+             else
+             {
+                 userInfo.portraitUri=[RCDUtilities defaultUserPortrait:userInfo];
+             }
+         }];
+    });
+    
     userInfo.name = user.guardianModel.guardianName;
     [RCIM sharedRCIM].enableMessageAttachUserInfo = YES;
     [RCIM sharedRCIM].currentUserInfo = userInfo;
@@ -394,6 +410,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     dispatch_async(dispatch_get_main_queue(),^{
         [self reloadIMBadge];
     });
+    [self sendRCIMInfo];
 }
 - (void)reloadIMBadge
 {
@@ -401,26 +418,35 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 }
 - (void)getUserInfoWithUserId:(NSString *)userId completion:(void(^)(RCUserInfo* userInfo))completion
 {
-    XHMessageUserInfo *info = [XHMessageUserInfo findFirstByCriteria:[NSString stringWithFormat:@"WHERE userId = %@",userId]];
-    if (info == nil)
-    {
-        completion(nil);
-        return;
-    }
-    RCUserInfo *userInfo = [[RCUserInfo alloc] init];
-    userInfo.name = info.name;
-    userInfo.userId = userId;
-    kNSLog(info.headPic);
-    if ([[NSString safeString:info.headPic] isEqualToString:@"http://img.ixuehui.cn/xh/@!100-100-ios-head"])
-    {
-        userInfo.portraitUri=[RCDUtilities defaultUserPortrait:userInfo];
-    }
-    else
-    {
-        userInfo.portraitUri = info.headPic;
-    }
-    
-    completion(userInfo);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        XHMessageUserInfo *info = [XHMessageUserInfo findFirstByCriteria:[NSString stringWithFormat:@"WHERE userId = %@",userId]];
+        if (info == nil)
+        {
+            completion(nil);
+            return;
+        }
+        RCUserInfo *userInfo = [[RCUserInfo alloc] init];
+        userInfo.name = info.name;
+        userInfo.userId = userId;
+        UIImageView *imageView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 0.01, 0.01)];
+        [self.window addSubview:imageView];
+         imageView.hidden=YES;
+        @WeakObj(self);
+        [imageView sd_setImageWithURL:[NSURL URLWithString:info.headPic] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL)
+         {
+             @StrongObj(self);
+             if (image)
+             {
+                 userInfo.portraitUri = info.headPic;
+             }
+             else
+             {
+                 userInfo.portraitUri=[RCDUtilities defaultUserPortrait:userInfo];
+             }
+         }];
+        completion(userInfo);
+    });
+   
 }
 #pragma mark--弹出视图代理
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

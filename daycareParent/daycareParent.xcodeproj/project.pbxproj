@@ -417,9 +417,6 @@
 		8C7AE73F1FE795ED00BE7A02 /* Pingpp.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8C7AE72D1FE795ED00BE7A02 /* Pingpp.bundle */; };
 		8C7AE7411FE7967B00BE7A02 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7AE7401FE7967B00BE7A02 /* libsqlite3.0.tbd */; };
 		8C7AE7431FE796A400BE7A02 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7AE7421FE7969900BE7A02 /* CoreMotion.framework */; };
-		8C7CE66E206B46560045505A /* XHIMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7CE66D206B46560045505A /* XHIMViewController.m */; };
-		8C7CE673206B5DC80045505A /* WMVideoMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7CE66F206B5DC60045505A /* WMVideoMessageCell.m */; };
-		8C7CE674206B5DC80045505A /* WMVideoMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7CE672206B5DC70045505A /* WMVideoMessage.m */; };
 		8C7CE677206B74E00045505A /* XHIMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7CE676206B74E00045505A /* XHIMTableViewCell.m */; };
 		8C7CE67A206B77730045505A /* XHIMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7CE679206B77730045505A /* XHIMModel.m */; };
 		8C7DD7AB205B91ED00FB2497 /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7DD783205B91ED00FB2497 /* ShareSDK.framework */; };
@@ -1335,12 +1332,6 @@
 		8C7AE72E1FE795ED00BE7A02 /* Pingpp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pingpp.h; sourceTree = "<group>"; };
 		8C7AE7401FE7967B00BE7A02 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		8C7AE7421FE7969900BE7A02 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		8C7CE66C206B46560045505A /* XHIMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHIMViewController.h; sourceTree = "<group>"; };
-		8C7CE66D206B46560045505A /* XHIMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHIMViewController.m; sourceTree = "<group>"; };
-		8C7CE66F206B5DC60045505A /* WMVideoMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMVideoMessageCell.m; sourceTree = "<group>"; };
-		8C7CE670206B5DC70045505A /* WMVideoMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMVideoMessage.h; sourceTree = "<group>"; };
-		8C7CE671206B5DC70045505A /* WMVideoMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMVideoMessageCell.h; sourceTree = "<group>"; };
-		8C7CE672206B5DC70045505A /* WMVideoMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMVideoMessage.m; sourceTree = "<group>"; };
 		8C7CE675206B74E00045505A /* XHIMTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHIMTableViewCell.h; sourceTree = "<group>"; };
 		8C7CE676206B74E00045505A /* XHIMTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHIMTableViewCell.m; sourceTree = "<group>"; };
 		8C7CE678206B77730045505A /* XHIMModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHIMModel.h; sourceTree = "<group>"; };
@@ -3997,16 +3988,10 @@
 				8CF35D82206C5EF000E22297 /* DefaultPortraitView.m */,
 				8CF35D7F206C5E5B00E22297 /* RCDUtilities.h */,
 				8CF35D80206C5E5B00E22297 /* RCDUtilities.m */,
-				8C7CE670206B5DC70045505A /* WMVideoMessage.h */,
-				8C7CE672206B5DC70045505A /* WMVideoMessage.m */,
-				8C7CE671206B5DC70045505A /* WMVideoMessageCell.h */,
-				8C7CE66F206B5DC60045505A /* WMVideoMessageCell.m */,
 				8CDDA8B41FDA5CEE000B3BAB /* XHChatViewController.h */,
 				8CDDA8B51FDA5CEE000B3BAB /* XHChatViewController.m */,
 				8C8336F11FDCE3B100F48A25 /* XHRCConversationViewController.h */,
 				8C8336F21FDCE3B100F48A25 /* XHRCConversationViewController.m */,
-				8C7CE66C206B46560045505A /* XHIMViewController.h */,
-				8C7CE66D206B46560045505A /* XHIMViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -4221,7 +4206,6 @@
 				4B632ABF1FE1176F00B90B94 /* XHSafeLocationViewController.m in Sources */,
 				4B632AB81FE0F49D00B90B94 /* XHTeacherAddressBookKey.m in Sources */,
 				4B4A00141FE240FD00B8A8F8 /* XHDynamicsCellContentView.m in Sources */,
-				8C7CE674206B5DC80045505A /* WMVideoMessage.m in Sources */,
 				4B80F2251FCBEC2B00BC7B52 /* MianTabBarViewController.m in Sources */,
 				4B3418751FFDC14C00A5EC56 /* UITabBarController+ZFPlayerRotation.m in Sources */,
 				4B4338B71FDF9C1C0047AC52 /* XHEducationCloudItemCollectionView.m in Sources */,
@@ -4560,10 +4544,8 @@
 				4B07CC451FD5106800B2DBDA /* GooeyCircle.m in Sources */,
 				8C80816A1FCE919D00C7945A /* XHUserViewController.m in Sources */,
 				4BB9BE9D1FDE4BD5004F5622 /* XHEducationCloudScrollPreview.m in Sources */,
-				8C7CE673206B5DC80045505A /* WMVideoMessageCell.m in Sources */,
 				8C7E98351FECF1660096288E /* SGQRCodeScanningView.m in Sources */,
 				8CD8645E2063551900A25400 /* ParentControl.m in Sources */,
-				8C7CE66E206B46560045505A /* XHIMViewController.m in Sources */,
 				8C377CA32008B7BB001F1FC7 /* XCNativePlugs.m in Sources */,
 				4B80F2891FCBF04800BC7B52 /* MJRefreshAnimateHeader.m in Sources */,
 				04AAEBC22059032A00EF225D /* XHStudentInfoViewController.m in Sources */,

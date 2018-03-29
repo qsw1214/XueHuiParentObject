@@ -410,14 +410,15 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     RCUserInfo *userInfo = [[RCUserInfo alloc] init];
     userInfo.name = info.name;
     userInfo.userId = userId;
-//    if ([[NSString safeString:info.headPic] isEqualToString:@""])
-//    {
+    kNSLog(info.headPic);
+    if ([[NSString safeString:info.headPic] isEqualToString:@"http://img.ixuehui.cn/xh/@!100-100-ios-head"])
+    {
         userInfo.portraitUri=[RCDUtilities defaultUserPortrait:userInfo];
-//    }
-//    else
-//    {
-//        userInfo.portraitUri = info.headPic;
-//    }
+    }
+    else
+    {
+        userInfo.portraitUri = info.headPic;
+    }
     
     completion(userInfo);
 }

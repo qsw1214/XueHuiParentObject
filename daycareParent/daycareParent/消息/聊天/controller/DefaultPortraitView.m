@@ -30,12 +30,12 @@
     //设置背景色
 
     userId = [userId uppercaseString]; //设置为大写
-    int asciiCode = [userId characterAtIndex:0];
-    int colorIndex = asciiCode % 5;
-    NSArray *colorList =
-        [[NSArray alloc] initWithObjects:@"#e97ffb", @"#00b8d4", @"#82b2ff", @"#f3db73", @"#f0857c", nil];
-    NSString *backgroundColorStr = colorList[colorIndex];
-    self.backgroundColor = [self hexStringToColor:backgroundColorStr];
+  //  int asciiCode = [userId characterAtIndex:0];
+//    int colorIndex = asciiCode % 5;
+//    NSArray *colorList =
+//        [[NSArray alloc] initWithObjects:@"#e97ffb", @"#00b8d4", @"#82b2ff", @"#f3db73", @"#f0857c", nil];
+//    NSString *backgroundColorStr = colorList[colorIndex];
+    self.backgroundColor = kHeaderColor;
 
     //设置字母Label
     UILabel *firstCharacterLabel = [[UILabel alloc] init];
@@ -49,7 +49,7 @@
     firstCharacterLabel.text = firstLetter;
     firstCharacterLabel.textColor = [UIColor whiteColor];
     firstCharacterLabel.textAlignment = NSTextAlignmentCenter;
-    firstCharacterLabel.font = [UIFont systemFontOfSize:50];
+    firstCharacterLabel.font = kFont(37.0);
     firstCharacterLabel.frame = CGRectMake(self.frame.size.width / 2 - 30, self.frame.size.height / 2 - 30, 60, 60);
     //    firstCharacterLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:firstCharacterLabel];

@@ -104,6 +104,9 @@
     if (!_titleLabel)
     {
         _titleLabel = [[UILabel alloc]init];
+        [_titleLabel setFont:FontLevel2];
+        [_titleLabel setTextColor:RGB(51,51,51)];
+    
     }
     return _titleLabel;
 }
@@ -125,6 +128,8 @@
     {
         _phoneLabel = [[UILabel alloc]init];
         [_phoneLabel setTextAlignment:NSTextAlignmentRight];
+        [_phoneLabel setFont:FontLevel2A];
+        [_phoneLabel setTextColor:RGB(102,102,102)];
     }
     return _phoneLabel;
 }

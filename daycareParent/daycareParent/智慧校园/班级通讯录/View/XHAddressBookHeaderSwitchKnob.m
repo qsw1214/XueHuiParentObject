@@ -52,7 +52,7 @@
         {
             [UIView animateWithDuration:1.0 animations:^{
                 
-                [self.markImageView setTransform:CGAffineTransformMakeRotation(0)];
+                [self.markImageView setTransform:CGAffineTransformMakeRotation(M_PI_2)];
                 
             }];
         }
@@ -61,7 +61,7 @@
         {
             [UIView animateWithDuration:1.0 animations:^{
                 
-                [self.markImageView setTransform:CGAffineTransformMakeRotation(M_PI_2)];
+                [self.markImageView setTransform:CGAffineTransformMakeRotation(0)];
                 
             }];
         }

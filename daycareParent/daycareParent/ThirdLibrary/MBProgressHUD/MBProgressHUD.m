@@ -213,8 +213,10 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	return [self initWithFrame:view.bounds];
 }
 
-- (id)initWithWindow:(UIWindow *)window {
-	return [self initWithView:window];
+- (id)initWithWindow:(UIWindow *)window
+{
+    self = [self initWithView:window];
+	return self;
 }
 
 - (void)dealloc {

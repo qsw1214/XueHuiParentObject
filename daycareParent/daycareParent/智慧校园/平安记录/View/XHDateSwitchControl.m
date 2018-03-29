@@ -124,6 +124,19 @@
     NSString *yearMontherDay = @"";
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *components = [[NSDateComponents alloc] init];
+    switch (type)
+    {
+        case 1:
+        {
+            [self setDateSwitchDay:(self.dateSwitchDay-1)];
+        }
+            break;
+        case 2:
+        {
+            [self setDateSwitchDay:(self.dateSwitchDay+1)];
+        }
+            break;
+    }
     
     if ((self.dateSwitchYear <= self.currentYear) && (self.dateSwitchMonther <= self.currentMonther) && (self.dateSwitchDay <= self.currentDay))
     {

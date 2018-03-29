@@ -70,6 +70,7 @@
 #pragma mark XHDatePickerDelegate
 -(void)datePickerAction:(NSString*)date
 {
+    [self setUnitDay:0];
     NSArray *separatedDate = [date componentsSeparatedByString:@"-"];
     
     NSString *year = [separatedDate objectAtIndex:0];
@@ -163,55 +164,10 @@
             break;
     }
     
+   [self dateSwitchDayithType:type withCalendar:calendar withNSDateComponents:components];
     
     
-    if ((self.dateSwitchDay <= self.currentDay))
-    {
-        switch (type)
-        {
-                
-            case 1:
-            {
-                [self setUnitDay:(self.unitDay-1)];
-                [components setDay:self.unitDay];
-            }
-                break;
-            case 2:
-            {
-                [self setUnitDay:(self.unitDay+1)];
-                [components setDay:self.unitDay];
-            }
-                break;
-        }
-        
-        NSDate *newdate = [calendar dateByAddingComponents:components toDate:self.currentDate options:0];
-        components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:newdate];
-        
-        
-        [self setDateSwitchYear:[components year]];
-        [self setDateSwitchMonther:[components month]];
-        [self setDateSwitchDay:[components day]];
-        if (self.dateSwitchYear <= self.currentYear)
-        {
-            if (self.dateSwitchYear >= self.currentYear)
-            {
-                [self setDateSwitchYear:self.currentYear];
-            }
-            
-            if (self.dateSwitchMonther >= self.currentMonther)
-            {
-                [self setDateSwitchMonther:self.currentMonther];
-            }
-            
-            if (self.dateSwitchDay >= self.currentDay)
-            {
-                [self setDateSwitchDay:self.currentDay];
-            }
-            
-            [self setYearMontherDay: [NSString stringWithFormat:@"%@年%@月%@日",[self formatterNumer:self.dateSwitchYear],[self formatterNumer:self.dateSwitchMonther],[self formatterNumer:self.dateSwitchDay]]];
-            
-        }
-    }
+
     
    return self.yearMontherDay;
 }
@@ -444,6 +400,64 @@
     [self setDateSwitchYear:[components year]];
     [self setDateSwitchMonther:[components month]];
     [self setDateSwitchDay:[components day]];
+}
+
+-(void)dateSwitchDayithType:(NSInteger)type withCalendar:(NSCalendar*)calendar withNSDateComponents:(NSDateComponents*)components
+{
+    switch (type)
+    {
+            
+        case 1:
+        {
+            [self setUnitDay:(self.unitDay-1)];
+            [components setDay:self.unitDay];
+        }
+            break;
+        case 2:
+        {
+            [self setUnitDay:(self.unitDay+1)];
+            [components setDay:self.unitDay];
+        }
+            break;
+    }
+    
+    NSDate *newdate = [calendar dateByAddingComponents:components toDate:self.currentDate options:0];
+    components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:newdate];
+    
+    
+    [self setDateSwitchYear:[components year]];
+    [self setDateSwitchMonther:[components month]];
+    [self setDateSwitchDay:[components day]];
+    
+    if (self.dateSwitchYear >= self.currentYear)
+    {
+        if (self.dateSwitchMonther >= self.currentMonther)
+        {
+            if (self.dateSwitchYear <= self.currentYear)
+            {
+                if (self.dateSwitchYear >= self.currentYear)
+                {
+                    [self setDateSwitchYear:self.currentYear];
+                }
+                
+                if (self.dateSwitchMonther >= self.currentMonther)
+                {
+                    [self setDateSwitchMonther:self.currentMonther];
+                }
+                
+                if (self.dateSwitchDay >= self.currentDay)
+                {
+                    [self setDateSwitchDay:self.currentDay];
+                }
+            }
+        }
+    }
+    
+    
+    
+    
+ 
+     [self setYearMontherDay: [NSString stringWithFormat:@"%@年%@月%@日",[self formatterNumer:self.dateSwitchYear],[self formatterNumer:self.dateSwitchMonther],[self formatterNumer:self.dateSwitchDay]]];
 }
 
 

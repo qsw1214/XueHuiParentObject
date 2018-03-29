@@ -32,7 +32,7 @@
 -(UILabel *)lineLabel
 {
     if (_lineLabel==nil) {
-        _lineLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, self.contentView.frame.size.height-0.5, SCREEN_WIDTH, 0.5)];
+        _lineLabel=[[UILabel alloc] init];
         _lineLabel.backgroundColor=LineViewColor;
     }
     return _lineLabel;

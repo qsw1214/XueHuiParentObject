@@ -392,7 +392,6 @@
 		8C377CA72008B7BB001F1FC7 /* XCWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C377C9E2008B7BB001F1FC7 /* XCWebViewProgressView.m */; };
 		8C37D3401FE8A8EF00F157D1 /* XHIMNoticeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C37D33F1FE8A8EF00F157D1 /* XHIMNoticeModel.m */; };
 		8C3E55A81FD4F5B00013002A /* XHCustomPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3E55A71FD4F5B00013002A /* XHCustomPickerView.m */; };
-		8C42CFCE1FF5D86D00CEDBDA /* XHNewUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C42CFCD1FF5D86D00CEDBDA /* XHNewUserInfoViewController.m */; };
 		8C5121E41FDF64BB00973E77 /* NSDictionary+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5121E31FDF64BB00973E77 /* NSDictionary+Category.m */; };
 		8C5121E81FDF7B9300973E77 /* XHLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5121E71FDF7B9300973E77 /* XHLoginModel.m */; };
 		8C5EB0BA1FCFE604002ED0D7 /* XHSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5EB0B91FCFE604002ED0D7 /* XHSetViewController.m */; };
@@ -1309,8 +1308,6 @@
 		8C37D33F1FE8A8EF00F157D1 /* XHIMNoticeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHIMNoticeModel.m; sourceTree = "<group>"; };
 		8C3E55A61FD4F5B00013002A /* XHCustomPickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XHCustomPickerView.h; path = "daycareParent/Tool(工具类)/XHPickerView/XHCustomPickerView.h"; sourceTree = SOURCE_ROOT; };
 		8C3E55A71FD4F5B00013002A /* XHCustomPickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = XHCustomPickerView.m; path = "daycareParent/Tool(工具类)/XHPickerView/XHCustomPickerView.m"; sourceTree = SOURCE_ROOT; };
-		8C42CFCC1FF5D86D00CEDBDA /* XHNewUserInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHNewUserInfoViewController.h; sourceTree = "<group>"; };
-		8C42CFCD1FF5D86D00CEDBDA /* XHNewUserInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHNewUserInfoViewController.m; sourceTree = "<group>"; };
 		8C5121E21FDF64BB00973E77 /* NSDictionary+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Category.h"; sourceTree = "<group>"; };
 		8C5121E31FDF64BB00973E77 /* NSDictionary+Category.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Category.m"; sourceTree = "<group>"; };
 		8C5121E61FDF7B9300973E77 /* XHLoginModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XHLoginModel.h; path = "daycareParent/注册登录/model/XHLoginModel.h"; sourceTree = SOURCE_ROOT; };
@@ -3158,8 +3155,6 @@
 				8C922BD81FDE65EB00BA0EAB /* XHForgetViewController.m */,
 				4BA8C4C61FCFD430006CBEBC /* XHGuideViewController.h */,
 				4BA8C4C71FCFD430006CBEBC /* XHGuideViewController.m */,
-				8C42CFCC1FF5D86D00CEDBDA /* XHNewUserInfoViewController.h */,
-				8C42CFCD1FF5D86D00CEDBDA /* XHNewUserInfoViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -4343,7 +4338,6 @@
 				4B278AC820103FE800293F30 /* RCDLiveKitUtility.m in Sources */,
 				4B80F2C91FCBF04F00BC7B52 /* SDWebImageCompat.m in Sources */,
 				4B80F2CC1FCBF04F00BC7B52 /* SDWebImageGIFCoder.m in Sources */,
-				8C42CFCE1FF5D86D00CEDBDA /* XHNewUserInfoViewController.m in Sources */,
 				4B4A00171FE2411200B8A8F8 /* XHDynamicsCell.m in Sources */,
 				8C0D26FC2069D98000C246CD /* XHUpdateHelper.m in Sources */,
 				4BD8D40D202072A300A98CEE /* XHStoreHelper.m in Sources */,

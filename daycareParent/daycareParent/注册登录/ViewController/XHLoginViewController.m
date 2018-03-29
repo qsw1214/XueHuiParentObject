@@ -15,8 +15,6 @@
 #import "MianTabBarViewController.h"
 #import "AppDelegate.h"
 #import "XHChildListModel.h"
-#import "XHNewUserInfoViewController.h"
-
 @interface XHLoginViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UIScrollView *scrollView;
 @property(nonatomic,strong)ParentImageView *imageView;

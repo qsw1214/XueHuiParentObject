@@ -9,15 +9,6 @@
 #import <RongIMKit/RongIMKit.h>
 
 
-typedef NS_ENUM(NSInteger,XHRCModelType)
-{
-    XHRCTeacherBookType=1,//!< 给老师留言
-
-    XHRCHomeWorkType=2,//!< 家庭作业
-
-    XHRCnoticeType=3,//!< 通知公告
-
-};
 
 @interface XHRCModel : RCConversationModel
 @property(nonatomic,copy)NSString *RCtitle;//!<标题
@@ -32,6 +23,5 @@ typedef NS_ENUM(NSInteger,XHRCModelType)
 
 @property(nonatomic,assign)NSInteger CellHeight;//!< 行高
 
-@property(nonatomic,assign)XHRCModelType modelType;
 -(id)initWithDic:(NSDictionary *)dic;
 @end

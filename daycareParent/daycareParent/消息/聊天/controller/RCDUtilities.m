@@ -10,7 +10,7 @@
 #import "DefaultPortraitView.h"
 #import "RCDUserInfo.h"
 //#import "pinyin.h"
-
+#import "CameraManageViewController.h"
 @implementation RCDUtilities
 + (UIImage *)imageNamed:(NSString *)name ofBundle:(NSString *)bundleName {
     UIImage *image = nil;
@@ -37,7 +37,7 @@
         DefaultPortraitView *defaultPortrait = [[DefaultPortraitView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
         [defaultPortrait setColorAndLabel:groupInfo.groupId Nickname:groupInfo.groupName with:XHRCDDefaultPortraitViewHeaderOtherType];
         UIImage *portrait = [defaultPortrait imageFromView];
-
+       
         BOOL result = [UIImagePNGRepresentation(portrait) writeToFile:filePath atomically:YES];
         if (result) {
             NSURL *portraitPath = [NSURL fileURLWithPath:filePath];
@@ -51,21 +51,26 @@
 + (NSString *)defaultUserPortrait:(RCUserInfo *)userInfo with:(XHDefaultPortraitViewType)type
 {
     NSString *filePath = [[self class] getIconCachePath:[NSString stringWithFormat:@"user%@.png", userInfo.userId]];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
+    NSString *name=[NSString safeString:(NSString *)[NSUserDefaults objectItemForKey:[NSString stringWithFormat:@"user_%@",userInfo.userId]]];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]&&[name isEqualToString:userInfo.name])
     {
         NSURL *portraitPath = [NSURL fileURLWithPath:filePath];
-        
         return [portraitPath absoluteString];
-    } else {
+    }
+    else
+    {
         DefaultPortraitView *defaultPortrait = [[DefaultPortraitView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
         [defaultPortrait setColorAndLabel:userInfo.userId Nickname:userInfo.name with:type];
         UIImage *portrait = [defaultPortrait imageFromView];
-
         BOOL result = [UIImagePNGRepresentation(portrait) writeToFile:filePath atomically:YES];
-        if (result) {
+        if (result)
+        {
             NSURL *portraitPath = [NSURL fileURLWithPath:filePath];
+            [NSUserDefaults setItemObject:userInfo.name forKey:[NSString stringWithFormat:@"user_%@",userInfo.userId]];
             return [portraitPath absoluteString];
-        } else {
+        }
+        else
+        {
             return nil;
         }
     }

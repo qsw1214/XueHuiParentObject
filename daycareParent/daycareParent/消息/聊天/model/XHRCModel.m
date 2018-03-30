@@ -18,21 +18,5 @@
     }
     return self;
 }
--(void)setModelType:(XHRCModelType)modelType
-{
-    _modelType=modelType;
-    switch (modelType) {
-        case XHRCnoticeType:
-        {
-            _CellHeight=75;
-        }
-            break;
-            
-        default:
-        {
-            _CellHeight=60;
-        }
-            break;
-    }
-}
+
 @end

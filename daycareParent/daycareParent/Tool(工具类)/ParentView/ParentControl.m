@@ -14,6 +14,20 @@
 
 
 @implementation ParentControl
+-(instancetype)init
+{
+    if (self=[super init]) {
+       
+    }
+    return self;
+}
+-(instancetype)initWithFrame:(CGRect)frame
+{
+    if (self=[super initWithFrame:frame]) {
+    
+    }
+    return self;
+}
 #pragma mark-----UILabel
 -(void)setNumberLabel:(NSInteger)number
 {
@@ -49,6 +63,13 @@
 {
     ParentLabel *label=self.numberLabelArry[index];
     [label setTextColor:color];
+}
+
+-(void)setLabelCornerRadius:(CGFloat)radius withNumberIndex:(NSInteger)index
+{
+    ParentLabel *label=self.numberLabelArry[index];
+    label.layer.cornerRadius=radius;
+    label.layer.masksToBounds=YES;
 }
 
 -(void)setLabelBackgroundColor:(UIColor *)color withNumberIndex:(NSInteger)index

@@ -48,7 +48,10 @@
 // iOS 8 及以下请用这个   ping++支付回调
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(id)annotation
 {
-  
+    if (url)
+    {
+        [NSUserDefaults setItemObject:@1 forKey:@"shareWXUrl"];
+    }
     return YES;
 }
 
@@ -57,7 +60,10 @@
 // iOS 9 以上请用这个
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary *)options {
     
-   
+    if (url)
+    {
+        [NSUserDefaults setItemObject:@1 forKey:@"shareWXUrl"];
+    }
     return YES;
 }
 
@@ -391,33 +397,14 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 #pragma mark-----收到融云消息后回调方法
 - (void)didReceiveMessageNotification:(NSNotification *)notification{
 
-   
-    dispatch_async(dispatch_get_main_queue(),^{
-        RCMessage *messgae = (RCMessage *)notification.object;
-        RCUserInfo *user = messgae.content.senderUserInfo;
-        XHMessageUserInfo *info = [[XHMessageUserInfo alloc] init];
-        info.name = user.name;
-        info.userId = user.userId;
-        [info saveOrUpdateByColumnName:@"userId" AndColumnValue:user.userId];
-        [self reloadIMBadge];
-        UIImageView *imageView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 0.01, 0.01)];
-        [self.window addSubview:imageView];
-        imageView.hidden=YES;
-        [imageView sd_setImageWithURL:[NSURL URLWithString:user.portraitUri] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL)
-         {
-             if (image)
-             {
-                info.headPic = user.portraitUri;
-                 
-             }
-             else
-             {
-                info.headPic= [RCDUtilities defaultUserPortrait:user with:XHRCDDefaultPortraitViewHeaderOtherType];
-             }
-         }];
-        [self sendRCIMInfo];
-    });
-    
+    RCMessage *messgae = (RCMessage *)notification.object;
+    RCUserInfo *user = messgae.content.senderUserInfo;
+    XHMessageUserInfo *info = [[XHMessageUserInfo alloc] init];
+    info.name = user.name;
+    info.userId = user.userId;
+    [info saveOrUpdateByColumnName:@"userId" AndColumnValue:user.userId];
+    [self reloadIMBadge];
+    [self sendRCIMInfo];
 }
 - (void)reloadIMBadge
 {

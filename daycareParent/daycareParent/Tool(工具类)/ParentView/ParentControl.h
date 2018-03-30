@@ -16,6 +16,7 @@
 -(void)setLabelTextAlignment:(NSTextAlignment)textAlignment withNumberIndex:(NSInteger)index;
 -(void)setLabelFont:(UIFont *)font withNumberIndex:(NSInteger)index;
 -(void)setLabelTextColor:(UIColor *)color withNumberIndex:(NSInteger)index;
+-(void)setLabelCornerRadius:(CGFloat)radius withNumberIndex:(NSInteger)index;
 -(void)setLabelBackgroundColor:(UIColor *)color withNumberIndex:(NSInteger)index;
 
 -(void)setNumberImageView:(NSInteger)number;

@@ -138,6 +138,7 @@
         switch (state) {
             case SSDKResponseStateBegin:
             {
+                [NSUserDefaults removeObjectItemForKey:@"shareWXUrl"];
                 //设置UI等操作
                 break;
             }
@@ -150,6 +151,7 @@
                                                           cancelButtonTitle:@"确定"
                                                           otherButtonTitles:nil];
                 [alertView show];
+                [NSUserDefaults removeObjectItemForKey:@"shareWXUrl"];
                 break;
             }
             case SSDKResponseStateFail:
@@ -164,15 +166,24 @@
             }
             case SSDKResponseStateCancel:
             {
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享已取消"
-                                                                    message:nil
-                                                                   delegate:nil
-                                                          cancelButtonTitle:@"确定"
-                                                          otherButtonTitles:nil];
-                [alertView show];
+                if ([[NSUserDefaults objectItemForKey:@"shareWXUrl"] integerValue]==1)
+                {
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享已取消"
+                                                                        message:nil
+                                                                       delegate:nil
+                                                              cancelButtonTitle:@"确定"
+                                                              otherButtonTitles:nil];
+                    [alertView show];
+                }
+                
+                [NSUserDefaults removeObjectItemForKey:@"shareWXUrl"];
+                
                 break;
             }
             default:
+            {
+                 [NSUserDefaults removeObjectItemForKey:@"shareWXUrl"];
+            }
                 break;
         }
     }];

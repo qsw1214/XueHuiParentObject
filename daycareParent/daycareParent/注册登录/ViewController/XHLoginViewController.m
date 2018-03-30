@@ -229,7 +229,7 @@
 -(ParentImageView *)imageView
 {
     if (_imageView==nil) {
-        _imageView=[[ParentImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-130)/2.0, (SCREEN_HEIGHT/2.0-130)/2.0, 130, 130)];
+        _imageView=[[ParentImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-120)/2.0, (SCREEN_HEIGHT/2.0-130)/2.0, 120, 120)];
         _imageView.image=[UIImage imageNamed:@"login_logo"];
     }
     return _imageView;

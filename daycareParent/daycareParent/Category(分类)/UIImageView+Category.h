@@ -10,6 +10,8 @@
 
 @interface UIImageView (Category)
 
+-(void)setAnimationImageArray:(NSArray<UIImage *> *)animationImageArray;
+
 -(void)startAnimating:(BOOL)animating;
 
 @end

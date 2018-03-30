@@ -11,13 +11,20 @@
 @implementation UIImageView (Category)
 
 
+-(void)setAnimationImageArray:(NSArray<UIImage *> *)animationImageArray
+{
+//    [self setImage:[animationImageArray objectAtIndex:0]];
+    [self setAnimationImages:animationImageArray];
+    
+}
+
+
 -(void)startAnimating:(BOOL)animating
 {
     if (animating)
     {
         [self startAnimating];
     }
-    
 }
 
 @end

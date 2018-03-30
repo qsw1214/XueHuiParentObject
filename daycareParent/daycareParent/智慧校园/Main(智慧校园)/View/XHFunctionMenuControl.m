@@ -97,7 +97,7 @@
     }];
     [collectionView reloadData];
 
-    [self performSelector:@selector(startAnimatingWithIndexPath:) withObject:indexPath afterDelay:0.5];
+    [self performSelector:@selector(startAnimatingWithIndexPath:) withObject:indexPath afterDelay:0.35];
 }
 
 #pragma mark UICollectionViewDelegateFlowLayout

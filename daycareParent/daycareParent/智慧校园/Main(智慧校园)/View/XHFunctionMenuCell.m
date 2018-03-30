@@ -61,7 +61,15 @@
         //根据类型进行控件设置Frame
         [self.markImageView setFrame:CGRectMake(((itemFrame.itemSize.width-30.0))/2.0, 10.0, 30.0, 30.0)];
         [self.titleLabel setFrame:CGRectMake(0, (self.markImageView.bottom+60.0), itemFrame.itemSize.width, (itemFrame.itemSize.width-(25+(itemFrame.itemSize.width-50.0))))];
-        [self.animationImageView setFrame:CGRectMake(0, (self.markImageView.bottom+1.0), (itemFrame.itemSize.width),45.0)];
+        if (itemFrame.model.tage)
+        {
+            [self.animationImageView setFrame:CGRectMake(0, (self.markImageView.bottom+10.0), (itemFrame.itemSize.width),35.0)];
+        }
+        else
+        {
+            [self.animationImageView setFrame:CGRectMake(0, (self.markImageView.bottom+10.0), (itemFrame.itemSize.width),40.0)];
+        }
+        
         [self.backGroundImageView setFrame:CGRectMake(0, (self.markImageView.bottom+10.0), (itemFrame.itemSize.width), itemFrame.itemSize.height-(self.markImageView.bottom+10.0))];
         
         
@@ -76,7 +84,7 @@
         [self.backGroundImageView setImage:[UIImage imageNamed:itemFrame.model.iconName]];
         
         // 设置图片的序列帧 图片数组
-        [self.animationImageView setAnimationImages:itemFrame.model.animatingArray];
+        [self.animationImageView setAnimationImageArray:itemFrame.model.animatingArray];
         [self.animationImageView startAnimating:itemFrame.model.startAnimating];
     }
     
@@ -103,7 +111,6 @@
     if (_backGroundImageView == nil)
     {
         _backGroundImageView = [[UIImageView alloc]init];
-        [_backGroundImageView setContentMode:UIViewContentModeScaleToFill];
         [_backGroundImageView.layer setMasksToBounds:YES];
     }
     return _backGroundImageView;
@@ -114,11 +121,13 @@
     if (_animationImageView == nil)
     {
         _animationImageView = [[UIImageView alloc]init];
-        [_animationImageView setContentMode:UIViewContentModeScaleAspectFit];
+        [_animationImageView setContentMode:UIViewContentModeScaleAspectFill];
+//        [_animationImageView setBackgroundColor:[UIColor redColor]];
         //动画重复次数
+        [_animationImageView.layer setMasksToBounds:YES];
         [_animationImageView setAnimationRepeatCount:1];
         //动画执行时间,多长时间执行完动画
-        [_animationImageView setAnimationDuration:0.9];
+        [_animationImageView setAnimationDuration:0.35];
     }
     return _animationImageView;
 }

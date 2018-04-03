@@ -64,7 +64,15 @@
 }
 - (NSInteger)tableView:(BaseTableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return kTitle.count;
+    if ([[XHHelper sharedHelper] isWXAppInstalled])
+    {
+       return kTitle.count;
+    }
+    else
+    {
+        return kNoShareTitle.count;
+    }
+    
 }
 - (UITableViewCell *)tableView:(BaseTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -80,39 +88,76 @@
 -(void)tableView:(BaseTableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    switch (indexPath.row) {
+    if ([[XHHelper sharedHelper] isWXAppInstalled])
+    {
+        
+        switch (indexPath.row) {
             case 0:
-        {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://400-6778599"]];
-        }
-            break;
+            {
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://400-6778599"]];
+            }
+                break;
             case 1:
             {
                 XHFeedBackViewController *feedBack=[[XHFeedBackViewController alloc] initHiddenWhenPushHidden];
                 [self.navigationController pushViewController:feedBack animated:YES];
             }
-            break;
+                break;
             case 2:
-        {
-            [self.shareView show];
-        }
-            break;
+            {
+                [self.shareView show];
+            }
+                break;
             case 3:
-        {
-            XHSystemNotificViewController *system=[[XHSystemNotificViewController alloc] initHiddenWhenPushHidden];
-            [self.navigationController pushViewController:system animated:YES];
+            {
+                XHSystemNotificViewController *system=[[XHSystemNotificViewController alloc] initHiddenWhenPushHidden];
+                [self.navigationController pushViewController:system animated:YES];
+            }
+                break;
+            case 4:
+            {
+                XHSetViewController *set=[XHSetViewController new];
+                [set setHidesBottomBarWhenPushed:YES];
+                [self.navigationController pushViewController:set animated:YES];
+            }
+                break;
         }
-            break;
-        case 4:
-        {
-            XHSetViewController *set=[XHSetViewController new];
-            [set setHidesBottomBarWhenPushed:YES];
-            [self.navigationController pushViewController:set animated:YES];
-        }
-            break;
     }
+    else
+    {
+        
+        switch (indexPath.row) {
+            case 0:
+            {
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://400-6778599"]];
+            }
+                break;
+            case 1:
+            {
+                XHFeedBackViewController *feedBack=[[XHFeedBackViewController alloc] initHiddenWhenPushHidden];
+                [self.navigationController pushViewController:feedBack animated:YES];
+            }
+                break;
+           
+            case 2:
+            {
+                XHSystemNotificViewController *system=[[XHSystemNotificViewController alloc] initHiddenWhenPushHidden];
+                [self.navigationController pushViewController:system animated:YES];
+            }
+                break;
+            case 3:
+            {
+                XHSetViewController *set=[XHSetViewController new];
+                [set setHidesBottomBarWhenPushed:YES];
+                [self.navigationController pushViewController:set animated:YES];
+            }
+                break;
+        }
+    }
+   
     
 }
+
 -(UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH ,15)];

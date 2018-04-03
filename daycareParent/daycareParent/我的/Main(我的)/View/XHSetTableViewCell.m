@@ -10,6 +10,8 @@
 
 #define kTitlePic @[@"ico_mycontact",@"ico_myquestion",@"ico_myshare",@"ico_mynotice",@"ico_myset"]
 
+#define kNoShareTitlePic @[@"ico_mycontact",@"ico_myquestion",@"ico_mynotice",@"ico_myset"]
+
 @interface XHSetTableViewCell()
 @property(nonatomic,strong)ParentImageView *setImageView;
 @property(nonatomic,strong)ParentLabel *setContentLabel;
@@ -34,6 +36,7 @@
         [self.contentView addSubview:self.lineLabel];
         
         [self.contentView addSubview:self.arrowImageView];
+      
     }
     return self;
 }
@@ -43,9 +46,20 @@
     _setLabel.frame=CGRectMake(55, (self.contentView.frame.size.height-30)/2.0, SCREEN_WIDTH-193, 30);
     self.arrowImageView.frame=CGRectMake(SCREEN_WIDTH-22, (self.contentView.frame.size.height-14)/2.0, 8, 14);
     self.lineLabel.frame=CGRectMake(0, self.contentView.frame.size.height-0.5, SCREEN_WIDTH, 0.5);
+    if ([[XHHelper sharedHelper] isWXAppInstalled])
+    {
+        self.setImageView.image=[UIImage imageNamed:kTitlePic[row]];
+        self.setLabel.text=kTitle[row];
+        
+        return;
+    }
+    else
+    {
+        self.setImageView.image=[UIImage imageNamed:kNoShareTitlePic[row]];
+        self.setLabel.text=kNoShareTitle[row];
+    }
     
-    self.setImageView.image=[UIImage imageNamed:kTitlePic[row]];
-    self.setLabel.text=kTitle[row];
+   
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

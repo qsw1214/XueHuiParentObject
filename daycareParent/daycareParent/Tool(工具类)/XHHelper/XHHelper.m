@@ -11,7 +11,6 @@
 #import "UIImage+DevKit.h"
 #import "UIImage+Resizing.h"
 #import <sys/utsname.h>
-
 #define xOriginImageSize CGSizeMake(1080, 1920)
 
 @implementation XHHelper
@@ -64,8 +63,19 @@ static XHHelper *helper = nil;
     phone = [NSString stringWithFormat:@"sms://%@",phone];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phone]];
 }
-
-
+#pragma mark- 判断是否有微信
+-(BOOL)isWXAppInstalled
+{
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"weixin://"]])
+    {
+        return YES;
+    }
+    else
+    {
+         return NO;
+    }
+   
+}
 
 #pragma mark 获取当前视图所在的视图控制器
 /**

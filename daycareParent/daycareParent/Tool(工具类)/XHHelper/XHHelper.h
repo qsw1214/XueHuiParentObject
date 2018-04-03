@@ -41,6 +41,11 @@
  */
 -(void)sendMessage:(NSString*)phone;
 
+/**
+ 判断是否安装微信
+
+ */
+-(BOOL)isWXAppInstalled;
 
 #pragma mark 获取当前视图所在的视图控制器
 /**

@@ -8,6 +8,7 @@
 
 #import "XHHeaderControl.h"
 
+
 @interface XHHeaderControl ()
 
 @property (nonatomic,strong) UIImageView *imageView; //!< 头像视图

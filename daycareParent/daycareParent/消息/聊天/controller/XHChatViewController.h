@@ -1,13 +1,15 @@
 //
 //  XHChatViewController.h
-//  daycareParent
+//  TLMessageView
 //
-//  Created by 钧泰科技 on 2017/12/8.
-//  Copyright © 2017年 XueHui. All rights reserved.
+//  Created by 郭锐 on 16/8/18.
+//  Copyright © 2016年 com.garry.message. All rights reserved.
 //
 
-#import "BaseViewController.h"
-#import <RongIMKit/RongIMKit.h>
-#pragma mark------------聊天列表------------
-@interface XHChatViewController : RCConversationListViewController
+#import <UIKit/UIKit.h>
+
+@interface XHChatViewController : BaseViewController
+@property(nonatomic,strong)UITableView *chatTableView;
+@property(nonatomic,copy)NSString *targetID;
+-(void)scrollToBottom;
 @end

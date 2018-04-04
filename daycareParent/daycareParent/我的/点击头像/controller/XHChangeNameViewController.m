@@ -9,9 +9,8 @@
 #import "XHChangeNameViewController.h"
 #import <RongIMKit/RongIMKit.h>
 #import <RongIMLib/RongIMLib.h>
-#import "RCDUtilities.h"
 #import "XHMessageUserInfo.h"
-#import "AppDelegate.h"
+
 @interface XHChangeNameViewController ()
 @property(nonatomic,strong)UITextField *textFeild;
 @end
@@ -50,9 +49,6 @@
             [self.navigationController popViewControllerAnimated:YES];
             if (self.isRefresh) {
                 self.isRefresh(YES);
-                [self chageHeadImgView];
-                AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-                [app sendRCIMInfo];
             }
             
         }
@@ -60,35 +56,7 @@
         
     }];
 }
--(void)chageHeadImgView
-{
-    XHMessageUserInfo *info = [XHMessageUserInfo findFirstByCriteria:[NSString stringWithFormat:@"WHERE userId = %@",[XHUserInfo sharedUserInfo].guardianModel.guardianId]];
-    RCUserInfo *userInfo = [[RCUserInfo alloc] init];
-    userInfo.name = info.name;
-    userInfo.userId = info.userId;
-    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:[[self class] getIconCachePath:[NSString stringWithFormat:@"user%@.png", userInfo.userId]]];
-    if (fileExists)
-    {
-        NSError *err;
-        [[NSFileManager defaultManager] removeItemAtPath:[[self class] getIconCachePath:[NSString stringWithFormat:@"user%@.png", userInfo.userId]] error:&err];
-        [RCDUtilities defaultUserPortrait:userInfo with:XHRCDDefaultPortraitViewHeaderOtherType];
-    }
-    
-}
-+ (NSString *)getIconCachePath:(NSString *)fileName {
-    NSString *cachPath =
-    [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *filePath =
-    [cachPath stringByAppendingPathComponent:[NSString stringWithFormat:@"CachedIcons/%@",
-                                              fileName]]; // 保存文件的名称
-    
-    NSString *dirPath = [cachPath stringByAppendingPathComponent:[NSString stringWithFormat:@"CachedIcons"]];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if (![fileManager fileExistsAtPath:dirPath]) {
-        [fileManager createDirectoryAtPath:dirPath withIntermediateDirectories:YES attributes:nil error:nil];
-    }
-    return filePath;
-}
+
 -(UITextField *)textFeild
 {
     if (_textFeild==nil) {

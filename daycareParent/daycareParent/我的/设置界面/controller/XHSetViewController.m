@@ -10,7 +10,7 @@
 #import "XHUserTableViewCell.h"
 #import "XHChagePhoneViewController.h"
 #import "XHAboutUsViewController.h"
-#import <RongIMKit/RongIMKit.h>
+#import <RongIMLib/RongIMLib.h>
 #import "XHLoginViewController.h"
 #import "JPUSHService.h"
 #import "XHSystemModel.h"
@@ -103,7 +103,7 @@
         } error:^(NSError *error) {
              [XHShowHUD hideHud];
         }];
-        [[RCIM sharedRCIM]disconnect];
+        [[RCIMClient sharedRCIMClient] disconnect:YES];
         [JPUSHService setTags:nil alias:@"" fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias){}];
         [NSUserDefaults removeObjectItemForKey:AutoLogin];
         XHLoginViewController *login=[XHLoginViewController new];

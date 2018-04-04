@@ -6,11 +6,9 @@
 //  Copyright © 2018年 XueHui. All rights reserved.
 //
 
-#import <RongIMKit/RongIMKit.h>
 
 
-
-@interface XHRCModel : RCConversationModel
+@interface XHRCModel : ParentModel
 @property(nonatomic,copy)NSString *RCtitle;//!<标题
 
 @property(nonatomic,copy)NSString *RCtitlePic;//!< 头像

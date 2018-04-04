@@ -8,13 +8,7 @@
 
 #import <RongIMKit/RongIMKit.h>
 
-@interface XHRCTableViewCell : RCConversationBaseCell
-@property(nonatomic,strong)ParentImageView *headImageView;
-@property(nonatomic,strong)ParentLabel *titleLab;
-@property(nonatomic,strong)ParentBackLabel *ContentLab;
-@property(nonatomic,strong)ParentBackLabel *detailLab;
-@property(nonatomic,strong)UILabel *smallLab;
-@property(nonatomic,strong)UILabel *bgLabel;
-@property(nonatomic,strong)UIImageView *smalImage;
+@interface XHRCTableViewCell : ParentTableViewCell
+
 -(void)setItemObject:(RCConversationModel *)model;
 @end

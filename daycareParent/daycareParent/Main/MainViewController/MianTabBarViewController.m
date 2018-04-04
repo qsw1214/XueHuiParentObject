@@ -8,7 +8,7 @@
 
 #import "MianTabBarViewController.h"
 #import "XHSmartCampusViewController.h"
-#import "XHChatViewController.h"
+#import "XHChatListViewController.h"
 #import "XHPersonalCenterViewController.h"
 #import "XHAddressBookViewController.h"
 #import "TabBarItem.h"
@@ -45,7 +45,7 @@
     XHSmartCampusViewController *smartCampus = [[XHSmartCampusViewController alloc] init];
     [self addChildViewController:smartCampus];
     
-    XHChatViewController *chat = [[XHChatViewController alloc] init];
+    XHChatListViewController *chat = [[XHChatListViewController alloc] init];
     [self addChildViewController:chat];
     
     
@@ -88,7 +88,7 @@
 -(void)reloadIMBadge
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSInteger aaa=(NSInteger)[RCIMClient sharedRCIMClient].getTotalUnreadCount+[XHUserInfo sharedUserInfo].sum;
+        NSInteger aaa=(NSInteger)[[RCIMClient sharedRCIMClient] getTotalUnreadCount]+[XHUserInfo sharedUserInfo].sum;
         UILabel *smallLabel = [self.customTabBarView viewWithTag:1008611];
         UIButton *button = [self.customTabBarView viewWithTag: 2];
         smallLabel.hidden=NO;

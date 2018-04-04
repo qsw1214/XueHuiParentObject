@@ -9,9 +9,8 @@
 #import "XHAddressBookToolBar.h"
 #import "XHAddressBookLecturesControl.h"
 #import "XHHelper.h"
-#import "XHRCConversationViewController.h"
+#import "XHChatViewController.h"
 #import "XHMessageUserInfo.h"
-#import "AppDelegate.h"
 @interface XHAddressBookToolBar ()
 
 @property (nonatomic,strong) XHAddressBookToolBarItemControl *phoneControl; //!< 电话
@@ -77,12 +76,10 @@
                 messageInfo.headPic = [NSString stringWithFormat:@"%@",self.itemFrame.model.headerUrl];
                 messageInfo.userId = [NSString stringWithFormat:@"%@",self.itemFrame.model.userID];
                 [messageInfo saveOrUpdateByColumnName:@"userId" AndColumnValue:[NSString stringWithFormat:@"%@",self.itemFrame.model.userID]];
-               AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-               [app sendRCIMInfo];
-                XHRCConversationViewController *conversationVC = [[XHRCConversationViewController alloc] init];
-            conversationVC.titleLabel.text=self.itemFrame.model.teacherName;
-                conversationVC.conversationType = ConversationType_PRIVATE;
-                conversationVC.targetId = [NSString stringWithFormat:@"%@", self.itemFrame.model.userID];
+               [[XHChatManager shareManager] sendUserInfo];
+                XHChatViewController *conversationVC = [[XHChatViewController alloc] init];
+            [conversationVC setNavtionTitle:self.itemFrame.model.teacherName];
+                conversationVC.targetID = [NSString stringWithFormat:@"%@", self.itemFrame.model.userID];
               [[XHHelper sharedHelper].currentlyViewController.navigationController pushViewController:conversationVC animated:YES];
         }
             break;

@@ -8,8 +8,7 @@
 
 #import "XHTeacherAddressBookViewController.h"
 #import "XHAddressBookHeader.h"
-#import "AppDelegate.h"
-#import "XHRCConversationViewController.h"
+#import "XHChatViewController.h"
 #import "XHMessageUserInfo.h"
 
 
@@ -135,13 +134,11 @@
              messageInfo.userId = model.ID;
              [messageInfo saveOrUpdateByColumnName:@"userId" AndColumnValue:model.ID];
             
-             AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-             [app sendRCIMInfo];
+             [[XHChatManager shareManager] sendUserInfo];
              
-             XHRCConversationViewController *conversationVC = [[XHRCConversationViewController alloc] init];
-             conversationVC.titleLabel.text=model.teacherName;
-             conversationVC.conversationType = ConversationType_PRIVATE;
-             conversationVC.targetId = [NSString stringWithFormat:@"%@",model.ID];
+             XHChatViewController *conversationVC = [[XHChatViewController alloc] init];
+            [conversationVC setNavtionTitle:model.teacherName];
+             conversationVC.targetID = [NSString stringWithFormat:@"%@",model.ID];
             conversationVC.hidesBottomBarWhenPushed = YES;
           [self.navigationController pushViewController:conversationVC animated:YES];
             

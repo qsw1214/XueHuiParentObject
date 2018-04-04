@@ -9,8 +9,6 @@
 #import "AppDelegate.h"
 #import "MainRootControllerHelper.h"
 #import "XHGuideViewController.h" //!< 引导视图控制器
-#import <RongIMKit/RongIMKit.h>
-#import <RongIMLib/RongIMLib.h>
 
 #import "XHMessageUserInfo.h"
 #import "XHChatViewController.h"
@@ -34,9 +32,10 @@
 #import <TencentOpenAPI/QQApiInterface.h>
 #import "WXApi.h"
 #import "WeiboSDK.h"
-#import "RCDUtilities.h"
 #import "IQKeyboardManager.h"
-@interface AppDelegate ()<RCIMConnectionStatusDelegate,RCIMUserInfoDataSource,JPUSHRegisterDelegate,CLLocationManagerDelegate,UIAlertViewDelegate>  //添加代理
+#import "XHChatManager.h"
+#import <RongIMLib/RongIMLib.h>
+@interface AppDelegate ()<RCConnectionStatusChangeDelegate,JPUSHRegisterDelegate,CLLocationManagerDelegate,UIAlertViewDelegate>  //添加代理
 {
     AMapLocationManager *_locationManager;
 }
@@ -108,15 +107,6 @@
         [application registerForRemoteNotificationTypes:myTypes];
     }
 
-    
-    //融云监听消息
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(didReceiveMessageNotification:)
-     name:RCKitDispatchMessageNotification
-     object:nil];
-    
-   
     [AMapServices sharedServices].apiKey = @"439149f18d037f44496205a3ec99f24d";
     
     if (_locationManager == nil)
@@ -242,29 +232,9 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
  */
 -(void)loginRongCloud:(NSString *)token
 {
-    //初始化融云SDK
-    [[RCIM sharedRCIM] initWithAppKey:RONGCLOUD_IM_APPKEY_];
-    [[RCIM sharedRCIM] setConnectionStatusDelegate:self];
-    [[RCIM sharedRCIM] setUserInfoDataSource:self];
-    //登录融云服务器,开始阶段可以先从融云API调试网站获取，之后token需要通过服务器到融云服务器取。
-    [[RCIM sharedRCIM] connectWithToken:token success:^(NSString *userId) {
-        NSLog(@"userId================%@",userId);//selfID,guaidId
-        //设置用户信息提供者,页面展现的用户头像及昵称都会从此代理取
-        [[RCIM sharedRCIM] setUserInfoDataSource:self];
-        BOOL creat = [XHMessageUserInfo createTable];
-        if (creat) {
-            NSLog(@"表已存在");
-        }else{
-            NSLog(@"建表");
-        }
-        [self sendRCIMInfo];
-        [self reloadIMBadge];
-        NSLog(@"Login successfully with userId: %@.", userId);
-    } error:^(RCConnectErrorCode status) {
-        NSLog(@"login error status: %ld.", (long)status);
-    } tokenIncorrect:^{
-        NSLog(@"token 无效 ，请确保生成token 使用的appkey 和初始化时的appkey 一致");
-    }];
+    [[XHChatManager shareManager] initEnv];
+    [[XHChatManager shareManager] connectWithToken:token];
+    [[RCIMClient sharedRCIMClient] setRCConnectionStatusChangeDelegate:self];
 }
 - (void)setJpushAlias:(NSString *)loginName
 {
@@ -273,46 +243,15 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         }];
 }
 
-#pragma mark==========刷新当前用户信息
-- (void)sendRCIMInfo
-{
-   
-    dispatch_async(dispatch_get_main_queue(), ^{
-        UIImageView *imageView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 0.01, 0.01)];
-        [self.window addSubview:imageView];
-        imageView.hidden=YES;
-        [[RCIM sharedRCIM] setUserInfoDataSource:self];
-        [[RCIM sharedRCIM] setConnectionStatusDelegate:self];
-        XHUserInfo *user = [XHUserInfo sharedUserInfo];
-        RCUserInfo *userInfo = [[RCUserInfo alloc] init];
-        userInfo.userId = user.guardianModel.guardianId;
-        [imageView sd_setImageWithURL:[NSURL URLWithString:ALGetFileHeadThumbnail(user.guardianModel.headPic)] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL)
-         {
-             if (image)
-             {
-                 userInfo.portraitUri = ALGetFileHeadThumbnail(user.guardianModel.headPic);
-             }
-             else
-             {
-                 userInfo.portraitUri=[RCDUtilities defaultUserPortrait:userInfo with:XHRCDDefaultPortraitViewHeaderOtherType];
-             }
-         }];
-        userInfo.name = user.guardianModel.guardianName;
-        [RCIM sharedRCIM].enableMessageAttachUserInfo = YES;
-        [RCIM sharedRCIM].currentUserInfo = userInfo;
-        [[RCIM sharedRCIM] refreshUserInfoCache:userInfo withUserId:user.guardianModel.guardianId];
 
-    });
-    
- 
-}
 #pragma mark-----判断融云网络状态
 /**
  *  网络状态变化。
  *
  *  @param status 网络状态。
  */
-- (void)onRCIMConnectionStatusChanged:(RCConnectionStatus)status {
+- (void)onConnectionStatusChanged:(RCConnectionStatus)status
+{
     if (status == ConnectionStatus_KICKED_OFFLINE_BY_OTHER_CLIENT) {
         UIAlertView *alert = [[UIAlertView alloc]
                               initWithTitle:@"提示"
@@ -323,7 +262,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                               otherButtonTitles:nil, nil];
         //alert.delegate=self;
         [alert show];
-        [[RCIM sharedRCIM] disconnect:NO];
+        [[RCIMClient sharedRCIMClient] disconnect:NO];
         //跳转到登录页面
     }
     else if (status == ConnectionStatus_TOKEN_INCORRECT) {
@@ -336,7 +275,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                                   otherButtonTitles:nil, nil];
            // alert.delegate=self;
             [alert show];
-            [[RCIM sharedRCIM] disconnect:NO];
+           [[RCIMClient sharedRCIMClient] disconnect:NO];
             //跳转到登录页面
         });
     }
@@ -394,53 +333,12 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     }
     completionHandler();  // 系统要求执行这个方法
 }
-#pragma mark-----收到融云消息后回调方法
-- (void)didReceiveMessageNotification:(NSNotification *)notification{
 
-    RCMessage *messgae = (RCMessage *)notification.object;
-    RCUserInfo *user = messgae.content.senderUserInfo;
-    XHMessageUserInfo *info = [[XHMessageUserInfo alloc] init];
-    info.name = user.name;
-    info.userId = user.userId;
-    [info saveOrUpdateByColumnName:@"userId" AndColumnValue:user.userId];
-    [self reloadIMBadge];
-    [self sendRCIMInfo];
-}
 - (void)reloadIMBadge
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"noticeIM" object:nil];
 }
-#pragma mark-----刷新融云本地所有用户信息
-- (void)getUserInfoWithUserId:(NSString *)userId completion:(void(^)(RCUserInfo* userInfo))completion
-{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        XHMessageUserInfo *info = [XHMessageUserInfo findFirstByCriteria:[NSString stringWithFormat:@"WHERE userId = %@",userId]];
-        if (info == nil)
-        {
-            completion(nil);
-            return;
-        }
-        RCUserInfo *userInfo = [[RCUserInfo alloc] init];
-        userInfo.name = info.name;
-        userInfo.userId = userId;
-        UIImageView *imageView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 0.01, 0.01)];
-        [self.window addSubview:imageView];
-         imageView.hidden=YES;
-        [imageView sd_setImageWithURL:[NSURL URLWithString:info.headPic] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL)
-         {
-             if (image)
-             {
-                 userInfo.portraitUri = info.headPic;
-             }
-             else
-             {
-                 userInfo.portraitUri=[RCDUtilities defaultUserPortrait:userInfo with:XHRCDDefaultPortraitViewHeaderTeacherType];
-             }
-         }];
-        completion(userInfo);
-    });
-   
-}
+
 #pragma mark--弹出视图代理
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {

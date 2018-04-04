@@ -45,5 +45,7 @@
 #import "XHHelper.h"
 #import "XHAlertControl.h"
 #import "XHHeaderControl.h"
+#import "UITableView+FDTemplateLayoutCell.h"
+#import "XHChatManager.h"
 #endif /* Header_h */
 

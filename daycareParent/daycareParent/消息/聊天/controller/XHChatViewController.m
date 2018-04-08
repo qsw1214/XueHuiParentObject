@@ -157,10 +157,10 @@ XHChatManagerDelegate>
     RCUserInfo *info=[[XHChatManager shareManager] sendUserInfo];
     msg.content.senderUserInfo=info;
     
-   
-    
     [self insertMessage:msg];
     [self retrySendMessage:msg];
+    
+    [[XHChatManager shareManager] writeToImage:msg];
 }
 #pragma mark- 插入数据库
 - (void)insertMessage:(RCMessage *)message

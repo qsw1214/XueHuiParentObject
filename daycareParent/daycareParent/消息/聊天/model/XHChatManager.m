@@ -133,11 +133,50 @@
 
     return historyMessages;
 }
+#pragma mark- 移除本地聊天信息
+-(BOOL)removeConversation:(NSString *)targetId
+{
+   return  [[RCIMClient sharedRCIMClient] removeConversation:ConversationType_PRIVATE targetId:targetId];
+}
 #pragma mark- 获取最新本地聊天消息
 -(NSArray *)getLatestMessages:(NSString *)targetId
 {
     NSArray *arry= [[RCIMClient sharedRCIMClient] getLatestMessages:ConversationType_PRIVATE targetId:targetId count:5];
     return arry;
+}
+-(void)writeToImage:(RCMessage *)message
+{
+    if ([message.content isKindOfClass:[RCImageMessage class]])
+    {
+        RCImageMessage *imageMessage=(RCImageMessage *)message.content;
+        NSString *path_document = NSHomeDirectory();
+        //设置一个图片的存储路径
+        NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",[[NSDate alloc] getDateString:message.sentTime]]];
+        //把图片直接保存到指定的路径（同时应该把图片的路径imagePath存起来，下次就可以直接用来取）
+        [UIImagePNGRepresentation(imageMessage.originalImage) writeToFile:imagePath atomically:YES];
+    }
+    
+}
+-(UIImage *)getImage:(RCMessage *)message
+{
+    if ([message.content isKindOfClass:[RCImageMessage class]])
+    {
+        NSString *path_document = NSHomeDirectory();
+        //设置一个图片的存储路径
+        NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",[[NSDate alloc] getDateString:message.sentTime]]];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:imagePath])
+        {
+            UIImage *getimage = [UIImage imageWithContentsOfFile:imagePath];
+            return getimage;
+        }
+        else
+        {
+            return nil;
+        }
+        
+    }
+    return nil;
+   
 }
 #pragma mark-  接收消息的回调方法
 - (void)onReceived:(RCMessage *)message

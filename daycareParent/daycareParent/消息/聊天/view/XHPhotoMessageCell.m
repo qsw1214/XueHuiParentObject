@@ -40,12 +40,24 @@ static  CGFloat fitImgHeight = 150;
     {
         [TLPhotoBrowser showOriginalImage:imgMessage.originalImage];
     }
-   else
+    else if ([[XHChatManager shareManager] getImage:self.message])
     {
+        [TLPhotoBrowser showOriginalImage:[[XHChatManager shareManager] getImage:self.message]];
+    }
+    else
+    {
+        
         [XHShowHUD showTextHud];
         [self.photoImageView sd_setImageWithURL:[NSURL URLWithString:imgMessage.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-            [XHShowHUD hideHud];
-            [TLPhotoBrowser showOriginalImage:image];
+            if (image)
+            {
+                [XHShowHUD hideHud];
+                [TLPhotoBrowser showOriginalImage:image];
+            }
+            else
+            {
+                [XHShowHUD showNOHud:@"下载失败"];
+            }
         }];
     }
 }

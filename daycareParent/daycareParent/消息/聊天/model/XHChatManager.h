@@ -24,8 +24,11 @@
 -(NSArray *)getConversationList;
 -(NSArray *)getHistoryMessages:(NSString *)targetId oldestMessageNumber:(long)oldestMessageId;
 -(NSArray *)getLatestMessages:(NSString *)targetId;
+-(BOOL)removeConversation:(NSString *)targetId;
 -(void)clearMessagesUnread:(NSString *)targetId;
 -(void)refreshCashRCUserInfo:(RCUserInfo *)userInfo;
 -(XHMessageUserInfo *)getUserInfoTargetId:(NSString *)targetId;
 -(RCUserInfo *)sendUserInfo;
+-(void)writeToImage:(RCMessage *)message;
+-(UIImage *)getImage:(RCMessage *)message;
 @end

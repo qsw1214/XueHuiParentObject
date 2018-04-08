@@ -177,6 +177,27 @@
      [[XHChatManager shareManager] clearMessagesUnread:model.targetId];
     [[XHChatManager shareManager] sendUserInfo];
 }
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath  
+{  
+    if (self.tableView == tableView)
+    {  
+        if (editingStyle == UITableViewCellEditingStyleDelete)  
+        {  
+            RCConversation *model=self.dataArry[indexPath.row];
+            
+            [[XHChatManager shareManager] removeConversation:model.targetId];//1.先移除数组中的
+            
+            [self.dataArry removeObject:model];
+            
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+           
+        }  
+    }  
+}
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"删除";
+}
 
 -(UITableView *)tableView
 {
@@ -216,31 +237,6 @@
         [app reloadIMBadge];
     });
     
-}
-- (void)didLongPressCellPortrait:(RCConversationModel *)model
-{
-    if (model.isTop) {
-        [self showAlertSheet:@"取消置顶" targetID:model.targetId type:1];
-    }else{
-        [self showAlertSheet:@"置顶" targetID:model.targetId type:0];
-    }
-    
-}
-- (void)showAlertSheet:(NSString *)title targetID:(NSString *)targetID type:(NSInteger)type
-{
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"是否置顶？" preferredStyle:UIAlertControllerStyleAlert];
-    [alertController addAction:[UIAlertAction actionWithTitle:title style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        if (type == 0) {
-            [[RCIMClient sharedRCIMClient] setConversationToTop:ConversationType_PRIVATE targetId:targetID isTop:YES];
-        }else{
-            [[RCIMClient sharedRCIMClient] setConversationToTop:ConversationType_PRIVATE targetId:targetID isTop:NO];
-        }
-        [XHShowHUD showOKHud:title];
-    }]];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-    }]];
-    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 -(ParentControl *)teacherControl

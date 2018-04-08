@@ -29,6 +29,5 @@
 -(void)refreshCashRCUserInfo:(RCUserInfo *)userInfo;
 -(XHMessageUserInfo *)getUserInfoTargetId:(NSString *)targetId;
 -(RCUserInfo *)sendUserInfo;
--(void)writeToImage:(RCMessage *)message;
--(UIImage *)getImage:(RCMessage *)message;
+-(UIImage *)getRCImage:(RCMessage *)message;
 @end

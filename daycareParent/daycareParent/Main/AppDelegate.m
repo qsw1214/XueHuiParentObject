@@ -177,6 +177,8 @@
                                                                          break;
                                                                  }
                                                              }];
+    [self reloadIMBadge];
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"noticeName" object:nil];
     
     IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
@@ -290,6 +292,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         [alert show];
     }
     [JPUSHService handleRemoteNotification:userInfo];
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"noticeName" object:nil];
    
 }

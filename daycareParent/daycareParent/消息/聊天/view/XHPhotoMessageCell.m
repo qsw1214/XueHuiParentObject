@@ -35,14 +35,14 @@ static  CGFloat fitImgHeight = 150;
 }
 -(void)didClickImage{
     RCImageMessage *imgMessage = (RCImageMessage *)self.message.content;
-    
+    kNSLog(imgMessage.imageUrl);
     if (imgMessage.originalImage)
     {
         [TLPhotoBrowser showOriginalImage:imgMessage.originalImage];
     }
-    else if ([[XHChatManager shareManager] getImage:self.message])
+    else if ([[XHChatManager shareManager] getRCImage:self.message])
     {
-        [TLPhotoBrowser showOriginalImage:[[XHChatManager shareManager] getImage:self.message]];
+        [TLPhotoBrowser showOriginalImage:[[XHChatManager shareManager] getRCImage:self.message]];
     }
     else
     {

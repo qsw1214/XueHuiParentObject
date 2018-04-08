@@ -144,29 +144,15 @@
     NSArray *arry= [[RCIMClient sharedRCIMClient] getLatestMessages:ConversationType_PRIVATE targetId:targetId count:5];
     return arry;
 }
--(void)writeToImage:(RCMessage *)message
+#pragma mark- 获取融云本地图片
+-(UIImage *)getRCImage:(RCMessage *)message
 {
     if ([message.content isKindOfClass:[RCImageMessage class]])
     {
         RCImageMessage *imageMessage=(RCImageMessage *)message.content;
-        NSString *path_document = NSHomeDirectory();
-        //设置一个图片的存储路径
-        NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",[[NSDate alloc] getDateString:message.sentTime]]];
-        //把图片直接保存到指定的路径（同时应该把图片的路径imagePath存起来，下次就可以直接用来取）
-        [UIImagePNGRepresentation(imageMessage.originalImage) writeToFile:imagePath atomically:YES];
-    }
-    
-}
--(UIImage *)getImage:(RCMessage *)message
-{
-    if ([message.content isKindOfClass:[RCImageMessage class]])
-    {
-        NSString *path_document = NSHomeDirectory();
-        //设置一个图片的存储路径
-        NSString *imagePath = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@.png",[[NSDate alloc] getDateString:message.sentTime]]];
-        if ([[NSFileManager defaultManager] fileExistsAtPath:imagePath])
+        if ([[NSFileManager defaultManager] fileExistsAtPath:imageMessage.imageUrl])
         {
-            UIImage *getimage = [UIImage imageWithContentsOfFile:imagePath];
+            UIImage *getimage = [UIImage imageWithContentsOfFile:imageMessage.imageUrl];
             return getimage;
         }
         else

@@ -66,7 +66,7 @@ XHChatManagerDelegate>
     
     // 马上进入刷新状态
     [self.chatTableView.header beginRefreshing];
-
+  
 }
 -(void)loadNewData
 {
@@ -75,24 +75,45 @@ XHChatManagerDelegate>
     if (self.number==0)
     {
         arry= [[XHChatManager shareManager]getLatestMessages:self.targetID];
+        if (arry)
+        {
+            for (int i=0; i<arry.count; i++)
+            {
+                [self.messages insertObject:arry[i] atIndex:0];
+                RCMessage *message=arry[i];
+                self.number=message.messageId;
+            }
+            [self.chatTableView reloadData];
+            [self.chatTableView.header endRefreshing];
+            [self scrollToBottom];
+        }
+        else
+        {
+            [self.chatTableView reloadData];
+            [self.chatTableView.header endRefreshing];
+        }
     }
     else
     {
         arry=[[XHChatManager shareManager] getHistoryMessages:self.targetID oldestMessageNumber:self.number];
-
-    }
-    if (arry)
-    {
-        for (int i=0; i<arry.count; i++)
+        if (arry)
         {
-            [self.messages insertObject:arry[i] atIndex:0];
-            RCMessage *message=arry[i];
-            self.number=message.messageId;
+            for (int i=0; i<arry.count; i++)
+            {
+                [self.messages insertObject:arry[i] atIndex:0];
+                RCMessage *message=arry[i];
+                self.number=message.messageId;
+            }
+            [self.chatTableView reloadData];
+            [self.chatTableView.header endRefreshing];
         }
-        [self.chatTableView reloadData];
-        [self.chatTableView.header endRefreshing];
-        [self scrollToBottom];
+        else
+        {
+            [self.chatTableView reloadData];
+            [self.chatTableView.header endRefreshing];
+        }
     }
+    
     
 }
 
@@ -135,7 +156,6 @@ XHChatManagerDelegate>
 #pragma mark- 收到消息回调方法
 -(void)rcManagerReceiveMsg:(RCMessage *)msg
 {
-    
     msg.sentStatus = SentStatus_RECEIVED;
     dispatch_async(dispatch_get_main_queue(), ^{
         [self insertMessage:msg];
@@ -159,8 +179,6 @@ XHChatManagerDelegate>
     
     [self insertMessage:msg];
     [self retrySendMessage:msg];
-    
-    [[XHChatManager shareManager] writeToImage:msg];
 }
 #pragma mark- 插入数据库
 - (void)insertMessage:(RCMessage *)message

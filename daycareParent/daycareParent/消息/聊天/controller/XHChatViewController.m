@@ -142,7 +142,6 @@ XHChatManagerDelegate>
         [[XHChatManager shareManager] refreshCashRCUserInfo:msg.content.senderUserInfo];
         [[XHChatManager shareManager] clearMessagesUnread:self.targetID];
         [self.chatTableView reloadData];
-        [[XHChatManager shareManager] writeToFileMessage:msg];
     });
 }
 
@@ -162,7 +161,6 @@ XHChatManagerDelegate>
     
     [self insertMessage:msg];
     [self retrySendMessage:msg];
-    [[XHChatManager shareManager] writeToFileMessage:msg];
 }
 #pragma mark- 插入数据库
 - (void)insertMessage:(RCMessage *)message

@@ -36,29 +36,15 @@ static  CGFloat fitImgHeight = 150;
 -(void)didClickImage{
     RCImageMessage *imgMessage = (RCImageMessage *)self.message.content;
     
-    if (imgMessage.originalImage) {
+    if (imgMessage.originalImage)
+    {
         [TLPhotoBrowser showOriginalImage:imgMessage.originalImage];
-        [[XHChatManager shareManager] writeToFileMessage:self.message];
-    }
-   else if (imgMessage.thumbnailImage)
-   {
-       if ([[NSFileManager defaultManager] fileExistsAtPath:[[XHChatManager shareManager] getFileUrlMessage:self.message]])
-       {
-           NSURL *portraitPath = [NSURL fileURLWithPath:[[XHChatManager shareManager] getFileUrlMessage:self.message]];
-           [self.photoImageView sd_setImageWithURL:[NSURL URLWithString:[portraitPath absoluteString]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL)
-           {
-               [TLPhotoBrowser showOriginalImage:image];
-           }];
-       }
-       else
-       {
-            [TLPhotoBrowser showOriginalImage:imgMessage.thumbnailImage];
-       }
-       
     }
    else
     {
+        [XHShowHUD showTextHud];
         [self.photoImageView sd_setImageWithURL:[NSURL URLWithString:imgMessage.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            [XHShowHUD hideHud];
             [TLPhotoBrowser showOriginalImage:image];
         }];
     }

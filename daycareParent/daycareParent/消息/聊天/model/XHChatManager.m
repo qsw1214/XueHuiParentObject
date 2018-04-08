@@ -81,20 +81,41 @@
         successBlock:(void(^)(RCMessage *))successBlock
          failedBlock:(void(^)(RCMessage *))failedBlock
 {
-    
-    [[RCIMClient sharedRCIMClient] sendMessage:message.conversationType targetId:message.targetId content:message.content pushContent:nil pushData:nil success:^(long messageId) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (successBlock) {
-                successBlock(message);
-            }
-        });
-    } error:^(RCErrorCode nErrorCode, long messageId) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (failedBlock) {
-                failedBlock(message);
-            }
-        });
-    }];
+    if ([message.content isKindOfClass:[RCImageMessage class]])
+    {
+        [[RCIMClient sharedRCIMClient] sendImageMessage:message.conversationType targetId:message.targetId content:message.content pushContent:nil progress:^(int progress, long messageId) {
+            
+        } success:^(long messageId) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (successBlock) {
+                    successBlock(message);
+                }
+            });
+        } error:^(RCErrorCode errorCode, long messageId) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (failedBlock) {
+                    failedBlock(message);
+                }
+            });
+        }];
+    }
+    else
+    {
+        [[RCIMClient sharedRCIMClient] sendMessage:message.conversationType targetId:message.targetId content:message.content pushContent:nil pushData:nil success:^(long messageId) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (successBlock) {
+                    successBlock(message);
+                }
+            });
+        } error:^(RCErrorCode nErrorCode, long messageId) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (failedBlock) {
+                    failedBlock(message);
+                }
+            });
+        }];
+    }
+   
 }
 
 #pragma mark- 获取本地聊天列表信息
@@ -147,43 +168,6 @@
 {
     XHMessageUserInfo *info = [XHMessageUserInfo findFirstByCriteria:[NSString stringWithFormat:@"WHERE userId = %@",targetId]];
     return info;
-}
-#pragma mark- 写入文件
--(void)writeToFileMessage:(RCMessage *)msg
-{
-    if ([msg.content isKindOfClass:[RCImageMessage class]])
-    {
-        RCImageMessage *imgMessage = (RCImageMessage *)msg.content;
-        NSString *filePath = [[self class] getIconCachePath:[NSString stringWithFormat:@"user%@.png", [[NSDate alloc] getDateString:msg.sentTime]]];
-        [UIImagePNGRepresentation(imgMessage.originalImage) writeToFile:filePath atomically:YES];
-    }
-  
-}
-#pragma mark- 读取文件
--(NSString *)getFileUrlMessage:(RCMessage *)msg
-{
-    if ([msg.content isKindOfClass:[RCImageMessage class]])
-    {
-        NSString *filePath = [[self class] getIconCachePath:[NSString stringWithFormat:@"user%@.png", [[NSDate alloc] getDateString:msg.sentTime]]];
-        
-        return filePath;
-    }
-   
-    return nil;
-}
-+ (NSString *)getIconCachePath:(NSString *)fileName {
-    NSString *cachPath =
-    [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *filePath =
-    [cachPath stringByAppendingPathComponent:[NSString stringWithFormat:@"CachedIcons/%@",
-                                              fileName]]; // 保存文件的名称
-    
-    NSString *dirPath = [cachPath stringByAppendingPathComponent:[NSString stringWithFormat:@"CachedIcons"]];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if (![fileManager fileExistsAtPath:dirPath]) {
-        [fileManager createDirectoryAtPath:dirPath withIntermediateDirectories:YES attributes:nil error:nil];
-    }
-    return filePath;
 }
 -(XHMessageUserInfo *)userInfo
 {

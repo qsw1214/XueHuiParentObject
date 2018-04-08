@@ -28,6 +28,4 @@
 -(void)refreshCashRCUserInfo:(RCUserInfo *)userInfo;
 -(XHMessageUserInfo *)getUserInfoTargetId:(NSString *)targetId;
 -(RCUserInfo *)sendUserInfo;
--(void)writeToFileMessage:(RCMessage *)msg;
--(NSString *)getFileUrlMessage:(RCMessage *)msg;
 @end

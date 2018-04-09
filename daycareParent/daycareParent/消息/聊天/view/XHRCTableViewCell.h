@@ -6,9 +6,9 @@
 //  Copyright © 2018年 XueHui. All rights reserved.
 //
 
-#import <RongIMKit/RongIMKit.h>
+#import <RongIMLib/RongIMLib.h>
 
 @interface XHRCTableViewCell : ParentTableViewCell
 
--(void)setItemObject:(RCConversationModel *)model;
+-(void)setItemObject:(RCConversation *)model;
 @end

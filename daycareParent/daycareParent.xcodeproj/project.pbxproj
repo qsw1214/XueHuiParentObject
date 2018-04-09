@@ -213,7 +213,6 @@
 		4B632AC71FE11CB700B90B94 /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B632AC31FE11CB700B90B94 /* AMapSearchKit.framework */; };
 		4B632AC81FE11CB800B90B94 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B632AC41FE11CB700B90B94 /* MAMapKit.framework */; };
 		4B632ACA1FE11DFD00B90B94 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B632AC91FE11DFD00B90B94 /* JavaScriptCore.framework */; };
-		4B632ACC1FE11E3A00B90B94 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B632ACB1FE11E3A00B90B94 /* libstdc++.6.0.9.tbd */; };
 		4B80F1E01FCBE3F700BC7B52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B80F1DF1FCBE3F700BC7B52 /* Assets.xcassets */; };
 		4B80F1E61FCBE3F700BC7B52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B80F1E51FCBE3F700BC7B52 /* main.m */; };
 		4B80F2081FCBE4E400BC7B52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B80F2041FCBE4E400BC7B52 /* AppDelegate.m */; };
@@ -366,6 +365,7 @@
 		8C1642272056741D001DCA01 /* XHLoseSubjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1642262056741D001DCA01 /* XHLoseSubjectView.m */; };
 		8C16422A20567887001DCA01 /* XHSubjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C16422920567887001DCA01 /* XHSubjectModel.m */; };
 		8C16422D20568892001DCA01 /* XHSubmitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C16422C20568892001DCA01 /* XHSubmitView.m */; };
+		8C1D480A207B57A9005AA0B4 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C1D4809207B57A9005AA0B4 /* VideoToolbox.framework */; };
 		8C2246B01FF2262200B7A07F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2246AF1FF2262200B7A07F /* WebKit.framework */; };
 		8C2311641FE216A00013F476 /* XHChildListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2311631FE216A00013F476 /* XHChildListModel.m */; };
 		8C2E0D96205BC14B002FF430 /* NSDate+dateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E0D95205BC14B002FF430 /* NSDate+dateTool.m */; };
@@ -1190,6 +1190,7 @@
 		8C16422920567887001DCA01 /* XHSubjectModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHSubjectModel.m; sourceTree = "<group>"; };
 		8C16422B20568892001DCA01 /* XHSubmitView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHSubmitView.h; sourceTree = "<group>"; };
 		8C16422C20568892001DCA01 /* XHSubmitView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHSubmitView.m; sourceTree = "<group>"; };
+		8C1D4809207B57A9005AA0B4 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		8C2246AF1FF2262200B7A07F /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		8C2311621FE216A00013F476 /* XHChildListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHChildListModel.h; sourceTree = "<group>"; };
 		8C2311631FE216A00013F476 /* XHChildListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHChildListModel.m; sourceTree = "<group>"; };
@@ -1462,7 +1463,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B632ACC1FE11E3A00B90B94 /* libstdc++.6.0.9.tbd in Frameworks */,
+				8C8337061FDD002100F48A25 /* libresolv.tbd in Frameworks */,
+				8C1D480A207B57A9005AA0B4 /* VideoToolbox.framework in Frameworks */,
+				8C7AE7431FE796A400BE7A02 /* CoreMotion.framework in Frameworks */,
 				8CDDA92D1FDA7C0B000B3BAB /* SafariServices.framework in Frameworks */,
 				8CDDA92B1FDA7BF9000B3BAB /* Photos.framework in Frameworks */,
 				8CDDA9291FDA7BE9000B3BAB /* UIKit.framework in Frameworks */,
@@ -1493,12 +1496,10 @@
 				4B34184B1FFC840E00A5EC56 /* QuickLook.framework in Frameworks */,
 				4B632ACA1FE11DFD00B90B94 /* JavaScriptCore.framework in Frameworks */,
 				8C2246B01FF2262200B7A07F /* WebKit.framework in Frameworks */,
-				8C7AE7431FE796A400BE7A02 /* CoreMotion.framework in Frameworks */,
 				8C8337001FDCFFCE00F48A25 /* Security.framework in Frameworks */,
 				8C7AE7411FE7967B00BE7A02 /* libsqlite3.0.tbd in Frameworks */,
 				8C7DD7B3205B91ED00FB2497 /* WechatConnector.framework in Frameworks */,
 				8C7DD7BC205B91ED00FB2497 /* ShareSDKConnector.framework in Frameworks */,
-				8C8337061FDD002100F48A25 /* libresolv.tbd in Frameworks */,
 				8C7DD7B0205B91ED00FB2497 /* ShareSDKUI.framework in Frameworks */,
 				8C7DD7BA205B91ED00FB2497 /* MOBFoundation.framework in Frameworks */,
 				8C8337021FDCFFEF00F48A25 /* AdSupport.framework in Frameworks */,
@@ -3653,6 +3654,7 @@
 		8CDDA8FD1FDA7A24000B3BAB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8C1D4809207B57A9005AA0B4 /* VideoToolbox.framework */,
 				4B34184A1FFC840E00A5EC56 /* QuickLook.framework */,
 				8C2246AF1FF2262200B7A07F /* WebKit.framework */,
 				8C7AE7421FE7969900BE7A02 /* CoreMotion.framework */,
@@ -4420,6 +4422,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -4521,7 +4524,10 @@
 					"$(PROJECT_DIR)/daycareParent/ThirdLibrary/ShareSDK/Support/PlatformSDK/WeChatSDK",
 					"$(PROJECT_DIR)/daycareParent/ThirdLibrary/Rong_Cloud_iOS_IMLib_CallLib_SDK_v2_8_29_Stable-2/IMLib",
 				);
-				OTHER_LDFLAGS = "-licucore";
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-licucore",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jt.xhp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -4624,7 +4630,10 @@
 					"$(PROJECT_DIR)/daycareParent/ThirdLibrary/ShareSDK/Support/PlatformSDK/WeChatSDK",
 					"$(PROJECT_DIR)/daycareParent/ThirdLibrary/Rong_Cloud_iOS_IMLib_CallLib_SDK_v2_8_29_Stable-2/IMLib",
 				);
-				OTHER_LDFLAGS = "-licucore";
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-licucore",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jt.xhp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;

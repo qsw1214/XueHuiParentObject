@@ -46,19 +46,7 @@ static  CGFloat fitImgHeight = 150;
     }
     else
     {
-        
-        [XHShowHUD showTextHud];
-        [self.photoImageView sd_setImageWithURL:[NSURL URLWithString:imgMessage.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-            if (image)
-            {
-                [XHShowHUD hideHud];
-                [TLPhotoBrowser showOriginalImage:image];
-            }
-            else
-            {
-                [XHShowHUD showNOHud:@"下载失败"];
-            }
-        }];
+        [TLPhotoBrowser showOriginalImageUrl:imgMessage.imageUrl];
     }
 }
 

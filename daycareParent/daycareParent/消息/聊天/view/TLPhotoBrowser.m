@@ -26,6 +26,13 @@
     browser.imageScrollView.img = originalImage;
     [browser show];
 }
++(TLPhotoBrowser *)showOriginalImageUrl:(NSString *)originalImageUrl
+{
+    TLPhotoBrowser *browser = [[TLPhotoBrowser alloc] initWithFrame:kKeyWindow.bounds];
+    [browser.imageScrollView.photoView sd_setImageWithURL:[NSURL URLWithString:[NSString safeString:originalImageUrl]] placeholderImage:[UIImage imageNamed:@"placeholderImage"]];
+    [browser show];
+    return browser;
+}
 -(void)show{
     self.alpha = 0;
     [kKeyWindow addSubview:self];
@@ -62,7 +69,7 @@
 
 
 @interface TLImageScrollView ()
-@property(nonatomic,strong)UIImageView *photoView;
+
 @end
 
 @implementation TLImageScrollView
